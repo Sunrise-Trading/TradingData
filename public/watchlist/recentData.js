@@ -8,9 +8,9 @@ window.TradingData = {
         'futures': ['MESZ22'],
         '11/18/2022': {
             'stocks': [
-                'ROST',
-                'FL',
-                'COIN',
+                //'ROST',
+                //'FL',
+                //'COIN',
                 'SPY',
             ],
             'StockCandidates': {
