@@ -1,12 +1,12 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2022-11-23 6:30', //'2022-11-18 6:30'
+        'currentDayStr': '', //'2022-11-18 6:30'
         'activeProfileName': "choppyMarket", //choppyMarket"; //"momentumEquities";
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
-        '11/23/2022': {
+        '11/25/2022': {
             'stocks': [
                 'TSLA', 'JWN',
                 'AAPL',
