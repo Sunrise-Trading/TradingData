@@ -9,7 +9,6 @@ window.TradingData = {
         '11/25/2022': {
             'stocks': [
                 'AAPL',
-                'MANU',
                 'TSLA',
                 'BABA',
                 //'SPY',
