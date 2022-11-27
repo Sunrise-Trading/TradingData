@@ -1,6 +1,6 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2022-11-15 6:30', //'2022-11-18 6:30'
+        'currentDayStr': '2022-11-25 6:30', //'2022-11-18 6:30'
         'activeProfileName': "choppyMarket", //choppyMarket"; //"momentumEquities";
     },
     'StockSelection': {
