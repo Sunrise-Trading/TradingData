@@ -8,35 +8,44 @@ window.TradingData = {
         'futures': ['MESZ22'],
         '11/25/2022': {
             'stocks': [
-                'TSLA', 'JWN',
                 'AAPL',
-                'SPY',
+                'TSLA',
+                'BABA',
+                //'SPY',
                 //'QQQ',
             ],
             'StockCandidates': {
-                'JWN': {
-                    highQualityNews: 'earnings, lower guidance', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                'MANU': {
+                    highQualityNews: 'team changes', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 21.35, boxdown: 20.6,
+                    boxup: 20.75, boxdown: 20,
                     longTargets: [],
-                    shortTargets: [{ price: 20.45, percentage: 0.1 }]
+                    shortTargets: [{ price: 19, percentage: 0.1 }]
                 },
                 'AAPL': {
-                    highQualityNews: 'ihone shortage', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    highQualityNews: 'Foxconn worker unrest', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 75.5, boxdown: 73,
-                    longTargets: [{ price: 116.97, percentage: 0.1 }],
-                    shortTargets: [{ price: 77.5, percentage: 0.1 }]
+                    boxup: 149.5, boxdown: 148.25,
+                    longTargets: [],
+                    shortTargets: [{ price: 146.7, percentage: 0.1 }]
+                },
+                'BABA': {
+                    highQualityNews: 'china lock down', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 80,
+                    initialBias: 0,
+                    boxup: 76.5, boxdown: 75.25,
+                    longTargets: [],
+                    shortTargets: [{ price: 74.76, percentage: 0.1 }]
                 },
                 'TSLA': {
-                    highQualityNews: 'cybertruck preorder, citi group upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    highQualityNews: 'recall', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 174.5, boxdown: 172,
-                    longTargets: [{ price: 174.8, percentage: 0.1 }],
-                    shortTargets: [{ price: 171.9, percentage: 0.1 }]
+                    boxup: 186.5, boxdown: 184,
+                    longTargets: [{ price: 189.5, percentage: 0.1 }],
+                    shortTargets: []
                 },
                 'QQQ': {
                     highQualityNews: 'retails data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
