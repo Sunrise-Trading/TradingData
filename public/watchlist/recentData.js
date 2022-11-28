@@ -17,7 +17,7 @@ window.TradingData = {
             ],
             'StockCandidates': {
                 'PDD': {
-                    highQualityNews: 'earnings gap up', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    highQualityNews: 'earnings gap up', volumeSum: 2367087, tradingSum: 174408242, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
                     boxup: 20.75, boxdown: 20,
