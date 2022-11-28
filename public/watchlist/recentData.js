@@ -20,9 +20,9 @@ window.TradingData = {
                     highQualityNews: 'earnings gap up', volumeSum: 2367087, tradingSum: 174408242, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 20.75, boxdown: 20,
+                    boxup: 76.5, boxdown: 72,
                     longTargets: [],
-                    shortTargets: [{ price: 19, percentage: 0.1 }]
+                    shortTargets: [{ price: 71.2, percentage: 0.1 }]
                 },
                 'AAPL': {
                     highQualityNews: 'more produciton issue in Foxconn', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
@@ -44,7 +44,7 @@ window.TradingData = {
                     highQualityNews: 'china lock down', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 186.5, boxdown: 184,
+                    boxup: 180.5, boxdown: 178,
                     longTargets: [{ price: 189.5, percentage: 0.1 }],
                     shortTargets: []
                 },
