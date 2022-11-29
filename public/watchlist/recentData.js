@@ -1,28 +1,27 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-11-18 6:30'
-        'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities";
+        'activeProfileName': "choppyMarket", //choppyMarket"; //"momentumEquities";
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
-        '11/28/2022': {
+        '11/29/2022': {
             'stocks': [
-                'AAPL',
-                'TSLA',
+                'ROKU',
                 'PDD',
-                'BIIB',
+                'BABA',
                 //'SPY',
                 //'QQQ',
             ],
             'StockCandidates': {
                 'PDD': {
-                    highQualityNews: 'earnings gap up', volumeSum: 2367087, tradingSum: 174408242, premktHigh: 0, premktLow: 99999999,
+                    highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 76.5, boxdown: 72,
+                    boxup: 78.6, boxdown: 77.5,
                     longTargets: [],
-                    shortTargets: [{ price: 71.2, percentage: 0.1 }]
+                    shortTargets: [{ price: 79.95, percentage: 0.1 }]
                 },
                 'AAPL': {
                     highQualityNews: 'more produciton issue in Foxconn', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
@@ -32,20 +31,28 @@ window.TradingData = {
                     longTargets: [],
                     shortTargets: [{ price: 146.7, percentage: 0.1 }]
                 },
-                'BIIB': {
-                    highQualityNews: 'drug related death', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                'ROKU': {
+                    highQualityNews: 'downgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 80,
                     initialBias: 0,
-                    boxup: 296, boxdown: 288,
+                    boxup: 52.2, boxdown: 51.25,
                     longTargets: [],
-                    shortTargets: [{ price: 74.76, percentage: 0.1 }]
+                    shortTargets: [{ price: 50.25, percentage: 0.1 }]
+                },
+                'BABA': {
+                    highQualityNews: 'china ease lockdown', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 80,
+                    initialBias: 0,
+                    boxup: 80.75, boxdown: 79.5,
+                    longTargets: [],
+                    shortTargets: [{ price: 79.1, percentage: 0.1 }]
                 },
                 'TSLA': {
                     highQualityNews: 'china lock down', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 180.5, boxdown: 178,
-                    longTargets: [{ price: 189.5, percentage: 0.1 }],
+                    boxup: 186, boxdown: 184,
+                    longTargets: [{ price: 188, percentage: 0.1 }],
                     shortTargets: []
                 },
                 'QQQ': {
