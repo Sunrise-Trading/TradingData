@@ -8,7 +8,7 @@ window.TradingData = {
         'futures': ['MESZ22'],
         '11/29/2022': {
             'stocks': [
-                'ROKU',
+                //'ROKU',
                 'PDD',
                 'BABA',
                 //'SPY',
