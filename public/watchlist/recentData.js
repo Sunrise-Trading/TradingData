@@ -11,7 +11,7 @@ window.TradingData = {
                 'CRWD',
                 'PDD',
                 'BABA',
-                'AMZN',
+                //'AMZN',
                 //'QQQ',
             ],
             'StockCandidates': {
