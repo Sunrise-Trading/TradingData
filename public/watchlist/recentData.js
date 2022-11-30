@@ -11,7 +11,7 @@ window.TradingData = {
                 'CRWD',
                 'PDD',
                 'BABA',
-                //'SPY',
+                'AMZN',
                 //'QQQ',
             ],
             'StockCandidates': {
@@ -19,7 +19,7 @@ window.TradingData = {
                     highQualityNews: 'china news, raise price targets', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 78.6, boxdown: 77.5,
+                    //boxup: 78.6, boxdown: 77.5,
                     longTargets: [],
                     shortTargets: [{ price: 79.95, percentage: 0.1 }]
                 },
@@ -36,23 +36,23 @@ window.TradingData = {
                     deferTradingInSeconds: 80,
                     initialBias: 0,
                     boxup: 116, boxdown: 112,
-                    longTargets: [],
+                    longTargets: [{ price: 119.85, percentage: 0.1 }],
                     shortTargets: [{ price: 110, percentage: 0.1 }]
                 },
                 'BABA': {
                     highQualityNews: 'china ease lockdown', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 80,
                     initialBias: 0,
-                    boxup: 80.75, boxdown: 79.5,
+                    //boxup: 80.75, boxdown: 79.5,
                     longTargets: [],
                     shortTargets: [{ price: 79.1, percentage: 0.1 }]
                 },
-                'TSLA': {
-                    highQualityNews: 'china lock down', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                'AMZN': {
+                    highQualityNews: 'announce best black friday', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 186, boxdown: 184,
-                    longTargets: [{ price: 188, percentage: 0.1 }],
+                    //boxup: 186, boxdown: 184,
+                    longTargets: [{ price: 93.95, percentage: 0.1 }],
                     shortTargets: []
                 },
                 'QQQ': {
