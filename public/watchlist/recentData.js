@@ -30,11 +30,11 @@ window.TradingData = {
                     longTargets: [{ price: 147.2, percentage: 0.1 }],
                     shortTargets: []
                 },
-                'CRM': {
-                    highQualityNews: 'earnings miss', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                'DASH': {
+                    highQualityNews: 'price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 150, boxdown: 148,
+                    boxup: 54.5, boxdown: 53,
                     longTargets: [{ price: 153, percentage: 0.1 }],
                     shortTargets: [{ price: 145, percentage: 0.1 }]
                 },
@@ -50,9 +50,9 @@ window.TradingData = {
                     highQualityNews: 'semi truck delivery', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
-                    boxup: 199, boxdown: 196,
+                    boxup: 192.5, boxdown: 189,
                     longTargets: [{ price: 200, percentage: 0.1 }],
-                    shortTargets: []
+                    shortTargets: [{ price: 190, percentage: 0.1 }]
                 },
                 'QQQ': {
                     highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
