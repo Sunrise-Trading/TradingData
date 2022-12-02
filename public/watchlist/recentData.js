@@ -9,7 +9,7 @@ window.TradingData = {
         '12/2/2022': {
             'stocks': [
                 'TSLA',
-                'PATH',
+                'ZS',
                 'QQQ',
                 'SPY',
             ],
