@@ -43,7 +43,8 @@ window.TradingData = {
                 initialBias: 0,
                 //boxup: 80.75, boxdown: 79.5,
                 longTargets: [],
-                shortTargets: [{ price: 79.1, percentage: 0.1 }]
+                shortTargets: [{ price: 79.1, percentage: 0.1 }],
+                activeProfileName: "choppyMarket",
             },
             'TSLA': {
                 highQualityNews: 'semi truck delivery', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
