@@ -17,17 +17,17 @@ window.TradingData = {
                 highQualityNews: 'china reopen rumor continues', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 130, boxdown: 126.5,
+                boxup: 90, boxdown: 88,
                 longTargets: [],
-                shortTargets: [{ price: 79.95, percentage: 0.1 }]
+                shortTargets: [{ price: 89, percentage: 0.1 }]
             },
-            'PATH': {
-                highQualityNews: 'earnings', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'FUTU': {
+                highQualityNews: 'chine reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 146, boxdown: 140,
+                boxup: 70.5, boxdown: 69.5,
                 longTargets: [{ price: 147.2, percentage: 0.1 }],
-                shortTargets: []
+                shortTargets: [{ price: 68.35, percentage: 0.1 }]
             },
             'BX': {
                 highQualityNews: 'price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
@@ -41,18 +41,17 @@ window.TradingData = {
                 highQualityNews: 'china ease lockdown', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                //boxup: 80.75, boxdown: 79.5,
+                boxup: 94.5, boxdown: 92.5,
                 longTargets: [],
-                shortTargets: [{ price: 79.1, percentage: 0.1 }],
-                activeProfileName: "choppyMarket",
+                shortTargets: [{ price: 92, percentage: 0.1 }],
             },
             'TSLA': {
                 highQualityNews: 'cut product due to slow demand', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 192.5, boxdown: 189,
-                longTargets: [{ price: 200, percentage: 0.1 }],
-                shortTargets: [{ price: 190, percentage: 0.1 }]
+                boxup: 192, boxdown: 186,
+                longTargets: [],
+                shortTargets: [{ price: 186, percentage: 0.1 }]
             },
             'QQQ': {
                 highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
