@@ -1,20 +1,20 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2022-12-2 6:30', //'2022-12-2 6:30'
+        'currentDayStr': '', //'2022-12-2 6:30'
         'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities";
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
+            'BABA',
+            'PDD',
             'TSLA',
-            'ZS',
-            'QQQ',
             'SPY',
         ],
         'StockCandidates': {
-            'ZS': {
-                highQualityNews: 'china news, raise price targets', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'PDD': {
+                highQualityNews: 'china reopen rumor continues', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 130, boxdown: 126.5,
@@ -29,7 +29,7 @@ window.TradingData = {
                 longTargets: [{ price: 147.2, percentage: 0.1 }],
                 shortTargets: []
             },
-            'DASH': {
+            'BX': {
                 highQualityNews: 'price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
@@ -47,7 +47,7 @@ window.TradingData = {
                 activeProfileName: "choppyMarket",
             },
             'TSLA': {
-                highQualityNews: 'semi truck delivery', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'cut product due to slow demand', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 192.5, boxdown: 189,
