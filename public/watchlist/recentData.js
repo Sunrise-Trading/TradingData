@@ -10,10 +10,11 @@ window.TradingData = {
             'AAPL',
             'TSLA',
             'MDB',
+            'CVNA'
         ],
         'StockCandidates': {
-            'PDD': {
-                highQualityNews: 'china reopen rumor continues', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'CVNA': {
+                highQualityNews: 'wedbush cut price from $9 to $1', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 90, boxdown: 88,
