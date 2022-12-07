@@ -49,7 +49,7 @@ window.TradingData = {
                 highQualityNews: 'Labor Disaster At Giga Berlin', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 192, boxdown: 186,
+                boxup: 177, boxdown: 173,
                 longTargets: [],
                 shortTargets: [{ price: 186, percentage: 0.1 }]
             },
