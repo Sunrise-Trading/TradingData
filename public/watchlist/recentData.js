@@ -15,7 +15,7 @@ window.TradingData = {
         'StockCandidates': {
             'CVNA': {
                 highQualityNews: 'wedbush cut price from $9 to $1', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
+                deferTradingInSeconds: 120,
                 initialBias: 0,
                 boxup: 90, boxdown: 88,
                 longTargets: [],
