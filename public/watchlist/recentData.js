@@ -7,10 +7,9 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'BABA',
-            'PDD',
+            'AAPL',
             'TSLA',
-            'SPY',
+            'MDB',
         ],
         'StockCandidates': {
             'PDD': {
@@ -21,16 +20,16 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [{ price: 89, percentage: 0.1 }]
             },
-            'FUTU': {
-                highQualityNews: 'chine reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'MDB': {
+                highQualityNews: 'earnings beat', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 70.5, boxdown: 69.5,
-                longTargets: [{ price: 147.2, percentage: 0.1 }],
-                shortTargets: [{ price: 68.35, percentage: 0.1 }]
+                boxup: 183.5, boxdown: 181,
+                longTargets: [],
+                shortTargets: [{ price: 173.5, percentage: 0.2 }]
             },
-            'BX': {
-                highQualityNews: 'price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'AAPL': {
+                highQualityNews: 'morgan stanley cuts iphone estimates', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 54.5, boxdown: 53,
@@ -38,7 +37,7 @@ window.TradingData = {
                 shortTargets: [{ price: 145, percentage: 0.1 }]
             },
             'BABA': {
-                highQualityNews: 'china ease lockdown', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'china news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 94.5, boxdown: 92.5,
@@ -46,7 +45,7 @@ window.TradingData = {
                 shortTargets: [{ price: 92, percentage: 0.1 }],
             },
             'TSLA': {
-                highQualityNews: 'cut product due to slow demand', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'Labor Disaster At Giga Berlin', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 192, boxdown: 186,
