@@ -7,10 +7,10 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'TSLA',
             'META',
             'AAPL',
-            'BABA'
+            'BABA',
+            'TSLA',
         ],
         'StockCandidates': {
             'AAPL': {
@@ -35,13 +35,13 @@ window.TradingData = {
                 initialBias: 0,
                 boxup: 94.5, boxdown: 92.5,
                 longTargets: [],
-                shortTargets: [{ price: 92, percentage: 0.1 }],
+                shortTargets: [{ price: 90.6, percentage: 0.1 }, { price: 90.02, percentage: 0.1 }],
             },
             'TSLA': {
                 highQualityNews: 'shorten shanghai factory shifts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 177, boxdown: 173,
+                boxup: 173, boxdown: 169.5,
                 longTargets: [],
                 shortTargets: [{ price: 186, percentage: 0.1 }]
             },
@@ -49,7 +49,7 @@ window.TradingData = {
                 highQualityNews: 'china news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 94.5, boxdown: 92.5,
+                boxup: 88.75, boxdown: 87.75,
                 longTargets: [],
                 shortTargets: [{ price: 92, percentage: 0.1 }],
             },
