@@ -33,17 +33,17 @@ window.TradingData = {
                 highQualityNews: 'china news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 94.5, boxdown: 92.5,
+                //boxup: 94.5, boxdown: 92.5,
                 longTargets: [],
-                shortTargets: [{ price: 90.6, percentage: 0.1 }, { price: 90.02, percentage: 0.1 }],
+                shortTargets: [{ price: 92.92, percentage: 0.1 }],
             },
             'TSLA': {
                 highQualityNews: 'suspend model Y in shanghai', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 173, boxdown: 169.5,
+                boxup: 175, boxdown: 171.5,
                 longTargets: [],
-                shortTargets: [{ price: 186, percentage: 0.1 }]
+                shortTargets: [{ price: 171, percentage: 0.1 }]
             },
             'PDD': {
                 highQualityNews: 'china news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
