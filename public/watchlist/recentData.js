@@ -7,10 +7,10 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'META',
-            'AAPL',
             'BABA',
             'TSLA',
+            'QQQ',
+            'SPY',
         ],
         'StockCandidates': {
             'AAPL': {
@@ -38,7 +38,7 @@ window.TradingData = {
                 shortTargets: [{ price: 90.6, percentage: 0.1 }, { price: 90.02, percentage: 0.1 }],
             },
             'TSLA': {
-                highQualityNews: 'shorten shanghai factory shifts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'suspend model Y in shanghai', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 173, boxdown: 169.5,
