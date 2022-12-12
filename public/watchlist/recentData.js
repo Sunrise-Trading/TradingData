@@ -9,7 +9,7 @@ window.TradingData = {
         'stocks': [
             'TSLA',
             'RIVN',
-            'AAPL',
+            'QQQ',
         ],
         'StockCandidates': {
             'RIVN': {
@@ -40,9 +40,9 @@ window.TradingData = {
                 highQualityNews: 'rivn news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                // boxup: 175, boxdown: 171.5,
+                boxup: 178, boxdown: 176,
                 longTargets: [],
-                shortTargets: [{ price: 171, percentage: 0.1 }]
+                shortTargets: [{ price: 175.3, percentage: 0.1 }]
             },
             'PDD': {
                 highQualityNews: 'china news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
