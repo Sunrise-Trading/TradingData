@@ -1,28 +1,26 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2022-12-9 6:30', //'2022-12-2 6:30'
+        'currentDayStr': '', //'2022-12-2 6:30'
         'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities";
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'BABA',
+            'RIVN',
             'TSLA',
-            'QQQ',
-            'SPY',
         ],
         'StockCandidates': {
-            'AAPL': {
-                highQualityNews: 'foxconn covid lift', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'RIVN': {
+                highQualityNews: 'pause plans of EV van', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 90, boxdown: 88,
                 longTargets: [],
                 shortTargets: [{ price: 89, percentage: 0.1 }]
             },
-            'META': {
-                highQualityNews: 'state restriction on tiktok', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'AAPL': {
+                highQualityNews: 'aapl pay and supply news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 183.5, boxdown: 181,
@@ -38,7 +36,7 @@ window.TradingData = {
                 shortTargets: [{ price: 92.92, percentage: 0.1 }],
             },
             'TSLA': {
-                highQualityNews: 'suspend model Y in shanghai', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'rivn news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 175, boxdown: 171.5,
