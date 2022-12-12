@@ -7,15 +7,16 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'RIVN',
             'TSLA',
+            'RIVN',
+            'AAPL',
         ],
         'StockCandidates': {
             'RIVN': {
                 highQualityNews: 'pause plans of EV van', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 90, boxdown: 88,
+                //boxup: 90, boxdown: 88,
                 longTargets: [],
                 shortTargets: [{ price: 89, percentage: 0.1 }]
             },
@@ -39,7 +40,7 @@ window.TradingData = {
                 highQualityNews: 'rivn news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 175, boxdown: 171.5,
+                // boxup: 175, boxdown: 171.5,
                 longTargets: [],
                 shortTargets: [{ price: 171, percentage: 0.1 }]
             },
