@@ -1,13 +1,14 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "momentumScalp", //choppyMarket"; //"momentumEquities", momentumScalp;
+        'activeProfileName': "indexOnly", //choppyMarket"; //"momentumEquities", momentumScalp;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
         'stocks': [
-            'TSLA',
+            'SPY',
+            'QQQ',
         ],
         'StockCandidates': {
             'AAPL': {
