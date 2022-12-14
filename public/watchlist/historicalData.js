@@ -4,8 +4,7 @@ export const TradingData = {
         'futures': ['MESZ22'],
         '12/13/2022': {
             'stocks': [
-                'SPY',
-                'QQQ',
+                'TSLA',
             ],
             'StockCandidates': {
                 'AAPL': {
@@ -17,7 +16,7 @@ export const TradingData = {
                     shortTargets: [{ price: 173.5, percentage: 0.2 }]
                 },
                 'TSLA': {
-                    highQualityNews: 'rivn news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    highQualityNews: 'price cuts from goldman sachs', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                     deferTradingInSeconds: 0,
                     initialBias: 0,
                     boxup: 178, boxdown: 176,
