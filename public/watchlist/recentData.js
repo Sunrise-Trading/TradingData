@@ -25,9 +25,9 @@ window.TradingData = {
                 highQualityNews: 'elon done selling', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 160, boxdown: 157.5,
-                longTargets: [],
-                shortTargets: [{ price: 175.3, percentage: 0.1 }]
+                boxup: 160, boxdown: 158,
+                longTargets: [{ price: 163, percentage: 0.1 }],
+                shortTargets: []
             },
             'QQQ': {
                 highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
