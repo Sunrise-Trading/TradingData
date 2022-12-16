@@ -17,9 +17,9 @@ window.TradingData = {
                 highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 183.5, boxdown: 181,
-                longTargets: [],
-                shortTargets: [{ price: 173.5, percentage: 0.2 }]
+                boxup: 119, //boxdown: 181,
+                longTargets: [{ price: 122, percentage: 0.2 }],
+                shortTargets: []
             },
             'TSLA': {
                 highQualityNews: 'elon done selling', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
