@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
+        'currentDayStr': '2022-12-16 6:30', //'2022-12-2 6:30'
+        'activeProfileName': "futures", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
