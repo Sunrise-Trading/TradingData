@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "futures", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
+        'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
@@ -14,7 +14,7 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'META': {
-                highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'EU charges', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 119, //boxdown: 181,
@@ -22,7 +22,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'TSLA': {
-                highQualityNews: 'elon done selling', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'elon quit twitter CEO', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 160, boxdown: 158,
