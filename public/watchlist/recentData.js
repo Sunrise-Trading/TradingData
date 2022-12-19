@@ -25,7 +25,7 @@ window.TradingData = {
                 highQualityNews: 'elon quit twitter CEO', volumeSum: 2956867, tradingSum: 460793001, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 160, boxdown: 158,
+                boxup: 56.6, boxdown: 153,
                 longTargets: [{ price: 157, percentage: 0.1 }],
                 shortTargets: []
             },
