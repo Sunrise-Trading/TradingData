@@ -22,7 +22,7 @@ window.TradingData = {
                 shortTargets: [{ price: 116.83, percentage: 0.1 }]
             },
             'TSLA': {
-                highQualityNews: 'elon quit twitter CEO', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'elon quit twitter CEO', volumeSum: 2956867, tradingSum: 460793001, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 160, boxdown: 158,
