@@ -6,6 +6,33 @@ window.TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
+        'checklist': {
+            'TSLA': {
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
+            },
+            'AAPL': {
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
+            },
+            'QQQ': {
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
+            },
+            'SPY': {
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
+            },
+        },
         'stocks': [
             'TSLA',
             'AAPL',
