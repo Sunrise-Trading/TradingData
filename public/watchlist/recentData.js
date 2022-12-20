@@ -9,10 +9,10 @@ window.TradingData = {
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
             'TSLA': {
-                "Read news carefully": false, "Review 1 minute chart": false,
-                "Review hourly chart": false, "Review daily chart": false,
-                "Review weekly chart ": false, "Draw nearest price levels": false,
-                "Check whether it gap up/down above/below support/resistance": false,
+                "Read news carefully": true, "Review 1 minute chart": true,
+                "Review hourly chart": true, "Review daily chart": true,
+                "Review weekly chart ": true, "Draw nearest price levels": true,
+                "Check whether it gap up/down above/below support/resistance": true,
             },
             'AAPL': {
                 "Read news carefully": false, "Review 1 minute chart": false,
