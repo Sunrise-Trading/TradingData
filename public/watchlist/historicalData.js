@@ -2,6 +2,46 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESZ22'],
+        '12/19/2022': {
+            'stocks': [
+                'META',
+                'TSLA',
+                'SPY',
+                'QQQ',
+            ],
+            'StockCandidates': {
+                'META': {
+                    highQualityNews: 'EU charges', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    //boxup: 119, boxdown: 181,
+                    longTargets: [],
+                    shortTargets: [{ price: 116.83, percentage: 0.1 }]
+                },
+                'TSLA': {
+                    highQualityNews: 'elon quit twitter CEO', volumeSum: 2956867, tradingSum: 460793001, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 56.6, boxdown: 153,
+                    longTargets: [{ price: 157, percentage: 0.1 }],
+                    shortTargets: []
+                },
+                'QQQ': {
+                    highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+            }
+        },
         '12/16/2022': {
             'stocks': [
                 'META',
