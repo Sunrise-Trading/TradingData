@@ -7,14 +7,14 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
         'stocks': [
-            'META',
             'TSLA',
-            'SPY',
+            'AAPL',
             'QQQ',
+            'SPY',
         ],
         'StockCandidates': {
-            'META': {
-                highQualityNews: 'EU charges', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'AAPL': {
+                highQualityNews: 'price cuts JP morgan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 //boxup: 119, boxdown: 181,
@@ -22,7 +22,7 @@ window.TradingData = {
                 shortTargets: [{ price: 116.83, percentage: 0.1 }]
             },
             'TSLA': {
-                highQualityNews: 'elon quit twitter CEO', volumeSum: 2956867, tradingSum: 460793001, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade and price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 56.6, boxdown: 153,
