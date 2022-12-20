@@ -21,11 +21,19 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [{ price: 116.83, percentage: 0.1 }]
             },
+            'AMZN': {
+                highQualityNews: 'EU approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                //boxup: 119, boxdown: 181,
+                longTargets: [],
+                shortTargets: [{ price: 116.83, percentage: 0.1 }]
+            },
             'TSLA': {
                 highQualityNews: 'downgrade and price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 56.6, boxdown: 153,
+                boxup: 148, boxdown: 145.5,
                 longTargets: [{ price: 157, percentage: 0.1 }],
                 shortTargets: []
             },
