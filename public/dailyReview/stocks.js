@@ -12,5 +12,5 @@ let stocks = [
     "XLU", // Utilities
     "XLF", // Financials
     /* big tech */
-    'AAPL', 'MSFT',
+    'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'NVDA', 'GOOGL',
 ];
