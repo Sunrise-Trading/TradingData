@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "momentumEquities", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
+        'activeProfileName': "choppyMarket", //choppyMarket"; //"momentumEquities", momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
@@ -14,39 +14,39 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'AAPL': {
-                "Read news carefully": false, "Review 1 minute chart": false,
-                "Review hourly chart": false, "Review daily chart": false,
-                "Review weekly chart ": false, "Draw nearest price levels": false,
-                "Check whether it gap up/down above/below support/resistance": false,
+            'NKE': {
+                "Read news carefully": true, "Review 1 minute chart": true,
+                "Review hourly chart": true, "Review daily chart": true,
+                "Review weekly chart ": true, "Draw nearest price levels": true,
+                "Check whether it gap up/down above/below support/resistance": true,
             },
             'QQQ': {
-                "Read news carefully": false, "Review 1 minute chart": false,
-                "Review hourly chart": false, "Review daily chart": false,
-                "Review weekly chart ": false, "Draw nearest price levels": false,
-                "Check whether it gap up/down above/below support/resistance": false,
+                "Read news carefully": true, "Review 1 minute chart": true,
+                "Review hourly chart": true, "Review daily chart": true,
+                "Review weekly chart ": true, "Draw nearest price levels": true,
+                "Check whether it gap up/down above/below support/resistance": true,
             },
             'SPY': {
-                "Read news carefully": false, "Review 1 minute chart": false,
-                "Review hourly chart": false, "Review daily chart": false,
-                "Review weekly chart ": false, "Draw nearest price levels": false,
-                "Check whether it gap up/down above/below support/resistance": false,
+                "Read news carefully": true, "Review 1 minute chart": true,
+                "Review hourly chart": true, "Review daily chart": true,
+                "Review weekly chart ": true, "Draw nearest price levels": true,
+                "Check whether it gap up/down above/below support/resistance": true,
             },
         },
         'stocks': [
-            'TSLA',
+            'NKE',
             'AAPL',
             'QQQ',
             'SPY',
         ],
         'StockCandidates': {
-            'AAPL': {
-                highQualityNews: 'price cuts JP morgan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'NKE': {
+                highQualityNews: 'earnings beat', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                //boxup: 119, boxdown: 181,
-                longTargets: [],
-                shortTargets: [{ price: 116.83, percentage: 0.1 }]
+                boxup: 117, boxdown: 115,
+                longTargets: [{ price: 119.5, percentage: 0.1 }],
+                shortTargets: [{ price: 110.5, percentage: 0.1 }]
             },
             'AMZN': {
                 highQualityNews: 'EU approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
@@ -57,12 +57,12 @@ window.TradingData = {
                 shortTargets: [{ price: 116.83, percentage: 0.1 }]
             },
             'TSLA': {
-                highQualityNews: 'downgrade and price cuts', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'freeze hiring', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 148, boxdown: 145.5,
-                longTargets: [{ price: 157, percentage: 0.1 }],
-                shortTargets: []
+                boxup: 141, boxdown: 138,
+                longTargets: [],
+                shortTargets: [{ price: 135, percentage: 0.1 }]
             },
             'QQQ': {
                 highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
