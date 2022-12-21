@@ -2,6 +2,54 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '12/21/2022': {
+            'stocks': [
+                'NKE',
+                'TSLA',
+                'QQQ',
+                'SPY',
+            ],
+            'StockCandidates': {
+                'NKE': {
+                    highQualityNews: 'earnings beat', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 117, boxdown: 115,
+                    longTargets: [{ price: 119.5, percentage: 0.1 }],
+                    shortTargets: [{ price: 110.5, percentage: 0.1 }]
+                },
+                'AMZN': {
+                    highQualityNews: 'EU approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    //boxup: 119, boxdown: 181,
+                    longTargets: [],
+                    shortTargets: [{ price: 116.83, percentage: 0.1 }]
+                },
+                'TSLA': {
+                    highQualityNews: 'freeze hiring', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 141, boxdown: 138,
+                    longTargets: [],
+                    shortTargets: [{ price: 135, percentage: 0.1 }]
+                },
+                'QQQ': {
+                    highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+            }
+        },
         '12/20/2022': {
             'stocks': [
                 'TSLA',
