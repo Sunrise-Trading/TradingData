@@ -35,8 +35,6 @@ window.TradingData = {
         },
         'stocks': [
             'NKE',
-            'TSLA',
-            'QQQ',
             'SPY',
         ],
         'StockCandidates': {
