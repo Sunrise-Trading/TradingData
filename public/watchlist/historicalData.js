@@ -2,6 +2,46 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '12/22/2022': {
+            'stocks': [
+                'TSLA',
+                'NVDA',
+                'QQQ',
+                'SPY',
+            ],
+            'StockCandidates': {
+                'NVDA': {
+                    highQualityNews: 'MU earnings miss', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 162, boxdown: 160.5,
+                    longTargets: [],
+                    shortTargets: [{ price: 157, percentage: 0.1 }]
+                },
+                'TSLA': {
+                    highQualityNews: 'double discount', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 137, boxdown: 134.5,
+                    longTargets: [],
+                    shortTargets: [{ price: 135, percentage: 0.1 }]
+                },
+                'QQQ': {
+                    highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [{ price: 384.8, percentage: 0.2 }],
+                    shortTargets: []
+                },
+            }
+        },
         '12/21/2022': {
             'stocks': [
                 'NKE',
