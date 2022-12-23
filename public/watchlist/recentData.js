@@ -52,7 +52,7 @@ window.TradingData = {
                 highQualityNews: 'double discount', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 137, boxdown: 134.5,
+                boxup: 128, boxdown: 125,
                 longTargets: [],
                 shortTargets: [{ price: 135, percentage: 0.1 }]
             },
