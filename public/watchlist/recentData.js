@@ -35,7 +35,7 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA',
-            'NVDA',
+            'META',
             'QQQ',
             'SPY',
         ],
