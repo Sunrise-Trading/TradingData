@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "momentumEquities",  //"momentumEquities", momentumScalp, fomc;
+        'activeProfileName': "momentumScalp",  //"momentumEquities", momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
@@ -40,8 +40,8 @@ window.TradingData = {
             'SPY',
         ],
         'StockCandidates': {
-            'NVDA': {
-                highQualityNews: 'MU earnings miss', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'META': {
+                highQualityNews: 'settlement penalty', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 162, boxdown: 160.5,
