@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', //'2022-12-2 6:30'
-        'activeProfileName': "futures",  //"momentumEquities", momentumScalp, fomc;
+        'activeProfileName': "momentumEquities",  //"momentumEquities", momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
@@ -35,7 +35,6 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA',
-            'META',
             'QQQ',
             'SPY',
         ],
@@ -49,22 +48,22 @@ window.TradingData = {
                 shortTargets: [{ price: 157, percentage: 0.1 }]
             },
             'TSLA': {
-                highQualityNews: 'double discount', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'Elon tells employee', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 128, boxdown: 125,
+                boxup: 121, boxdown: 118,
                 longTargets: [],
                 shortTargets: [{ price: 135, percentage: 0.1 }]
             },
             'QQQ': {
-                highQualityNews: 'post fomc', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [{ price: 384.8, percentage: 0.2 }],
                 shortTargets: []
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [{ price: 384.8, percentage: 0.2 }],
