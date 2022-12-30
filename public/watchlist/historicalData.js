@@ -2,6 +2,45 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '12/29/2022': {
+            'stocks': [
+                'TSLA',
+                'QQQ',
+                'SPY',
+            ],
+            'StockCandidates': {
+                'META': {
+                    highQualityNews: 'settlement penalty', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 162, boxdown: 160.5,
+                    longTargets: [],
+                    shortTargets: [{ price: 157, percentage: 0.1 }]
+                },
+                'TSLA': {
+                    highQualityNews: 'Elon tells employee', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 121, boxdown: 118,
+                    longTargets: [],
+                    shortTargets: [{ price: 135, percentage: 0.1 }]
+                },
+                'QQQ': {
+                    highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: []
+                },
+            }
+        },
         '12/23/2022': {
             'stocks': [
                 'TSLA',
