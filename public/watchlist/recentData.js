@@ -9,28 +9,28 @@ window.TradingData = {
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
             'TSLA': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
             },
             'META': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
             },
             'QQQ': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
             },
             'SPY': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
+                "Read news carefully": false, "Review 1 minute chart": false,
+                "Review hourly chart": false, "Review daily chart": false,
+                "Review weekly chart ": false, "Draw nearest price levels": false,
+                "Check whether it gap up/down above/below support/resistance": false,
             },
         },
         'stocks': [
@@ -59,14 +59,14 @@ window.TradingData = {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                longTargets: [{ price: 384.8, percentage: 0.2 }],
+                longTargets: [],
                 shortTargets: []
             },
             'SPY': {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                longTargets: [{ price: 384.8, percentage: 0.2 }],
+                longTargets: [],
                 shortTargets: []
             },
         }
