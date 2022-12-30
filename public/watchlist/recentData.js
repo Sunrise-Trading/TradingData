@@ -41,7 +41,7 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'FUTU': {
-                highQualityNews: 'china crackdown on illegal activity', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'china crackdown on illegal activity', volumeSum: 2252184, tradingSum: 100293219, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 46, boxdown: 41,
