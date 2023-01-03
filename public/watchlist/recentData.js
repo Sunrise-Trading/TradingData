@@ -14,13 +14,13 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'FUTU': {
+            'AAPL': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'BABA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
