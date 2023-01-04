@@ -2,6 +2,54 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '1/4/2023': {
+            'stocks': [
+                'BABA',
+                'MSFT',
+                'PDD',
+                'CRM',
+            ],
+            'StockCandidates': {
+                'CRM': {
+                    highQualityNews: 'cost cutting plan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 142, boxdown: 140.5,
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'PDD': {
+                    highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 89.25, boxdown: 88.4,
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'BABA': {
+                    highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 98.75, boxdown: 97.5,
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'MSFT': {
+                    highQualityNews: 'slowing azure', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: []
+                },
+            }
+        },
         '1/3/2023': {
             'stocks': [
                 'TSLA',
