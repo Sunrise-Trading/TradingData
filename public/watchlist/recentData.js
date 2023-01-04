@@ -8,13 +8,13 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'TSLA': {
+            'CRM': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'AAPL': {
+            'MSFT': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -26,7 +26,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SPY': {
+            'PDD': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -34,30 +34,38 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA',
-            'AAPL',
             'BABA',
-            'SPY',
+            'MSFT',
+            'PDD',
+            'CRM',
         ],
         'StockCandidates': {
-            'AAPL': {
-                highQualityNews: 'foxconn back to production', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'CRM': {
+                highQualityNews: 'cost cutting plan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 46, boxdown: 41,
+                boxup: 142, boxdown: 140.5,
                 longTargets: [],
                 shortTargets: []
             },
-            'TSLA': {
-                highQualityNews: 'delivery miss estimate', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'PDD': {
+                highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 120.5, boxdown: 116.5,
+                boxup: 89.25, boxdown: 88.4,
                 longTargets: [],
                 shortTargets: []
             },
             'BABA': {
-                highQualityNews: 'china reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 98.75, boxdown: 97.5,
+                longTargets: [],
+                shortTargets: []
+            },
+            'MSFT': {
+                highQualityNews: 'slowing azure', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
