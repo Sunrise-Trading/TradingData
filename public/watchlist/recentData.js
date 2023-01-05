@@ -8,25 +8,25 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'CRM': {
+            'COIN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'MSFT': {
+            'SI': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'BABA': {
+            'QQQ': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'PDD': {
+            'TSLA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -34,38 +34,38 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'BABA',
-            'MSFT',
-            'PDD',
-            'CRM',
+            'COIN',
+            'SI',
+            'QQQ',
+            'SPY',
         ],
         'StockCandidates': {
-            'CRM': {
-                highQualityNews: 'cost cutting plan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'SI': {
+                highQualityNews: 'earnings disaster', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 142, boxdown: 140.5,
+                boxup: 14.75, boxdown: 12,
                 longTargets: [],
                 shortTargets: []
             },
-            'PDD': {
-                highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'COIN': {
+                highQualityNews: 'price cuts and SI earnings', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 89.25, boxdown: 88.4,
                 longTargets: [],
                 shortTargets: []
             },
-            'BABA': {
-                highQualityNews: 'china approval', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'TSLA': {
+                highQualityNews: 'china numbers bad', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 98.75, boxdown: 97.5,
                 longTargets: [],
                 shortTargets: []
             },
-            'MSFT': {
-                highQualityNews: 'slowing azure', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'QQQ': {
+                highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
