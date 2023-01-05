@@ -14,7 +14,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SI': {
+            'SPY': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,9 +35,9 @@ window.TradingData = {
         },
         'stocks': [
             'COIN',
-            'SI',
-            'QQQ',
             'TSLA',
+            'QQQ',
+            'SPY',
         ],
         'StockCandidates': {
             'SI': {
