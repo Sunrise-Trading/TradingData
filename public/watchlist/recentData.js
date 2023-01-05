@@ -37,7 +37,7 @@ window.TradingData = {
             'COIN',
             'SI',
             'QQQ',
-            'SPY',
+            'TSLA',
         ],
         'StockCandidates': {
             'SI': {
@@ -52,7 +52,7 @@ window.TradingData = {
                 highQualityNews: 'price cuts and SI earnings', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 89.25, boxdown: 88.4,
+                boxup: 35.5, boxdown: 34.5,
                 longTargets: [],
                 shortTargets: []
             },
@@ -60,7 +60,7 @@ window.TradingData = {
                 highQualityNews: 'china numbers bad', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 98.75, boxdown: 97.5,
+                boxup: 112, boxdown: 110,
                 longTargets: [],
                 shortTargets: []
             },
