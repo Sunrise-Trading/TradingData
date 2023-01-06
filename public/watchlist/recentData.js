@@ -52,7 +52,7 @@ window.TradingData = {
                 highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                keyLevels: [264.89],
+                keyLevels: [264.89, 263.8],
                 longTargets: [],
                 shortTargets: []
             },
@@ -60,7 +60,7 @@ window.TradingData = {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                keyLevels: [381.84, 383.77],
+                keyLevels: [381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
             },
