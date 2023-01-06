@@ -34,36 +34,17 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'COIN',
             'TSLA',
             'QQQ',
             'SPY',
         ],
         'StockCandidates': {
-            'SI': {
-                highQualityNews: 'earnings disaster', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 14.75, boxdown: 12,
-                keyLevels: [],
-                longTargets: [],
-                shortTargets: []
-            },
-            'COIN': {
-                highQualityNews: 'price cuts and SI earnings', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 35.5, boxdown: 34.5,
-                keyLevels: [33.94, 33.32],
-                longTargets: [],
-                shortTargets: []
-            },
             'TSLA': {
                 highQualityNews: 'china numbers bad', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 112, boxdown: 110,
-                keyLevels: [],
+                boxup: 104, boxdown: 101.5,
+                keyLevels: [104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
             },
@@ -71,7 +52,7 @@ window.TradingData = {
                 highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                keyLevels: [],
+                keyLevels: [264.89],
                 longTargets: [],
                 shortTargets: []
             },
@@ -79,7 +60,7 @@ window.TradingData = {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                keyLevels: [],
+                keyLevels: [381.84, 383.77],
                 longTargets: [],
                 shortTargets: []
             },
