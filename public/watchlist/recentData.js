@@ -45,7 +45,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 104, boxdown: 101.5,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                longOnlyIfAbovePrice: 118.40, shortOnlyIfBelowPrice: 0,
                 keyLevels: [118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
@@ -65,7 +65,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 113.75, //boxdown: 101.5,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
                 keyLevels: [112, 110],
                 longTargets: [],
                 shortTargets: []
