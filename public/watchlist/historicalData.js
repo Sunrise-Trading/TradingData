@@ -2,6 +2,59 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '1/9/2023': {
+            'stocks': [
+                'TSLA',
+                'BABA',
+                'QQQ',
+                'SPY',
+            ],
+            'StockCandidates': {
+                'TSLA': {
+                    highQualityNews: 'wait time going back up', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 104, boxdown: 101.5,
+                    keyLevels: [118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'PDD': {
+                    highQualityNews: 'BABA news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 99.5, boxdown: 98,
+                    keyLevels: [98.24],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'BABA': {
+                    highQualityNews: 'jack ma give up control of Ant', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 113.75, //boxdown: 101.5,
+                    keyLevels: [112, 110],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'QQQ': {
+                    highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    keyLevels: [272, 264.89, 263.8],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    keyLevels: [389.61, 381.84, 383.77, 384.5],
+                    longTargets: [],
+                    shortTargets: []
+                },
+            }
+        },
         '1/6/2023': {
             'stocks': [
                 'TSLA',

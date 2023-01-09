@@ -45,6 +45,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 104, boxdown: 101.5,
+                longOnlyPrice: 0, shortOnlyPrice: 0,
                 keyLevels: [118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
@@ -54,6 +55,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 99.5, boxdown: 98,
+                longOnlyPrice: 0, shortOnlyPrice: 0,
                 keyLevels: [98.24],
                 longTargets: [],
                 shortTargets: []
@@ -63,6 +65,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 113.75, //boxdown: 101.5,
+                longOnlyPrice: 0, shortOnlyPrice: 0,
                 keyLevels: [112, 110],
                 longTargets: [],
                 shortTargets: []
@@ -71,6 +74,7 @@ window.TradingData = {
                 highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
+                longOnlyPrice: 0, shortOnlyPrice: 0,
                 keyLevels: [272, 264.89, 263.8],
                 longTargets: [],
                 shortTargets: []
@@ -79,6 +83,7 @@ window.TradingData = {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
+                longOnlyPrice: 0, shortOnlyPrice: 0,
                 keyLevels: [389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
