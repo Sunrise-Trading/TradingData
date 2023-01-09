@@ -1,6 +1,6 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2023-1-6 6:30', // 2023-12-2 6:30
+        'currentDayStr': '', // 2023-12-2 6:30
         'activeProfileName': "momentumSimple",  // momentumEquities, momentumScalp, fomc;
     },
     'StockSelection': {
@@ -62,7 +62,7 @@ window.TradingData = {
                 highQualityNews: 'jack ma give up control of Ant', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 104, boxdown: 101.5,
+                boxup: 113.75, //boxdown: 101.5,
                 keyLevels: [112, 110],
                 longTargets: [],
                 shortTargets: []
@@ -79,7 +79,7 @@ window.TradingData = {
                 highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                keyLevels: [381.84, 383.77, 384.5],
+                keyLevels: [389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
             },
