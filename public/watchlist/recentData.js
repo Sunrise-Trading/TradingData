@@ -20,7 +20,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'NVDA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -36,35 +36,35 @@ window.TradingData = {
         'stocks': [
             'TSLA',
             'BABA',
-            'QQQ',
+            'NVDA',
             'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'wait time going back up', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'says under valued', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 104, boxdown: 101.5,
+                boxup: 122, boxdown: 119,
                 longOnlyIfAbovePrice: 118.40, shortOnlyIfBelowPrice: 0,
-                keyLevels: [118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                keyLevels: [123.5, 122, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
             },
-            'PDD': {
-                highQualityNews: 'BABA news', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'NVDA': {
+                highQualityNews: 'downgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 99.5, boxdown: 98,
+                boxup: 157, boxdown: 154.5,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [98.24],
+                keyLevels: [155.21],
                 longTargets: [],
                 shortTargets: []
             },
             'BABA': {
-                highQualityNews: 'jack ma give up control of Ant', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 113.75, //boxdown: 101.5,
+                boxup: 114, boxdown: 112,
                 longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
                 keyLevels: [112, 110],
                 longTargets: [],
