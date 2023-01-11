@@ -8,7 +8,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'BABA': {
+            'QQQ': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -20,7 +20,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'NVDA': {
+            'COIN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -34,29 +34,29 @@ window.TradingData = {
             },
         },
         'stocks': [
+            'COIN',
             'TSLA',
-            'BABA',
-            'NVDA',
+            'QQQ',
             'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'says under valued', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'expand factory', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 122, boxdown: 119,
-                longOnlyIfAbovePrice: 118.40, shortOnlyIfBelowPrice: 0,
-                keyLevels: [123.5, 122, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                boxup: 122.5, boxdown: 110.5,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                keyLevels: [123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
             },
-            'NVDA': {
-                highQualityNews: 'downgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'COIN': {
+                highQualityNews: 'downgrade and close japan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 157, boxdown: 154.5,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [155.21],
+                initialBias: -1,
+                boxup: 42.5, boxdown: 41.25,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 44,
+                keyLevels: [42.4, 41.2, 40.75, 40],
                 longTargets: [],
                 shortTargets: []
             },
@@ -84,7 +84,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [389.61, 381.84, 383.77, 384.5],
+                keyLevels: [393.7, 389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
             },

@@ -2,6 +2,64 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '1/10/2023': {
+            'stocks': [
+                'TSLA',
+                'BABA',
+                'NVDA',
+                'SPY',
+            ],
+            'StockCandidates': {
+                'TSLA': {
+                    highQualityNews: 'says under valued', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 122, boxdown: 119,
+                    longOnlyIfAbovePrice: 118.40, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [123.5, 122, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'NVDA': {
+                    highQualityNews: 'downgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 157, boxdown: 154.5,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [155.21],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'BABA': {
+                    highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 114, boxdown: 112,
+                    longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [112, 110],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'QQQ': {
+                    highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [272, 264.89, 263.8],
+                    longTargets: [],
+                    shortTargets: []
+                },
+                'SPY': {
+                    highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [389.61, 381.84, 383.77, 384.5],
+                    longTargets: [],
+                    shortTargets: []
+                },
+            }
+        },
         '1/9/2023': {
             'stocks': [
                 'TSLA',
