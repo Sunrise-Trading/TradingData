@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', // 2023-12-2 6:30
-        'activeProfileName': "momentumSimple",  // momentumEquities, momentumScalp, fomc;
+        'activeProfileName': "futures",  // momentumSimple, momentumEquities, momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
