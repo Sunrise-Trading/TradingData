@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', // 2023-12-2 6:30
-        'activeProfileName': "futures",  // momentumSimple, momentumEquities, momentumScalp, fomc;
+        'activeProfileName': "momentumSimple",  // momentumSimple, momentumEquities, momentumScalp, fomc;
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
@@ -41,9 +41,9 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'expand factory', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'expand factory in doubt', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
-                initialBias: 0,
+                initialBias: -1,
                 boxup: 122.5, boxdown: 110.5,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
@@ -51,7 +51,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'COIN': {
-                highQualityNews: 'downgrade and close japan', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'close japan may not be', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
                 boxup: 42.5, boxdown: 41.25,
