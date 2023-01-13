@@ -45,7 +45,7 @@ window.TradingData = {
                 initialBias: -1,
                 boxup: 124.75, boxdown: 112.5,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                keyLevels: [115, 114.45, 113, 123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
             },
@@ -74,7 +74,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [272, 264.89, 263.8],
+                keyLevels: [273.74, 275.17, 272, 264.89, 263.8],
                 longTargets: [],
                 shortTargets: []
             },
@@ -83,7 +83,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [393.7, 389.61, 381.84, 383.77, 384.5],
+                keyLevels: [394.35, 394.68, 395.65, 393.7, 393, 392.42, 390.2, 389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
             },
