@@ -43,7 +43,7 @@ window.TradingData = {
                 highQualityNews: 'cut price in US and europe', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
-                boxup: 124.75, boxdown: 112.5,
+                boxup: 117, boxdown: 115,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [115, 114.45, 113, 123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
