@@ -20,7 +20,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'COIN': {
+            'BBBY': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,6 +35,7 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA',
+            'BBBY',
             'QQQ',
             'SPY',
         ],
@@ -49,13 +50,13 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: []
             },
-            'COIN': {
-                highQualityNews: 'close japan may not be', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'BBBY': {
+                highQualityNews: 'bankrupcy', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
-                boxup: 45.75, boxdown: 44,
+                //boxup: 5.28, boxdown: 44,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [42.4, 41.2, 40.75, 40],
+                keyLevels: [5.28],
                 longTargets: [],
                 shortTargets: []
             },
