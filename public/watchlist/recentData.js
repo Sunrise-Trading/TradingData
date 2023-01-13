@@ -34,14 +34,13 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'COIN',
             'TSLA',
             'QQQ',
             'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'expand factory in doubt', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'cut price in US and europe', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
                 boxup: 124.75, boxdown: 112.5,
