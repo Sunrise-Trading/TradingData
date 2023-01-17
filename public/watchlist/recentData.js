@@ -14,7 +14,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SPY': {
+            'RBLX': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -37,6 +37,7 @@ window.TradingData = {
             'TSLA',
             'BABA',
             'COIN',
+            'RBLX',
         ],
         'StockCandidates': {
             'TSLA': {
@@ -69,8 +70,18 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: []
             },
+            'RBLX': {
+                highQualityNews: 'user data', volumeSum: 1074575, tradingSum: 40927924, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 39, boxdown: 37,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                keyLevels: [273.74, 275.17, 272, 264.89, 263.8],
+                longTargets: [],
+                shortTargets: []
+            },
             'QQQ': {
-                highQualityNews: 'job data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'user data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
