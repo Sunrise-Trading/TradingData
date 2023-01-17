@@ -52,8 +52,8 @@ window.TradingData = {
             'COIN': {
                 highQualityNews: 'crypto strong over the weekend', volumeSum: 417682, tradingSum: 22033023, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
-                initialBias: -1,
-                //boxup: 5.28, boxdown: 44,
+                initialBias: 0,
+                boxup: 53.75, boxdown: 52,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [5.28],
                 longTargets: [],
@@ -65,7 +65,7 @@ window.TradingData = {
                 initialBias: 0,
                 boxup: 114, boxdown: 112,
                 longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
-                keyLevels: [112, 110],
+                keyLevels: [115.5, 112, 110],
                 longTargets: [],
                 shortTargets: []
             },
