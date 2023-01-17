@@ -41,7 +41,7 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'cut price in US and europe', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'hertz deal', volumeSum: 3194941, tradingSum: 399255133, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
                 boxup: 117, boxdown: 115,
@@ -50,8 +50,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: []
             },
-            'BBBY': {
-                highQualityNews: 'bankrupcy', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+            'COIN': {
+                highQualityNews: 'crypto strong over the weekend', volumeSum: 417682, tradingSum: 22033023, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: -1,
                 //boxup: 5.28, boxdown: 44,
@@ -61,7 +61,27 @@ window.TradingData = {
                 shortTargets: []
             },
             'BABA': {
-                highQualityNews: 'upgrade', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: ' Ryan Cohen built stake', volumeSum: 317587, tradingSum: 37224178, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 114, boxdown: 112,
+                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
+                keyLevels: [112, 110],
+                longTargets: [],
+                shortTargets: []
+            },
+            'PDD': {
+                highQualityNews: 'china reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 114, boxdown: 112,
+                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
+                keyLevels: [112, 110],
+                longTargets: [],
+                shortTargets: []
+            },
+            'KWEB': {
+                highQualityNews: 'china reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 114, boxdown: 112,
