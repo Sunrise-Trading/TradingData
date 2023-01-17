@@ -65,7 +65,7 @@ window.TradingData = {
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 114, boxdown: 112,
-                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [115.5, 112, 110],
                 longTargets: [],
                 shortTargets: []
