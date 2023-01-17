@@ -37,16 +37,15 @@ window.TradingData = {
             'TSLA',
             'BABA',
             'COIN',
-            'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
                 highQualityNews: 'hertz deal', volumeSum: 3194941, tradingSum: 399255133, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
-                initialBias: -1,
-                boxup: 117, boxdown: 115,
+                initialBias: 0,
+                boxup: 126.5, boxdown: 124,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [115, 114.45, 113, 123.52, 122.76, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
+                keyLevels: [129.71, 127.88, 124.75, 124.13, 123.71, 115, 114.45, 113, 123.52, 122.63, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
                 shortTargets: []
             },
@@ -62,26 +61,6 @@ window.TradingData = {
             },
             'BABA': {
                 highQualityNews: ' Ryan Cohen built stake', volumeSum: 317587, tradingSum: 37224178, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 114, boxdown: 112,
-                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
-                keyLevels: [112, 110],
-                longTargets: [],
-                shortTargets: []
-            },
-            'PDD': {
-                highQualityNews: 'china reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 114, boxdown: 112,
-                longOnlyIfAbovePrice: 111.98, shortOnlyIfBelowPrice: 0,
-                keyLevels: [112, 110],
-                longTargets: [],
-                shortTargets: []
-            },
-            'KWEB': {
-                highQualityNews: 'china reopen', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 114, boxdown: 112,
