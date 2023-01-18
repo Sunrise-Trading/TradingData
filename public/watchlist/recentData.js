@@ -66,7 +66,7 @@ window.TradingData = {
                 initialBias: 0,
                 //boxup: 114, boxdown: 112,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [54.33, 51.73],
+                keyLevels: [206.88, 203.34, 197],
                 longTargets: [],
                 shortTargets: []
             },
@@ -74,7 +74,7 @@ window.TradingData = {
                 highQualityNews: 'supply vaccine to china', volumeSum: 153486, tradingSum: 31412387, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 39, boxdown: 37,
+                boxup: 203, boxdown: 200,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [273.74, 275.17, 272, 264.89, 263.8],
                 longTargets: [],
