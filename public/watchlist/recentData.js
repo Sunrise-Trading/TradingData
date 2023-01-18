@@ -41,7 +41,7 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'hertz deal', volumeSum: 3194941, tradingSum: 399255133, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'price cuts lead to more sales', volumeSum: 4365400, tradingSum: 593799739, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 126.5, boxdown: 124,
@@ -60,11 +60,11 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: []
             },
-            'BABA': {
-                highQualityNews: ' Ryan Cohen built stake', volumeSum: 317587, tradingSum: 37224178, premktHigh: 0, premktLow: 99999999,
+            'UAL': {
+                highQualityNews: 'earnings', volumeSum: 524904, tradingSum: 27888852, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 114, boxdown: 112,
+                //boxup: 114, boxdown: 112,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [115.5, 112, 110],
                 longTargets: [],
@@ -81,7 +81,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'QQQ': {
-                highQualityNews: 'user data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
@@ -90,7 +90,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'SPY': {
-                highQualityNews: 'jobless data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
