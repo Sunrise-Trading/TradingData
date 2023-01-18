@@ -35,9 +35,9 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA',
-            'BABA',
-            'COIN',
-            'RBLX',
+            'MRNA',
+            'UAL',
+            'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
@@ -70,8 +70,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: []
             },
-            'RBLX': {
-                highQualityNews: 'user data', volumeSum: 1074575, tradingSum: 40927924, premktHigh: 0, premktLow: 99999999,
+            'MRNA': {
+                highQualityNews: 'supply vaccine to china', volumeSum: 153486, tradingSum: 31412387, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 39, boxdown: 37,
