@@ -14,7 +14,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'RBLX': {
+            'SPY': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -66,7 +66,7 @@ window.TradingData = {
                 initialBias: 0,
                 //boxup: 114, boxdown: 112,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [115.5, 112, 110],
+                keyLevels: [54.33, 51.73],
                 longTargets: [],
                 shortTargets: []
             },
@@ -90,11 +90,11 @@ window.TradingData = {
                 shortTargets: []
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1881406, tradingSum: 750270879, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [394.35, 394.68, 395.65, 393.7, 393, 392.42, 390.2, 389.61, 381.84, 383.77, 384.5],
+                keyLevels: [397.06, 394.35, 394.68, 395.65, 393.7, 393, 392.42, 390.2, 389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: []
             },
