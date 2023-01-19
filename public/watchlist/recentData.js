@@ -43,7 +43,7 @@ window.TradingData = {
                 highQualityNews: 'downgrade', volumeSum: 2069020, tradingSum: 261083366, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 138, boxdown: 135.5,
+                boxup: 127.5, boxdown: 125,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [129.71, 127.88, 124.75, 124.13, 123.71, 115, 114.45, 113, 123.52, 122.63, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
                 longTargets: [],
