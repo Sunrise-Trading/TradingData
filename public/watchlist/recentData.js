@@ -8,7 +8,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'UAL': {
+            'COIN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -20,7 +20,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'MRNA': {
+            'QQQ': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,38 +35,17 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA',
-            'MRNA',
-            'UAL',
+            'QQQ',
             'SPY',
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'price cuts lead to more sales', volumeSum: 4365400, tradingSum: 593799739, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 2069020, tradingSum: 261083366, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 138, boxdown: 135.5,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [129.71, 127.88, 124.75, 124.13, 123.71, 115, 114.45, 113, 123.52, 122.63, 118.46, 120, 116, 114, 104.64, 107.16, 108.24],
-                longTargets: [],
-                shortTargets: []
-            },
-            'COIN': {
-                highQualityNews: 'crypto strong over the weekend', volumeSum: 417682, tradingSum: 22033023, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 53.75, boxdown: 52,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [54.5],
-                longTargets: [],
-                shortTargets: []
-            },
-            'UAL': {
-                highQualityNews: 'earnings', volumeSum: 524904, tradingSum: 27888852, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                //boxup: 114, boxdown: 112,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [206.88, 203.34, 197],
                 longTargets: [],
                 shortTargets: []
             },
@@ -81,7 +60,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 0, tradingSum: 0, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1097145, tradingSum: 302375564, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
@@ -90,7 +69,7 @@ window.TradingData = {
                 shortTargets: []
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 1881406, tradingSum: 750270879, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1747919, tradingSum: 679615632, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
