@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'COIN': {
+            'W': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'CRM': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,13 +35,36 @@ window.TradingData = {
             },
         },
         'stocks': [
+            'CRM', 'W',
             'TSLA',
-            'QQQ',
-            'SPY',
         ],
         'StockCandidates': {
+            'CRM': {
+                highQualityNews: 'Elliot stake', volumeSum: 183947, tradingSum: 29091971, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 127.5, boxdown: 125,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                keyLevels: [156.1, 154],
+                longTargets: [],
+                shortTargets: [],
+                longStrategy: "BreakoutPullbackEarly",
+                shortStrategy: "BreakoutPullbackEarly",
+            },
+            'W': {
+                highQualityNews: 'upgrade', volumeSum: 520100, tradingSum: 27136887, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 127.5, boxdown: 125,
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                keyLevels: [51.14, 50, 48.94],
+                longTargets: [],
+                shortTargets: [],
+                longStrategy: "BreakoutPullbackEarly",
+                shortStrategy: "BreakoutPullbackEarly",
+            },
             'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 2069020, tradingSum: 261083366, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 1933304, tradingSum: 262802545, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
