@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'W': {
+            'NVDA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'CRM', 'W',
+            'CRM', 'NVDA',
             'TSLA',
         ],
         'StockCandidates': {
@@ -51,8 +51,8 @@ window.TradingData = {
                 longStrategy: "BreakoutPullbackEarly",
                 shortStrategy: "BreakoutPullbackEarly",
             },
-            'W': {
-                highQualityNews: 'upgrade', volumeSum: 520100, tradingSum: 27136887, premktHigh: 0, premktLow: 99999999,
+            'NVDA': {
+                highQualityNews: 'upgrade', volumeSum: 217874, tradingSum: 39410650, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
