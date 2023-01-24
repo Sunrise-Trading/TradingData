@@ -80,7 +80,7 @@ window.TradingData = {
                 keyLevels: [273.74, 275.17, 272, 264.89, 263.8],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: [],
+                tradingPlans: ['s-pop', 'b-dip', 's-breakdown'],
             },
             'SPY': {
                 highQualityNews: 'data', volumeSum: 918048, tradingSum: 366451720, premktHigh: 0, premktLow: 99999999,
@@ -90,7 +90,7 @@ window.TradingData = {
                 keyLevels: [397.06, 394.35, 394.68, 395.65, 393.7, 393, 392.42, 390.2, 389.61, 381.84, 383.77, 384.5],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: [],
+                tradingPlans: ['s-pop', 'b-dip', 's-breakdown'],
             },
         }
     }
