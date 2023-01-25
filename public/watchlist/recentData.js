@@ -35,8 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'MSFT', 'QQQ',
-            'QQQ', 'SPY'
+            'MSFT', 'AMZN',
         ],
         'StockCandidates': {
             'MSFT': {
