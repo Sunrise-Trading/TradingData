@@ -47,7 +47,7 @@ window.TradingData = {
                 keyLevels: [74.41, 75],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop'],
+                tradingPlans: ['s-pop', 's-pullback', 's-breakout'],
             },
             'AMZN': {
                 highQualityNews: 'MSFT cloud weak', volumeSum: 1389332, tradingSum: 130040175, premktHigh: 0, premktLow: 99999999,
@@ -58,7 +58,7 @@ window.TradingData = {
                 keyLevels: [51.14, 50, 48.94],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop'],
+                tradingPlans: ['s-pop', 's-pullback', 's-breakout'],
             },
             'TSLA': {
                 highQualityNews: 'downgrade', volumeSum: 1933304, tradingSum: 262802545, premktHigh: 0, premktLow: 99999999,
