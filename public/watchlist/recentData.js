@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'NVDA': {
+            'MSFT': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'AMD': {
+            'AMZN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,12 +35,12 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'AMD', 'NVDA',
+            'MSFT', 'QQQ',
             'QQQ', 'SPY'
         ],
         'StockCandidates': {
-            'AMD': {
-                highQualityNews: 'downgrade', volumeSum: 749840, tradingSum: 55912050, premktHigh: 0, premktLow: 99999999,
+            'MSFT': {
+                highQualityNews: 'earnings guidance weak', volumeSum: 787275, tradingSum: 185644650, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 //boxup: 127.5, boxdown: 125,
@@ -50,8 +50,8 @@ window.TradingData = {
                 shortTargets: [],
                 tradingPlans: ['s-pop'],
             },
-            'NVDA': {
-                highQualityNews: 'downgrade', volumeSum: 280888, tradingSum: 53073646, premktHigh: 0, premktLow: 99999999,
+            'AMZN': {
+                highQualityNews: 'MSFT cloud weak', volumeSum: 1389332, tradingSum: 130040175, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
@@ -73,7 +73,7 @@ window.TradingData = {
                 tradingPlans: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 693304, tradingSum: 199393127, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1409993, tradingSum: 401489874, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
@@ -83,7 +83,7 @@ window.TradingData = {
                 tradingPlans: ['s-pop', 'b-dip', 's-breakdown'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 918048, tradingSum: 366451720, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1221373, tradingSum: 484886849, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
