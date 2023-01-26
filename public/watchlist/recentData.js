@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'AMZN': {
+            'TSLA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -66,7 +66,7 @@ window.TradingData = {
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [160],
+                keyLevels: [160, 156, 152.5, 150],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
