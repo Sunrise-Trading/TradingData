@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'MSFT', 'AMZN',
+            'TSLA', 'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'MSFT': {
@@ -61,7 +61,7 @@ window.TradingData = {
                 tradingPlans: ['s-pop', 's-pullback', 's-breakout'],
             },
             'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 1933304, tradingSum: 262802545, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'earnings', volumeSum: 6332448, tradingSum: 985109596, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
@@ -72,7 +72,7 @@ window.TradingData = {
                 tradingPlans: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1409993, tradingSum: 401489874, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 366014449, tradingSum: 1261257, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
@@ -82,7 +82,7 @@ window.TradingData = {
                 tradingPlans: ['s-pop', 'b-dip', 's-breakdown'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 1221373, tradingSum: 484886849, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1421392, tradingSum: 571703066, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
