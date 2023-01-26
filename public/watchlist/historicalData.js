@@ -2,6 +2,44 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '1/26/2023': {
+            'stocks': [
+                'TSLA', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'TSLA': {
+                    highQualityNews: 'earnings', volumeSum: 6332448, tradingSum: 985109596, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 127.5, boxdown: 125,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [160, 156, 152.5, 150],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1261257, tradingSum: 366014449, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [290.31],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 1421392, tradingSum: 571703066, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [402.63],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
+                },
+            }
+        },
         '1/23/2023': {
             'stocks': [
                 'CRM', 'NVDA',
