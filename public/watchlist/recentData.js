@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'MSFT': {
+            'META': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,19 +35,19 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'SPY', 'QQQ'
+            'META', 'SPY', 'QQQ'
         ],
         'StockCandidates': {
-            'MSFT': {
-                highQualityNews: 'earnings guidance weak', volumeSum: 787275, tradingSum: 185644650, premktHigh: 0, premktLow: 99999999,
+            'META': {
+                highQualityNews: 'earnings buy back', volumeSum: 2372653, tradingSum: 433422288, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 236, boxdown: 232.5,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [230],
+                keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop', 's-pullback', 's-breakout'],
+                tradingPlans: ['s-pop', 'b-pullback', 's-breakout'],
             },
             'AMZN': {
                 highQualityNews: 'MSFT cloud weak', volumeSum: 1389332, tradingSum: 130040175, premktHigh: 0, premktLow: 99999999,
@@ -72,21 +72,21 @@ window.TradingData = {
                 tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1261257, tradingSum: 366014449, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1851962, tradingSum: 566405470, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [290.31],
+                keyLevels: [303.43, 304.5],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 1421392, tradingSum: 571703066, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1643887, tradingSum: 679496083, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [402.63],
+                keyLevels: [413.67],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
