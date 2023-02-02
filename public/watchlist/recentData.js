@@ -47,7 +47,7 @@ window.TradingData = {
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop', 'b-pullback', 's-breakout'],
+                tradingPlans: ['s-pop', 'b-pullback', 's-breakout', 'b-breakout'],
             },
             'AMZN': {
                 highQualityNews: 'MSFT cloud weak', volumeSum: 1389332, tradingSum: 130040175, premktHigh: 0, premktLow: 99999999,
