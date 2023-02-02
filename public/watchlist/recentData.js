@@ -42,7 +42,7 @@ window.TradingData = {
                 highQualityNews: 'earnings buy back', volumeSum: 2372653, tradingSum: 433422288, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 236, boxdown: 232.5,
+                boxup: 185, boxdown: 182,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [181.71],
                 longTargets: [],
