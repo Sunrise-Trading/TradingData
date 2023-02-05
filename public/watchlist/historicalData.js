@@ -2,6 +2,44 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '2/2/2023': {
+            'stocks': [
+                'META', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'META': {
+                    highQualityNews: 'earnings buy back', volumeSum: 2372653, tradingSum: 433422288, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 185, boxdown: 182,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [181.71],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-pop', 'b-pullback', 's-breakout', 'b-breakout'],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1851962, tradingSum: 566405470, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [303.43, 304.5],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 1643887, tradingSum: 679496083, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [413.67],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 'b-pullback', 'b-breakout'],
+                },
+            }
+        },
         '1/26/2023': {
             'stocks': [
                 'TSLA', 'SPY', 'QQQ'
