@@ -69,10 +69,10 @@ window.TradingData = {
                 keyLevels: [160, 156, 152.5, 150],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-dip', 'b-pullback', 'b-breakout'],
+                tradingPlans: ['b-open', 'b-dip', 'b-pullback', 'b-breakout'],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1851962, tradingSum: 566405470, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1349739, tradingSum: 409453284, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
