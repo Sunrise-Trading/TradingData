@@ -48,7 +48,7 @@ window.TradingData = {
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop', 'b-pullback', 's-breakout', 'b-breakout'],
+                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
             'BIDU': {
                 highQualityNews: 'launch AI bot', volumeSum: 738884, tradingSum: 119633410, premktHigh: 0, premktLow: 99999999,
@@ -59,7 +59,7 @@ window.TradingData = {
                 keyLevels: [91.4],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-pop', 's-pullback', 's-breakout'],
+                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'TSLA': {
                 highQualityNews: 'earnings', volumeSum: 3156840, tradingSum: 610480141, premktHigh: 0, premktLow: 99999999,
