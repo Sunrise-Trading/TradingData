@@ -9,13 +9,13 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'BIDU': {
+            'BABA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SPY': {
+            'TSLA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,12 +35,13 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'BIDU', 'MSFT',
+            'BABA',
+            'TSLA', 'MSFT',
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'MSFT': {
-                highQualityNews: 'chatGPT', volumeSum: 246990, tradingSum: 64132015, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'multiple upgrade', volumeSum: 699308, tradingSum: 189743429, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 185, boxdown: 182,
@@ -48,10 +49,10 @@ window.TradingData = {
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
+                tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
-            'BIDU': {
-                highQualityNews: 'launch AI bot', volumeSum: 738884, tradingSum: 119633410, premktHigh: 0, premktLow: 99999999,
+            'BABA': {
+                highQualityNews: 'launch AI bot', volumeSum: 824348, tradingSum: 89268966, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 //boxup: 127.5, boxdown: 125,
@@ -59,10 +60,10 @@ window.TradingData = {
                 keyLevels: [91.4],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
+                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
             'TSLA': {
-                highQualityNews: 'earnings', volumeSum: 3156840, tradingSum: 610480141, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'Flag', volumeSum: 1308214, tradingSum: 256824980, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
