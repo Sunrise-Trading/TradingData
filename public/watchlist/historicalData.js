@@ -2,6 +2,68 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '2/8/2023': {
+            'stocks': [
+                'BABA',
+                'TSLA', 'MSFT',
+                //'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'MSFT': {
+                    highQualityNews: 'multiple upgrade', volumeSum: 699308, tradingSum: 189743429, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 185, boxdown: 182,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [181.71],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout'],
+                },
+                'BABA': {
+                    highQualityNews: 'launch AI bot', volumeSum: 824348, tradingSum: 89268966, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    //boxup: 127.5, boxdown: 125,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [91.4],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
+                },
+                'TSLA': {
+                    highQualityNews: 'Flag', volumeSum: 1308214, tradingSum: 256824980, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 127.5, boxdown: 125,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [160, 156, 152.5, 150],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 'b-dip', 'b-pullback', 'b-breakout'],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 698985, tradingSum: 212712506, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [303.43, 304.5],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 1172512, tradingSum: 490867467, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [413.67],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                },
+            }
+        },
         '2/7/2023': {
             'stocks': [
                 'BIDU', 'MSFT',
