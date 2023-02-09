@@ -59,7 +59,7 @@ window.TradingData = {
                 keyLevels: [91.4],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
+                tradingPlans: ['b-open'],
             },
             'TSLA': {
                 highQualityNews: 'no blame', volumeSum: 3128219, tradingSum: 650147133, premktHigh: 0, premktLow: 99999999,
@@ -70,7 +70,7 @@ window.TradingData = {
                 keyLevels: [160, 156, 152.5, 150],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 'b-dip', 'b-pullback', 'b-breakout'],
+                tradingPlans: ['s-open', 's-pop', 'b-pullback'],
             },
             'QQQ': {
                 highQualityNews: 'data', volumeSum: 1237358, tradingSum: 381141769, premktHigh: 0, premktLow: 99999999,
@@ -80,7 +80,7 @@ window.TradingData = {
                 keyLevels: [303.43, 304.5],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                tradingPlans: ['s-open', 'b-pullback', 's-pop'],
             },
             'SPY': {
                 highQualityNews: 'data', volumeSum: 935883, tradingSum: 387481688, premktHigh: 0, premktLow: 99999999,
@@ -90,7 +90,7 @@ window.TradingData = {
                 keyLevels: [413.67],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                tradingPlans: ['s-open', 'b-pullback', 's-pop'],
             },
         }
     }
