@@ -36,7 +36,7 @@ window.TradingData = {
         },
         'stocks': [
             'TSLA', 'AFRM',
-            'SPY', 'QQQ'
+            //'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'MSFT': {
