@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'AFRM': {
+            'LYFT': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'AFRM',
+            'LYFT',
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
@@ -50,13 +50,13 @@ window.TradingData = {
                 shortTargets: [],
                 tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
-            'AFRM': {
-                highQualityNews: 'earnings', volumeSum: 1662424, tradingSum: 22125739, premktHigh: 0, premktLow: 99999999,
+            'LYFT': {
+                highQualityNews: 'earnings', volumeSum: 3671670, tradingSum: 40528223, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 //boxup: 127.5, boxdown: 125,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [14, 14.5],
+                keyLevels: [11.5, 11.75, 12, 12.5],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['b-open'],
@@ -73,7 +73,7 @@ window.TradingData = {
                 tradingPlans: ['s-open', 's-pop', 'b-pullback'],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1237358, tradingSum: 381141769, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 409606979, tradingSum: 1369744, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
@@ -83,7 +83,7 @@ window.TradingData = {
                 tradingPlans: ['s-open', 'b-pullback', 's-pop'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 935883, tradingSum: 387481688, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 478252304, tradingSum: 1180509, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
