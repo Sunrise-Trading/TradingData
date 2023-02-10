@@ -54,7 +54,7 @@ window.TradingData = {
                 highQualityNews: 'earnings', volumeSum: 3671670, tradingSum: 40528223, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                //boxup: 127.5, boxdown: 125,
+                boxup: 11.5, boxdown: 10.75,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [11.5, 11.75, 12, 12.5],
                 longTargets: [],
