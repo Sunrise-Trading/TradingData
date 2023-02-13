@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'MSFT': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,26 +35,26 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'META',
+            'META', 'META', 'MSFT'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'MSFT': {
-                highQualityNews: 'multiple upgrade', volumeSum: 699308, tradingSum: 189743429, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'multiple upgrade', volumeSum: 187468, tradingSum: 49927734, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 185, boxdown: 182,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                longOnlyIfAbovePrice: 265, shortOnlyIfBelowPrice: 0,
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout'],
+                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
             'META': {
-                highQualityNews: 'layoff', volumeSum: 3671670, tradingSum: 40528223, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'layoff', volumeSum: 329561, tradingSum: 58617146, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 11.5, boxdown: 10.75,
+                //boxup: 11.5, boxdown: 10.75,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [11.5, 11.75, 12, 12.5],
                 longTargets: [],
@@ -62,15 +62,15 @@ window.TradingData = {
                 tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'TSLA': {
-                highQualityNews: 'no blame', volumeSum: 3128219, tradingSum: 650147133, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'force to open up charging network', volumeSum: 2570146, tradingSum: 503488080, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [206, 206.5, 207.6],
+                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 196.89,
+                keyLevels: [196.89, 196.33, 192.89, 192.14],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 's-pop', 'b-pullback'],
+                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'QQQ': {
                 highQualityNews: 'data', volumeSum: 409606979, tradingSum: 1369744, premktHigh: 0, premktLow: 99999999,
