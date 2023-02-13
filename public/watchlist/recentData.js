@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SPY': {
+            'BIDU': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'META', 'META', 'MSFT'
+            'META', 'META', 'MSFT', 'BIDU'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
@@ -72,15 +72,15 @@ window.TradingData = {
                 shortTargets: [],
                 tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
-            'QQQ': {
-                highQualityNews: 'data', volumeSum: 409606979, tradingSum: 1369744, premktHigh: 0, premktLow: 99999999,
+            'BIDU': {
+                highQualityNews: 'chat gpt', volumeSum: 168976, tradingSum: 24507832, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [303.43, 304.5],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-pullback', 's-pop'],
+                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'SPY': {
                 highQualityNews: 'data', volumeSum: 478252304, tradingSum: 1180509, premktHigh: 0, premktLow: 99999999,
