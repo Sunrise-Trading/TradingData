@@ -76,6 +76,7 @@ window.TradingData = {
                 highQualityNews: 'chat gpt', volumeSum: 168976, tradingSum: 24507832, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
+                boxup: 145.25, boxdown: 144.25,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [303.43, 304.5],
                 longTargets: [],
