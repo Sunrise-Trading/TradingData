@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'LYFT': {
+            'META': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'LYFT',
+            'META',
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
@@ -50,8 +50,8 @@ window.TradingData = {
                 shortTargets: [],
                 tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout'],
             },
-            'LYFT': {
-                highQualityNews: 'earnings', volumeSum: 3671670, tradingSum: 40528223, premktHigh: 0, premktLow: 99999999,
+            'META': {
+                highQualityNews: 'layoff', volumeSum: 3671670, tradingSum: 40528223, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 11.5, boxdown: 10.75,
@@ -59,7 +59,7 @@ window.TradingData = {
                 keyLevels: [11.5, 11.75, 12, 12.5],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open'],
+                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'TSLA': {
                 highQualityNews: 'no blame', volumeSum: 3128219, tradingSum: 650147133, premktHigh: 0, premktLow: 99999999,
