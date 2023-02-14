@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'META'
+            'TSLA', 'SPY'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
@@ -62,7 +62,7 @@ window.TradingData = {
                 tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
             'TSLA': {
-                highQualityNews: 'force to open up charging network', volumeSum: 2570146, tradingSum: 503488080, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'worker forming union', volumeSum: 2570146, tradingSum: 503488080, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
