@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'MSFT': {
+            'RBLX': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,12 +35,23 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'ABNB'
+            'TSLA', 'RBLX'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'ABNB': {
                 highQualityNews: 'earnings', volumeSum: 291265, tradingSum: 38224413, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                boxup: 185, boxdown: 182,
+                longOnlyIfAbovePrice: 265, shortOnlyIfBelowPrice: 0,
+                keyLevels: [181.71],
+                longTargets: [],
+                shortTargets: [],
+                tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout', 's-pullback', 's-pop'],
+            },
+            'RBLX': {
+                highQualityNews: 'earnings', volumeSum: 2396151, tradingSum: 98723182, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 185, boxdown: 182,
