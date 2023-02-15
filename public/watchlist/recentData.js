@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'BIDU': {
+            'ABNB': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,12 +35,12 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'SPY'
+            'TSLA', 'ABNB'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
-            'MSFT': {
-                highQualityNews: 'multiple upgrade', volumeSum: 187468, tradingSum: 49927734, premktHigh: 0, premktLow: 99999999,
+            'ABNB': {
+                highQualityNews: 'earnings', volumeSum: 291265, tradingSum: 38224413, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 185, boxdown: 182,
@@ -48,40 +48,18 @@ window.TradingData = {
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 'b-pullback', 'b-dip', 'b-breakout'],
-            },
-            'META': {
-                highQualityNews: 'layoff', volumeSum: 329561, tradingSum: 58617146, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                //boxup: 11.5, boxdown: 10.75,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [11.5, 11.75, 12, 12.5],
-                longTargets: [],
-                shortTargets: [],
-                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
+                tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout', 's-pullback', 's-pop'],
             },
             'TSLA': {
-                highQualityNews: 'worker forming union', volumeSum: 2570146, tradingSum: 503488080, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'open charging network', volumeSum: 3331493, tradingSum: 709617485, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 127.5, boxdown: 125,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 196.89,
-                keyLevels: [196.89, 196.33, 192.89, 192.14],
+                keyLevels: [214.16, 212.03, 211.45],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
-            },
-            'BIDU': {
-                highQualityNews: 'chat gpt', volumeSum: 168976, tradingSum: 24507832, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                boxup: 145.25, boxdown: 144.25,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [303.43, 304.5],
-                longTargets: [],
-                shortTargets: [],
-                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
+                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
             },
             'SPY': {
                 highQualityNews: 'data', volumeSum: 478252304, tradingSum: 1180509, premktHigh: 0, premktLow: 99999999,
