@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'RBLX'
+            'TSLA', 'ABNB'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
