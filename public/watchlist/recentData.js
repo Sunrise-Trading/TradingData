@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'ABNB': {
+            'SHOP': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,12 +35,12 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'ABNB'
+            'SHOP', 'SPY'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
-            'ABNB': {
-                highQualityNews: 'earnings', volumeSum: 291265, tradingSum: 38224413, premktHigh: 0, premktLow: 99999999,
+            'SHOP': {
+                highQualityNews: 'earnings', volumeSum: 1293646, tradingSum: 61426602, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 132, boxdown: 129.5,
@@ -48,9 +48,9 @@ window.TradingData = {
                 keyLevels: [181.71],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-pullback', 'b-dip', 'b-breakout', 's-pullback', 's-pop'],
+                tradingPlans: ['s-breakout', 's-pullback', 's-pop'],
             },
-            'RBLX': {
+            'ROKU': {
                 highQualityNews: 'earnings', volumeSum: 2396151, tradingSum: 98723182, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
@@ -73,14 +73,14 @@ window.TradingData = {
                 tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 478252304, tradingSum: 1180509, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1723409, tradingSum: 708459314, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [413.67],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-pullback', 's-pop'],
+                tradingPlans: ['b-open', 'b-pullback', 's-pullback', 's-pop'],
             },
         }
     }
