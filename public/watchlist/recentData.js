@@ -21,13 +21,13 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SHOP': {
+            'DASH': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'RBLX': {
+            'QQQ': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,20 +35,20 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'SHOP', 'SPY'
+            'DASH', 'TSLA'
             //'SPY', 'QQQ'
         ],
         'StockCandidates': {
-            'SHOP': {
-                highQualityNews: 'earnings', volumeSum: 1293646, tradingSum: 61426602, premktHigh: 0, premktLow: 99999999,
+            'DASH': {
+                highQualityNews: 'earnings', volumeSum: 301050, tradingSum: 21095694, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 47, boxdown: 45.75,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [47.5, 46.73],
+                keyLevels: [72.24, 76, 70],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-breakout', 's-pullback', 's-pop'],
+                tradingPlans: ['b-breakout', 'b-pullback', 'b-dip', 'b-open'],
             },
             'ROKU': {
                 highQualityNews: 'earnings', volumeSum: 2396151, tradingSum: 98723182, premktHigh: 0, premktLow: 99999999,
