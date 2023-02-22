@@ -42,7 +42,7 @@ window.TradingData = {
                 highQualityNews: 'earnings', volumeSum: 470855, tradingSum: 86200075, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                boxup: 71.5, boxdown: 69,
+                boxup: 185, boxdown: 180,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 keyLevels: [183.75, 190, 180, 179.5],
                 longTargets: [],
@@ -72,7 +72,7 @@ window.TradingData = {
                 tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 1087774, tradingSum: 439423501, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 11975227, tradingSum: 478850088, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
