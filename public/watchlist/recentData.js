@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'HD': {
+            'PANW': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,16 +35,16 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'SPY', 'QQQ', 'TSLA', 'HD',
+            'PANW',
         ],
         'StockCandidates': {
-            'HD': {
-                highQualityNews: 'earnings', volumeSum: 126484, tradingSum: 38615199, premktHigh: 0, premktLow: 99999999,
+            'PANW': {
+                highQualityNews: 'earnings', volumeSum: 470855, tradingSum: 86200075, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 71.5, boxdown: 69,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [72.24, 76, 70],
+                keyLevels: [183.75, 190, 180, 179.5],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['s-breakout', 's-pullback', 's-pop'],
