@@ -44,7 +44,7 @@ window.TradingData = {
                 initialBias: 0,
                 boxup: 185, boxdown: 180,
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
-                keyLevels: [183.75, 190, 180, 179.5],
+                keyLevels: [183.75, 190, 181.25, 180, 179.5],
                 longTargets: [],
                 shortTargets: [],
                 tradingPlans: ['b-open', 'b-breakout', 'b-pullback', 'b-dip'],
