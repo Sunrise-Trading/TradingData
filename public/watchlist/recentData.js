@@ -50,7 +50,7 @@ window.TradingData = {
                 tradingPlans: ['b-open', 'b-breakout', 'b-pullback', 'b-dip'],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1100554, tradingSum: 327952538, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1132332, tradingSum: 333708811, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 boxup: 43.25, boxdown: 41,
