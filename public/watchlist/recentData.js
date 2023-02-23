@@ -47,7 +47,7 @@ window.TradingData = {
                 keyLevels: [228.3, 230.5],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-open', 'b-breakout', 'b-pullback', 'b-dip'],
+                tradingPlans: ['s-open', 'b-open', 'b-breakout', 's-breakout', 'b-pullback', 'b-dip'],
             },
             'BABA': {
                 highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
