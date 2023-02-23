@@ -2,6 +2,56 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '2/22/2023': {
+            'stocks': [
+                'PANW',
+            ],
+            'StockCandidates': {
+                'PANW': {
+                    highQualityNews: 'earnings', volumeSum: 470855, tradingSum: 86200075, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 185, boxdown: 180,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [183.75, 190, 181.25, 180, 179.5],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 'b-breakout', 'b-pullback', 'b-dip'],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1132332, tradingSum: 333708811, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 43.25, boxdown: 41,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 43,
+                    keyLevels: [303.15],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                },
+                'TSLA': {
+                    highQualityNews: 'mining', volumeSum: 1585092, tradingSum: 325968169, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 202, boxdown: 198.50,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [199, 201.84, 206],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 11975227, tradingSum: 478850088, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [407],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout'],
+                },
+            }
+        },
         '2/21/2023': {
             'stocks': [
                 'SPY', 'QQQ', 'TSLA', 'HD',
