@@ -2,6 +2,67 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '2/23/2023': {
+            'stocks': [
+                'NVDA', 'BABA', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'NVDA': {
+                    highQualityNews: 'earnings', volumeSum: 2745967, tradingSum: 631479688, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 235, boxdown: 230,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [228.3, 230.5],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 'b-open', 'b-breakout', 's-breakout', 'b-pullback', 'b-dip'],
+                },
+                'BABA': {
+                    highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 101, boxdown: 98.5,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [100, 101, 98],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-breakout', 's-pullback', 's-pop'],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1377746, tradingSum: 408982397, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 43.25, boxdown: 41,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 43,
+                    keyLevels: [303.15],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 'b-pullback', 'b-pop', 'b-breakout'],
+                },
+                'TSLA': {
+                    highQualityNews: 'mining', volumeSum: 1585092, tradingSum: 325968169, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    boxup: 202, boxdown: 198.50,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [199, 201.84, 206],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 1606406, tradingSum: 643353403, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
+                    keyLevels: [407],
+                    longTargets: [],
+                    shortTargets: [],
+                    tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
+                },
+            }
+        },
         '2/22/2023': {
             'stocks': [
                 'PANW',
