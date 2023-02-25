@@ -75,7 +75,6 @@ window.TradingData = {
                 highQualityNews: 'data', volumeSum: 1606406, tradingSum: 643353403, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
-                longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 longTargets: [],
                 shortTargets: [],
             },
