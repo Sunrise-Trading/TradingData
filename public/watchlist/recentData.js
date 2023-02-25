@@ -45,7 +45,6 @@ window.TradingData = {
                 boxup: 235, boxdown: 230,
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 'b-open', 'b-breakout', 's-breakout', 'b-pullback', 'b-dip'],
             },
             'BABA': {
                 highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
@@ -54,7 +53,6 @@ window.TradingData = {
                 boxup: 101, boxdown: 98.5,
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 's-breakout', 's-pullback', 's-pop'],
             },
             'QQQ': {
                 highQualityNews: 'data', volumeSum: 1377746, tradingSum: 408982397, premktHigh: 0, premktLow: 99999999,
@@ -64,7 +62,6 @@ window.TradingData = {
                 keyLevels: [303.15],
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 'b-pullback', 'b-pop', 'b-breakout'],
             },
             'TSLA': {
                 highQualityNews: 'mining', volumeSum: 1585092, tradingSum: 325968169, premktHigh: 0, premktLow: 99999999,
@@ -73,7 +70,6 @@ window.TradingData = {
                 boxup: 202, boxdown: 198.50,
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['b-open', 's-pullback', 's-pop', 's-breakout', 'b-dip', 'b-pullback'],
             },
             'SPY': {
                 highQualityNews: 'data', volumeSum: 1606406, tradingSum: 643353403, premktHigh: 0, premktLow: 99999999,
@@ -82,7 +78,6 @@ window.TradingData = {
                 longOnlyIfAbovePrice: 0, shortOnlyIfBelowPrice: 0,
                 longTargets: [],
                 shortTargets: [],
-                tradingPlans: ['s-open', 's-pullback', 's-pop', 's-breakout'],
             },
         }
     }
