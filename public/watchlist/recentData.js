@@ -1,6 +1,6 @@
 window.TradingData = {
     'Settings': {
-        'currentDayStr': '2023-2-23 6:30', // 2023-12-2 6:30
+        'currentDayStr': '', // 2023-2-23 6:30
         'activeProfileName': "futures",  // momentumSimple, momentumEquities, momentumScalp, fomc;
         'systemProfileName': 'dt', // testTDA
     },
