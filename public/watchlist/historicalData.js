@@ -2,6 +2,48 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '2/27/2023': {
+            'stocks': [
+                'TSLA', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'NVDA': {
+                    highQualityNews: 'earnings', volumeSum: 2745967, tradingSum: 631479688, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'BABA': {
+                    highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1349453, tradingSum: 397133711, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'TSLA': {
+                    highQualityNews: 'new factory', volumeSum: 1723146, tradingSum: 347140727, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 940449, tradingSum: 375161503, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+            }
+        },
         '2/23/2023': {
             'stocks': [
                 'NVDA', 'BABA', 'SPY', 'QQQ'
