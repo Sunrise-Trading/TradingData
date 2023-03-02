@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'SPY', 'QQQ'
+            'TSLA',
         ],
         'StockCandidates': {
             'NVDA': {
@@ -45,7 +45,7 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'BABA': {
+            'CRM': {
                 highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
@@ -60,7 +60,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'new factory', volumeSum: 1723146, tradingSum: 347140727, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'investor day', volumeSum: 4104622, tradingSum: 772572704, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
