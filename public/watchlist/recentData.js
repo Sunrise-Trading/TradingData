@@ -21,7 +21,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'NVDA': {
+            'AAPL': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,11 +35,11 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA',
+            'TSLA', 'AAPL', 'SPY', 'QQQ'
         ],
         'StockCandidates': {
-            'NVDA': {
-                highQualityNews: 'earnings', volumeSum: 2745967, tradingSum: 631479688, premktHigh: 0, premktLow: 99999999,
+            'AAPL': {
+                highQualityNews: 'investor day', volumeSum: 460605, tradingSum: 67957130, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -53,21 +53,21 @@ window.TradingData = {
                 shortTargets: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1349453, tradingSum: 397133711, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1316703, tradingSum: 387899490, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'investor day', volumeSum: 4104622, tradingSum: 772572704, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'delivery', volumeSum: 1455791, tradingSum: 283033902, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 940449, tradingSum: 375161503, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 964741, tradingSum: 385070059, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
