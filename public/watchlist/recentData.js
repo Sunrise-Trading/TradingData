@@ -45,13 +45,6 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'CRM': {
-                highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                longTargets: [],
-                shortTargets: [],
-            },
             'QQQ': {
                 highQualityNews: 'data', volumeSum: 1316703, tradingSum: 387899490, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,

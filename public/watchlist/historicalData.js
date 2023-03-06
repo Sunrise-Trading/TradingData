@@ -2,6 +2,48 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '3/3/2023': {
+            'stocks': [
+                'TSLA', 'AAPL', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'AAPL': {
+                    highQualityNews: 'investor day', volumeSum: 460605, tradingSum: 67957130, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'CRM': {
+                    highQualityNews: 'earnings', volumeSum: 1911595, tradingSum: 191211639, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 1316703, tradingSum: 387899490, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'TSLA': {
+                    highQualityNews: 'delivery', volumeSum: 1455791, tradingSum: 283033902, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 964741, tradingSum: 385070059, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+            }
+        },
         '3/2/2023': {
             'stocks': [
                 'TSLA',
