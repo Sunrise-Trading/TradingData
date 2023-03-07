@@ -39,14 +39,14 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'RIVN': {
-                highQualityNews: 'offering', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'offering', volumeSum: 1147840, tradingSum: 18407075, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'META': {
-                highQualityNews: 'job cuts', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'job cuts', volumeSum: 454524, tradingSum: 85757217, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -60,7 +60,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'delivery', volumeSum: 1354456, tradingSum: 269093088, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'delivery', volumeSum: 722044, tradingSum: 139257270, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
