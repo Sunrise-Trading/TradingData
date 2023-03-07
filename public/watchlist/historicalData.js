@@ -2,6 +2,41 @@ export const TradingData = {
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESH23'],
+        '3/6/2023': {
+            'stocks': [
+                'TSLA', 'AAPL', 'SPY', 'QQQ'
+            ],
+            'StockCandidates': {
+                'AAPL': {
+                    highQualityNews: 'investor day', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'QQQ': {
+                    highQualityNews: 'data', volumeSum: 832389, tradingSum: 250126090, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'TSLA': {
+                    highQualityNews: 'delivery', volumeSum: 1354456, tradingSum: 269093088, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+                'SPY': {
+                    highQualityNews: 'data', volumeSum: 981012, tradingSum: 396925797, premktHigh: 0, premktLow: 99999999,
+                    deferTradingInSeconds: 0,
+                    initialBias: 0,
+                    longTargets: [],
+                    shortTargets: [],
+                },
+            }
+        },
         '3/3/2023': {
             'stocks': [
                 'TSLA', 'AAPL', 'SPY', 'QQQ'

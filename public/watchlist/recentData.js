@@ -21,13 +21,13 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'AAPL': {
+            'RIVN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'META': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,11 +35,18 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'AAPL', 'SPY', 'QQQ'
+            'RIVN', 'META', 'TSLA'
         ],
         'StockCandidates': {
-            'AAPL': {
-                highQualityNews: 'investor day', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
+            'RIVN': {
+                highQualityNews: 'offering', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                longTargets: [],
+                shortTargets: [],
+            },
+            'META': {
+                highQualityNews: 'job cuts', volumeSum: 844500, tradingSum: 129515778, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
