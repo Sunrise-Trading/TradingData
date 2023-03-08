@@ -35,18 +35,11 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'SPY', 'QQQ'
+            'TSLA', 'META',
         ],
         'StockCandidates': {
-            'RIVN': {
-                highQualityNews: 'offering', volumeSum: 1147840, tradingSum: 18407075, premktHigh: 0, premktLow: 99999999,
-                deferTradingInSeconds: 0,
-                initialBias: 0,
-                longTargets: [],
-                shortTargets: [],
-            },
             'META': {
-                highQualityNews: 'job cuts', volumeSum: 454524, tradingSum: 85757217, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 167609, tradingSum: 30849480, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -60,7 +53,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 722044, tradingSum: 139257270, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 1731070, tradingSum: 321264469, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
