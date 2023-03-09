@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA', 'META',
+            'SPY', 'QQQ',
         ],
         'StockCandidates': {
             'META': {
@@ -46,7 +46,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 832389, tradingSum: 250126090, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1509306, tradingSum: 448504306, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -60,7 +60,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 981012, tradingSum: 396925797, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 1392076, tradingSum: 554765601, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
