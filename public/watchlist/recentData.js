@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', // 2023-2-23 6:30
-        'activeProfileName': "futures",  // momentumSimple, momentumEquities, momentumScalp, fomc;
+        'activeProfileName': "momentumSimple",  // momentumSimple, momentumEquities, momentumScalp, fomc;
         'systemProfileName': 'dt', // testTDA
     },
     'StockSelection': {
@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'META': {
+            'SIVB': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,11 +35,11 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'SPY', 'QQQ',
+            'SIVB',
         ],
         'StockCandidates': {
-            'META': {
-                highQualityNews: 'downgrade', volumeSum: 167609, tradingSum: 30849480, premktHigh: 0, premktLow: 99999999,
+            'SIVB': {
+                highQualityNews: 'bank no money', volumeSum: 7308222, tradingSum: 330517186, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
