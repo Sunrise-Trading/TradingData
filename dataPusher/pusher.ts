@@ -1,4 +1,5 @@
 import * as Models from './models';
+import * as Data from './data';
 import * as firebase from 'firebase/app'
 import * as gbase from "firebase/firestore"
 // Initialize Firebase
@@ -13,9 +14,6 @@ export const firebaseConfig = {
 };
 export const app = firebase.initializeApp(firebaseConfig);
 export const db = gbase.getFirestore(app);
-let m: Models.Plan = {
-    isLong: true,
-};
 
 const push = async (data: Models.Plan) => {
     let now = new Date();
@@ -25,5 +23,5 @@ const push = async (data: Models.Plan) => {
         timestamp: now,
     });
 };
-push(m);
-console.log(m);
+push(Data.tradingPlanData);
+console.log(Data.tradingPlanData);
