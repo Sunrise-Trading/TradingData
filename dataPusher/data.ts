@@ -1,40 +1,28 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SIVB',
-        dailyRange: 10,
-        fixQuantity: 30,
+        symbol: 'JPM',
+        dailyRange: 3,
+        fixQuantity: 50,
         keyLevels: {
-            lastDefenseForLong: 33,
-            lastDefenseForShort: 86,
-            otherLevels: [55.69],
+            lastDefenseForLong: 128,
+            lastDefenseForShort: 136,
+            otherLevels: [127.82],
         },
         long: {
             openingDrive: { enabled: true },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 33.46, upperRoom: 1, lowerRoom: 1 },
-                    { priceLevel: 40, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 130, upperRoom: 0.5, lowerRoom: 0.5 },
                 ],
                 allowAgainstVwap: true,
-                vwapArea: { upperRoom: 1, lowerRoom: 1 },
+                vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
             },
             momentum: {
-                breakoutLevels: [40.5],
+                breakoutLevels: [133],
             }
         },
-        short: {
-            retracement: {
-                entryAreas: [
-                    { priceLevel: 56, upperRoom: 1, lowerRoom: 1 },
-                ],
-                allowAgainstVwap: true,
-                vwapArea: { upperRoom: 1, lowerRoom: 1 },
-            },
-            momentum: {
-                breakoutLevels: [33.4],
-            }
-        },
+        short: {},
     },
     {
         symbol: 'QQQ',
