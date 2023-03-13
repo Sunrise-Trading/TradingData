@@ -2,7 +2,7 @@ import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'JPM',
-        dailyRange: 3,
+        dailyRange: 4,
         fixQuantity: 50,
         keyLevels: {
             lastDefenseForLong: 128,
@@ -23,6 +23,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         short: {},
+    },
+    {
+        symbol: 'TSLA',
+        dailyRange: 9,
+        fixQuantity: 50,
+        keyLevels: {
+            lastDefenseForLong: 166,
+            lastDefenseForShort: 175,
+            otherLevels: [178.29],
+        },
+        long: {
+            openingDrive: { enabled: true },
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 166, upperRoom: 0.5, lowerRoom: 0.5 },
+                ],
+                allowAgainstVwap: true,
+                vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
+            },
+            momentum: {
+                breakoutLevels: [171],
+            }
+        },
+        short: {
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 171.3, upperRoom: 0.5, lowerRoom: 0.5 },
+                ],
+                allowAgainstVwap: true,
+                vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
+            },
+        },
     },
     {
         symbol: 'QQQ',
