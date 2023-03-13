@@ -54,6 +54,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 allowAgainstVwap: true,
                 vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
             },
+            momentum: {
+                breakoutLevels: [171],
+            }
         },
     },
     {
