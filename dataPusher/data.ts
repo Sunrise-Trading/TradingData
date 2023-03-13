@@ -57,6 +57,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
+        symbol: 'KRE',
+        dailyRange: 4,
+        fixQuantity: 100,
+        keyLevels: {
+            lastDefenseForLong: 45,
+            lastDefenseForShort: 50,
+            otherLevels: [48.44],
+        },
+        long: {
+            openingDrive: { enabled: true },
+            momentum: {
+                breakoutLevels: [47.25],
+            }
+        },
+        short: {},
+    },
+    {
         symbol: 'QQQ',
         dailyRange: 4,
         fixQuantity: 100,
