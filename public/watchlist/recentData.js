@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESH23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'SPY': {
+            'JPM': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SIVB': {
+            'KRE': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,25 +35,32 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'SIVB',
+            'KRE', 'JPM', 'TSLA', 'QQQ'
         ],
         'StockCandidates': {
-            'SIVB': {
-                highQualityNews: 'bank no money', volumeSum: 7308222, tradingSum: 330517186, premktHigh: 0, premktLow: 99999999,
+            'KRE': {
+                highQualityNews: 'bank no money', volumeSum: 1213736, tradingSum: 57643060, premktHigh: 0, premktLow: 99999999,
+                deferTradingInSeconds: 0,
+                initialBias: 0,
+                longTargets: [],
+                shortTargets: [],
+            },
+            'JPM': {
+                highQualityNews: 'not affected', volumeSum: 284303, tradingSum: 37579907, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 1509306, tradingSum: 448504306, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 3716748, tradingSum: 1075250136, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 1731070, tradingSum: 321264469, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 3186676, tradingSum: 543487405, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
