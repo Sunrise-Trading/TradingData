@@ -1,57 +1,39 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'SIVB',
         dailyRange: 10,
-        fixQuantity: 50,
+        fixQuantity: 30,
         keyLevels: {
-            lastDefenseForLong: 185.42,
-            lastDefenseForShort: 190,
-            otherLevels: [198.52],
+            lastDefenseForLong: 33,
+            lastDefenseForShort: 86,
+            otherLevels: [55.69],
         },
         long: {
             openingDrive: { enabled: true },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 201.5, upperRoom: 0.5, lowerRoom: 0.5 },
-                    { priceLevel: 200.72, upperRoom: 0.5, lowerRoom: 0.5 },
-                    { priceLevel: 200.2, upperRoom: 0.5, lowerRoom: 0.5 },
-                    { priceLevel: 197.76, upperRoom: 0.5, lowerRoom: 0.5 },
+                    { priceLevel: 33.46, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 40, upperRoom: 1, lowerRoom: 1 },
                 ],
                 allowAgainstVwap: true,
-                vwapArea: { upperRoom: 0.7, lowerRoom: 0.7 },
+                vwapArea: { upperRoom: 1, lowerRoom: 1 },
             },
             momentum: {
-                breakoutLevels: [],
+                breakoutLevels: [40.5],
             }
         },
         short: {
-            openingDrive: { enabled: true },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 188, upperRoom: 0.5, lowerRoom: 0.5 },
-                    { priceLevel: 188.88, upperRoom: 0.5, lowerRoom: 0.5 },
+                    { priceLevel: 56, upperRoom: 1, lowerRoom: 1 },
                 ],
                 allowAgainstVwap: true,
-                vwapArea: { upperRoom: 0.7, lowerRoom: 0.7 },
+                vwapArea: { upperRoom: 1, lowerRoom: 1 },
             },
             momentum: {
-                breakoutLevels: [],
+                breakoutLevels: [33.4],
             }
-        }
-    },
-    {
-        symbol: 'SPY',
-        dailyRange: 4,
-        fixQuantity: 100,
-        keyLevels: {
-            lastDefenseForShort: 400.28,
-            lastDefenseForLong: 0,
-            otherLevels: [100],
-        },
-        long: {},
-        short: {
-            openingDrive: { enabled: true },
         },
     },
     {
@@ -59,13 +41,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 4,
         fixQuantity: 100,
         keyLevels: {
-            lastDefenseForShort: 295.62,
-            lastDefenseForLong: 0,
-            otherLevels: [100],
+            lastDefenseForLong: 296.37,
+            lastDefenseForShort: 299.1,
+            otherLevels: [298.43],
         },
-        long: {},
+        long: {
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 296.7, upperRoom: 0.5, lowerRoom: 0.5 },
+                ],
+                allowAgainstVwap: true,
+                vwapArea: { upperRoom: 0.7, lowerRoom: 0.7 },
+            },
+            momentum: {
+                breakoutLevels: [299.2],
+            }
+        },
         short: {
             openingDrive: { enabled: true },
+
         },
     },
     {
