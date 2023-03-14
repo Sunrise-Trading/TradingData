@@ -1,7 +1,7 @@
 window.TradingData = {
     'Settings': {
         'currentDayStr': '', // 2023-2-23 6:30
-        'activeProfileName': "futures",  // momentumSimple, momentumEquities, momentumScalp, fomc;
+        'activeProfileName': "momentumSimple",  // momentumSimple, momentumEquities, momentumScalp, fomc;
         'systemProfileName': 'dt', // testTDA
     },
     'StockSelection': {
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'KRE', 'JPM', 'TSLA', 'QQQ'
+            'SPY', 'TSLA', 'QQQ'
         ],
         'StockCandidates': {
             'KRE': {
@@ -60,14 +60,14 @@ window.TradingData = {
                 shortTargets: [],
             },
             'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 3186676, tradingSum: 543487405, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'downgrade', volumeSum: 2131703, tradingSum: 377306252, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 1392076, tradingSum: 554765601, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 3785798, tradingSum: 170391055, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
