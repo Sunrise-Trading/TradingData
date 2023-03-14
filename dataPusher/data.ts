@@ -112,5 +112,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {},
         short: {},
+    },
+    {
+        symbol: 'MNQM23',
+        dailyRange: 40,
+        fixQuantity: 2,
+        keyLevels: {
+            lastDefenseForShort: 4000,
+            lastDefenseForLong: 3000,
+            otherLevels: [],
+        },
+        long: {},
+        short: {},
     }
 ];
