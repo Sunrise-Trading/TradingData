@@ -13,7 +13,7 @@ let stocks = [
     "XLU", // Utilities
     "XLF", // Financials
     /* big tech */
-    'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'NVDA', 'GOOGL',
+    'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'GOOGL',
     /* chips */
     'NVDA', 'AMD', 'MU', 'INTC',
     /* finance */
@@ -22,4 +22,6 @@ let stocks = [
     'KRE', 'FRC',
     /* gig economy */
     'UBER', 'LYFT', 'DASH', 'ABNB',
+    /* housing */
+    'Z', 'RDFN', 'OPEN', 'COMP',
 ];
