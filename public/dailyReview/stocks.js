@@ -2,6 +2,9 @@ let stocks = [
     /* index */
     'SPY', 'QQQ', 'DIA', 'IWM', 'VIX',
     '/ES', '/NQ', '/YM', '/RTY',
+    /* commodity */
+    '/CL', '/ZB', '/GC', '/SI', '/HG',
+    'USO', 'TLT', 'GDX',
     // SP 500 sectors
     "XLY", // Cyclicals
     "XLK", // Technology
