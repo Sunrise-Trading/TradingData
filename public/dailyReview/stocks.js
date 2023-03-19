@@ -2,6 +2,8 @@ let stocks = [
     /* index */
     'SPY', 'QQQ', 'DIA', 'IWM', 'VIX',
     '/ES', '/NQ', '/YM', '/RTY',
+    /* bond */
+    '2Y', '10Y',
     /* commodity */
     '/CL', '/ZB', '/GC', '/SI', '/HG',
     'USO', 'TLT', 'GDX',
