@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
+        symbol: 'UBS',
         dailyRange: 6,
         fixQuantity: 200,
         keyLevels: {

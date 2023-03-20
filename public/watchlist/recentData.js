@@ -9,7 +9,7 @@ window.TradingData = {
         'futures': ['MESM23', 'MNQM23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
         'checklist': {
-            'JPM': {
+            'UBS': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'META': {
+            'PDD': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,18 +35,18 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'META',
+            'UBS', 'PDD',
         ],
         'StockCandidates': {
-            'META': {
-                highQualityNews: 'ban tiktok', volumeSum: 264720, tradingSum: 53228438, premktHigh: 0, premktLow: 99999999,
+            'USB': {
+                highQualityNews: 'bought credit suisse', volumeSum: 4709868, tradingSum: 81236826, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
-            'JPM': {
-                highQualityNews: 'not affected', volumeSum: 284303, tradingSum: 37579907, premktHigh: 0, premktLow: 99999999,
+            'PDD': {
+                highQualityNews: 'earnings', volumeSum: 2284393, tradingSum: 182729075, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
