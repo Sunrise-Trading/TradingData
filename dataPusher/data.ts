@@ -2,21 +2,20 @@ import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'UBS',
-        dailyRange: 6,
-        fixQuantity: 200,
+        dailyRange: 1,
+        fixQuantity: 500,
         keyLevels: {
-            lastDefenseForLong: 199,
-            lastDefenseForShort: 201.5,
-            otherLevels: [200, 204.8],
+            lastDefenseForLong: 17,
+            lastDefenseForShort: 19.5,
+            otherLevels: [19.77, 17.24],
         },
         long: {
-            openingDrive: { enabled: true },
             retracement: {
                 entryAreas: [
                     { priceLevel: 199, upperRoom: 1, lowerRoom: 0.5 },
                     { priceLevel: 200, upperRoom: 1, lowerRoom: 1 },
                 ],
-                allowAgainstVwap: true,
+                allowAgainstVwap: false,
                 vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
             },
             momentum: {
@@ -25,15 +24,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             openingDrive: { enabled: true },
+        },
+    },
+    {
+        symbol: 'PDD',
+        dailyRange: 5,
+        fixQuantity: 100,
+        keyLevels: {
+            lastDefenseForLong: 79,
+            lastDefenseForShort: 82.5,
+            otherLevels: [82.41],
+        },
+        long: {
+            openingDrive: { enabled: true },
+            momentum: { breakoutLevels: [80] },
+        },
+        short: {
             retracement: {
                 entryAreas: [
-                    { priceLevel: 201.25, upperRoom: 0.5, lowerRoom: 0.5 },
-                    { priceLevel: 200, upperRoom: 0.5, lowerRoom: 0.5 },
+                    { priceLevel: 80, upperRoom: 0.5, lowerRoom: 0.5 },
                 ],
                 allowAgainstVwap: false,
-                vwapArea: { upperRoom: 0.5, lowerRoom: 0.5 },
-            },
-        },
+            }
+        }
     },
     {
         symbol: 'MESM23',
