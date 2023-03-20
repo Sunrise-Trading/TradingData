@@ -38,7 +38,7 @@ window.TradingData = {
             'UBS', 'PDD',
         ],
         'StockCandidates': {
-            'USB': {
+            'UBS': {
                 highQualityNews: 'bought credit suisse', volumeSum: 4709868, tradingSum: 81236826, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
