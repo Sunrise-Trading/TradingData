@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'UBS', 'KRE'
+            'UBS', 'KRE', 'META'
         ],
         'StockCandidates': {
             'UBS': {
@@ -45,8 +45,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'PDD': {
-                highQualityNews: 'app suspended', volumeSum: 315007, tradingSum: 182729075, premktHigh: 0, premktLow: 99999999,
+            'META': {
+                highQualityNews: 'upgrade', volumeSum: 291601, tradingSum: 59161988, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],

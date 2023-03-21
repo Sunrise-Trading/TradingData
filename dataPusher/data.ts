@@ -49,6 +49,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
+        symbol: 'META',
+        dailyRange: 6,
+        fixQuantity: 100,
+        keyLevels: {
+            lastDefenseForLong: 202,
+            lastDefenseForShort: 204,
+            otherLevels: [202.67],
+        },
+        long: {},
+        short: {
+            openingDrive: { enabled: true }
+        }
+    },
+    {
         symbol: 'MESM23',
         dailyRange: 40,
         fixQuantity: 2,
