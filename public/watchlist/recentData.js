@@ -15,7 +15,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'TSLA': {
+            'KRE': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,18 +35,18 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'UBS', 'PDD',
+            'UBS', 'KRE'
         ],
         'StockCandidates': {
             'UBS': {
-                highQualityNews: 'bought credit suisse', volumeSum: 4709868, tradingSum: 81236826, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'bought credit suisse', volumeSum: 1593178, tradingSum: 31689846, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'PDD': {
-                highQualityNews: 'earnings', volumeSum: 2284393, tradingSum: 182729075, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'app suspended', volumeSum: 315007, tradingSum: 182729075, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -59,8 +59,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'TSLA': {
-                highQualityNews: 'downgrade', volumeSum: 2131703, tradingSum: 377306252, premktHigh: 0, premktLow: 99999999,
+            'KRE': {
+                highQualityNews: 'big banks support regional banks', volumeSum: 746370, tradingSum: 33736025, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
