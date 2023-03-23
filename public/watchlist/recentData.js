@@ -46,7 +46,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'COIN': {
-                highQualityNews: 'SEC warning', volumeSum: 152884, tradingSum: 31035190, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'SEC warning', volumeSum: 1609918, tradingSum: 108562099, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
