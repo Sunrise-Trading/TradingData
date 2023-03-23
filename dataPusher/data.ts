@@ -1,66 +1,27 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'UBS',
-        dailyRange: 0.7,
-        fixQuantity: 500,
-        keyLevels: {
-            lastDefenseForLong: 19.76,
-            lastDefenseForShort: 20.5,
-            otherLevels: [20],
-        },
-        long: {
-            openingDrive: { enabled: true },
-            retracement: {
-                entryAreas: [
-                    { priceLevel: 20, upperRoom: 0.2, lowerRoom: 0.2 },
-                    { priceLevel: 19.76, upperRoom: 0.15, lowerRoom: 0.15 },
-                ],
-                allowAgainstVwap: false,
-                vwapArea: { upperRoom: 0.1, lowerRoom: 0.1 },
-            },
-            momentum: {
-                breakoutLevels: [20.5],
-            }
-        },
-        short: {},
-    },
-    {
-        symbol: 'KRE',
-        dailyRange: 2.5,
-        fixQuantity: 200,
-        keyLevels: {
-            lastDefenseForLong: 79,
-            lastDefenseForShort: 44.7,
-            otherLevels: [45.58],
-        },
-        long: {
-            openingDrive: { enabled: true },
-            retracement: {
-                entryAreas: [
-                    { priceLevel: 45.58, upperRoom: 0.2, lowerRoom: 0.2 },
-                ],
-                allowAgainstVwap: false,
-            },
-            momentum: { breakoutLevels: [46.1] },
-        },
-        short: {
-            openingDrive: { enabled: true },
-        }
-    },
-    {
-        symbol: 'META',
-        dailyRange: 6,
+        symbol: 'COIN',
+        dailyRange: 7,
         fixQuantity: 100,
         keyLevels: {
-            lastDefenseForLong: 202,
-            lastDefenseForShort: 204,
-            otherLevels: [202.67],
+            lastDefenseForLong: 70,
+            lastDefenseForShort: 71,
+            otherLevels: [66.63, 61.59, 65.1],
         },
         long: {},
         short: {
-            openingDrive: { enabled: true }
-        }
+            momentum: {
+                breakoutLevels: [70],
+            },
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 70, upperRoom: 1, lowerRoom: 0.75 },
+                    { priceLevel: 69, upperRoom: 0.5, lowerRoom: 0.75 },
+                ],
+                allowAgainstVwap: true,
+            }
+        },
     },
     {
         symbol: 'MESM23',
