@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'META': {
+            'COIN': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'UBS', 'KRE', 'META'
+            'COIN'
         ],
         'StockCandidates': {
             'UBS': {
@@ -45,8 +45,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'META': {
-                highQualityNews: 'upgrade', volumeSum: 291601, tradingSum: 59161988, premktHigh: 0, premktLow: 99999999,
+            'COIN': {
+                highQualityNews: 'SEC warning', volumeSum: 152884, tradingSum: 31035190, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
