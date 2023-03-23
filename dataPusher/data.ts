@@ -18,6 +18,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 entryAreas: [
                     { priceLevel: 70, upperRoom: 1, lowerRoom: 0.75 },
                     { priceLevel: 69, upperRoom: 0.5, lowerRoom: 0.75 },
+                    { priceLevel: 66.63, upperRoom: 1, lowerRoom: 0.75 },
                 ],
                 allowAgainstVwap: true,
             }
