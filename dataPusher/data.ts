@@ -9,7 +9,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             lastDefenseForShort: 71,
             otherLevels: [66.63, 61.59, 65.1],
         },
-        long: {},
+        long: {
+            openingDrive: { enabled: true },
+        },
         short: {
             momentum: {
                 breakoutLevels: [70],
