@@ -8,7 +8,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             otherLevels: [66.63, 61.59, 65.1],
         },
         long: {
-            openingDrive: { enabled: true },
+            openingDrive: { lastDefense: 60 },
         },
         short: {
             momentum: {

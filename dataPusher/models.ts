@@ -16,7 +16,7 @@ export interface keyLevels {
     otherLevels: number[];
 };
 export interface OpeningDrivePlan {
-    enabled: boolean;
+    lastDefense: number;
 }
 export interface MomentumPlan {
     breakoutLevels: number[];
