@@ -13,8 +13,6 @@ export interface SingleDirectionPlans {
     retracement?: RetracementPlan,
 };
 export interface keyLevels {
-    lastDefenseForLong: number;
-    lastDefenseForShort: number;
     otherLevels: number[];
 };
 export interface OpeningDrivePlan {
@@ -26,6 +24,7 @@ export interface MomentumPlan {
 export interface RetracementPlan {
     entryAreas: PriceArea[];
     allowAgainstVwap: boolean;
+    lastDefense: number,
     vwapArea?: IndicatorArea,
     openPriceArea?: IndicatorArea,
 };

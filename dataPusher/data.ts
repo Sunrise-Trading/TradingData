@@ -5,8 +5,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 7,
         fixQuantity: 100,
         keyLevels: {
-            lastDefenseForLong: 70,
-            lastDefenseForShort: 71,
             otherLevels: [66.63, 61.59, 65.1],
         },
         long: {
@@ -23,6 +21,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                     { priceLevel: 66.63, upperRoom: 1, lowerRoom: 0.75 },
                 ],
                 allowAgainstVwap: true,
+                lastDefense: 71,
             }
         },
     },
@@ -31,8 +30,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 40,
         fixQuantity: 2,
         keyLevels: {
-            lastDefenseForShort: 4000,
-            lastDefenseForLong: 3000,
             otherLevels: [],
         },
         long: {},
@@ -43,8 +40,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 40,
         fixQuantity: 2,
         keyLevels: {
-            lastDefenseForShort: 4000,
-            lastDefenseForLong: 3000,
             otherLevels: [],
         },
         long: {},
