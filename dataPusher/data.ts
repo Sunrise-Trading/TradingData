@@ -1,27 +1,25 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'COIN',
+        symbol: 'TSLA',
         dailyRange: 7,
         fixQuantity: 100,
         keyLevels: {
-            otherLevels: [66.63, 61.59, 65.1],
+            otherLevels: [208],
         },
         long: {
-            openingDrive: { lastDefense: 60 },
+            openingDrive: { lastDefense: 199.50 },
         },
         short: {
             momentum: {
-                breakoutLevels: [70],
+                breakoutLevels: [202],
             },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 70, upperRoom: 1, lowerRoom: 0.75 },
-                    { priceLevel: 69, upperRoom: 0.5, lowerRoom: 0.75 },
-                    { priceLevel: 66.63, upperRoom: 1, lowerRoom: 0.75 },
+                    { priceLevel: 204.6, upperRoom: 1, lowerRoom: 1 },
                 ],
                 allowAgainstVwap: true,
-                lastDefense: 71,
+                lastDefense: 205,
             }
         },
     },
