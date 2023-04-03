@@ -9,6 +9,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             openingDrive: { lastDefense: 199.50 },
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 199.6, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 197.5, upperRoom: 1, lowerRoom: 1 },
+                ],
+                allowAgainstVwap: false,
+                lastDefense: 196.5,
+            }
         },
         short: {
             momentum: {
@@ -17,6 +25,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             retracement: {
                 entryAreas: [
                     { priceLevel: 204.6, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 202.86, upperRoom: 1, lowerRoom: 1 },
                 ],
                 allowAgainstVwap: true,
                 lastDefense: 205,
