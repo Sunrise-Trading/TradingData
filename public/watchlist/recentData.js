@@ -27,7 +27,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'COIN': {
+            'SPY': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -67,7 +67,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data', volumeSum: 3785798, tradingSum: 170391055, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 685764, tradingSum: 279867488, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
