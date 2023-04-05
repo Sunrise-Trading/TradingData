@@ -15,7 +15,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'KRE': {
+            'GOOGL': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,7 +35,7 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'TSLA'
+            'GOOGL'
         ],
         'StockCandidates': {
             'TSLA': {
@@ -45,8 +45,8 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'COIN': {
-                highQualityNews: 'SEC warning', volumeSum: 1609918, tradingSum: 108562099, premktHigh: 0, premktLow: 99999999,
+            'GOOGLE': {
+                highQualityNews: 'chips news', volumeSum: 370475, tradingSum: 39288936, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
