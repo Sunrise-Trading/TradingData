@@ -42,6 +42,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
+        symbol: 'QQQ',
+        dailyRange: 5,
+        fixQuantity: 100,
+        keyLevels: {
+            otherLevels: [105.5],
+        },
+        long: {
+            momentum: {
+                breakoutLevels: [106.3],
+            }
+        },
+        short: {
+            momentum: {
+                breakoutLevels: [106.3],
+            }
+        }
+    },
+    {
         symbol: 'TSLA',
         dailyRange: 7,
         fixQuantity: 100,
