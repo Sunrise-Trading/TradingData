@@ -35,11 +35,11 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'GOOGL'
+            'GOOGL', 'SPY', 'QQQ'
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'delivery numbers no good', volumeSum: 3326166, tradingSum: 669614388, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'delivery numbers no good', volumeSum: 936575, tradingSum: 180261435, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
@@ -53,7 +53,7 @@ window.TradingData = {
                 shortTargets: [],
             },
             'QQQ': {
-                highQualityNews: 'data', volumeSum: 3716748, tradingSum: 1075250136, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data', volumeSum: 652743, tradingSum: 208219497, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
