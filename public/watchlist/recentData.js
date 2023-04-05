@@ -45,7 +45,7 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'GOOGLE': {
+            'GOOGL': {
                 highQualityNews: 'chips news', volumeSum: 370475, tradingSum: 39288936, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
