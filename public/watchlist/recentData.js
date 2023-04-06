@@ -15,7 +15,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'GOOGL': {
+            'COST': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -35,11 +35,11 @@ window.TradingData = {
             },
         },
         'stocks': [
-            'GOOGL', 'SPY', 'QQQ'
+            'TSLA',
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'delivery numbers no good', volumeSum: 936575, tradingSum: 180261435, premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'master plan', volumeSum: 1619608, tradingSum: 297583167, premktHigh: 0, premktLow: 99999999,
                 deferTradingInSeconds: 0,
                 initialBias: 0,
                 longTargets: [],
