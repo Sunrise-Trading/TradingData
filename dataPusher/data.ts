@@ -64,9 +64,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 8,
         fixQuantity: 100,
         keyLevels: {
-            otherLevels: [208],
+            otherLevels: [183.76],
         },
-        long: {},
+        long: {
+            momentum: {
+                breakoutLevels: [184],
+            },
+        },
         short: {
             momentum: {
                 breakoutLevels: [184],
