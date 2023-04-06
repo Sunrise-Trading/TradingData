@@ -23,10 +23,6 @@ const push = async (
     let docRef = await gbase.doc(db, `configData/tradingPlan`) // create this document newDoc at this path
     gbase.setDoc(docRef, {
         plans: plans,
-        timestamp: now,
-    });
-    let selectionRef = await gbase.doc(db, `configData/stockSelections`) // create this document newDoc at this path
-    gbase.setDoc(selectionRef, {
         stockSelections: stockSelections,
         timestamp: now,
     });
