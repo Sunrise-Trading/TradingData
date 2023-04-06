@@ -1,66 +1,10 @@
 import type * as TradingPlans from './models'
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GOOGL',
-        dailyRange: 3,
-        fixQuantity: 200,
-        keyLevels: {
-            otherLevels: [105.5],
-        },
-        long: {
-            openingDrive: { lastDefense: 105.58 },
-            retracement: {
-                entryAreas: [
-                    { priceLevel: 199.6, upperRoom: 1, lowerRoom: 1 },
-                    { priceLevel: 197.5, upperRoom: 1, lowerRoom: 1 },
-                ],
-                allowAgainstVwap: true,
-                lastDefense: 105,
-            },
-            momentum: {
-                breakoutLevels: [106.3],
-            }
-        },
-        short: {}
-    },
-    {
-        symbol: 'SPY',
-        dailyRange: 5,
-        fixQuantity: 100,
-        keyLevels: {
-            otherLevels: [105.5],
-        },
-        long: {
-            momentum: {
-                breakoutLevels: [106.3],
-            }
-        },
-        short: {
-            momentum: {
-                breakoutLevels: [106.3],
-            }
-        }
-    },
-    {
-        symbol: 'QQQ',
-        dailyRange: 5,
-        fixQuantity: 100,
-        keyLevels: {
-            otherLevels: [105.5],
-        },
-        long: {
-            momentum: {
-                breakoutLevels: [106.3],
-            }
-        },
-        short: {
-            momentum: {
-                breakoutLevels: [106.3],
-            }
-        }
-    },
-    {
         symbol: 'TSLA',
+        vwapCorrection: {
+            volumeSum: 1619608, tradingSum: 297583167
+        },
         dailyRange: 8,
         fixQuantity: 100,
         keyLevels: {
@@ -87,6 +31,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'MESM23',
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 2,
         keyLevels: {
@@ -97,6 +42,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'MNQM23',
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 2,
         keyLevels: {

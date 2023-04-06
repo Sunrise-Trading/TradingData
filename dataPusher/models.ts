@@ -1,11 +1,16 @@
 export interface TradingPlans {
     symbol: string,
+    vwapCorrection: VwapCorrection,
     dailyRange: number,
     fixQuantity: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
+export interface VwapCorrection {
+    volumeSum: number,
+    tradingSum: number,
+}
 
 export interface SingleDirectionPlans {
     openingDrive?: OpeningDrivePlan,
