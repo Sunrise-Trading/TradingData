@@ -15,14 +15,22 @@ export const firebaseConfig = {
 export const app = firebase.initializeApp(firebaseConfig);
 export const db = gbase.getFirestore(app);
 let data = Data.stocksTradingPlans;
+let stockSelections = Data.stockSelections;
 
-const push = async (plans: Models.TradingPlans[]) => {
+const push = async (
+    plans: Models.TradingPlans[], stockSelections: string[]) => {
     let now = new Date();
     let docRef = await gbase.doc(db, `configData/tradingPlan`) // create this document newDoc at this path
     gbase.setDoc(docRef, {
         plans: plans,
         timestamp: now,
     });
+    let selectionRef = await gbase.doc(db, `configData/stockSelections`) // create this document newDoc at this path
+    gbase.setDoc(selectionRef, {
+        stockSelections: stockSelections,
+        timestamp: now,
+    });
 };
-push(data);
+push(data, stockSelections);
 console.log(data);
+console.log(stockSelections);
