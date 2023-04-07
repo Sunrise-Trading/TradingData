@@ -34,9 +34,6 @@ window.TradingData = {
                 "Check whether it gap up/down above/below support/resistance": true,
             },
         },
-        'stocks': [
-            'TSLA',
-        ],
         'StockCandidates': {
             'TSLA': {
                 highQualityNews: 'master plan',
