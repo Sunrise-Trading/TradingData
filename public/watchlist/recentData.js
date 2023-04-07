@@ -39,31 +39,31 @@ window.TradingData = {
         ],
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'master plan', premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'master plan',
                 deferTradingInSeconds: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'GOOGL': {
-                highQualityNews: 'chips news', premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'chips news',
                 deferTradingInSeconds: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'QQQ': {
-                highQualityNews: 'data', premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data',
                 deferTradingInSeconds: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'KRE': {
-                highQualityNews: 'big banks support regional banks', premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'big banks support regional banks',
                 deferTradingInSeconds: 0,
                 longTargets: [],
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data', premktHigh: 0, premktLow: 99999999,
+                highQualityNews: 'data',
                 deferTradingInSeconds: 0,
                 longTargets: [],
                 shortTargets: [],
