@@ -1,19 +1,14 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['TSLA', 'SPY', 'QQQ'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: {
-            volumeSum: 1957167, tradingSum: 354502002,
-        },
+        vwapCorrection: { volumeSum: 1957167, tradingSum: 354502002 },
         dailyRange: 8,
         fixQuantity: 50,
-        keyLevels: {
-            otherLevels: [179.74],
-        },
-        long: {
-        },
+        keyLevels: { otherLevels: [179.74] },
+        long: {},
         short: {
             momentum: {
                 breakoutLevels: [180],
@@ -27,6 +22,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             openingDrive: { lastDefense: 183.2 },
         },
+    },
+    {
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 443671, tradingSum: 180923180 },
+        dailyRange: 4,
+        fixQuantity: 100,
+        keyLevels: { otherLevels: [407.8] },
+        long: {
+            openingDrive: { lastDefense: 406.7 },
+        },
+        short: {},
+    },
+    {
+        symbol: 'QQQ',
+        vwapCorrection: { volumeSum: 671255, tradingSum: 212336072 },
+        dailyRange: 4,
+        fixQuantity: 100,
+        keyLevels: { otherLevels: [315.97] },
+        long: {
+            openingDrive: { lastDefense: 315.2 },
+        },
+        short: {},
     },
     {
         symbol: 'MESM23',
