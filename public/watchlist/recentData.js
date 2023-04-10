@@ -40,6 +40,7 @@ window.TradingData = {
         'StockCandidates': {
             'TSLA': {
                 highQualityNews: 'price cut',
+                volumeSum: 1957167, tradingSum: 354502002,
                 longTargets: [],
                 shortTargets: [],
             },
@@ -51,7 +52,7 @@ window.TradingData = {
             },
             'QQQ': {
                 highQualityNews: 'data',
-
+                volumeSum: 671255, tradingSum: 212336072,
                 longTargets: [],
                 shortTargets: [],
             },
@@ -63,7 +64,7 @@ window.TradingData = {
             },
             'SPY': {
                 highQualityNews: 'data',
-
+                volumeSum: 443671, tradingSum: 180923180,
                 longTargets: [],
                 shortTargets: [],
             },
