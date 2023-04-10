@@ -30,7 +30,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         fixQuantity: 100,
         keyLevels: { otherLevels: [407.8] },
         long: {
-            openingDrive: { lastDefense: 406.7 },
+            openingDrive: { lastDefense: 406.2 },
         },
         short: {},
     },
@@ -41,7 +41,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         fixQuantity: 100,
         keyLevels: { otherLevels: [315.97] },
         long: {
-            openingDrive: { lastDefense: 315.2 },
+            openingDrive: { lastDefense: 314.89 },
         },
         short: {},
     },
