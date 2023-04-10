@@ -36,8 +36,7 @@ window.TradingData = {
         },
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'master plan',
-
+                highQualityNews: 'price cut',
                 longTargets: [],
                 shortTargets: [],
             },
