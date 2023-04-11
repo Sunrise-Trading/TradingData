@@ -14,34 +14,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 182, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 186, upperRoom: 1, lowerRoom: 1 },
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 183.2,
+                lastDefense: 185,
             },
-            openingDrive: { lastDefense: 183.2 },
+            openingDrive: { lastDefense: 186 },
         },
         short: {},
     },
     {
-        symbol: 'SPY',
-        vwapCorrection: { volumeSum: 443671, tradingSum: 180923180 },
+        symbol: 'MRNA',
+        vwapCorrection: { volumeSum: 143934, tradingSum: 21703049 },
         dailyRange: 4,
-        fixQuantity: 100,
-        keyLevels: { otherLevels: [407.8] },
+        fixQuantity: 30,
+        keyLevels: { otherLevels: [156] },
         long: {
-            openingDrive: { lastDefense: 406.2 },
-        },
-        short: {},
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 671255, tradingSum: 212336072 },
-        dailyRange: 4,
-        fixQuantity: 100,
-        keyLevels: { otherLevels: [315.97] },
-        long: {
-            openingDrive: { lastDefense: 314.89 },
+            openingDrive: { lastDefense: 148.2 },
+            momentum: {
+                breakoutLevels: [154.45],
+            },
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 150, upperRoom: 1, lowerRoom: 1 },
+                ],
+                allowAgainstVwap: false,
+                lastDefense: 148,
+            }
         },
         short: {},
     },
