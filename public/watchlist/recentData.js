@@ -15,7 +15,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'COST': {
+            'MRNA': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -36,26 +36,22 @@ window.TradingData = {
         },
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'price cut',
-                volumeSum: 1957167, tradingSum: 354502002,
+                highQualityNews: 'china factory',
                 longTargets: [],
                 shortTargets: [],
             },
-            'GOOGL': {
-                highQualityNews: 'chips news',
-
+            'MRNA': {
+                highQualityNews: 'flu vaccine news',
                 longTargets: [],
                 shortTargets: [],
             },
             'QQQ': {
                 highQualityNews: 'data',
-                volumeSum: 671255, tradingSum: 212336072,
                 longTargets: [],
                 shortTargets: [],
             },
             'KRE': {
                 highQualityNews: 'big banks support regional banks',
-
                 longTargets: [],
                 shortTargets: [],
             },

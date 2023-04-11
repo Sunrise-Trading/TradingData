@@ -1,15 +1,14 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA', 'SPY', 'QQQ'];
+export const stockSelections: string[] = ['TSLA', 'MRNA'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1957167, tradingSum: 354502002 },
+        vwapCorrection: { volumeSum: 1056262, tradingSum: 197153899 },
         dailyRange: 8,
         fixQuantity: 50,
-        keyLevels: { otherLevels: [179.74] },
-        long: {},
-        short: {
+        keyLevels: { otherLevels: [187.77] },
+        long: {
             momentum: {
                 breakoutLevels: [180],
             },
@@ -22,6 +21,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             openingDrive: { lastDefense: 183.2 },
         },
+        short: {},
     },
     {
         symbol: 'SPY',
