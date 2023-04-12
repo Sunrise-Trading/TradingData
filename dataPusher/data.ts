@@ -48,9 +48,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MESM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        fixQuantity: 2,
+        fixQuantity: 3,
         keyLevels: {
-            otherLevels: [],
+            otherLevels: [4000],
         },
         long: {},
         short: {},
@@ -59,9 +59,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MNQM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        fixQuantity: 2,
+        fixQuantity: 3,
         keyLevels: {
-            otherLevels: [],
+            otherLevels: [4000],
         },
         long: {},
         short: {},
