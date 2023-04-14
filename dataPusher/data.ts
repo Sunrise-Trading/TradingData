@@ -1,6 +1,6 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA', 'MRNA'];
+export const stockSelections: string[] = ['TSLA', 'JPM'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
@@ -39,7 +39,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                     { priceLevel: 137.5, upperRoom: 0.5, lowerRoom: 0.5 },
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 148,
+                lastDefense: 137.66,
             }
         },
         long: {},
