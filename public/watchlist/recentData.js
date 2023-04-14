@@ -15,7 +15,7 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'MRNA': {
+            'JPM': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -36,12 +36,12 @@ window.TradingData = {
         },
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'china factory',
+                highQualityNews: 'prince cut',
                 longTargets: [],
                 shortTargets: [],
             },
-            'MRNA': {
-                highQualityNews: 'flu vaccine news',
+            'JPM': {
+                highQualityNews: 'earnings',
                 longTargets: [],
                 shortTargets: [],
             },
