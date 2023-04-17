@@ -15,13 +15,13 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'JPM': {
+            'GOOGL': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'QQQ': {
+            'XPEV': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -36,16 +36,16 @@ window.TradingData = {
         },
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'prince cut',
+                highQualityNews: 'price cut',
                 longTargets: [],
                 shortTargets: [],
             },
-            'JPM': {
-                highQualityNews: 'earnings',
+            'GOOGL': {
+                highQualityNews: 'lose search default',
                 longTargets: [],
                 shortTargets: [],
             },
-            'QQQ': {
+            'XPEV': {
                 highQualityNews: 'data',
                 longTargets: [],
                 shortTargets: [],
