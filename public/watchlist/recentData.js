@@ -57,7 +57,6 @@ window.TradingData = {
             },
             'SPY': {
                 highQualityNews: 'data',
-                volumeSum: 443671, tradingSum: 180923180,
                 longTargets: [],
                 shortTargets: [],
             },

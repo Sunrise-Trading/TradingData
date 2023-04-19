@@ -5,19 +5,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 1034325, tradingSum: 190290243 },
-        dailyRange: 8,
-        fixQuantity: 50,
-        keyLevels: { otherLevels: [185.16] },
+        dailyRange: 5,
+        fixQuantity: 60,
+        keyLevels: { otherLevels: [180.93] },
         long: {},
         short: {
             retracement: {
                 entryAreas: [
-                    { priceLevel: 184, upperRoom: 1, lowerRoom: 1 },
+                    { priceLevel: 180.93, upperRoom: 0.25, lowerRoom: 0.25 },
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 185.16,
+                lastDefense: 182,
             },
-            openingDrive: { lastDefense: 184.35 },
+            openingDrive: { lastDefense: 182 },
             momentum: {
                 breakoutLevels: [185.16],
             }
