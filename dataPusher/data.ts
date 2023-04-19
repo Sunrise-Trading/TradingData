@@ -4,7 +4,7 @@ export const stockSelections: string[] = ['TSLA', 'WAL', 'NFLX'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1034325, tradingSum: 190290243 },
+        vwapCorrection: { volumeSum: 1726534, tradingSum: 310358832 },
         dailyRange: 5,
         fixQuantity: 60,
         keyLevels: { otherLevels: [180.93] },
@@ -25,45 +25,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'GOOGL',
-        vwapCorrection: { volumeSum: 998660, tradingSum: 104656150 },
+        symbol: 'WAL',
+        vwapCorrection: { volumeSum: 529334, tradingSum: 20642079 },
         dailyRange: 3,
-        fixQuantity: 100,
-        keyLevels: { otherLevels: [135.54] },
-        short: {
-            openingDrive: { lastDefense: 105.2 },
+        fixQuantity: 60,
+        keyLevels: { otherLevels: [39] },
+        long: {
+            openingDrive: { lastDefense: 38.27 },
             momentum: {
-                breakoutLevels: [154.45],
+                breakoutLevels: [39],
             },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 105, upperRoom: 0.2, lowerRoom: 0.5 },
+                    { priceLevel: 38.35, upperRoom: 0.2, lowerRoom: 0.2 },
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 105.2,
+                lastDefense: 38.27,
             }
         },
-        long: {
-            openingDrive: { lastDefense: 104.34 },
+        short: {
         },
     },
     {
-        symbol: 'XPEV',
-        vwapCorrection: { volumeSum: 917113, tradingSum: 10168556 },
+        symbol: 'NFLX',
+        vwapCorrection: { volumeSum: 377160, tradingSum: 123577401 },
         dailyRange: 3,
-        fixQuantity: 100,
-        keyLevels: { otherLevels: [10.87] },
+        fixQuantity: 50,
+        keyLevels: { otherLevels: [330.5] },
         short: {
-            openingDrive: { lastDefense: 10.2 },
+            openingDrive: { lastDefense: 328 },
             momentum: {
-                breakoutLevels: [154.45],
+                breakoutLevels: [328],
             },
         },
         long: {
-            openingDrive: { lastDefense: 11 },
-            momentum: {
-                breakoutLevels: [10.87],
-            }
         },
     },
     {
