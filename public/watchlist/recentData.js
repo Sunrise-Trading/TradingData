@@ -15,13 +15,13 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'GOOGL': {
+            'NFLX': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'XPEV': {
+            'WAL': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -40,13 +40,13 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'GOOGL': {
-                highQualityNews: 'lose search default',
+            'WAL': {
+                highQualityNews: 'deposit recovering',
                 longTargets: [],
                 shortTargets: [],
             },
-            'XPEV': {
-                highQualityNews: 'data',
+            'NFLX': {
+                highQualityNews: 'earnings',
                 longTargets: [],
                 shortTargets: [],
             },

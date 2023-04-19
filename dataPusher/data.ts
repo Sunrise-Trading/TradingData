@@ -1,6 +1,6 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA', 'GOOGL', 'XPEV'];
+export const stockSelections: string[] = ['TSLA', 'WAL', 'NFLX'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
@@ -13,6 +13,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             retracement: {
                 entryAreas: [
                     { priceLevel: 180.93, upperRoom: 0.25, lowerRoom: 0.25 },
+                    { priceLevel: 180, upperRoom: 0.25, lowerRoom: 0.25 },
                 ],
                 allowAgainstVwap: false,
                 lastDefense: 182,
