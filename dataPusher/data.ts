@@ -1,26 +1,25 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA', 'WAL', 'NFLX'];
+export const stockSelections: string[] = ['TSLA'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1726534, tradingSum: 310358832 },
+        vwapCorrection: { volumeSum: 4091860, tradingSum: 682650298 },
         dailyRange: 5,
         fixQuantity: 60,
-        keyLevels: { otherLevels: [180.93] },
-        long: {},
-        short: {
+        keyLevels: { otherLevels: [163.91] },
+        short: {},
+        long: {
             retracement: {
                 entryAreas: [
-                    { priceLevel: 180.93, upperRoom: 0.25, lowerRoom: 0.25 },
-                    { priceLevel: 180, upperRoom: 0.25, lowerRoom: 0.25 },
+                    { priceLevel: 165, upperRoom: 1.5, lowerRoom: 1.5 },
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 182,
+                lastDefense: 163.91,
             },
-            openingDrive: { lastDefense: 182 },
+            openingDrive: { lastDefense: 163.91 },
             momentum: {
-                breakoutLevels: [185.16],
+                breakoutLevels: [163.91],
             }
         },
     },
