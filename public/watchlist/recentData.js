@@ -15,19 +15,19 @@ window.TradingData = {
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'NFLX': {
+            'FRC': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'WAL': {
+            'GM': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
                 "Check whether it gap up/down above/below support/resistance": true,
             },
-            'SPY': {
+            'SPOT': {
                 "Read news carefully": true, "Review 1 minute chart": true,
                 "Review hourly chart": true, "Review daily chart": true,
                 "Review weekly chart ": true, "Draw nearest price levels": true,
@@ -40,17 +40,17 @@ window.TradingData = {
                 longTargets: [],
                 shortTargets: [],
             },
-            'WAL': {
+            'FRC': {
                 highQualityNews: 'deposit recovering',
                 longTargets: [],
                 shortTargets: [],
             },
-            'NFLX': {
+            'GM': {
                 highQualityNews: 'earnings',
                 longTargets: [],
                 shortTargets: [],
             },
-            'KRE': {
+            'SPOT': {
                 highQualityNews: 'big banks support regional banks',
                 longTargets: [],
                 shortTargets: [],
