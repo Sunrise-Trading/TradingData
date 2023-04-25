@@ -3,6 +3,7 @@ export interface TradingPlans {
     vwapCorrection: VwapCorrection,
     dailyRange: number,
     fixQuantity: number,
+    alwaysUseFixQuantity: boolean,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
