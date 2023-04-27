@@ -1,55 +1,65 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['FRC', 'SPOT', 'GM'];
+export const stockSelections: string[] = ['BA', 'FRC', 'MSFT', 'GOOGL'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'FRC',
-        vwapCorrection: { volumeSum: 4716172, tradingSum: 58236470 },
-        dailyRange: 3,
-        fixQuantity: 500,
+        vwapCorrection: { volumeSum: 13581148, tradingSum: 94845125 },
+        dailyRange: 2,
+        fixQuantity: 300,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [11.52] },
+        keyLevels: { otherLevels: [7.92] },
         short: {
+            openingDrive: { lastDefense: 7.5 },
             momentum: { breakoutLevels: [12.3] },
         },
-        long: {
-            openingDrive: { lastDefense: 11.75 },
-            momentum: {
-                breakoutLevels: [12.41],
-            }
-        },
+        long: {},
     },
     {
-        symbol: 'GM',
-        vwapCorrection: { volumeSum: 597963, tradingSum: 21060764 },
-        dailyRange: 1,
-        fixQuantity: 500,
+        symbol: 'BA',
+        vwapCorrection: { volumeSum: 322925, tradingSum: 67397333 },
+        dailyRange: 5,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [35.8] },
+        keyLevels: { otherLevels: [209.5] },
         short: {
-            openingDrive: { lastDefense: 35.5 },
-            momentum: { breakoutLevels: [35.3] },
+            openingDrive: { lastDefense: 209.5 },
+            momentum: { breakoutLevels: [209.5] },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 35.3, upperRoom: 0.15, lowerRoom: 0.15 },
+                    { priceLevel: 209.5, upperRoom: 0.2, lowerRoom: 1 }
                 ],
                 allowAgainstVwap: false,
-                lastDefense: 35.5,
+                lastDefense: 210,
             }
         },
         long: {},
     },
     {
-        symbol: 'SPOT',
-        vwapCorrection: { volumeSum: 200602, tradingSum: 27558684 },
-        dailyRange: 3.5,
+        symbol: 'MSFT',
+        vwapCorrection: { volumeSum: 1595620, tradingSum: 474060176 },
+        dailyRange: 6,
+        fixQuantity: 50,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [302] },
+        short: {
+            openingDrive: { lastDefense: 299 },
+        },
+        long: {
+            momentum: { breakoutLevels: [302] },
+        },
+    },
+    {
+        symbol: 'GOOGL',
+        vwapCorrection: { volumeSum: 923243, tradingSum: 95691364 },
+        dailyRange: 2.5,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [136.73] },
         short: {
-            openingDrive: { lastDefense: 142.48 },
         },
         long: {
+            openingDrive: { lastDefense: 103.5 },
             momentum: { breakoutLevels: [136.73] },
         },
     },
