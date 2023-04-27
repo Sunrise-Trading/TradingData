@@ -27,9 +27,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { breakoutLevels: [209.5] },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 242.27, upperRoom: 0.2, lowerRoom: 1 }
+                    { priceLevel: 242.27, upperRoom: 1, lowerRoom: 3 }
                 ],
-                allowAgainstVwap: false,
+                allowAgainstVwap: true,
                 lastDefense: 243,
             }
         },
