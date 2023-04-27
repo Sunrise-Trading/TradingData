@@ -1,6 +1,6 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['BA', 'FRC', 'MSFT', 'GOOGL'];
+export const stockSelections: string[] = ['META'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'FRC',
@@ -16,51 +16,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {},
     },
     {
-        symbol: 'BA',
-        vwapCorrection: { volumeSum: 322925, tradingSum: 67397333 },
-        dailyRange: 5,
-        fixQuantity: 50,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [209.5] },
-        short: {
-            openingDrive: { lastDefense: 209.5 },
-            momentum: { breakoutLevels: [209.5] },
-            retracement: {
-                entryAreas: [
-                    { priceLevel: 209.5, upperRoom: 0.2, lowerRoom: 1 }
-                ],
-                allowAgainstVwap: false,
-                lastDefense: 210,
-            }
-        },
-        long: {},
-    },
-    {
-        symbol: 'MSFT',
-        vwapCorrection: { volumeSum: 1595620, tradingSum: 474060176 },
+        symbol: 'META',
+        vwapCorrection: { volumeSum: 2003128, tradingSum: 473658613 },
         dailyRange: 6,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [302] },
+        keyLevels: { otherLevels: [236.15] },
         short: {
-            openingDrive: { lastDefense: 299 },
+            openingDrive: { lastDefense: 243 },
+            momentum: { breakoutLevels: [209.5] },
+            retracement: {
+                entryAreas: [
+                    { priceLevel: 242.27, upperRoom: 0.2, lowerRoom: 1 }
+                ],
+                allowAgainstVwap: false,
+                lastDefense: 243,
+            }
         },
         long: {
-            momentum: { breakoutLevels: [302] },
-        },
-    },
-    {
-        symbol: 'GOOGL',
-        vwapCorrection: { volumeSum: 923243, tradingSum: 95691364 },
-        dailyRange: 2.5,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [136.73] },
-        short: {
-        },
-        long: {
-            openingDrive: { lastDefense: 103.5 },
-            momentum: { breakoutLevels: [136.73] },
+            momentum: { breakoutLevels: [236.15] },
         },
     },
     {
