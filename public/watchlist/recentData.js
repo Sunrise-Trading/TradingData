@@ -8,55 +8,24 @@ window.TradingData = {
         'index': ['QQQ', 'SPY'],
         'futures': ['MESM23', 'MNQM23'],
         'checklistKeys': ["Read news carefully", "Review 1 minute chart", "Review hourly chart", "Review daily chart", "Review weekly chart ", "Draw nearest price levels", "Check whether it gap up/down above/below support/resistance"],
-        'checklist': {
-            'TSLA': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
-            },
-            'META': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
-            },
-            'GM': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
-            },
-            'SPOT': {
-                "Read news carefully": true, "Review 1 minute chart": true,
-                "Review hourly chart": true, "Review daily chart": true,
-                "Review weekly chart ": true, "Draw nearest price levels": true,
-                "Check whether it gap up/down above/below support/resistance": true,
-            },
-        },
         'StockCandidates': {
             'TSLA': {
-                highQualityNews: 'earnings',
                 longTargets: [],
                 shortTargets: [],
             },
             'FRC': {
-                highQualityNews: 'deposit recovering',
                 longTargets: [],
                 shortTargets: [],
             },
             'META': {
-                highQualityNews: 'earnings',
                 longTargets: [],
                 shortTargets: [],
             },
             'SPOT': {
-                highQualityNews: 'big banks support regional banks',
                 longTargets: [],
                 shortTargets: [],
             },
             'SPY': {
-                highQualityNews: 'data',
                 longTargets: [],
                 shortTargets: [],
             },
