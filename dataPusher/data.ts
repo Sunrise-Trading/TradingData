@@ -12,17 +12,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: {
                 lastDefense: 243,
-                targets: [],
+                targets: {
+                    priceLevels: [],
+                    rrr: [],
+                },
             },
             momentum: {
                 breakoutLevels: [209.5],
-                targets: [],
+                targets: {
+                    priceLevels: [],
+                    rrr: [],
+                },
             },
             retracement: {
                 entryAreas: [
                     {
                         priceArea: { priceLevel: 242.27, upperRoom: 1, lowerRoom: 3 },
-                        targets: [],
+                        targets: {
+                            priceLevels: [],
+                            rrr: [],
+                        },
                     }
                 ],
                 allowAgainstVwap: true,

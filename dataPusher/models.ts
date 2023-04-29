@@ -22,7 +22,7 @@ export interface keyLevels {
     otherLevels: number[];
 };
 export interface BasePlan {
-    targets: number[];
+    targets: ExitTargets;
 };
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
@@ -39,9 +39,12 @@ export interface RetracementPlan {
 };
 export interface RetracementArea {
     priceArea: PriceArea,
-    targets: number[],
+    targets: ExitTargets,
 };
-
+export interface ExitTargets {
+    priceLevels: number[],
+    rrr: number[],
+}
 export interface IndicatorArea {
     upperRoom: number,
     lowerRoom: number,
