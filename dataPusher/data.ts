@@ -3,19 +3,6 @@ import type * as TradingPlans from './models';
 export const stockSelections: string[] = ['META'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'FRC',
-        vwapCorrection: { volumeSum: 13581148, tradingSum: 94845125 },
-        dailyRange: 2,
-        fixQuantity: 300,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [7.92] },
-        short: {
-            openingDrive: { lastDefense: 7.5 },
-            momentum: { breakoutLevels: [12.3] },
-        },
-        long: {},
-    },
-    {
         symbol: 'META',
         vwapCorrection: { volumeSum: 2003128, tradingSum: 473658613 },
         dailyRange: 6,
@@ -23,19 +10,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [236.15] },
         short: {
-            openingDrive: { lastDefense: 243 },
-            momentum: { breakoutLevels: [209.5] },
+            openingDrive: {
+                lastDefense: 243,
+                targets: [],
+            },
+            momentum: {
+                breakoutLevels: [209.5],
+                targets: [],
+            },
             retracement: {
                 entryAreas: [
-                    { priceLevel: 242.27, upperRoom: 1, lowerRoom: 3 }
+                    {
+                        priceArea: { priceLevel: 242.27, upperRoom: 1, lowerRoom: 3 },
+                        targets: [],
+                    }
                 ],
                 allowAgainstVwap: true,
                 lastDefense: 243,
             }
         },
-        long: {
-            momentum: { breakoutLevels: [236.15] },
-        },
+        long: {},
     },
     {
         symbol: 'MESM23',

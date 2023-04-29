@@ -21,19 +21,27 @@ export interface SingleDirectionPlans {
 export interface keyLevels {
     otherLevels: number[];
 };
-export interface OpeningDrivePlan {
+export interface BasePlan {
+    targets: number[];
+};
+export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
 }
-export interface MomentumPlan {
+export interface MomentumPlan extends BasePlan {
     breakoutLevels: number[];
 };
 export interface RetracementPlan {
-    entryAreas: PriceArea[];
+    entryAreas: RetracementArea[];
     allowAgainstVwap: boolean;
     lastDefense: number,
     vwapArea?: IndicatorArea,
     openPriceArea?: IndicatorArea,
 };
+export interface RetracementArea {
+    priceArea: PriceArea,
+    targets: number[],
+};
+
 export interface IndicatorArea {
     upperRoom: number,
     lowerRoom: number,
