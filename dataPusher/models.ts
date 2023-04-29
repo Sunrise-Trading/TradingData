@@ -48,6 +48,7 @@ export interface ExitTargets {
 export interface IndicatorArea {
     upperRoom: number,
     lowerRoom: number,
+    targets: ExitTargets,
 };
 export interface PriceArea {
     priceLevel: number,
