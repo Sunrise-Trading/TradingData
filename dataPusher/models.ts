@@ -34,22 +34,17 @@ export interface RetracementPlan {
     entryAreas: RetracementArea[];
     allowAgainstVwap: boolean;
     lastDefense: number,
-    vwapArea?: IndicatorArea,
-    openPriceArea?: IndicatorArea,
+    vwapArea?: RetracementArea,
+    openPriceArea?: RetracementArea,
 };
 export interface RetracementArea {
     priceArea: PriceArea,
     targets: ExitTargets,
-};
+}
 export interface ExitTargets {
     priceLevels: number[],
     rrr: number[],
 }
-export interface IndicatorArea {
-    upperRoom: number,
-    lowerRoom: number,
-    targets: ExitTargets,
-};
 export interface PriceArea {
     priceLevel: number,
     upperRoom: number,
