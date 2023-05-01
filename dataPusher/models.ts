@@ -28,7 +28,6 @@ export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
 }
 export interface MomentumPlan extends BasePlan {
-    breakoutLevels: number[];
 };
 export interface RetracementPlan {
     entryAreas: RetracementArea[];

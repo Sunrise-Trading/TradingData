@@ -18,7 +18,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 },
             },
             momentum: {
-                breakoutLevels: [209.5],
                 targets: {
                     priceLevels: [],
                     rrr: [],
