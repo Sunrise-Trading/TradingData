@@ -1,7 +1,44 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['META'];
+export const stockSelections: string[] = ['JPM'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+    {
+        symbol: 'JPM',
+        vwapCorrection: { volumeSum: 459018, tradingSum: 65857695 },
+        dailyRange: 2.5,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [144.34] },
+        short: {
+            openingDrive: {
+                lastDefense: 144.34,
+                targets: {
+                    priceLevels: [142],
+                    rrr: [1.5],
+                }
+            },
+            momentum: {
+                targets: {
+                    priceLevels: [142],
+                    rrr: [1.5],
+                },
+            },
+            retracement: {
+                entryAreas: [
+                    {
+                        priceArea: { priceLevel: 145, upperRoom: 0.2, lowerRoom: 0.6 },
+                        targets: {
+                            priceLevels: [142],
+                            rrr: [1.5],
+                        }
+                    }
+                ],
+                allowAgainstVwap: false,
+                lastDefense: 145.2,
+            }
+        },
+        long: {}
+    },
     {
         symbol: 'META',
         vwapCorrection: { volumeSum: 2003128, tradingSum: 473658613 },
