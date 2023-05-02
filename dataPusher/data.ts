@@ -1,6 +1,6 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['TSLA', 'TLT'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
