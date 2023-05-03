@@ -1,19 +1,19 @@
 import type * as TradingPlans from './models';
 
-export const stockSelections: string[] = ['TSLA', 'TLT'];
+export const stockSelections: string[] = ['AMD', 'NVDA'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 497845, tradingSum: 80561275 },
-        dailyRange: 7,
-        fixQuantity: 100,
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 1237671, tradingSum: 103253376 },
+        dailyRange: 3,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [162.66] },
+        keyLevels: { otherLevels: [83.64, 83.76] },
         long: {
             openingDrive: {
-                lastDefense: 161.5,
+                lastDefense: 83,
                 targets: {
-                    priceLevels: [162.5],
+                    priceLevels: [83.76],
                     rrr: [1.5],
                 }
             },
@@ -23,45 +23,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                     rrr: [1.5],
                 },
             },
-            retracement: {
-                entryAreas: [
-                    {
-                        priceArea: { priceLevel: 160.84, upperRoom: 0.25, lowerRoom: 0.25 },
-                        targets: {
-                            priceLevels: [161.5],
-                            rrr: [1.5],
-                        }
-                    },
-                    {
-                        priceArea: { priceLevel: 161.62, upperRoom: 0.15, lowerRoom: 0.15 },
-                        targets: {
-                            priceLevels: [162.25, 162.5],
-                            rrr: [1.5],
-                        }
-                    }
-                ],
-                allowAgainstVwap: false,
-                lastDefense: 160.8,
-            }
         },
-        short: {}
-    },
-    {
-        symbol: 'TLT',
-        vwapCorrection: { volumeSum: 340093, tradingSum: 35389358 },
-        dailyRange: 1,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [104.42] },
         short: {
+            openingDrive: {
+                lastDefense: 83.76,
+                targets: {
+                    priceLevels: [83],
+                    rrr: [1.5],
+                }
+            },
             momentum: {
                 targets: {
-                    priceLevels: [],
+                    priceLevels: [142],
+                    rrr: [1.5],
+                },
+            },
+        }
+    },
+    {
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 147159, tradingSum: 41185931 },
+        dailyRange: 8,
+        fixQuantity: 50,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [280.83] },
+        short: {
+        },
+        long: {
+            openingDrive: {
+                lastDefense: 279.4,
+                targets: {
+                    priceLevels: [283.6],
                     rrr: [],
                 },
             },
-        },
-        long: {
             momentum: {
                 targets: {
                     priceLevels: [],
