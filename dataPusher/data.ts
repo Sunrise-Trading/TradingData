@@ -1,5 +1,6 @@
 import type * as TradingPlans from './models';
 
+export const activeProfileName: string = "momentumSimple";  // momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['PACW', 'SHOP'];
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {

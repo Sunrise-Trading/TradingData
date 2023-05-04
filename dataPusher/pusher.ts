@@ -24,6 +24,7 @@ const push = async (
     gbase.setDoc(docRef, {
         plans: plans,
         stockSelections: stockSelections,
+        activeProfileName: Data.activeProfileName,
         timestamp: now,
     });
 };
