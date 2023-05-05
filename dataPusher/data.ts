@@ -96,5 +96,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {},
         short: {},
+    },
+    {
+        symbol: 'USM23',
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 2,
+        fixQuantity: 3,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+        },
+        long: {},
+        short: {},
     }
 ];
