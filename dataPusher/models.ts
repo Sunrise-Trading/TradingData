@@ -17,6 +17,7 @@ export interface SingleDirectionPlans {
     openingDrive?: OpeningDrivePlan,
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
+    newsBreakout?: NewsBreakoutPlan,
 };
 export interface keyLevels {
     otherLevels: number[];
@@ -29,6 +30,8 @@ export interface OpeningDrivePlan extends BasePlan {
 }
 export interface MomentumPlan extends BasePlan {
 };
+export interface NewsBreakoutPlan extends BasePlan {
+}
 export interface RetracementPlan {
     entryAreas: RetracementArea[];
     allowAgainstVwap: boolean;
