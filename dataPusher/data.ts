@@ -1,75 +1,61 @@
 import type * as TradingPlans from './models';
 
-export const activeProfileName: string = "futures";  // momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['PACW', 'SHOP'];
+export const activeProfileName: string = "momentumSimple";  // momentumSimple, momentumEquities, momentumScalp, fomc;
+export const stockSelections: string[] = ['TSLA', 'CVNA'];
+const t1 = {
+    priceLevels: [163.68, 163.8, 164.7],
+    rrr: [1, 1.5]
+};
+const t2 = {
+    priceLevels: [],
+    rrr: [],
+};
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PACW',
-        vwapCorrection: { volumeSum: 1237671, tradingSum: 103253376 },
-        dailyRange: 3,
-        fixQuantity: 500,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 682221, tradingSum: 107782110 },
+        dailyRange: 6,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [83.64, 83.76] },
-        long: {},
-        short: {
+        keyLevels: { otherLevels: [162.95] },
+        long: {
             openingDrive: {
-                lastDefense: 4.22,
-                targets: {
-                    priceLevels: [83],
-                    rrr: [1.5],
-                }
+                lastDefense: 162.6,
+                targets: t1,
             },
             momentum: {
-                targets: {
-                    priceLevels: [142],
-                    rrr: [1.5],
-                },
-            },
-            retracement: {
-                entryAreas: [
-                    {
-                        priceArea: { priceLevel: 4.41, upperRoom: 0.1, lowerRoom: 0.1 },
-                        targets: { priceLevels: [], rrr: [] },
-                    },
-                    {
-                        priceArea: { priceLevel: 5, upperRoom: 0.1, lowerRoom: 0.1 },
-                        targets: { priceLevels: [], rrr: [] },
-                    },
-                ],
-                allowAgainstVwap: false,
-                lastDefense: 5.2,
+                targets: t1,
             }
+        },
+        short: {
         }
     },
     {
-        symbol: 'SHOP',
-        vwapCorrection: { volumeSum: 2705133, tradingSum: 145644760 },
-        dailyRange: 2,
-        fixQuantity: 200,
+        symbol: 'CNVA',
+        vwapCorrection: { volumeSum: 5086909, tradingSum: 52361320 },
+        dailyRange: 1,
+        fixQuantity: 500,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [54.67] },
+        keyLevels: { otherLevels: [10] },
         short: {
             openingDrive: {
-                lastDefense: 55,
+                lastDefense: 10.4,
                 targets: {
                     priceLevels: [],
                     rrr: [],
                 }
+            },
+            momentum: {
+                targets: t2,
             }
         },
         long: {
             openingDrive: {
-                lastDefense: 53.6,
-                targets: {
-                    priceLevels: [283.6],
-                    rrr: [],
-                },
+                lastDefense: 9.9,
+                targets: t2
             },
             momentum: {
-                targets: {
-                    priceLevels: [],
-                    rrr: [],
-                },
+                targets: t2
             },
         },
     },
@@ -89,6 +75,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MNQM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
+        fixQuantity: 3,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+        },
+        long: {},
+        short: {},
+    },
+    {
+        symbol: 'USM23',
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 2,
         fixQuantity: 3,
         alwaysUseFixQuantity: true,
         keyLevels: {
