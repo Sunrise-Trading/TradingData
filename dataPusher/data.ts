@@ -1,6 +1,6 @@
 import type * as TradingPlans from './models';
 
-export const activeProfileName: string = "momentumSimple";  // momentumSimple, momentumEquities, momentumScalp, fomc;
+export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA', 'CVNA'];
 const t1 = {
     priceLevels: [163.68, 163.8, 164.7],
