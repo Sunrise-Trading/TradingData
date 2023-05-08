@@ -28,7 +28,7 @@ const t1 = {
     priceLevels: [163.68, 163.8, 164.7],
     rrr: [1, 1.5]
 };
-const t2 = {
+const emptyTarget = {
     priceLevels: [],
     rrr: [],
 };
@@ -68,16 +68,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 }
             },
             momentum: {
-                targets: t2,
+                targets: emptyTarget,
             }
         },
         long: {
             openingDrive: {
                 lastDefense: 9.9,
-                targets: t2
+                targets: emptyTarget
             },
             momentum: {
-                targets: t2
+                targets: emptyTarget
             },
         },
     },
@@ -90,8 +90,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             otherLevels: [4000],
         },
-        long: {},
-        short: {},
+        long: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
+        short: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
     },
     {
         symbol: 'MNQM23',
@@ -102,8 +110,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             otherLevels: [4000],
         },
-        long: {},
-        short: {},
+        long: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
+        short: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
     },
     {
         symbol: 'USM23',
@@ -114,7 +130,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             otherLevels: [4000],
         },
-        long: {},
-        short: {},
+        long: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
+        short: {
+            newsBreakout: {
+                targets: emptyTarget,
+            }
+        },
     }
 ];
