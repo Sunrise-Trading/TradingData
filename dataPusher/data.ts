@@ -38,6 +38,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [172.4] },
         long: {
+            openingDrive: {
+                targets: presetTargets.scalp,
+                lastDefense: 172.9,
+            },
             momentum: {
                 targets: presetTargets.scalp,
             }
