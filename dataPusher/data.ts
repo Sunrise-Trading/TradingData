@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
-export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'CVNA'];
+export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
+export const stockSelections: string[] = ['TSLA', 'PACW'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
@@ -24,10 +24,7 @@ const presetTargets = {
         rrr: [1.8, 2, 2.5, 3, 6, 7, 8, 9,],
     },
 }
-const t1 = {
-    priceLevels: [163.68, 163.8, 164.7],
-    rrr: [1, 1.5]
-};
+
 const emptyTarget = {
     priceLevels: [],
     rrr: [],
@@ -35,49 +32,49 @@ const emptyTarget = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 682221, tradingSum: 107782110 },
+        vwapCorrection: { volumeSum: 1108363, tradingSum: 192077823 },
         dailyRange: 6,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [162.95] },
+        keyLevels: { otherLevels: [172.4] },
         long: {
+            momentum: {
+                targets: presetTargets.scalp,
+            }
+        },
+        short: {
             openingDrive: {
-                lastDefense: 162.6,
+                lastDefense: 173.67,
                 targets: presetTargets.scalp,
             },
             momentum: {
-                targets: t1,
+                targets: presetTargets.scalp,
             }
-        },
-        short: {
         }
     },
     {
-        symbol: 'CNVA',
-        vwapCorrection: { volumeSum: 5086909, tradingSum: 52361320 },
+        symbol: 'PACW',
+        vwapCorrection: { volumeSum: 9320237, tradingSum: 71333535 },
         dailyRange: 1,
         fixQuantity: 500,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [10] },
+        keyLevels: { otherLevels: [7.42] },
         short: {
             openingDrive: {
-                lastDefense: 10.4,
-                targets: {
-                    priceLevels: [],
-                    rrr: [],
-                }
+                lastDefense: 7.75,
+                targets: presetTargets.scalp,
             },
             momentum: {
-                targets: emptyTarget,
+                targets: presetTargets.scalp,
             }
         },
         long: {
             openingDrive: {
-                lastDefense: 9.9,
-                targets: emptyTarget
+                lastDefense: 7.42,
+                targets: presetTargets.scalp,
             },
             momentum: {
-                targets: emptyTarget
+                targets: presetTargets.scalp,
             },
         },
     },
