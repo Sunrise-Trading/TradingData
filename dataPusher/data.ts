@@ -118,7 +118,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'USM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
-        fixQuantity: 3,
+        fixQuantity: 2,
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
