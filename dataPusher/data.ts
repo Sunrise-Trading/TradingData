@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TWLO', 'UPST'];
+export const stockSelections: string[] = ['TWLO'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
