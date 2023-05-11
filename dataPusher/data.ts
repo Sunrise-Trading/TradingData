@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TWLO'];
+export const stockSelections: string[] = ['DIS', 'GOOGL'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
@@ -31,16 +31,16 @@ const emptyTarget = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TWLO',
-        vwapCorrection: { volumeSum: 611864, tradingSum: 28157494 },
+        symbol: 'DIS',
+        vwapCorrection: { volumeSum: 552180, tradingSum: 52777878 },
         dailyRange: 2.5,
         fixQuantity: 300,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [47.8] },
+        keyLevels: { otherLevels: [96.46] },
         long: {},
         short: {
             openingDrive: {
-                lastDefense: 47,
+                lastDefense: 96.46,
                 targets: presetTargets.breakeven,
             },
             momentum: {
@@ -49,15 +49,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'UPST',
-        vwapCorrection: { volumeSum: 1272533, tradingSum: 24850427 },
-        dailyRange: 1,
-        fixQuantity: 500,
+        symbol: 'GOOGL',
+        vwapCorrection: { volumeSum: 1061021, tradingSum: 120896102 },
+        dailyRange: 3,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [7.42] },
+        keyLevels: { otherLevels: [113.85] },
         short: {
             openingDrive: {
-                lastDefense: 20,
+                lastDefense: 114.8,
                 targets: presetTargets.scalp,
             },
             momentum: {
@@ -65,10 +65,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         long: {
-            openingDrive: {
-                lastDefense: 19,
-                targets: presetTargets.scalp,
-            },
             momentum: {
                 targets: presetTargets.scalp,
             }
@@ -78,7 +74,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MESM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        fixQuantity: 5,
+        fixQuantity: 3,
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
@@ -98,7 +94,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MNQM23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        fixQuantity: 5,
+        fixQuantity: 3,
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
