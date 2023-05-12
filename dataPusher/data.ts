@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['DIS', 'GOOGL'];
+export const stockSelections: string[] = ['TSLA'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
@@ -31,20 +31,20 @@ const emptyTarget = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DIS',
-        vwapCorrection: { volumeSum: 552180, tradingSum: 52777878 },
-        dailyRange: 2.5,
-        fixQuantity: 300,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 2171634, tradingSum: 381547107 },
+        dailyRange: 7,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [96.46] },
-        long: {},
-        short: {
+        keyLevels: { otherLevels: [173.57] },
+        short: {},
+        long: {
             openingDrive: {
-                lastDefense: 96.46,
-                targets: presetTargets.breakeven,
+                lastDefense: 175.25,
+                targets: presetTargets.r2,
             },
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: presetTargets.r2,
             }
         }
     },
