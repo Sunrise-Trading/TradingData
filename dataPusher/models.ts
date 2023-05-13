@@ -42,6 +42,7 @@ export interface RetracementPlan {
 export interface RetracementArea {
     priceArea: PriceArea,
     targets: ExitTargets,
+    stopPrice: number,
 }
 export interface ExitTargets {
     priceLevels: number[],
