@@ -34,7 +34,6 @@ export interface NewsBreakoutPlan extends BasePlan {
 }
 export interface RetracementPlan {
     entryAreas: RetracementArea[];
-    allowAgainstVwap: boolean;
     lastDefense: number,
     vwapArea?: RetracementArea,
     openPriceArea?: RetracementArea,
