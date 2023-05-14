@@ -41,6 +41,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             openingDrive: {
                 lastDefense: 175.25,
+                stopForAgainstVwapEntry: 174.6,
                 targets: presetTargets.r2,
             },
             momentum: {
@@ -58,6 +59,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: {
                 lastDefense: 114.8,
+                stopForAgainstVwapEntry: 115.6,
                 targets: presetTargets.scalp,
             },
             momentum: {
