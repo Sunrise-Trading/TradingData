@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['GOOGL'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
@@ -9,7 +9,7 @@ const presetTargets = {
     },
     'breakeven': {
         priceLevels: [],
-        rrr: [0.85, 1, 1, 1, 2, 2, 2, 2]
+        rrr: [0.85, 1, 1, 1, 2, 2, 3, 3]
     },
     'r2': {
         priceLevels: [],
@@ -32,13 +32,12 @@ const emptyTarget = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 2171634, tradingSum: 381547107 },
-        dailyRange: 7,
+        vwapCorrection: { volumeSum: 728028, tradingSum: 122353091 },
+        dailyRange: 6,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [173.57] },
-        short: {},
-        long: {
+        keyLevels: { otherLevels: [167.23] },
+        short: {
             openingDrive: {
                 lastDefense: 175.25,
                 stopForAgainstVwapEntry: 174.6,
@@ -47,29 +46,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: {
                 targets: presetTargets.r2,
             }
+        },
+        long: {
         }
     },
     {
         symbol: 'GOOGL',
-        vwapCorrection: { volumeSum: 1061021, tradingSum: 120896102 },
+        vwapCorrection: { volumeSum: 232687, tradingSum: 27132374 },
         dailyRange: 3,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [113.85] },
+        keyLevels: { otherLevels: [116.11] },
         short: {
             openingDrive: {
-                lastDefense: 114.8,
-                stopForAgainstVwapEntry: 115.6,
-                targets: presetTargets.scalp,
+                lastDefense: 116.8,
+                stopForAgainstVwapEntry: 117.3,
+                targets: presetTargets.breakeven,
             },
             momentum: {
-                targets: presetTargets.scalp,
+                targets: presetTargets.breakeven,
             }
         },
         long: {
-            momentum: {
-                targets: presetTargets.scalp,
-            }
         },
     },
     {
