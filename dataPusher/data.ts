@@ -38,6 +38,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [177.63, 178.5] },
         short: {
+            openingDrive: {
+                lastDefense: 178,
+                stopForAgainstVwapEntry: 178.12,
+                targets: presetTargets.breakeven,
+            },
+            momentum: {
+                targets: presetTargets.breakeven,
+            }
         },
         long: {
             openingDrive: {
@@ -68,6 +76,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         short: {
+
         },
     },
     {
