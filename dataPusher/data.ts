@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'GOOGL'];
+export const stockSelections: string[] = ['TSLA', 'FL'];
 const presetTargets = {
     'scalp': {
         priceLevels: [],
@@ -32,42 +32,60 @@ const emptyTarget = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 728028, tradingSum: 122353091 },
+        vwapCorrection: { volumeSum: 727130, tradingSum: 129177060 },
         dailyRange: 6,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [167.23] },
+        keyLevels: { otherLevels: [177.63, 178.5] },
         short: {
-            openingDrive: {
-                lastDefense: 175.25,
-                stopForAgainstVwapEntry: 174.6,
-                targets: presetTargets.r2,
-            },
-            momentum: {
-                targets: presetTargets.r2,
-            }
         },
         long: {
+            openingDrive: {
+                lastDefense: 177.4,
+                stopForAgainstVwapEntry: 176.9,
+                targets: presetTargets.breakeven,
+            },
+            momentum: {
+                targets: presetTargets.breakeven,
+            }
         }
     },
     {
-        symbol: 'GOOGL',
-        vwapCorrection: { volumeSum: 232687, tradingSum: 27132374 },
-        dailyRange: 3,
+        symbol: 'FL',
+        vwapCorrection: { volumeSum: 1739950, tradingSum: 54532111 },
+        dailyRange: 2,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [116.11] },
-        short: {
+        keyLevels: { otherLevels: [29.79, 30] },
+        long: {
             openingDrive: {
-                lastDefense: 116.8,
-                stopForAgainstVwapEntry: 117.3,
+                lastDefense: 30,
+                stopForAgainstVwapEntry: 29.5,
                 targets: presetTargets.breakeven,
             },
             momentum: {
                 targets: presetTargets.breakeven,
             }
         },
+        short: {
+        },
+    },
+    {
+        symbol: 'WMT',
+        vwapCorrection: { volumeSum: 516439, tradingSum: 78483352 },
+        dailyRange: 4,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [153.63] },
+        short: {
+            momentum: {
+                targets: presetTargets.breakeven,
+            }
+        },
         long: {
+            momentum: {
+                targets: presetTargets.breakeven,
+            }
         },
     },
     {
