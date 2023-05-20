@@ -47,6 +47,7 @@ export interface RetracementArea {
 export interface ExitTargets {
     priceLevels: number[],
     rrr: number[],
+    dailyRanges: number[],
 }
 export interface PriceArea {
     priceLevel: number,

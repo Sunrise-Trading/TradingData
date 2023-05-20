@@ -2,33 +2,36 @@ import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA', 'FL'];
+const emptyNumbers: number[] = [];
+const emptyTarget = {
+    priceLevels: emptyNumbers,
+    rrr: emptyNumbers,
+    dailyRanges: emptyNumbers,
+};
 const presetTargets = {
     'scalp': {
-        priceLevels: [],
-        rrr: [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.5, 2]
+        ...emptyTarget,
+        rrr: [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.5, 2],
     },
     'breakeven': {
-        priceLevels: [],
+        ...emptyTarget,
         rrr: [0.85, 1, 1, 1, 2, 2, 3, 3]
     },
     'r2': {
-        priceLevels: [],
+        ...emptyTarget,
         rrr: [1.5, 1.8, 1.9, 2, 2, 2.1, 2.2, 3],
     },
     'doubleTop': {
-        priceLevels: [],
+        ...emptyTarget,
         rrr: [1.5, 1.8, 2, 2.2, 5, 5, 5, 5],
     },
     'swing': {
-        priceLevels: [],
+        ...emptyTarget,
         rrr: [1.8, 2, 2.5, 3, 6, 7, 8, 9,],
     },
 }
 
-const emptyTarget = {
-    priceLevels: [],
-    rrr: [],
-};
+
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
