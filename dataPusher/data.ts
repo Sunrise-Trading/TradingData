@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'FL'];
+export const stockSelections: string[] = ['MU', 'NVDA'];
 const emptyNumbers: number[] = [];
 const emptyTarget = {
     priceLevels: emptyNumbers,
@@ -62,41 +62,59 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'FL',
-        vwapCorrection: { volumeSum: 1739950, tradingSum: 54532111 },
+        symbol: 'MU',
+        vwapCorrection: { volumeSum: 1378557, tradingSum: 90053619 },
         dailyRange: 2,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [29.79, 30] },
+        keyLevels: { otherLevels: [66.43, 65.08] },
         long: {
             openingDrive: {
-                lastDefense: 30,
-                stopForAgainstVwapEntry: 29.5,
-                targets: presetTargets.breakeven,
+                lastDefense: 65,
+                stopForAgainstVwapEntry: 64.92,
+                targets: presetTargets.scalp,
             },
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: presetTargets.scalp,
             }
         },
         short: {
+            openingDrive: {
+                lastDefense: 67,
+                stopForAgainstVwapEntry: 67.5,
+                targets: presetTargets.scalp,
+            },
+            momentum: {
+                targets: presetTargets.scalp,
+            }
 
         },
     },
     {
-        symbol: 'WMT',
-        vwapCorrection: { volumeSum: 516439, tradingSum: 78483352 },
-        dailyRange: 4,
-        fixQuantity: 200,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 327577, tradingSum: 101529617 },
+        dailyRange: 6,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [153.63] },
+        keyLevels: { otherLevels: [309.16] },
         short: {
+            openingDrive: {
+                lastDefense: 310,
+                stopForAgainstVwapEntry: 311,
+                targets: presetTargets.scalp,
+            },
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: presetTargets.scalp,
             }
         },
         long: {
+            openingDrive: {
+                lastDefense: 310,
+                stopForAgainstVwapEntry: 309.35,
+                targets: presetTargets.scalp,
+            },
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: presetTargets.scalp,
             }
         },
     },
