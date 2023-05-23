@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['TSLA', 'SPY', 'QQQ'];
 const emptyNumbers: number[] = [];
 const emptyTarget = {
     priceLevels: emptyNumbers,
@@ -65,13 +65,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         long: {
+            momentum: {
+                targets: presetTargets.breakeven,
+            },
         }
     },
     {
         symbol: 'SPY',
         vwapCorrection: { volumeSum: 596534, tradingSum: 249397109 },
-        dailyRange: 2,
-        fixQuantity: 200,
+        dailyRange: 4,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [66.43, 65.08] },
         long: {
@@ -88,29 +91,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 327577, tradingSum: 101529617 },
-        dailyRange: 6,
+        vwapCorrection: { volumeSum: 667247, tradingSum: 224817989 },
+        dailyRange: 4,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [309.16] },
         short: {
-            openingDrive: {
-                lastDefense: 310,
-                stopForAgainstVwapEntry: 311,
-                targets: presetTargets.scalp,
-            },
             momentum: {
-                targets: presetTargets.scalp,
+                targets: presetTargets.r2,
             }
         },
         long: {
-            openingDrive: {
-                lastDefense: 310,
-                stopForAgainstVwapEntry: 309.35,
-                targets: presetTargets.scalp,
-            },
             momentum: {
-                targets: presetTargets.scalp,
+                targets: presetTargets.r2,
             }
         },
     },
