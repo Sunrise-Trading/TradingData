@@ -1,7 +1,7 @@
 import type * as TradingPlans from './models';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['MU', 'NVDA'];
+export const stockSelections: string[] = ['TSLA'];
 const emptyNumbers: number[] = [];
 const emptyTarget = {
     priceLevels: emptyNumbers,
@@ -35,63 +35,59 @@ const presetTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 727130, tradingSum: 129177060 },
+        vwapCorrection: { volumeSum: 825523, tradingSum: 154882485 },
         dailyRange: 6,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [177.63, 178.5] },
+        keyLevels: { otherLevels: [188] },
         short: {
             openingDrive: {
-                lastDefense: 178,
-                stopForAgainstVwapEntry: 178.12,
+                lastDefense: 188,
+                stopForAgainstVwapEntry: 188.6,
                 targets: presetTargets.breakeven,
             },
             momentum: {
                 targets: presetTargets.breakeven,
+            },
+            retracement: {
+                entryAreas: [
+                    {
+                        priceArea: {
+                            priceLevel: 188,
+                            upperRoom: 0.2,
+                            lowerRoom: 0.5
+                        },
+                        targets: presetTargets.breakeven,
+                        stopPrice: 188.6,
+                    },
+                ],
+                lastDefense: 188,
             }
         },
         long: {
-            openingDrive: {
-                lastDefense: 177.4,
-                stopForAgainstVwapEntry: 176.9,
-                targets: presetTargets.breakeven,
-            },
-            momentum: {
-                targets: presetTargets.breakeven,
-            }
         }
     },
     {
-        symbol: 'MU',
-        vwapCorrection: { volumeSum: 1378557, tradingSum: 90053619 },
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 596534, tradingSum: 249397109 },
         dailyRange: 2,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [66.43, 65.08] },
         long: {
-            openingDrive: {
-                lastDefense: 65,
-                stopForAgainstVwapEntry: 64.92,
-                targets: presetTargets.scalp,
-            },
             momentum: {
-                targets: presetTargets.scalp,
+                targets: presetTargets.r2,
             }
         },
         short: {
-            openingDrive: {
-                lastDefense: 67,
-                stopForAgainstVwapEntry: 67.5,
-                targets: presetTargets.scalp,
-            },
             momentum: {
-                targets: presetTargets.scalp,
+                targets: presetTargets.r2,
             }
 
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'QQQ',
         vwapCorrection: { volumeSum: 327577, tradingSum: 101529617 },
         dailyRange: 6,
         fixQuantity: 100,
