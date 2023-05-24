@@ -1,35 +1,8 @@
-import type * as TradingPlans from './models';
-
+import * as TradingPlans from './models';
+import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA', 'SPY', 'QQQ'];
-const emptyNumbers: number[] = [];
-const emptyTarget = {
-    priceLevels: emptyNumbers,
-    rrr: emptyNumbers,
-    dailyRanges: emptyNumbers,
-};
-const presetTargets = {
-    'scalp': {
-        ...emptyTarget,
-        rrr: [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.5, 2],
-    },
-    'breakeven': {
-        ...emptyTarget,
-        rrr: [0.85, 1, 1, 1, 2, 2, 3, 3]
-    },
-    'r2': {
-        ...emptyTarget,
-        rrr: [1.5, 1.8, 1.9, 2, 2, 2.1, 2.2, 3],
-    },
-    'doubleTop': {
-        ...emptyTarget,
-        rrr: [1.5, 1.8, 2, 2.2, 5, 5, 5, 5],
-    },
-    'swing': {
-        ...emptyTarget,
-        rrr: [1.8, 2, 2.5, 3, 6, 7, 8, 9,],
-    },
-}
+
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -44,10 +17,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 lastDefense: 188,
                 stopForAgainstVwapEntry: 188.6,
-                targets: presetTargets.breakeven,
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
             },
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
             },
             retracement: {
                 entryAreas: [
@@ -57,8 +32,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                             upperRoom: 0.2,
                             lowerRoom: 0.5
                         },
-                        targets: presetTargets.breakeven,
+                        targets: Constants.presetTargets.breakeven,
                         stopPrice: 188.6,
+                        setupQuality: Constants.scalp,
                     },
                 ],
                 lastDefense: 188,
@@ -66,7 +42,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             momentum: {
-                targets: presetTargets.breakeven,
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
             },
         }
     },
@@ -79,12 +56,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: { otherLevels: [66.43, 65.08] },
         long: {
             momentum: {
-                targets: presetTargets.r2,
+                targets: Constants.presetTargets.r2,
+                setupQuality: Constants.scalp,
             }
         },
         short: {
             momentum: {
-                targets: presetTargets.r2,
+                targets: Constants.presetTargets.r2,
+                setupQuality: Constants.scalp,
             }
 
         },
@@ -98,12 +77,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: { otherLevels: [309.16] },
         short: {
             momentum: {
-                targets: presetTargets.r2,
+                targets: Constants.presetTargets.r2,
+                setupQuality: Constants.scalp,
             }
         },
         long: {
             momentum: {
-                targets: presetTargets.r2,
+                targets: Constants.presetTargets.r2,
+                setupQuality: Constants.scalp,
             }
         },
     },
@@ -118,12 +99,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
         short: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
     },
@@ -138,12 +121,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
         short: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
     },
@@ -158,12 +143,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
         short: {
             newsBreakout: {
-                targets: emptyTarget,
+                targets: Constants.emptyTarget,
+                setupQuality: Constants.scalp,
             }
         },
     }

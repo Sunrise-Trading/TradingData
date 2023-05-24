@@ -24,6 +24,7 @@ export interface keyLevels {
 };
 export interface BasePlan {
     targets: ExitTargets;
+    setupQuality: SetupQuality;
 };
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
@@ -39,9 +40,8 @@ export interface RetracementPlan {
     vwapArea?: RetracementArea,
     openPriceArea?: RetracementArea,
 };
-export interface RetracementArea {
+export interface RetracementArea extends BasePlan {
     priceArea: PriceArea,
-    targets: ExitTargets,
     stopPrice: number,
 }
 export interface ExitTargets {
@@ -54,3 +54,10 @@ export interface PriceArea {
     upperRoom: number,
     lowerRoom: number,
 }
+
+export enum SetupQuality {
+    Scalp = "Scalp",
+    DayTrade = "DayTrade",
+    HoldToDayClose = "HoldToDayClose",
+    Swing = "Swing",
+};
