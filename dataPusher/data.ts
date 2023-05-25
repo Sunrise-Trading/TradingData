@@ -1,79 +1,66 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
-export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'PANW', 'SPY', 'QQQ'];
+export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
+export const stockSelections: string[] = ['NVDA', 'AMD'];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 980072, tradingSum: 179483547 },
-        dailyRange: 6,
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 1871147, tradingSum: 221047402 },
+        dailyRange: 5,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [183.8] },
+        keyLevels: { otherLevels: [120] },
         short: {
+            openingDrive: {
+                lastDefense: 118.2,
+                stopForAgainstVwapEntry: 118.6,
+                targets: Constants.presetTargets.r2,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+            },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: Constants.scalp,
             },
         },
         long: {
-            retracement: {
-                entryAreas: [
-                    {
-                        priceArea: {
-                            priceLevel: 182,
-                            upperRoom: 1,
-                            lowerRoom: 0.1
-                        },
-                        targets: Constants.presetTargets.breakeven,
-                        stopPrice: 181.5,
-                        setupQuality: Constants.scalp,
-                    },
-                ],
-                lastDefense: 182,
-            },
-            openingDrive: {
-                lastDefense: 182,
-                stopForAgainstVwapEntry: 181.5,
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: Constants.scalp,
-            },
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: Constants.scalp,
-            },
         }
     },
     {
-        symbol: 'PANW',
-        vwapCorrection: { volumeSum: 76093, tradingSum: 15111539 },
-        dailyRange: 4,
-        fixQuantity: 100,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 5159065, tradingSum: 2019735158 },
+        dailyRange: 15,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [200] },
+        keyLevels: { otherLevels: [400, 390, 395] },
         long: {
-        },
-        short: {
+            openingDrive: {
+                targets: Constants.presetTargets.doubleTop,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+                lastDefense: 390,
+                stopForAgainstVwapEntry: 388,
+            },
             momentum: {
-                targets: Constants.presetTargets.r2,
-                setupQuality: Constants.scalp,
+                targets: Constants.presetTargets.doubleTop,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
             },
             retracement: {
                 entryAreas: [
                     {
                         priceArea: {
-                            priceLevel: 200,
-                            upperRoom: 0.5,
-                            lowerRoom: 0.5
+                            priceLevel: 390,
+                            upperRoom: 1,
+                            lowerRoom: 1,
                         },
                         targets: Constants.presetTargets.breakeven,
                         stopPrice: 202,
-                        setupQuality: Constants.scalp,
+                        setupQuality: TradingPlans.SetupQuality.DayTrade,
                     },
                 ],
-                lastDefense: 201,
+                lastDefense: 389,
             },
+        },
+        short: {
         },
     },
     {
