@@ -1,6 +1,6 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
+export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA', 'PANW', 'SPY', 'QQQ'];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
