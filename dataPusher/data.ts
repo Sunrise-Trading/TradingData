@@ -24,6 +24,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            momentum: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
+            },
         }
     },
     {
@@ -53,7 +57,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                             lowerRoom: 1,
                         },
                         targets: Constants.presetTargets.breakeven,
-                        stopPrice: 202,
+                        stopPrice: 388,
                         setupQuality: TradingPlans.SetupQuality.DayTrade,
                     },
                 ],
@@ -61,6 +65,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            openingDrive: {
+                lastDefense: 393,
+                stopForAgainstVwapEntry: 394,
+                targets: Constants.presetTargets.r2,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+            },
+            momentum: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
+            },
         },
     },
     {
