@@ -1,20 +1,20 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['NVDA', 'AMD'];
+export const stockSelections: string[] = ['PDD', 'MRVL'];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 1871147, tradingSum: 221047402 },
-        dailyRange: 5,
-        fixQuantity: 100,
+        symbol: 'PDD',
+        vwapCorrection: { volumeSum: 1314375, tradingSum: 87701251 },
+        dailyRange: 3,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [120] },
+        keyLevels: { otherLevels: [70] },
         short: {
             openingDrive: {
-                lastDefense: 118.2,
-                stopForAgainstVwapEntry: 118.6,
+                lastDefense: 69.4,
+                stopForAgainstVwapEntry: 69.4,
                 targets: Constants.presetTargets.r2,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
             },
@@ -31,43 +31,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 5159065, tradingSum: 2019735158 },
-        dailyRange: 15,
-        fixQuantity: 50,
+        symbol: 'MRVL',
+        vwapCorrection: { volumeSum: 964587, tradingSum: 56148315 },
+        dailyRange: 1.5,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [400, 390, 395] },
+        keyLevels: { otherLevels: [58] },
         long: {
             openingDrive: {
-                targets: Constants.presetTargets.doubleTop,
+                lastDefense: 58,
+                stopForAgainstVwapEntry: 57.5,
+                targets: Constants.presetTargets.r2,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 390,
-                stopForAgainstVwapEntry: 388,
             },
             momentum: {
-                targets: Constants.presetTargets.doubleTop,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-            },
-            retracement: {
-                entryAreas: [
-                    {
-                        priceArea: {
-                            priceLevel: 390,
-                            upperRoom: 1,
-                            lowerRoom: 1,
-                        },
-                        targets: Constants.presetTargets.breakeven,
-                        stopPrice: 388,
-                        setupQuality: TradingPlans.SetupQuality.DayTrade,
-                    },
-                ],
-                lastDefense: 389,
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
             },
         },
         short: {
             openingDrive: {
-                lastDefense: 393,
-                stopForAgainstVwapEntry: 394,
+                lastDefense: 58.5,
+                stopForAgainstVwapEntry: 58.6,
                 targets: Constants.presetTargets.r2,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
             },
