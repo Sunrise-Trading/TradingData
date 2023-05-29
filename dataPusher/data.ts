@@ -1,6 +1,6 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
+export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['PDD', 'MRVL'];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -148,7 +148,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'USM23',
+        symbol: 'USU23',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
         fixQuantity: 2,

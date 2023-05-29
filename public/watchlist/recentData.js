@@ -5,6 +5,6 @@ window.TradingData = {
     },
     'StockSelection': {
         'index': ['QQQ', 'SPY'],
-        'futures': ['MESM23', 'MNQM23', 'USM23'],
+        'futures': ['MESM23', 'MNQM23', 'USU23'],
     }
 };
