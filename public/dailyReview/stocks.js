@@ -20,11 +20,11 @@ let stocks = [
     /* big tech */
     'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'GOOGL',
     /* chips */
-    'NVDA', 'AMD', 'MU', 'INTC',
+    'NVDA', 'AMD', 'AVGO', 'MU', 'INTC',
     /* finance */
     'JPM', 'BAC', 'SCHW',
     /* regional banks */
-    'KRE', 'FRC',
+    'KRE', 'FRC', 'WAL',
     /* gig economy */
     'UBER', 'LYFT', 'DASH', 'ABNB',
     /* housing */
