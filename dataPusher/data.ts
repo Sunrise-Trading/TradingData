@@ -93,7 +93,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'MESM23',
+        symbol: 'MES',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 3,
@@ -115,7 +115,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'MNQM23',
+        symbol: 'MNQ',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 3,
@@ -137,7 +137,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'USU23',
+        symbol: 'US',
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
         fixQuantity: 2,
