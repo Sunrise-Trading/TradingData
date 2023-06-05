@@ -1,7 +1,7 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'AAPL'];
+export const stockSelections: string[] = ['TSLA', 'AAPL', 'PANW'];
 const tslaTargets = {
     priceLevels: [],
     rrr: [0.85, 1, 1.5, 2],
@@ -61,12 +61,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 311879, tradingSum: 37842951 },
-        dailyRange: 4,
+        symbol: 'PANW',
+        vwapCorrection: { volumeSum: 177132, tradingSum: 404822845 },
+        dailyRange: 6,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [121.7] },
+        keyLevels: { otherLevels: [226] },
         long: {
         },
         short: {
