@@ -1,16 +1,16 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'AI', 'NVDA'];
+export const stockSelections: string[] = ['TSLA', 'NVDA', 'AMD'];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 632626, tradingSum: 126012945 },
+        vwapCorrection: { volumeSum: 1307526, tradingSum: 274999521 },
         dailyRange: 6,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [200] },
+        keyLevels: { otherLevels: [209.8] },
         short: {
             momentum: {
                 targets: Constants.presetTargets.breakeven,
@@ -19,9 +19,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 199.8,
-                stopForAgainstVwapEntry: 200.5,
-            }
+                lastDefense: 210.4,
+                stopForAgainstVwapEntry: 210.57,
+            },
         },
         long: {
             momentum: {
@@ -31,30 +31,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 199,
-                stopForAgainstVwapEntry: 198.8,
-            }
+                lastDefense: 210,
+                stopForAgainstVwapEntry: 209,
+            },
         }
     },
     {
         symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 450291, tradingSum: 177636481 },
-        dailyRange: 10,
-        fixQuantity: 100,
+        vwapCorrection: { volumeSum: 467329, tradingSum: 188212491 },
+        dailyRange: 15,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [395] },
+        keyLevels: { otherLevels: [400.5, 400] },
         long: {
-            retracement: {
-                entryAreas: [
-                    {
-                        priceArea: { priceLevel: 40, upperRoom: 0.3, lowerRoom: 0.3 },
-                        stopPrice: 39.5,
-                        targets: Constants.presetTargets.breakeven,
-                        setupQuality: TradingPlans.SetupQuality.DayTrade,
-                    },
-                ],
-                lastDefense: 39.9,
-            }
         },
         short: {
             momentum: {
@@ -64,12 +53,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AI',
-        vwapCorrection: { volumeSum: 2356619, tradingSum: 100149904 },
-        dailyRange: 3,
-        fixQuantity: 200,
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 311879, tradingSum: 37842951 },
+        dailyRange: 4,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [40] },
+        keyLevels: { otherLevels: [121.7] },
+        long: {
+        },
+        short: {
+            momentum: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+            }
+        },
+    },
+    {
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 1076660, tradingSum: 450628630 },
+        dailyRange: 5,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [417.78] },
         long: {
             momentum: {
                 targets: Constants.presetTargets.breakeven,
@@ -80,22 +85,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-            },
-            openingDrive: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 42.8,
-                stopForAgainstVwapEntry: 43
             },
         },
     },
     {
         symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 869619, tradingSum: 288766437 },
+        vwapCorrection: { volumeSum: 800327, tradingSum: 278339896 },
         dailyRange: 4,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [309.16] },
+        keyLevels: { otherLevels: [348.3] },
         short: {
             momentum: {
                 targets: Constants.presetTargets.r2,
