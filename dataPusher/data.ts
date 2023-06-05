@@ -1,16 +1,20 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'NVDA', 'AMD'];
-
+export const stockSelections: string[] = ['TSLA', 'AAPL'];
+const tslaTargets = {
+    priceLevels: [],
+    rrr: [0.85, 1, 1.5, 2],
+    dailyRanges: [3, 3.5],
+};
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1307526, tradingSum: 274999521 },
-        dailyRange: 6,
+        vwapCorrection: { volumeSum: 1256700, tradingSum: 272727535 },
+        dailyRange: 7,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [209.8] },
+        keyLevels: { otherLevels: [217.65] },
         short: {
             momentum: {
                 targets: Constants.presetTargets.breakeven,
@@ -19,31 +23,35 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 210.4,
-                stopForAgainstVwapEntry: 210.57,
+                lastDefense: 218,
+                stopForAgainstVwapEntry: 218,
             },
         },
         long: {
             momentum: {
-                targets: Constants.presetTargets.breakeven,
+                targets: tslaTargets,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
             },
             openingDrive: {
-                targets: Constants.presetTargets.breakeven,
+                targets: tslaTargets,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 210,
-                stopForAgainstVwapEntry: 209,
+                lastDefense: 216.9,
+                stopForAgainstVwapEntry: 215.98,
             },
         }
     },
     {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 467329, tradingSum: 188212491 },
-        dailyRange: 15,
-        fixQuantity: 50,
+        symbol: 'AAPL',
+        vwapCorrection: { volumeSum: 648418, tradingSum: 118313717 },
+        dailyRange: 3,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [400.5, 400] },
+        keyLevels: { otherLevels: [182.94] },
         long: {
+            momentum: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+            }
         },
         short: {
             momentum: {
