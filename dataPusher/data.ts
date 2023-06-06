@@ -1,53 +1,45 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'AAPL', 'PANW'];
-const tslaTargets = {
-    priceLevels: [],
-    rrr: [0.85, 1, 1.5, 2],
-    dailyRanges: [3, 3.5],
-};
+export const stockSelections: string[] = ['AAPL', 'U', 'GTLB'];
+
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1256700, tradingSum: 272727535 },
-        dailyRange: 7,
-        fixQuantity: 100,
+        symbol: 'AAPL',
+        vwapCorrection: { volumeSum: 444956, tradingSum: 79522653 },
+        dailyRange: 3,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [217.65] },
+        keyLevels: { otherLevels: [181.8] },
         short: {
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-            },
-            openingDrive: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 218,
-                stopForAgainstVwapEntry: 218,
-            },
         },
         long: {
             momentum: {
-                targets: tslaTargets,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
             },
             openingDrive: {
-                targets: tslaTargets,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 216.9,
-                stopForAgainstVwapEntry: 215.98,
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 179.21,
+                stopForAgainstVwapEntry: 178.88,
             },
         }
     },
     {
-        symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 648418, tradingSum: 118313717 },
+        symbol: 'U',
+        vwapCorrection: { volumeSum: 987063, tradingSum: 37181035 },
         dailyRange: 3,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [182.94] },
+        keyLevels: { otherLevels: [36.92] },
         long: {
+            openingDrive: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: TradingPlans.SetupQuality.DayTrade,
+                lastDefense: 37,
+                stopForAgainstVwapEntry: 36.92,
+            },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
@@ -61,12 +53,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'PANW',
-        vwapCorrection: { volumeSum: 177132, tradingSum: 404822845 },
-        dailyRange: 6,
-        fixQuantity: 100,
+        symbol: 'GTLB',
+        vwapCorrection: { volumeSum: 272418, tradingSum: 12379485 },
+        dailyRange: 2,
+        fixQuantity: 300,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [226] },
+        keyLevels: { otherLevels: [46.79] },
         long: {
         },
         short: {
