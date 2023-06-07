@@ -1,29 +1,34 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['AAPL', 'U', 'GTLB'];
-
+export const stockSelections: string[] = ['TSLA'];
+const tslaTarget = {
+    priceLevels: [225.66],
+    rrr: [0.85, 1, 1.1],
+    dailyRanges: [2, 2.5, 3],
+};
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 444956, tradingSum: 79522653 },
-        dailyRange: 3,
-        fixQuantity: 200,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 1961855, tradingSum: 446340362 },
+        dailyRange: 8,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [181.8] },
+        keyLevels: { otherLevels: [227.1, 225.5] },
         short: {
+            openingDrive: {
+                targets: tslaTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 228.45,
+                stopForAgainstVwapEntry: 228.9,
+            },
+            momentum: {
+                targets: tslaTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
         },
         long: {
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-            openingDrive: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 179.21,
-                stopForAgainstVwapEntry: 178.88,
-            },
+
         }
     },
     {
