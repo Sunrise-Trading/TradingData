@@ -32,7 +32,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 3,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [36.92] },
+        keyLevels: { otherLevels: [36.92, 38.47] },
         long: {
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
