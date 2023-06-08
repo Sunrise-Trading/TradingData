@@ -115,6 +115,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'MES',
+        isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 3,
@@ -137,6 +138,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'MNQ',
+        isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         fixQuantity: 3,
@@ -159,6 +161,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'US',
+        isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
         fixQuantity: 2,

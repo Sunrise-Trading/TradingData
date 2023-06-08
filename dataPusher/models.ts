@@ -1,5 +1,6 @@
 export interface TradingPlans {
     symbol: string,
+    isFutures?: boolean,
     vwapCorrection: VwapCorrection,
     dailyRange: number,
     fixQuantity: number,
