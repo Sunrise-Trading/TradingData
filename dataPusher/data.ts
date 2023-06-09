@@ -3,7 +3,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA'];
 const tslaTarget = {
-    priceLevels: [247, 246],
+    priceLevels: [244.5],
     rrr: [0.85, 1, 1.1, 1.9, 2, 2.1],
     dailyRanges: [],
 };
