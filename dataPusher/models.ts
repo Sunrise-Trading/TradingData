@@ -19,6 +19,7 @@ export interface SingleDirectionPlans {
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
+    pinnedTargets?: number[],
 };
 export interface keyLevels {
     otherLevels: number[];

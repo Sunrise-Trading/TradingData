@@ -16,6 +16,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [250, 246] },
         short: {
+            pinnedTargets: [],
             openingDrive: {
                 targets: tslaTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
@@ -28,53 +29,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         }
-    },
-    {
-        symbol: 'U',
-        vwapCorrection: { volumeSum: 987063, tradingSum: 37181035 },
-        dailyRange: 3,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [36.92, 38.47] },
-        long: {
-            openingDrive: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-                lastDefense: 37,
-                stopForAgainstVwapLimitOrMarketEntry: 36.92,
-            },
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-            }
-        },
-        short: {
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-            }
-        },
-    },
-    {
-        symbol: 'GTLB',
-        vwapCorrection: { volumeSum: 272418, tradingSum: 12379485 },
-        dailyRange: 2,
-        fixQuantity: 300,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [46.79] },
-        long: {
-        },
-        short: {
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
-            }
-        },
     },
     {
         symbol: 'SPY',
@@ -84,12 +44,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [417.78] },
         long: {
+            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
             }
         },
         short: {
+            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
@@ -104,12 +66,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [348.3] },
         short: {
+            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.r2,
                 setupQuality: Constants.scalp,
             }
         },
         long: {
+            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.r2,
                 setupQuality: Constants.scalp,
@@ -127,12 +91,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             otherLevels: [4000],
         },
         long: {
+            pinnedTargets: [],
             newsBreakout: {
                 targets: Constants.emptyTarget,
                 setupQuality: Constants.scalp,
             }
         },
         short: {
+            pinnedTargets: [],
             newsBreakout: {
                 targets: Constants.emptyTarget,
                 setupQuality: Constants.scalp,
