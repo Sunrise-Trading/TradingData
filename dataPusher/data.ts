@@ -20,7 +20,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: tslaTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
                 lastDefense: 228.45,
-                stopForAgainstVwapEntry: 228.9,
+                stopForAgainstVwapLimitOrMarketEntry: 228.9,
             },
             momentum: {
                 targets: tslaTarget,
@@ -43,7 +43,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.DayTrade,
                 lastDefense: 37,
-                stopForAgainstVwapEntry: 36.92,
+                stopForAgainstVwapLimitOrMarketEntry: 36.92,
             },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
