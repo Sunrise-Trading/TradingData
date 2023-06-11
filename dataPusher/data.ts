@@ -3,18 +3,18 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA'];
 const tslaTarget = {
-    priceLevels: [225.66],
-    rrr: [0.85, 1, 1.1],
-    dailyRanges: [2, 2.5, 3],
+    priceLevels: [244.5],
+    rrr: [0.85, 1, 1.1, 1.9, 2, 2.1],
+    dailyRanges: [],
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1961855, tradingSum: 446340362 },
+        vwapCorrection: { volumeSum: 4236557, tradingSum: 1054496930 },
         dailyRange: 8,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [227.1, 225.5] },
+        keyLevels: { otherLevels: [250, 246] },
         short: {
             openingDrive: {
                 targets: tslaTarget,
@@ -23,12 +23,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 stopForAgainstVwapLimitOrMarketEntry: 228.9,
             },
             momentum: {
-                targets: tslaTarget,
+                targets: Constants.presetTargets.breakeven,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         },
         long: {
-
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
         }
     },
     {
