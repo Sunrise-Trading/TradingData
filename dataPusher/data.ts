@@ -1,13 +1,84 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['AMD', 'PLTR', 'ORCL'];
 const tslaTarget = {
     priceLevels: [244.5],
     rrr: [0.85, 1, 1.1, 1.9, 2, 2.1],
     dailyRanges: [],
 };
+const amdTarget = {
+    priceLevels: [130.32, 132],
+    rrr: [1, 1.1, 1.9, 2, 2.1],
+    dailyRanges: [1.8, 2, 2.1],
+}
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+    {
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 754518, tradingSum: 97074945 },
+        dailyRange: 4,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [129.2] },
+        short: {
+            pinnedTargets: [],
+        },
+        long: {
+            pinnedTargets: [130.32, 132],
+            openingDrive: {
+                targets: amdTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 128.5,
+                stopForAgainstVwapLimitOrMarketEntry: 128.4,
+            },
+            momentum: {
+                targets: amdTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        }
+    },
+    {
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 1498908, tradingSum: 23015939 },
+        dailyRange: 1,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [250, 246] },
+        short: {
+            pinnedTargets: [],
+        },
+        long: {
+            pinnedTargets: [],
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        }
+    },
+    {
+        symbol: 'ORCL',
+        vwapCorrection: { volumeSum: 195980, tradingSum: 22377885 },
+        dailyRange: 1,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [250, 246] },
+        short: {
+            pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 114,
+                stopForAgainstVwapLimitOrMarketEntry: 114.5,
+            },
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        },
+        long: {
+            pinnedTargets: [],
+        }
+    },
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 4236557, tradingSum: 1054496930 },
