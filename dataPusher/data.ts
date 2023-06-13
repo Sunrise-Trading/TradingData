@@ -1,106 +1,32 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['AMD', 'PLTR', 'ORCL'];
-const tslaTarget = {
-    priceLevels: [244.5],
-    rrr: [0.85, 1, 1.1, 1.9, 2, 2.1],
-    dailyRanges: [],
-};
-const amdTarget = {
+export const stockSelections: string[] = ['SPY', 'QQQ', 'PLTR'];
+
+const pltrTarget = {
     priceLevels: [130.32, 132],
     rrr: [1, 1.1, 1.9, 2, 2.1],
     dailyRanges: [1.8, 2, 2.1],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 754518, tradingSum: 97074945 },
-        dailyRange: 4,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [129.2] },
-        short: {
-            pinnedTargets: [],
-        },
-        long: {
-            pinnedTargets: [130.32, 132],
-            openingDrive: {
-                targets: amdTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 128.5,
-                stopForAgainstVwapLimitOrMarketEntry: 128.4,
-            },
-            momentum: {
-                targets: amdTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        }
-    },
-    {
         symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 1498908, tradingSum: 23015939 },
+        vwapCorrection: { volumeSum: 2003359, tradingSum: 32229565 },
         dailyRange: 1,
-        fixQuantity: 200,
+        fixQuantity: 600,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [250, 246] },
+        keyLevels: { otherLevels: [17.16] },
         short: {
             pinnedTargets: [],
         },
         long: {
-            pinnedTargets: [],
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        }
-    },
-    {
-        symbol: 'ORCL',
-        vwapCorrection: { volumeSum: 195980, tradingSum: 22377885 },
-        dailyRange: 1,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [250, 246] },
-        short: {
-            pinnedTargets: [],
+            pinnedTargets: [17],
             openingDrive: {
-                targets: Constants.presetTargets.scalp,
+                targets: pltrTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 114,
-                stopForAgainstVwapLimitOrMarketEntry: 114.5,
+                lastDefense: 16.1,
+                stopForAgainstVwapLimitOrMarketEntry: 16,
             },
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        },
-        long: {
-            pinnedTargets: [],
-        }
-    },
-    {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 4236557, tradingSum: 1054496930 },
-        dailyRange: 8,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [250, 246] },
-        short: {
-            pinnedTargets: [],
-            openingDrive: {
-                targets: tslaTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 228.45,
-                stopForAgainstVwapLimitOrMarketEntry: 228.9,
-            },
-            momentum: {
-                targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        },
-        long: {
-            pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
@@ -109,44 +35,56 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'SPY',
-        vwapCorrection: { volumeSum: 1076660, tradingSum: 450628630 },
-        dailyRange: 5,
+        vwapCorrection: { volumeSum: 1934664, tradingSum: 841073332 },
+        dailyRange: 4,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [417.78] },
+        keyLevels: { otherLevels: [435.87] },
         long: {
             pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
             }
         },
         short: {
             pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 436.57,
+                stopForAgainstVwapLimitOrMarketEntry: 436.57,
+            },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.DayTrade,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         },
     },
     {
         symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 800327, tradingSum: 278339896 },
-        dailyRange: 4,
+        vwapCorrection: { volumeSum: 2386242, tradingSum: 864830521 },
+        dailyRange: 5,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [348.3] },
+        keyLevels: { otherLevels: [363.21] },
         short: {
             pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.breakeven,
+                setupQuality: Constants.scalp,
+                lastDefense: 364.61,
+                stopForAgainstVwapLimitOrMarketEntry: 364.61,
+            },
             momentum: {
-                targets: Constants.presetTargets.r2,
+                targets: Constants.presetTargets.breakeven,
                 setupQuality: Constants.scalp,
             }
         },
         long: {
             pinnedTargets: [],
             momentum: {
-                targets: Constants.presetTargets.r2,
+                targets: Constants.presetTargets.breakeven,
                 setupQuality: Constants.scalp,
             }
         },
