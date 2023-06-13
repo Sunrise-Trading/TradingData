@@ -5,9 +5,9 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = ['SPY', 'QQQ', 'PLTR'];
 
 const pltrTarget = {
-    priceLevels: [130.32, 132],
+    priceLevels: [17, 16.5],
     rrr: [1, 1.1, 1.9, 2, 2.1],
-    dailyRanges: [1.8, 2, 2.1],
+    dailyRanges: [0.5,],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
