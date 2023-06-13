@@ -1,6 +1,6 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
+export const activeProfileName: string = "futures";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['AMD', 'PLTR', 'ORCL'];
 const tslaTarget = {
     priceLevels: [244.5],
