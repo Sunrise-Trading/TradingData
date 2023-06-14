@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['SPY', 'QQQ', 'PLTR', 'ORCL'];
+export const stockSelections: string[] = ['TSLA', 'AMD'];
 
 const pltrTarget = {
     priceLevels: [17, 16.5],
@@ -11,22 +11,32 @@ const pltrTarget = {
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 2003359, tradingSum: 32229565 },
-        dailyRange: 1,
-        fixQuantity: 600,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 1990303, tradingSum: 523818119 },
+        dailyRange: 8,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [17.16] },
+        keyLevels: { otherLevels: [259.68] },
         short: {
             pinnedTargets: [],
-        },
-        long: {
-            pinnedTargets: [17],
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
             openingDrive: {
                 targets: pltrTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 16.1,
-                stopForAgainstVwapLimitOrMarketEntry: 16,
+                lastDefense: 261.5,
+                stopForAgainstVwapLimitOrMarketEntry: 263,
+            },
+        },
+        long: {
+            pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 258.7,
+                stopForAgainstVwapLimitOrMarketEntry: 258.7,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
@@ -35,27 +45,36 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'ORCL',
-        vwapCorrection: { volumeSum: 652190, tradingSum: 80088732 },
-        dailyRange: 2,
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 1649049, tradingSum: 211040851 },
+        dailyRange: 5,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [17.16] },
-        short: {
+        keyLevels: { otherLevels: [128] },
+        long: {
             pinnedTargets: [],
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 16.1,
-                stopForAgainstVwapLimitOrMarketEntry: 16,
+                lastDefense: 127.5,
+                stopForAgainstVwapLimitOrMarketEntry: 127,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         },
-        long: {
-            pinnedTargets: [17],
+        short: {
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 128,
+                stopForAgainstVwapLimitOrMarketEntry: 128,
+            },
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
         }
     },
     {
