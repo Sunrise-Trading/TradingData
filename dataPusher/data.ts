@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['SPY', 'QQQ', 'PLTR'];
+export const stockSelections: string[] = ['SPY', 'QQQ', 'PLTR', 'ORCL'];
 
 const pltrTarget = {
     priceLevels: [17, 16.5],
@@ -32,6 +32,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
+        }
+    },
+    {
+        symbol: 'ORCL',
+        vwapCorrection: { volumeSum: 652190, tradingSum: 80088732 },
+        dailyRange: 2,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [17.16] },
+        short: {
+            pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 16.1,
+                stopForAgainstVwapLimitOrMarketEntry: 16,
+            },
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        },
+        long: {
+            pinnedTargets: [17],
         }
     },
     {
