@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'AMD'];
+export const stockSelections: string[] = ['TSLA', 'SOFI', 'NVDA', 'AMD'];
 
 const pltrTarget = {
     priceLevels: [17, 16.5],
@@ -11,12 +11,12 @@ const pltrTarget = {
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1990303, tradingSum: 523818119 },
-        dailyRange: 8,
-        fixQuantity: 50,
+        symbol: 'SOFI',
+        vwapCorrection: { volumeSum: 2392988, tradingSum: 22198865 },
+        dailyRange: 0.6,
+        fixQuantity: 1000,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [259.68] },
+        keyLevels: { otherLevels: [9.3, 9.47] },
         short: {
             pinnedTargets: [],
             momentum: {
@@ -26,8 +26,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: pltrTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 261.5,
-                stopForAgainstVwapLimitOrMarketEntry: 263,
+                lastDefense: 9.34,
+                stopForAgainstVwapLimitOrMarketEntry: 9.38,
+            },
+        },
+        long: {}
+    },
+    {
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 2189357, tradingSum: 545134986 },
+        dailyRange: 8,
+        fixQuantity: 50,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [250.5] },
+        short: {
+            pinnedTargets: [],
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 250,
+                stopForAgainstVwapLimitOrMarketEntry: 250,
             },
         },
         long: {
@@ -35,8 +57,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 258.7,
-                stopForAgainstVwapLimitOrMarketEntry: 258.7,
+                lastDefense: 249,
+                stopForAgainstVwapLimitOrMarketEntry: 248.7,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
@@ -45,19 +67,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 1649049, tradingSum: 211040851 },
-        dailyRange: 5,
-        fixQuantity: 200,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 696902, tradingSum: 295397701 },
+        dailyRange: 15,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [128] },
+        keyLevels: { otherLevels: [430] },
         long: {
             pinnedTargets: [],
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 127.5,
-                stopForAgainstVwapLimitOrMarketEntry: 127,
+                lastDefense: 423,
+                stopForAgainstVwapLimitOrMarketEntry: 422.14,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
@@ -65,12 +87,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            openingDrive: {
+            momentum: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 128,
-                stopForAgainstVwapLimitOrMarketEntry: 128,
             },
+        }
+    },
+    {
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 752021, tradingSum: 94118349 },
+        dailyRange: 5,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [123.81] },
+        long: {
+        },
+        short: {
             momentum: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
