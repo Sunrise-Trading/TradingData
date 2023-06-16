@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'SOFI', 'NVDA', 'AMD'];
+export const stockSelections: string[] = ['NVDA', 'SPCE', 'TSLA'];
 
 const pltrTarget = {
     priceLevels: [17, 16.5],
@@ -11,13 +11,14 @@ const pltrTarget = {
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SOFI',
-        vwapCorrection: { volumeSum: 2392988, tradingSum: 22198865 },
-        dailyRange: 0.6,
+        symbol: 'SPCE',
+        vwapCorrection: { volumeSum: 7138549, tradingSum: 41207029 },
+        dailyRange: 0.5,
         fixQuantity: 1000,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [9.3, 9.47] },
-        short: {
+        keyLevels: { otherLevels: [6] },
+        short: {},
+        long: {
             pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.scalp,
@@ -26,19 +27,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: pltrTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 9.34,
-                stopForAgainstVwapLimitOrMarketEntry: 9.38,
+                lastDefense: 5.7,
+                stopForAgainstVwapLimitOrMarketEntry: 5.5,
             },
-        },
-        long: {}
+        }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 2189357, tradingSum: 545134986 },
+        vwapCorrection: { volumeSum: 1116397, tradingSum: 287329022 },
         dailyRange: 8,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [250.5] },
+        keyLevels: { otherLevels: [258.95] },
         short: {
             pinnedTargets: [],
             momentum: {
@@ -48,8 +48,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 250,
-                stopForAgainstVwapLimitOrMarketEntry: 250,
+                lastDefense: 259,
+                stopForAgainstVwapLimitOrMarketEntry: 259,
             },
         },
         long: {
@@ -57,8 +57,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 249,
-                stopForAgainstVwapLimitOrMarketEntry: 248.7,
+                lastDefense: 257,
+                stopForAgainstVwapLimitOrMarketEntry: 256.5,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
@@ -68,29 +68,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 696902, tradingSum: 295397701 },
+        vwapCorrection: { volumeSum: 628500, tradingSum: 271324715 },
         dailyRange: 15,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [430] },
+        keyLevels: { otherLevels: [432.89, 434] },
         long: {
             pinnedTargets: [],
             openingDrive: {
-                targets: Constants.presetTargets.scalp,
+                targets: Constants.presetTargets.r2,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 423,
-                stopForAgainstVwapLimitOrMarketEntry: 422.14,
+                lastDefense: 431,
+                stopForAgainstVwapLimitOrMarketEntry: 429,
             },
             momentum: {
-                targets: Constants.presetTargets.scalp,
+                targets: Constants.presetTargets.r2,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         },
         short: {
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
         }
     },
     {
