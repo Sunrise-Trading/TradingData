@@ -17,6 +17,8 @@ let stocks = [
     "XLV", // HealthCare
     "XLU", // Utilities
     "XLF", // Financials
+    /* recent */
+    'SPEC',
     /* big tech */
     'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'GOOGL',
     /* chips */
