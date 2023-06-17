@@ -10,7 +10,7 @@ let stocks = [
     // SP 500 sectors
     "XLY", // Cyclicals
     "XLK", // Technology
-    "XLI", //Industrials
+    "XLI", // Industrials
     "XLB", // Materials
     "XLE", // Energy
     "XLP", // Staples
