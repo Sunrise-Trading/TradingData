@@ -24,7 +24,7 @@ let stocks = [
     /* 7. chips */
     'NVDA', 'AMD', 'AVGO', 'QCOM', 'MU', 'INTC', 'TSM',
     /* 8. AI */
-    'PLTR', 'AI',
+    'PLTR', 'AI', 'PATH',
     /* 9. finance */
     'JPM', 'BAC', 'SCHW',
     /* 10. regional banks */
