@@ -1,13 +1,13 @@
 let stocks = [
-    /* index */
+    /* 1. index */
     'SPY', 'QQQ', 'DIA', 'IWM', 'VIX',
     '/ES', '/NQ', '/YM', '/RTY',
-    /* bond */
+    /* 2. bond */
     '2Y', '10Y',
-    /* commodity */
-    '/CL', '/ZB', '/GC', '/SI', '/HG',
+    /* 3. commodity */
+    '/BTC', '/CL', '/ZB', '/GC', '/SI', '/HG',
     'USO', 'TLT', 'GDX',
-    // SP 500 sectors
+    // 4. SP 500 sectors
     "XLY", // Cyclicals
     "XLK", // Technology
     "XLI", // Industrials
@@ -17,18 +17,18 @@ let stocks = [
     "XLV", // HealthCare
     "XLU", // Utilities
     "XLF", // Financials
-    /* recent */
+    /* 5. today */
     'SPEC',
-    /* big tech */
+    /* 6. big tech */
     'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'GOOGL',
-    /* chips */
-    'NVDA', 'AMD', 'AVGO', 'MU', 'INTC',
-    /* finance */
+    /* 7. chips */
+    'NVDA', 'AMD', 'AVGO', 'QCOM', 'MU', 'INTC', 'TSM',
+    /* 8. finance */
     'JPM', 'BAC', 'SCHW',
-    /* regional banks */
-    'KRE', 'FRC', 'WAL',
-    /* gig economy */
+    /* 9. regional banks */
+    'KRE', 'WAL',
+    /* 10. gig economy */
     'UBER', 'LYFT', 'DASH', 'ABNB',
-    /* housing */
+    /* 11. housing */
     'Z', 'RDFN', 'OPEN', 'COMP',
 ];
