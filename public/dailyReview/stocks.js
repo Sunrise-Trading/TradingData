@@ -23,12 +23,16 @@ let stocks = [
     'AAPL', 'MSFT', 'AMZN', 'META', 'TSLA', 'NFLX', 'GOOGL',
     /* 7. chips */
     'NVDA', 'AMD', 'AVGO', 'QCOM', 'MU', 'INTC', 'TSM',
-    /* 8. finance */
+    /* 8. AI */
+    'PLTR', 'AI',
+    /* 9. finance */
     'JPM', 'BAC', 'SCHW',
-    /* 9. regional banks */
+    /* 10. regional banks */
     'KRE', 'WAL',
-    /* 10. gig economy */
+    /* 11. gig economy */
     'UBER', 'LYFT', 'DASH', 'ABNB',
-    /* 11. housing */
+    /* 12. housing */
     'Z', 'RDFN', 'OPEN', 'COMP',
+    /* 13. growth */
+    'ARKK',
 ];
