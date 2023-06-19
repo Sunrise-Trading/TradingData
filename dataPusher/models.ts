@@ -3,6 +3,7 @@ export interface TradingPlans {
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
     dailyRange: number,
+    deferTradingInSeconds: number,
     fixQuantity: number,
     alwaysUseFixQuantity: boolean,
     keyLevels: keyLevels,

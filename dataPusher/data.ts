@@ -11,31 +11,10 @@ const pltrTarget = {
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SPCE',
-        vwapCorrection: { volumeSum: 7138549, tradingSum: 41207029 },
-        dailyRange: 0.5,
-        fixQuantity: 1000,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [6] },
-        short: {},
-        long: {
-            pinnedTargets: [],
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-            openingDrive: {
-                targets: pltrTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 5.7,
-                stopForAgainstVwapLimitOrMarketEntry: 5.5,
-            },
-        }
-    },
-    {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 1116397, tradingSum: 287329022 },
         dailyRange: 8,
+        deferTradingInSeconds: 0,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [258.95] },
@@ -67,48 +46,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 628500, tradingSum: 271324715 },
-        dailyRange: 15,
-        fixQuantity: 50,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [432.89, 434] },
-        long: {
-            pinnedTargets: [],
-            openingDrive: {
-                targets: Constants.presetTargets.r2,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 431,
-                stopForAgainstVwapLimitOrMarketEntry: 429,
-            },
-            momentum: {
-                targets: Constants.presetTargets.r2,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        },
-        short: {
-        }
-    },
-    {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 752021, tradingSum: 94118349 },
-        dailyRange: 5,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [123.81] },
-        long: {
-        },
-        short: {
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        }
-    },
-    {
         symbol: 'SPY',
         vwapCorrection: { volumeSum: 1934664, tradingSum: 841073332 },
         dailyRange: 4,
+        deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [435.87] },
@@ -137,6 +78,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'QQQ',
         vwapCorrection: { volumeSum: 2386242, tradingSum: 864830521 },
         dailyRange: 5,
+        deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [363.21] },
@@ -166,6 +108,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
+        deferTradingInSeconds: 0,
         fixQuantity: 3,
         alwaysUseFixQuantity: true,
         keyLevels: {
@@ -191,6 +134,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
+        deferTradingInSeconds: 0,
         fixQuantity: 3,
         alwaysUseFixQuantity: true,
         keyLevels: {
@@ -214,6 +158,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
+        deferTradingInSeconds: 0,
         fixQuantity: 2,
         alwaysUseFixQuantity: true,
         keyLevels: {
