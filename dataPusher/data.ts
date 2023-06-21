@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'FDX'];
+export const stockSelections: string[] = ['TSLA', 'FDX', 'SPCE'];
 
 const tslaTarget = {
     priceLevels: [277.22, 278, 279],
@@ -73,26 +73,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'BABA',
-        vwapCorrection: { volumeSum: 349679, tradingSum: 31497241 },
-        dailyRange: 2.8,
+        symbol: 'SPCE',
+        vwapCorrection: { volumeSum: 2480956, tradingSum: 14621851 },
+        dailyRange: 0.8,
         deferTradingInSeconds: 0,
-        fixQuantity: 100,
+        fixQuantity: 1000,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [90.4] },
+        keyLevels: { otherLevels: [6.06] },
         short: {
-            pinnedTargets: [],
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
         },
         long: {
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 90,
-                stopForAgainstVwapLimitOrMarketEntry: 89.5,
+                lastDefense: 5.80,
+                stopForAgainstVwapLimitOrMarketEntry: 5.8,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
