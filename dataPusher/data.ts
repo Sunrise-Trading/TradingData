@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['NVDA', 'SPCE', 'TSLA'];
+export const stockSelections: string[] = ['TSLA', 'PLTR', 'BABA'];
 
 const pltrTarget = {
     priceLevels: [17, 16.5],
@@ -12,32 +12,73 @@ const pltrTarget = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1116397, tradingSum: 287329022 },
+        vwapCorrection: { volumeSum: 1461750, tradingSum: 380668196 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [258.95] },
+        keyLevels: { otherLevels: [263.6] },
         short: {
-            pinnedTargets: [],
-            momentum: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-            openingDrive: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 259,
-                stopForAgainstVwapLimitOrMarketEntry: 259,
-            },
         },
         long: {
             pinnedTargets: [],
             openingDrive: {
                 targets: Constants.presetTargets.scalp,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 257,
-                stopForAgainstVwapLimitOrMarketEntry: 256.5,
+                lastDefense: 260,
+                stopForAgainstVwapLimitOrMarketEntry: 259.16,
+            },
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        }
+    },
+    {
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 1424898, tradingSum: 22789255 },
+        dailyRange: 1,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [15.91, 16.35] },
+        short: {
+        },
+        long: {
+            pinnedTargets: [],
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 16,
+                stopForAgainstVwapLimitOrMarketEntry: 15.91,
+            },
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        }
+    },
+    {
+        symbol: 'BABA',
+        vwapCorrection: { volumeSum: 349679, tradingSum: 31497241 },
+        dailyRange: 2.8,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [90.4] },
+        short: {
+            pinnedTargets: [],
+            momentum: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
+        },
+        long: {
+            openingDrive: {
+                targets: Constants.presetTargets.scalp,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 90,
+                stopForAgainstVwapLimitOrMarketEntry: 89.5,
             },
             momentum: {
                 targets: Constants.presetTargets.scalp,
