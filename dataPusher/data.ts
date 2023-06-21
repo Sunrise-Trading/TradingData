@@ -2,17 +2,22 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA', 'PLTR', 'BABA'];
+export const stockSelections: string[] = ['TSLA', 'FDX'];
 
-const pltrTarget = {
-    priceLevels: [17, 16.5],
-    rrr: [1, 1.1, 1.9, 2, 2.1],
-    dailyRanges: [0.5,],
+const tslaTarget = {
+    priceLevels: [277.22, 278, 279],
+    rrr: [0.5, 0.85, 1],
+    dailyRanges: [3, 3.5],
+}
+const fdxTarget = {
+    priceLevels: [220.2, 220.1],
+    rrr: [0.9, 1, 1.1],
+    dailyRanges: [4, 4.5],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1461750, tradingSum: 380668196 },
+        vwapCorrection: { volumeSum: 2923267, tradingSum: 808597264 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
@@ -23,37 +28,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             pinnedTargets: [],
             openingDrive: {
-                targets: Constants.presetTargets.scalp,
+                targets: tslaTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 260,
-                stopForAgainstVwapLimitOrMarketEntry: 259.16,
+                lastDefense: 274.75,
+                stopForAgainstVwapLimitOrMarketEntry: 274.4,
             },
             momentum: {
-                targets: Constants.presetTargets.scalp,
+                targets: tslaTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         }
     },
     {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 1424898, tradingSum: 22789255 },
-        dailyRange: 1,
-        deferTradingInSeconds: 0,
+        symbol: 'FDX',
+        vwapCorrection: { volumeSum: 83507, tradingSum: 18788050 },
+        dailyRange: 5,
+        deferTradingInSeconds: 300,
         fixQuantity: 500,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [15.91, 16.35] },
+        keyLevels: { otherLevels: [220] },
         short: {
         },
         long: {
             pinnedTargets: [],
-            openingDrive: {
-                targets: Constants.presetTargets.scalp,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 16,
-                stopForAgainstVwapLimitOrMarketEntry: 15.91,
-            },
             momentum: {
-                targets: Constants.presetTargets.scalp,
+                targets: fdxTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
         }
