@@ -9,6 +9,11 @@ const tslaTarget = {
     rrr: [0.5, 0.85, 1],
     dailyRanges: [3, 3.5],
 }
+const tslaShortTarget = {
+    priceLevels: [271.71],
+    rrr: [0.5, 0.85, 1],
+    dailyRanges: [3, 3.5],
+}
 const fdxTarget = {
     priceLevels: [220.2, 220.1],
     rrr: [0.9, 1, 1.1],
@@ -24,6 +29,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [263.6] },
         short: {
+            openingDrive: {
+                targets: tslaShortTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+                lastDefense: 276,
+                stopForAgainstVwapLimitOrMarketEntry: 277.5,
+            },
+            momentum: {
+                targets: tslaShortTarget,
+                setupQuality: TradingPlans.SetupQuality.Scalp,
+            },
         },
         long: {
             pinnedTargets: [],
@@ -47,9 +62,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         fixQuantity: 500,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [220] },
-        short: {
-        },
         long: {
+        },
+        short: {
             pinnedTargets: [],
             momentum: {
                 targets: fdxTarget,
