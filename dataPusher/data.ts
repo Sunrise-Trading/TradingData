@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['SPY', 'QQQ'];
 
 const tslaTarget = {
     priceLevels: [252.98, 253.15],
@@ -14,10 +14,10 @@ const tslaShortTarget = {
     rrr: [0.5, 0.85, 1],
     dailyRanges: [3, 3.5],
 }
-const fdxTarget = {
-    priceLevels: [220.2, 220.1],
-    rrr: [0.9, 1, 1.1],
-    dailyRanges: [4, 4.5],
+const spceTarget = {
+    priceLevels: [4.8, 4.95],
+    rrr: [0.5, 0.9, 1, 1.1],
+    dailyRanges: [0.25, 0.3, 0.4],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -49,49 +49,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'FDX',
-        vwapCorrection: { volumeSum: 83507, tradingSum: 18788050 },
-        dailyRange: 5,
-        deferTradingInSeconds: 300,
+        symbol: 'SPCE',
+        vwapCorrection: { volumeSum: 2296028, tradingSum: 10604452 },
+        dailyRange: 0.5,
+        deferTradingInSeconds: 0,
         fixQuantity: 500,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [220] },
-        long: {
-        },
-        short: {
-            pinnedTargets: [],
-            momentum: {
-                targets: fdxTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        }
-    },
-    {
-        symbol: 'SPCE',
-        vwapCorrection: { volumeSum: 2480956, tradingSum: 14621851 },
-        dailyRange: 0.8,
-        deferTradingInSeconds: 0,
-        fixQuantity: 1000,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [6.06] },
-        short: {
-        },
+        keyLevels: { otherLevels: [5.06] },
         long: {
             openingDrive: {
-                targets: Constants.presetTargets.scalp,
+                targets: spceTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 5.80,
-                stopForAgainstVwapLimitOrMarketEntry: 5.8,
+                lastDefense: 4.56,
+                stopForAgainstVwapLimitOrMarketEntry: 4.55,
             },
             momentum: {
-                targets: Constants.presetTargets.scalp,
+                targets: spceTarget,
                 setupQuality: TradingPlans.SetupQuality.Scalp,
             },
+        },
+        short: {
         }
     },
     {
         symbol: 'SPY',
-        vwapCorrection: { volumeSum: 1934664, tradingSum: 841073332 },
+        vwapCorrection: { volumeSum: 1244025, tradingSum: 539935557 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
@@ -120,7 +102,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 2386242, tradingSum: 864830521 },
+        vwapCorrection: { volumeSum: 1175722, tradingSum: 427131094 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
