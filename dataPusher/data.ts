@@ -4,20 +4,17 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
 export const stockSelections: string[] = ['TSLA'];
 
-const tslaTarget = {
+const tslaTarget: TradingPlans.ExitTargets = {
     priceLevels: [252.98, 253.15],
     rrr: [0.5, 0.85, 1],
     dailyRanges: [3, 3.5],
+    pinnedPrices: [],
 }
-const tslaShortTarget = {
+const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [271.71],
     rrr: [0.5, 0.85, 1],
     dailyRanges: [3, 3.5],
-}
-const spceTarget = {
-    priceLevels: [4.8, 4.95],
-    rrr: [0.5, 0.9, 1, 1.1],
-    dailyRanges: [0.25, 0.3, 0.4],
+    pinnedPrices: [],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -36,7 +33,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
-            pinnedTargets: [],
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: tslaTarget,
@@ -60,7 +56,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [435.87] },
         long: {
-            pinnedTargets: [],
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
@@ -68,7 +63,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         short: {
-            pinnedTargets: [],
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
@@ -92,7 +86,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [363.21] },
         short: {
-            pinnedTargets: [],
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
@@ -107,7 +100,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         long: {
-            pinnedTargets: [],
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
@@ -127,7 +119,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             otherLevels: [4000],
         },
         long: {
-            pinnedTargets: [],
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
@@ -135,7 +126,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
         short: {
-            pinnedTargets: [],
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,

@@ -34,6 +34,7 @@ export const emptyTarget = {
     priceLevels: emptyNumbers,
     rrr: emptyNumbers,
     dailyRanges: emptyNumbers,
+    pinnedPrices: emptyNumbers,
 };
 export const presetTargets = {
     'scalp': {

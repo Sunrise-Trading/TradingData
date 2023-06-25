@@ -20,7 +20,6 @@ export interface SingleDirectionPlans {
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
-    pinnedTargets?: number[],
 };
 export interface keyLevels {
     otherLevels: number[];
@@ -69,6 +68,7 @@ export interface ExitTargets {
     priceLevels: number[],
     rrr: number[],
     dailyRanges: number[],
+    pinnedPrices: number[],
 }
 export interface PriceArea {
     priceLevel: number,
