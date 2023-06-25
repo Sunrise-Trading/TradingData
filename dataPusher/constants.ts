@@ -1,5 +1,17 @@
 import * as TradingPlans from './models';
-export const scalp = TradingPlans.SetupQuality.Scalp
+
+export const scalpConfig: TradingPlans.PlanConfigs = {
+    setupQuality: TradingPlans.SetupQuality.Scalp,
+    exitRules: {
+        waitTimeInSecondsAfterMarketOpen: 0,
+    }
+};
+export const dayTradeConfig: TradingPlans.PlanConfigs = {
+    setupQuality: TradingPlans.SetupQuality.DayTrade,
+    exitRules: {
+        waitTimeInSecondsAfterMarketOpen: 300,
+    }
+};
 export const emptyNumbers: number[] = [];
 export const emptyTarget = {
     priceLevels: emptyNumbers,

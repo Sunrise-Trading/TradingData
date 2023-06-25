@@ -26,9 +26,16 @@ export interface keyLevels {
     otherLevels: number[];
 };
 export interface BasePlan {
-    targets: ExitTargets;
-    setupQuality: SetupQuality;
+    targets: ExitTargets,
+    planConfigs: PlanConfigs,
 };
+export interface PlanConfigs {
+    setupQuality: SetupQuality,
+    exitRules: ExitRules,
+}
+export interface ExitRules {
+    waitTimeInSecondsAfterMarketOpen: number,
+}
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
     stopForAgainstVwapLimitOrMarketEntry: number,

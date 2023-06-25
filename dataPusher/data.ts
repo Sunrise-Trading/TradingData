@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple, momentumEquities, momentumScalp, fomc;
-export const stockSelections: string[] = ['SPCE', 'SPY', 'QQQ'];
+export const stockSelections: string[] = ['TSLA'];
 
 const tslaTarget = {
     priceLevels: [252.98, 253.15],
@@ -31,44 +31,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 targets: tslaShortTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             pinnedTargets: [],
             openingDrive: {
                 targets: tslaTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
                 lastDefense: 251.31,
                 stopForAgainstVwapLimitOrMarketEntry: 250.33,
             },
             momentum: {
                 targets: tslaTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
             },
-        }
-    },
-    {
-        symbol: 'SPCE',
-        vwapCorrection: { volumeSum: 2296028, tradingSum: 10604452 },
-        dailyRange: 0.5,
-        deferTradingInSeconds: 0,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [5.06] },
-        long: {
-            openingDrive: {
-                targets: spceTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-                lastDefense: 4.56,
-                stopForAgainstVwapLimitOrMarketEntry: 4.55,
-            },
-            momentum: {
-                targets: spceTarget,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
-            },
-        },
-        short: {
         }
     },
     {
@@ -83,20 +60,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             pinnedTargets: [],
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
                 lastDefense: 436.57,
                 stopForAgainstVwapLimitOrMarketEntry: 436.57,
             },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: TradingPlans.SetupQuality.Scalp,
+                planConfigs: Constants.scalpConfig,
             },
         },
     },
@@ -112,20 +89,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             pinnedTargets: [],
             openingDrive: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
                 lastDefense: 364.61,
                 stopForAgainstVwapLimitOrMarketEntry: 364.61,
             },
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
         long: {
             pinnedTargets: [],
             momentum: {
                 targets: Constants.presetTargets.breakeven,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
     },
@@ -144,14 +121,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             pinnedTargets: [],
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             pinnedTargets: [],
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
     },
@@ -169,13 +146,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
     },
@@ -193,13 +170,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             newsBreakout: {
                 targets: Constants.emptyTarget,
-                setupQuality: Constants.scalp,
+                planConfigs: Constants.scalpConfig,
             }
         },
     }
