@@ -25,7 +25,14 @@ export interface SingleDirectionPlans {
 export interface keyLevels {
     otherLevels: number[];
 };
+export enum PlanType {
+    Momentum = 'Momentum',
+    Retracement = 'Retracement',
+    NewsBreakout = 'NewsBreakout',
+    OpeningDrive = 'OpeningDrive',
+};
 export interface BasePlan {
+    planType: PlanType,
     targets: ExitTargets,
     planConfigs: PlanConfigs,
 };

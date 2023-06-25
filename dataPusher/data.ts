@@ -30,6 +30,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: { otherLevels: [257.31] },
         short: {
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
@@ -37,12 +38,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             pinnedTargets: [],
             openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
                 targets: tslaTarget,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 251.31,
                 stopForAgainstVwapLimitOrMarketEntry: 250.33,
             },
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: tslaTarget,
                 planConfigs: Constants.scalpConfig,
             },
@@ -59,6 +62,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             pinnedTargets: [],
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
             }
@@ -66,12 +70,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             pinnedTargets: [],
             openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 436.57,
                 stopForAgainstVwapLimitOrMarketEntry: 436.57,
             },
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
             },
@@ -88,12 +94,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             pinnedTargets: [],
             openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 364.61,
                 stopForAgainstVwapLimitOrMarketEntry: 364.61,
             },
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
             }
@@ -101,6 +109,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             pinnedTargets: [],
             momentum: {
+                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
             }
@@ -120,6 +129,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             pinnedTargets: [],
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
@@ -127,6 +137,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             pinnedTargets: [],
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
@@ -145,12 +156,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
@@ -169,12 +182,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
         },
         short: {
             newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
                 targets: Constants.emptyTarget,
                 planConfigs: Constants.scalpConfig,
             }
