@@ -4,14 +4,31 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 0,
+        minimumRiskMultipleRequiredForAdjustingExits: 0,
     }
 };
 export const dayTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.DayTrade,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 300,
+        minimumRiskMultipleRequiredForAdjustingExits: 0.55
     }
 };
+export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
+    setupQuality: TradingPlans.SetupQuality.HoldToDayClose,
+    exitRules: {
+        waitTimeInSecondsAfterMarketOpen: 600,
+        minimumRiskMultipleRequiredForAdjustingExits: 0.6
+    }
+};
+export const swingTradeConfig: TradingPlans.PlanConfigs = {
+    setupQuality: TradingPlans.SetupQuality.Swing,
+    exitRules: {
+        waitTimeInSecondsAfterMarketOpen: 900,
+        minimumRiskMultipleRequiredForAdjustingExits: 0.7
+    }
+};
+
 export const emptyNumbers: number[] = [];
 export const emptyTarget = {
     priceLevels: emptyNumbers,

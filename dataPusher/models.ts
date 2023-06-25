@@ -42,6 +42,10 @@ export interface PlanConfigs {
 }
 export interface ExitRules {
     waitTimeInSecondsAfterMarketOpen: number,
+    /**
+    * number between 0 and 1
+    */
+    minimumRiskMultipleRequiredForAdjustingExits: number,
 }
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
