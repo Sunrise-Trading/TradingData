@@ -2,50 +2,80 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['TSLA', 'LCID'];
 
-const tslaTarget: TradingPlans.ExitTargets = {
-    priceLevels: [252.98, 253.15],
+const tslaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [254],
     rrr: [0.5, 0.85, 1],
-    dailyRanges: [3, 3.5],
+    dailyRanges: [4, 3.5],
     pinnedPrices: [],
 }
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [271.71],
-    rrr: [0.5, 0.85, 1],
-    dailyRanges: [3, 3.5],
+    priceLevels: [250.5, 249.8, 248.3],
+    rrr: [0.85, 1],
+    dailyRanges: [4.5, 5],
+    pinnedPrices: [],
+};
+const lcidTarget: TradingPlans.ExitTargets = {
+    priceLevels: [5.89, 5.82, 5.75],
+    rrr: [1, 1.5],
+    dailyRanges: [],
     pinnedPrices: [],
 }
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 2776512, tradingSum: 698693208 },
+        vwapCorrection: { volumeSum: 1478740, tradingSum: 373222338 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [257.31] },
+        keyLevels: { otherLevels: [5.75] },
         short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: tslaTarget,
-                planConfigs: Constants.scalpConfig,
+                targets: tslaShortTarget,
+                planConfigs: Constants.dayTradeConfig,
                 lastDefense: 251.31,
                 stopForAgainstVwapLimitOrMarketEntry: 250.33,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaTarget,
+                targets: lcidTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: tslaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
+    },
+    {
+        symbol: 'LCID',
+        vwapCorrection: { volumeSum: 8384901, tradingSum: 50313611 },
+        dailyRange: 0.5,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [257.31] },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: lcidTarget,
+                planConfigs: Constants.dayTradeConfig,
+                lastDefense: 6.07,
+                stopForAgainstVwapLimitOrMarketEntry: 6.1,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: tslaShortTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        long: {}
     },
     {
         symbol: 'SPY',
