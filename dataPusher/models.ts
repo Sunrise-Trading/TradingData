@@ -45,6 +45,8 @@ export interface ExitRules {
     * number between 0 and 1
     */
     minimumRiskMultipleRequiredForAdjustingExits: number,
+    decentCurrentRewardRatio: number,
+    decentMaxRewardRatio: number,
 }
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;

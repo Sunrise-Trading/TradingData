@@ -5,27 +5,35 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 0,
         minimumRiskMultipleRequiredForAdjustingExits: 0.55,
+        decentCurrentRewardRatio: 0.8,
+        decentMaxRewardRatio: 1.5
     }
 };
 export const dayTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.DayTrade,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 300,
-        minimumRiskMultipleRequiredForAdjustingExits: 0.6
+        minimumRiskMultipleRequiredForAdjustingExits: 0.6,
+        decentCurrentRewardRatio: 1.5,
+        decentMaxRewardRatio: 2
     }
 };
 export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.HoldToDayClose,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 600,
-        minimumRiskMultipleRequiredForAdjustingExits: 0.7
+        minimumRiskMultipleRequiredForAdjustingExits: 0.7,
+        decentCurrentRewardRatio: 2,
+        decentMaxRewardRatio: 2.5
     }
 };
 export const swingTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Swing,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 900,
-        minimumRiskMultipleRequiredForAdjustingExits: 0.8
+        minimumRiskMultipleRequiredForAdjustingExits: 0.8,
+        decentCurrentRewardRatio: 2,
+        decentMaxRewardRatio: 2.5
     }
 };
 
