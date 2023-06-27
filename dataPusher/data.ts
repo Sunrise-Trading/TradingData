@@ -2,47 +2,46 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['TSLA', 'LCID'];
+export const stockSelections: string[] = ['TSLA', 'NVDA', 'META'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [254],
+    priceLevels: [245.46],
     rrr: [0.5, 0.85, 1],
-    dailyRanges: [4, 3.5],
+    dailyRanges: [5],
     pinnedPrices: [],
 }
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [250.5, 249.8, 248.3],
+    priceLevels: [240.89, 240.3],
     rrr: [0.85, 1],
-    dailyRanges: [4.5, 5],
+    dailyRanges: [5],
     pinnedPrices: [],
 };
-const lcidTarget: TradingPlans.ExitTargets = {
-    priceLevels: [5.89, 5.82, 5.75],
-    rrr: [1, 1.5],
-    dailyRanges: [],
+const nvdaTarget: TradingPlans.ExitTargets = {
+    priceLevels: [414],
+    rrr: [0.6, 1, 1.5],
+    dailyRanges: [7],
     pinnedPrices: [],
-}
+};
+const metaTarget: TradingPlans.ExitTargets = {
+    priceLevels: [287.22, 283.85],
+    rrr: [0.8, 1.5],
+    dailyRanges: [4, 5, 6],
+    pinnedPrices: [],
+};
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1478740, tradingSum: 373222338 },
+        vwapCorrection: { volumeSum: 1377464, tradingSum: 335825475 },
         dailyRange: 8,
-        deferTradingInSeconds: 0,
+        deferTradingInSeconds: 301,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [5.75] },
+        keyLevels: { otherLevels: [245.89] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: tslaShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 251.31,
-                stopForAgainstVwapLimitOrMarketEntry: 250.33,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: lcidTarget,
-                planConfigs: Constants.dayTradeConfig,
+                targets: tslaShortTarget,
+                planConfigs: Constants.scalpConfig,
             },
         },
         long: {
@@ -54,28 +53,45 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'LCID',
-        vwapCorrection: { volumeSum: 8384901, tradingSum: 50313611 },
-        dailyRange: 0.5,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 142021, tradingSum: 58101060 },
+        dailyRange: 15,
         deferTradingInSeconds: 0,
-        fixQuantity: 500,
+        fixQuantity: 30,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [257.31] },
-        short: {
+        keyLevels: { otherLevels: [411] },
+        long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: lcidTarget,
+                targets: nvdaTarget,
                 planConfigs: Constants.dayTradeConfig,
                 lastDefense: 6.07,
                 stopForAgainstVwapLimitOrMarketEntry: 6.1,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
+                targets: nvdaTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
-        long: {}
+        short: {}
+    },
+    {
+        symbol: 'META',
+        vwapCorrection: { volumeSum: 100733, tradingSum: 28444447 },
+        dailyRange: 7,
+        deferTradingInSeconds: 301,
+        fixQuantity: 50,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [287.4, 281.56] },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: metaTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        short: {}
     },
     {
         symbol: 'SPY',
