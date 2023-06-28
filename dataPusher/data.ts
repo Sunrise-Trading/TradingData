@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['TSLA', 'NVDA', 'META'];
+export const stockSelections: string[] = ['NVDA', 'TSLA'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [245.46],
@@ -16,27 +16,27 @@ const tslaShortTarget: TradingPlans.ExitTargets = {
     dailyRanges: [5],
     pinnedPrices: [],
 };
-const nvdaTarget: TradingPlans.ExitTargets = {
-    priceLevels: [414],
-    rrr: [0.6, 1, 1.5],
+const nvdaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [409.78],
+    rrr: [0.9, 1.5, 1.75],
     dailyRanges: [7],
     pinnedPrices: [],
 };
-const metaTarget: TradingPlans.ExitTargets = {
-    priceLevels: [287.22, 283.85],
-    rrr: [0.8, 1.5],
-    dailyRanges: [4, 5, 6],
+const nvdaShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [400, 397.55],
+    rrr: [0.5, 0.85, 1,],
+    dailyRanges: [4, 5],
     pinnedPrices: [],
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1377464, tradingSum: 335825475 },
-        dailyRange: 8,
+        vwapCorrection: { volumeSum: 1185005, tradingSum: 297369972 },
+        dailyRange: 10,
         deferTradingInSeconds: 301,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [245.89] },
+        keyLevels: { otherLevels: [250.39] },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
@@ -54,44 +54,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 142021, tradingSum: 58101060 },
+        vwapCorrection: { volumeSum: 1314777, tradingSum: 530301458 },
         dailyRange: 15,
         deferTradingInSeconds: 0,
         fixQuantity: 30,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [411] },
+        keyLevels: { otherLevels: [419.4] },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: nvdaTarget,
+                targets: nvdaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 6.07,
-                stopForAgainstVwapLimitOrMarketEntry: 6.1,
+                lastDefense: 402.58,
+                stopForAgainstVwapLimitOrMarketEntry: 402.58,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: nvdaTarget,
+                targets: nvdaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
-        short: {}
-    },
-    {
-        symbol: 'META',
-        vwapCorrection: { volumeSum: 100733, tradingSum: 28444447 },
-        dailyRange: 7,
-        deferTradingInSeconds: 301,
-        fixQuantity: 50,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [287.4, 281.56] },
-        long: {
+        short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: metaTarget,
-                planConfigs: Constants.dayTradeConfig,
+                targets: nvdaShortTarget,
+                planConfigs: Constants.scalpConfig,
             },
-        },
-        short: {}
+        }
     },
     {
         symbol: 'SPY',
