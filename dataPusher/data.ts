@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['NVDA', 'TSLA'];
+export const stockSelections: string[] = ['SPY'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [245.46],
@@ -17,16 +17,22 @@ const tslaShortTarget: TradingPlans.ExitTargets = {
     pinnedPrices: [],
 };
 const nvdaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [409.78],
+    priceLevels: [422],
     rrr: [0.9, 1.5, 1.75],
     dailyRanges: [7],
-    pinnedPrices: [],
+    pinnedPrices: [422],
 };
 const nvdaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [400, 397.55],
     rrr: [0.5, 0.85, 1,],
     dailyRanges: [4, 5],
     pinnedPrices: [],
+};
+const jobyTarget: TradingPlans.ExitTargets = {
+    priceLevels: [9.74],
+    rrr: [0.5, 0.85, 1,],
+    dailyRanges: [1],
+    pinnedPrices: [9.74],
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -54,19 +60,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 1314777, tradingSum: 530301458 },
+        vwapCorrection: { volumeSum: 233653, tradingSum: 97017388 },
         dailyRange: 15,
         deferTradingInSeconds: 0,
         fixQuantity: 30,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [419.4] },
+        keyLevels: { otherLevels: [416.5] },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: nvdaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 402.58,
-                stopForAgainstVwapLimitOrMarketEntry: 402.58,
+                lastDefense: 414.22,
+                stopForAgainstVwapLimitOrMarketEntry: 413.97,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
@@ -75,11 +81,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+        }
+    },
+    {
+        symbol: 'JOBY',
+        vwapCorrection: { volumeSum: 5914199, tradingSum: 61668166 },
+        dailyRange: 1,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [11] },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: jobyTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 11,
+                stopForAgainstVwapLimitOrMarketEntry: 11.07,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: nvdaShortTarget,
+                targets: jobyTarget,
                 planConfigs: Constants.scalpConfig,
             },
+        },
+        long: {
         }
     },
     {
