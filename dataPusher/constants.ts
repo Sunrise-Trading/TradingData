@@ -37,32 +37,71 @@ export const swingTradeConfig: TradingPlans.PlanConfigs = {
     }
 };
 
-export const emptyNumbers: number[] = [];
-export const emptyTarget = {
-    priceLevels: emptyNumbers,
-    rrr: emptyNumbers,
-    dailyRanges: emptyNumbers,
-    pinnedPrices: emptyNumbers,
-};
-export const presetTargets = {
-    'scalp': {
-        ...emptyTarget,
-        rrr: [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.5, 2],
+let futures = [
+    {
+        symbol: 'MES',
+        isFutures: true,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 40,
+        deferTradingInSeconds: 0,
+        fixQuantity: 3,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+        },
+        long: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
+        short: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
     },
-    'breakeven': {
-        ...emptyTarget,
-        rrr: [0.85, 1, 1, 1, 2, 2, 3, 3]
+    {
+        symbol: 'MNQ',
+        isFutures: true,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 40,
+        deferTradingInSeconds: 0,
+        fixQuantity: 3,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+        },
+        long: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
+        short: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
     },
-    'r2': {
-        ...emptyTarget,
-        rrr: [1.5, 1.8, 1.9, 2, 2, 2.1, 2.2, 3],
-    },
-    'doubleTop': {
-        ...emptyTarget,
-        rrr: [1.5, 1.8, 2, 2.2, 5, 5, 5, 5],
-    },
-    'swing': {
-        ...emptyTarget,
-        rrr: [1.8, 2, 2.5, 3, 6, 7, 8, 9,],
-    },
-}
+    {
+        symbol: 'US',
+        isFutures: true,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 2,
+        deferTradingInSeconds: 0,
+        fixQuantity: 2,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+        },
+        long: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
+        short: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+            }
+        },
+    }
+]
