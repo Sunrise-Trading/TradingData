@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['SPY'];
+export const stockSelections: string[] = ['SPY', 'QQQ'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [245.46],
@@ -59,58 +59,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 233653, tradingSum: 97017388 },
-        dailyRange: 15,
-        deferTradingInSeconds: 0,
-        fixQuantity: 30,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [416.5] },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: nvdaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 414.22,
-                stopForAgainstVwapLimitOrMarketEntry: 413.97,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: nvdaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        },
-        short: {
-        }
-    },
-    {
-        symbol: 'JOBY',
-        vwapCorrection: { volumeSum: 5914199, tradingSum: 61668166 },
-        dailyRange: 1,
-        deferTradingInSeconds: 0,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [11] },
-        short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: jobyTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 11,
-                stopForAgainstVwapLimitOrMarketEntry: 11.07,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: jobyTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-        }
-    },
-    {
         symbol: 'SPY',
-        vwapCorrection: { volumeSum: 1244025, tradingSum: 539935557 },
+        vwapCorrection: { volumeSum: 1127989, tradingSum: 496773728 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
@@ -128,8 +78,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 436.57,
-                stopForAgainstVwapLimitOrMarketEntry: 436.57,
+                lastDefense: 441.67,
+                stopForAgainstVwapLimitOrMarketEntry: 441.67,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
@@ -140,7 +90,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 1175722, tradingSum: 427131094 },
+        vwapCorrection: { volumeSum: 1487378, tradingSum: 545385830 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
@@ -151,8 +101,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: Constants.presetTargets.breakeven,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 364.61,
-                stopForAgainstVwapLimitOrMarketEntry: 364.61,
+                lastDefense: 367.83,
+                stopForAgainstVwapLimitOrMarketEntry: 367.83,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
