@@ -37,7 +37,11 @@ export interface BasePlan {
 };
 export interface PlanConfigs {
     setupQuality: SetupQuality,
+    entryRules: EntryRules,
     exitRules: ExitRules,
+}
+export interface EntryRules {
+    allowMoreChancesPerDirection: boolean,
 }
 export interface ExitRules {
     waitTimeInSecondsAfterMarketOpen: number,
