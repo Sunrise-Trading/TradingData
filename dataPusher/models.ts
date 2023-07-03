@@ -41,6 +41,7 @@ export interface PlanConfigs {
 }
 export interface ExitRules {
     waitTimeInSecondsAfterMarketOpen: number,
+    waitTimeInSecondsSinceEntry: number,
     /**
     * number between 0 and 1
     */

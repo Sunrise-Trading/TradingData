@@ -4,6 +4,7 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 0,
+        waitTimeInSecondsSinceEntry: 0,
         minimumRiskMultipleRequiredForAdjustingExits: 0.55,
         decentCurrentRewardRatio: 0.8,
         decentMaxRewardRatio: 1.5
@@ -13,6 +14,7 @@ export const dayTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.DayTrade,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 300,
+        waitTimeInSecondsSinceEntry: 120,
         minimumRiskMultipleRequiredForAdjustingExits: 0.6,
         decentCurrentRewardRatio: 1.5,
         decentMaxRewardRatio: 2
@@ -22,6 +24,7 @@ export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.HoldToDayClose,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 600,
+        waitTimeInSecondsSinceEntry: 180,
         minimumRiskMultipleRequiredForAdjustingExits: 0.7,
         decentCurrentRewardRatio: 2,
         decentMaxRewardRatio: 2.5
@@ -31,6 +34,7 @@ export const swingTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Swing,
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 900,
+        waitTimeInSecondsSinceEntry: 600,
         minimumRiskMultipleRequiredForAdjustingExits: 0.8,
         decentCurrentRewardRatio: 2,
         decentMaxRewardRatio: 2.5
