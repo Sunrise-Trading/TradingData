@@ -5,49 +5,39 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = ['TSLA'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [245.46],
+    priceLevels: [],
     rrr: [0.5, 0.85, 1],
     dailyRanges: [5],
     pinnedPrices: [],
 }
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [240.89, 240.3],
-    rrr: [0.85, 1],
-    dailyRanges: [5],
+    priceLevels: [270, 267],
+    rrr: [0.5, 1, 1.5],
+    dailyRanges: [10],
     pinnedPrices: [],
 };
-const nvdaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [422],
-    rrr: [0.9, 1.5, 1.75],
-    dailyRanges: [7],
-    pinnedPrices: [422],
-};
-const nvdaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [400, 397.55],
-    rrr: [0.5, 0.85, 1,],
-    dailyRanges: [4, 5],
-    pinnedPrices: [],
-};
-const jobyTarget: TradingPlans.ExitTargets = {
-    priceLevels: [9.74],
-    rrr: [0.5, 0.85, 1,],
-    dailyRanges: [1],
-    pinnedPrices: [9.74],
-};
+
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1185005, tradingSum: 297369972 },
+        vwapCorrection: { volumeSum: 3117056, tradingSum: 866445943 },
         dailyRange: 10,
-        deferTradingInSeconds: 301,
+        deferTradingInSeconds: 0,
         fixQuantity: 50,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [250.39] },
+        keyLevels: { otherLevels: [277, 280] },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                planConfigs: Constants.holdToDayCloseConfig,
+                targets: tslaLongTarget,
+                lastDefense: 278,
+                stopForAgainstVwapLimitOrMarketEntry: 278.5,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: tslaShortTarget,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: Constants.holdToDayCloseConfig,
             },
         },
         long: {
