@@ -6,8 +6,8 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
         allowMoreChancesPerDirection: false,
     },
     exitRules: {
-        waitTimeInSecondsAfterMarketOpen: 0,
-        waitTimeInSecondsSinceEntry: 0,
+        waitTimeInSecondsAfterMarketOpen: 300,
+        waitTimeInSecondsSinceEntry: 120,
         minimumRiskMultipleRequiredForAdjustingExits: 0.55,
         decentCurrentRewardRatio: 0.8,
         decentMaxRewardRatio: 1.5
@@ -20,7 +20,7 @@ export const dayTradeConfig: TradingPlans.PlanConfigs = {
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 300,
-        waitTimeInSecondsSinceEntry: 120,
+        waitTimeInSecondsSinceEntry: 180,
         minimumRiskMultipleRequiredForAdjustingExits: 0.6,
         decentCurrentRewardRatio: 1.5,
         decentMaxRewardRatio: 2
@@ -33,7 +33,7 @@ export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 600,
-        waitTimeInSecondsSinceEntry: 180,
+        waitTimeInSecondsSinceEntry: 300,
         minimumRiskMultipleRequiredForAdjustingExits: 0.7,
         decentCurrentRewardRatio: 2,
         decentMaxRewardRatio: 2.5
