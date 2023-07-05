@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['RIVN'];
+export const stockSelections: string[] = ['RIVN', 'COIN'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -26,6 +26,12 @@ const rivnShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [19.72],
     rrr: [0.5, 1, 1.5],
     dailyRanges: [0.75],
+    pinnedPrices: [],
+};
+const coinTarget: TradingPlans.ExitTargets = {
+    priceLevels: [75.14, 75.01],
+    rrr: [0.8, 1.2],
+    dailyRanges: [2.5, 3],
     pinnedPrices: [],
 };
 
@@ -95,6 +101,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 lastDefense: 20.44,
                 stopForAgainstVwapLimitOrMarketEntry: 20.4,
             },
+        }
+    },
+    {
+        symbol: 'COIN',
+        vwapCorrection: { volumeSum: 310335, tradingSum: 24159397 },
+        dailyRange: 5,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [75] },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                planConfigs: Constants.dayTradeConfig,
+                targets: coinTarget,
+                lastDefense: 78,
+                stopForAgainstVwapLimitOrMarketEntry: 78.4,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: coinTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        long: {
         }
     }
 ];
