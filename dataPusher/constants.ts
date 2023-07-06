@@ -3,7 +3,7 @@ import * as TradingPlans from './models';
 export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     entryRules: {
-        allowMoreChancesPerDirection: false,
+        allowMoreChancesPerDirection: true,
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 0,

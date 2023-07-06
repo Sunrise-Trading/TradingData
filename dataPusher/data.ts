@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['RIVN', 'COIN'];
+export const stockSelections: string[] = ['SPY', 'QQQ'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -16,25 +16,30 @@ const tslaShortTarget: TradingPlans.ExitTargets = {
     dailyRanges: [10],
     pinnedPrices: [],
 };
-const rivnLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [21],
+const spyLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
     rrr: [0.5, 0.85, 1],
-    dailyRanges: [0.5],
+    dailyRanges: [2],
     pinnedPrices: [],
 }
-const rivnShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [19.72],
+const spyShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [438.4],
     rrr: [0.5, 1, 1.5],
-    dailyRanges: [0.75],
+    dailyRanges: [2],
     pinnedPrices: [],
 };
-const coinTarget: TradingPlans.ExitTargets = {
-    priceLevels: [75.14, 75.01],
-    rrr: [0.8, 1.2],
-    dailyRanges: [2.5, 3],
+const qqqLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [367.66],
+    rrr: [0.5, 0.85, 1],
+    dailyRanges: [2.2],
+    pinnedPrices: [],
+}
+const qqqShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [438.4],
+    rrr: [0.5, 1, 1.5],
+    dailyRanges: [2.2],
     pinnedPrices: [],
 };
-
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
@@ -42,7 +47,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 10,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
-        maxQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [277, 280] },
         short: {
@@ -68,67 +72,63 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'RIVN',
-        vwapCorrection: { volumeSum: 4826734, tradingSum: 99770434 },
-        dailyRange: 1,
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 1679152, tradingSum: 739526744 },
+        dailyRange: 4,
         deferTradingInSeconds: 0,
-        fixQuantity: 500,
-        maxQuantity: 800,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [19.7] },
+        keyLevels: { otherLevels: [441.18, 438.28] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                planConfigs: Constants.scalpConfig,
-                targets: rivnShortTarget,
-                lastDefense: 20.75,
-                stopForAgainstVwapLimitOrMarketEntry: 20.87,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: rivnShortTarget,
+                targets: spyShortTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: rivnLongTarget,
-                planConfigs: Constants.dayTradeConfig,
+                targets: spyLongTarget,
+                planConfigs: Constants.scalpConfig,
             },
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 planConfigs: Constants.dayTradeConfig,
-                targets: rivnLongTarget,
-                lastDefense: 20.44,
-                stopForAgainstVwapLimitOrMarketEntry: 20.4,
+                targets: spyLongTarget,
+                lastDefense: 439.28,
+                stopForAgainstVwapLimitOrMarketEntry: 439.28,
             },
         }
     },
     {
-        symbol: 'COIN',
-        vwapCorrection: { volumeSum: 310335, tradingSum: 24159397 },
+        symbol: 'QQQ',
+        vwapCorrection: { volumeSum: 1493851, tradingSum: 548810010 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
-        maxQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [75] },
+        keyLevels: { otherLevels: [367, 365.3] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                planConfigs: Constants.dayTradeConfig,
-                targets: coinTarget,
-                lastDefense: 78,
-                stopForAgainstVwapLimitOrMarketEntry: 78.4,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: coinTarget,
+                targets: qqqShortTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                planConfigs: Constants.scalpConfig,
+                targets: qqqLongTarget,
+                lastDefense: 365.76,
+                stopForAgainstVwapLimitOrMarketEntry: 365.76,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: qqqLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
         }
     }
 ];
