@@ -6,6 +6,7 @@ export interface TradingPlans {
     deferTradingInSeconds: number,
     fixQuantity: number,
     alwaysUseFixQuantity: boolean,
+    maxQuantity: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,

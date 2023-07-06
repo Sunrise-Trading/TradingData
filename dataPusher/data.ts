@@ -42,6 +42,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 10,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
+        maxQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [277, 280] },
         short: {
@@ -72,6 +73,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 1,
         deferTradingInSeconds: 0,
         fixQuantity: 500,
+        maxQuantity: 800,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [19.7] },
         short: {
@@ -109,6 +111,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 5,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
+        maxQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [75] },
         short: {
