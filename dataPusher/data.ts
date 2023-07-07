@@ -54,6 +54,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.OpeningDrive,
                 planConfigs: Constants.holdToDayCloseConfig,
                 targets: tslaLongTarget,
+                requireReversal: true,
                 lastDefense: 278,
                 stopForAgainstVwapLimitOrMarketEntry: 278.5,
             },
@@ -97,6 +98,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.dayTradeConfig,
                 targets: spyLongTarget,
                 lastDefense: 439.28,
+                requireReversal: true,
                 stopForAgainstVwapLimitOrMarketEntry: 439.28,
             },
         }
@@ -122,6 +124,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.scalpConfig,
                 targets: qqqLongTarget,
                 lastDefense: 365.76,
+                requireReversal: true,
                 stopForAgainstVwapLimitOrMarketEntry: 365.76,
             },
             momentum: {
