@@ -60,7 +60,7 @@ let futures = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         deferTradingInSeconds: 0,
-        fixQuantity: 3,
+        fixQuantity: 6,
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
@@ -68,11 +68,15 @@ let futures = [
         long: {
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
+                //planConfigs: Constants.scalpConfig,
+                //targets: futuresTarget,
             }
         },
         short: {
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
+                //planConfigs: Constants.scalpConfig,
+                //targets: futuresTarget,
             }
         },
     },
@@ -82,7 +86,7 @@ let futures = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         deferTradingInSeconds: 0,
-        fixQuantity: 3,
+        fixQuantity: 4,
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
@@ -90,11 +94,15 @@ let futures = [
         long: {
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
+                //planConfigs: Constants.scalpConfig,
+                //targets: futuresTarget,
             }
         },
         short: {
             newsBreakout: {
                 planType: TradingPlans.PlanType.NewsBreakout,
+                //planConfigs: Constants.scalpConfig,
+                //targets: futuresTarget,
             }
         },
     },
