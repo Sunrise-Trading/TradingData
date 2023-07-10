@@ -20,6 +20,7 @@ export interface SingleDirectionPlans {
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
+    breakoutAlgo?: BreakoutAlgo,
 };
 export interface keyLevels {
     otherLevels: number[];
@@ -29,6 +30,7 @@ export enum PlanType {
     Retracement = 'Retracement',
     NewsBreakout = 'NewsBreakout',
     OpeningDrive = 'OpeningDrive',
+    BreakoutAlgo = 'BreakoutAlgo',
 };
 export interface BasePlan {
     planType: PlanType,
@@ -61,6 +63,14 @@ export interface OpeningDrivePlan extends BasePlan {
 export interface MomentumPlan extends BasePlan {
 };
 export interface NewsBreakoutPlan extends BasePlan {
+};
+export interface AlgoPlan extends BasePlan {
+    expirationInSeconds: number,
+    allowPremarket: boolean,
+}
+export interface BreakoutAlgo extends AlgoPlan {
+    entryPrice: number,
+    useHighLowOfDay: boolean,
 }
 export interface RetracementPlan {
     entryAreas: RetracementArea[];
