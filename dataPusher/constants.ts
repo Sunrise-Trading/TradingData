@@ -23,7 +23,7 @@ export const dayTradeConfig: TradingPlans.PlanConfigs = {
         waitTimeInSecondsSinceEntry: 180,
         minimumRiskMultipleRequiredForAdjustingExits: 0.45,
         decentCurrentRewardRatio: 1.5,
-        decentMaxRewardRatio: 2
+        decentMaxRewardRatio: 1.8
     }
 };
 export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
@@ -35,8 +35,8 @@ export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
         waitTimeInSecondsAfterMarketOpen: 600,
         waitTimeInSecondsSinceEntry: 300,
         minimumRiskMultipleRequiredForAdjustingExits: 0.7,
-        decentCurrentRewardRatio: 2,
-        decentMaxRewardRatio: 2.5
+        decentCurrentRewardRatio: 1.8,
+        decentMaxRewardRatio: 2
     }
 };
 export const swingTradeConfig: TradingPlans.PlanConfigs = {
@@ -48,7 +48,7 @@ export const swingTradeConfig: TradingPlans.PlanConfigs = {
         waitTimeInSecondsAfterMarketOpen: 900,
         waitTimeInSecondsSinceEntry: 600,
         minimumRiskMultipleRequiredForAdjustingExits: 0.8,
-        decentCurrentRewardRatio: 2,
+        decentCurrentRewardRatio: 1.8,
         decentMaxRewardRatio: 2.5
     }
 };
