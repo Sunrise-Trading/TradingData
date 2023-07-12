@@ -2,12 +2,18 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR'];
+export const stockSelections: string[] = ['PLTR', 'LCID'];
 
 const pltrLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.5, 0.8, 1, 1.5, 1.8],
     dailyRanges: [0.5],
+    pinnedPrices: [],
+};
+const lcidShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.5, 0.8, 1, 1.5, 1.8],
+    dailyRanges: [0.25],
     pinnedPrices: [],
 };
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -41,6 +47,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.dayTradeConfig,
             },
 
+        }
+    },
+    {
+        symbol: 'LCID',
+        vwapCorrection: { volumeSum: 1846673, tradingSum: 15268831 },
+        dailyRange: 0.5,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [8] },
+        long: {},
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: lcidShortTarget,
+                planConfigs: Constants.dayTradeConfig,
+                lastDefense: 8,
+                stopForAgainstVwapLimitOrMarketEntry: 8.1,
+                requireReversal: true,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: pltrLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
         }
     },
     {
