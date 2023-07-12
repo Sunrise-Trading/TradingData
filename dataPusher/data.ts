@@ -2,30 +2,12 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['SPY', 'QQQ'];
+export const stockSelections: string[] = ['PLTR'];
 
-const spyLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [25.95],
-    rrr: [0.5, 1],
-    dailyRanges: [2],
-    pinnedPrices: [],
-}
-const qqqShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [364.8],
-    rrr: [0.5, 1, 1.5],
-    dailyRanges: [2],
-    pinnedPrices: [],
-};
-const babaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [91.57],
-    rrr: [0.5, 0.85, 1],
-    dailyRanges: [2],
-    pinnedPrices: [],
-}
-const babaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [85.5],
-    rrr: [0.5, 1, 1.5],
-    dailyRanges: [2],
+const pltrLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.5, 0.8, 1, 1.5, 1.8],
+    dailyRanges: [0.5],
     pinnedPrices: [],
 };
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -36,48 +18,26 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SPY',
-        vwapCorrection: { volumeSum: 712828, tradingSum: 312408526 },
-        dailyRange: 3.5,
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 1527134, tradingSum: 25656252 },
+        dailyRange: 0.88,
         deferTradingInSeconds: 0,
-        fixQuantity: 100,
+        fixQuantity: 500,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [440] },
+        keyLevels: { otherLevels: [16.7, 17.16] },
+        short: {},
         long: {
-            momentum: {
+            openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: spyLongTarget,
+                targets: pltrLongTarget,
                 planConfigs: Constants.dayTradeConfig,
+                lastDefense: 16.8,
+                stopForAgainstVwapLimitOrMarketEntry: 16.78,
+                requireReversal: true,
             },
-        },
-        short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: spyLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-
-        }
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 666248, tradingSum: 243649354 },
-        dailyRange: 2.5,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [91.57] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: qqqShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: qqqShortTarget,
+                targets: pltrLongTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
 
