@@ -2,18 +2,24 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR', 'LCID'];
+export const stockSelections: string[] = ['BABA', 'CVNA'];
 
-const pltrLongTarget: TradingPlans.ExitTargets = {
+const bbaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.5, 0.8, 1, 1.5, 1.8],
-    dailyRanges: [0.5],
+    rrr: [1, 1.5, 1.8],
+    dailyRanges: [2, 2.5],
     pinnedPrices: [],
 };
-const lcidShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
+const cvnaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [37.95],
     rrr: [0.5, 0.8, 1, 1.5, 1.8],
-    dailyRanges: [0.25],
+    dailyRanges: [3.5],
+    pinnedPrices: [],
+};
+const cvnaShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [35.6, 35.26],
+    rrr: [0.5, 1, 1.5, 1.8],
+    dailyRanges: [3.5],
     pinnedPrices: [],
 };
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -24,52 +30,66 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 1527134, tradingSum: 25656252 },
-        dailyRange: 0.88,
-        deferTradingInSeconds: 0,
-        fixQuantity: 500,
+        symbol: 'BABA',
+        vwapCorrection: { volumeSum: 278028, tradingSum: 26463668 },
+        dailyRange: 2.8,
+        deferTradingInSeconds: 55,
+        fixQuantity: 150,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [16.7, 17.16] },
-        short: {},
+        keyLevels: { otherLevels: [95.5] },
+        short: {
+        },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: bbaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 16.8,
-                stopForAgainstVwapLimitOrMarketEntry: 16.78,
-                requireReversal: true,
+                lastDefense: 95,
+                stopForAgainstVwapLimitOrMarketEntry: 94.7,
+                requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: bbaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
-
         }
     },
     {
-        symbol: 'LCID',
-        vwapCorrection: { volumeSum: 1846673, tradingSum: 15268831 },
-        dailyRange: 0.5,
+        symbol: 'CVNA',
+        vwapCorrection: { volumeSum: 1391224, tradingSum: 50818561 },
+        dailyRange: 3.8,
         deferTradingInSeconds: 0,
-        fixQuantity: 500,
+        fixQuantity: 150,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [8] },
-        long: {},
+        keyLevels: { otherLevels: [35.6] },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: lcidShortTarget,
+                targets: cvnaShortTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 8,
-                stopForAgainstVwapLimitOrMarketEntry: 8.1,
+                lastDefense: 37,
+                stopForAgainstVwapLimitOrMarketEntry: 37,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: cvnaShortTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: cvnaLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+                lastDefense: 36.29,
+                stopForAgainstVwapLimitOrMarketEntry: 35.91,
+                requireReversal: true,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: cvnaLongTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         }
