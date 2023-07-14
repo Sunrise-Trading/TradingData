@@ -2,24 +2,24 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['BABA', 'CVNA'];
+export const stockSelections: string[] = ['COIN', 'META'];
 
-const bbaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [1, 1.5, 1.8],
-    dailyRanges: [2, 2.5],
-    pinnedPrices: [],
-};
-const cvnaLongTarget: TradingPlans.ExitTargets = {
+const metaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [37.95],
     rrr: [0.5, 0.8, 1, 1.5, 1.8],
     dailyRanges: [3.5],
     pinnedPrices: [],
 };
-const cvnaShortTarget: TradingPlans.ExitTargets = {
+const coinShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [35.6, 35.26],
     rrr: [0.5, 1, 1.5, 1.8],
     dailyRanges: [3.5],
+    pinnedPrices: [],
+};
+const coinLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.5, 0.8, 1, 1.5, 1.8],
+    dailyRanges: [2.5],
     pinnedPrices: [],
 };
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -30,68 +30,60 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BABA',
-        vwapCorrection: { volumeSum: 278028, tradingSum: 26463668 },
-        dailyRange: 2.8,
-        deferTradingInSeconds: 55,
-        fixQuantity: 150,
+        symbol: 'COIN',
+        vwapCorrection: { volumeSum: 474763, tradingSum: 49921525 },
+        dailyRange: 5.2,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [95.5] },
-        short: {
-        },
+        keyLevels: { otherLevels: [107.75] },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: bbaLongTarget,
+                targets: coinLongTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 95,
-                stopForAgainstVwapLimitOrMarketEntry: 94.7,
+                lastDefense: 105,
+                stopForAgainstVwapLimitOrMarketEntry: 104.5,
+                requireReversal: true,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: coinLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: coinShortTarget,
+                planConfigs: Constants.dayTradeConfig,
+                lastDefense: 106.8,
+                stopForAgainstVwapLimitOrMarketEntry: 108,
                 requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: bbaLongTarget,
+                targets: coinShortTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         }
     },
     {
-        symbol: 'CVNA',
-        vwapCorrection: { volumeSum: 1391224, tradingSum: 50818561 },
-        dailyRange: 3.8,
-        deferTradingInSeconds: 0,
-        fixQuantity: 150,
+        symbol: 'META',
+        vwapCorrection: { volumeSum: 191076, tradingSum: 59437171 },
+        dailyRange: 8,
+        deferTradingInSeconds: 50,
+        fixQuantity: 70,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [35.6] },
+        keyLevels: { otherLevels: [314.25] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: cvnaShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 37,
-                stopForAgainstVwapLimitOrMarketEntry: 37,
-                requireReversal: true,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: cvnaShortTarget,
+                targets: metaShortTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: cvnaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 36.29,
-                stopForAgainstVwapLimitOrMarketEntry: 35.91,
-                requireReversal: true,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: cvnaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
         }
     },
     {
