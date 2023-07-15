@@ -4,29 +4,27 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = ['COIN', 'META'];
 
-const metaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [37.95],
-    rrr: [0.5, 0.8, 1, 1.5, 1.8],
-    dailyRanges: [3.5],
-    pinnedPrices: [],
-};
+
 const coinShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [35.6, 35.26],
     rrr: [0.5, 1, 1.5, 1.8],
     dailyRanges: [3.5],
     pinnedPrices: [],
+    minimumTargets: {}
 };
 const coinLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.5, 0.8, 1, 1.5, 1.8],
     dailyRanges: [2.5],
     pinnedPrices: [],
+    minimumTargets: {}
 };
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
     dailyRanges: [],
     pinnedPrices: [],
+    minimumTargets: {}
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -66,24 +64,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: coinShortTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
-        }
-    },
-    {
-        symbol: 'META',
-        vwapCorrection: { volumeSum: 191076, tradingSum: 59437171 },
-        dailyRange: 8,
-        deferTradingInSeconds: 50,
-        fixQuantity: 70,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [314.25] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: metaShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        },
-        long: {
         }
     },
     {
