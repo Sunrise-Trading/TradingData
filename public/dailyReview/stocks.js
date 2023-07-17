@@ -33,6 +33,9 @@ let stocks = [
     'UBER', 'LYFT', 'DASH', 'ABNB',
     /* 12. housing */
     'Z', 'RDFN', 'OPEN', 'COMP',
-    /* 13. growth */
+    /* 13. swing */
+    /* 14. EV */
+    'TSLA', 'RIVN', 'LCID', 'NIO', 'XPEV', 'LI', 'WKHS', 'HYLN',
+    /* 15. growth */
     'ARKK',
 ];
