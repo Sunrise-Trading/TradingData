@@ -2,13 +2,20 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR', 'PLTR'];
+export const stockSelections: string[] = ['PLTR', 'BAC'];
 
 
 const pltrLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [24.54],
-    rrr: [0.5, 1, 1.5, 1.8],
+    priceLevels: [],
+    rrr: [0.8, 1, 1.5, 1.8],
     dailyRanges: [0.5, 1],
+    pinnedPrices: [],
+    minimumTargets: {}
+};
+const bacLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.5, 1, 1.5, 1.8],
+    dailyRanges: [0.5],
     pinnedPrices: [],
     minimumTargets: {}
 };
@@ -27,6 +34,24 @@ const futuresTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+    {
+        symbol: 'BAC',
+        vwapCorrection: { volumeSum: 2672356, tradingSum: 78482799 },
+        dailyRange: 0.65,
+        deferTradingInSeconds: 0,
+        fixQuantity: 700,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [30.1, 30.28] },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: bacLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        short: {
+        }
+    },
     {
         symbol: 'PLTR',
         vwapCorrection: { volumeSum: 1786905, tradingSum: 32053493 },
@@ -51,11 +76,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
+
         }
     },
     {
