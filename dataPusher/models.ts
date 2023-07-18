@@ -91,7 +91,7 @@ export interface ExitTargets {
 }
 export interface MinimumExitTargets {
     price?: number,
-    dailyRanges?: number,
+    dailyRange?: number,
     rrr?: number,
 }
 export interface PriceArea {
