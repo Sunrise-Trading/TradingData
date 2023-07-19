@@ -2,24 +2,40 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR', 'BAC'];
+export const stockSelections: string[] = ['MSFT', 'AMD'];
 
 
-const pltrLongTarget: TradingPlans.ExitTargets = {
+const msftLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1.5, 1.8],
-    dailyRanges: [0.5, 1],
+    dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {}
 };
-const bacLongTarget: TradingPlans.ExitTargets = {
+const msftShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.5, 1, 1.5, 1.8],
-    dailyRanges: [0.5],
+    rrr: [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {}
 };
-const pltrShortTarget: TradingPlans.ExitTargets = {
+const amdLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [1, 1.5, 1.8],
+    dailyRanges: [3, 4],
+    pinnedPrices: [],
+    minimumTargets: {
+        rrr: 1.5
+    }
+};
+const cvnaShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.5, 0.9, 1, 1],
+    dailyRanges: [3, 3.5],
+    pinnedPrices: [],
+    minimumTargets: {}
+};
+const cvnaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.5, 0.9, 1, 1],
     dailyRanges: [0.5],
@@ -35,43 +51,56 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BAC',
-        vwapCorrection: { volumeSum: 2672356, tradingSum: 78482799 },
-        dailyRange: 0.65,
+        symbol: 'MSFT',
+        vwapCorrection: { volumeSum: 216580, tradingSum: 78307491 },
+        dailyRange: 8,
         deferTradingInSeconds: 0,
-        fixQuantity: 700,
+        fixQuantity: 60,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [30.1, 30.28] },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: bacLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        },
-        short: {
-        }
-    },
-    {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 1786905, tradingSum: 32053493 },
-        dailyRange: 0.87,
-        deferTradingInSeconds: 0,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [17.59] },
+        keyLevels: { otherLevels: [362.9] },
         long: {
             openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: msftLongTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 17.82,
-                stopForAgainstVwapLimitOrMarketEntry: 17.81,
+                lastDefense: 360,
+                stopForAgainstVwapLimitOrMarketEntry: 360,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: msftLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: msftShortTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        }
+    },
+    {
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 552713, tradingSum: 66185037 },
+        dailyRange: 4.4,
+        deferTradingInSeconds: 0,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [122.12] },
+        long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: amdLongTarget,
+                planConfigs: Constants.dayTradeConfig,
+                lastDefense: 120,
+                stopForAgainstVwapLimitOrMarketEntry: 119.5,
+                requireReversal: true,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: amdLongTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
