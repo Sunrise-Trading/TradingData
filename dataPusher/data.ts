@@ -2,9 +2,15 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['MSFT', 'AMD'];
+export const stockSelections: string[] = ['SPY', 'TSLA', 'AMD'];
 
-
+const okTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.8, 1, 1.5, 1.8],
+    dailyRanges: [],
+    pinnedPrices: [],
+    minimumTargets: {}
+};
 const msftLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1.5, 1.8],
@@ -28,20 +34,6 @@ const amdLongTarget: TradingPlans.ExitTargets = {
         rrr: 1.5
     }
 };
-const cvnaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.5, 0.9, 1, 1],
-    dailyRanges: [3, 3.5],
-    pinnedPrices: [],
-    minimumTargets: {}
-};
-const cvnaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.5, 0.9, 1, 1],
-    dailyRanges: [0.5],
-    pinnedPrices: [],
-    minimumTargets: {}
-};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
@@ -51,61 +43,76 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MSFT',
-        vwapCorrection: { volumeSum: 216580, tradingSum: 78307491 },
-        dailyRange: 8,
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 441361, tradingSum: 200635411 },
+        dailyRange: 3.8,
         deferTradingInSeconds: 0,
-        fixQuantity: 60,
+        fixQuantity: 150,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [362.9] },
-        long: {
+        keyLevels: { otherLevels: [455.11] },
+        short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: msftLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 360,
-                stopForAgainstVwapLimitOrMarketEntry: 360,
+                targets: okTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 454.5,
+                stopForAgainstVwapLimitOrMarketEntry: 454.5,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: msftLongTarget,
-                planConfigs: Constants.dayTradeConfig,
+                targets: okTarget,
+                planConfigs: Constants.scalpConfig,
             },
         },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: msftShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        }
+        long: {}
     },
     {
         symbol: 'AMD',
-        vwapCorrection: { volumeSum: 552713, tradingSum: 66185037 },
+        vwapCorrection: { volumeSum: 232227, tradingSum: 26773983 },
         dailyRange: 4.4,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [122.12] },
-        long: {
+        keyLevels: { otherLevels: [115.55] },
+        short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amdLongTarget,
+                targets: okTarget,
                 planConfigs: Constants.dayTradeConfig,
-                lastDefense: 120,
-                stopForAgainstVwapLimitOrMarketEntry: 119.5,
+                lastDefense: 115.4,
+                stopForAgainstVwapLimitOrMarketEntry: 115.5,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amdLongTarget,
+                targets: okTarget,
                 planConfigs: Constants.dayTradeConfig,
             },
         },
+        long: {},
+    },
+    {
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 1683449, tradingSum: 471851730 },
+        dailyRange: 9.9,
+        deferTradingInSeconds: 120,
+        fixQuantity: 60,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [284.44] },
         short: {
-
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: okTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: okTarget,
+                planConfigs: Constants.dayTradeConfig,
+            },
         }
     },
     {
