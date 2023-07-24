@@ -4,6 +4,13 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = ['TSLA'];
 
+const dwacLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
+    dailyRanges: [],
+    pinnedPrices: [],
+    minimumTargets: {}
+};
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
@@ -53,6 +60,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: tslaLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'DWAC',
+        vwapCorrection: { volumeSum: 161239, tradingSum: 3051610 },
+        dailyRange: 5,
+        deferTradingInSeconds: 120,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [18.26] },
+        short: {
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: dwacLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
