@@ -2,15 +2,8 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['TSLA', 'RIVN'];
+export const stockSelections: string[] = ['TSLA'];
 
-const rivnLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
-    dailyRanges: [],
-    pinnedPrices: [],
-    minimumTargets: {}
-};
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
@@ -35,72 +28,32 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1773599, tradingSum: 472691096 },
+        vwapCorrection: { volumeSum: 1173951, tradingSum: 300789939 },
         dailyRange: 11,
         deferTradingInSeconds: 0,
         fixQuantity: 60,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [265] },
+        keyLevels: { otherLevels: [255.8, 255] },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: tslaShortTarget,
-                planConfigs: Constants.dayTradeConfig,
+                planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
                 targets: tslaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-                lastDefense: 265,
-                stopForAgainstVwapLimitOrMarketEntry: 264,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 255.8,
+                stopForAgainstVwapLimitOrMarketEntry: 255,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: tslaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        }
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 852378, tradingSum: 322838537 },
-        dailyRange: 5.2,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [380] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: tslaLongTarget,
-                planConfigs: Constants.dayTradeConfig,
-            },
-        }
-    },
-    {
-        symbol: 'RIVN',
-        vwapCorrection: { volumeSum: 1003363, tradingSum: 26377704 },
-        dailyRange: 1.6,
-        deferTradingInSeconds: 120,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [26.14] },
-        short: {},
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: rivnLongTarget,
-                planConfigs: Constants.dayTradeConfig,
+                planConfigs: Constants.scalpConfig,
             },
         }
     },
