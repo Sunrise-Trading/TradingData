@@ -2,25 +2,26 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['TSLA'];
+export const stockSelections: string[] = ['BABA', 'DIS'];
 
-const dwacLongTarget: TradingPlans.ExitTargets = {
+const babaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
-    dailyRanges: [],
+    rrr: [0.85, 1, 1.8, 1.9, 2, 3,],
+    dailyRanges: [2, 2.5, 3],
     pinnedPrices: [],
     minimumTargets: {}
 };
-const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.8, 0.85, 0.9, 1, 1.8, 1.9, 2, 2.1, 3, 4],
-    dailyRanges: [],
-    pinnedPrices: [],
-    minimumTargets: {}
-};
-const tslaShortTarget: TradingPlans.ExitTargets = {
+
+const babaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.2, 0.3, 0.4, 0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
+    dailyRanges: [],
+    pinnedPrices: [],
+    minimumTargets: {}
+};
+const disShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [84.5, 84.2],
+    rrr: [0.8, 0.85, 1, 1.5],
     dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {}
@@ -34,52 +35,45 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1173951, tradingSum: 300789939 },
-        dailyRange: 11,
-        deferTradingInSeconds: 0,
-        fixQuantity: 60,
+        symbol: 'BABA',
+        vwapCorrection: { volumeSum: 426180, tradingSum: 41705316 },
+        dailyRange: 3,
+        deferTradingInSeconds: 55,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [255.8, 255] },
+        keyLevels: { otherLevels: [97.47] },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
+                targets: babaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: tslaLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 255.8,
-                stopForAgainstVwapLimitOrMarketEntry: 255,
-                requireReversal: true,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaLongTarget,
+                targets: babaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
     },
     {
-        symbol: 'DWAC',
-        vwapCorrection: { volumeSum: 161239, tradingSum: 3051610 },
-        dailyRange: 5,
-        deferTradingInSeconds: 120,
-        fixQuantity: 100,
+        symbol: 'DIS',
+        vwapCorrection: { volumeSum: 264688, tradingSum: 22699142 },
+        dailyRange: 1.7,
+        deferTradingInSeconds: 55,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [18.26] },
+        keyLevels: { otherLevels: [86] },
         short: {
-        },
-        long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: dwacLongTarget,
+                targets: disShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
+        },
+        long: {
+
         }
     },
     {
