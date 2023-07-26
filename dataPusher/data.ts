@@ -52,6 +52,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: googlLongTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 129.6,
+                stopForAgainstVwapLimitOrMarketEntry: 129.5,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: googlLongTarget,
