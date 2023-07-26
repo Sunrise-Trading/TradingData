@@ -2,9 +2,9 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['BABA', 'DIS'];
+export const stockSelections: string[] = ['GOOGL'];
 
-const babaLongTarget: TradingPlans.ExitTargets = {
+const googlLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.85, 1, 1.8, 1.9, 2, 3,],
     dailyRanges: [2, 2.5, 3],
@@ -12,20 +12,14 @@ const babaLongTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const babaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.2, 0.3, 0.4, 0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
+const googlShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [129.1],
+    rrr: [0.3, 0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
     dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {}
 };
-const disShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [84.5, 84.2],
-    rrr: [0.8, 0.85, 1, 1.5],
-    dailyRanges: [],
-    pinnedPrices: [],
-    minimumTargets: {}
-};
+
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
@@ -35,45 +29,34 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BABA',
-        vwapCorrection: { volumeSum: 426180, tradingSum: 41705316 },
+        symbol: 'GOOGL',
+        vwapCorrection: { volumeSum: 638622, tradingSum: 83049675 },
         dailyRange: 3,
-        deferTradingInSeconds: 55,
+        deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [97.47] },
+        keyLevels: { otherLevels: [129.04] },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: googlShortTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 130,
+                stopForAgainstVwapLimitOrMarketEntry: 130.5,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: babaShortTarget,
+                targets: googlShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
+                targets: googlLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
-        }
-    },
-    {
-        symbol: 'DIS',
-        vwapCorrection: { volumeSum: 264688, tradingSum: 22699142 },
-        dailyRange: 1.7,
-        deferTradingInSeconds: 55,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [86] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: disShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-
         }
     },
     {
