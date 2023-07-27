@@ -6,11 +6,11 @@ export const stockSelections: string[] = ['META'];
 
 const metaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.85, 1, 1.8, 1.9, 2, 3,],
+    rrr: [0.5, 0.8, 1, 1.8, 1.9, 2, 3,],
     dailyRanges: [5],
     pinnedPrices: [],
     minimumTargets: {
-        rrr: 1,
+        rrr: 0.1,
     }
 };
 
@@ -56,14 +56,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: metaLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 326.5,
-                stopForAgainstVwapLimitOrMarketEntry: 326.5,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: metaLongTarget,
