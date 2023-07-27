@@ -2,22 +2,26 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['GOOGL'];
+export const stockSelections: string[] = ['META'];
 
-const googlLongTarget: TradingPlans.ExitTargets = {
+const metaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.85, 1, 1.8, 1.9, 2, 3,],
-    dailyRanges: [2, 2.5, 3],
+    dailyRanges: [5],
     pinnedPrices: [],
-    minimumTargets: {}
+    minimumTargets: {
+        rrr: 1,
+    }
 };
 
-const googlShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [129.1],
+const metaShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
     rrr: [0.3, 0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
     dailyRanges: [],
     pinnedPrices: [],
-    minimumTargets: {}
+    minimumTargets: {
+        rrr: 0.5,
+    }
 };
 
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -29,9 +33,9 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GOOGL',
-        vwapCorrection: { volumeSum: 638622, tradingSum: 83049675 },
-        dailyRange: 3,
+        symbol: 'META',
+        vwapCorrection: { volumeSum: 1668415, tradingSum: 545101272 },
+        dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
@@ -39,30 +43,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: googlShortTarget,
+                targets: metaShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 130,
-                stopForAgainstVwapLimitOrMarketEntry: 130.5,
+                lastDefense: 328,
+                stopForAgainstVwapLimitOrMarketEntry: 328,
                 requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: googlShortTarget,
+                targets: metaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: googlLongTarget,
+                targets: metaLongTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 129.6,
-                stopForAgainstVwapLimitOrMarketEntry: 129.5,
+                lastDefense: 326.5,
+                stopForAgainstVwapLimitOrMarketEntry: 326.5,
                 requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: googlLongTarget,
+                targets: metaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
