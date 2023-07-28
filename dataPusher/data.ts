@@ -2,9 +2,9 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['META'];
+export const stockSelections: string[] = ['PLTR', 'INTC', 'XPEV'];
 
-const metaLongTarget: TradingPlans.ExitTargets = {
+const intcLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.5, 0.8, 1, 1.8, 1.9, 2, 3,],
     dailyRanges: [5],
@@ -14,9 +14,9 @@ const metaLongTarget: TradingPlans.ExitTargets = {
     }
 };
 
-const metaShortTarget: TradingPlans.ExitTargets = {
+const intcShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.3, 0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
+    rrr: [0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
     dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {
@@ -24,6 +24,16 @@ const metaShortTarget: TradingPlans.ExitTargets = {
     }
 };
 
+
+const babaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.8, 0.85, 0.9, 1, 1.5, 2],
+    dailyRanges: [],
+    pinnedPrices: [],
+    minimumTargets: {
+        rrr: 1,
+    }
+};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
@@ -33,17 +43,17 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
-        vwapCorrection: { volumeSum: 1668415, tradingSum: 545101272 },
-        dailyRange: 8,
+        symbol: 'INTC',
+        vwapCorrection: { volumeSum: 1193181, tradingSum: 43890807 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
-        fixQuantity: 200,
+        fixQuantity: 800,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [129.04] },
+        keyLevels: { otherLevels: [37.62] },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: metaShortTarget,
+                targets: intcShortTarget,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 328,
                 stopForAgainstVwapLimitOrMarketEntry: 328,
@@ -51,14 +61,62 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: metaShortTarget,
+                targets: intcShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: metaLongTarget,
+                targets: intcLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'BABA',
+        vwapCorrection: { volumeSum: 555834, tradingSum: 54700210 },
+        dailyRange: 3,
+        deferTradingInSeconds: 0,
+        fixQuantity: 200,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [97.99] },
+        short: {},
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: babaLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 2215499, tradingSum: 37536984 },
+        dailyRange: 0.9,
+        deferTradingInSeconds: 0,
+        fixQuantity: 400,
+        alwaysUseFixQuantity: false,
+        keyLevels: { otherLevels: [17.19] },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: babaLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: babaLongTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 17,
+                stopForAgainstVwapLimitOrMarketEntry: 16.95,
+                requireReversal: false,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: babaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
