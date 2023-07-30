@@ -6,34 +6,20 @@ export const stockSelections: string[] = ['PLTR', 'INTC', 'XPEV'];
 
 const intcLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [1, 1, 1.8, 1.9, 2, 3,],
+    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [5],
     pinnedPrices: [],
-    minimumTargets: {
-        rrr: 0.1,
-    }
+    minimumTargets: {}
 };
 
 const intcShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [1, 1, 1, 1.5, 2],
+    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [],
-    minimumTargets: {
-        rrr: 0.5,
-    }
+    minimumTargets: {}
 };
 
-
-const babaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.8, 0.85, 0.9, 1, 1.5, 2],
-    dailyRanges: [],
-    pinnedPrices: [],
-    minimumTargets: {
-        rrr: 1,
-    }
-};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
