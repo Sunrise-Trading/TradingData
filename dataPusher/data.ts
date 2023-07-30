@@ -60,54 +60,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'BABA',
-        vwapCorrection: { volumeSum: 555834, tradingSum: 54700210 },
-        dailyRange: 3,
-        deferTradingInSeconds: 0,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [97.99] },
-        short: {},
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 2215499, tradingSum: 37536984 },
-        dailyRange: 0.9,
-        deferTradingInSeconds: 0,
-        fixQuantity: 400,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [17.19] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 17,
-                stopForAgainstVwapLimitOrMarketEntry: 16.95,
-                requireReversal: false,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
         symbol: 'MES',
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
