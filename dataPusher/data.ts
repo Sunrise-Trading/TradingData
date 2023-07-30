@@ -6,7 +6,7 @@ export const stockSelections: string[] = ['PLTR', 'INTC', 'XPEV'];
 
 const intcLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.5, 0.8, 1, 1.8, 1.9, 2, 3,],
+    rrr: [1, 1, 1.8, 1.9, 2, 3,],
     dailyRanges: [5],
     pinnedPrices: [],
     minimumTargets: {
@@ -16,7 +16,7 @@ const intcLongTarget: TradingPlans.ExitTargets = {
 
 const intcShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.5, 0.8, 0.85, 0.9, 1, 1.5, 2],
+    rrr: [1, 1, 1, 1.5, 2],
     dailyRanges: [],
     pinnedPrices: [],
     minimumTargets: {
