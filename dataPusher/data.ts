@@ -2,21 +2,21 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR', 'INTC', 'XPEV'];
+export const stockSelections: string[] = ['PLTR'];
 
-const intcLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
+const pltrLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [19.48],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [5],
-    pinnedPrices: [],
+    dailyRanges: [],
+    pinnedPrices: [19.48],
     minimumTargets: {}
 };
 
-const intcShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
+const pltrShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [18.6],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [],
+    pinnedPrices: [18.6],
     minimumTargets: {}
 };
 
@@ -29,32 +29,32 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
-        vwapCorrection: { volumeSum: 1193181, tradingSum: 43890807 },
-        dailyRange: 1,
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 2913170, tradingSum: 55158755 },
+        dailyRange: 0.96,
         deferTradingInSeconds: 0,
-        fixQuantity: 800,
+        fixQuantity: 600,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [37.62] },
+        keyLevels: { otherLevels: [18.6] },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: intcShortTarget,
+                targets: pltrShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 328,
-                stopForAgainstVwapLimitOrMarketEntry: 328,
+                lastDefense: 19,
+                stopForAgainstVwapLimitOrMarketEntry: 19.12,
                 requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: intcShortTarget,
+                targets: pltrShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: intcLongTarget,
+                targets: pltrLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
