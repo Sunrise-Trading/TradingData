@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['SOFI', 'PLTR'];
+export const stockSelections: string[] = ['SOFI', 'PLTR', 'XPEV'];
 
 const pltrLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [19.48],
@@ -19,19 +19,12 @@ const pltrShortTarget: TradingPlans.ExitTargets = {
     pinnedPrices: [18.6],
     minimumTargets: {}
 };
-const xpevLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [19.48],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    pinnedPrices: [19.48],
-    minimumTargets: {}
-};
 
 const xpevShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [18.6],
+    priceLevels: [21],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [18.6],
+    pinnedPrices: [21],
     minimumTargets: {}
 };
 
@@ -123,7 +116,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'XPEV',
-        vwapCorrection: { volumeSum: 3373007, tradingSum: 76120731 },
+        vwapCorrection: { volumeSum: 3373007, tradingSum: 75120731 },
         dailyRange: 1.49,
         deferTradingInSeconds: 0,
         fixQuantity: 500,
@@ -132,7 +125,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
+                targets: xpevShortTarget,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 22,
                 stopForAgainstVwapLimitOrMarketEntry: 22.5,
@@ -140,17 +133,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
+                targets: xpevShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
+        long: {}
     },
     {
         symbol: 'NIO',
