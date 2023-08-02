@@ -5,26 +5,26 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = ['AMD', 'XPEV'];
 
 const amdLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [20.1],
+    priceLevels: [120.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [20.1],
+    pinnedPrices: [120.5],
     minimumTargets: {}
 };
 
 const amdShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [19.05],
+    priceLevels: [118.19],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [19.05],
+    pinnedPrices: [118.19],
     minimumTargets: {}
 };
 
 const xpevShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [2.88],
+    priceLevels: [17.25],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [2.88],
+    pinnedPrices: [17.25],
     minimumTargets: {}
 };
 
