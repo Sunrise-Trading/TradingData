@@ -2,9 +2,9 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['PLTR', 'NKLA'];
+export const stockSelections: string[] = ['AMD', 'XPEV'];
 
-const pltrLongTarget: TradingPlans.ExitTargets = {
+const amdLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [20.1],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -12,7 +12,7 @@ const pltrLongTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const pltrShortTarget: TradingPlans.ExitTargets = {
+const amdShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [19.05],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -20,11 +20,19 @@ const pltrShortTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const nklaShortTarget: TradingPlans.ExitTargets = {
+const xpevShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [2.88],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [2.88],
+    minimumTargets: {}
+};
+
+const xpevLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [19],
+    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
+    dailyRanges: [],
+    pinnedPrices: [19],
     minimumTargets: {}
 };
 
@@ -38,80 +46,63 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'AMD',
         vwapCorrection: { volumeSum: 2192888, tradingSum: 43104476 },
-        dailyRange: 1,
+        dailyRange: 4,
         deferTradingInSeconds: 0,
-        fixQuantity: 600,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [20.14] },
+        keyLevels: { otherLevels: [118.19] },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: amdShortTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 120.9,
+                stopForAgainstVwapLimitOrMarketEntry: 121,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
+                targets: amdShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: amdLongTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 19.6,
-                stopForAgainstVwapLimitOrMarketEntry: 19.5,
+                lastDefense: 119.5,
+                stopForAgainstVwapLimitOrMarketEntry: 119,
                 requireReversal: false,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: amdLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
     },
     {
-        symbol: 'NKLA',
+        symbol: 'XPEV',
         vwapCorrection: { volumeSum: 26956959, tradingSum: 85862809 },
-        dailyRange: 0.5,
-        deferTradingInSeconds: 0,
-        fixQuantity: 800,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [2.8] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: nklaShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {}
-    },
-    {
-        symbol: 'NIO',
-        vwapCorrection: { volumeSum: 2913170, tradingSum: 55158755 },
-        dailyRange: 0.96,
+        dailyRange: 1.5,
         deferTradingInSeconds: 0,
         fixQuantity: 600,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [18.6] },
+        keyLevels: { otherLevels: [19.75] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 19,
-                stopForAgainstVwapLimitOrMarketEntry: 19.12,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrShortTarget,
+                targets: xpevShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pltrLongTarget,
+                targets: xpevLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
