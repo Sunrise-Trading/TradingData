@@ -47,7 +47,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AMD',
-        vwapCorrection: { volumeSum: 2192888, tradingSum: 43104476 },
+        vwapCorrection: { volumeSum: 494445, tradingSum: 54874338 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
@@ -86,7 +86,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'W',
-        vwapCorrection: { volumeSum: 26956959, tradingSum: 85862809 },
+        vwapCorrection: { volumeSum: 1269390, tradingSum: 100787764 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
@@ -100,6 +100,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: wLongTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 79.5,
+                stopForAgainstVwapLimitOrMarketEntry: 79,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: wLongTarget,
