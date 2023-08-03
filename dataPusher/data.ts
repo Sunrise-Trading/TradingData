@@ -29,10 +29,10 @@ const wShortTarget: TradingPlans.ExitTargets = {
 };
 
 const wLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [82],
+    priceLevels: [83.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [82],
+    pinnedPrices: [83.5],
     minimumTargets: {}
 };
 
