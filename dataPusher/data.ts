@@ -54,14 +54,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [118.19] },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: amdShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 120.9,
-                stopForAgainstVwapLimitOrMarketEntry: 121,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: amdShortTarget,
@@ -69,14 +61,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: amdLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 119.5,
-                stopForAgainstVwapLimitOrMarketEntry: 119,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: amdLongTarget,
