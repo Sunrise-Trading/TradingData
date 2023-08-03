@@ -2,37 +2,37 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['AMD', 'XPEV'];
+export const stockSelections: string[] = ['W', 'AMD'];
 
 const amdLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [120.5],
+    priceLevels: [110.9],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [120.5],
+    pinnedPrices: [110.9],
     minimumTargets: {}
 };
 
 const amdShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [118.19],
+    priceLevels: [107.38],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [118.19],
+    pinnedPrices: [107.38],
     minimumTargets: {}
 };
 
-const xpevShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [17.25],
+const wShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [75.2],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [17.25],
+    pinnedPrices: [75.2],
     minimumTargets: {}
 };
 
-const xpevLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [19],
+const wLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [82],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [19],
+    pinnedPrices: [82],
     minimumTargets: {}
 };
 
@@ -85,24 +85,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'XPEV',
+        symbol: 'W',
         vwapCorrection: { volumeSum: 26956959, tradingSum: 85862809 },
-        dailyRange: 1.5,
+        dailyRange: 4,
         deferTradingInSeconds: 0,
-        fixQuantity: 600,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [19.75] },
+        keyLevels: { otherLevels: [78.11] },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: xpevShortTarget,
+                targets: wShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: xpevLongTarget,
+                targets: wLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
