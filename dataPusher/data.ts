@@ -52,7 +52,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [118.19] },
+        keyLevels: { otherLevels: [143] },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
@@ -87,8 +87,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 1269390, tradingSum: 100787764 },
-        dailyRange: 4,
+        vwapCorrection: { volumeSum: 1714509, tradingSum: 3193512726 },
+        dailyRange: 2.8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
