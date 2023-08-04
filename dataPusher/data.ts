@@ -21,18 +21,18 @@ const amnzShortTarget: TradingPlans.ExitTargets = {
 };
 
 const aaplShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [75.2],
+    priceLevels: [185],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [75.2],
+    pinnedPrices: [185],
     minimumTargets: {}
 };
 
 const aaplLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [83.5],
+    priceLevels: [188],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [83.5],
+    pinnedPrices: [188],
     minimumTargets: {}
 };
 
@@ -82,7 +82,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: amznLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
-
         }
     },
     {
@@ -92,7 +91,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [78.11] },
+        keyLevels: { otherLevels: [185] },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
