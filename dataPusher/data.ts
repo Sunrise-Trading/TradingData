@@ -86,7 +86,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 1714509, tradingSum: 3193512726 },
+        vwapCorrection: { volumeSum: 1714509, tradingSum: 319352726 },
         dailyRange: 2.8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
