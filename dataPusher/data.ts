@@ -2,25 +2,25 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['W', 'AMD'];
+export const stockSelections: string[] = ['AMZN', 'AAPL'];
 
-const amdLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [110.9],
+const amznLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [143],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [110.9],
+    pinnedPrices: [143],
     minimumTargets: {}
 };
 
-const amdShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [107.38],
+const amnzShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [138.2],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [107.38],
+    pinnedPrices: [138.2],
     minimumTargets: {}
 };
 
-const wShortTarget: TradingPlans.ExitTargets = {
+const aaplShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [75.2],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -28,7 +28,7 @@ const wShortTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const wLongTarget: TradingPlans.ExitTargets = {
+const aaplLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [83.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -46,30 +46,47 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 494445, tradingSum: 53874338 },
-        dailyRange: 4,
+        symbol: 'AMZN',
+        vwapCorrection: { volumeSum: 3717543, tradingSum: 522013520 },
+        dailyRange: 3.2,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: { otherLevels: [118.19] },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: amnzShortTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 141,
+                stopForAgainstVwapLimitOrMarketEntry: 141.6,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amdShortTarget,
+                targets: amnzShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: amznLongTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 140,
+                stopForAgainstVwapLimitOrMarketEntry: 139.8,
+                requireReversal: false,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amdLongTarget,
+                targets: amznLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
+
         }
     },
     {
-        symbol: 'W',
+        symbol: 'AAPL',
         vwapCorrection: { volumeSum: 1269390, tradingSum: 100787764 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
@@ -79,30 +96,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: wShortTarget,
+                targets: aaplShortTarget,
                 planConfigs: Constants.scalpConfig,
-            },
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: wShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 79.5,
-                stopForAgainstVwapLimitOrMarketEntry: 80,
-                requireReversal: false,
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: wLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 79.5,
-                stopForAgainstVwapLimitOrMarketEntry: 79,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: wLongTarget,
+                targets: aaplLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
