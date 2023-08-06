@@ -52,7 +52,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [143] },
+        keyLevels: {
+            otherLevels: [143],
+            momentumStartForLong: 140,
+            momentumStartForShort: 139.7,
+        },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
@@ -85,29 +89,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 1714509, tradingSum: 319352726 },
-        dailyRange: 2.8,
-        deferTradingInSeconds: 0,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: { otherLevels: [185] },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: aaplShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: aaplLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
         symbol: 'MES',
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -117,6 +98,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: true,
         keyLevels: {
             otherLevels: [4000],
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         long: {
             newsBreakout: {
