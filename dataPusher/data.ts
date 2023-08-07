@@ -5,18 +5,18 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = ['TSLA'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [143],
+    priceLevels: [256],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [143],
+    pinnedPrices: [256],
     minimumTargets: {}
 };
 
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [138.2],
+    priceLevels: [245.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [138.2],
+    pinnedPrices: [245.5],
     minimumTargets: {}
 };
 
@@ -30,16 +30,16 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 393961, tradingSum: 100542098 },
-        dailyRange: 10,
+        symbol: 'VTGN',
+        vwapCorrection: { volumeSum: 1, tradingSum: 1 },
+        dailyRange: 5,
         deferTradingInSeconds: 0,
         fixQuantity: 60,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [250.49],
-            momentumStartForLong: 140,
-            momentumStartForShort: 139.7,
+            otherLevels: [30],
+            momentumStartForLong: 10,
+            momentumStartForShort: 19.99,
         },
         short: {
             openingDrive: {
@@ -65,6 +65,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 stopForAgainstVwapLimitOrMarketEntry: 139.8,
                 requireReversal: false,
             },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: tslaLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 393961, tradingSum: 100542098 },
+        dailyRange: 10,
+        deferTradingInSeconds: 0,
+        fixQuantity: 60,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [250.49],
+            momentumStartForLong: 255.68,
+            momentumStartForShort: 255.32,
+        },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: tslaShortTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 255,
+                stopForAgainstVwapLimitOrMarketEntry: 255.7,
+                requireReversal: false,
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: tslaShortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: tslaLongTarget,
