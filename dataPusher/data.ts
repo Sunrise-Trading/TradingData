@@ -2,9 +2,9 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['AMZN', 'AAPL'];
+export const stockSelections: string[] = ['TSLA'];
 
-const amznLongTarget: TradingPlans.ExitTargets = {
+const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [143],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -12,27 +12,11 @@ const amznLongTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const amnzShortTarget: TradingPlans.ExitTargets = {
+const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [138.2],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [138.2],
-    minimumTargets: {}
-};
-
-const aaplShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [185],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    pinnedPrices: [185],
-    minimumTargets: {}
-};
-
-const aaplLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [188],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    pinnedPrices: [188],
     minimumTargets: {}
 };
 
@@ -46,21 +30,21 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMZN',
-        vwapCorrection: { volumeSum: 3717543, tradingSum: 522013520 },
-        dailyRange: 3.2,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 393961, tradingSum: 100542098 },
+        dailyRange: 10,
         deferTradingInSeconds: 0,
-        fixQuantity: 200,
+        fixQuantity: 60,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [143],
+            otherLevels: [250.49],
             momentumStartForLong: 140,
             momentumStartForShort: 139.7,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: amnzShortTarget,
+                targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 141,
                 stopForAgainstVwapLimitOrMarketEntry: 141.6,
@@ -68,14 +52,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amnzShortTarget,
+                targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: amznLongTarget,
+                targets: tslaLongTarget,
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 140,
                 stopForAgainstVwapLimitOrMarketEntry: 139.8,
@@ -83,7 +67,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: amznLongTarget,
+                targets: tslaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
