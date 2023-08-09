@@ -2,37 +2,37 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['DDOG'];
+export const stockSelections: string[] = ['RBLX', 'PENN'];
 
-const ddogLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [87.89],
+const rblxLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [35.2],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [87.89],
+    pinnedPrices: [35.2],
     minimumTargets: {}
 };
 
-const ddogShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [82.1],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
+const rblxShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [30.75],
+    rrr: [0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [82.1],
+    pinnedPrices: [30.75],
     minimumTargets: {}
 };
 
-const llyLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [87.89],
+const pennLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [29.9, 30.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [87.89],
+    pinnedPrices: [29.9, 30.5],
     minimumTargets: {}
 };
 
-const llyShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [82.1],
+const pennShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [27.37],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [82.1],
+    pinnedPrices: [27.37],
     minimumTargets: {}
 };
 
@@ -46,87 +46,71 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DDOG',
-        vwapCorrection: { volumeSum: 1473993, tradingSum: 125909300 },
-        dailyRange: 5,
+        symbol: 'RBLX',
+        vwapCorrection: { volumeSum: 1559896, tradingSum: 54690886 },
+        dailyRange: 2.5,
         deferTradingInSeconds: 0,
-        fixQuantity: 150,
+        fixQuantity: 250,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [89, 89.2],
-            momentumStartForLong: 85.8,
-            momentumStartForShort: 84.99,
+            otherLevels: [33.5],
+            momentumStartForLong: 33.6,
+            momentumStartForShort: 34.99,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: ddogShortTarget,
+                targets: rblxShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 86,
-                stopForAgainstVwapLimitOrMarketEntry: 86,
+                lastDefense: 35,
+                stopForAgainstVwapLimitOrMarketEntry: 35,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: ddogShortTarget,
+                targets: rblxShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: ddogLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 85,
-                stopForAgainstVwapLimitOrMarketEntry: 84.5,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: ddogLongTarget,
+                targets: rblxLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
     },
     {
-        symbol: 'LLY',
-        vwapCorrection: { volumeSum: 377394, tradingSum: 185493777 },
-        dailyRange: 8,
+        symbol: 'PENN',
+        vwapCorrection: { volumeSum: 2160450, tradingSum: 62384991 },
+        dailyRange: 1.2,
         deferTradingInSeconds: 0,
-        fixQuantity: 80,
+        fixQuantity: 500,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [488],
-            momentumStartForLong: 495,
-            momentumStartForShort: 489.99,
+            otherLevels: [33.45],
+            momentumStartForLong: 29,
+            momentumStartForShort: 28.9,
         },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: llyShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 500,
-                stopForAgainstVwapLimitOrMarketEntry: 500,
-                requireReversal: false,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: llyShortTarget,
+                targets: pennShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: llyLongTarget,
+                targets: pennLongTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 492,
-                stopForAgainstVwapLimitOrMarketEntry: 492,
+                lastDefense: 29,
+                stopForAgainstVwapLimitOrMarketEntry: 28.9,
                 requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: llyLongTarget,
+                targets: pennLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
