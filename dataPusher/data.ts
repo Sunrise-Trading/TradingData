@@ -2,7 +2,7 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['BABA'];
+export const stockSelections: string[] = ['BABA', 'QQQ'];
 
 const babaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [99.89],
@@ -20,19 +20,19 @@ const babaShortTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const pennLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [29.9, 30.5],
+const qqqLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [372.25],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [29.9, 30.5],
+    pinnedPrices: [372.25],
     minimumTargets: {}
 };
 
-const pennShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [27.37],
+const qqqShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [369.77],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [27.37],
+    pinnedPrices: [369.77],
     minimumTargets: {}
 };
 
@@ -87,35 +87,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'PENN',
-        vwapCorrection: { volumeSum: 2160450, tradingSum: 62384991 },
-        dailyRange: 1.2,
+        symbol: 'QQQ',
+        vwapCorrection: { volumeSum: 2666908, tradingSum: 989265529 },
+        dailyRange: 5.4,
         deferTradingInSeconds: 0,
-        fixQuantity: 500,
+        fixQuantity: 150,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [33.45],
-            momentumStartForLong: 29,
-            momentumStartForShort: 28.9,
+            otherLevels: [252.47],
+            momentumStartForLong: 371,
+            momentumStartForShort: 370.5,
         },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pennShortTarget,
+                targets: qqqShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: pennLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 29,
-                stopForAgainstVwapLimitOrMarketEntry: 28.9,
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: pennLongTarget,
+                targets: qqqLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
