@@ -89,7 +89,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'QQQ',
         vwapCorrection: { volumeSum: 2666908, tradingSum: 989265529 },
-        dailyRange: 5.4,
+        dailyRange: 3,
         deferTradingInSeconds: 0,
         fixQuantity: 150,
         alwaysUseFixQuantity: false,
