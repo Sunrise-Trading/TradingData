@@ -58,7 +58,6 @@ export interface ExitRules {
     decentMaxRewardRatio: number,
 }
 export interface OpeningDrivePlan extends BasePlan {
-    requireReversal: boolean,
     lastDefense: number;
     stopForAgainstVwapLimitOrMarketEntry: number,
 }

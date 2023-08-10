@@ -64,7 +64,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 35,
                 stopForAgainstVwapLimitOrMarketEntry: 35,
-                requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
@@ -106,7 +105,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.scalpConfig,
                 lastDefense: 29,
                 stopForAgainstVwapLimitOrMarketEntry: 28.9,
-                requireReversal: true,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
