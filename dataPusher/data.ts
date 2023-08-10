@@ -47,10 +47,10 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'BABA',
-        vwapCorrection: { volumeSum: 1559896, tradingSum: 54690886 },
-        dailyRange: 2.5,
+        vwapCorrection: { volumeSum: 2742268, tradingSum: 269515651 },
+        dailyRange: 3,
         deferTradingInSeconds: 0,
-        fixQuantity: 250,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [100],
