@@ -2,21 +2,21 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const stockSelections: string[] = ['RBLX', 'PENN'];
+export const stockSelections: string[] = ['BABA'];
 
-const rblxLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [35.2],
+const babaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [99.89],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [35.2],
+    pinnedPrices: [99.89],
     minimumTargets: {}
 };
 
-const rblxShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [30.75],
+const babaShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [96.4],
     rrr: [0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [30.75],
+    pinnedPrices: [96.4],
     minimumTargets: {}
 };
 
@@ -46,35 +46,42 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RBLX',
+        symbol: 'BABA',
         vwapCorrection: { volumeSum: 1559896, tradingSum: 54690886 },
         dailyRange: 2.5,
         deferTradingInSeconds: 0,
         fixQuantity: 250,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [33.5],
-            momentumStartForLong: 33.6,
-            momentumStartForShort: 34.99,
+            otherLevels: [100],
+            momentumStartForLong: 98,
+            momentumStartForShort: 97.5,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: rblxShortTarget,
+                targets: babaShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 35,
-                stopForAgainstVwapLimitOrMarketEntry: 35,
+                lastDefense: 98.5,
+                stopForAgainstVwapLimitOrMarketEntry: 98.5,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: rblxShortTarget,
+                targets: babaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: babaLongTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 98,
+                stopForAgainstVwapLimitOrMarketEntry: 98,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: rblxLongTarget,
+                targets: babaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
