@@ -1,7 +1,7 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
+export const activeProfileName: string = "futures";  // futures, momentumSimple;
 export const stockSelections: string[] = ['BABA', 'QQQ'];
 
 const babaLongTarget: TradingPlans.ExitTargets = {
@@ -150,4 +150,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             }
         },
     },
+    {
+        symbol: 'MNQ',
+        isFutures: true,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        dailyRange: 40,
+        deferTradingInSeconds: 0,
+        fixQuantity: 6,
+        alwaysUseFixQuantity: true,
+        keyLevels: {
+            otherLevels: [4000],
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        long: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+                planConfigs: Constants.scalpConfig,
+                targets: futuresTarget,
+            },
+            breakoutAlgo: {
+                planType: TradingPlans.PlanType.BreakoutAlgo,
+                planConfigs: Constants.scalpConfig,
+                targets: futuresTarget,
+                entryPrice: 4430,
+                useHighLowOfDay: false,
+                expirationInSeconds: 0,
+                allowPremarket: true,
+            },
+        },
+        short: {
+            newsBreakout: {
+                planType: TradingPlans.PlanType.NewsBreakout,
+                planConfigs: Constants.scalpConfig,
+                targets: futuresTarget,
+            }
+        },
+    }
 ];
