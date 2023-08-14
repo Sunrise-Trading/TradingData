@@ -5,18 +5,18 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = ['TSLA'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [99.89],
+    priceLevels: [237.9],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [99.89],
+    pinnedPrices: [237.9],
     minimumTargets: {}
 };
 
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [96.4],
-    rrr: [0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
+    priceLevels: [235],
+    rrr: [0.9, 1.5, 1.8, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [96.4],
+    pinnedPrices: [235],
     minimumTargets: {}
 };
 
