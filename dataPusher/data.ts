@@ -30,7 +30,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 2742268, tradingSum: 269515651 },
+        vwapCorrection: { volumeSum: 1513357, tradingSum: 358376365 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
@@ -57,7 +57,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
+                targets: tslaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
