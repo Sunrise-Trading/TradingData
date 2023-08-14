@@ -1,10 +1,10 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-export const activeProfileName: string = "futures";  // futures, momentumSimple;
-export const stockSelections: string[] = ['BABA', 'QQQ'];
+export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
+export const stockSelections: string[] = ['TSLA'];
 
-const babaLongTarget: TradingPlans.ExitTargets = {
+const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [99.89],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
@@ -12,30 +12,13 @@ const babaLongTarget: TradingPlans.ExitTargets = {
     minimumTargets: {}
 };
 
-const babaShortTarget: TradingPlans.ExitTargets = {
+const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [96.4],
     rrr: [0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [96.4],
     minimumTargets: {}
 };
-
-const qqqLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [372.25],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    pinnedPrices: [372.25],
-    minimumTargets: {}
-};
-
-const qqqShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [369.77],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    pinnedPrices: [369.77],
-    minimumTargets: {}
-};
-
 
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -46,69 +29,35 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BABA',
+        symbol: 'TSLA',
         vwapCorrection: { volumeSum: 2742268, tradingSum: 269515651 },
-        dailyRange: 3,
+        dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [100],
-            momentumStartForLong: 98,
-            momentumStartForShort: 97.5,
+            momentumStartForLong: 238.1,
+            momentumStartForShort: 237.3,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: babaShortTarget,
+                targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 98.5,
-                stopForAgainstVwapLimitOrMarketEntry: 98.5,
+                lastDefense: 236.7,
+                stopForAgainstVwapLimitOrMarketEntry: 237,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: babaShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 98,
-                stopForAgainstVwapLimitOrMarketEntry: 98,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: babaLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 2666908, tradingSum: 989265529 },
-        dailyRange: 3,
-        deferTradingInSeconds: 0,
-        fixQuantity: 150,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [252.47],
-            momentumStartForLong: 371,
-            momentumStartForShort: 370.5,
-        },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: qqqShortTarget,
+                targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: qqqLongTarget,
+                targets: babaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
