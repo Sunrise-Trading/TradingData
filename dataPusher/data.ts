@@ -1,7 +1,7 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
+export const activeProfileName: string = "futures";  // futures, momentumSimple;
 export const stockSelections: string[] = ['TSLA'];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
@@ -69,7 +69,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 40,
         deferTradingInSeconds: 0,
         fixQuantity: 6,
-        alwaysUseFixQuantity: true,
+        alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [4000],
             momentumStartForLong: 0,
@@ -106,7 +106,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 40,
         deferTradingInSeconds: 0,
         fixQuantity: 6,
-        alwaysUseFixQuantity: true,
+        alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [4000],
             momentumStartForLong: 0,
