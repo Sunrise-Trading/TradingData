@@ -13,9 +13,7 @@ const tslaLongTarget: TradingPlans.ExitTargets = {
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [237.9],
-    minimumTargets: {
-        rrr: 1,
-    }
+    minimumTargets: {}
 };
 
 const tslaShortTarget: TradingPlans.ExitTargets = {
@@ -23,9 +21,7 @@ const tslaShortTarget: TradingPlans.ExitTargets = {
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3],
     dailyRanges: [],
     pinnedPrices: [235],
-    minimumTargets: {
-        rrr: 1,
-    }
+    minimumTargets: {}
 };
 
 const futuresTarget: TradingPlans.ExitTargets = {
