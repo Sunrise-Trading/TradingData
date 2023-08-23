@@ -6,20 +6,33 @@ export const stockSelections: string[] = [
     'DKS'
 ];
 
-const dksLongTarget: TradingPlans.ExitTargets = {
+const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [122.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
     minimumTargets: {}
 };
 
-const dksShortTarget: TradingPlans.ExitTargets = {
+const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [110.5],
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
     dailyRanges: [],
     minimumTargets: {}
 };
 
+const flLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [122.5],
+    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
+    dailyRanges: [],
+    minimumTargets: {}
+};
+
+const flShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [110.5],
+    rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
+    dailyRanges: [],
+    minimumTargets: {}
+};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
@@ -28,110 +41,69 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DKS',
-        vwapCorrection: { volumeSum: 709804, tradingSum: 84307750 },
-        dailyRange: 5,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 120.01,
-            momentumStartForShort: 119.99,
-        },
-        short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: dksShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 120,
-                stopForAgainstVwapLimitOrMarketEntry: 121.17,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: dksShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: dksLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 1408929, tradingSum: 501720284 },
-        dailyRange: 2.8,
-        deferTradingInSeconds: 0,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 355.2,
-            momentumStartForShort: 356.3,
-        },
-        short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: dksShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 356.5,
-                stopForAgainstVwapLimitOrMarketEntry: 356.5,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: dksShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: dksShortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 356,
-                stopForAgainstVwapLimitOrMarketEntry: 355.7,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: dksLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1193168, tradingSum: 255860487 },
+        vwapCorrection: { volumeSum: 1407139, tradingSum: 322178130 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
-        fixQuantity: 200,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [100],
-            momentumStartForLong: 214.2,
-            momentumStartForShort: 214.4,
+            otherLevels: [],
+            momentumStartForLong: 229.55,
+            momentumStartForShort: 230,
         },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: tslaShortTarget,
+                planConfigs: Constants.scalpConfig,
+                lastDefense: 230,
+                stopForAgainstVwapLimitOrMarketEntry: 230,
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: dksShortTarget,
+                targets: tslaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: tslaLongTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'FL',
+        vwapCorrection: { volumeSum: 2550171, tradingSum: 41604786 },
+        dailyRange: 0.9,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 16.5,
+            momentumStartForShort: 16.5,
+        },
+        short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: dksShortTarget,
+                targets: flShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 214.25,
-                stopForAgainstVwapLimitOrMarketEntry: 214.2,
+                lastDefense: 16.5,
+                stopForAgainstVwapLimitOrMarketEntry: 16.5,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: dksLongTarget,
+                targets: flShortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: flLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
