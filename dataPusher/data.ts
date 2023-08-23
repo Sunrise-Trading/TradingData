@@ -10,7 +10,6 @@ const dksLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [122.5],
     rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
     dailyRanges: [],
-    pinnedPrices: [122.5],
     minimumTargets: {}
 };
 
@@ -18,7 +17,6 @@ const dksShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [110.5],
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
     dailyRanges: [],
-    pinnedPrices: [110.5],
     minimumTargets: {}
 };
 
@@ -26,7 +24,6 @@ const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
     dailyRanges: [],
-    pinnedPrices: [],
     minimumTargets: {}
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [

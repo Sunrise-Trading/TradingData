@@ -87,7 +87,6 @@ export interface ExitTargets {
     priceLevels: number[],
     rrr: number[],
     dailyRanges: number[],
-    pinnedPrices: number[],
     minimumTargets: MinimumExitTargets,
 }
 export interface MinimumExitTargets {
