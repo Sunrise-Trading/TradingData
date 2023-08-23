@@ -3,18 +3,19 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'DKS'
+    'TSLA',
+    //'FL',
 ];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [122.5],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
+    priceLevels: [226.65],
+    rrr: [0.5, 0.8, 0.85, 0.9, 1.5, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {}
 };
 
 const tslaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [110.5],
+    priceLevels: [226.65],
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
     dailyRanges: [],
     minimumTargets: {}
