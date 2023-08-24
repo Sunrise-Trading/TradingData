@@ -36,7 +36,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         fixQuantity: 30,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [512.48],
+            otherLevels: [512.48, 499.5],
             momentumStartForLong: 512.4,
             momentumStartForShort: 510,
         },
