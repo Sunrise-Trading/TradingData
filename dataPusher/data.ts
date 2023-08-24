@@ -8,14 +8,14 @@ export const stockSelections: string[] = [
 ];
 
 const nvdaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [226.65],
+    priceLevels: [517],
     rrr: [0.5, 0.8, 0.85, 0.9, 1.5, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {}
 };
 
 const nvdaShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [226.65],
+    priceLevels: [485.5],
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
     dailyRanges: [],
     minimumTargets: {}
@@ -36,8 +36,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         fixQuantity: 30,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 505,
+            otherLevels: [512.48],
+            momentumStartForLong: 512.4,
             momentumStartForShort: 510,
         },
         short: {
