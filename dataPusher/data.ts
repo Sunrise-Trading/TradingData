@@ -3,37 +3,24 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
+    'NVDA',
     //'FL',
 ];
 
-const tslaLongTarget: TradingPlans.ExitTargets = {
+const nvdaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [226.65],
     rrr: [0.5, 0.8, 0.85, 0.9, 1.5, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {}
 };
 
-const tslaShortTarget: TradingPlans.ExitTargets = {
+const nvdaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [226.65],
     rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
     dailyRanges: [],
     minimumTargets: {}
 };
 
-const flLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [122.5],
-    rrr: [0.85, 0.9, 1.5, 1.8, 1.9, 1.95, 2, 2.5, 3],
-    dailyRanges: [],
-    minimumTargets: {}
-};
-
-const flShortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [110.5],
-    rrr: [0.9, 1.5, 1.8, 2, 2.5, 3, 3.5],
-    dailyRanges: [],
-    minimumTargets: {}
-};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
@@ -42,70 +29,43 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1407139, tradingSum: 322178130 },
-        dailyRange: 8,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 1909442, tradingSum: 966007158 },
+        dailyRange: 18,
         deferTradingInSeconds: 0,
-        fixQuantity: 50,
+        fixQuantity: 30,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 229.55,
-            momentumStartForShort: 230,
+            momentumStartForLong: 505,
+            momentumStartForShort: 510,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: tslaShortTarget,
+                targets: nvdaShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 230,
-                stopForAgainstVwapLimitOrMarketEntry: 230,
+                lastDefense: 508,
+                stopForAgainstVwapLimitOrMarketEntry: 510,
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
+                targets: nvdaShortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaLongTarget,
+                targets: nvdaLongTarget,
                 planConfigs: Constants.scalpConfig,
             },
-        }
-    },
-    {
-        symbol: 'FL',
-        vwapCorrection: { volumeSum: 2550171, tradingSum: 41604786 },
-        dailyRange: 0.9,
-        deferTradingInSeconds: 0,
-        fixQuantity: 500,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 16.5,
-            momentumStartForShort: 16.5,
-        },
-        short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.OpeningDrive,
-                targets: flShortTarget,
+                targets: nvdaShortTarget,
                 planConfigs: Constants.scalpConfig,
-                lastDefense: 16.5,
-                stopForAgainstVwapLimitOrMarketEntry: 16.5,
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: flShortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: flLongTarget,
-                planConfigs: Constants.scalpConfig,
+                lastDefense: 505,
+                stopForAgainstVwapLimitOrMarketEntry: 504.5,
             },
         }
     },
