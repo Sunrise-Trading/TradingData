@@ -3,8 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'NVDA',
-    //'FL',
+    //'NVDA',
+    'TSLA',
 ];
 
 const nvdaLongTarget: TradingPlans.ExitTargets = {
