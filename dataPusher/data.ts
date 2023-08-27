@@ -3,27 +3,18 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    //'NVDA',
     'TSLA',
 ];
 
-const nvdaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [475],
-    rrr: [0.8, 1, 1.8, 1.9, 1.95],
-    dailyRanges: [],
-    minimumTargets: {}
-};
-const qqqLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [363],
-    rrr: [0.8, 1, 1.8, 1.9, 1.95],
-    dailyRanges: [],
-    minimumTargets: {}
-};
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [232.25],
     rrr: [0.8, 1, 1.8, 1.9, 1.95],
     dailyRanges: [],
-    minimumTargets: {}
+    minimumTargets: {
+        rrr: [],
+        priceLevels: [],
+        dailyRanges: [],
+    }
 };
 
 
@@ -31,65 +22,13 @@ const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 2],
     dailyRanges: [],
-    minimumTargets: {}
+    minimumTargets: {
+        rrr: [],
+        priceLevels: [],
+        dailyRanges: [],
+    }
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
-    {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 630386, tradingSum: 297226429 },
-        dailyRange: 18,
-        deferTradingInSeconds: 0,
-        fixQuantity: 30,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 468.8,
-            momentumStartForShort: 468.7,
-        },
-        short: {},
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: nvdaLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: nvdaLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 505,
-                stopForAgainstVwapLimitOrMarketEntry: 504.5,
-            },
-        }
-    },
-    {
-        symbol: 'QQQ',
-        vwapCorrection: { volumeSum: 728715, tradingSum: 263549071 },
-        dailyRange: 3.2,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [512.48, 499.5],
-            momentumStartForLong: 361.4,
-            momentumStartForShort: 360.99,
-        },
-        short: {},
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: qqqLongTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: qqqLongTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 505,
-                stopForAgainstVwapLimitOrMarketEntry: 504.5,
-            },
-        }
-    },
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 510698, tradingSum: 117339638 },

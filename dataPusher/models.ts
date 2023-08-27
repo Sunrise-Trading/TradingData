@@ -87,12 +87,12 @@ export interface ExitTargets {
     priceLevels: number[],
     rrr: number[],
     dailyRanges: number[],
-    minimumTargets: MinimumExitTargets,
+    minimumTargets?: ExitTargetsSet,
 }
-export interface MinimumExitTargets {
-    price?: number,
-    dailyRange?: number,
-    rrr?: number,
+export interface ExitTargetsSet {
+    priceLevels: number[],
+    rrr: number[],
+    dailyRanges: number[],
 }
 export interface PriceArea {
     priceLevel: number,
