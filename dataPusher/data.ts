@@ -7,6 +7,16 @@ export const stockSelections: string[] = [
 ];
 
 const tslaLongTarget: TradingPlans.ExitTargets = {
+    priceLevels: [233.34],
+    rrr: [0.8, 1, 1.8, 1.9, 1.95],
+    dailyRanges: [],
+    minimumTargets: {
+        rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
+        priceLevels: [],
+        dailyRanges: [],
+    }
+};
+const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [232.25],
     rrr: [0.8, 1, 1.8, 1.9, 1.95],
     dailyRanges: [],
@@ -31,15 +41,15 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 510698, tradingSum: 117339638 },
-        dailyRange: 6,
+        vwapCorrection: { volumeSum: 1072970, tradingSum: 260628771 },
+        dailyRange: 8,
         deferTradingInSeconds: 0,
-        fixQuantity: 60,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 230,
-            momentumStartForShort: 228,
+            momentumStartForLong: 242,
+            momentumStartForShort: 243.5,
         },
         short: {},
         long: {
