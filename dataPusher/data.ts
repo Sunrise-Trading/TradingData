@@ -7,8 +7,8 @@ export const stockSelections: string[] = [
 ];
 
 const longTarget: TradingPlans.ExitTargets = {
-    priceLevels: [233.34],
-    rrr: [0.8, 1, 1.8, 1.9, 1.95],
+    priceLevels: [91.96, 94.5],
+    rrr: [0.5, 0.8, 1, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {
         rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
@@ -18,11 +18,11 @@ const longTarget: TradingPlans.ExitTargets = {
 };
 const shortTarget: TradingPlans.ExitTargets = {
     priceLevels: [88.35, 87.8],
-    rrr: [0.8, 1, 1.8, 1.9, 1.95],
+    rrr: [0.8, 1.2, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {
         rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
-        priceLevels: [],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 87.2],
         dailyRanges: [],
     }
 };
