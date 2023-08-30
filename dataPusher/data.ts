@@ -1,9 +1,9 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-export const activeProfileName: string = "futures";  // futures, momentumSimple;
+export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'PDD',
+    'TSLA',
 ];
 
 const longTarget: TradingPlans.ExitTargets = {
@@ -40,7 +40,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PDD',
+        symbol: 'TSLA',
         vwapCorrection: { volumeSum: 1991760, tradingSum: 179958728 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
@@ -57,27 +57,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: shortTarget,
                 planConfigs: Constants.scalpConfig,
             },
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: shortTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 92,
-                stopForAgainstVwapLimitOrMarketEntry: 92.44,
-            },
         },
         long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-                lastDefense: 90,
-                stopForAgainstVwapLimitOrMarketEntry: 89.87,
-            },
         }
     },
     {
