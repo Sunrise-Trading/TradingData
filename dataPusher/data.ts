@@ -1,7 +1,7 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
+export const activeProfileName: string = "futures";  // futures, momentumSimple;
 export const stockSelections: string[] = [
     'PDD',
 ];
