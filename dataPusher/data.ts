@@ -3,12 +3,12 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
+    'AMC',
 ];
 
 const longTarget: TradingPlans.ExitTargets = {
-    priceLevels: [91.96, 94.5],
-    rrr: [0.5, 0.8, 1, 1.8, 1.9, 1.95],
+    priceLevels: [],
+    rrr: [0.8, 1, 1.5, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {
         rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
@@ -17,12 +17,12 @@ const longTarget: TradingPlans.ExitTargets = {
     }
 };
 const shortTarget: TradingPlans.ExitTargets = {
-    priceLevels: [88.35, 87.8],
+    priceLevels: [],
     rrr: [0.8, 1.2, 1.8, 1.9, 1.95],
     dailyRanges: [],
     minimumTargets: {
         rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 87.2],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [],
     }
 };
@@ -40,16 +40,16 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1991760, tradingSum: 179958728 },
-        dailyRange: 4,
+        symbol: 'AMC',
+        vwapCorrection: { volumeSum: 1413447, tradingSum: 18965387 },
+        dailyRange: 3,
         deferTradingInSeconds: 0,
-        fixQuantity: 100,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [89.88],
-            momentumStartForLong: 90,
-            momentumStartForShort: 92,
+            otherLevels: [],
+            momentumStartForLong: 13.6,
+            momentumStartForShort: 13.5,
         },
         short: {
             momentum: {
@@ -59,6 +59,45 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.OpeningDrive,
+                targets: longTarget,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 13.3,
+                lastDefense: 13.4
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: longTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 2587658, tradingSum: 40715288 },
+        dailyRange: 0.6,
+        deferTradingInSeconds: 0,
+        fixQuantity: 300,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 15.78,
+            momentumStartForShort: 15.77,
+        },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: shortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: shortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
         }
     },
     {
