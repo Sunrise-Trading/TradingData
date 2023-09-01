@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'AMC',
+    'TSLA',
 ];
 
 const longTarget: TradingPlans.ExitTargets = {
@@ -40,16 +40,50 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMC',
-        vwapCorrection: { volumeSum: 1413447, tradingSum: 18965387 },
-        dailyRange: 3,
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 1090832, tradingSum: 281584482 },
+        dailyRange: 5,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 259,
+            momentumStartForShort: 258.5,
+        },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: shortTarget,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 259,
+                lastDefense: 258.5
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: shortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: longTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'SPY',
+        vwapCorrection: { volumeSum: 1600957, tradingSum: 724750885 },
+        dailyRange: 2,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 13.6,
-            momentumStartForShort: 13.5,
+            momentumStartForLong: 453,
+            momentumStartForShort: 452.85,
         },
         short: {
             momentum: {
@@ -59,13 +93,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.OpeningDrive,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 13.3,
-                lastDefense: 13.4
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: longTarget,
@@ -74,16 +101,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 2587658, tradingSum: 40715288 },
-        dailyRange: 0.6,
+        symbol: 'LULU',
+        vwapCorrection: { volumeSum: 39501, tradingSum: 15427707 },
+        dailyRange: 8,
         deferTradingInSeconds: 0,
-        fixQuantity: 300,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 15.78,
-            momentumStartForShort: 15.77,
+            momentumStartForLong: 394,
+            momentumStartForShort: 390,
         },
         short: {
             momentum: {
