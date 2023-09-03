@@ -8,14 +8,14 @@ export const stockSelections: string[] = [
 
 const longTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.8, 1, 1.5, 1.8, 1.9, 1.95],
-    dailyRanges: [],
+    rrr: Constants.baseHitTargets.rrr,
+    dailyRanges: Constants.baseHitTargets.dailyRanges,
     minimumTargets: Constants.baseHitTargets,
 };
 const shortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.8, 1.2, 1.8, 1.9, 1.95],
-    dailyRanges: [],
+    rrr: Constants.baseHitTargets.rrr,
+    dailyRanges: Constants.baseHitTargets.dailyRanges,
     minimumTargets: Constants.baseHitTargets,
 };
 
