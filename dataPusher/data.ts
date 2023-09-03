@@ -10,21 +10,13 @@ const longTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1.5, 1.8, 1.9, 1.95],
     dailyRanges: [],
-    minimumTargets: {
-        rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
-        priceLevels: [],
-        dailyRanges: [],
-    }
+    minimumTargets: Constants.baseHitTargets,
 };
 const shortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1.2, 1.8, 1.9, 1.95],
     dailyRanges: [],
-    minimumTargets: {
-        rrr: [0.8, 0.8, 1, 1, 1.5, 1.8, 2, 2, 3, 3.5],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [],
-    }
+    minimumTargets: Constants.baseHitTargets,
 };
 
 

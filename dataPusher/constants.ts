@@ -1,5 +1,31 @@
 import * as TradingPlans from './models';
 
+/**
+ * base hit targets takes 30% at 1R. After that, 
+ * the worst is losing 0.4R on the trade. 
+ * Risk is much smaller. 
+ * Then takes a good amount of 40% near 2R, 
+ * making it a decent trade.
+ * Leaving last 30% for a full ATR.
+ */
+export const baseHitTargets: TradingPlans.ExitTargetsSet = {
+    rrr: [0.8, 0.85, 0.9, 1.5, 1.8, 1.9, 2, 3, 4, 5],
+    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    dailyRanges: [0.4, 0.4, 0.45, 0.7, 0.8, 0.9, 0.9, 1, 1, 1],
+};
+
+/**
+ * big trade targets are for the best opportunities. 
+ * It starts with taking 50% near 2R. Then scaling 30% into 3R and 4R.
+ * Leaving last 20% for 5+R. 
+ * Not using ATR because ATR will be inacurrate for this type of trades.
+ */
+export const bigTradeTargets: TradingPlans.ExitTargetsSet = {
+    rrr: [1.5, 1.8, 1.9, 2, 2, 2.5, 3, 3.5, 5, 5],
+    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+}
+
 export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     entryRules: {
