@@ -22,12 +22,11 @@ const shortTarget: TradingPlans.ExitTargets = {
 
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.8, 1, 2],
-    dailyRanges: [],
+    rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
+    dailyRanges: Constants.baseHitTargets.dailyRanges,
     minimumTargets: {
-        rrr: [],
-        priceLevels: [],
-        dailyRanges: [],
+        ...Constants.baseHitTargets,
+        rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
     }
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -61,60 +60,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'SPY',
-        vwapCorrection: { volumeSum: 1600957, tradingSum: 724750885 },
-        dailyRange: 2,
-        deferTradingInSeconds: 0,
-        fixQuantity: 200,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 453,
-            momentumStartForShort: 452.85,
-        },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: shortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'LULU',
-        vwapCorrection: { volumeSum: 39501, tradingSum: 15427707 },
-        dailyRange: 8,
-        deferTradingInSeconds: 0,
-        fixQuantity: 50,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 394,
-            momentumStartForShort: 390,
-        },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: shortTarget,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: shortTarget,
                 planConfigs: Constants.scalpConfig,
             },
         }
