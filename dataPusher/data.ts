@@ -37,7 +37,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'ABNB',
-        vwapCorrection: { volumeSum: 1090832, tradingSum: 281584482 },
+        vwapCorrection: { volumeSum: 206689, tradingSum: 28945682 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
