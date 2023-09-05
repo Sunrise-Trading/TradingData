@@ -3,14 +3,19 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
+    'ABNB',
 ];
-
+const rrr = [0.8, 1, 1.5, 2, 2, 2.5, 3, 3.5, 5, 5];
+const atr = [0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 2, 2, 2];
 const longTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: Constants.baseHitTargets.rrr,
-    dailyRanges: Constants.baseHitTargets.dailyRanges,
-    minimumTargets: Constants.baseHitTargets,
+    rrr: rrr,
+    dailyRanges: atr,
+    minimumTargets: {
+        rrr: rrr,
+        dailyRanges: atr,
+        priceLevels: [0, 0, 0, 0, 0, 145, 0, 0, 150, 155]
+    },
 };
 const shortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -31,25 +36,26 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'ABNB',
         vwapCorrection: { volumeSum: 1090832, tradingSum: 281584482 },
-        dailyRange: 5,
+        dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 259,
-            momentumStartForShort: 258.5,
+            momentumStartForLong: 140,
+            momentumStartForShort: 139.5,
         },
         short: {
+            /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: shortTarget,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 259,
-                lastDefense: 258.5
-            },
+                stopForAgainstVwapLimitOrMarketEntry: 140.5,
+                lastDefense: 140.5
+            },*/
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: shortTarget,
@@ -57,6 +63,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: longTarget,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 139.5,
+                lastDefense: 140
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: longTarget,
