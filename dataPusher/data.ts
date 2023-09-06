@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'ABNB',
+    'AMC',
 ];
 const rrr = [0.8, 1, 1.5, 2, 2, 2.5, 3, 3.5, 5, 5];
 const atr = [0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 2, 2, 2];
@@ -23,8 +23,14 @@ const shortTarget: TradingPlans.ExitTargets = {
     dailyRanges: Constants.baseHitTargets.dailyRanges,
     minimumTargets: Constants.baseHitTargets,
 };
-
-
+const amcRR = [0.8, 1, 1, 1.5, 2, 2, 2.5, 3, 3.5, 5, 5];
+const amcATR = [0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 2, 2, 2];
+const baseHitsShortTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: Constants.baseHitTargets.rrr,
+    dailyRanges: Constants.baseHitTargets.dailyRanges,
+    minimumTargets: Constants.baseHitTargets,
+};
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
@@ -36,26 +42,55 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ABNB',
-        vwapCorrection: { volumeSum: 206689, tradingSum: 28945682 },
+        symbol: 'AMC',
+        vwapCorrection: { volumeSum: 2427133, tradingSum: 29007600 },
+        dailyRange: 1,
+        deferTradingInSeconds: 0,
+        fixQuantity: 500,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 12.16,
+            momentumStartForShort: 12,
+        },
+        short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: baseHitsShortTarget,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 12.16,
+                lastDefense: 12
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: baseHitsShortTarget,
+                planConfigs: Constants.scalpConfig,
+            },
+        },
+        long: {
+
+        }
+    },
+    {
+        symbol: 'ROKU',
+        vwapCorrection: { volumeSum: 668278, tradingSum: 61876399 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 140,
-            momentumStartForShort: 139.5,
+            momentumStartForLong: 92.6,
+            momentumStartForShort: 92.5,
         },
         short: {
-            /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: shortTarget,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 140.5,
-                lastDefense: 140.5
-            },*/
+                stopForAgainstVwapLimitOrMarketEntry: 93,
+                lastDefense: 92.8
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: shortTarget,
@@ -63,18 +98,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 139.5,
-                lastDefense: 140
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: longTarget,
-                planConfigs: Constants.scalpConfig,
-            },
+
         }
     },
     {
