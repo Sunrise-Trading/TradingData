@@ -4,6 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
     'TSLA',
+    //'AAPL'
 ];
 
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
@@ -15,6 +16,12 @@ const tslaLongTarget: TradingPlans.ExitTargets = {
         ...Constants.baseHitTargets,
         dailyRanges: atr,
     }
+};
+const baseTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: Constants.baseHitTargets.rrr,
+    dailyRanges: Constants.baseHitTargets.dailyRanges,
+    minimumTargets: Constants.baseHitTargets,
 };
 const tslaShortTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -37,49 +44,42 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1364968, tradingSum: 335665684 },
+        vwapCorrection: { volumeSum: 503694, tradingSum: 126491156 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 800,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 244.5,
-            momentumStartForShort: 245.5,
+            momentumStartForLong: 250,
+            momentumStartForShort: 249.8,
         },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 246,
-                lastDefense: 245.5
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
+                targets: baseTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaLongTarget,
+                targets: baseTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 244,
-                lastDefense: 244.5
+                stopForAgainstVwapLimitOrMarketEntry: 249.5,
+                lastDefense: 250.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaLongTarget,
+                targets: baseTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
     },
     {
         symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 2401652, tradingSum: 426127028 },
-        dailyRange: 3.4,
+        vwapCorrection: { volumeSum: 684574, tradingSum: 121687498 },
+        dailyRange: 4,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
@@ -89,21 +89,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 177.47,
         },
         short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 93,
-                lastDefense: 92.8
-            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: tslaShortTarget,
+                targets: baseTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
-
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: baseTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 177.6,
+                lastDefense: 177.6
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: baseTargets,
+                planConfigs: Constants.scalpConfig,
+            },
         }
     },
     {
