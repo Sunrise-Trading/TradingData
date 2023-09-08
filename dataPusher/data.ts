@@ -5,7 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const stockSelections: string[] = [
     'TSLA',
 ];
-const rrr = [0.8, 1, 1, 1.5, 2, 2, 2.5, 3, 3.5, 5];
+
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
