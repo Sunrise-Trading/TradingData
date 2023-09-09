@@ -1,17 +1,22 @@
 import * as TradingPlans from './models';
 
 /**
- * base hit targets takes 30% at 1R. After that, 
- * the worst is losing 0.4R on the trade. 
- * Risk is much smaller. 
- * Then takes a good amount of 40% near 2R, 
+ * base hit targets takes 20% at 1R. After that, 
+ * the worst is losing 0.6R on the trade. 
+ * Risk is almost half reduced. 
+ * Then takes a good amount of 50% near 2R, 
  * making it a decent trade.
  * Leaving last 30% for a full ATR.
  */
-export const baseHitTargets: TradingPlans.ExitTargetsSet = {
-    rrr: [0.9, 0.95, 1, 1.5, 1.8, 1.9, 2, 3, 4, 5],
-    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    dailyRanges: [0.4, 0.4, 0.45, 0.7, 0.8, 0.9, 0.9, 1, 1, 1],
+export const baseHitTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.95, 1.6, 1.7, 2, 2, 2, 3, 4, 5],
+    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.9, 2, 2.3, 2.5, 3],
+        dailyRanges: [0.8, 0.8, 0.8, 0.5, 0.5, 0.8, 0.9, 1, 1, 1],
+    }
 };
 
 /**
@@ -20,30 +25,46 @@ export const baseHitTargets: TradingPlans.ExitTargetsSet = {
  * Leaving last 20% for 5+R. 
  * Not using ATR because ATR will be inacurrate for this type of trades.
  */
-export const bigTradeTargets: TradingPlans.ExitTargetsSet = {
+export const bigTradeTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
     rrr: [1.5, 1.8, 1.9, 2, 2, 2.5, 3, 3.5, 5, 5],
-    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+    minimumTargets: {
+        rrr: [1.5, 1.8, 1.9, 2, 2, 2.5, 3, 3.5, 5, 5],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    }
 }
 
 /**
- * Taking first 30% at 1R or half ATR, then the rest at 1 full ATR.
+ * Most exits are at 1 ATR.
+ * Taking first 20% at 1R or half ATR, then the rest at 1 full ATR.
  */
-export const atrTargets: TradingPlans.ExitTargetsSet = {
-    rrr: [0.9, 0.95, 1, 2, 2, 2.5, 3, 3.5, 5, 5],
-    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    dailyRanges: [0.5, 0.5, 0.5, 0.8, 0.9, 1, 1, 1, 1, 1],
+export const atrTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.95, 1.5, 2, 2, 2, 2, 3.5, 5, 5],
+    dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1],
+    minimumTargets: {
+        rrr: [0.9, 0.95, 1.5, 2, 2, 2, 2, 2, 2, 2],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1],
+    }
 }
 
 /**
  * For stocks that is very likely to move more than 1 ATR.
- * Take first 30% at 1R or half ATR, 40% at 1 ATR.
+ * Take first 20% at 1R or 30% at half ATR, 40% at 1 ATR.
  * Scale last 30% after 1-1.3 ATR
  */
-export const beyondAtrTargets: TradingPlans.ExitTargetsSet = {
-    rrr: [0.9, 0.95, 1, 2, 2, 2.5, 3, 5, 5, 5],
-    priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+export const beyoundAtrTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.95, 1.5, 2, 2, 2.5, 3, 5, 5, 5],
     dailyRanges: [0.5, 0.5, 0.5, 0.8, 0.9, 1, 1, 1.1, 1.2, 1.3],
+    minimumTargets: {
+        rrr: [0.9, 0.95, 1.5, 2, 2, 2.5, 2.5, 2.5, 2.5, 2.5],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.5, 0.5, 0.8, 0.9, 1, 1, 1.1, 1.2, 1.3],
+    }
 }
 
 export const scalpConfig: TradingPlans.PlanConfigs = {
