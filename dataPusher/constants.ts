@@ -66,6 +66,19 @@ export const beyoundAtrTargets: TradingPlans.ExitTargets = {
         dailyRanges: [0.5, 0.5, 0.5, 0.8, 0.9, 1, 1, 1.1, 1.2, 1.3],
     }
 }
+/**
+ * Take 50% out at 1R, but no minimum for the first 50%
+ */
+export const scalpTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.9, 1, 1, 1, 1.5, 2, 2, 2, 2],
+    dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    minimumTargets: {
+        rrr: [-1, -1, -1, -1, -1, 1, 1, 1, 1, 2],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    }
+}
 
 export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
