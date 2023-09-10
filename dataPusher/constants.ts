@@ -83,7 +83,6 @@ export const scalpTargets: TradingPlans.ExitTargets = {
 export const scalpConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     entryRules: {
-        allowMoreChancesPerDirection: true,
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 0,
@@ -96,7 +95,6 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
 export const dayTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.DayTrade,
     entryRules: {
-        allowMoreChancesPerDirection: true,
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 300,
@@ -109,7 +107,6 @@ export const dayTradeConfig: TradingPlans.PlanConfigs = {
 export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.HoldToDayClose,
     entryRules: {
-        allowMoreChancesPerDirection: true,
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 600,
@@ -122,7 +119,6 @@ export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
 export const swingTradeConfig: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Swing,
     entryRules: {
-        allowMoreChancesPerDirection: true,
     },
     exitRules: {
         waitTimeInSecondsAfterMarketOpen: 900,

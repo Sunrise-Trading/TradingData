@@ -45,7 +45,6 @@ export interface PlanConfigs {
     exitRules: ExitRules,
 }
 export interface EntryRules {
-    allowMoreChancesPerDirection: boolean,
 }
 export interface ExitRules {
     waitTimeInSecondsAfterMarketOpen: number,
