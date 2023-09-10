@@ -16,18 +16,23 @@ export const app = firebase.initializeApp(firebaseConfig);
 export const db = gbase.getFirestore(app);
 let data = Data.stocksTradingPlans;
 let stockSelections = Data.stockSelections;
-
+let today = new Date();
+let todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+let expiredAt = new Date();
+expiredAt.setDate(expiredAt.getDate() + 21);
 const push = async (
-    plans: Models.TradingPlans[], stockSelections: string[]) => {
+    plans: Models.TradingPlans[], stockSelections: string[], path: string) => {
     let now = new Date();
-    let docRef = await gbase.doc(db, `configData/tradingPlan`) // create this document newDoc at this path
+    let docRef = await gbase.doc(db, path) // create this document newDoc at this path
     gbase.setDoc(docRef, {
         plans: plans,
         stockSelections: stockSelections,
         activeProfileName: Data.activeProfileName,
         timestamp: now,
+        expiredAt: expiredAt,
     });
 };
-push(data, stockSelections);
+push(data, stockSelections, `configData/tradingPlan`);
+push(data, stockSelections, `configDataSnapshot/${todayStr}`);
 console.log(data);
 console.log(stockSelections);
