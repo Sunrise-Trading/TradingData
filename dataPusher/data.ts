@@ -19,7 +19,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'ORCL',
-        vwapCorrection: { volumeSum: 978279, tradingSum: 11855512 },
+        vwapCorrection: { volumeSum: 978279, tradingSum: 111855512 },
         dailyRange: 2.8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
