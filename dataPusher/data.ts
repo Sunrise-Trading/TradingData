@@ -4,7 +4,6 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
     'TSLA',
-    //'AAPL'
 ];
 
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
@@ -30,15 +29,15 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 503694, tradingSum: 126491156 },
-        dailyRange: 8,
+        vwapCorrection: { volumeSum: 3387236, tradingSum: 891982710 },
+        dailyRange: 10,
         deferTradingInSeconds: 0,
-        fixQuantity: 800,
+        fixQuantity: 50,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 250,
-            momentumStartForShort: 249.8,
+            otherLevels: [266.35],
+            momentumStartForLong: 262.6,
+            momentumStartForShort: 262.48,
         },
         short: {
             momentum: {
@@ -46,14 +45,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.baseHitTargets,
                 planConfigs: Constants.scalpConfig,
             },
+
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 249.5,
-                lastDefense: 250.5
+                stopForAgainstVwapLimitOrMarketEntry: 262.5,
+                lastDefense: 262.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
