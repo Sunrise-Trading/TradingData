@@ -3,19 +3,9 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
+    'ORCL',
 ];
 
-const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
-const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: Constants.baseHitTargets.rrr,
-    dailyRanges: atr,
-    minimumTargets: {
-        ...Constants.baseHitTargets,
-        dailyRanges: atr,
-    }
-};
 
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -28,16 +18,16 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 3387236, tradingSum: 891982710 },
-        dailyRange: 10,
+        symbol: 'ORCL',
+        vwapCorrection: { volumeSum: 978279, tradingSum: 11855512 },
+        dailyRange: 2.8,
         deferTradingInSeconds: 0,
-        fixQuantity: 50,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [266.35],
-            momentumStartForLong: 262.6,
-            momentumStartForShort: 262.48,
+            otherLevels: [118],
+            momentumStartForLong: 114.5,
+            momentumStartForShort: 114.3,
         },
         short: {
             momentum: {
@@ -45,15 +35,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.baseHitTargets,
                 planConfigs: Constants.scalpConfig,
             },
-
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 115,
+                lastDefense: 115
+            }
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 262.5,
-                lastDefense: 262.5
+                stopForAgainstVwapLimitOrMarketEntry: 114,
+                lastDefense: 114
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
