@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'ORCL',
+    'AAPL',
 ];
 
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
@@ -28,42 +28,35 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
-        vwapCorrection: { volumeSum: 978279, tradingSum: 111855512 },
-        dailyRange: 2.8,
+        symbol: 'AAPL',
+        vwapCorrection: { volumeSum: 1122481, tradingSum: 197971763 },
+        dailyRange: 3.8,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [118],
-            momentumStartForLong: 114.5,
-            momentumStartForShort: 114.3,
+            otherLevels: [],
+            momentumStartForLong: 176.5,
+            momentumStartForShort: 1763,
         },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitTargets,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 115,
-                lastDefense: 115
-            }
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 114,
-                lastDefense: 114
+                stopForAgainstVwapLimitOrMarketEntry: 176,
+                lastDefense: 176.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
