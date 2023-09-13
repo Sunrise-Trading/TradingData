@@ -6,16 +6,6 @@ export const stockSelections: string[] = [
     'AAPL',
 ];
 
-const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
-const tslaLongTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: Constants.baseHitRareStockTargets.rrr,
-    dailyRanges: atr,
-    minimumTargets: {
-        ...Constants.baseHitRareStockTargets,
-        dailyRanges: atr,
-    }
-};
 
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
