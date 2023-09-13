@@ -10,10 +10,10 @@ export const stockSelections: string[] = [
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
 const tslaLongTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: Constants.baseHitTargets.rrr,
+    rrr: Constants.baseHitRareStockTargets.rrr,
     dailyRanges: atr,
     minimumTargets: {
-        ...Constants.baseHitTargets,
+        ...Constants.baseHitRareStockTargets,
         dailyRanges: atr,
     }
 };
@@ -21,9 +21,9 @@ const tslaLongTarget: TradingPlans.ExitTargets = {
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
-    dailyRanges: Constants.baseHitTargets.dailyRanges,
+    dailyRanges: Constants.baseHitRareStockTargets.dailyRanges,
     minimumTargets: {
-        ...Constants.baseHitTargets,
+        ...Constants.baseHitRareStockTargets,
         rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
     }
 };
@@ -43,21 +43,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 249.5,
                 lastDefense: 250.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }

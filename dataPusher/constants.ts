@@ -1,14 +1,37 @@
 import * as TradingPlans from './models';
 
 /**
- * base hit targets takes 20% at 1R. After that, 
+ * Use when the top pick was a stock that we usually don't trade.
+ * ATR for such stock can be under estimated.
+ * It takes 20% at 1R. After that, 
  * the worst is losing 0.6R on the trade. 
  * Risk is almost half reduced. 
- * Then takes a good amount of 70% near 2R, 
+ * Then takes a good amount of 60% near 2R or 0.75 ATR, 
+ * making it a decent trade.
+ * Leaving last 20% for a full ATR.
+ */
+export const baseHitRareStockTargets: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
+    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 1.8, 10, 10],
+        dailyRanges: [0.5, 0.5, 0.7, 0.75, 0.8, 0.85, 0.9, 1, 1, 1],
+    }
+};
+
+/**
+ * Use when the top pick was a stock that we frequently trade.
+ * ATR for such stock can be under estimated.
+ * It takes 20% at 1R. After that, 
+ * the worst is losing 0.6R on the trade. 
+ * Risk is almost half reduced. 
+ * Then takes a good amount of 70% near 2R or 0.5 ATR, 
  * making it a decent trade.
  * Leaving last 10% for a full ATR.
  */
-export const baseHitTargets: TradingPlans.ExitTargets = {
+export const baseHitFrequentStockTargets: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
     dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
