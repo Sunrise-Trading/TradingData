@@ -3,8 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
-    //'AAPL'
+    'ORCL',
 ];
 
 const atr = [0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9];
@@ -29,16 +28,16 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 503694, tradingSum: 126491156 },
-        dailyRange: 8,
+        symbol: 'ORCL',
+        vwapCorrection: { volumeSum: 978279, tradingSum: 111855512 },
+        dailyRange: 2.8,
         deferTradingInSeconds: 0,
-        fixQuantity: 800,
+        fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 250,
-            momentumStartForShort: 249.8,
+            otherLevels: [118],
+            momentumStartForLong: 114.5,
+            momentumStartForShort: 114.3,
         },
         short: {
             momentum: {
@@ -46,14 +45,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 115,
+                lastDefense: 115
+            }
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 249.5,
-                lastDefense: 250.5
+                stopForAgainstVwapLimitOrMarketEntry: 114,
+                lastDefense: 114
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
