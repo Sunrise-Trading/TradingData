@@ -27,7 +27,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             otherLevels: [],
             momentumStartForLong: 8.85,
-            momentumStartForShort: 8.9,
+            momentumStartForShort: 9,
         },
         short: {
             openingDrive: {
