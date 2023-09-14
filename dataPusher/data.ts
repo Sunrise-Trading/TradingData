@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'AAPL',
+    'AMC',
 ];
 
 
@@ -18,35 +18,42 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AAPL',
-        vwapCorrection: { volumeSum: 1122481, tradingSum: 197971763 },
-        dailyRange: 3.8,
+        symbol: 'AMC',
+        vwapCorrection: { volumeSum: 3552045, tradingSum: 31572584 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         fixQuantity: 200,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 176.5,
-            momentumStartForShort: 1763,
+            momentumStartForLong: 8.85,
+            momentumStartForShort: 8.9,
         },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitRareStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 9,
+                lastDefense: 8.9
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 176,
-                lastDefense: 176.5
+                stopForAgainstVwapLimitOrMarketEntry: 0.85,
+                lastDefense: 8.87
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
