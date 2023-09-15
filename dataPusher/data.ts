@@ -49,7 +49,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 277.57,
-                lastDefense: 278.47
+                lastDefense: 278.46
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
