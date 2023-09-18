@@ -19,41 +19,69 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 760440, tradingSum: 211430048 },
+        vwapCorrection: { volumeSum: 854693, tradingSum: 233235104 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 277.8,
-            momentumStartForShort: 278.4,
+            momentumStartForLong: 273,
+            momentumStartForShort: 273,
         },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
+                targets: Constants.scalpTargets,
                 planConfigs: Constants.scalpConfig,
             },
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
+                targets: Constants.scalpTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 278.4,
-                lastDefense: 278.4
+                stopForAgainstVwapLimitOrMarketEntry: 273,
+                lastDefense: 273
             }
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.scalpTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 277.57,
-                lastDefense: 278.46
+                stopForAgainstVwapLimitOrMarketEntry: 271,
+                lastDefense: 271
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
+                targets: Constants.scalpTargets,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
+    {
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 329773, tradingSum: 33098183 },
+        dailyRange: 4.3,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 100,
+            momentumStartForShort: 100.6,
+        },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.scalpTargets,
+                planConfigs: Constants.scalpConfig,
+            },
+
+        },
+        long: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.scalpTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
