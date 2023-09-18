@@ -73,7 +73,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
 
@@ -81,7 +81,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
