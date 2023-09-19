@@ -47,14 +47,10 @@ export interface PlanConfigs {
 export interface EntryRules {
 }
 export interface ExitRules {
-    waitTimeInSecondsAfterMarketOpen: number,
-    waitTimeInSecondsSinceEntry: number,
     /**
     * number between 0 and 1
     */
     minimumRiskMultipleRequiredForAdjustingExits: number,
-    decentCurrentRewardRatio: number,
-    decentMaxRewardRatio: number,
 }
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;

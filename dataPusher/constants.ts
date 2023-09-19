@@ -107,11 +107,7 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
     entryRules: {
     },
     exitRules: {
-        waitTimeInSecondsAfterMarketOpen: 0,
-        waitTimeInSecondsSinceEntry: 0,
         minimumRiskMultipleRequiredForAdjustingExits: 0.45,
-        decentCurrentRewardRatio: 0.8,
-        decentMaxRewardRatio: 1.5
     }
 };
 export const dayTradeConfig: TradingPlans.PlanConfigs = {
@@ -119,11 +115,7 @@ export const dayTradeConfig: TradingPlans.PlanConfigs = {
     entryRules: {
     },
     exitRules: {
-        waitTimeInSecondsAfterMarketOpen: 300,
-        waitTimeInSecondsSinceEntry: 180,
         minimumRiskMultipleRequiredForAdjustingExits: 0.45,
-        decentCurrentRewardRatio: 1.5,
-        decentMaxRewardRatio: 1.8
     }
 };
 export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
@@ -131,11 +123,7 @@ export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
     entryRules: {
     },
     exitRules: {
-        waitTimeInSecondsAfterMarketOpen: 600,
-        waitTimeInSecondsSinceEntry: 300,
         minimumRiskMultipleRequiredForAdjustingExits: 0.7,
-        decentCurrentRewardRatio: 1.8,
-        decentMaxRewardRatio: 2
     }
 };
 export const swingTradeConfig: TradingPlans.PlanConfigs = {
@@ -143,11 +131,7 @@ export const swingTradeConfig: TradingPlans.PlanConfigs = {
     entryRules: {
     },
     exitRules: {
-        waitTimeInSecondsAfterMarketOpen: 900,
-        waitTimeInSecondsSinceEntry: 600,
         minimumRiskMultipleRequiredForAdjustingExits: 0.8,
-        decentCurrentRewardRatio: 1.8,
-        decentMaxRewardRatio: 2.5
     }
 };
 
