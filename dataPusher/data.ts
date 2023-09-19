@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'TSLA',
+    'NIO',
 ];
 
 
@@ -17,6 +17,48 @@ const futuresTarget: TradingPlans.ExitTargets = {
     }
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+    {
+        symbol: 'NIO',
+        vwapCorrection: { volumeSum: 854693, tradingSum: 233235104 },
+        dailyRange: 0.6,
+        deferTradingInSeconds: 0,
+        fixQuantity: 1000,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 10,
+            momentumStartForShort: 10,
+        },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitRareStockTargets,
+                planConfigs: Constants.scalpConfig,
+            },
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitRareStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 10,
+                lastDefense: 10
+            }
+        },
+        long: {
+            /*
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 271,
+                lastDefense: 271
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+            },*/
+        }
+    },
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 854693, tradingSum: 233235104 },
