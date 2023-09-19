@@ -107,31 +107,6 @@ export const scalpConfig: TradingPlans.PlanConfigs = {
     entryRules: {
     },
     exitRules: {
-        minimumRiskMultipleRequiredForAdjustingExits: 0.45,
-    }
-};
-export const dayTradeConfig: TradingPlans.PlanConfigs = {
-    setupQuality: TradingPlans.SetupQuality.DayTrade,
-    entryRules: {
-    },
-    exitRules: {
-        minimumRiskMultipleRequiredForAdjustingExits: 0.45,
-    }
-};
-export const holdToDayCloseConfig: TradingPlans.PlanConfigs = {
-    setupQuality: TradingPlans.SetupQuality.HoldToDayClose,
-    entryRules: {
-    },
-    exitRules: {
-        minimumRiskMultipleRequiredForAdjustingExits: 0.7,
-    }
-};
-export const swingTradeConfig: TradingPlans.PlanConfigs = {
-    setupQuality: TradingPlans.SetupQuality.Swing,
-    entryRules: {
-    },
-    exitRules: {
-        minimumRiskMultipleRequiredForAdjustingExits: 0.8,
     }
 };
 
