@@ -32,12 +32,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 273,
                 lastDefense: 273
@@ -46,39 +46,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 271,
                 lastDefense: 271
             },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.scalpTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 329773, tradingSum: 33098183 },
-        dailyRange: 4.3,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 100,
-            momentumStartForShort: 100.6,
-        },
-        short: {
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-
-        },
-        long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitFrequentStockTargets,
