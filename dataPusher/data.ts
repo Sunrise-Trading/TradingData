@@ -4,6 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
     'NIO',
+    //'ARM',
 ];
 
 
