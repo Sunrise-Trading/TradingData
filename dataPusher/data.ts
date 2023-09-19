@@ -19,7 +19,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NIO',
-        vwapCorrection: { volumeSum: 854693, tradingSum: 233235104 },
+        vwapCorrection: { volumeSum: 2758560, tradingSum: 26904074 },
         dailyRange: 0.6,
         deferTradingInSeconds: 0,
         fixQuantity: 1000,
@@ -41,6 +41,48 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 10,
                 lastDefense: 10
+            }
+        },
+        long: {
+            /*
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 271,
+                lastDefense: 271
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+            },*/
+        }
+    },
+    {
+        symbol: 'ARM',
+        vwapCorrection: { volumeSum: 445440, tradingSum: 24912223 },
+        dailyRange: 3.5,
+        deferTradingInSeconds: 0,
+        fixQuantity: 300,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 56,
+            momentumStartForShort: 56,
+        },
+        short: {
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+            },
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitFrequentStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 56,
+                lastDefense: 56
             }
         },
         long: {
