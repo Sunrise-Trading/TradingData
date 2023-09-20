@@ -3,9 +3,20 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'NIO',
-    //'ARM',
+    //'NIO',
+    'PINS',
 ];
+
+const pinsTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
+    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 1.8, 2.5, 10],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.6, 0.65, 0.7, 0.8, 1, 1],
+    }
+};
 
 
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -61,45 +72,44 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'ARM',
-        vwapCorrection: { volumeSum: 445440, tradingSum: 24912223 },
-        dailyRange: 3.5,
+        symbol: 'PINS',
+        vwapCorrection: { volumeSum: 531611, tradingSum: 14507066 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
-        fixQuantity: 300,
+        fixQuantity: 500,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 56,
-            momentumStartForShort: 56,
+            momentumStartForLong: 27.2,
+            momentumStartForShort: 27.6,
         },
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
             },
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 56,
-                lastDefense: 56
+                stopForAgainstVwapLimitOrMarketEntry: 27.54,
+                lastDefense: 27.54
             }
         },
         long: {
-            /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 271,
-                lastDefense: 271
+                stopForAgainstVwapLimitOrMarketEntry: 27.2,
+                lastDefense: 27.2
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
-            },*/
+            },
         }
     },
     {
