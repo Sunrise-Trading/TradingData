@@ -3,7 +3,6 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    //'NIO',
     'PINS',
 ];
 
@@ -80,8 +79,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 27.2,
-            momentumStartForShort: 27.6,
+            momentumStartForLong: 27.25,
+            momentumStartForShort: 28,
         },
         short: {
             momentum: {
@@ -93,18 +92,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.Momentum,
                 targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 27.54,
-                lastDefense: 27.54
+                stopForAgainstVwapLimitOrMarketEntry: 28,
+                lastDefense: 28
             }
+
         },
         long: {
+            /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: pinsTarget,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 27.2,
                 lastDefense: 27.2
-            },
+            },*/
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: pinsTarget,
