@@ -30,7 +30,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AVGO',
-        vwapCorrection: { volumeSum: 139256, tradingSum: 109089312 },
+        vwapCorrection: { volumeSum: 139256, tradingSum: 108059312 },
         dailyRange: 22,
         deferTradingInSeconds: 0,
         fixQuantity: 50,
@@ -53,7 +53,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 775,
+                stopForAgainstVwapLimitOrMarketEntry: 769,
                 lastDefense: 775
             },
             momentum: {
