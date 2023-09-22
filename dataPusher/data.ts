@@ -6,19 +6,6 @@ export const stockSelections: string[] = [
     //'BABA',
     'TSLA'
 ];
-
-const pinsTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
-    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
-    minimumTargets: {
-        priceLevels: [],
-        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 1.8, 2.5, 10],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.6, 0.65, 0.7, 0.8, 1, 1],
-    }
-};
-
-
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
     rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
@@ -44,7 +31,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
             openingDrive: {
@@ -78,21 +65,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 257,
                 lastDefense: 257.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitFrequentStockTargets,
+                targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         }
