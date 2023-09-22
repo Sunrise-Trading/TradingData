@@ -30,16 +30,16 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AVGO',
-        vwapCorrection: { volumeSum: 139256, tradingSum: 108059312 },
-        dailyRange: 22,
+        symbol: 'BABA',
+        vwapCorrection: { volumeSum: 482394, tradingSum: 42310824 },
+        dailyRange: 2.2,
         deferTradingInSeconds: 0,
-        fixQuantity: 50,
+        fixQuantity: 300,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 775,
-            momentumStartForShort: 765,
+            momentumStartForLong: 87.9,
+            momentumStartForShort: 88.2,
         },
         short: {
             momentum: {
@@ -47,16 +47,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
-
-        },
-        long: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitFrequentStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 769,
-                lastDefense: 775
+                stopForAgainstVwapLimitOrMarketEntry: 88,
+                lastDefense: 87.9
             },
+        },
+        long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitFrequentStockTargets,
@@ -66,7 +65,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 854693, tradingSum: 233235104 },
+        vwapCorrection: { volumeSum: 771911, tradingSum: 198840411 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
