@@ -18,21 +18,28 @@ let data = Data.stocksTradingPlans;
 let stockSelections = Data.stockSelections;
 let today = new Date();
 let todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+let timeStr = `${todayStr}-${today.getHours()}-${today.getMinutes()}-${today.getSeconds()}`;
 let expiredAt = new Date();
 expiredAt.setDate(expiredAt.getDate() + 21);
+let shortExpiredAt = new Date();
+shortExpiredAt.setDate(shortExpiredAt.getDate() + 7);
 const push = async (
-    plans: Models.TradingPlans[], stockSelections: string[], path: string) => {
+    content: any, path: string, exp: Date) => {
     let now = new Date();
     let docRef = await gbase.doc(db, path) // create this document newDoc at this path
     gbase.setDoc(docRef, {
-        plans: plans,
-        stockSelections: stockSelections,
-        activeProfileName: Data.activeProfileName,
+        ...content,
         timestamp: now,
-        expiredAt: expiredAt,
+        expiredAt: exp,
     });
 };
-push(data, stockSelections, `configData/tradingPlan`);
-push(data, stockSelections, `configDataSnapshot/${todayStr}`);
+const planData = {
+    plans: data,
+    activeProfileName: Data.activeProfileName,
+}
+push(planData, `configData/tradingPlan`, expiredAt);
+push(planData, `configDataSnapshot/${todayStr}`, expiredAt);
+push({ stockSelections: stockSelections }, `stockSelections/${timeStr}`, shortExpiredAt);
+
 console.log(data);
 console.log(stockSelections);
