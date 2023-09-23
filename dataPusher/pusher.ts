@@ -22,7 +22,7 @@ let timeStr = `${todayStr}-${today.getHours()}-${today.getMinutes()}-${today.get
 let expiredAt = new Date();
 expiredAt.setDate(expiredAt.getDate() + 21);
 let shortExpiredAt = new Date();
-shortExpiredAt.setDate(shortExpiredAt.getDate() + 7);
+shortExpiredAt.setDate(shortExpiredAt.getDate() + 4);
 const push = async (
     content: any, path: string, exp: Date) => {
     let now = new Date();
