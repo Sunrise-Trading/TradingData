@@ -84,6 +84,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         }
     },
+    /*
     {
         symbol: 'MES',
         isFutures: true,
@@ -157,5 +158,5 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: futuresTarget,
             }
         },
-    }
+    }*/
 ];
