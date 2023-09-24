@@ -33,23 +33,23 @@ export const baseHitRareStockTargets: TradingPlans.ExitTargets = {
  */
 export const baseHitFrequentStockTargets: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
+    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 3, 3, 5],
     dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
     minimumTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 1.8, 1.8, 10],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.8, 0.9, 1, 1, 1],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 2.5, 3, 5],
+        dailyRanges: [0.45, 0.45, 0.5, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     }
 };
 
 export const tslaStockTargets: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 2, 3, 10],
+    rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 3, 3, 5],
     dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
     minimumTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 1.8, 1.8, 10],
-        dailyRanges: [0.4, 0.4, 0.45, 0.45, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 2.5, 3, 5],
+        dailyRanges: [0.45, 0.45, 0.5, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     }
 };
 
