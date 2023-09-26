@@ -3,9 +3,9 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'IMVT'
+    //'IMVT'
     //'SLNO'
-    //'TSLA'
+    'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -26,7 +26,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 244.5,
+            momentumStartForLong: 243,
             momentumStartForShort: 244.5,
         },
         short: {
