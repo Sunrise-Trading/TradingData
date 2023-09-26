@@ -3,7 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'SLNO'
+    'IMVT'
+    //'SLNO'
     //'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
@@ -18,23 +19,23 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 1236623, tradingSum: 299443548 },
+        vwapCorrection: { volumeSum: 630944, tradingSum: 154315468 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 241,
-            momentumStartForShort: 241.99,
+            momentumStartForLong: 244.5,
+            momentumStartForShort: 244.5,
         },
         short: {
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 243,
-                lastDefense: 242.5
+                stopForAgainstVwapLimitOrMarketEntry: 244.5,
+                lastDefense: 244.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
@@ -47,8 +48,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 241,
-                lastDefense: 242
+                stopForAgainstVwapLimitOrMarketEntry: 244.5,
+                lastDefense: 244.5
             },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
