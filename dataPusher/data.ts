@@ -19,121 +19,40 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 630944, tradingSum: 154315468 },
-        dailyRange: 8,
+        vwapCorrection: { volumeSum: 604190, tradingSum: 148265523 },
+        dailyRange: 7,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
             momentumStartForLong: 243,
-            momentumStartForShort: 244.5,
-        },
-        short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 244.5,
-                lastDefense: 244.5
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 244.5,
-                lastDefense: 244.5
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'SLNO',
-        vwapCorrection: { volumeSum: 6324567, tradingSum: 91703615 },
-        dailyRange: 5,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 16,
-            momentumStartForShort: 16,
+            momentumStartForShort: 245.75,
         },
         short: {
             /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
+                targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 243,
-                lastDefense: 242.5
+                stopForAgainstVwapLimitOrMarketEntry: 245.5,
+                lastDefense: 245.5
             },*/
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.baseHitRareStockTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-        },
-        long: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-            },
-        }
-    },
-    {
-        symbol: 'IMVT',
-        vwapCorrection: { volumeSum: 2960878, tradingSum: 94001175 },
-        dailyRange: 4,
-        deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 32,
-            momentumStartForShort: 31.9,
-        },
-        short: {
-            openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
-                targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 32.5,
-                lastDefense: 32
-            },
-            momentum: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
             },
         },
         long: {
+            /*
             openingDrive: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 32,
-                lastDefense: 32
-            },
+                stopForAgainstVwapLimitOrMarketEntry: 244.5,
+                lastDefense: 244.5
+            },*/
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
