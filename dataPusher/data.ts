@@ -3,9 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    //'IMVT'
-    //'SLNO'
-    'TSLA'
+    'BNOX'
+    //'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -17,6 +16,34 @@ const futuresTarget: TradingPlans.ExitTargets = {
     }
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+    {
+        symbol: 'BNOX',
+        vwapCorrection: { volumeSum: 24002564, tradingSum: 101089972 },
+        dailyRange: 0,
+        deferTradingInSeconds: 0,
+        fixQuantity: 100,
+        alwaysUseFixQuantity: false,
+        keyLevels: {
+            otherLevels: [],
+            momentumStartForLong: 4,
+            momentumStartForShort: 4,
+        },
+        short: {},
+        long: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitRareStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 4,
+                lastDefense: 4
+            },
+            momentum: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.baseHitRareStockTargets,
+                planConfigs: Constants.scalpConfig,
+            },
+        }
+    },
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 604190, tradingSum: 148265523 },
