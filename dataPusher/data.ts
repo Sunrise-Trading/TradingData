@@ -3,8 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'BNOX'
-    //'TSLA'
+    //'NKE'
+    'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -17,26 +17,25 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BNOX',
-        vwapCorrection: { volumeSum: 24002564, tradingSum: 101089972 },
-        dailyRange: 0,
+        symbol: 'NKE',
+        vwapCorrection: { volumeSum: 609402, tradingSum: 59793450 },
+        dailyRange: 2.5,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
             momentumStartForLong: 4,
-            momentumStartForShort: 4,
+            momentumStartForShort: 100,
         },
-        short: {},
-        long: {
-            openingDrive: {
+        short: {
+            momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
                 planConfigs: Constants.scalpConfig,
-                stopForAgainstVwapLimitOrMarketEntry: 4,
-                lastDefense: 4
             },
+        },
+        long: {
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
@@ -46,15 +45,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 604190, tradingSum: 148265523 },
-        dailyRange: 7,
+        vwapCorrection: { volumeSum: 860593, tradingSum: 215051258 },
+        dailyRange: 8,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
-            momentumStartForLong: 243,
-            momentumStartForShort: 245.75,
+            momentumStartForLong: 249,
+            momentumStartForShort: 250,
         },
         short: {
             /*
