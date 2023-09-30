@@ -3,8 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    //'NKE'
-    'TSLA'
+    'NKE'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -22,62 +21,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 3,
         deferTradingInSeconds: 0,
         keyLevels: {
-            otherLevels: [],
             momentumStartForLong: 4,
             momentumStartForShort: 100,
         },
         short: {
             openingDrive: {
-                targets: Constants.tslaStockTargets,
+                targets: Constants.baseHitRareStockTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 100,
                 lastDefense: 100
             },
-            momentum: {
-                targets: Constants.baseHitRareStockTargets,
-
-            },
+            momentum: { targets: Constants.baseHitRareStockTargets },
         },
         long: {
-            momentum: {
-                targets: Constants.baseHitRareStockTargets,
-
-            },
-        }
-    },
-    {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 860593, tradingSum: 215051258 },
-        dailyRange: 8,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            otherLevels: [],
-            momentumStartForLong: 249,
-            momentumStartForShort: 250,
-        },
-        short: {
-            /*
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 245.5,
-                lastDefense: 245.5
-            },*/
-            momentum: {
-                targets: Constants.tslaStockTargets,
-
-            },
-        },
-        long: {
-            /*
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                planConfigs: {},
-                stopForAgainstVwapLimitOrMarketEntry: 244.5,
-                lastDefense: 244.5
-            },*/
-            momentum: {
-                targets: Constants.tslaStockTargets,
-
-            },
+            momentum: { targets: Constants.baseHitRareStockTargets },
         }
     },
     /*

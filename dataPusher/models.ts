@@ -22,7 +22,7 @@ export interface SingleDirectionPlans {
     breakoutAlgo?: BreakoutAlgo,
 };
 export interface keyLevels {
-    otherLevels: number[];
+    otherLevels?: number[];
     momentumStartForLong: number,
     momentumStartForShort: number,
 };
