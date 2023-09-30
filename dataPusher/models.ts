@@ -36,16 +36,9 @@ export enum PlanType {
 };
 export interface BasePlan {
     targets: ExitTargets,
-    planConfigs: PlanConfigs,
+    planConfigs?: PlanConfigs,
 };
 export interface PlanConfigs {
-    setupQuality: SetupQuality,
-    entryRules: EntryRules,
-    exitRules: ExitRules,
-}
-export interface EntryRules {
-}
-export interface ExitRules {
 }
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;

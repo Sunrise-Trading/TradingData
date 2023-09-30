@@ -30,23 +30,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 100,
                 lastDefense: 100
             },
             momentum: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
-                planConfigs: Constants.scalpConfig,
+
             },
         },
         long: {
             momentum: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
-                planConfigs: Constants.scalpConfig,
+
             },
         }
     },
@@ -65,31 +61,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             /*
             openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
                 stopForAgainstVwapLimitOrMarketEntry: 245.5,
                 lastDefense: 245.5
             },*/
             momentum: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
+
             },
         },
         long: {
             /*
             openingDrive: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 stopForAgainstVwapLimitOrMarketEntry: 244.5,
                 lastDefense: 244.5
             },*/
             momentum: {
-                planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.tslaStockTargets,
-                planConfigs: Constants.scalpConfig,
+
             },
         }
     },
@@ -109,13 +100,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
-                planType: TradingPlans.PlanType.NewsBreakout,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
             },
             breakoutAlgo: {
-                planType: TradingPlans.PlanType.BreakoutAlgo,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
                 entryPrice: 4430,
                 useHighLowOfDay: false,
@@ -125,8 +114,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             newsBreakout: {
-                planType: TradingPlans.PlanType.NewsBreakout,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
             }
         },
@@ -146,13 +134,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             newsBreakout: {
-                planType: TradingPlans.PlanType.NewsBreakout,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
             },
             breakoutAlgo: {
-                planType: TradingPlans.PlanType.BreakoutAlgo,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
                 entryPrice: 4430,
                 useHighLowOfDay: false,
@@ -162,8 +148,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             newsBreakout: {
-                planType: TradingPlans.PlanType.NewsBreakout,
-                planConfigs: Constants.scalpConfig,
+                planConfigs: {},
                 targets: futuresTarget,
             }
         },
