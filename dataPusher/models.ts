@@ -35,7 +35,6 @@ export enum PlanType {
     BreakoutAlgo = 'BreakoutAlgo',
 };
 export interface BasePlan {
-    planType: PlanType,
     targets: ExitTargets,
     planConfigs: PlanConfigs,
 };
