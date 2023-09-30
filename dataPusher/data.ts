@@ -19,7 +19,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NKE',
         vwapCorrection: { volumeSum: 609402, tradingSum: 59793450 },
-        dailyRange: 2.5,
+        dailyRange: 3,
         deferTradingInSeconds: 0,
         fixQuantity: 100,
         alwaysUseFixQuantity: false,
@@ -29,6 +29,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 100,
         },
         short: {
+            openingDrive: {
+                planType: TradingPlans.PlanType.Momentum,
+                targets: Constants.tslaStockTargets,
+                planConfigs: Constants.scalpConfig,
+                stopForAgainstVwapLimitOrMarketEntry: 100,
+                lastDefense: 100
+            },
             momentum: {
                 planType: TradingPlans.PlanType.Momentum,
                 targets: Constants.baseHitRareStockTargets,
