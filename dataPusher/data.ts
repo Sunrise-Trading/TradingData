@@ -21,8 +21,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 609402, tradingSum: 59793450 },
         dailyRange: 3,
         deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
             momentumStartForLong: 4,
@@ -51,8 +49,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 860593, tradingSum: 215051258 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
-        fixQuantity: 100,
-        alwaysUseFixQuantity: false,
         keyLevels: {
             otherLevels: [],
             momentumStartForLong: 249,
@@ -91,8 +87,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         deferTradingInSeconds: 0,
-        fixQuantity: 6,
-        alwaysUseFixQuantity: false,
+        fixedQuantity: 6,
         keyLevels: {
             otherLevels: [4000],
             momentumStartForLong: 0,
@@ -125,8 +120,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
         deferTradingInSeconds: 0,
-        fixQuantity: 6,
-        alwaysUseFixQuantity: false,
+        fixedQuantity: 6,
         keyLevels: {
             otherLevels: [4000],
             momentumStartForLong: 0,
