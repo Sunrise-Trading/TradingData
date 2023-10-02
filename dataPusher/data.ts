@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'NKE'
+    'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -16,24 +16,57 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NKE',
-        vwapCorrection: { volumeSum: 609402, tradingSum: 59793450 },
-        dailyRange: 3,
+        symbol: 'RIVN',
+        vwapCorrection: { volumeSum: 2263846, tradingSum: 54291806 },
+        dailyRange: 1.2,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 4,
-            momentumStartForShort: 100,
+            momentumStartForLong: 24,
+            momentumStartForShort: 23.99,
         },
         short: {
             openingDrive: {
                 targets: Constants.baseHitRareStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 100,
-                lastDefense: 100
+                stopForAgainstVwapLimitOrMarketEntry: 24.5,
+                lastDefense: 23.99
             },
             momentum: { targets: Constants.baseHitRareStockTargets },
         },
         long: {
             momentum: { targets: Constants.baseHitRareStockTargets },
+            openingDrive: {
+                targets: Constants.baseHitRareStockTargets,
+                stopForAgainstVwapLimitOrMarketEntry: 24,
+                lastDefense: 23
+            },
+        }
+    },
+    {
+        symbol: 'TSLA',
+        vwapCorrection: { volumeSum: 737533, tradingSum: 184613613 },
+        dailyRange: 9,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 240,
+            momentumStartForShort: 246.35,
+        },
+        short: {
+            openingDrive: {
+                targets: Constants.tslaStockTargets,
+                stopForAgainstVwapLimitOrMarketEntry: 246.35,
+                lastDefense: 246.35
+            },
+            momentum: { targets: Constants.tslaStockTargets },
+        },
+        long: {
+            momentum: { targets: Constants.tslaStockTargets },
+            /*
+            openingDrive: {
+                targets: Constants.tslaStockTargets,
+                stopForAgainstVwapLimitOrMarketEntry: 240,
+                lastDefense: 239.2
+            },
+            */
         }
     },
     /*
