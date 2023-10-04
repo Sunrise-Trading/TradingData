@@ -29,6 +29,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: Constants.baseHitFrequentStockTargets },
         },
         long: {
+            openingDrive: {
+                targets: Constants.baseHitFrequentStockTargets,
+                stopForAgainstVwapLimitOrMarketEntry: 15.35,
+                lastDefense: 15.4
+            },
             momentum: { targets: Constants.baseHitFrequentStockTargets },
         }
     },
