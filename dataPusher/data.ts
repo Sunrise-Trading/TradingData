@@ -3,7 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const stockSelections: string[] = [
-    'ABNB'
+    'PLTR'
+    //'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -16,28 +17,29 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ABNB',
-        vwapCorrection: { volumeSum: 17588, tradingSum: 2339564 },
-        dailyRange: 4,
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 1429391, tradingSum: 22055371 },
+        dailyRange: 0.8,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 134,
-            momentumStartForShort: 133.99,
+            momentumStartForLong: 15.42,
+            momentumStartForShort: 15.4,
         },
         short: {
-            momentum: { targets: Constants.baseHitRareStockTargets },
+            momentum: { targets: Constants.baseHitFrequentStockTargets },
         },
         long: {
+            momentum: { targets: Constants.baseHitFrequentStockTargets },
         }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 684207, tradingSum: 170271580 },
+        vwapCorrection: { volumeSum: 688112, tradingSum: 170229094 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 247.5,
-            momentumStartForShort: 249,
+            momentumStartForLong: 247.3,
+            momentumStartForShort: 247.2,
         },
         short: {
             momentum: { targets: Constants.tslaStockTargets },
