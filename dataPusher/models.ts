@@ -1,5 +1,6 @@
 export interface TradingSettings {
     allowMultipleStocks: boolean,
+    equalWeightDivider: number,
 }
 export interface TradingPlans {
     symbol: string,
