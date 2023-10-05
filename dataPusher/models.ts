@@ -1,3 +1,6 @@
+export interface TradingSettings {
+    allowMultipleStocks: boolean,
+}
 export interface TradingPlans {
     symbol: string,
     isFutures?: boolean,

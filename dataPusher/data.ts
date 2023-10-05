@@ -2,6 +2,9 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
+export const tradingSettigns: TradingPlans.TradingSettings = {
+    allowMultipleStocks: true,
+};
 export const stockSelections: string[] = [
     'PLTR'
     //'TSLA'

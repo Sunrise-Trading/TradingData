@@ -36,6 +36,7 @@ const push = async (
 const planData = {
     plans: data,
     activeProfileName: Data.activeProfileName,
+    settings: Data.tradingSettigns,
 }
 push(planData, `configData/tradingPlan`, expiredAt);
 push(planData, `configDataSnapshot/${todayStr}`, expiredAt);
