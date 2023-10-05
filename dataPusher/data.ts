@@ -6,8 +6,8 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
     allowMultipleStocks: true,
 };
 export const stockSelections: string[] = [
-    'PLTR'
-    //'TSLA'
+    'PLTR',
+    'TSLA'
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
