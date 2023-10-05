@@ -21,7 +21,7 @@ const futuresTarget: TradingPlans.ExitTargets = {
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'RIVN',
-        vwapCorrection: { volumeSum: 1429391, tradingSum: 22055371 },
+        vwapCorrection: { volumeSum: 2275505, tradingSum: 49005977 },
         dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
