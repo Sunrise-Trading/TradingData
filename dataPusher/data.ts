@@ -4,7 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
     allowMultipleStocks: false,
-    equalWeightDivider: 0,
+    equalWeightDivider: 3,
 };
 export const stockSelections: string[] = [
     'RIVN',
@@ -22,10 +22,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'RIVN',
         vwapCorrection: { volumeSum: 2275505, tradingSum: 49005977 },
-        dailyRange: 1,
+        dailyRange: 1.3,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 21.5,
+            momentumStartForLong: 21.35,
             momentumStartForShort: 21.69,
         },
         short: {
