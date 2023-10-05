@@ -3,12 +3,11 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: true,
-    equalWeightDivider: 4,
+    allowMultipleStocks: false,
+    equalWeightDivider: 0,
 };
 export const stockSelections: string[] = [
-    'PLTR',
-    'TSLA'
+    'RIVN',
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -21,23 +20,29 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'RIVN',
         vwapCorrection: { volumeSum: 1429391, tradingSum: 22055371 },
-        dailyRange: 0.8,
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 15.42,
-            momentumStartForShort: 15.4,
+            momentumStartForLong: 21.5,
+            momentumStartForShort: 21.69,
         },
         short: {
+            openingDrive: {
+                targets: Constants.baseHitFrequentStockTargets,
+                stopForAgainstVwapLimitOrMarketEntry: 21.6,
+                lastDefense: 21.58
+            },
             momentum: { targets: Constants.baseHitFrequentStockTargets },
         },
         long: {
+            /*
             openingDrive: {
                 targets: Constants.baseHitFrequentStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 15.35,
-                lastDefense: 15.4
-            },
+                stopForAgainstVwapLimitOrMarketEntry: 21.25,
+                lastDefense: 21.5
+            },*/
             momentum: { targets: Constants.baseHitFrequentStockTargets },
         }
     },
