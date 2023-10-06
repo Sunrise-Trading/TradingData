@@ -4,10 +4,21 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
     allowMultipleStocks: false,
-    equalWeightDivider: 3,
+    equalWeightDivider: 4,
+};
+
+export const nvdaTarget: TradingPlans.ExitTargets = {
+    priceLevels: [],
+    rrr: [0.9, 1.3, 1.6, 2, 2, 2, 2.5, 2.5, 3, 5],
+    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1],
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 1.3, 1.5, 1.6, 1.8, 2, 2.5, 2.5, 3, 5],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1],
+    }
 };
 export const stockSelections: string[] = [
-    'RIVN',
+    'NVDA',
 ];
 const futuresTarget: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -20,30 +31,23 @@ const futuresTarget: TradingPlans.ExitTargets = {
 };
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RIVN',
-        vwapCorrection: { volumeSum: 2275505, tradingSum: 49005977 },
-        dailyRange: 1.3,
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 665187, tradingSum: 294112565 },
+        dailyRange: 14,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 21.35,
-            momentumStartForShort: 21.69,
+            momentumStartForLong: 440,
+            momentumStartForShort: 439.5,
         },
         short: {
-            openingDrive: {
-                targets: Constants.baseHitFrequentStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 21.6,
-                lastDefense: 21.58
-            },
-            momentum: { targets: Constants.baseHitFrequentStockTargets },
         },
         long: {
-            /*
             openingDrive: {
-                targets: Constants.baseHitFrequentStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 21.25,
-                lastDefense: 21.5
-            },*/
-            momentum: { targets: Constants.baseHitFrequentStockTargets },
+                targets: nvdaTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 440,
+                lastDefense: 440
+            },
+            momentum: { targets: nvdaTarget },
         }
     },
     {
