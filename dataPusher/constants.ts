@@ -76,12 +76,12 @@ export const bigTradeTargets: TradingPlans.ExitTargets = {
  */
 export const atrTargets: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.9, 0.95, 1.5, 2, 2, 2, 2, 3.5, 5, 5],
-    dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1],
+    rrr: [1.5, 1.5, 1.5, 2, 2, 2.5, 3, 3.5, 5, 10],
+    dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1.1],
     minimumTargets: {
-        rrr: [0.9, 0.95, 1.5, 2, 2, 2, 2, 2, 2, 2],
+        rrr: [0.9, 0.95, 1.5, 2, 2, 2.5, 3, 3.5, 5, 10],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1],
+        dailyRanges: [0.5, 0.5, 0.8, 0.85, 0.9, 0.95, 1, 1, 1, 1.1],
     }
 }
 
