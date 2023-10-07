@@ -43,11 +43,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             openingDrive: {
-                targets: nvdaTarget,
+                targets: Constants.atrTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 440,
                 lastDefense: 440
             },
-            momentum: { targets: nvdaTarget },
+            momentum: { targets: Constants.atrTargets },
         }
     },
     {
@@ -60,13 +60,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 247.2,
         },
         short: {
-            momentum: { targets: Constants.tslaStockTargets },
+            momentum: { targets: Constants.atrTargets },
         },
         long: {
-            momentum: { targets: Constants.tslaStockTargets },
+            momentum: { targets: Constants.atrTargets },
             /*
             openingDrive: {
-                targets: Constants.tslaStockTargets,
+                targets: Constants.atrTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 240,
                 lastDefense: 239.2
             },
