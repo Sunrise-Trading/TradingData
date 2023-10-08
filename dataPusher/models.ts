@@ -22,7 +22,6 @@ export interface SingleDirectionPlans {
     openingDrive?: OpeningDrivePlan,
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
-    simpleRetracement?: SimpleRetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
 };
@@ -47,9 +46,6 @@ export interface PlanConfigs {
 export interface OpeningDrivePlan extends BasePlan {
     lastDefense: number;
     stopForAgainstVwapLimitOrMarketEntry: number,
-}
-export interface SimpleRetracementPlan extends BasePlan {
-    lastDefense: number,
 }
 export interface MomentumPlan extends BasePlan {
 };

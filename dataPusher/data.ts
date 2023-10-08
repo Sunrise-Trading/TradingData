@@ -1,34 +1,24 @@
 import * as TradingPlans from './models';
-import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
     allowMultipleStocks: false,
     equalWeightDivider: 4,
 };
-
-export const nvdaTarget: TradingPlans.ExitTargets = {
+const oneATR: TradingPlans.ExitTargets = {
     priceLevels: [],
-    rrr: [0.9, 1.3, 1.6, 2, 2, 2, 2.5, 2.5, 3, 5],
-    dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1],
+    rrr: [0.9, 0.95, 1.8, 1.9, 2, 2.5, 3, 3.5, 5, 10],
+    dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     minimumTargets: {
-        priceLevels: [],
-        rrr: [0.9, 1.3, 1.5, 1.6, 1.8, 2, 2.5, 2.5, 3, 5],
-        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1],
+        rrr: [0.9, 0.95, 1.8, 1.9, 2, 2.5, 3, 3.5, 5, 10],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     }
-};
+}
 export const stockSelections: string[] = [
     'NVDA',
 ];
-const futuresTarget: TradingPlans.ExitTargets = {
-    priceLevels: [],
-    rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
-    dailyRanges: Constants.baseHitRareStockTargets.dailyRanges,
-    minimumTargets: {
-        ...Constants.baseHitRareStockTargets,
-        rrr: [0.8, 1, 1, 2, 2, 2, 2, 2, 2, 2],
-    }
-};
+
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NVDA',
@@ -43,11 +33,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             openingDrive: {
-                targets: Constants.atrTargets,
+                targets: oneATR,
                 stopForAgainstVwapLimitOrMarketEntry: 440,
                 lastDefense: 440
             },
-            momentum: { targets: Constants.atrTargets },
+            momentum: { targets: oneATR },
         }
     },
     {
@@ -60,13 +50,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 247.2,
         },
         short: {
-            momentum: { targets: Constants.atrTargets },
+            momentum: { targets: oneATR },
         },
         long: {
-            momentum: { targets: Constants.atrTargets },
+            momentum: { targets: oneATR },
             /*
             openingDrive: {
-                targets: Constants.atrTargets,
+                targets: oneATR,
                 stopForAgainstVwapLimitOrMarketEntry: 240,
                 lastDefense: 239.2
             },
