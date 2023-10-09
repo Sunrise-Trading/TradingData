@@ -1,9 +1,10 @@
 import * as TradingPlans from './models';
+import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: false,
-    equalWeightDivider: 4,
+    allowMultipleStocks: true,
+    equalWeightDivider: 6,
 };
 const oneATR: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -16,47 +17,53 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'NVDA',
+    'ARM',
+    'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 665187, tradingSum: 294112565 },
-        dailyRange: 14,
+        symbol: 'ARM',
+        vwapCorrection: { volumeSum: 93812, tradingSum: 5073510 },
+        dailyRange: 3,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 440,
-            momentumStartForShort: 439.5,
+            momentumStartForLong: 54,
+            momentumStartForShort: 53.99,
         },
         short: {
         },
         long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 440,
-                lastDefense: 440
+                stopForAgainstVwapLimitOrMarketEntry: 53.6,
+                lastDefense: 54
             },
             momentum: { targets: oneATR },
         }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 688112, tradingSum: 170229094 },
+        vwapCorrection: { volumeSum: 654296, tradingSum: 167612471 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 247.3,
-            momentumStartForShort: 247.2,
+            momentumStartForLong: 257,
+            momentumStartForShort: 256,
         },
         short: {
-            momentum: { targets: oneATR },
+            openingDrive: {
+                targets: Constants.tslaStockTargets,
+                lastDefense: 256.2,
+                stopForAgainstVwapLimitOrMarketEntry: 256.4,
+            },
+            momentum: { targets: Constants.tslaStockTargets },
         },
         long: {
-            momentum: { targets: oneATR },
+            momentum: { targets: Constants.tslaStockTargets },
             /*
             openingDrive: {
-                targets: oneATR,
+                targets: Constants.tslaStockTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 240,
                 lastDefense: 239.2
             },
