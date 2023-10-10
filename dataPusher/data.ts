@@ -17,57 +17,76 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'ARM',
-    'TSLA',
+    'PEP',
+    'PLTR',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ARM',
-        vwapCorrection: { volumeSum: 93812, tradingSum: 5073510 },
-        dailyRange: 3,
+        symbol: 'PEP',
+        vwapCorrection: { volumeSum: 235260, tradingSum: 38502242 },
+        dailyRange: 2.5,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 54,
-            momentumStartForShort: 53.99,
+            momentumStartForLong: 163,
+            momentumStartForShort: 166,
         },
         short: {
         },
         long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 53.6,
-                lastDefense: 54
+                stopForAgainstVwapLimitOrMarketEntry: 163,
+                lastDefense: 163
+            },
+            momentum: { targets: oneATR },
+        }
+    },
+    {
+        symbol: 'PLTR',
+        vwapCorrection: { volumeSum: 2529251, tradingSum: 45493887 },
+        dailyRange: 0.9,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 18,
+            momentumStartForShort: 17.99,
+        },
+        short: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 18,
+                lastDefense: 18
+            },
+            momentum: { targets: oneATR },
+        },
+        long: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 18,
+                lastDefense: 18
             },
             momentum: { targets: oneATR },
         }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 654296, tradingSum: 167612471 },
+        vwapCorrection: { volumeSum: 551594, tradingSum: 142548905 },
         dailyRange: 8,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 257,
-            momentumStartForShort: 256,
+            momentumStartForLong: 260,
+            momentumStartForShort: 258.5,
         },
         short: {
             openingDrive: {
                 targets: Constants.tslaStockTargets,
-                lastDefense: 256.2,
-                stopForAgainstVwapLimitOrMarketEntry: 256.4,
+                lastDefense: 258.5,
+                stopForAgainstVwapLimitOrMarketEntry: 258.5,
             },
             momentum: { targets: Constants.tslaStockTargets },
         },
         long: {
             momentum: { targets: Constants.tslaStockTargets },
-            /*
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 240,
-                lastDefense: 239.2
-            },
-            */
         }
     },
     /*
