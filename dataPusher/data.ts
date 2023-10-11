@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: false,
+    allowMultipleStocks: true,
     equalWeightDivider: 4,
 };
 const oneATR: TradingPlans.ExitTargets = {
