@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: true,
+    allowMultipleStocks: false,
     equalWeightDivider: 4,
 };
 const oneATR: TradingPlans.ExitTargets = {
@@ -17,55 +17,57 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'PEP',
-    'PLTR',
+    'PLUG',
+    'XOM',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PEP',
-        vwapCorrection: { volumeSum: 235260, tradingSum: 38502242 },
+        symbol: 'XOM',
+        vwapCorrection: { volumeSum: 1277048, tradingSum: 137360895 },
         dailyRange: 2.5,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 163,
-            momentumStartForShort: 166,
+            momentumStartForLong: 108,
+            momentumStartForShort: 107.99,
         },
         short: {
-        },
-        long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 163,
-                lastDefense: 163
+                stopForAgainstVwapLimitOrMarketEntry: 108,
+                lastDefense: 108
             },
+            momentum: { targets: oneATR },
+        },
+        long: {
+            /*
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 19.5,
+                lastDefense: 19.5
+            },*/
             momentum: { targets: oneATR },
         }
     },
     {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 2529251, tradingSum: 45493887 },
-        dailyRange: 0.9,
+        symbol: 'PLUG',
+        vwapCorrection: { volumeSum: 3258924, tradingSum: 25441482 },
+        dailyRange: 0.5,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 18,
-            momentumStartForShort: 17.99,
+            momentumStartForLong: 8,
+            momentumStartForShort: 8.15,
         },
         short: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
+                stopForAgainstVwapLimitOrMarketEntry: 8.15,
+                lastDefense: 8.15
             },
             momentum: { targets: oneATR },
         },
         long: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
-            },
-            momentum: { targets: oneATR },
+
         }
     },
     {
