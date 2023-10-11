@@ -3,8 +3,8 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: true,
-    equalWeightDivider: 4,
+    allowMultipleStocks: false,
+    equalWeightDivider: 3,
 };
 const oneATR: TradingPlans.ExitTargets = {
     priceLevels: [],
@@ -17,8 +17,7 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'PEP',
-    'PLTR',
+    'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -38,32 +37,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: oneATR,
                 stopForAgainstVwapLimitOrMarketEntry: 163,
                 lastDefense: 163
-            },
-            momentum: { targets: oneATR },
-        }
-    },
-    {
-        symbol: 'PLTR',
-        vwapCorrection: { volumeSum: 2529251, tradingSum: 45493887 },
-        dailyRange: 0.9,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 18,
-            momentumStartForShort: 17.99,
-        },
-        short: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
-            },
-            momentum: { targets: oneATR },
-        },
-        long: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
             },
             momentum: { targets: oneATR },
         }
