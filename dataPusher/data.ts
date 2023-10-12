@@ -17,35 +17,29 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'PLUG',
+    'DAL',
     'XOM',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'XOM',
-        vwapCorrection: { volumeSum: 1277048, tradingSum: 137360895 },
-        dailyRange: 2.5,
+        symbol: 'DAL',
+        vwapCorrection: { volumeSum: 967282, tradingSum: 35712622 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 108,
-            momentumStartForShort: 107.99,
+            momentumStartForLong: 36.62,
+            momentumStartForShort: 36.61,
         },
         short: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 108,
-                lastDefense: 108
-            },
-            momentum: { targets: oneATR },
+
         },
         long: {
-            /*
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 19.5,
-                lastDefense: 19.5
-            },*/
+                stopForAgainstVwapLimitOrMarketEntry: 36.62,
+                lastDefense: 36.62
+            },
             momentum: { targets: oneATR },
         }
     },
