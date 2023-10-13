@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: false,
+    allowMultipleStocks: true,
     equalWeightDivider: 4,
 };
 const oneATR: TradingPlans.ExitTargets = {
@@ -18,12 +18,13 @@ const oneATR: TradingPlans.ExitTargets = {
 }
 export const stockSelections: string[] = [
     'DG',
+    'NVO'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'DG',
-        vwapCorrection: { volumeSum: 967282, tradingSum: 35712622 },
+        vwapCorrection: { volumeSum: 81643, tradingSum: 8917376 },
         dailyRange: 3.5,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -39,6 +40,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: oneATR },
         },
         long: {
+        }
+    },
+    {
+        symbol: 'NVO',
+        vwapCorrection: { volumeSum: 474155, tradingSum: 47245454 },
+        dailyRange: 2.6,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 100,
+            momentumStartForShort: 105,
+        },
+        short: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 105,
+                lastDefense: 105
+            },
+            momentum: { targets: oneATR },
+        },
+        long: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 100,
+                lastDefense: 110
+            },
+            momentum: { targets: oneATR },
         }
     },
     {
