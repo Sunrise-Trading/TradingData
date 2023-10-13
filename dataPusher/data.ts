@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    allowMultipleStocks: true,
+    allowMultipleStocks: false,
     equalWeightDivider: 4,
 };
 const oneATR: TradingPlans.ExitTargets = {
@@ -17,51 +17,28 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'DAL',
-    'XOM',
+    'DG',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DAL',
+        symbol: 'DG',
         vwapCorrection: { volumeSum: 967282, tradingSum: 35712622 },
-        dailyRange: 1,
+        dailyRange: 3.5,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 36.62,
-            momentumStartForShort: 36.61,
-        },
-        short: {
-
-        },
-        long: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 36.62,
-                lastDefense: 36.62
-            },
-            momentum: { targets: oneATR },
-        }
-    },
-    {
-        symbol: 'PLUG',
-        vwapCorrection: { volumeSum: 3258924, tradingSum: 25441482 },
-        dailyRange: 0.5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 8,
-            momentumStartForShort: 8.15,
+            momentumStartForLong: 108,
+            momentumStartForShort: 111,
         },
         short: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 8.15,
-                lastDefense: 8.15
+                stopForAgainstVwapLimitOrMarketEntry: 110.5,
+                lastDefense: 110.5
             },
             momentum: { targets: oneATR },
         },
         long: {
-
         }
     },
     {
