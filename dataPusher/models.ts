@@ -1,5 +1,4 @@
 export interface TradingSettings {
-    allowMultipleStocks: boolean,
     equalWeightDivider: number,
 }
 export interface TradingPlans {
@@ -70,9 +69,7 @@ export interface RetracementArea extends BasePlan {
     stopPrice: number,
 }
 export interface ExitTargets {
-    priceLevels: number[],
-    rrr: number[],
-    dailyRanges: number[],
+    initialTargets: ExitTargetsSet,
     minimumTargets?: ExitTargetsSet,
 }
 export interface ExitTargetsSet {
