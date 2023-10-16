@@ -8,7 +8,7 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
 const oneATR: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
-        rrr: [1, 1.5, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
+        rrr: [1.4, 1.5, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1],
     },
     minimumTargets: {
