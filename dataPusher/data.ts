@@ -18,19 +18,18 @@ const oneATR: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'DG',
-    'NVO'
+    'LULU',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DG',
+        symbol: 'LULU',
         vwapCorrection: { volumeSum: 81643, tradingSum: 8917376 },
-        dailyRange: 3.5,
+        dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 108,
-            momentumStartForShort: 111,
+            momentumStartForLong: 400,
+            momentumStartForShort: 397.5,
         },
         short: {
             openingDrive: {
@@ -41,33 +40,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: oneATR },
         },
         long: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 110.5,
+                lastDefense: 110.5
+            },
             momentum: { targets: oneATR },
         }
     },
     {
-        symbol: 'NVO',
+        symbol: 'TSLA',
         vwapCorrection: { volumeSum: 474155, tradingSum: 47245454 },
-        dailyRange: 2.6,
+        dailyRange: 8,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 100,
-            momentumStartForShort: 105,
+            momentumStartForLong: 248,
+            momentumStartForShort: 248.5,
         },
         short: {
             openingDrive: {
-                targets: oneATR,
+                targets: Constants.tslaStockTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 105,
                 lastDefense: 105
             },
-            momentum: { targets: oneATR },
+            momentum: { targets: Constants.tslaStockTargets },
         },
         long: {
             openingDrive: {
-                targets: oneATR,
+                targets: Constants.tslaStockTargets,
                 stopForAgainstVwapLimitOrMarketEntry: 100,
                 lastDefense: 110
             },
-            momentum: { targets: oneATR },
+            momentum: { targets: Constants.tslaStockTargets },
         }
     },
     {
