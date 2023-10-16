@@ -24,71 +24,40 @@ export const stockSelections: string[] = [
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'LULU',
-        vwapCorrection: { volumeSum: 81643, tradingSum: 8917376 },
-        dailyRange: 10,
+        vwapCorrection: { volumeSum: 112666, tradingSum: 45024269 },
+        dailyRange: 9.2,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 400,
-            momentumStartForShort: 397.5,
+            momentumStartForShort: 399.99,
         },
         short: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 110.5,
-                lastDefense: 110.5
+                stopForAgainstVwapLimitOrMarketEntry: 403,
+                lastDefense: 399.99
             },
             momentum: { targets: oneATR },
         },
         long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 110.5,
-                lastDefense: 110.5
+                stopForAgainstVwapLimitOrMarketEntry: 399,
+                lastDefense: 400
             },
             momentum: { targets: oneATR },
         }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 474155, tradingSum: 47245454 },
-        dailyRange: 8,
+        vwapCorrection: { volumeSum: 648033, tradingSum: 161144509 },
+        dailyRange: 9,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 248,
             momentumStartForShort: 248.5,
         },
         short: {
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 105,
-                lastDefense: 105
-            },
-            momentum: { targets: Constants.tslaStockTargets },
-        },
-        long: {
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                stopForAgainstVwapLimitOrMarketEntry: 100,
-                lastDefense: 110
-            },
-            momentum: { targets: Constants.tslaStockTargets },
-        }
-    },
-    {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 551594, tradingSum: 142548905 },
-        dailyRange: 8,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 260,
-            momentumStartForShort: 258.5,
-        },
-        short: {
-            openingDrive: {
-                targets: Constants.tslaStockTargets,
-                lastDefense: 258.5,
-                stopForAgainstVwapLimitOrMarketEntry: 258.5,
-            },
             momentum: { targets: Constants.tslaStockTargets },
         },
         long: {
