@@ -31,7 +31,7 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'NVDA',
+    'AMD',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -85,6 +85,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 lastDefense: 450
             },
             momentum: { targets: nvdaTarget },
+        }
+    },
+    {
+        symbol: 'AMD',
+        vwapCorrection: { volumeSum: 277821, tradingSum: 29186668 },
+        dailyRange: 3.8,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 105,
+            momentumStartForShort: 105,
+        },
+        short: {
+            openingDrive: {
+                targets: oneATR,
+                stopForAgainstVwapLimitOrMarketEntry: 105,
+                lastDefense: 105
+            },
+            momentum: { targets: oneATR },
+        },
+        long: {
+            momentum: { targets: oneATR },
         }
     },
     {
