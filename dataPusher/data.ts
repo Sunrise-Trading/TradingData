@@ -17,19 +17,32 @@ const oneATR: TradingPlans.ExitTargets = {
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     }
 }
+
+const nvdaTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    },
+    minimumTargets: {
+        rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    }
+}
 export const stockSelections: string[] = [
-    'LULU',
+    'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'LULU',
-        vwapCorrection: { volumeSum: 112666, tradingSum: 45024269 },
-        dailyRange: 9.2,
+        symbol: 'BAC',
+        vwapCorrection: { volumeSum: 2377708, tradingSum: 64913357 },
+        dailyRange: 0.62,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 400,
-            momentumStartForShort: 399.99,
+            momentumStartForLong: 27.25,
+            momentumStartForShort: 27.24,
         },
         short: {
             openingDrive: {
@@ -42,10 +55,36 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 399,
-                lastDefense: 400
+                stopForAgainstVwapLimitOrMarketEntry: 27.25,
+                lastDefense: 27.25
             },
             momentum: { targets: oneATR },
+        }
+    },
+    {
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 1144372, tradingSum: 513833317 },
+        dailyRange: 14,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 450,
+            momentumStartForShort: 449.9,
+        },
+        short: {
+            openingDrive: {
+                targets: nvdaTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 450,
+                lastDefense: 450
+            },
+            momentum: { targets: nvdaTarget },
+        },
+        long: {
+            openingDrive: {
+                targets: nvdaTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 450,
+                lastDefense: 450
+            },
+            momentum: { targets: nvdaTarget },
         }
     },
     {
