@@ -31,7 +31,7 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'SPR',
+    'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -67,7 +67,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 14,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 433,
+            momentumStartForLong: 428,
             momentumStartForShort: 435,
         },
         short: {
