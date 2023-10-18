@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 3,
+    equalWeightDivider: 6,
 };
 const oneATR: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -25,7 +25,7 @@ const nvdaTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     }
@@ -37,18 +37,18 @@ export const stockSelections: string[] = [
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SPR',
-        vwapCorrection: { volumeSum: 2377708, tradingSum: 64913357 },
+        vwapCorrection: { volumeSum: 544025, tradingSum: 10413873 },
         dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 18,
-            momentumStartForShort: 20,
+            momentumStartForShort: 21,
         },
         short: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 20,
-                lastDefense: 20
+                stopForAgainstVwapLimitOrMarketEntry: 21,
+                lastDefense: 21
             },
             momentum: { targets: oneATR },
         },
@@ -63,49 +63,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'NVDA',
-        vwapCorrection: { volumeSum: 1144372, tradingSum: 513833317 },
+        vwapCorrection: { volumeSum: 423426, tradingSum: 182833412 },
         dailyRange: 14,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 450,
-            momentumStartForShort: 449.9,
+            momentumStartForLong: 433,
+            momentumStartForShort: 435,
         },
         short: {
+            /*
             openingDrive: {
                 targets: nvdaTarget,
-                stopForAgainstVwapLimitOrMarketEntry: 450,
-                lastDefense: 450
-            },
+                stopForAgainstVwapLimitOrMarketEntry: 433,
+                lastDefense: 433
+            },*/
             momentum: { targets: nvdaTarget },
         },
         long: {
-            openingDrive: {
-                targets: nvdaTarget,
-                stopForAgainstVwapLimitOrMarketEntry: 450,
-                lastDefense: 450
-            },
-            momentum: { targets: nvdaTarget },
-        }
-    },
-    {
-        symbol: 'AMD',
-        vwapCorrection: { volumeSum: 277821, tradingSum: 29186668 },
-        dailyRange: 3.8,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 105,
-            momentumStartForShort: 105,
-        },
-        short: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 105,
-                lastDefense: 105
-            },
-            momentum: { targets: oneATR },
-        },
-        long: {
-            momentum: { targets: oneATR },
         }
     },
     {
