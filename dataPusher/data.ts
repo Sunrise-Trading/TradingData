@@ -31,32 +31,32 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'AMD',
+    'SPR',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BAC',
+        symbol: 'SPR',
         vwapCorrection: { volumeSum: 2377708, tradingSum: 64913357 },
-        dailyRange: 0.62,
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 27.25,
-            momentumStartForShort: 27.24,
+            momentumStartForLong: 18,
+            momentumStartForShort: 20,
         },
         short: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 403,
-                lastDefense: 399.99
+                stopForAgainstVwapLimitOrMarketEntry: 20,
+                lastDefense: 20
             },
             momentum: { targets: oneATR },
         },
         long: {
             openingDrive: {
                 targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 27.25,
-                lastDefense: 27.25
+                stopForAgainstVwapLimitOrMarketEntry: 18,
+                lastDefense: 18
             },
             momentum: { targets: oneATR },
         }
