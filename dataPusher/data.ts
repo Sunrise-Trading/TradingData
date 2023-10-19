@@ -60,16 +60,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 648033, tradingSum: 161144509 },
-        dailyRange: 12,
+        dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 248,
-            momentumStartForShort: 248.5,
+            momentumStartForLong: 224,
+            momentumStartForShort: 230,
         },
         short: {
+            openingDrive: {
+                targets: tslaTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 230,
+                lastDefense: 230
+            },
             momentum: { targets: tslaTarget },
         },
         long: {
+            openingDrive: {
+                targets: tslaTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 224,
+                lastDefense: 224
+            },
             momentum: { targets: tslaTarget },
         }
     },
