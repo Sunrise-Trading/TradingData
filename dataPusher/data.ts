@@ -8,12 +8,12 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
 const tslaTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 3, 3, 5],
+        rrr: [0.9, 0.95, 1.5, 1.8, 1.9, 2, 2, 3, 3, 5],
         dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
     },
     minimumTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 2, 2.5, 3],
+        rrr: [0.9, 0.95, 1, 1.6, 1.8, 1.8, 1.8, 2, 2.5, 3],
         dailyRanges: [0.4, 0.4, 0.45, 0.45, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     }
 }
@@ -31,30 +31,31 @@ const nflxTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
+    'TSLA',
     'NFLX',
-    'TSLA'
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NFLX',
         vwapCorrection: { volumeSum: 423426, tradingSum: 182833412 },
-        dailyRange: 15,
+        dailyRange: 12,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 428,
-            momentumStartForShort: 435,
+            momentumStartForLong: 395,
+            momentumStartForShort: 400,
         },
         short: {
-            /*
             openingDrive: {
-                targets: nvdaTarget,
-                stopForAgainstVwapLimitOrMarketEntry: 433,
-                lastDefense: 433
-            },*/
+                targets: nflxTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 400,
+                lastDefense: 400
+            },
             momentum: { targets: nflxTarget },
         },
         long: {
+            momentum: { targets: nflxTarget },
         }
     },
     {
