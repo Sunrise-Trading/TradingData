@@ -31,15 +31,15 @@ const nflxTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'TSLA',
     'NFLX',
+    'TSLA',
 
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NFLX',
-        vwapCorrection: { volumeSum: 423426, tradingSum: 182833412 },
+        vwapCorrection: { volumeSum: 568981, tradingSum: 225342085 },
         dailyRange: 12,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -47,24 +47,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 400,
         },
         short: {
+            /*
             openingDrive: {
                 targets: nflxTarget,
                 stopForAgainstVwapLimitOrMarketEntry: 400,
                 lastDefense: 400
-            },
+            },*/
             momentum: { targets: nflxTarget },
         },
         long: {
+            openingDrive: {
+                targets: nflxTarget,
+                stopForAgainstVwapLimitOrMarketEntry: 398,
+                lastDefense: 398
+            },
             momentum: { targets: nflxTarget },
         }
     },
     {
         symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 648033, tradingSum: 161144509 },
+        vwapCorrection: { volumeSum: 3348743, tradingSum: 760817561 },
         dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 224,
+            momentumStartForLong: 226,
             momentumStartForShort: 230,
         },
         short: {
@@ -76,11 +82,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: tslaTarget },
         },
         long: {
+            /*
             openingDrive: {
                 targets: tslaTarget,
                 stopForAgainstVwapLimitOrMarketEntry: 224,
                 lastDefense: 224
-            },
+            },*/
             momentum: { targets: tslaTarget },
         }
     },
