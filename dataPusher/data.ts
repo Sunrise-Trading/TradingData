@@ -3,22 +3,22 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 6,
+    equalWeightDivider: 3,
 };
-const oneATR: TradingPlans.ExitTargets = {
+const tslaTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
-        rrr: [1.4, 1.5, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
-        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1],
+        rrr: [0.9, 0.95, 1.6, 1.8, 1.9, 2, 2, 3, 3, 5],
+        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1],
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1.5, 1.6, 1.8, 1.8, 1.8, 2, 2.5, 3],
+        dailyRanges: [0.4, 0.4, 0.45, 0.45, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     }
 }
 
-const nvdaTarget: TradingPlans.ExitTargets = {
+const nflxTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
@@ -31,40 +31,15 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'NVDA',
+    'NFLX',
+    'TSLA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SPR',
-        vwapCorrection: { volumeSum: 544025, tradingSum: 10413873 },
-        dailyRange: 1,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 18,
-            momentumStartForShort: 21,
-        },
-        short: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 21,
-                lastDefense: 21
-            },
-            momentum: { targets: oneATR },
-        },
-        long: {
-            openingDrive: {
-                targets: oneATR,
-                stopForAgainstVwapLimitOrMarketEntry: 18,
-                lastDefense: 18
-            },
-            momentum: { targets: oneATR },
-        }
-    },
-    {
-        symbol: 'NVDA',
+        symbol: 'NFLX',
         vwapCorrection: { volumeSum: 423426, tradingSum: 182833412 },
-        dailyRange: 14,
+        dailyRange: 15,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 428,
@@ -77,7 +52,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 stopForAgainstVwapLimitOrMarketEntry: 433,
                 lastDefense: 433
             },*/
-            momentum: { targets: nvdaTarget },
+            momentum: { targets: nflxTarget },
         },
         long: {
         }
@@ -85,17 +60,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         vwapCorrection: { volumeSum: 648033, tradingSum: 161144509 },
-        dailyRange: 9,
+        dailyRange: 12,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 248,
             momentumStartForShort: 248.5,
         },
         short: {
-            momentum: { targets: Constants.tslaStockTargets },
+            momentum: { targets: tslaTarget },
         },
         long: {
-            momentum: { targets: Constants.tslaStockTargets },
+            momentum: { targets: tslaTarget },
         }
     },
     /*
