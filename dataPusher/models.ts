@@ -43,8 +43,6 @@ export interface BasePlan {
 export interface PlanConfigs {
 }
 export interface OpeningDrivePlan extends BasePlan {
-    lastDefense: number;
-    stopForAgainstVwapLimitOrMarketEntry: number,
 }
 export interface MomentumPlan extends BasePlan {
 };

@@ -33,11 +33,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: {
-                targets: sedg,
-                stopForAgainstVwapLimitOrMarketEntry: 88,
-                lastDefense: 88
-            },
+            openingDrive: { targets: sedg, },
             momentum: { targets: sedg },
         },
         long: {
