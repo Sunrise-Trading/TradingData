@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 3,
+    equalWeightDivider: 4,
 };
 
 const sedg: TradingPlans.ExitTargets = {
@@ -29,8 +29,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 9,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 88,
-            momentumStartForShort: 87,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
             openingDrive: {
