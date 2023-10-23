@@ -3,10 +3,21 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 4,
+    equalWeightDivider: 5,
 };
-
-const sedg: TradingPlans.ExitTargets = {
+const smallTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    },
+    minimumTargets: {
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 2],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    }
+}
+const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.8, 1.9, 2, 3, 3.5, 4, 5, 10],
@@ -33,11 +44,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: sedg, },
-            momentum: { targets: sedg },
+            openingDrive: { targets: bigTarget, },
+            momentum: { targets: bigTarget },
         },
         long: {
-            momentum: { targets: sedg },
+            momentum: { targets: bigTarget },
         }
     },
     {
@@ -50,11 +61,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: sedg, },
-            momentum: { targets: sedg },
+            openingDrive: { targets: bigTarget, },
+            momentum: { targets: bigTarget },
         },
         long: {
-            momentum: { targets: sedg },
+            openingDrive: { targets: smallTarget, },
+            momentum: { targets: smallTarget },
         }
     },
 ];
