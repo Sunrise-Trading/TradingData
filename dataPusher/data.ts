@@ -37,6 +37,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: sedg },
         },
         long: {
+            momentum: { targets: sedg },
         }
     },
 ];
