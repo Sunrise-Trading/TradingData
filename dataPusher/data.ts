@@ -31,7 +31,8 @@ const bigTarget: TradingPlans.ExitTargets = {
 }
 export const stockSelections: string[] = [
     'MSFT',
-    // 'TDOC'
+    // 'TDOC',
+    //'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
