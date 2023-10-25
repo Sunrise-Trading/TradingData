@@ -30,7 +30,8 @@ const bigTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'NVDA',
+    'MSFT',
+    // 'TDOC'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -53,27 +54,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'RTX',
-        vwapCorrection: { volumeSum: 206250, tradingSum: 14531543 },
-        dailyRange: 2,
+        symbol: 'MSFT',
+        vwapCorrection: { volumeSum: 672133, tradingSum: 231903337 },
+        dailyRange: 9,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget, },
-            momentum: { targets: bigTarget },
+            openingDrive: { targets: smallTarget, },
+            momentum: { targets: smallTarget },
         },
         long: {
-            openingDrive: { targets: bigTarget, },
-            momentum: { targets: bigTarget },
+            openingDrive: { targets: smallTarget, },
+            momentum: { targets: smallTarget },
         }
     },
     {
-        symbol: 'COIN',
-        vwapCorrection: { volumeSum: 355795, tradingSum: 29633892 },
-        dailyRange: 4.5,
+        symbol: 'TDOC',
+        vwapCorrection: { volumeSum: 137042, tradingSum: 2335106 },
+        dailyRange: 1.4,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
