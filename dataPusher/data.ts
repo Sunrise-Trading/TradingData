@@ -30,9 +30,7 @@ const bigTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'MSFT',
-    // 'TDOC',
-    //'NVDA',
+    'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -57,7 +55,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MSFT',
         vwapCorrection: { volumeSum: 672133, tradingSum: 231903337 },
-        dailyRange: 9,
+        dailyRange: 8,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
