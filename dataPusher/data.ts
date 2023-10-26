@@ -25,14 +25,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'META',
         vwapCorrection: { volumeSum: 872937, tradingSum: 251784098 },
-        dailyRange: 10,
+        dailyRange: 11,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            //openingDrive: { targets: bigTarget, },
+            openingDrive: { targets: bigTarget, },
             momentum: { targets: bigTarget },
         },
         long: {
