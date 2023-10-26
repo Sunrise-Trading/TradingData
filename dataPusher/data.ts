@@ -32,12 +32,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget, },
+            //openingDrive: { targets: bigTarget, },
             momentum: { targets: bigTarget },
         },
         long: {
             momentum: { targets: bigTarget },
             openingDrive: { targets: bigTarget, },
+        }
+    },
+    {
+        symbol: 'NVDA',
+        vwapCorrection: { volumeSum: 450355, tradingSum: 185133012 },
+        dailyRange: 14,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            momentum: { targets: bigTarget },
+        },
+        long: {
+            momentum: { targets: bigTarget },
         }
     },
 ];
