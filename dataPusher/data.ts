@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 4,
+    equalWeightDivider: 3,
 };
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -20,7 +20,7 @@ const bigTarget: TradingPlans.ExitTargets = {
 const sofiShortTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1, 1, 2, 3, 3.5, 4, 5, 10],
+        rrr: [0.9, 0.95, 1, 1.5, 2, 3, 3.5, 4, 5, 10],
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     },
     minimumTargets: {
@@ -47,6 +47,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: { targets: sofiShortTarget, },
             momentum: { targets: sofiShortTarget },
+        },
+        long: {
+            momentum: { targets: bigTarget },
+            openingDrive: { targets: bigTarget, },
+        }
+    },
+    {
+        symbol: 'MCD',
+        vwapCorrection: { volumeSum: 83840, tradingSum: 21968008 },
+        dailyRange: 4.5,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            openingDrive: { targets: bigTarget, },
+            momentum: { targets: bigTarget },
         },
         long: {
             momentum: { targets: bigTarget },
