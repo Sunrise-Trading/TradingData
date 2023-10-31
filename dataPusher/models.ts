@@ -3,6 +3,7 @@ export interface TradingSettings {
 }
 export interface TradingPlans {
     symbol: string,
+    autoFlip: boolean,
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
     dailyRange: number,

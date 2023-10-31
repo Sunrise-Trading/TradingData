@@ -37,6 +37,7 @@ export const stockSelections: string[] = [
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SOFI',
+        autoFlip: true,
         vwapCorrection: { volumeSum: 4121508, tradingSum: 30470707 },
         dailyRange: 0.5,
         deferTradingInSeconds: 0,
@@ -51,40 +52,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             momentum: { targets: bigTarget },
             openingDrive: { targets: bigTarget, },
-        }
-    },
-    {
-        symbol: 'MCD',
-        vwapCorrection: { volumeSum: 83840, tradingSum: 21968008 },
-        dailyRange: 4.5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            openingDrive: { targets: bigTarget, },
-            momentum: { targets: bigTarget },
-        },
-        long: {
-            momentum: { targets: bigTarget },
-            openingDrive: { targets: bigTarget, },
-        }
-    },
-    {
-        symbol: 'TSLA',
-        vwapCorrection: { volumeSum: 449657, tradingSum: 94386151 },
-        dailyRange: 7.5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            momentum: { targets: Constants.tslaStockTargets },
-        },
-        long: {
-            momentum: { targets: Constants.tslaStockTargets },
         }
     },
 ];
