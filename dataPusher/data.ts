@@ -39,7 +39,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'SRPT',
         autoFlip: false,
         vwapCorrection: { volumeSum: 2628498, tradingSum: 160884775 },
-        dailyRange: 8,
+        dailyRange: 8.3,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
