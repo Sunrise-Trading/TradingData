@@ -30,36 +30,36 @@ const paycTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'PAYC',
-    //'AMD',
-    //'EL',
+    'PLTR',
+    //'SHOP',
+    //'ROKU',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PAYC',
+        symbol: 'PLTR',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 365415, tradingSum: 55628585 },
-        dailyRange: 12,
+        vwapCorrection: { volumeSum: 9038692, tradingSum: 153800480 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: paycTarget, },
-            momentum: { targets: paycTarget },
+            openingDrive: { targets: bigTarget, },
+            momentum: { targets: bigTarget },
         },
         long: {
-            momentum: { targets: paycTarget },
-            openingDrive: { targets: paycTarget, },
+            momentum: { targets: Constants.baseHitFrequentStockTargets },
+            openingDrive: { targets: Constants.baseHitFrequentStockTargets, },
         }
     },
     {
-        symbol: 'EL',
+        symbol: 'ROKU',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 265173, tradingSum: 29154248 },
-        dailyRange: 8,
+        vwapCorrection: { volumeSum: 312330, tradingSum: 22162809 },
+        dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -75,9 +75,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'AMD',
+        symbol: 'SHOP',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1179101, tradingSum: 115366481 },
+        vwapCorrection: { volumeSum: 1526551, tradingSum: 85928154 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
