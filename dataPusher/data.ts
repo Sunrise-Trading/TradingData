@@ -70,6 +70,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget },
         },
         long: {
+            momentum: { targets: Constants.baseHitFrequentStockTargets },
         }
     },
     {
