@@ -32,7 +32,7 @@ const paycTarget: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'PLTR',
     //'SHOP',
-    //'ROKU',
+    'ROKU',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -70,8 +70,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget },
         },
         long: {
-            momentum: { targets: bigTarget },
-            openingDrive: { targets: bigTarget, },
         }
     },
     {
