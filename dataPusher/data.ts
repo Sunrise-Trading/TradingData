@@ -31,7 +31,7 @@ const paycTarget: TradingPlans.ExitTargets = {
 }
 export const stockSelections: string[] = [
     'SQ',
-    'AAPL',
+    //    'AAPL',
 
 ];
 
