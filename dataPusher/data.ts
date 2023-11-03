@@ -30,14 +30,16 @@ const paycTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
+    'SQ',
     'AAPL',
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AAPL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 9038692, tradingSum: 153800480 },
+        vwapCorrection: { volumeSum: 2130724, tradingSum: 370702548 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -54,10 +56,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'ROKU',
+        symbol: 'SQ',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 312330, tradingSum: 22162809 },
-        dailyRange: 5,
+        vwapCorrection: { volumeSum: 1041127, tradingSum: 53659480 },
+        dailyRange: 3.5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -71,10 +73,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'SHOP',
+        symbol: 'SPY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1526551, tradingSum: 85928154 },
-        dailyRange: 5,
+        vwapCorrection: { volumeSum: 2358542, tradingSum: 1018808 },
+        dailyRange: 2,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            openingDrive: { targets: bigTarget, },
+            momentum: { targets: bigTarget },
+        },
+        long: {
+            momentum: { targets: bigTarget },
+            openingDrive: { targets: bigTarget, },
+        }
+    },
+    {
+        symbol: 'FTNT',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 2358542, tradingSum: 1018808 },
+        dailyRange: 2,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
