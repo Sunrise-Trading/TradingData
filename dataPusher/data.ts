@@ -30,25 +30,23 @@ const paycTarget: TradingPlans.ExitTargets = {
     }
 }
 export const stockSelections: string[] = [
-    'PLTR',
-    //'SHOP',
-    'ROKU',
+    'AAPL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'AAPL',
         autoFlip: false,
         vwapCorrection: { volumeSum: 9038692, tradingSum: 153800480 },
-        dailyRange: 1,
+        dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget, },
-            momentum: { targets: bigTarget },
+            momentum: { targets: Constants.baseHitFrequentStockTargets },
+            openingDrive: { targets: Constants.baseHitFrequentStockTargets, },
         },
         long: {
             momentum: { targets: Constants.baseHitFrequentStockTargets },
