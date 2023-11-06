@@ -3,7 +3,7 @@ import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettigns: TradingPlans.TradingSettings = {
-    equalWeightDivider: 6,
+    equalWeightDivider: 3,
 };
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
