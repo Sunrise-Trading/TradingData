@@ -30,10 +30,10 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'LI',
+    //'LI',
     'CLDX',
     //'TSLA',
-    'AAPL',
+    //'AAPL',
     // 
 
 ];
