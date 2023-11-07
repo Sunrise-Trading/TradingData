@@ -31,22 +31,22 @@ const smallTargets: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'DDOG',
-    'SNOW',
+    // 'SNOW',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'DDOG',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 299373, tradingSum: 52817836 },
-        dailyRange: 6.5,
+        vwapCorrection: { volumeSum: 1296130, tradingSum: 125900084 },
+        dailyRange: 6.6,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget },
+            //openingDrive: { targets: bigTarget },
             momentum: { targets: bigTarget },
         },
         long: {
@@ -57,7 +57,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SNOW',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1312024, tradingSum: 294577232 },
+        vwapCorrection: { volumeSum: 409511, tradingSum: 63312550 },
         dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -69,6 +69,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget },
         },
         long: {
+            momentum: { targets: bigTarget },
         }
     }
 ];
