@@ -36,28 +36,81 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'DDOG',
-    // 'SNOW',
+    'RBLX',
+    'RIVN',
+    'TTWO',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DDOG',
+        symbol: 'RBLX',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1296130, tradingSum: 125900084 },
-        dailyRange: 6.6,
+        vwapCorrection: { volumeSum: 3044182, tradingSum: 121461862 },
+        dailyRange: 2.9,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            //openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            //momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
+            momentum: { targets: smallTargets, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
+            momentum: { targets: smallTargets, planConfigs: bestConfigs },
+        }
+    },
+    {
+        symbol: 'UPST',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 920815, tradingSum: 19973763 },
+        dailyRange: 4,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+        },
+        long: {
+        }
+    },
+    {
+        symbol: 'RIVN',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 2912490, tradingSum: 54356017 },
+        dailyRange: 2,
+        deferTradingInSeconds: 180,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+        },
+        long: {
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+        }
+    },
+    {
+        symbol: 'TTWO',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1296130, tradingSum: 125900084 },
+        dailyRange: 5,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
+        },
+        long: {
         }
     },
 ];
