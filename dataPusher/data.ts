@@ -5,6 +5,12 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettigns: TradingPlans.TradingSettings = {
     equalWeightDivider: 3,
 };
+const bestConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 3,
+};
+const scalpConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 6,
+};
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -46,31 +52,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: smallTargets },
-            momentum: { targets: smallTargets },
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget },
-            momentum: { targets: bigTarget },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         }
     },
-    {
-        symbol: 'SNOW',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 409511, tradingSum: 63312550 },
-        dailyRange: 10,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            //openingDrive: { targets: bigTarget },
-            //momentum: { targets: bigTarget },
-        },
-        long: {
-            openingDrive: { targets: bigTarget },
-            momentum: { targets: bigTarget },
-        }
-    }
 ];

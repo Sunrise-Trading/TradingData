@@ -39,9 +39,10 @@ export enum PlanType {
 };
 export interface BasePlan {
     targets: ExitTargets,
-    planConfigs?: PlanConfigs,
+    planConfigs: PlanConfigs,
 };
 export interface PlanConfigs {
+    equalWeightDivider: number,
 }
 export interface OpeningDrivePlan extends BasePlan {
 }
