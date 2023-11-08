@@ -52,8 +52,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            //openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            //momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },

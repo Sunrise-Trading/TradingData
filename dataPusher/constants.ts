@@ -114,14 +114,6 @@ export const beyoundAtrTargets: TradingPlans.ExitTargets = {
 }
 
 
-export const scalpConfig: TradingPlans.PlanConfigs = {
-    setupQuality: TradingPlans.SetupQuality.Scalp,
-    entryRules: {
-    },
-    exitRules: {
-    }
-};
-
 let futures = [
     {
         symbol: 'MES',
