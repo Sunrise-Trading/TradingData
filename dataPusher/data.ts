@@ -82,7 +82,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 2912490, tradingSum: 54356017 },
         dailyRange: 2,
-        deferTradingInSeconds: 180,
+        deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
@@ -99,7 +99,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TTWO',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1296130, tradingSum: 125900084 },
+        vwapCorrection: { volumeSum: 213772, tradingSum: 31839661 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
