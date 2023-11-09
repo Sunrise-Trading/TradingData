@@ -56,7 +56,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
-        long: {},
+        long: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        },
     },
     {
         symbol: 'NVDA',
@@ -69,7 +71,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            //momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
+            momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
         },
         long: {
             openingDrive: { targets: nvdaTargets, planConfigs: bestConfigs },
