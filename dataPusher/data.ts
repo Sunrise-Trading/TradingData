@@ -23,7 +23,7 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 }
-const smallTargets: TradingPlans.ExitTargets = {
+const nvdaTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
@@ -32,85 +32,48 @@ const smallTargets: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1, 1.6, 1.8, 1.8, 1.8, 2.5, 3, 5],
-        dailyRanges: [0.45, 0.45, 0.5, 0.5, 0.5, 0.5, 0.5, 0.8, 0.9, 1],
+        dailyRanges: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.5, 0.5, 0.5],
     }
 };
 export const stockSelections: string[] = [
-    'RBLX',
-    'RIVN',
-    'TTWO',
+    'AMC',
+    'NVDA',
+    //'DIS',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RBLX',
+        symbol: 'AMC',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 3044182, tradingSum: 121461862 },
-        dailyRange: 2.9,
+        vwapCorrection: { volumeSum: 4089443, tradingSum: 35140486 },
+        dailyRange: 1.6,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
-            momentum: { targets: smallTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
-        long: {
-            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
-            momentum: { targets: smallTargets, planConfigs: bestConfigs },
-        }
+        long: {},
     },
     {
-        symbol: 'UPST',
+        symbol: 'NVDA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 920815, tradingSum: 19973763 },
-        dailyRange: 4,
+        vwapCorrection: { volumeSum: 902038, tradingSum: 425976521 },
+        dailyRange: 15,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            //momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
         },
         long: {
+            openingDrive: { targets: nvdaTargets, planConfigs: bestConfigs },
+            momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
         }
-    },
-    {
-        symbol: 'RIVN',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 2912490, tradingSum: 54356017 },
-        dailyRange: 2,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
-        },
-        long: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
-        }
-    },
-    {
-        symbol: 'TTWO',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 213772, tradingSum: 31839661 },
-        dailyRange: 5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-        },
-        long: {
-        }
-    },
+    }
 ];
