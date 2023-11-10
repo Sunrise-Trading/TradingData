@@ -6,7 +6,7 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
     equalWeightDivider: 3,
 };
 const bestConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 3,
+    equalWeightDivider: 4,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
@@ -45,7 +45,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'PLUG',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 4089443, tradingSum: 35140486 },
+        vwapCorrection: { volumeSum: 9452730, tradingSum: 36320809 },
         dailyRange: 0.99,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -63,7 +63,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TTD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 902038, tradingSum: 425976521 },
+        vwapCorrection: { volumeSum: 1217242, tradingSum: 70889845 },
         dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -81,7 +81,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'U',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 902038, tradingSum: 425976521 },
+        vwapCorrection: { volumeSum: 1129501, tradingSum: 24798066 },
         dailyRange: 2,
         deferTradingInSeconds: 0,
         keyLevels: {
