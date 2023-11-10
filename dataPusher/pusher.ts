@@ -37,6 +37,7 @@ const planData = {
     plans: data,
     activeProfileName: Data.activeProfileName,
     tradingSettings: Data.tradingSettigns,
+    stockSelections: stockSelections,
 }
 push(planData, `configData/tradingPlan`, expiredAt);
 push(planData, `configDataSnapshot/${timeStr}`, expiredAt);
