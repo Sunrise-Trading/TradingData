@@ -46,7 +46,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'PLUG',
         autoFlip: false,
         vwapCorrection: { volumeSum: 9452730, tradingSum: 36320809 },
-        dailyRange: 0.99,
+        dailyRange: 0.95,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
