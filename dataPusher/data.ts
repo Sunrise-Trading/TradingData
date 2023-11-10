@@ -36,17 +36,17 @@ const nvdaTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'AMC',
-    'NVDA',
-    //'DIS',
+    'PLUG',
+    'TTD',
+    //'U',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMC',
+        symbol: 'PLUG',
         autoFlip: false,
         vwapCorrection: { volumeSum: 4089443, tradingSum: 35140486 },
-        dailyRange: 1.6,
+        dailyRange: 0.99,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -61,21 +61,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'TTD',
         autoFlip: false,
         vwapCorrection: { volumeSum: 902038, tradingSum: 425976521 },
-        dailyRange: 15,
+        dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: nvdaTargets, planConfigs: bestConfigs },
-            momentum: { targets: nvdaTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        }
+    },
+    {
+        symbol: 'U',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 902038, tradingSum: 425976521 },
+        dailyRange: 2,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        },
+        long: {
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         }
     }
 ];
