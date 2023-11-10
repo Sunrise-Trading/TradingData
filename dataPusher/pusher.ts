@@ -39,7 +39,7 @@ const planData = {
     tradingSettings: Data.tradingSettigns,
 }
 push(planData, `configData/tradingPlan`, expiredAt);
-push(planData, `configDataSnapshot/${todayStr}`, expiredAt);
+push(planData, `configDataSnapshot/${timeStr}`, expiredAt);
 push({ stockSelections: stockSelections }, `stockSelections/${timeStr}`, shortExpiredAt);
 
 console.log(data);
