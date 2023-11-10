@@ -23,7 +23,7 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 }
-const nvdaTargets: TradingPlans.ExitTargets = {
+const smallTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
@@ -57,7 +57,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
     },
     {
@@ -71,7 +71,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            //momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
