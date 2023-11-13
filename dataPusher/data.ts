@@ -9,7 +9,7 @@ const bestConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 4,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
+    equalWeightDivider: 8,
 };
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -53,10 +53,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            //openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
         long: {
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
             momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
     },
