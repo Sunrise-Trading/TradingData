@@ -36,17 +36,17 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'PLUG',
-    'TTD',
-    //'U',
+    'BA',
+    'VERV',
+    'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLUG',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 9452730, tradingSum: 36320809 },
-        dailyRange: 0.95,
+        vwapCorrection: { volumeSum: 867859, tradingSum: 187849486 },
+        dailyRange: 9,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -61,17 +61,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'TTD',
+        symbol: 'BA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1217242, tradingSum: 70889845 },
-        dailyRange: 5,
+        vwapCorrection: { volumeSum: 171699, tradingSum: 34918835 },
+        dailyRange: 5.9,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            //momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
@@ -79,10 +79,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'U',
+        symbol: 'VERV',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1129501, tradingSum: 24798066 },
-        dailyRange: 2,
+        vwapCorrection: { volumeSum: 858935, tradingSum: 8351488 },
+        dailyRange: 3,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
