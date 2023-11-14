@@ -57,8 +57,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 867859, tradingSum: 187849486 },
-        dailyRange: 9,
+        vwapCorrection: { volumeSum: 3419111, tradingSum: 792545030 },
+        dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -76,8 +76,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SPY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 171699, tradingSum: 34918835 },
-        dailyRange: 2,
+        vwapCorrection: { volumeSum: 3164576, tradingSum: 1407140256 },
+        dailyRange: 2.5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -92,10 +92,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'VERV',
+        symbol: 'QQQ',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 4420806, tradingSum: 1690681704 },
+        dailyRange: 2.5,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+        },
+        long: {
+            openingDrive: { targets: indexTarget, planConfigs: bestConfigs },
+            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+        }
+    },
+    {
+        symbol: 'SE',
         autoFlip: false,
         vwapCorrection: { volumeSum: 858935, tradingSum: 8351488 },
-        dailyRange: 3,
+        dailyRange: 4,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
@@ -105,8 +123,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         }
     }
 ];
