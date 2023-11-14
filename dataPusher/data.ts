@@ -30,7 +30,7 @@ const indexTarget: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
+        rrr: [0.9, 0.95, 1, 1, 1, 1, 1, 1, 1, 1],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     }
@@ -43,14 +43,14 @@ const smallTargets: TradingPlans.ExitTargets = {
     },
     minimumTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1, 1.6, 1.8, 1.8, 1.8, 2.5, 3, 5],
+        rrr: [0.9, 0.95, 1, 1, 1, 1, 1, 1, 1, 1],
         dailyRanges: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.5, 0.5, 0.5],
     }
 };
 export const stockSelections: string[] = [
-    'BA',
-    'VERV',
+    'SE',
     'TSLA',
+    'SPY', 'QQQ'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -112,7 +112,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 858935, tradingSum: 8351488 },
+        vwapCorrection: { volumeSum: 1165355, tradingSum: 47691596 },
         dailyRange: 4,
         deferTradingInSeconds: 0,
         keyLevels: {
