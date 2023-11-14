@@ -22,6 +22,18 @@ const bigTarget: TradingPlans.ExitTargets = {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
+};
+const indexTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 1.5, 1.9, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    },
+    minimumTargets: {
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    }
 }
 const smallTargets: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -62,21 +74,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'BA',
+        symbol: 'SPY',
         autoFlip: false,
         vwapCorrection: { volumeSum: 171699, tradingSum: 34918835 },
-        dailyRange: 5.9,
+        dailyRange: 2,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: indexTarget, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: indexTarget, planConfigs: bestConfigs },
+            momentum: { targets: indexTarget, planConfigs: bestConfigs },
         }
     },
     {
