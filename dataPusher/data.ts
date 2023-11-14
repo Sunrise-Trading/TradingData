@@ -48,7 +48,7 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'SE',
+    'ONON',
     'TSLA',
     'SPY', 'QQQ'
 ];
@@ -114,6 +114,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 1165355, tradingSum: 47691596 },
         dailyRange: 4,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        },
+        long: {
+        }
+    },
+    {
+        symbol: 'ONON',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1525627, tradingSum: 38143082 },
+        dailyRange: 2,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
