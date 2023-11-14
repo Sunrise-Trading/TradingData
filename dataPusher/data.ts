@@ -84,11 +84,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
         },
         long: {
-            openingDrive: { targets: indexTarget, planConfigs: bestConfigs },
-            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: indexTarget, planConfigs: scalpConfigs },
+            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
         }
     },
     {
@@ -102,11 +102,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
         },
         long: {
-            openingDrive: { targets: indexTarget, planConfigs: bestConfigs },
-            momentum: { targets: indexTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: indexTarget, planConfigs: scalpConfigs },
+            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
         }
     },
     {
@@ -120,7 +120,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
         long: {
         }
@@ -136,7 +136,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
         long: {
         }
