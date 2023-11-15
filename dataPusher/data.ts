@@ -48,16 +48,17 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ONON',
-    'TSLA',
-    'SPY', 'QQQ'
+    'TGT',
+    'TJX',
+    'TSLA'
+    //    'SPY', 'QQQ'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 3419111, tradingSum: 792545030 },
+        vwapCorrection: { volumeSum: 2410995, tradingSum: 581272442 },
         dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -65,8 +66,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            //openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
             openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
@@ -74,61 +75,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'SPY',
+        symbol: 'TGT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 3164576, tradingSum: 1407140256 },
-        dailyRange: 2.5,
+        vwapCorrection: { volumeSum: 1511030, tradingSum: 190396386 },
+        dailyRange: 5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
-            openingDrive: { targets: indexTarget, planConfigs: scalpConfigs },
-            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         }
     },
     {
-        symbol: 'QQQ',
+        symbol: 'TJX',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 4420806, tradingSum: 1690681704 },
-        dailyRange: 2.5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
-        },
-        long: {
-            openingDrive: { targets: indexTarget, planConfigs: scalpConfigs },
-            momentum: { targets: indexTarget, planConfigs: scalpConfigs },
-        }
-    },
-    {
-        symbol: 'SE',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1165355, tradingSum: 47691596 },
-        dailyRange: 4,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-        },
-        long: {
-        }
-    },
-    {
-        symbol: 'ONON',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1525627, tradingSum: 38143082 },
+        vwapCorrection: { volumeSum: 235695, tradingSum: 21447704 },
         dailyRange: 2,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -136,9 +104,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
         }
-    }
+    },
 ];
