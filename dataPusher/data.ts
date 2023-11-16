@@ -48,9 +48,9 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TGT',
-    'TJX',
-    'TSLA'
+    'BABA',
+    'WMT',
+    //    'TSLA'
     //    'SPY', 'QQQ'
 ];
 
@@ -75,39 +75,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'TGT',
+        symbol: 'BABA',
         autoFlip: false,
         vwapCorrection: { volumeSum: 1511030, tradingSum: 190396386 },
-        dailyRange: 5,
+        dailyRange: 3.5,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
-            momentum: { targets: smallTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         }
     },
     {
-        symbol: 'TJX',
+        symbol: 'WMT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 235695, tradingSum: 21447704 },
-        dailyRange: 2,
+        vwapCorrection: { volumeSum: 1572111, tradingSum: 250806333 },
+        dailyRange: 4,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         }
     },
 ];
