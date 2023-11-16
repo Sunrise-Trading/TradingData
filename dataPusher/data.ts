@@ -23,16 +23,16 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const indexTarget: TradingPlans.ExitTargets = {
+const mTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.9, 2, 3, 3.5, 4, 5, 10],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 1, 1, 1, 1, 1, 1, 1, 1],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
+        priceLevels: [14.65, 14.65, 14.65, 14.65, 14.65, 14.65, 14.65, 14.65, 14.65, 15],
+        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 }
 const smallTargets: TradingPlans.ExitTargets = {
@@ -48,30 +48,27 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
+    'M',
     'BABA',
     'WMT',
-    //    'TSLA'
-    //    'SPY', 'QQQ'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'M',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 2410995, tradingSum: 581272442 },
-        dailyRange: 10,
+        vwapCorrection: { volumeSum: 1703833, tradingSum: 23397606 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
+            openingDrive: { targets: mTarget, planConfigs: bestConfigs },
+            momentum: { targets: mTarget, planConfigs: bestConfigs },
         },
     },
     {
