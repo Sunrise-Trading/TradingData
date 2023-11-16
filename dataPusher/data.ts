@@ -77,8 +77,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'BABA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1511030, tradingSum: 190396386 },
-        dailyRange: 3.5,
+        vwapCorrection: { volumeSum: 5022448, tradingSum: 405572246 },
+        dailyRange: 4,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
