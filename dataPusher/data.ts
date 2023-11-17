@@ -10,6 +10,7 @@ const bestConfigs: TradingPlans.PlanConfigs = {
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 8,
+    requireReversal: true,
 };
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -44,7 +45,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AMAT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1703833, tradingSum: 23397606 },
+        vwapCorrection: { volumeSum: 212661, tradingSum: 30585335 },
         dailyRange: 5.5,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -61,7 +62,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'BABA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 5022448, tradingSum: 405572246 },
+        vwapCorrection: { volumeSum: 1353635, tradingSum: 103410153 },
         dailyRange: 3.5,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -72,6 +73,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
         long: {
+            openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         }
     },
