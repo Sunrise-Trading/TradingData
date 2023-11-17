@@ -9,7 +9,11 @@ const bestConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 4,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 8,
+    equalWeightDivider: 6,
+    requireReversal: true,
+};
+const smallConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 10,
     requireReversal: true,
 };
 const bigTarget: TradingPlans.ExitTargets = {
@@ -39,6 +43,7 @@ const smallTargets: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'AMAT',
     'BABA',
+    'GPS'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -78,20 +83,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'WMT',
+        symbol: 'GPS',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1572111, tradingSum: 250806333 },
-        dailyRange: 4,
+        vwapCorrection: { volumeSum: 408831, tradingSum: 6639785 },
+        dailyRange: 1,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: smallConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         }
     },
 ];
