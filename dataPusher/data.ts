@@ -63,6 +63,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
+            breakout: { entryPrice: 150, targets: bigTarget, planConfigs: scalpConfigs },
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
     },
