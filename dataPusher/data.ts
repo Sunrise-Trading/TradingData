@@ -59,47 +59,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
             levelBreakout: { entryPrice: 150, targets: bigTarget, planConfigs: scalpConfigs },
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
-    },
-    {
-        symbol: 'BABA',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1353635, tradingSum: 103410153 },
-        dailyRange: 3.5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-        },
-        long: {
-            openingDrive: { targets: bigTarget, planConfigs: scalpConfigs },
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-        }
-    },
-    {
-        symbol: 'GPS',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 408831, tradingSum: 6639785 },
-        dailyRange: 1,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
-        },
-        long: {
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-        }
-    },
+    }
 ];
