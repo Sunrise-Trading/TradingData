@@ -42,27 +42,45 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'AMAT',
-    'BABA',
-    'GPS'
+    'MSFT',
+    'BMY'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMAT',
+        symbol: 'MSFT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 212661, tradingSum: 30585335 },
-        dailyRange: 5.5,
+        vwapCorrection: { volumeSum: 1687646, tradingSum: 632490789 },
+        dailyRange: 7,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 374.37,
+            momentumStartForShort: 366.98,
         },
         short: {
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 366.98, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 150, targets: bigTarget, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 374.37, targets: bigTarget, planConfigs: scalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
+        },
+    },
+    {
+        symbol: 'BMY',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 482751, tradingSum: 23530758 },
+        dailyRange: 2.3,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 49,
+            momentumStartForShort: 48.41,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 48.11, targets: bigTarget, planConfigs: bestConfigs },
+        },
+        long: {
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
         },
     }
