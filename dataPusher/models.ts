@@ -24,7 +24,8 @@ export interface SingleDirectionPlans {
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
-    breakout?: BreakoutPlan,
+    levelBreakout?: LevelBreakoutPlan,
+    intraDayBreakout?: IntraDayBreakoutPlan,
 };
 export interface keyLevels {
     otherLevels?: number[];
@@ -70,8 +71,11 @@ export interface RetracementArea extends BasePlan {
     priceArea: PriceArea,
     stopPrice: number,
 }
-export interface BreakoutPlan extends BasePlan {
+export interface LevelBreakoutPlan extends BasePlan {
     entryPrice: number,
+}
+export interface IntraDayBreakoutPlan extends BasePlan {
+
 }
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
