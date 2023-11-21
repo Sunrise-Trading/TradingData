@@ -42,8 +42,7 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TSLA', 'DKS',
-    'AI', 'ZM'
+    'ZM', 'DKS', 'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -93,7 +92,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 63.6, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 63.13, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
 
