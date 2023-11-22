@@ -93,6 +93,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 498,
         },
         short: {
+            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
+            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
             levelBreakout: { entryPrice: 497.95, targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
