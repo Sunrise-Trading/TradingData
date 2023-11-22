@@ -66,7 +66,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'DE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 338936, tradingSum: 9670027 },
+        vwapCorrection: { volumeSum: 109757, tradingSum: 39457783 },
         dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
@@ -74,7 +74,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 358,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
             levelBreakout: { entryPrice: 356.38, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
@@ -86,18 +85,35 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NVDA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 390237, tradingSum: 25212116 },
-        dailyRange: 18,
+        vwapCorrection: { volumeSum: 1747058, tradingSum: 875831505 },
+        dailyRange: 19,
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 507,
             momentumStartForShort: 498,
         },
         short: {
-            levelBreakout: { entryPrice: 497.95, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 497.95, targets: smallTargets, planConfigs: scalpConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 507, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 507, targets: smallTargets, planConfigs: scalpConfigs },
+        },
+    },
+    {
+        symbol: 'SPY',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 522833, tradingSum: 237603545 },
+        dailyRange: 4,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 455,
+            momentumStartForShort: 451,
+        },
+        short: {
+            levelBreakout: { entryPrice: 451, targets: smallTargets, planConfigs: bestConfigs },
+        },
+        long: {
+            levelBreakout: { entryPrice: 455, targets: smallTargets, planConfigs: bestConfigs },
         },
     }
 ];
