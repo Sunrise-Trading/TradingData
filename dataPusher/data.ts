@@ -42,7 +42,7 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ZM', 'DKS', 'TSLA',
+    'DE', 'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -53,68 +53,51 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         dailyRange: 9,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 237.1,
-            momentumStartForShort: 232.7,
-        },
-        short: {
-        },
-        long: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 237.1, targets: bigTarget, planConfigs: bestConfigs },
-        },
-    },
-    {
-        symbol: 'AI',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 338936, tradingSum: 9670027 },
-        dailyRange: 2.8,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 28.53,
-            momentumStartForShort: 28.31,
+            momentumStartForLong: 243.44,
+            momentumStartForShort: 242.46,
         },
         short: {
         },
         long: {
             momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-            levelBreakout: { entryPrice: 29, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 243.45, targets: bigTarget, planConfigs: scalpConfigs },
         },
     },
     {
-        symbol: 'ZM',
+        symbol: 'DE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 390237, tradingSum: 25212116 },
-        dailyRange: 2.4,
+        vwapCorrection: { volumeSum: 338936, tradingSum: 9670027 },
+        dailyRange: 10,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 65.38,
-            momentumStartForShort: 64.48,
+            momentumStartForLong: 363,
+            momentumStartForShort: 358,
         },
         short: {
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 63.13, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 356.38, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-
-        },
-    },
-    {
-        symbol: 'DKS',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 152520, tradingSum: 19643577 },
-        dailyRange: 5,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 130.44,
-            momentumStartForShort: 128.83,
-        },
-        short: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 127.47, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 363, targets: bigTarget, planConfigs: bestConfigs },
+        },
+    },
+    {
+        symbol: 'NVDA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 390237, tradingSum: 25212116 },
+        dailyRange: 18,
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 507,
+            momentumStartForShort: 498,
+        },
+        short: {
+            levelBreakout: { entryPrice: 497.95, targets: smallTargets, planConfigs: bestConfigs },
         },
         long: {
-
+            levelBreakout: { entryPrice: 507, targets: smallTargets, planConfigs: bestConfigs },
         },
     }
 ];
