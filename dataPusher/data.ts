@@ -42,7 +42,7 @@ const smallTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'DE', 'NVDA',
+    'AFRM', 'SHOP',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -64,22 +64,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'DE',
+        symbol: 'AFRM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 109757, tradingSum: 39457783 },
-        dailyRange: 10,
+        vwapCorrection: { volumeSum: 257695, tradingSum: 7003922 },
+        dailyRange: 2.2,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 363,
-            momentumStartForShort: 358,
+            momentumStartForLong: 27.3,
+            momentumStartForShort: 27.13,
         },
         short: {
-            levelBreakout: { entryPrice: 356.38, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 27.12, targets: smallTargets, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 363, targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
+            momentum: { targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 27.5, targets: smallTargets, planConfigs: bestConfigs },
         },
     },
     {
@@ -102,20 +102,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'SPY',
+        symbol: 'SHOP',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 522833, tradingSum: 237603545 },
-        dailyRange: 4,
+        vwapCorrection: { volumeSum: 164383, tradingSum: 11966085 },
+        dailyRange: 3,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 455,
-            momentumStartForShort: 451,
+            momentumStartForLong: 73.45,
+            momentumStartForShort: 72.27,
         },
         short: {
-            levelBreakout: { entryPrice: 451, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 72.27, targets: smallTargets, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 455, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 73.45, targets: smallTargets, planConfigs: bestConfigs },
         },
     }
 ];
