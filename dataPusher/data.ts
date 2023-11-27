@@ -38,11 +38,11 @@ const smallTargets: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1, 1, 1, 1, 1, 1, 1, 1],
-        dailyRanges: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.5, 0.5, 0.5],
+        dailyRanges: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.8, 0.9, 0.1],
     }
 };
 export const stockSelections: string[] = [
-    'AFRM', 'SHOP',
+    'AFRM', 'SHOP', 'COIN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -77,9 +77,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelBreakout: { entryPrice: 27.12, targets: smallTargets, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: smallTargets, planConfigs: bestConfigs },
             momentum: { targets: smallTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 27.5, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 27.69, targets: smallTargets, planConfigs: bestConfigs },
         },
     },
     {
@@ -116,6 +115,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             levelBreakout: { entryPrice: 73.45, targets: smallTargets, planConfigs: bestConfigs },
+        },
+    },
+    {
+        symbol: 'COIN',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 144503, tradingSum: 16419225 },
+        dailyRange: 5.8,
+        deferTradingInSeconds: 55,
+        keyLevels: {
+            momentumStartForLong: 114.86,
+            momentumStartForShort: 112.81,
+        },
+        short: {
+            levelBreakout: { entryPrice: 112.81, targets: smallTargets, planConfigs: bestConfigs },
+        },
+        long: {
+            levelBreakout: { entryPrice: 114.87, targets: smallTargets, planConfigs: bestConfigs },
         },
     }
 ];
