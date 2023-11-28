@@ -29,16 +29,16 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const smallTargets: TradingPlans.ExitTargets = {
+const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
+        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 3, 3, 5],
         dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
     },
     minimumTargets: {
         priceLevels: [],
-        rrr: [0.9, 0.95, 1, 1, 1, 1, 1, 1, 1, 1],
-        dailyRanges: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.8, 0.9, 0.1],
+        rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
+        dailyRanges: [0.45, 0.45, 0.45, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0],
     }
 };
 export const stockSelections: string[] = [
@@ -74,11 +74,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 27.13,
         },
         short: {
-            levelBreakout: { entryPrice: 27.12, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 27.12, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
         long: {
-            momentum: { targets: smallTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 27.69, targets: smallTargets, planConfigs: bestConfigs },
+            momentum: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 27.69, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
     },
     {
@@ -92,12 +92,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 498,
         },
         short: {
-            openingDrive: { targets: smallTargets, planConfigs: scalpConfigs },
-            momentum: { targets: smallTargets, planConfigs: scalpConfigs },
-            levelBreakout: { entryPrice: 497.95, targets: smallTargets, planConfigs: scalpConfigs },
+            openingDrive: { targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
+            momentum: { targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 497.95, targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 507, targets: smallTargets, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 507, targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
         },
     },
     {
@@ -111,10 +111,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 72.27,
         },
         short: {
-            levelBreakout: { entryPrice: 72.27, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 72.27, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 73.45, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 73.45, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
     },
     {
@@ -128,10 +128,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 112.81,
         },
         short: {
-            levelBreakout: { entryPrice: 112.81, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 112.81, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 114.87, targets: smallTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 114.87, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
     }
 ];
