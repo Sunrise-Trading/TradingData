@@ -6,7 +6,7 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
     equalWeightDivider: 3,
 };
 const bestConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+    equalWeightDivider: 3,
     requireReversal: true,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
@@ -42,7 +42,7 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'AFRM', 'SHOP', 'COIN'
+    'PDD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -82,22 +82,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'PDD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1747058, tradingSum: 875831505 },
-        dailyRange: 19,
+        vwapCorrection: { volumeSum: 1703173, tradingSum: 227199178 },
+        dailyRange: 7.5,
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 507,
-            momentumStartForShort: 498,
-        },
-        short: {
-            openingDrive: { targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
-            momentum: { targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
-            levelBreakout: { entryPrice: 497.95, targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
+            momentumStartForLong: 132.49,
+            momentumStartForShort: 132,
         },
         long: {
-            levelBreakout: { entryPrice: 507, targets: scaledOutAtrTargets, planConfigs: scalpConfigs },
+            openingDrive: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            momentum: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 136.3, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+        },
+        short: {
+            levelBreakout: { entryPrice: 131.17, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
     },
     {
