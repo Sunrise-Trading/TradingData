@@ -97,7 +97,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelBreakout: { entryPrice: 136.4, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
         short: {
-            levelBreakout: { entryPrice: 131.17, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 132, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
     },
     {
