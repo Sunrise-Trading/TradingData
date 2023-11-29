@@ -6,7 +6,7 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
     equalWeightDivider: 3,
 };
 const bestConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 3,
+    equalWeightDivider: 4,
     requireReversal: true,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
@@ -29,6 +29,30 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
+const gmTargets: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 3, 3, 5],
+        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+    },
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
+        dailyRanges: [0.28, 0.45, 0.45, 0.6, 0.6, 0.6, 0.85, 0.9, 0.95, 1.0],
+    }
+};
+const crwdTargets: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 3, 3, 5],
+        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+    },
+    minimumTargets: {
+        priceLevels: [],
+        rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
+        dailyRanges: [0.35, 0.45, 0.45, 0.6, 0.6, 0.6, 0.85, 0.9, 0.95, 1.0],
+    }
+};
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
@@ -38,100 +62,67 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [],
         rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
-        dailyRanges: [0.45, 0.45, 0.45, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0],
+        dailyRanges: [0.5, 0.5, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0],
     }
 };
 export const stockSelections: string[] = [
-    'PDD'
+    'GM', 'CRWD', 'TSLA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 848648, tradingSum: 200651295 },
-        dailyRange: 9,
-        deferTradingInSeconds: 0,
+        vwapCorrection: { volumeSum: 1122869, tradingSum: 280577610 },
+        dailyRange: 10,
+        deferTradingInSeconds: 180,
         keyLevels: {
-            momentumStartForLong: 243.44,
+            momentumStartForLong: 250.45,
             momentumStartForShort: 242.46,
         },
         short: {
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: scalpConfigs },
-            levelBreakout: { entryPrice: 243.45, targets: bigTarget, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 250.45, targets: bigTarget, planConfigs: bestConfigs },
         },
     },
     {
-        symbol: 'AFRM',
+        symbol: 'GM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 257695, tradingSum: 7003922 },
-        dailyRange: 2.2,
+        vwapCorrection: { volumeSum: 2088683, tradingSum: 65325515 },
+        dailyRange: 1.6, // 0.8
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 27.3,
-            momentumStartForShort: 27.13,
+            momentumStartForLong: 31,
+            momentumStartForShort: 32,
         },
         short: {
-            levelBreakout: { entryPrice: 27.12, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 31, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            momentum: { targets: gmTargets, planConfigs: bestConfigs },
         },
         long: {
-            momentum: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 27.69, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
+            momentum: { targets: gmTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
         },
     },
     {
-        symbol: 'PDD',
+        symbol: 'CRWD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1703173, tradingSum: 227199178 },
-        dailyRange: 7.5,
-        deferTradingInSeconds: 0,
+        vwapCorrection: { volumeSum: 136791, tradingSum: 29852608 },
+        dailyRange: 8,
+        deferTradingInSeconds: 60,
         keyLevels: {
-            momentumStartForLong: 132.49,
-            momentumStartForShort: 132,
+            momentumStartForLong: 219,
+            momentumStartForShort: 216,
         },
         long: {
-            openingDrive: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-            momentum: { targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 136.4, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: crwdTargets, planConfigs: scalpConfigs },
+            momentum: { targets: crwdTargets, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 222.5, targets: crwdTargets, planConfigs: scalpConfigs },
         },
         short: {
-            levelBreakout: { entryPrice: 132, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-        },
-    },
-    {
-        symbol: 'SHOP',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 164383, tradingSum: 11966085 },
-        dailyRange: 3,
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 73.45,
-            momentumStartForShort: 72.27,
-        },
-        short: {
-            levelBreakout: { entryPrice: 72.27, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-        },
-        long: {
-            levelBreakout: { entryPrice: 73.45, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-        },
-    },
-    {
-        symbol: 'COIN',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 144503, tradingSum: 16419225 },
-        dailyRange: 5.8,
-        deferTradingInSeconds: 55,
-        keyLevels: {
-            momentumStartForLong: 114.86,
-            momentumStartForShort: 112.81,
-        },
-        short: {
-            levelBreakout: { entryPrice: 112.81, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-        },
-        long: {
-            levelBreakout: { entryPrice: 114.87, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 216, targets: crwdTargets, planConfigs: scalpConfigs },
         },
     }
 ];
