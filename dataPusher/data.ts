@@ -66,35 +66,39 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'GM', 'CRWD', 'TSLA'
+    'CRM', 'SNOW',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'CRM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1122869, tradingSum: 280577610 },
-        dailyRange: 10,
-        deferTradingInSeconds: 180,
+        vwapCorrection: { volumeSum: 282842, tradingSum: 71063854 },
+        dailyRange: 6.5, //4
+        deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 250.45,
-            momentumStartForShort: 242.46,
+            momentumStartForLong: 251.77,
+            momentumStartForShort: 249.36,
         },
         short: {
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
             levelBreakout: { entryPrice: 250.45, targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
     },
     {
-        symbol: 'GM',
+        symbol: 'SNOW',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 2088683, tradingSum: 65325515 },
-        dailyRange: 1.6, // 0.8
+        vwapCorrection: { volumeSum: 171004, tradingSum: 32278560 },
+        dailyRange: 7, // 5.4
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 31,
-            momentumStartForShort: 32,
+            momentumStartForLong: 194,
+            momentumStartForShort: 190,
         },
         short: {
             levelBreakout: { entryPrice: 31, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
