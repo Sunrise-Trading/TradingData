@@ -78,16 +78,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 251.77,
-            momentumStartForShort: 249.36,
+            momentumStartForShort: 250,
         },
         short: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 248.47, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 250.45, targets: bigTarget, planConfigs: bestConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 252, targets: bigTarget, planConfigs: bestConfigs },
+            // openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            // momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
     },
     {
@@ -101,13 +102,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 190,
         },
         short: {
-            levelBreakout: { entryPrice: 31, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 186.55, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
             momentum: { targets: gmTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
         },
         long: {
-            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
-            momentum: { targets: gmTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
+            //openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
+            //momentum: { targets: gmTargets, planConfigs: bestConfigs },
+            //levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
         },
     },
     {
