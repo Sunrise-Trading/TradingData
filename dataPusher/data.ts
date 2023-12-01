@@ -66,69 +66,64 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'CRM', 'SNOW',
+    'PFE', 'ESTC'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CRM',
+        symbol: 'PFE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 282842, tradingSum: 71063854 },
-        dailyRange: 6.5, //4
+        vwapCorrection: { volumeSum: 2327167, tradingSum: 67997029 },
+        dailyRange: 1, // 0.65
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 251.77,
-            momentumStartForShort: 250,
+            momentumStartForLong: 29.14,
+            momentumStartForShort: 28.93,
         },
         short: {
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 248.47, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 28.92, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 252, targets: bigTarget, planConfigs: bestConfigs },
-            // openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            // momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 29.14, targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
     },
     {
-        symbol: 'SNOW',
+        symbol: 'PATH',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 171004, tradingSum: 32278560 },
-        dailyRange: 7, // 5.4
+        vwapCorrection: { volumeSum: 464643, tradingSum: 10621084 },
+        dailyRange: 1.2, // 0.77
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 194,
-            momentumStartForShort: 190,
+            momentumStartForLong: 22.43,
+            momentumStartForShort: 22,
         },
         short: {
-            levelBreakout: { entryPrice: 186.55, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-            momentum: { targets: gmTargets, planConfigs: bestConfigs },
-            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 22, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
         },
         long: {
-            //openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
-            //momentum: { targets: gmTargets, planConfigs: bestConfigs },
-            //levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
+            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
+            momentum: { targets: gmTargets, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
         },
     },
     {
-        symbol: 'CRWD',
+        symbol: 'ESTC',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 136791, tradingSum: 29852608 },
-        dailyRange: 8,
-        deferTradingInSeconds: 60,
+        vwapCorrection: { volumeSum: 99741, tradingSum: 9533368 },
+        dailyRange: 4, // 2.8
+        deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 219,
-            momentumStartForShort: 216,
-        },
-        long: {
-            openingDrive: { targets: crwdTargets, planConfigs: scalpConfigs },
-            momentum: { targets: crwdTargets, planConfigs: scalpConfigs },
-            levelBreakout: { entryPrice: 222.5, targets: crwdTargets, planConfigs: scalpConfigs },
+            momentumStartForLong: 97.69,
+            momentumStartForShort: 93,
         },
         short: {
-            levelBreakout: { entryPrice: 216, targets: crwdTargets, planConfigs: scalpConfigs },
         },
-    }
+        long: {
+            levelBreakout: { entryPrice: 97.69, targets: gmTargets, planConfigs: bestConfigs },
+        },
+    },
 ];
