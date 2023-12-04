@@ -74,7 +74,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'PFE',
         autoFlip: false,
         vwapCorrection: { volumeSum: 2327167, tradingSum: 67997029 },
-        dailyRange: 1, // 0.65
+        atr: {
+            average: 0.65,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
         deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 29.14,
@@ -89,41 +93,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelBreakout: { entryPrice: 29.14, targets: bigTarget, planConfigs: bestConfigs },
             openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
-        },
-    },
-    {
-        symbol: 'PATH',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 464643, tradingSum: 10621084 },
-        dailyRange: 1.2, // 0.77
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 22.43,
-            momentumStartForShort: 22,
-        },
-        short: {
-            levelBreakout: { entryPrice: 22, targets: scaledOutAtrTargets, planConfigs: bestConfigs },
-        },
-        long: {
-            openingDrive: { targets: gmTargets, planConfigs: bestConfigs },
-            momentum: { targets: gmTargets, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 32.26, targets: gmTargets, planConfigs: bestConfigs },
-        },
-    },
-    {
-        symbol: 'ESTC',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 99741, tradingSum: 9533368 },
-        dailyRange: 4, // 2.8
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 97.69,
-            momentumStartForShort: 93,
-        },
-        short: {
-        },
-        long: {
-            levelBreakout: { entryPrice: 97.69, targets: gmTargets, planConfigs: bestConfigs },
         },
     },
 ];

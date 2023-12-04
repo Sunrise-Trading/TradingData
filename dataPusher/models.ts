@@ -6,13 +6,18 @@ export interface TradingPlans {
     autoFlip: boolean,
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
-    dailyRange: number,
+    atr: AverageTrueRange,
     deferTradingInSeconds: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
+export interface AverageTrueRange {
+    average: number,
+    mutiplier: number,
+    minimumMultipler: number,
+}
 export interface VwapCorrection {
     volumeSum: number,
     tradingSum: number,
@@ -75,7 +80,8 @@ export interface LevelBreakoutPlan extends BasePlan {
     entryPrice: number,
 }
 export interface IntraDayBreakoutPlan extends BasePlan {
-
+    requireReversal: boolean,
+    deferInSeconds: number,
 }
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
