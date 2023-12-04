@@ -66,18 +66,43 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'PFE', 'ESTC'
+    'COIN',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PFE',
+        symbol: 'COIN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 2327167, tradingSum: 67997029 },
+        vwapCorrection: { volumeSum: 648676, tradingSum: 94365769 },
         atr: {
-            average: 0.65,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 6.5,
+            mutiplier: 1.2,
+            minimumMultipler: 0.7,
+        },
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 146.5,
+            momentumStartForShort: 145,
+        },
+        short: {
+            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 143, targets: bigTarget, planConfigs: bestConfigs },
+        },
+        long: {
+            levelBreakout: { entryPrice: 146.5, targets: bigTarget, planConfigs: bestConfigs },
+            //openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+            //momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        },
+    },
+    {
+        symbol: 'EYPT',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 2261454, tradingSum: 63307004 },
+        atr: {
+            average: 10,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
