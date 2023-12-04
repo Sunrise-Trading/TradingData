@@ -6,7 +6,7 @@ export const tradingSettigns: TradingPlans.TradingSettings = {
     equalWeightDivider: 3,
 };
 const bestConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+    equalWeightDivider: 5,
     requireReversal: true,
 };
 const scalpConfigs: TradingPlans.PlanConfigs = {
@@ -29,16 +29,16 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const gmTargets: TradingPlans.ExitTargets = {
+const coinSHort: TradingPlans.ExitTargets = {
     initialTargets: {
-        priceLevels: [],
-        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 3, 3, 5],
-        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 1.5, 1.9, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     },
     minimumTargets: {
-        priceLevels: [],
-        rrr: [0.9, 0.95, 1, 1.8, 1.9, 2, 2, 3, 3, 5],
-        dailyRanges: [0.28, 0.45, 0.45, 0.6, 0.6, 0.6, 0.85, 0.9, 0.95, 1.0],
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
+        priceLevels: [141, 141, 141, 141, 141, 141, 141, 141, 141, 141],
+        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
 const crwdTargets: TradingPlans.ExitTargets = {
@@ -66,7 +66,7 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'COIN',
+    'COIN', 'EYPT', 'TSLA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -85,9 +85,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 145,
         },
         short: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 143, targets: bigTarget, planConfigs: bestConfigs },
+            openingDrive: { targets: coinSHort, planConfigs: bestConfigs },
+            momentum: { targets: coinSHort, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 143, targets: coinSHort, planConfigs: bestConfigs },
         },
         long: {
             levelBreakout: { entryPrice: 146.5, targets: bigTarget, planConfigs: bestConfigs },
@@ -100,23 +100,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 2261454, tradingSum: 63307004 },
         atr: {
-            average: 10,
+            average: 5,
             mutiplier: 1,
-            minimumMultipler: 0.5,
+            minimumMultipler: 0.8,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 29.14,
-            momentumStartForShort: 28.93,
+            momentumStartForLong: 30,
+            momentumStartForShort: 21.5,
         },
         short: {
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 28.92, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 21.5, targets: bigTarget, planConfigs: bestConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 29.14, targets: bigTarget, planConfigs: bestConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
+        },
+    },
+    {
+        symbol: 'TSLA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 728226, tradingSum: 172872846 },
+        atr: {
+            average: 10,
+            mutiplier: 1,
+            minimumMultipler: 0.4,
+        },
+        deferTradingInSeconds: 120,
+        keyLevels: {
+            momentumStartForLong: 237.6,
+            momentumStartForShort: 237.5,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+        },
+        long: {
             momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
     },
