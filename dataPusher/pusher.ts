@@ -36,7 +36,7 @@ const push = async (
 const planData = {
     plans: data,
     activeProfileName: Data.activeProfileName,
-    tradingSettings: Data.tradingSettigns,
+    tradingSettings: Data.tradingSettings,
     stockSelections: stockSelections,
 }
 push(planData, `configData/tradingPlan`, expiredAt);
