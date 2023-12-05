@@ -67,7 +67,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            levelBreakout: { entryPrice: 59.43, targets: bigTarget, planConfigs: gtlbConfigs },
+            levelBreakout: { entryPrice: 58.99, targets: bigTarget, planConfigs: gtlbConfigs },
         },
         long: {
         },
