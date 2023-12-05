@@ -2,21 +2,18 @@ import * as TradingPlans from './models';
 import * as Constants from './constants';
 
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
-export const tradingSettigns: TradingPlans.TradingSettings = {
+
+const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 3,
-};
-const bestConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
     requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
 };
-const scalpConfigs: TradingPlans.PlanConfigs = {
+const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
     requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
 };
-const smallConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 10,
-    requireReversal: true,
-};
+
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -85,12 +82,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 145,
         },
         short: {
-            openingDrive: { targets: coinSHort, planConfigs: bestConfigs },
-            momentum: { targets: coinSHort, planConfigs: bestConfigs },
-            levelBreakout: { entryPrice: 143, targets: coinSHort, planConfigs: bestConfigs },
+            openingDrive: { targets: coinSHort, planConfigs: vwapTrendConfigs },
+            momentum: { targets: coinSHort, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 143, targets: coinSHort, planConfigs: vwapTrendConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 146.5, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 146.5, targets: bigTarget, planConfigs: vwapTrendConfigs },
             //openingDrive: { targets: bigTarget, planConfigs: bestConfigs },
             //momentum: { targets: bigTarget, planConfigs: bestConfigs },
         },
@@ -110,7 +107,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 21.5,
         },
         short: {
-            levelBreakout: { entryPrice: 21.5, targets: bigTarget, planConfigs: bestConfigs },
+            levelBreakout: { entryPrice: 21.5, targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
         long: {
         },
@@ -130,10 +127,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 237.5,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: bestConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
     },
 ];

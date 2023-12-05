@@ -50,7 +50,8 @@ export interface BasePlan {
 };
 export interface PlanConfigs {
     equalWeightDivider: number,
-    requireReversal?: boolean,
+    requireReversal: boolean,
+    alwaysAllowStopOutOrFlatten: boolean,
 }
 export interface OpeningDrivePlan extends BasePlan {
 }
