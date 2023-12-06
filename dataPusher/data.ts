@@ -9,16 +9,19 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 3,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
 };
 const gtlbConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 3,
     requireReversal: false,
     alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
 };
 
 const bigTarget: TradingPlans.ExitTargets = {
