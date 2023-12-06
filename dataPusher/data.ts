@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const vwapTrendConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 3,
+    equalWeightDivider: 4,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
 };
@@ -46,52 +46,76 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'GTLB', 'NIO',
+    'BTI', 'FLNC', 'S'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GTLB',
+        symbol: 'BTI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 232734, tradingSum: 14017064 },
+        vwapCorrection: { volumeSum: 1543226, tradingSum: 44709970 },
         atr: {
-            average: 2.27,
-            mutiplier: 1.5,
+            average: 0.424,
+            mutiplier: 3,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 62.3,
-            momentumStartForShort: 60,
+            momentumStartForLong: 29.3,
+            momentumStartForShort: 29,
         },
         short: {
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            levelBreakout: { entryPrice: 58.99, targets: bigTarget, planConfigs: gtlbConfigs },
+            levelBreakout: { entryPrice: 28.5, targets: bigTarget, planConfigs: gtlbConfigs },
         },
         long: {
         },
     },
     {
-        symbol: 'NIO',
+        symbol: 'FLNC',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 3659235, tradingSum: 27299675 },
+        vwapCorrection: { volumeSum: 966111, tradingSum: 21794467 },
         atr: {
-            average: 0.37,
-            mutiplier: 1.5,
+            average: 1.7,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 7.45,
-            momentumStartForShort: 7.38,
+            momentumStartForLong: 23.7,
+            momentumStartForShort: 22.6,
         },
         short: {
-        },
-        long: {
-            levelBreakout: { entryPrice: 7.66, targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 22.45, targets: bigTarget, planConfigs: vwapTrendConfigs },
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+        },
+        long: {
+
+        },
+    },
+    {
+        symbol: 'S',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 251806, tradingSum: 5991572 },
+        atr: {
+            average: 0.76,
+            mutiplier: 2,
+            minimumMultipler: 1,
+        },
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 24.4,
+            momentumStartForShort: 23.8,
+        },
+        short: {
+            levelBreakout: { entryPrice: 22.96, targets: bigTarget, planConfigs: vwapTrendConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+        },
+        long: {
+
         },
     },
 ];
