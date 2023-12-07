@@ -49,53 +49,52 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'BTI', 'FLNC', 'S'
+    'RIVN', 'AMD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BTI',
+        symbol: 'RIVN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1543226, tradingSum: 44709970 },
+        vwapCorrection: { volumeSum: 737957, tradingSum: 14080615 },
         atr: {
-            average: 0.424,
-            mutiplier: 3,
-            minimumMultipler: 1,
+            average: 1.1,
+            mutiplier: 1.5,
+            minimumMultipler: 0.9,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 29.3,
-            momentumStartForShort: 29,
+            momentumStartForLong: 19,
+            momentumStartForShort: 18,
         },
         short: {
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            levelBreakout: { entryPrice: 28.5, targets: bigTarget, planConfigs: gtlbConfigs },
+
         },
         long: {
+            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 19.24, targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
     },
     {
-        symbol: 'FLNC',
+        symbol: 'AMD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 966111, tradingSum: 21794467 },
+        vwapCorrection: { volumeSum: 741280, tradingSum: 88910166 },
         atr: {
-            average: 1.7,
-            mutiplier: 2,
+            average: 3.7,
+            mutiplier: 1.2,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 23.7,
-            momentumStartForShort: 22.6,
+            momentumStartForLong: 121,
+            momentumStartForShort: 119.6,
         },
         short: {
-            levelBreakout: { entryPrice: 22.45, targets: bigTarget, planConfigs: vwapTrendConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 119.6, targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
         long: {
-
+            levelBreakout: { entryPrice: 121.31, targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
     },
     {
