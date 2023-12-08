@@ -12,7 +12,20 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-
+const rblxConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 4,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: false,
+};
+const rblxEarlyConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 4,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: false,
+};
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
     requireReversal: true,
@@ -46,75 +59,53 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'RIVN', 'AMD'
+    'RBLX', 'LULU'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RIVN',
+        symbol: 'LULU',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 737957, tradingSum: 14080615 },
+        vwapCorrection: { volumeSum: 21588, tradingSum: 9807954 },
         atr: {
-            average: 1.1,
+            average: 9,
             mutiplier: 1.5,
-            minimumMultipler: 0.9,
+            minimumMultipler: 1.3,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 19,
-            momentumStartForShort: 18,
+            momentumStartForLong: 458,
+            momentumStartForShort: 452.23,
         },
         short: {
-
+            levelBreakout: { entryPrice: 451.2, targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
         long: {
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            levelBreakout: { entryPrice: 19.24, targets: bigTarget, planConfigs: vwapTrendConfigs },
-        },
-    },
-    {
-        symbol: 'AMD',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 741280, tradingSum: 88910166 },
-        atr: {
-            average: 3.7,
-            mutiplier: 1.2,
-            minimumMultipler: 1,
-        },
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 121,
-            momentumStartForShort: 119.6,
-        },
-        short: {
-            levelBreakout: { entryPrice: 119.6, targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-        long: {
-            levelBreakout: { entryPrice: 121.31, targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-    },
-    {
-        symbol: 'S',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 251806, tradingSum: 5991572 },
-        atr: {
-            average: 0.76,
-            mutiplier: 2,
-            minimumMultipler: 1,
-        },
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 24.4,
-            momentumStartForShort: 23.8,
-        },
-        short: {
-            levelBreakout: { entryPrice: 22.96, targets: bigTarget, planConfigs: vwapTrendConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-        },
-        long: {
 
+        },
+    },
+    {
+        symbol: 'RBLX',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 466407, tradingSum: 19339261 },
+        atr: {
+            average: 1.48,
+            mutiplier: 1.4,
+            minimumMultipler: 1,
+        },
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 41.5,
+            momentumStartForShort: 41.25,
+        },
+        short: {
+        },
+        long: {
+            levelBreakout: { entryPrice: 42.14, targets: bigTarget, planConfigs: rblxConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: rblxEarlyConfigs },
+            momentum: { targets: bigTarget, planConfigs: rblxConfigs },
         },
     },
 ];
