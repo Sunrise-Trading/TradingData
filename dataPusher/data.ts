@@ -10,18 +10,15 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: false,
+    allowEarlyExits: false,
 };
-const gtlbConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 3,
-    requireReversal: false,
-    alwaysAllowStopOutOrFlatten: false,
-    alwaysAllowFirstFewExits: false,
-};
+
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
 };
 
 const bigTarget: TradingPlans.ExitTargets = {

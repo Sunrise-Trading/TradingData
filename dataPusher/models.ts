@@ -53,6 +53,7 @@ export interface PlanConfigs {
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,
     alwaysAllowFirstFewExits: boolean,
+    allowEarlyExits: boolean,
 }
 export interface OpeningDrivePlan extends BasePlan {
 }
