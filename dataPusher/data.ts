@@ -24,7 +24,7 @@ const rblxEarlyConfigs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
@@ -59,7 +59,7 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'RBLX', 'LULU'
+    'SPY'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -72,17 +72,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 1.5,
             minimumMultipler: 1.3,
         },
-        deferTradingInSeconds: 0,
+        deferTradingInSeconds: 180,
         keyLevels: {
             momentumStartForLong: 458,
             momentumStartForShort: 452.23,
         },
         short: {
-            levelBreakout: { entryPrice: 451.2, targets: bigTarget, planConfigs: vwapTrendConfigs },
-        },
-        long: {
+            levelBreakout: { entryPrice: 4449, targets: bigTarget, planConfigs: vwapTrendConfigs },
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+        },
+        long: {
+
 
         },
     },
