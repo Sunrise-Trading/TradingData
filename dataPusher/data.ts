@@ -108,4 +108,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: bigTarget, planConfigs: rblxConfigs },
         },
     },
+    {
+        symbol: 'SPY',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1678745, tradingSum: 767447818 },
+        atr: {
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        deferTradingInSeconds: 1740,
+        keyLevels: {
+            momentumStartForLong: 458,
+            momentumStartForShort: 456,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+        },
+        long: {
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+        },
+    },
 ];
