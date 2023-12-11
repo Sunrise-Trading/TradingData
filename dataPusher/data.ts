@@ -84,6 +84,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 36.13, targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
     },
     {
@@ -103,30 +104,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 295.67, targets: bigTarget, planConfigs: rblxConfigs },
+            levelBreakout: { entryPrice: 300, targets: bigTarget, planConfigs: rblxConfigs },
             openingDrive: { targets: bigTarget, planConfigs: rblxEarlyConfigs },
             momentum: { targets: bigTarget, planConfigs: rblxConfigs },
         },
-    },
-    {
-        symbol: 'SPY',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1678745, tradingSum: 767447818 },
-        atr: {
-            average: 4,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        deferTradingInSeconds: 1740,
-        keyLevels: {
-            momentumStartForLong: 458,
-            momentumStartForShort: 456,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-        long: {
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-    },
+    }
 ];
