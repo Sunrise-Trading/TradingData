@@ -59,52 +59,51 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'SPY'
+    'SE', 'CI'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'LULU',
+        symbol: 'SE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 21588, tradingSum: 9807954 },
+        vwapCorrection: { volumeSum: 1383592, tradingSum: 49440620 },
         atr: {
-            average: 9,
+            average: 2,
             mutiplier: 1.5,
-            minimumMultipler: 1.3,
+            minimumMultipler: 1,
         },
-        deferTradingInSeconds: 180,
+        deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 458,
-            momentumStartForShort: 452.23,
+            momentumStartForLong: 35.6,
+            momentumStartForShort: 35.6,
         },
         short: {
-            levelBreakout: { entryPrice: 4449, targets: bigTarget, planConfigs: vwapTrendConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 35.6, targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
         long: {
-
-
+            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
     },
     {
-        symbol: 'RBLX',
+        symbol: 'CI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 466407, tradingSum: 19339261 },
+        vwapCorrection: { volumeSum: 306807, tradingSum: 89854150 },
         atr: {
-            average: 1.48,
+            average: 6.8,
             mutiplier: 1.4,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 41.5,
-            momentumStartForShort: 41.25,
+            momentumStartForLong: 293,
+            momentumStartForShort: 293,
         },
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 42.14, targets: bigTarget, planConfigs: rblxConfigs },
+            levelBreakout: { entryPrice: 295.67, targets: bigTarget, planConfigs: rblxConfigs },
             openingDrive: { targets: bigTarget, planConfigs: rblxEarlyConfigs },
             momentum: { targets: bigTarget, planConfigs: rblxConfigs },
         },
