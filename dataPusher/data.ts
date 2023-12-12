@@ -59,26 +59,26 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'SE', 'CI'
+    'ORCL'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SE',
+        symbol: 'ORCL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1383592, tradingSum: 49440620 },
+        vwapCorrection: { volumeSum: 792176, tradingSum: 82782828 },
         atr: {
             average: 2,
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
-        deferTradingInSeconds: 0,
+        deferTradingInSeconds: 60,
         keyLevels: {
-            momentumStartForLong: 35.6,
-            momentumStartForShort: 35.6,
+            momentumStartForLong: 104.5,
+            momentumStartForShort: 104.5,
         },
         short: {
-            levelBreakout: { entryPrice: 35.6, targets: bigTarget, planConfigs: vwapTrendConfigs },
+            levelBreakout: { entryPrice: 103.6, targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
         long: {
