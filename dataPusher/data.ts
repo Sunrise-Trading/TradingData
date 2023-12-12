@@ -27,7 +27,7 @@ const rblxEarlyConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: true,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
+    equalWeightDivider: 10,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
@@ -74,17 +74,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         deferTradingInSeconds: 60,
         keyLevels: {
-            momentumStartForLong: 104.5,
-            momentumStartForShort: 104.5,
+            momentumStartForLong: 103.6,
+            momentumStartForShort: 105.77,
         },
         short: {
-            levelBreakout: { entryPrice: 103.6, targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            //levelBreakout: { entryPrice: 103.34, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            levelBreakout: { entryPrice: 36.13, targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
     },
     {
