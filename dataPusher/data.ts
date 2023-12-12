@@ -72,13 +72,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
-        deferTradingInSeconds: 60,
+        deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 103.6,
+            momentumStartForLong: 102,
             momentumStartForShort: 105.77,
         },
         short: {
-            //levelBreakout: { entryPrice: 103.34, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            levelBreakout: { entryPrice: 102.9, targets: bigTarget, planConfigs: rangeScalpConfigs },
             momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
         long: {
