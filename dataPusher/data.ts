@@ -27,7 +27,7 @@ const rblxEarlyConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: true,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 10,
+    equalWeightDivider: 8,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
@@ -59,17 +59,17 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ORCL'
+    'RBLX', 'PFE'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
+        symbol: 'TTWO',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 792176, tradingSum: 82782828 },
+        vwapCorrection: { volumeSum: 46307, tradingSum: 7515738 },
         atr: {
-            average: 2,
-            mutiplier: 1.5,
+            average: 3.5,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
@@ -86,23 +86,45 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'CI',
+        symbol: 'PFE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 306807, tradingSum: 89854150 },
+        vwapCorrection: { volumeSum: 5837202, tradingSum: 155922163 },
         atr: {
-            average: 6.8,
-            mutiplier: 1.4,
+            average: 0.65,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 293,
-            momentumStartForShort: 293,
+            momentumStartForLong: 26,
+            momentumStartForShort: 27,
+        },
+        short: {
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+        },
+        long: {
+            levelBreakout: { entryPrice: 26, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+        },
+    },
+    {
+        symbol: 'RBLX',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 103061, tradingSum: 4409268 },
+        atr: {
+            average: 1.5,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 42.5,
+            momentumStartForShort: 42,
         },
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 300, targets: bigTarget, planConfigs: rblxConfigs },
+            levelBreakout: { entryPrice: 43.3, targets: bigTarget, planConfigs: rblxConfigs },
             openingDrive: { targets: bigTarget, planConfigs: rblxEarlyConfigs },
             momentum: { targets: bigTarget, planConfigs: rblxConfigs },
         },
