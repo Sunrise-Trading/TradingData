@@ -19,8 +19,8 @@ const rblxConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: true,
 };
-const rblxEarlyConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+const mrnaConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 5,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
@@ -59,76 +59,53 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'RBLX', 'PFE'
+    'MRNA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TTWO',
+        symbol: 'MRNA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 46307, tradingSum: 7515738 },
+        vwapCorrection: { volumeSum: 713901, tradingSum: 62159478 },
         atr: {
-            average: 3.5,
-            mutiplier: 1,
+            average: 3.8,
+            mutiplier: 1.8,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 102,
-            momentumStartForShort: 105.77,
+            momentumStartForLong: 85,
+            momentumStartForShort: 88.77,
         },
         short: {
-            levelBreakout: { entryPrice: 102.9, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: mrnaConfigs },
+            levelBreakout: { entryPrice: 86.4, targets: bigTarget, planConfigs: mrnaConfigs },
+        },
+        long: {
+            openingDrive: { targets: bigTarget, planConfigs: mrnaConfigs },
+            momentum: { targets: bigTarget, planConfigs: mrnaConfigs },
+            levelBreakout: { entryPrice: 88.8, targets: bigTarget, planConfigs: mrnaConfigs },
+        },
+    },
+    {
+        symbol: 'OXY',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 346948, tradingSum: 20284391 },
+        atr: {
+            average: 1.2,
+            mutiplier: 1.4,
+            minimumMultipler: 1,
+        },
+        deferTradingInSeconds: 0,
+        keyLevels: {
+            momentumStartForLong: 58.4,
+            momentumStartForShort: 58.5,
+        },
+        short: {
             momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
         long: {
             momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
     },
-    {
-        symbol: 'PFE',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 5837202, tradingSum: 155922163 },
-        atr: {
-            average: 0.65,
-            mutiplier: 2,
-            minimumMultipler: 1,
-        },
-        deferTradingInSeconds: 120,
-        keyLevels: {
-            momentumStartForLong: 26,
-            momentumStartForShort: 27,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
-            levelBreakout: { entryPrice: 26, targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-        long: {
-            levelBreakout: { entryPrice: 26, targets: bigTarget, planConfigs: rangeScalpConfigs },
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
-        },
-    },
-    {
-        symbol: 'RBLX',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 103061, tradingSum: 4409268 },
-        atr: {
-            average: 1.5,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 42.5,
-            momentumStartForShort: 43,
-        },
-        short: {
-            momentum: { targets: bigTarget, planConfigs: rblxConfigs },
-        },
-        long: {
-            levelBreakout: { entryPrice: 43.3, targets: bigTarget, planConfigs: rblxConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: rblxEarlyConfigs },
-            momentum: { targets: bigTarget, planConfigs: rblxConfigs },
-        },
-    }
 ];
