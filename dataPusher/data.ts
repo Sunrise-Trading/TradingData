@@ -12,19 +12,19 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-const rblxConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
-};
-const mrnaConfigs: TradingPlans.PlanConfigs = {
+const costConfig: TradingPlans.PlanConfigs = {
     equalWeightDivider: 5,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
+    allowEarlyExits: false,
+};
+const intcConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 5,
+    requireReversal: false,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: false,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 8,
@@ -46,6 +46,18 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
+const intcTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 2, 2, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    },
+    minimumTargets: {
+        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 2, 2, 4],
+        priceLevels: [46.8, 46.85, 46.9, 46.95, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
+    }
+};
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
@@ -59,53 +71,52 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'MRNA',
+    'INTC', 'COST'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MRNA',
+        symbol: 'INTC',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 713901, tradingSum: 62159478 },
+        vwapCorrection: { volumeSum: 347988, tradingSum: 16000778 },
         atr: {
-            average: 3.8,
-            mutiplier: 1.8,
+            average: 1.3,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 85,
-            momentumStartForShort: 88.77,
+            momentumStartForLong: 45.8,
+            momentumStartForShort: 45.77,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: mrnaConfigs },
-            levelBreakout: { entryPrice: 86.4, targets: bigTarget, planConfigs: mrnaConfigs },
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: mrnaConfigs },
-            momentum: { targets: bigTarget, planConfigs: mrnaConfigs },
-            levelBreakout: { entryPrice: 88.8, targets: bigTarget, planConfigs: mrnaConfigs },
+            openingDrive: { targets: intcTarget, planConfigs: intcConfigs },
+            momentum: { targets: intcTarget, planConfigs: intcConfigs },
+            levelBreakout: { entryPrice: 46.34, targets: intcTarget, planConfigs: intcConfigs },
         },
     },
     {
-        symbol: 'OXY',
+        symbol: 'COST',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 346948, tradingSum: 20284391 },
+        vwapCorrection: { volumeSum: 27612, tradingSum: 17806218 },
         atr: {
-            average: 1.2,
-            mutiplier: 1.4,
+            average: 8.9,
+            mutiplier: 1.2,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 58.4,
-            momentumStartForShort: 58.5,
+            momentumStartForLong: 642,
+            momentumStartForShort: 641.5,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: costConfig },
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: costConfig },
+            levelBreakout: { entryPrice: 648.2, targets: bigTarget, planConfigs: costConfig }
         },
     },
 ];
