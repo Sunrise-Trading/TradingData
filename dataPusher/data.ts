@@ -19,15 +19,22 @@ const costConfig: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const intcConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
-    requireReversal: false,
+const adbeConfig: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 4,
+    requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 8,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
+};
+const nioShortConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 6,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
@@ -46,7 +53,7 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const intcTarget: TradingPlans.ExitTargets = {
+const adbeTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 2, 2, 2, 3, 3.5, 4, 5, 10],
@@ -56,6 +63,18 @@ const intcTarget: TradingPlans.ExitTargets = {
         rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 2, 2, 4],
         priceLevels: [46.8, 46.85, 46.9, 46.95, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
+    }
+};
+const nioShortTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 2, 2, 2, 3, 3.5, 4, 5, 10],
+        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
+    },
+    minimumTargets: {
+        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 2, 2, 4],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
     }
 };
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
@@ -71,52 +90,52 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'INTC', 'COST'
+    'ADBE', 'COST'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'ADBE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 347988, tradingSum: 16000778 },
+        vwapCorrection: { volumeSum: 115866, tradingSum: 68791794 },
         atr: {
-            average: 1.3,
-            mutiplier: 1.5,
+            average: 13,
+            mutiplier: 1.1,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 45.8,
-            momentumStartForShort: 45.77,
+            momentumStartForLong: 593,
+            momentumStartForShort: 590,
         },
         short: {
         },
         long: {
-            openingDrive: { targets: intcTarget, planConfigs: intcConfigs },
-            momentum: { targets: intcTarget, planConfigs: intcConfigs },
-            levelBreakout: { entryPrice: 46.34, targets: intcTarget, planConfigs: intcConfigs },
+            openingDrive: { targets: adbeTarget, planConfigs: adbeConfig },
+            momentum: { targets: adbeTarget, planConfigs: adbeConfig },
+            levelBreakout: { entryPrice: 597, targets: adbeTarget, planConfigs: adbeConfig },
         },
     },
     {
-        symbol: 'COST',
+        symbol: 'NIO',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 27612, tradingSum: 17806218 },
+        vwapCorrection: { volumeSum: 11844636, tradingSum: 103284354 },
         atr: {
-            average: 8.9,
-            mutiplier: 1.2,
+            average: 0.4,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 642,
-            momentumStartForShort: 641.5,
+            momentumStartForLong: 8,
+            momentumStartForShort: 9,
         },
         short: {
-            momentum: { targets: bigTarget, planConfigs: costConfig },
+            openingDrive: { targets: nioShortTarget, planConfigs: nioShortConfigs },
+            momentum: { targets: nioShortTarget, planConfigs: nioShortConfigs },
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: costConfig },
-            levelBreakout: { entryPrice: 648.2, targets: bigTarget, planConfigs: costConfig }
+            levelBreakout: { entryPrice: 8, targets: bigTarget, planConfigs: rangeScalpConfigs }
         },
     },
 ];
