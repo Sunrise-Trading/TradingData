@@ -90,7 +90,7 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ADBE', 'COST'
+    'ADBE', 'NIO'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -135,7 +135,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: nioShortTarget, planConfigs: nioShortConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 8, targets: bigTarget, planConfigs: rangeScalpConfigs }
+            levelBreakout: { entryPrice: 8, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
     },
 ];
