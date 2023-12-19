@@ -19,12 +19,19 @@ const costConfig: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const adbeConfig: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+const runConfig: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 5,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
+    alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
+};
+const runFastConfig: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 5,
+    requireReversal: false,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
 };
 const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 8,
@@ -33,12 +40,12 @@ const rangeScalpConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: true,
 };
-const nioShortConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
-    requireReversal: true,
+const tslaConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 4,
+    requireReversal: false,
     alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
+    alwaysAllowFirstFewExits: false,
+    allowEarlyExits: false,
 };
 
 const bigTarget: TradingPlans.ExitTargets = {
@@ -50,18 +57,6 @@ const bigTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
-    }
-};
-const adbeTarget: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 2, 2, 2, 3, 3.5, 4, 5, 10],
-        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
-    },
-    minimumTargets: {
-        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 2, 2, 4],
-        priceLevels: [46.8, 46.85, 46.9, 46.95, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
@@ -90,52 +85,71 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ADBE', 'NIO'
+    'RUN', 'AFRM', 'TSLA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ADBE',
+        symbol: 'RUN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 115866, tradingSum: 68791794 },
+        vwapCorrection: { volumeSum: 287033, tradingSum: 5427281 },
         atr: {
-            average: 13,
-            mutiplier: 1.1,
-            minimumMultipler: 1,
+            average: 1,
+            mutiplier: 1.5,
+            minimumMultipler: 0.9,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 593,
-            momentumStartForShort: 590,
+            momentumStartForLong: 18.95,
+            momentumStartForShort: 1,
         },
         short: {
         },
         long: {
-            openingDrive: { targets: adbeTarget, planConfigs: adbeConfig },
-            momentum: { targets: adbeTarget, planConfigs: adbeConfig },
-            levelBreakout: { entryPrice: 597, targets: adbeTarget, planConfigs: adbeConfig },
+            openingDrive: { targets: bigTarget, planConfigs: runConfig },
+            momentum: { targets: bigTarget, planConfigs: runConfig },
+            levelBreakout: { entryPrice: 19.17, targets: bigTarget, planConfigs: runFastConfig },
         },
     },
     {
-        symbol: 'NIO',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 11844636, tradingSum: 103284354 },
+        vwapCorrection: { volumeSum: 403046, tradingSum: 101982306 },
         atr: {
-            average: 0.4,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 9,
+            mutiplier: 1,
+            minimumMultipler: 0.4,
+        },
+        deferTradingInSeconds: 60,
+        keyLevels: {
+            momentumStartForLong: 252.75,
+            momentumStartForShort: 1,
+        },
+        short: {
+        },
+        long: {
+            levelBreakout: { entryPrice: 253.72, targets: bigTarget, planConfigs: tslaConfigs },
+        },
+    },
+    {
+        symbol: 'AFRM',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 63599, tradingSum: 2803269 },
+        atr: {
+            average: 3,
+            mutiplier: 1.2,
+            minimumMultipler: 0.8,
         },
         deferTradingInSeconds: 0,
         keyLevels: {
-            momentumStartForLong: 8,
-            momentumStartForShort: 9,
+            momentumStartForLong: 45,
+            momentumStartForShort: 1,
         },
         short: {
-            openingDrive: { targets: nioShortTarget, planConfigs: nioShortConfigs },
-            momentum: { targets: nioShortTarget, planConfigs: nioShortConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 8, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            levelBreakout: { entryPrice: 46.59, targets: bigTarget, planConfigs: rangeScalpConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: rangeScalpConfigs },
             momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
         },
     },
