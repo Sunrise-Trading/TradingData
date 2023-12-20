@@ -12,41 +12,6 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-const costConfig: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: false,
-};
-const runConfig: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: false,
-    allowEarlyExits: false,
-};
-const runFastConfig: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
-    requireReversal: false,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
-};
-const rangeScalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 8,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
-};
-const tslaConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
-    requireReversal: false,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: false,
-    allowEarlyExits: false,
-};
 
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -90,48 +55,6 @@ export const stockSelections: string[] = [
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RUN',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 287033, tradingSum: 5427281 },
-        atr: {
-            average: 1,
-            mutiplier: 1.5,
-            minimumMultipler: 0.9,
-        },
-        deferTradingInSeconds: 0,
-        keyLevels: {
-            momentumStartForLong: 18.95,
-            momentumStartForShort: 1,
-        },
-        short: {
-        },
-        long: {
-            openingDrive: { targets: bigTarget, planConfigs: runConfig },
-            momentum: { targets: bigTarget, planConfigs: runConfig },
-            levelBreakout: { entryPrice: 19.17, targets: bigTarget, planConfigs: runFastConfig },
-        },
-    },
-    {
-        symbol: 'TSLA',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 403046, tradingSum: 101982306 },
-        atr: {
-            average: 9,
-            mutiplier: 1,
-            minimumMultipler: 0.4,
-        },
-        deferTradingInSeconds: 60,
-        keyLevels: {
-            momentumStartForLong: 252.75,
-            momentumStartForShort: 1,
-        },
-        short: {
-        },
-        long: {
-            levelBreakout: { entryPrice: 253.72, targets: bigTarget, planConfigs: tslaConfigs },
-        },
-    },
-    {
         symbol: 'AFRM',
         autoFlip: false,
         vwapCorrection: { volumeSum: 63599, tradingSum: 2803269 },
@@ -148,9 +71,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 46.59, targets: bigTarget, planConfigs: rangeScalpConfigs },
-            openingDrive: { targets: bigTarget, planConfigs: rangeScalpConfigs },
-            momentum: { targets: bigTarget, planConfigs: rangeScalpConfigs },
+            levelBreakout: { entryPrice: 46.59, targets: bigTarget, planConfigs: vwapTrendConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
         },
     },
 ];
