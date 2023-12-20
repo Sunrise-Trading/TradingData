@@ -6,14 +6,37 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const vwapTrendConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+    equalWeightDivider: 6,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-
+const fdxTrendConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 6,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
+    allowEarlyExits: false,
+};
+const tslaConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 6,
+    deferTradingInSeconds: 300,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
+    allowEarlyExits: true,
+};
+const maraConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 6,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
+    allowEarlyExits: true,
+};
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -51,29 +74,86 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'RUN', 'AFRM', 'TSLA'
+    'GOOGL', 'FDX', 'TSLA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AFRM',
+        symbol: 'FDX',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 63599, tradingSum: 2803269 },
+        vwapCorrection: { volumeSum: 361490, tradingSum: 89794663 },
         atr: {
-            average: 3,
-            mutiplier: 1.2,
-            minimumMultipler: 0.8,
+            average: 5.38,
+            mutiplier: 1.66,
+            minimumMultipler: 0.91,
         },
         keyLevels: {
-            momentumStartForLong: 45,
-            momentumStartForShort: 1,
+            momentumStartForLong: 244,
+            momentumStartForShort: 243,
         },
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 46.59, targets: bigTarget, planConfigs: vwapTrendConfigs },
             openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
             momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+        },
+    },
+    {
+        symbol: 'GOOGL',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 628064, tradingSum: 86740364 },
+        atr: {
+            average: 3,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 137.5,
+            momentumStartForShort: 137.8,
+        },
+        short: {
+        },
+        long: {
+            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+        },
+    },
+    {
+        symbol: 'TSLA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        atr: {
+            average: 9,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 257.05,
+            momentumStartForShort: 255.5,
+        },
+        short: {
+        },
+        long: {
+            levelBreakout: { entryPrice: 258.34, targets: bigTarget, planConfigs: tslaConfigs },
+        },
+    },
+    {
+        symbol: 'MARA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        atr: {
+            average: 1,
+            mutiplier: 2,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 23,
+            momentumStartForShort: 22.5,
+        },
+        short: {
+        },
+        long: {
+            momentum: { targets: bigTarget, planConfigs: maraConfigs },
         },
     },
 ];
