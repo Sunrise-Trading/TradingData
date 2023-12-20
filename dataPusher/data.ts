@@ -7,6 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 4,
+    deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: false,
@@ -63,7 +64,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 1.2,
             minimumMultipler: 0.8,
         },
-        deferTradingInSeconds: 0,
         keyLevels: {
             momentumStartForLong: 45,
             momentumStartForShort: 1,

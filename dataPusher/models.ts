@@ -7,7 +7,6 @@ export interface TradingPlans {
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
     atr: AverageTrueRange,
-    deferTradingInSeconds: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
@@ -50,6 +49,7 @@ export interface BasePlan {
 };
 export interface PlanConfigs {
     equalWeightDivider: number,
+    deferTradingInSeconds: number,
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,
     alwaysAllowFirstFewExits: boolean,
