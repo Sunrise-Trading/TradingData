@@ -14,7 +14,7 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const muConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
+    equalWeightDivider: 4,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -82,7 +82,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MU',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 361490, tradingSum: 89794663 },
+        vwapCorrection: { volumeSum: 799769, tradingSum: 67088217 },
         atr: {
             average: 2,
             mutiplier: 1.5,
@@ -102,7 +102,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 361490, tradingSum: 89794663 },
+        vwapCorrection: { volumeSum: 842410, tradingSum: 211655964 },
         atr: {
             average: 9,
             mutiplier: 1,
@@ -115,7 +115,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 251.92, targets: bigTarget, planConfigs: tslaConfigs },
             openingDrive: { targets: bigTarget, planConfigs: tslaConfigs },
             momentum: { targets: bigTarget, planConfigs: tslaConfigs },
         },
@@ -123,7 +122,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SPY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        vwapCorrection: { volumeSum: 1739152, tradingSum: 819012988 },
         atr: {
             average: 4,
             mutiplier: 1,
@@ -142,7 +141,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'QQQ',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        vwapCorrection: { volumeSum: 1253336, tradingSum: 510102311 },
         atr: {
             average: 4,
             mutiplier: 1,
