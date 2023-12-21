@@ -13,8 +13,8 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-const fdxTrendConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
+const muConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 5,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -23,18 +23,18 @@ const fdxTrendConfigs: TradingPlans.PlanConfigs = {
 };
 const tslaConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
-    deferTradingInSeconds: 300,
+    deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: true,
 };
-const maraConfigs: TradingPlans.PlanConfigs = {
+const indexConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 6,
     deferTradingInSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    alwaysAllowFirstFewExits: false,
+    requireReversal: false,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
     allowEarlyExits: true,
 };
 const bigTarget: TradingPlans.ExitTargets = {
@@ -49,16 +49,16 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const nioShortTarget: TradingPlans.ExitTargets = {
+const muTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 2, 2, 2, 3, 3.5, 4, 5, 10],
+        rrr: [0.9, 0.95, 1.5, 1.9, 2, 3, 3.5, 4, 5, 10],
         dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 2, 2, 4],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.4, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.9, 1, 1],
     }
 };
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
@@ -74,77 +74,79 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'GOOGL', 'FDX', 'TSLA'
+    'MU', 'TSLA',
+    'SPY', 'QQQ'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'FDX',
+        symbol: 'MU',
         autoFlip: false,
         vwapCorrection: { volumeSum: 361490, tradingSum: 89794663 },
         atr: {
-            average: 5.38,
-            mutiplier: 1.66,
+            average: 2,
+            mutiplier: 1.5,
             minimumMultipler: 0.91,
         },
         keyLevels: {
-            momentumStartForLong: 244,
-            momentumStartForShort: 243,
+            momentumStartForLong: 83,
+            momentumStartForShort: 82.75,
         },
         short: {
         },
         long: {
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-        },
-    },
-    {
-        symbol: 'GOOGL',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 628064, tradingSum: 86740364 },
-        atr: {
-            average: 3,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        keyLevels: {
-            momentumStartForLong: 137.5,
-            momentumStartForShort: 137.8,
-        },
-        short: {
-        },
-        long: {
-            openingDrive: { targets: bigTarget, planConfigs: vwapTrendConfigs },
-            momentum: { targets: bigTarget, planConfigs: vwapTrendConfigs },
+            openingDrive: { targets: muTargets, planConfigs: muConfigs },
+            momentum: { targets: muTargets, planConfigs: muConfigs },
         },
     },
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        vwapCorrection: { volumeSum: 361490, tradingSum: 89794663 },
         atr: {
             average: 9,
             mutiplier: 1,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 257.05,
-            momentumStartForShort: 255.5,
+            momentumStartForLong: 250,
+            momentumStartForShort: 249,
         },
         short: {
         },
         long: {
-            levelBreakout: { entryPrice: 258.34, targets: bigTarget, planConfigs: tslaConfigs },
+            levelBreakout: { entryPrice: 251.92, targets: bigTarget, planConfigs: tslaConfigs },
+            openingDrive: { targets: bigTarget, planConfigs: tslaConfigs },
+            momentum: { targets: bigTarget, planConfigs: tslaConfigs },
         },
     },
     {
-        symbol: 'MARA',
+        symbol: 'SPY',
         autoFlip: false,
         vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
         atr: {
-            average: 1,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 470,
+            momentumStartForShort: 468,
+        },
+        short: {
+        },
+        long: {
+            momentum: { targets: bigTarget, planConfigs: indexConfigs },
+        },
+    },
+    {
+        symbol: 'QQQ',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 473450, tradingSum: 121353846 },
+        atr: {
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         keyLevels: {
             momentumStartForLong: 23,
@@ -153,7 +155,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            momentum: { targets: bigTarget, planConfigs: maraConfigs },
+            momentum: { targets: bigTarget, planConfigs: indexConfigs },
         },
     },
 ];
