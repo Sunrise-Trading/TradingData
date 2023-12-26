@@ -23,12 +23,12 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
-    openingDrive?: OpeningDrivePlan,
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
+    redtoGreenPlan?: RedToGreenPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
 };
 export interface keyLevels {
@@ -81,6 +81,8 @@ export interface RetracementArea extends BasePlan {
 }
 export interface LevelBreakoutPlan extends BasePlan {
     entryPrice: number,
+}
+export interface RedToGreenPlan extends BasePlan {
 }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,

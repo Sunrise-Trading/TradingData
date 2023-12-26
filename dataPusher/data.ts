@@ -95,66 +95,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            openingDrive: { targets: muTargets, planConfigs: muConfigs },
             momentum: { targets: muTargets, planConfigs: muConfigs },
         },
-    },
-    {
-        symbol: 'TSLA',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 842410, tradingSum: 211655964 },
-        atr: {
-            average: 9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 250,
-            momentumStartForShort: 249,
-        },
-        short: {
-        },
-        long: {
-            openingDrive: { targets: bigTarget, planConfigs: tslaConfigs },
-            momentum: { targets: bigTarget, planConfigs: tslaConfigs },
-        },
-    },
-    {
-        symbol: 'SPY',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1739152, tradingSum: 819012988 },
-        atr: {
-            average: 4,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 470,
-            momentumStartForShort: 468,
-        },
-        short: {
-        },
-        long: {
-            momentum: { targets: bigTarget, planConfigs: indexConfigs },
-        },
-    },
-    {
-        symbol: 'QQQ',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1253336, tradingSum: 510102311 },
-        atr: {
-            average: 4,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 23,
-            momentumStartForShort: 22.5,
-        },
-        short: {
-        },
-        long: {
-            momentum: { targets: bigTarget, planConfigs: indexConfigs },
-        },
-    },
+    }
 ];
