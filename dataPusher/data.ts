@@ -95,6 +95,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
+            redtoGreenPlan: { targets: muTargets, planConfigs: muConfigs },
             momentum: { targets: muTargets, planConfigs: muConfigs },
         },
     }
