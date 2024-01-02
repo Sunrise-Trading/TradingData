@@ -86,14 +86,15 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TSLA', 'RIVN'
+    //'TSLA',
+    'RIVN', //'MARA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 150859, tradingSum: 375726439 },
+        vwapCorrection: { volumeSum: 1508559, tradingSum: 375726439 },
         atr: {
             average: 9,
             mutiplier: 1,
@@ -106,6 +107,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
+            levelBreakout: { entryPrice: 251, targets: tslaTargets, planConfigs: tslaConfigs },
             redtoGreenPlan: { targets: tslaTargets, planConfigs: tslaConfigs },
             momentum: { targets: tslaTargets, planConfigs: tslaConfigs },
         },
