@@ -29,6 +29,7 @@ export interface SingleDirectionPlans {
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
+    firstRetracementPlan?: FirstRetracementPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
 };
 export interface keyLevels {
@@ -82,6 +83,7 @@ export interface RetracementArea extends BasePlan {
 export interface LevelBreakoutPlan extends BasePlan {
     entryPrice: number,
 }
+export interface FirstRetracementPlan extends BasePlan { }
 export interface RedToGreenPlan extends BasePlan {
 }
 export interface IntraDayBreakoutPlan extends BasePlan {
