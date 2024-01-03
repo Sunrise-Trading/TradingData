@@ -13,29 +13,13 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
 };
-const rivnConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
+const todayConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 8,
     deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
-};
-const tslaConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
-    deferTradingInSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
     allowEarlyExits: false,
-};
-const indexConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
-    deferTradingInSeconds: 0,
-    requireReversal: false,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
 };
 const bigTarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -86,48 +70,70 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    //'TSLA',
-    'RIVN', //'MARA'
+    'DYN', 'SOFI',
+    'MARA', 'COIN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'DYN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1508559, tradingSum: 375726439 },
+        vwapCorrection: { volumeSum: 1582104, tradingSum: 32599878 },
         atr: {
-            average: 9,
-            mutiplier: 1,
-            minimumMultipler: 0.4,
+            average: 0.88,
+            mutiplier: 3,
+            minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 247.5,
-            momentumStartForShort: 247,
+            momentumStartForLong: 15,
+            momentumStartForShort: 21,
         },
         short: {
+            redtoGreenPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+
         },
         long: {
-            levelBreakout: { entryPrice: 251, targets: tslaTargets, planConfigs: tslaConfigs },
-            redtoGreenPlan: { targets: tslaTargets, planConfigs: tslaConfigs },
-            momentum: { targets: tslaTargets, planConfigs: tslaConfigs },
         },
     },
     {
-        symbol: 'RIVN',
+        symbol: 'SOFI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1294783, tradingSum: 29126464 },
+        vwapCorrection: { volumeSum: 1418421, tradingSum: 12832034 },
         atr: {
-            average: 1,
+            average: 0.45,
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 21.25,
-            momentumStartForShort: 22.8,
+            momentumStartForLong: 9,
+            momentumStartForShort: 9,
         },
         short: {
-            redtoGreenPlan: { targets: tslaTargets, planConfigs: rivnConfigs },
-            momentum: { targets: tslaTargets, planConfigs: rivnConfigs },
+            redtoGreenPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            momentum: { targets: tslaTargets, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+        },
+        long: {
+        },
+    },
+    {
+        symbol: 'COIN',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 921107, tradingSum: 136822486 },
+        atr: {
+            average: 10,
+            mutiplier: 1.2,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 145,
+            momentumStartForShort: 150,
+        },
+        short: {
+            redtoGreenPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            momentum: { targets: tslaTargets, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: tslaTargets, planConfigs: todayConfigs },
         },
         long: {
         },
@@ -135,7 +141,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MARA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 4821828, tradingSum: 127865425 },
+        vwapCorrection: { volumeSum: 4704655, tradingSum: 99002312 },
         atr: {
             average: 2.3,
             mutiplier: 1.5,
@@ -146,10 +152,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 26,
         },
         short: {
+            firstRetracementPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            momentum: { targets: tslaTargets, planConfigs: todayConfigs },
         },
         long: {
-            levelBreakout: { entryPrice: 27.56, targets: tslaTargets, planConfigs: rivnConfigs },
-            redtoGreenPlan: { targets: tslaTargets, planConfigs: rivnConfigs },
         },
     },
 ];
