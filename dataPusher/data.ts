@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const vwapTrendConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 6,
+    equalWeightDivider: 10,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,7 +14,7 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const todayConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 5,
+    equalWeightDivider: 10,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -54,19 +54,6 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-
-const tslaTargets: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [],
-        rrr: [0.9, 0.95, 2, 2, 2, 2, 2, 3, 3, 5],
-        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.9, 1, 1, 1],
-    },
-    minimumTargets: {
-        priceLevels: [],
-        rrr: [0.9, 0.95, 1.2, 1.3, 1.5, 1.8, 1.8, 1.8, 1.8, 2],
-        dailyRanges: [0.5, 0.5, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0],
-    }
-};
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
@@ -100,11 +87,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
             firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: tslaTargets, planConfigs: scalConfigs },
+            momentum: { targets: R2Target, planConfigs: scalConfigs },
         },
         long: {
             falseBreakoutPlan: { targets: R2Target, planConfigs: scalConfigs },
-            momentum: { targets: tslaTargets, planConfigs: scalConfigs },
+            momentum: { targets: R2Target, planConfigs: scalConfigs },
         },
     },
     {
@@ -122,7 +109,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: tslaTargets, planConfigs: scalConfigs },
+            momentum: { targets: R2Target, planConfigs: scalConfigs },
             firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
         },
         long: {
