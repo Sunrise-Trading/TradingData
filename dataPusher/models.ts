@@ -30,8 +30,12 @@ export interface SingleDirectionPlans {
     levelBreakout?: LevelBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstRetracementPlan?: FirstRetracementPlan,
+    falseBreakoutPlan?: FalseBreakoutPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
 };
+export interface FalseBreakoutPlan extends BasePlan {
+
+}
 export interface keyLevels {
     otherLevels?: number[];
     momentumStartForLong: number,
@@ -39,9 +43,9 @@ export interface keyLevels {
 };
 export enum PlanType {
     Momentum = 'Momentum',
-    Retracement = 'Retracement',
+    FirstRetracement = 'FirstRetracement',
     NewsBreakout = 'NewsBreakout',
-    OpeningDrive = 'OpeningDrive',
+    RedToGreen = 'RedToGreen',
     BreakoutAlgo = 'BreakoutAlgo',
 };
 export interface BasePlan {
