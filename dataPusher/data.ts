@@ -14,12 +14,21 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const todayConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 8,
+    equalWeightDivider: 5,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: false,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
+};
+
+const scalConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 10,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
 };
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -45,18 +54,7 @@ const bigTarget: TradingPlans.ExitTargets = {
         dailyRanges: [0.4, 0.45, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1],
     }
 };
-const muTargets: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.9, 2, 3, 3.5, 4, 5, 10],
-        dailyRanges: [0.5, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1, 1.1],
-    },
-    minimumTargets: {
-        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 2, 2, 2, 4],
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.4, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.9, 1, 1],
-    }
-};
+
 const tslaTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [],
@@ -82,30 +80,30 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'DYN', 'SOFI',
-    'MARA', 'COIN'
+    'MBLY'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DYN',
+        symbol: 'MBLY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1582104, tradingSum: 32599878 },
+        vwapCorrection: { volumeSum: 1602402, tradingSum: 46548365 },
         atr: {
-            average: 0.88,
-            mutiplier: 3,
+            average: 1.5,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 15,
-            momentumStartForShort: 21,
+            momentumStartForLong: 26.95,
+            momentumStartForShort: 29,
         },
         short: {
-            redtoGreenPlan: { targets: tslaTargets, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: tslaTargets, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
 
         },
         long: {
+            falseBreakoutPlan: { targets: R2Target, planConfigs: scalConfigs }
         },
     },
     {
