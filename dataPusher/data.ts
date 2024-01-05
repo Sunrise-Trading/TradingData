@@ -43,52 +43,52 @@ const R2Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'MBLY', 'WBA'
+    'AAPL', 'AMD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MBLY',
+        symbol: 'AAPL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1602402, tradingSum: 46548365 },
+        vwapCorrection: { volumeSum: 495472, tradingSum: 89534326 },
         atr: {
-            average: 1.5,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 3,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 26.95,
-            momentumStartForShort: 29,
+            momentumStartForLong: 180,
+            momentumStartForShort: 180,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: scalConfigs },
         },
         long: {
-            falseBreakoutPlan: { targets: R2Target, planConfigs: scalConfigs },
-            momentum: { targets: R2Target, planConfigs: scalConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
     },
     {
-        symbol: 'WBA',
+        symbol: 'AMD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 786117, tradingSum: 20274303 },
+        vwapCorrection: { volumeSum: 255145, tradingSum: 34581561 },
         atr: {
-            average: 0.85,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 24,
-            momentumStartForShort: 25.75,
+            momentumStartForLong: 135,
+            momentumStartForShort: 135,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: scalConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
         },
         long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
     }
 ];
