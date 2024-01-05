@@ -44,9 +44,12 @@ export interface keyLevels {
 export enum PlanType {
     Momentum = 'Momentum',
     FirstRetracement = 'FirstRetracement',
+    Retracement = 'Retracement',
     NewsBreakout = 'NewsBreakout',
+    FalseBreakout = 'FalseBreakout',
     RedToGreen = 'RedToGreen',
     BreakoutAlgo = 'BreakoutAlgo',
+    LevelBreakout = 'LevelBreakout',
 };
 export interface BasePlan {
     targets: ExitTargets,
