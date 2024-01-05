@@ -90,5 +90,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
             momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
+    },
+    {
+        symbol: 'PTON',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1148849, tradingSum: 7435899 },
+        atr: {
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 135,
+            momentumStartForShort: 135,
+        },
+        short: {
+        },
+        long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
+        },
     }
 ];
