@@ -43,17 +43,17 @@ const R2Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'AAPL', 'AMD'
+    'BA', 'NVDA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AAPL',
+        symbol: 'BA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 495472, tradingSum: 89534326 },
+        vwapCorrection: { volumeSum: 949709, tradingSum: 218683010 },
         atr: {
-            average: 3,
-            mutiplier: 1,
+            average: 5.5,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
@@ -70,17 +70,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AMD',
+        symbol: 'NVDA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 255145, tradingSum: 34581561 },
+        vwapCorrection: { volumeSum: 295050, tradingSum: 145749115 },
         atr: {
-            average: 4,
+            average: 12,
             mutiplier: 1,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 135,
-            momentumStartForShort: 135,
+            momentumStartForLong: 487,
+            momentumStartForShort: 487,
         },
         short: {
         },
