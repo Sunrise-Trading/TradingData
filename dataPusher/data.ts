@@ -55,7 +55,7 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'JNPR', 'MTCH', 'U'
+    'JNPR', 'MTCH', 'U', 'BA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -142,7 +142,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
         long: {
-
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
     },
     {
