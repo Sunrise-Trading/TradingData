@@ -55,33 +55,94 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'BA', 'NVDA'
+    'JNPR', 'MTCH', 'U'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BA',
+        symbol: 'JNPR',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 949709, tradingSum: 218683010 },
+        vwapCorrection: { volumeSum: 1133789, tradingSum: 41877461 },
         atr: {
-            average: 5.5,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 0.46,
+            mutiplier: 3,
+            minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 225,
-            momentumStartForShort: 235,
+            momentumStartForLong: 38,
+            momentumStartForShort: 38,
         },
         short: {
-            redtoGreenPlan: { targets: R1Target, planConfigs: todayConfigs },
-            momentum: { targets: R1Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R1Target, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
         },
         long: {
-            // redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R1Target, planConfigs: todayConfigs },
-            falseBreakoutPlan: { targets: R1Target, planConfigs: todayConfigs },
-            momentum: { targets: R1Target, planConfigs: todayConfigs },
+        },
+    },
+    {
+        symbol: 'MTCH',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 372204, tradingSum: 16016245 },
+        atr: {
+            average: 1.11,
+            mutiplier: 1.8,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 43,
+            momentumStartForShort: 43,
+        },
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+        },
+        long: {
+        },
+    },
+    {
+        symbol: 'U',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 531918, tradingSum: 20927237 },
+        atr: {
+            average: 1.9,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 39.29,
+            momentumStartForShort: 39.29,
+        },
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+        },
+        long: {
+        },
+    },
+    {
+        symbol: 'BA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 156837, tradingSum: 35612065 },
+        atr: {
+            average: 6,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 227,
+            momentumStartForShort: 227,
+        },
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: todayConfigs },
+        },
+        long: {
+
         },
     },
     {
