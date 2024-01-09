@@ -32,10 +32,15 @@ export interface SingleDirectionPlans {
     firstRetracementPlan?: FirstRetracementPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
+    rangePlan?: RangePlan,
+    vwapCrossFailPlan?: VwapCrossFailPlan,
+    vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
 };
 export interface FalseBreakoutPlan extends BasePlan {
 
 }
+export interface VwapCrossFailPlan extends BasePlan { }
+export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
     otherLevels?: number[];
     momentumStartForLong: number,
@@ -69,6 +74,7 @@ export interface MomentumPlan extends BasePlan {
 };
 export interface NewsBreakoutPlan extends BasePlan {
 };
+export interface RangePlan extends BasePlan { }
 export interface AlgoPlan extends BasePlan {
     expirationInSeconds: number,
     allowPremarket: boolean,
