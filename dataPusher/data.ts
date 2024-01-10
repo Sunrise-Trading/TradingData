@@ -21,9 +21,16 @@ const todayConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: true,
 };
-
-const scalConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 10,
+const tslaConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 11,
+    deferTradingInSeconds: 120,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
+};
+const scalpConfigs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 11,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
@@ -55,64 +62,22 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'JNPR', 'MTCH', 'U', 'BA'
+    'CHWY', 'AEHR', 'AMZN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'JNPR',
+        symbol: 'CHWY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1133789, tradingSum: 41877461 },
+        vwapCorrection: { volumeSum: 967930, tradingSum: 19319708 },
         atr: {
-            average: 0.46,
-            mutiplier: 3,
-            minimumMultipler: 1,
-        },
-        keyLevels: {
-            momentumStartForLong: 38,
-            momentumStartForShort: 38,
-        },
-        short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-        },
-        long: {
-        },
-    },
-    {
-        symbol: 'MTCH',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 372204, tradingSum: 16016245 },
-        atr: {
-            average: 1.11,
-            mutiplier: 1.8,
-            minimumMultipler: 1,
-        },
-        keyLevels: {
-            momentumStartForLong: 43,
-            momentumStartForShort: 43,
-        },
-        short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-        },
-        long: {
-        },
-    },
-    {
-        symbol: 'U',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 531918, tradingSum: 20927237 },
-        atr: {
-            average: 1.9,
+            average: 1.2,
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 39.29,
-            momentumStartForShort: 39.29,
+            momentumStartForLong: 20.2,
+            momentumStartForShort: 20.2,
         },
         short: {
             redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
@@ -123,51 +88,63 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'BA',
+        symbol: 'AEHR',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 156837, tradingSum: 35612065 },
+        vwapCorrection: { volumeSum: 315914, tradingSum: 5822251 },
         atr: {
-            average: 6,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 1.7,
+            mutiplier: 1.3,
+            minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 227,
-            momentumStartForShort: 227,
+            momentumStartForLong: 19,
+            momentumStartForShort: 19,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: scalpConfigs },
+            momentum: { targets: R2Target, planConfigs: scalpConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: scalpConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 295050, tradingSum: 145749115 },
+        vwapCorrection: { volumeSum: 301910, tradingSum: 71136786 },
         atr: {
-            average: 12,
+            average: 8,
             mutiplier: 1,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 487,
-            momentumStartForShort: 487,
+            momentumStartForLong: 235,
+            momentumStartForShort: 235,
         },
         short: {
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
+            momentum: { targets: R2Target, planConfigs: tslaConfigs },
+        },
+    },
+    {
+        symbol: 'AMZN',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 124795, tradingSum: 18960296 },
+        atr: {
+            average: 3,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 151.5,
+            momentumStartForShort: 151.5,
+        },
+        short: {
+        },
+        long: {
+            momentum: { targets: R2Target, planConfigs: scalpConfigs },
+            levelBreakout: { entryPrice: 152.23, targets: R2Target, planConfigs: scalpConfigs },
         },
     }
 ];
