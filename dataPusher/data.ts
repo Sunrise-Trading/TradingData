@@ -62,7 +62,7 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'CHWY', 'AEHR', 'AMZN'
+    'CHWY', 'AMZN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
