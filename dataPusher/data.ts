@@ -29,14 +29,6 @@ const tslaConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: true,
 };
-const scalpConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 11,
-    deferTradingInSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
-};
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -62,7 +54,7 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'COIN', 'MARA'
+    'TSLA', 'NFLX', 'COIN', 'MARA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -100,7 +92,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 19,
+            momentumStartForLong: 26,
             momentumStartForShort: 27.7,
         },
         short: {
@@ -133,6 +125,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: tslaConfigs },
         },
         long: {
+
+        },
+    },
+    {
+        symbol: 'NFLX',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 66586, tradingSum: 32461287 },
+        atr: {
+            average: 11,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 487,
+            momentumStartForShort: 487,
+        },
+        short: {
+
+        },
+        long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: tslaConfigs },
+            momentum: { targets: R2Target, planConfigs: tslaConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: tslaConfigs },
 
         },
     },
