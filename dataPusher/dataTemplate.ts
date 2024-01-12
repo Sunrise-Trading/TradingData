@@ -5,30 +5,39 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const vwapTrendConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 10,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 7,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: false,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
 };
-const todayConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 7,
     deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
     allowEarlyExits: true,
 };
-const tslaConfigs: TradingPlans.PlanConfigs = {
-    equalWeightDivider: 4,
+const stock3Configs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 7,
     deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
     allowEarlyExits: true,
 };
+const stock4Configs: TradingPlans.PlanConfigs = {
+    equalWeightDivider: 7,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: false,
+    allowEarlyExits: true,
+};
+
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -54,15 +63,17 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'JPM',
-    'DAL'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'JPM',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 450130, tradingSum: 78033338 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
             average: 2.13,
             mutiplier: 1.5,
@@ -73,79 +84,70 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 173,
         },
         short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
-            levelBreakout: { entryPrice: 174.75, targets: R2Target, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'DAL',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 621372, tradingSum: 24881847 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1,
+            average: 2.13,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 40,
-            momentumStartForShort: 40,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: todayConfigs },
-            momentum: { targets: R2Target, planConfigs: todayConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: todayConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'TSLA',
+        symbol: 'stock3',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1694110, tradingSum: 373698444 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 8,
-            mutiplier: 1,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 220,
-            momentumStartForShort: 225,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            rangePlan: { targets: R2Target, planConfigs: tslaConfigs },
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: tslaConfigs },
-
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
-            rangePlan: { targets: R2Target, planConfigs: tslaConfigs },
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: tslaConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
     {
-        symbol: 'NFLX',
+        symbol: 'stock4',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 66586, tradingSum: 32461287 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 11,
-            mutiplier: 1,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 487,
-            momentumStartForShort: 487,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: tslaConfigs },
-            momentum: { targets: R2Target, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: tslaConfigs },
-
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
     },
 ];
