@@ -30,13 +30,13 @@ export interface SingleDirectionPlans {
     levelBreakout?: LevelBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstRetracementPlan?: FirstRetracementPlan,
-    falseBreakoutPlan?: FalseBreakoutPlan,
+    bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
     rangePlan?: RangePlan,
     vwapCrossFailPlan?: VwapCrossFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
 };
-export interface FalseBreakoutPlan extends BasePlan {
+export interface BothSidesFalseBreakoutPlan extends BasePlan {
 
 }
 export interface VwapCrossFailPlan extends BasePlan { }
@@ -51,10 +51,13 @@ export enum PlanType {
     FirstRetracement = 'FirstRetracement',
     Retracement = 'Retracement',
     NewsBreakout = 'NewsBreakout',
-    FalseBreakout = 'FalseBreakout',
+    BothSidesFalseBreakout = 'BothSidesFalseBreakout',
     RedToGreen = 'RedToGreen',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
+    Range = 'Range',
+    VwapCrossFail = 'VwapCrossFail',
+    VwapCrossSuccess = 'VwapCrossSuccess',
 };
 export interface BasePlan {
     targets: ExitTargets,
