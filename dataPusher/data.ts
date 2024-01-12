@@ -15,7 +15,7 @@ const vwapTrendConfigs: TradingPlans.PlanConfigs = {
 };
 const todayConfigs: TradingPlans.PlanConfigs = {
     equalWeightDivider: 7,
-    deferTradingInSeconds: 120,
+    deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     alwaysAllowFirstFewExits: true,
@@ -54,7 +54,8 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'DAL', 'JPM',
+    'JPM',
+    'DAL'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
