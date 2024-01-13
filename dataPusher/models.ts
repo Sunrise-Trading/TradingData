@@ -62,9 +62,11 @@ export enum PlanType {
 export interface BasePlan {
     targets: ExitTargets,
     planConfigs: PlanConfigs,
+    planType?: PlanType,
 };
 export interface PlanConfigs {
     equalWeightDivider: number,
+    sizeOverride?: number,
     deferTradingInSeconds: number,
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,
