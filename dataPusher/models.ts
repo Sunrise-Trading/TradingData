@@ -65,7 +65,6 @@ export interface BasePlan {
     planType?: PlanType,
 };
 export interface PlanConfigs {
-    equalWeightDivider: number,
     sizeOverride?: number,
     deferTradingInSeconds: number,
     requireReversal: boolean,
