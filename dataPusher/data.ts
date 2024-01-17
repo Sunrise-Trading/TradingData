@@ -65,7 +65,7 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'RIVN',
     'TSLA',
-    'stock3',
+    'SAVE',
     'stock4',
 ];
 
