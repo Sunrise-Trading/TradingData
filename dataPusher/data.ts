@@ -5,16 +5,16 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const rivnConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const tslaConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+const stock2Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -22,7 +22,7 @@ const tslaConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -63,73 +63,71 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'RIVN',
-    'TSLA',
-    'SAVE',
+    'stock1',
+    'stock2',
+    'stock3',
     'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RIVN',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 407075, tradingSum: 7001394 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1,
-            mutiplier: 1,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 17,
-            momentumStartForShort: 17.25,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: rivnConfigs },
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: rivnConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: rivnConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'TSLA',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1162509, tradingSum: 250383907 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 8,
-            mutiplier: 1,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 213,
-            momentumStartForShort: 218,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: tslaConfigs },
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: tslaConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: tslaConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'SAVE',
+        symbol: 'stock3',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 5258403, tradingSum: 34441724 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1.4,
-            mutiplier: 1,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 6.16,
-            momentumStartForShort: 7.6,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: stock3Configs },
-            rangePlan: { targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
     {
