@@ -5,16 +5,16 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const tsmConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const aaplConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -63,51 +63,51 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'TSM',
+    'AAPL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'TSM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1336400, tradingSum: 146930424 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 2,
+            mutiplier: 1.8,
+            minimumMultipler: 0.9,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 110,
+            momentumStartForShort: 111,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: tsmConfigs },
+            levelBreakout: { entryPrice: 110.68, targets: R2Target, planConfigs: tsmConfigs }
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: tsmConfigs },
+            levelBreakout: { entryPrice: 110.68, targets: R2Target, planConfigs: tsmConfigs },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'AAPL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 880314, tradingSum: 163808461 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
+            average: 3.1,
+            mutiplier: 1.2,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 186,
+            momentumStartForShort: 186,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
+            levelBreakout: { entryPrice: 185.85, targets: R2Target, planConfigs: aaplConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: aaplConfigs },
         },
     },
     {
