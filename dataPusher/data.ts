@@ -15,7 +15,7 @@ const tsmConfigs: TradingPlans.PlanConfigs = {
 };
 const aaplConfigs: TradingPlans.PlanConfigs = {
     sizeOverride: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
