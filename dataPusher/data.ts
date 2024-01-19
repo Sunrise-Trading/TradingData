@@ -5,17 +5,17 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const tsmConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.3,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const aaplConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
-    deferTradingInSeconds: 60,
+const stock2Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
+    deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
@@ -63,51 +63,51 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TSM',
-    'AAPL',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSM',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1336400, tradingSum: 146930424 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 2,
-            mutiplier: 1.8,
-            minimumMultipler: 0.9,
-        },
-        keyLevels: {
-            momentumStartForLong: 110,
-            momentumStartForShort: 111,
-        },
-        short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: tsmConfigs },
-            levelBreakout: { entryPrice: 110.68, targets: R2Target, planConfigs: tsmConfigs }
-        },
-        long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: tsmConfigs },
-            levelBreakout: { entryPrice: 110.68, targets: R2Target, planConfigs: tsmConfigs },
-        },
-    },
-    {
-        symbol: 'AAPL',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 880314, tradingSum: 163808461 },
-        atr: {
-            average: 3.1,
-            mutiplier: 1.2,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 186,
-            momentumStartForShort: 186,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            levelBreakout: { entryPrice: 185.85, targets: R2Target, planConfigs: aaplConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: aaplConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
+        },
+    },
+    {
+        symbol: 'stock2',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 2.13,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
+        },
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
+        },
+        long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
