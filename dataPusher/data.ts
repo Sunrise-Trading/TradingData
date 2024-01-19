@@ -64,9 +64,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'META',
-    'SMCI',
-    'W',
-    'IRBT',
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -116,7 +114,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'W',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 559366, tradingSum: 32700860 },
         atr: {
             average: 3.3,
             mutiplier: 1.2,
