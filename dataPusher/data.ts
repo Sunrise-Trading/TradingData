@@ -5,29 +5,29 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const pyplConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const admConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const smciConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.05,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     sizeOverride: 0,
@@ -63,71 +63,75 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'PYPL',
+    'ADM',
+    'SMCI',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'PYPL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 437457, tradingSum: 29717427 },
         atr: {
-            average: 2.13,
+            average: 2,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 68.5,
+            momentumStartForShort: 66.5,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: pyplConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: pyplConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: pyplConfigs },
+            vwapCrossFailPlan: { targets: R2Target, planConfigs: pyplConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'ADM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 949929, tradingSum: 55498059 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 1.2,
+            mutiplier: 2.5,
+            minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 56.6,
+            momentumStartForShort: 60,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: admConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: admConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: admConfigs },
+            vwapCrossFailPlan: { targets: R2Target, planConfigs: admConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock2Configs },
+
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'SMCI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 371568, tradingSum: 166538708 },
         atr: {
-            average: 2.13,
+            average: 25,
             mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 445,
+            momentumStartForShort: 460,
         },
         short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: smciConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: smciConfigs },
         },
     },
     {
