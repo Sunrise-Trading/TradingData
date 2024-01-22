@@ -79,8 +79,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 68.5,
-            momentumStartForShort: 66.5,
+            momentumStartForLong: 66.5,
+            momentumStartForShort: 68.5,
         },
         short: {
             redtoGreenPlan: { targets: R2Target, planConfigs: pyplConfigs },
