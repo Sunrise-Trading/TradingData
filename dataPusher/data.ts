@@ -5,35 +5,35 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const metaConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.3,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const wConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+const stock3Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const irbtConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
+const stock4Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
@@ -63,41 +63,40 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'META',
-
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 97977, tradingSum: 37081459 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 8,
+            average: 2.13,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 376,
-            momentumStartForShort: 376,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: metaConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: metaConfigs },
-            vwapCrossFailPlan: { targets: R2Target, planConfigs: metaConfigs },
-            bothSidesFalseBreakoutPlan: { targets: R2Target, planConfigs: metaConfigs },
-            levelBreakout: { entryPrice: 380.46, targets: R2Target, planConfigs: metaConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'SMCI',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 225103, tradingSum: 78128984 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 18,
-            mutiplier: 1.2,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
@@ -112,41 +111,43 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'W',
+        symbol: 'stock3',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 559366, tradingSum: 32700860 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 3.3,
-            mutiplier: 1.2,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 57.73,
-            momentumStartForShort: 59.6,
-        },
-        short: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: wConfigs },
-        },
-        long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: wConfigs },
-        },
-    },
-    {
-        symbol: 'IRBT',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 2040502, tradingSum: 31476634 },
-        atr: {
-            average: 2,
+            average: 2.13,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 15.75,
-            momentumStartForShort: 15.5,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
-        short: {},
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
+        },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: irbtConfigs },
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock3Configs },
+        },
+    },
+    {
+        symbol: 'stock4',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 2.13,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
+        },
+        short: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
+        },
+        long: {
+            redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
     },
 ];

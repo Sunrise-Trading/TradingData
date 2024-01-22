@@ -30,6 +30,7 @@ export interface SingleDirectionPlans {
     levelBreakout?: LevelBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstRetracementPlan?: FirstRetracementPlan,
+    falseBreakoutPlan?: FalseBreakoutPlan,
     bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
     rangePlan?: RangePlan,
@@ -52,6 +53,7 @@ export enum PlanType {
     Retracement = 'Retracement',
     NewsBreakout = 'NewsBreakout',
     BothSidesFalseBreakout = 'BothSidesFalseBreakout',
+    FalseBreakout = 'FalseBreakout',
     RedToGreen = 'RedToGreen',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
@@ -72,6 +74,7 @@ export interface PlanConfigs {
     alwaysAllowFirstFewExits: boolean,
     allowEarlyExits: boolean,
 }
+export interface FalseBreakoutPlan extends BasePlan { }
 export interface OpeningDrivePlan extends BasePlan {
 }
 export interface MomentumPlan extends BasePlan {
