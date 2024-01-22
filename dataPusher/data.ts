@@ -129,9 +129,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { targets: R2Target, planConfigs: smciConfigs },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: smciConfigs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: smciConfigs },
+            //redtoGreenPlan: { targets: R2Target, planConfigs: smciConfigs },
         },
     },
     {
@@ -151,7 +152,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
         long: {
-            redtoGreenPlan: { targets: R2Target, planConfigs: stock4Configs },
+
         },
     },
 ];
