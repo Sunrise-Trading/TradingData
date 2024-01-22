@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 const pyplConfigs: TradingPlans.PlanConfigs = {
     sizeOverride: 0.3,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
@@ -23,7 +23,7 @@ const admConfigs: TradingPlans.PlanConfigs = {
 };
 const smciConfigs: TradingPlans.PlanConfigs = {
     sizeOverride: 0.05,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 120,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
