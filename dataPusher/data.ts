@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const rumConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
+    sizeOverride: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
@@ -126,6 +126,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: babaConfigs },
             falseBreakoutPlan: { targets: R2Target, planConfigs: babaConfigs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: babaConfigs }
         },
     },
     {
