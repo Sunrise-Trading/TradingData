@@ -15,7 +15,7 @@ const rumConfigs: TradingPlans.PlanConfigs = {
 };
 const tkoConfigs: TradingPlans.PlanConfigs = {
     sizeOverride: 0.3,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
@@ -23,7 +23,7 @@ const tkoConfigs: TradingPlans.PlanConfigs = {
 };
 const babaConfigs: TradingPlans.PlanConfigs = {
     sizeOverride: 0.3,
-    deferTradingInSeconds: 60,
+    deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
@@ -66,7 +66,7 @@ export const stockSelections: string[] = [
     'RUM',
     'TKO',
     'BABA',
-    'PLUG',
+    'VZ',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -147,6 +147,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plugConfigs },
             falseBreakoutPlan: { targets: R2Target, planConfigs: plugConfigs },
+        },
+    },
+    {
+        symbol: 'VZ',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 954769, tradingSum: 39433833 },
+        atr: {
+            average: 0.7,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 41.45,
+            momentumStartForShort: 41.45,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plugConfigs },
+        },
+        long: {
         },
     },
 ];
