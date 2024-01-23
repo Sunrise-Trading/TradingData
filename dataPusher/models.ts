@@ -105,6 +105,7 @@ export interface LevelBreakoutPlan extends BasePlan {
 }
 export interface FirstRetracementPlan extends BasePlan { }
 export interface RedToGreenPlan extends BasePlan {
+    strictMode: boolean,
 }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,
