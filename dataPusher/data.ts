@@ -5,16 +5,24 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const nflxConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const nflxLong: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
+const nflxShort: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.2,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: true,
+};
 const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -22,7 +30,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const ddConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -64,9 +72,8 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'NFLX',
-    'ASML',
+    //'ASML',
     'DD',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -81,15 +88,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             momentumStartForLong: 534,
-            momentumStartForShort: 534,
+            momentumStartForShort: 545.7,
         },
         short: {
+            firstRetracementPlan: { targets: R2Target, planConfigs: nflxShort },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: nflxShort },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nflxConfigs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: nflxConfigs },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: nflxConfigs },
-            levelBreakout: { entryPrice: 545.7, targets: R2Target, planConfigs: nflxConfigs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nflxLong },
+            firstRetracementPlan: { targets: R2Target, planConfigs: nflxLong },
+            falseBreakoutPlan: { targets: R2Target, planConfigs: nflxLong },
+            levelBreakout: { entryPrice: 545.7, targets: R2Target, planConfigs: nflxLong },
         },
     },
     {
