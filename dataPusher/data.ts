@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const nflxLong: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.3,
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -93,9 +93,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             firstRetracementPlan: { targets: R2Target, planConfigs: nflxShort },
             falseBreakoutPlan: { targets: R2Target, planConfigs: nflxShort },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nflxShort }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nflxLong },
+
             firstRetracementPlan: { targets: R2Target, planConfigs: nflxLong },
             falseBreakoutPlan: { targets: R2Target, planConfigs: nflxLong },
             levelBreakout: { entryPrice: 545.7, targets: R2Target, planConfigs: nflxLong },
