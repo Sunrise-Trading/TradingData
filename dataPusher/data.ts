@@ -30,7 +30,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const ddConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
