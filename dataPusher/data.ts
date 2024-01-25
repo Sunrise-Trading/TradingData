@@ -5,32 +5,24 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const nflxLong: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
+const tslaConfigs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
-};
-const nflxShort: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
-    deferTradingInSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: true,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.1,
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const ddConfigs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
+const stock3Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -71,43 +63,39 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'NFLX',
-    //'ASML',
-    'DD',
+    'TSLA',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NFLX',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 392499, tradingSum: 212677648 },
-        atr: {
-            average: 11,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 534,
-            momentumStartForShort: 545.7,
-        },
-        short: {
-            firstRetracementPlan: { targets: R2Target, planConfigs: nflxShort },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: nflxShort },
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nflxShort }
-        },
-        long: {
-
-            firstRetracementPlan: { targets: R2Target, planConfigs: nflxLong },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: nflxLong },
-            levelBreakout: { entryPrice: 545.7, targets: R2Target, planConfigs: nflxLong },
-        },
-    },
-    {
-        symbol: 'ASML',
+        symbol: 'TSLA',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 2.13,
+            average: 8,
+            mutiplier: 1.8,
+            minimumMultipler: 0.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: tslaConfigs },
+        },
+        long: {
+            levelBreakout: { entryPrice: 188.7, targets: R2Target, planConfigs: tslaConfigs },
+        },
+    },
+    {
+        symbol: 'IBM',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 2.2,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
@@ -123,23 +111,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'DD',
+        symbol: 'HUM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 372790, tradingSum: 24728299 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1,
-            mutiplier: 1.8,
-            minimumMultipler: 0.9,
+            average: 13,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 66.5,
-            momentumStartForShort: 66.5,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: ddConfigs },
-            falseBreakoutPlan: { targets: R2Target, planConfigs: ddConfigs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
         },
     },
     {
