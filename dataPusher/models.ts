@@ -28,6 +28,7 @@ export interface SingleDirectionPlans {
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
+    openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstRetracementPlan?: FirstRetracementPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
@@ -37,6 +38,9 @@ export interface SingleDirectionPlans {
     vwapCrossFailPlan?: VwapCrossFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
 };
+export interface OpenRangeBreakoutPlan extends BasePlan {
+    count: number,
+}
 export interface BothSidesFalseBreakoutPlan extends BasePlan {
 
 }
@@ -55,6 +59,7 @@ export enum PlanType {
     BothSidesFalseBreakout = 'BothSidesFalseBreakout',
     FalseBreakout = 'FalseBreakout',
     RedToGreen = 'RedToGreen',
+    OpenRangeBreakout = 'OpenRangeBreakout',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
     Range = 'Range',
