@@ -79,7 +79,9 @@ export interface PlanConfigs {
     alwaysAllowFirstFewExits: boolean,
     allowEarlyExits: boolean,
 }
-export interface FalseBreakoutPlan extends BasePlan { }
+export interface FalseBreakoutPlan extends BasePlan {
+    price: number
+}
 export interface OpeningDrivePlan extends BasePlan {
 }
 export interface MomentumPlan extends BasePlan {
