@@ -13,6 +13,14 @@ const sofi: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
+const sofi2: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.15,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: false,
+};
 const stock2Configs: TradingPlans.PlanConfigs = {
     sizeOverride: 0,
     deferTradingInSeconds: 0,
@@ -64,9 +72,6 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'SOFI',
-    'stock2',
-    'stock3',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -76,7 +81,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 16078687, tradingSum: 137492696 },
         atr: {
             average: 0.43,
-            mutiplier: 12,
+            mutiplier: 2,
             minimumMultipler: 0.5,
         },
         keyLevels: {
@@ -85,9 +90,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             falseBreakoutPlan: { price: 9, targets: R2Target, planConfigs: sofi },
+            firstRetracementPlan: { targets: R2Target, planConfigs: sofi2 }
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: sofi },
+            levelBreakout: { entryPrice: 9, targets: R2Target, planConfigs: sofi },
+            firstRetracementPlan: { targets: R2Target, planConfigs: sofi2 }
         },
     },
     {
