@@ -5,16 +5,8 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const sofi: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.3,
-    deferTradingInSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    alwaysAllowFirstFewExits: true,
-    allowEarlyExits: false,
-};
-const sofi2: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -71,31 +63,30 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'SOFI',
+    'GM',
+    'SMCI',
+    'UPS',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SOFI',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 16078687, tradingSum: 137492696 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 0.43,
-            mutiplier: 2,
+            average: 2.13,
+            mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 8.55,
-            momentumStartForShort: 9,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            falseBreakoutPlan: { price: 9, targets: R2Target, planConfigs: sofi },
-            firstRetracementPlan: { targets: R2Target, planConfigs: sofi2 }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: sofi },
-            levelBreakout: { entryPrice: 9, targets: R2Target, planConfigs: sofi },
-            firstRetracementPlan: { targets: R2Target, planConfigs: sofi2 }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
