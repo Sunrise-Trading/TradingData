@@ -71,7 +71,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'GM',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1783501, tradingSum: 67591835 },
         atr: {
             average: 0.83,
             mutiplier: 1.5,
@@ -82,15 +82,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 38.6,
         },
         short: {
-            falseBreakoutPlan: { price: 38.40, targets: R2Target, planConfigs: gm }
+            falseBreakoutPlan: { price: 38.40, targets: R1Target, planConfigs: gm },
+
         },
         long: {
+            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: gm },
         },
     },
     {
         symbol: 'SMCI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 415113, tradingSum: 230413648 },
         atr: {
             average: 29,
             mutiplier: 1.5,
