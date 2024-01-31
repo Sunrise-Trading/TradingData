@@ -124,7 +124,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 8,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nycb },
+            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: nycb },
         },
         long: {
         },
