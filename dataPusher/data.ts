@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const amd: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,7 +14,7 @@ const amd: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const googl: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -22,7 +22,7 @@ const googl: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const nycb: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -30,7 +30,7 @@ const nycb: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const plug: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.15,
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -65,8 +65,9 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'AMD',
     'GOOGL',
-    'NYCB',
     'PLUG',
+    'NYCB',
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -103,7 +104,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 144,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: googl },
+            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: googl },
+            falseBreakoutPlan: { price: 145, targets: R2Target, planConfigs: googl },
         },
         long: {
         },
@@ -125,7 +127,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nycb },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nycb },
         },
     },
     {
@@ -142,7 +143,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 4.16,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plug },
+            levelBreakout: { entryPrice: 4, targets: R1Target, planConfigs: plug }
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plug },
