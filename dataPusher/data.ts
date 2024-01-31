@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const amd: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,15 +14,15 @@ const amd: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const googl: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const nycb: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -30,7 +30,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const plug: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -122,10 +122,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 8,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nycb },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nycb },
         },
     },
     {
