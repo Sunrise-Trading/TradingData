@@ -5,16 +5,16 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const gm: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.2,
+const amd: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const smci: TradingPlans.PlanConfigs = {
-    sizeOverride: 0.3,
+const googl: TradingPlans.PlanConfigs = {
+    sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -29,7 +29,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
+const plug: TradingPlans.PlanConfigs = {
     sizeOverride: 0,
     deferTradingInSeconds: 0,
     requireReversal: true,
@@ -63,64 +63,63 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'GM',
-    'SMCI',
+    'AMD',
+    'GOOGL',
+    'NYCB',
+    'PLUG',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GM',
+        symbol: 'AMD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1783501, tradingSum: 67591835 },
+        vwapCorrection: { volumeSum: 2172688, tradingSum: 355297148 },
         atr: {
-            average: 0.83,
+            average: 6.9,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 36.84,
-            momentumStartForShort: 38.6,
+            momentumStartForLong: 160,
+            momentumStartForShort: 165.5,
         },
         short: {
-            falseBreakoutPlan: { price: 38.40, targets: R1Target, planConfigs: gm },
-
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: gm },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: amd },
         },
     },
     {
-        symbol: 'SMCI',
+        symbol: 'GOOGL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 415113, tradingSum: 230413648 },
+        vwapCorrection: { volumeSum: 566439, tradingSum: 81097125 },
         atr: {
-            average: 29,
+            average: 2.7,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 545,
-            momentumStartForShort: 565,
+            momentumStartForLong: 140,
+            momentumStartForShort: 144,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: smci },
-            falseBreakoutPlan: { price: 560, targets: R2Target, planConfigs: smci },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: googl },
         },
         long: {
         },
     },
     {
-        symbol: 'UPS',
+        symbol: 'NYCB',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 6793523, tradingSum: 50589587 },
         atr: {
-            average: 2.8,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 0.27,
+            mutiplier: 2,
+            minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 146,
-            momentumStartForShort: 150,
+            momentumStartForLong: 6,
+            momentumStartForShort: 8,
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
@@ -130,23 +129,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock4',
+        symbol: 'PLUG',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 3804894, tradingSum: 15281070 },
         atr: {
-            average: 2.13,
+            average: 0.39,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 4,
+            momentumStartForShort: 4.16,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plug },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: plug },
         },
     },
 ];
