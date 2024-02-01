@@ -104,7 +104,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: etsy },
-            levelBreakout: { entryPrice: 73.34, targets: R2Target, planConfigs: etsy },
+            firstRetracementPlan: { targets: R2Target, planConfigs: pton },
             falseBreakoutPlan: { price: 73.35, targets: R2Target, planConfigs: etsy }
         },
         long: {
