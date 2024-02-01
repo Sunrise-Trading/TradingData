@@ -13,8 +13,8 @@ const pton: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const etsy: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -64,9 +64,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'PTON',
-    'stock2',
-    'stock3',
-    'stock4',
+    'ETSY',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -92,23 +90,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'ETSY',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 330741, tradingSum: 24371262 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 2.87,
+            mutiplier: 1.35,
+            minimumMultipler: 0.6,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 73.35,
+            momentumStartForShort: 75.88,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: etsy },
+            levelBreakout: { entryPrice: 73.34, targets: R2Target, planConfigs: etsy },
+            falseBreakoutPlan: { price: 73.35, targets: R2Target, planConfigs: etsy }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
