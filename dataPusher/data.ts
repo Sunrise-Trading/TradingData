@@ -13,6 +13,14 @@ const meta: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
+const metaChase: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.1,
+    deferTradingInSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFirstFewExits: true,
+    allowEarlyExits: false,
+};
 const aapl: TradingPlans.PlanConfigs = {
     sizeOverride: 0.1,
     deferTradingInSeconds: 0,
@@ -73,7 +81,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'META',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1491229, tradingSum: 688859538 },
         atr: {
             average: 8.6,
             mutiplier: 2,
@@ -87,12 +95,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: meta },
+            levelBreakout: { entryPrice: 465.67, targets: R2Target, planConfigs: metaChase }
         },
     },
     {
         symbol: 'AAPL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1631028, tradingSum: 295408664 },
         atr: {
             average: 3.2,
             mutiplier: 1.5,
@@ -111,7 +120,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AMZN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 2392263, tradingSum: 407009961 },
         atr: {
             average: 3.1,
             mutiplier: 1.5,
