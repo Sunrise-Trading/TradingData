@@ -14,15 +14,15 @@ const meta: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const aapl: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+const amzn: TradingPlans.PlanConfigs = {
+    sizeOverride: 0.1,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -122,7 +122,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 171.38,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: amzn },
         },
         long: {
         },
