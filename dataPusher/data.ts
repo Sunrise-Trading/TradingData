@@ -74,7 +74,6 @@ export const stockSelections: string[] = [
     'META',
     'AAPL',
     'AMZN',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -113,6 +112,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: aapl },
+            levelBreakout: { entryPrice: 180, targets: R2Target, planConfigs: aapl },
+            falseBreakoutPlan: { price: 180.17, targets: R2Target, planConfigs: aapl }
         },
         long: {
         },
@@ -131,7 +132,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 171.38,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: amzn },
+            falseBreakoutPlan: { price: 170.83, targets: R2Target, planConfigs: amzn },
         },
         long: {
         },
