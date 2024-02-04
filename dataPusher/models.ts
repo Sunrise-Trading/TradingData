@@ -72,7 +72,7 @@ export interface BasePlan {
     planType?: PlanType,
 };
 export interface PlanConfigs {
-    sizeOverride?: number,
+    size: number,
     deferTradingInSeconds: number,
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,

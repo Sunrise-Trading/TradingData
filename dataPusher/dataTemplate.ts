@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const stock1Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,7 +14,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -22,7 +22,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -30,7 +30,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
-    sizeOverride: 0,
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
