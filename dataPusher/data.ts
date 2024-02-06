@@ -5,16 +5,16 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const el: TradingPlans.PlanConfigs = {
-    size: 0.3,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const apd: TradingPlans.PlanConfigs = {
-    size: 0.3,
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -63,51 +63,51 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'EL',
-    'APD',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'EL',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 251549, tradingSum: 38991674 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 4.45,
+            average: 2.13,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 152.53,
-            momentumStartForShort: 161,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: el },
-            firstRetracementPlan: { targets: R2Target, planConfigs: el },
-            levelBreakout: { entryPrice: 161, targets: R2Target, planConfigs: el },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'APD',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 57376, tradingSum: 13475356 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 4.43,
+            average: 2.13,
             mutiplier: 1.5,
             minimumMultipler: 0.5,
         },
         keyLevels: {
-            momentumStartForLong: 225,
-            momentumStartForShort: 240,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: apd },
-            firstRetracementPlan: { targets: R2Target, planConfigs: apd },
-            falseBreakoutPlan: { price: 252, targets: R2Target, planConfigs: apd },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
