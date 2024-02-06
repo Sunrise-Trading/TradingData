@@ -22,7 +22,7 @@ const pltrShort: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const spot: TradingPlans.PlanConfigs = {
-    size: 0.2,
+    size: 0.05,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
