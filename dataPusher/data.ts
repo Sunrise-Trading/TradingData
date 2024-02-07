@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const rblx: TradingPlans.PlanConfigs = {
-    size: 0.15,
+    size: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,22 +14,22 @@ const rblx: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const snap: TradingPlans.PlanConfigs = {
-    size: 0.15,
+    size: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const baba: TradingPlans.PlanConfigs = {
+    size: 0.3,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
+const enph: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
@@ -73,7 +73,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'RBLX',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 2351629, tradingSum: 105573375 },
         atr: {
             average: 1.45,
             mutiplier: 2,
@@ -93,7 +93,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'SNAP',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 5057854, tradingSum: 61087567 },
         atr: {
             average: 0.6,
             mutiplier: 2,
@@ -113,7 +113,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'BABA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 6563315, tradingSum: 506332375 },
         atr: {
             average: 2.13,
             mutiplier: 1.5,
@@ -124,16 +124,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 82.75,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: baba },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: baba },
         },
     },
     {
         symbol: 'ENPH',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 213166, tradingSum: 24836014 },
         atr: {
             average: 6.3,
             mutiplier: 1.5,
@@ -144,10 +144,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 120,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: enph },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: enph },
         },
     },
 ];
