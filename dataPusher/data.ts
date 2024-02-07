@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const rblx: TradingPlans.PlanConfigs = {
-    size: 0.3,
+    size: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -14,7 +14,7 @@ const rblx: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const snap: TradingPlans.PlanConfigs = {
-    size: 0.3,
+    size: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -22,7 +22,7 @@ const snap: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const baba: TradingPlans.PlanConfigs = {
-    size: 0.3,
+    size: 0.2,
     deferTradingInSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -30,8 +30,8 @@ const baba: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
 };
 const enph: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 0,
+    size: 0.2,
+    deferTradingInSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
@@ -85,9 +85,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: rblx },
+            firstRetracementPlan: { targets: R2Target, planConfigs: rblx },
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: rblx },
+            firstRetracementPlan: { targets: R2Target, planConfigs: rblx },
         },
     },
     {
@@ -105,9 +107,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: snap },
+            falseBreakoutPlan: { price: 12.08, targets: R2Target, planConfigs: snap }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: snap },
         },
     },
     {
@@ -124,10 +126,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 82.75,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: baba },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: baba },
+            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: baba },
+            falseBreakoutPlan: { price: 74, targets: R1Target, planConfigs: baba },
         },
     },
     {
@@ -144,10 +146,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 120,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: enph },
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: enph },
+            levelBreakout: { entryPrice: 121.21, targets: R2Target, planConfigs: enph }
         },
     },
 ];
