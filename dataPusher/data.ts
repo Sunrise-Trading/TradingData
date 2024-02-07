@@ -5,7 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const rblx: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
@@ -13,7 +13,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const snap: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
     requireReversal: true,
@@ -63,65 +63,65 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'RBLX',
+    'SNAP',
+    'BABA',
+    'ENPH',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'RBLX',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 1.45,
+            mutiplier: 2,
+            minimumMultipler: 0.8,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 44.5,
+            momentumStartForShort: 47.39,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: rblx },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: rblx },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'SNAP',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 2.13,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            average: 0.6,
+            mutiplier: 2,
+            minimumMultipler: 0.8,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 11.73,
+            momentumStartForShort: 12.31,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: snap },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: snap },
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'BABA',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
             average: 2.13,
             mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            minimumMultipler: 0.8,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 74.25,
+            momentumStartForShort: 82.75,
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
@@ -131,17 +131,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock4',
+        symbol: 'ENPH',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 2.13,
+            average: 6.3,
             mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            minimumMultipler: 0.8,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 113,
+            momentumStartForShort: 120,
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
