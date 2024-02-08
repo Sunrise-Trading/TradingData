@@ -12,6 +12,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
+    atrMaximumMultiplier: 1,
+    atrMinimumMultiplier: 1,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -20,6 +22,8 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
+    atrMaximumMultiplier: 1,
+    atrMinimumMultiplier: 1,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -28,6 +32,8 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
+    atrMaximumMultiplier: 1,
+    atrMinimumMultiplier: 1,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -36,6 +42,8 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
+    atrMaximumMultiplier: 1,
+    atrMinimumMultiplier: 1,
 };
 
 const R2Target: TradingPlans.ExitTargets = {
