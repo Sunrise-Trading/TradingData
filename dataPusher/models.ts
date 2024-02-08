@@ -6,7 +6,6 @@ export interface TradingPlans {
     autoFlip: boolean,
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
-    atr: AverageTrueRange,
     fixedQuantity?: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
