@@ -6,6 +6,7 @@ export interface TradingPlans {
     autoFlip: boolean,
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
+    atr: AverageTrueRange,
     fixedQuantity?: number,
     keyLevels: keyLevels,
     long: SingleDirectionPlans,
@@ -77,7 +78,6 @@ export interface PlanConfigs {
     alwaysAllowStopOutOrFlatten: boolean,
     alwaysAllowFirstFewExits: boolean,
     allowEarlyExits: boolean,
-    atr: AverageTrueRange,
 }
 export interface FalseBreakoutPlan extends BasePlan {
     price: number

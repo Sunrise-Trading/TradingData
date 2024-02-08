@@ -12,11 +12,6 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
-    atr: {
-        average: 1,
-        mutiplier: 1,
-        minimumMultipler: 1,
-    }
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -25,11 +20,6 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
-    atr: {
-        average: 1,
-        mutiplier: 1,
-        minimumMultipler: 1,
-    }
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -38,11 +28,6 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
-    atr: {
-        average: 1,
-        mutiplier: 1,
-        minimumMultipler: 1,
-    }
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
@@ -51,11 +36,6 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowStopOutOrFlatten: false,
     alwaysAllowFirstFewExits: true,
     allowEarlyExits: false,
-    atr: {
-        average: 1,
-        mutiplier: 1,
-        minimumMultipler: 1,
-    }
 };
 
 const R2Target: TradingPlans.ExitTargets = {
@@ -94,6 +74,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock1',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
         keyLevels: {
             momentumStartForLong: 173,
             momentumStartForShort: 173,
@@ -109,6 +94,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock2',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
         keyLevels: {
             momentumStartForLong: 173,
             momentumStartForShort: 173,
@@ -124,6 +114,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock3',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
         keyLevels: {
             momentumStartForLong: 173,
             momentumStartForShort: 173,
@@ -139,6 +134,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock4',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
         keyLevels: {
             momentumStartForLong: 173,
             momentumStartForShort: 173,
