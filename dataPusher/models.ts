@@ -78,6 +78,7 @@ export interface PlanConfigs {
     alwaysAllowStopOutOrFlatten: boolean,
     alwaysAllowFirstFewExits: boolean,
     allowEarlyExits: boolean,
+    earlyExitsCount: number,
 }
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
