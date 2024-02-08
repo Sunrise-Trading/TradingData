@@ -6,8 +6,8 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const armLong: TradingPlans.PlanConfigs = {
-    size: 0.4,
-    deferTradingInSeconds: 0,
+    size: 0.25,
+    deferTradingInSeconds: 55,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -15,7 +15,7 @@ const armLong: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 4,
 };
 const armShort: TradingPlans.PlanConfigs = {
-    size: 0.2,
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -24,7 +24,7 @@ const armShort: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 4,
 };
 const dis: TradingPlans.PlanConfigs = {
-    size: 0.2,
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -33,7 +33,7 @@ const dis: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const pypl: TradingPlans.PlanConfigs = {
-    size: 0.15,
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -79,7 +79,6 @@ export const stockSelections: string[] = [
     'ARM',
     'DIS',
     'PYPL',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -97,7 +96,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 100,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: armShort },
+            redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: armShort },
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: armLong },
