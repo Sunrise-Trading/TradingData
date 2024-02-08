@@ -8,6 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -16,6 +17,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -24,6 +26,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -32,6 +35,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,

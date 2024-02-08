@@ -74,6 +74,7 @@ export interface BasePlan {
 export interface PlanConfigs {
     size: number,
     deferTradingInSeconds: number,
+    stopTradingAfterSeconds: number,
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,
     allowEarlyExits: boolean,
