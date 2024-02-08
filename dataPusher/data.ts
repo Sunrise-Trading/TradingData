@@ -21,7 +21,7 @@ const armShort: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowFirstFewExitsCount: 3,
 };
 const dis: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -96,7 +96,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 100,
         },
         short: {
-            redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: armShort },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: armShort },
+            falseBreakoutPlan: { price: 99, targets: R2Target, planConfigs: armShort }
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: armLong },
