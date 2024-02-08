@@ -76,9 +76,8 @@ export interface PlanConfigs {
     deferTradingInSeconds: number,
     requireReversal: boolean,
     alwaysAllowStopOutOrFlatten: boolean,
-    alwaysAllowFirstFewExits: boolean,
     allowEarlyExits: boolean,
-    earlyExitsCount: number,
+    allowFirstFewExitsCount: number,
 }
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
