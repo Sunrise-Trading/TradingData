@@ -33,8 +33,8 @@ const nvda: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const expe: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 0,
+    size: 0.2,
+    deferTradingInSeconds: 55,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
