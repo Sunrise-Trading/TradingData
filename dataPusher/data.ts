@@ -5,10 +5,19 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const net: TradingPlans.PlanConfigs = {
+const netLong: TradingPlans.PlanConfigs = {
     size: 0.3,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const netShort: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 90,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -70,30 +79,29 @@ export const stockSelections: string[] = [
     'NET',
     'NVDA',
     'EXPE',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NET',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 752604, tradingSum: 85014470 },
         atr: {
             average: 3.6,
             mutiplier: 2.2,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 117.7,
-            momentumStartForShort: 110,
+            momentumStartForLong: 110,
+            momentumStartForShort: 117.7,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: net },
-            firstNewHighPlan: { targets: R2Target, planConfigs: net },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: netShort },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: net },
-            firstNewHighPlan: { targets: R2Target, planConfigs: net },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: netLong },
+            firstNewHighPlan: { targets: R2Target, planConfigs: netLong },
+            levelBreakout: { entryPrice: 117.7, targets: R2Target, planConfigs: netLong }
         },
     },
     {
