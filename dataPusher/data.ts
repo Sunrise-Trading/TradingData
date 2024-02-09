@@ -96,7 +96,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 117.7,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: netShort },
+            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: netShort },
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: netLong },
@@ -121,6 +121,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nvda },
+            levelBreakout: { entryPrice: 708.18, targets: R2Target, planConfigs: nvda },
         },
     },
     {
@@ -138,6 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             firstNewHighPlan: { targets: R2Target, planConfigs: expe },
+            falseBreakoutPlan: { price: 135.98, targets: R2Target, planConfigs: expe }
         },
         long: {
         },
