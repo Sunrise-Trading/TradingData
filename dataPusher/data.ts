@@ -5,25 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const netLong: TradingPlans.PlanConfigs = {
-    size: 0.3,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const netShort: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 90,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const nvda: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -32,9 +14,18 @@ const nvda: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const expe: TradingPlans.PlanConfigs = {
-    size: 0.2,
-    deferTradingInSeconds: 55,
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const stock3Configs: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -76,72 +67,77 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'NET',
-    'NVDA',
-    'EXPE',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NET',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 752604, tradingSum: 85014470 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 3.6,
-            mutiplier: 2.2,
+            average: 1,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 110,
-            momentumStartForShort: 117.7,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R1Target, planConfigs: netShort },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: netLong },
-            firstNewHighPlan: { targets: R2Target, planConfigs: netLong },
-            levelBreakout: { entryPrice: 117.7, targets: R2Target, planConfigs: netLong }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 376896, tradingSum: 264852574 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 19,
-            mutiplier: 0.85,
-            minimumMultipler: 0.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 700,
-            momentumStartForShort: 708,
-        },
-        short: {
-        },
-        long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: nvda },
-            levelBreakout: { entryPrice: 708.18, targets: R2Target, planConfigs: nvda },
-        },
-    },
-    {
-        symbol: 'EXPE',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 336326, tradingSum: 45333515 },
-        atr: {
-            average: 4.23,
-            mutiplier: 2,
+            average: 1,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 133,
-            momentumStartForShort: 140,
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
         },
         short: {
-            firstNewHighPlan: { targets: R2Target, planConfigs: expe },
-            falseBreakoutPlan: { price: 135.98, targets: R2Target, planConfigs: expe }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
+        },
+    },
+    {
+        symbol: 'stock3',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 173,
+            momentumStartForShort: 173,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
+        },
+        long: {
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
     {
