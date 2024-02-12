@@ -29,6 +29,7 @@ export interface SingleDirectionPlans {
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
     openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
+    openDrive60Plan?: OpenDrive60Plan,
     redtoGreenPlan?: RedToGreenPlan,
     firstNewHighPlan?: FirstNewHighPlan,
     firstRetracementPlan?: FirstRetracementPlan,
@@ -62,6 +63,7 @@ export enum PlanType {
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
     OpenRangeBreakout = 'OpenRangeBreakout',
+    OpenDrive60 = 'OpenDrive60',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
     Range = 'Range',
@@ -85,7 +87,7 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
-export interface OpeningDrivePlan extends BasePlan {
+export interface OpenDrive60Plan extends BasePlan {
 }
 export interface MomentumPlan extends BasePlan {
 };
