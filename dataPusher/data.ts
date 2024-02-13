@@ -5,8 +5,8 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const mndy: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const shop: TradingPlans.PlanConfigs = {
+    size: 0.3,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -67,33 +67,33 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'MNDY',
+    'SHOP',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MNDY',
+        symbol: 'SHOP',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 199380, tradingSum: 43241632 },
+        vwapCorrection: { volumeSum: 1713287, tradingSum: 138740635 },
         atr: {
-            average: 8.5,
+            average: 3.22,
             mutiplier: 1.5,
             minimumMultipler: 0.9,
         },
         keyLevels: {
-            momentumStartForLong: 200,
-            momentumStartForShort: 230,
+            momentumStartForLong: 77,
+            momentumStartForShort: 83,
         },
         short: {
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: mndy },
-            firstNewHighPlan: { targets: R2Target, planConfigs: mndy },
-            falseBreakoutPlan: { price: 202.1, targets: R2Target, planConfigs: mndy }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: shop },
+            firstNewHighPlan: { targets: R2Target, planConfigs: shop },
+            falseBreakoutPlan: { price: 77.13, targets: R2Target, planConfigs: shop }
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'SPY',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
