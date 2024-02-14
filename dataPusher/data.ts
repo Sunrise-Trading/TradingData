@@ -5,17 +5,17 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const shop: TradingPlans.PlanConfigs = {
+const mara: TradingPlans.PlanConfigs = {
     size: 0.3,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const lyft: TradingPlans.PlanConfigs = {
+    size: 0.3,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -67,51 +67,51 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'SHOP',
+    'MARA',
+    'LYFT',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SHOP',
+        symbol: 'MARA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1713287, tradingSum: 138740635 },
+        vwapCorrection: { volumeSum: 3414687, tradingSum: 98622216 },
         atr: {
-            average: 3.22,
+            average: 2.41,
             mutiplier: 1.5,
-            minimumMultipler: 0.9,
+            minimumMultipler: 0.8,
         },
         keyLevels: {
-            momentumStartForLong: 77,
-            momentumStartForShort: 83,
+            momentumStartForLong: 28.2,
+            momentumStartForShort: 29.57,
         },
         short: {
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: shop },
-            firstNewHighPlan: { targets: R2Target, planConfigs: shop },
-            falseBreakoutPlan: { price: 77.13, targets: R2Target, planConfigs: shop }
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: mara },
+            firstNewHighPlan: { targets: R2Target, planConfigs: mara },
+            levelBreakout: { entryPrice: 29.57, targets: R2Target, planConfigs: mara },
         },
     },
     {
-        symbol: 'SPY',
+        symbol: 'LYFT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 2421325, tradingSum: 35770067 },
         atr: {
-            average: 1,
-            mutiplier: 1,
+            average: 0.61,
+            mutiplier: 1.63,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 14.5,
+            momentumStartForShort: 15.2,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: lyft },
+            firstNewHighPlan: { targets: R2Target, planConfigs: lyft },
+            levelBreakout: { entryPrice: 15.14, targets: R2Target, planConfigs: lyft }
         },
     },
     {
