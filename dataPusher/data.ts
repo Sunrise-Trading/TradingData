@@ -133,6 +133,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: dwac },
             firstNewHighPlan: { targets: R2Target, planConfigs: dwac },
+            levelBreakout: { entryPrice: 57, targets: R2Target, planConfigs: dwac }
         },
     },
     {
