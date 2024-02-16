@@ -32,6 +32,7 @@ export interface SingleDirectionPlans {
     openDrive60Plan?: OpenDrive60Plan,
     redtoGreenPlan?: RedToGreenPlan,
     firstNewHighPlan?: FirstNewHighPlan,
+    secondNewHighPlan?: SecondNewHighPlan,
     firstRetracementPlan?: FirstRetracementPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
     bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
@@ -62,6 +63,7 @@ export enum PlanType {
     FalseBreakout = 'FalseBreakout',
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
+    SecondNewHigh = 'SecondNewHigh',
     OpenRangeBreakout = 'OpenRangeBreakout',
     OpenDrive60 = 'OpenDrive60',
     BreakoutAlgo = 'BreakoutAlgo',
@@ -120,6 +122,7 @@ export interface RedToGreenPlan extends BasePlan {
     strictMode: boolean,
 }
 export interface FirstNewHighPlan extends BasePlan { }
+export interface SecondNewHighPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,
     deferInSeconds: number,
