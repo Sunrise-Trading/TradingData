@@ -15,7 +15,7 @@ const coin: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const roku: TradingPlans.PlanConfigs = {
-    size: 0.15,
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -25,15 +25,15 @@ const roku: TradingPlans.PlanConfigs = {
 };
 const smci: TradingPlans.PlanConfigs = {
     size: 0.1,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 110,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const ttd: TradingPlans.PlanConfigs = {
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -67,10 +67,9 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'COIN',
     'ROKU',
-    'SMCI',
-    'stock4',
+    'COIN',
+    'TTD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -140,25 +139,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock4',
+        symbol: 'TTD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 305923, tradingSum: 27225534 },
         atr: {
-            average: 1,
-            mutiplier: 1,
+            average: 2.6,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 90,
+            momentumStartForShort: 90,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: ttd },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
     },
 ];
