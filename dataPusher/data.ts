@@ -23,8 +23,8 @@ const roku: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const smci: TradingPlans.PlanConfigs = {
+    size: 0.1,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -69,7 +69,7 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'COIN',
     'ROKU',
-    'stock3',
+    'SMCI',
     'stock4',
 ];
 
@@ -121,25 +121,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'SMCI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 360673, tradingSum: 384475572 },
         atr: {
-            average: 1,
+            average: 50,
             mutiplier: 1,
             minimumMultipler: 1,
         },
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 1050,
+            momentumStartForShort: 1200,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: smci },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
     {
