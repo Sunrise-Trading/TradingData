@@ -5,8 +5,8 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
-    size: 0.15,
+const wmt: TradingPlans.PlanConfigs = {
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -67,59 +67,56 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'WMT',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'WMT',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 792530, tradingSum: 149759599 },
         atr: {
-            average: 1,
-            mutiplier: 1,
+            average: 9.9,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 187,
+            momentumStartForShort: 187,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: wmt },
+            firstNewHighPlan: { targets: R2Target, planConfigs: wmt },
+            levelBreakout: { entryPrice: 187, targets: R2Target, planConfigs: wmt },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: wmt },
+            firstNewHighPlan: { targets: R2Target, planConfigs: wmt },
+            levelBreakout: { entryPrice: 192.59, targets: R2Target, planConfigs: wmt }
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'ROKU',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 636756, tradingSum: 50106418 },
         atr: {
-            average: 1,
-            mutiplier: 1,
+            average: 4.5,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 81.53,
+            momentumStartForShort: 81.53,
         },
         short: {
             redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
