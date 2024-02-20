@@ -9,6 +9,8 @@ export interface TradingPlans {
     atr: AverageTrueRange,
     fixedQuantity?: number,
     keyLevels: keyLevels,
+    longOnlyIfOpenAbove: number,
+    shortOnlyIfOpenBelow: number,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
