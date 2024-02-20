@@ -76,25 +76,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 792530, tradingSum: 149759599 },
         atr: {
-            average: 9.9,
-            mutiplier: 1.5,
+            average: 1.94,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 187,
-            momentumStartForShort: 187,
+            momentumStartForLong: 175,
+            momentumStartForShort: 180,
         },
         short: {
+            openDrive60Plan: { targets: R2Target, planConfigs: wmt },
             redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: wmt },
-            firstNewHighPlan: { targets: R2Target, planConfigs: wmt },
-            levelBreakout: { entryPrice: 187, targets: R2Target, planConfigs: wmt },
         },
         long: {
             redtoGreenPlan: { strictMode: false, targets: R2Target, planConfigs: wmt },
             firstNewHighPlan: { targets: R2Target, planConfigs: wmt },
-            levelBreakout: { entryPrice: 192.59, targets: R2Target, planConfigs: wmt }
+            levelBreakout: { entryPrice: 179.34, targets: R2Target, planConfigs: wmt }
         },
     },
     {
