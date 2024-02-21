@@ -90,11 +90,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 180,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
@@ -114,11 +114,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
@@ -138,11 +138,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
@@ -162,11 +162,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 173,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, targets: R2Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
     },

@@ -122,6 +122,7 @@ export interface LevelBreakoutPlan extends BasePlan {
 export interface FirstRetracementPlan extends BasePlan { }
 export interface RedToGreenPlan extends BasePlan {
     strictMode: boolean,
+    considerCurrentCandleAfterOneMinute: boolean,
 }
 export interface FirstNewHighPlan extends BasePlan { }
 export interface SecondNewHighPlan extends BasePlan { }
