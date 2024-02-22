@@ -12,7 +12,7 @@ const nvda: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 const rivn: TradingPlans.PlanConfigs = {
     size: 0.25,
