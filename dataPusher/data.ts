@@ -90,16 +90,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
             firstNewHighPlan: { targets: R2Target, planConfigs: nvda },
+            secondNewHighPlan: { targets: R2Target, planConfigs: nvda },
+            falseBreakoutPlan: { price: 760, targets: R2Target, planConfigs: nvda },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
-            firstNewHighPlan: { targets: R2Target, planConfigs: nvda },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
+            //firstNewHighPlan: { targets: R2Target, planConfigs: nvda },
         },
     },
     {
         symbol: 'RIVN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 3885780, tradingSum: 49310178 },
         atr: {
             average: 0.9,
             mutiplier: 1.5,
@@ -114,6 +116,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: rivn },
             firstNewHighPlan: { targets: R2Target, planConfigs: rivn },
+            secondNewHighPlan: { targets: R2Target, planConfigs: rivn },
+            falseBreakoutPlan: { price: 12.6, targets: R2Target, planConfigs: rivn },
         },
         long: {
         },
