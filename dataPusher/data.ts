@@ -75,7 +75,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NVDA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 9, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 2160597, tradingSum: 1648377914 },
         atr: {
             average: 20,
             mutiplier: 1.5,
