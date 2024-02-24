@@ -5,16 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const nvda: TradingPlans.PlanConfigs = {
-    size: 0.25,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
-};
-const rivn: TradingPlans.PlanConfigs = {
+const wbd: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -23,13 +14,31 @@ const rivn: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
+const sqLong: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
+const sqShort: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const cvna: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
@@ -67,59 +76,82 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'NVDA',
-    'RIVN',
+    'WBD',
+    'SQ',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NVDA',
+        symbol: 'WBD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 2160597, tradingSum: 1648377914 },
+        vwapCorrection: { volumeSum: 4169217, tradingSum: 37393781 },
         atr: {
-            average: 20,
-            mutiplier: 1.5,
-            minimumMultipler: 0.5,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 740,
-            momentumStartForShort: 775,
-        },
-        short: {
-            redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
-            firstNewHighPlan: { targets: R2Target, planConfigs: nvda },
-            secondNewHighPlan: { targets: R2Target, planConfigs: nvda },
-            falseBreakoutPlan: { price: 760, targets: R2Target, planConfigs: nvda },
-        },
-        long: {
-            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
-            //firstNewHighPlan: { targets: R2Target, planConfigs: nvda },
-        },
-    },
-    {
-        symbol: 'RIVN',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 3885780, tradingSum: 49310178 },
-        atr: {
-            average: 0.9,
-            mutiplier: 1.5,
+            average: 0.37,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        shortOnlyIfOpenBelow: 8.82,
         keyLevels: {
-            momentumStartForLong: 13.5,
-            momentumStartForShort: 13.5,
+            momentumStartForLong: 9,
+            momentumStartForShort: 9,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: rivn },
-            firstNewHighPlan: { targets: R2Target, planConfigs: rivn },
-            secondNewHighPlan: { targets: R2Target, planConfigs: rivn },
-            falseBreakoutPlan: { price: 12.6, targets: R2Target, planConfigs: rivn },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: wbd },
+            firstNewHighPlan: { targets: R2Target, planConfigs: wbd },
+            secondNewHighPlan: { targets: R2Target, planConfigs: wbd },
+            falseBreakoutPlan: { price: 9, targets: R2Target, planConfigs: wbd },
         },
         long: {
+        },
+    },
+    {
+        symbol: 'SQ',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 786420, tradingSum: 61986425 },
+        atr: {
+            average: 2.9,
+            mutiplier: 1.5,
+            minimumMultipler: 0.6,
+        },
+        longOnlyIfOpenAbove: 80.28,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 78,
+            momentumStartForShort: 80.29,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: sqShort },
+            firstNewHighPlan: { targets: R2Target, planConfigs: sqShort },
+        },
+        long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: sqLong },
+            levelBreakout: { entryPrice: 80.54, targets: R2Target, planConfigs: sqLong },
+            firstNewHighPlan: { targets: R2Target, planConfigs: sqLong },
+
+        },
+    },
+    {
+        symbol: 'CVNA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 623848, tradingSum: 42297254 },
+        atr: {
+            average: 3.78,
+            mutiplier: 1.5,
+            minimumMultipler: 0.8,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 65,
+            momentumStartForShort: 71.5,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: cvna },
+            firstNewHighPlan: { targets: R2Target, planConfigs: cvna },
+        },
+        long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: cvna },
         },
     },
     {
