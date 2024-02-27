@@ -5,8 +5,26 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const liLong: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const mara: TradingPlans.PlanConfigs = {
+    size: 0.2,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
+const coin: TradingPlans.PlanConfigs = {
+    size: 0.2,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
+const vktx: TradingPlans.PlanConfigs = {
+    size: 0.1,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -14,23 +32,14 @@ const liLong: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const liShort: TradingPlans.PlanConfigs = {
-    size: 0.25,
-    deferTradingInSeconds: 240,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const mu: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const zm: TradingPlans.PlanConfigs = {
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 
 const R2Target: TradingPlans.ExitTargets = {
@@ -58,43 +67,92 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'LI',
-    'MU',
+    'MARA',
+    'COIN',
+    'VKTX',
+    'ZM'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'LI',
+        symbol: 'MARA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1950856, tradingSum: 74841711 },
+        vwapCorrection: { volumeSum: 4593510, tradingSum: 146913293 },
         atr: {
-            average: 1.3,
-            mutiplier: 2,
+            average: 2.8,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 38.38,
-            momentumStartForShort: 40,
+            momentumStartForLong: 31.9,
+            momentumStartForShort: 31.9,
         },
         short: {
-            falseBreakoutPlan: { price: 40, targets: R2Target, planConfigs: liShort },
+            openDrive60Plan: { targets: R2Target, planConfigs: mara },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mara },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: liLong },
-            firstNewHighPlan: { targets: R2Target, planConfigs: liLong },
-            secondNewHighPlan: { targets: R2Target, planConfigs: liLong }
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mara },
+            firstNewHighPlan: { targets: R2Target, planConfigs: mara },
         },
     },
     {
-        symbol: 'MU',
+        symbol: 'COIN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 477147, tradingSum: 42665007 },
+        vwapCorrection: { volumeSum: 704663, tradingSum: 145269290 },
         atr: {
-            average: 2.28,
+            average: 14,
             mutiplier: 1.5,
-            minimumMultipler: 0.85,
+            minimumMultipler: 1,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 205,
+            momentumStartForShort: 205,
+        },
+        short: {
+            openDrive60Plan: { targets: R2Target, planConfigs: coin },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: coin },
+        },
+        long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: coin },
+            firstNewHighPlan: { targets: R2Target, planConfigs: coin },
+        },
+    },
+    {
+        symbol: 'VKTX',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 3040686, tradingSum: 218992048 },
+        atr: {
+            average: 2.45,
+            mutiplier: 2,
+            minimumMultipler: 2,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 80,
+            momentumStartForShort: 80,
+        },
+        short: {
+            openDrive60Plan: { targets: R2Target, planConfigs: vktx },
+            firstNewHighPlan: { targets: R2Target, planConfigs: vktx },
+            falseBreakoutPlan: { price: 72, targets: R2Target, planConfigs: vktx },
+        },
+        long: {
+        },
+    },
+    {
+        symbol: 'ZM',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 594912, tradingSum: 41167086 },
+        atr: {
+            average: 1,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -103,13 +161,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 173,
         },
         short: {
-            falseBreakoutPlan: { price: 90, targets: R2Target, planConfigs: mu },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
-            firstNewHighPlan: { targets: R2Target, planConfigs: mu },
-            levelBreakout: { entryPrice: 90.04, targets: R2Target, planConfigs: mu },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: zm },
+            falseBreakoutPlan: { price: 66.5, targets: R2Target, planConfigs: zm }
         },
-    }
+    },
 ];
