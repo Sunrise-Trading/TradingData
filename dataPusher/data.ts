@@ -5,17 +5,8 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const coin: TradingPlans.PlanConfigs = {
-    size: 0.2,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
-};
-const coingood: TradingPlans.PlanConfigs = {
-    size: 0.2,
+const snow: TradingPlans.PlanConfigs = {
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -23,17 +14,8 @@ const coingood: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const mara: TradingPlans.PlanConfigs = {
-    size: 0.2,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
-};
-const maragood: TradingPlans.PlanConfigs = {
-    size: 0.2,
+const ai: TradingPlans.PlanConfigs = {
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -85,59 +67,55 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'COIN',
-    'MARA',
+    'SNOW',
+    'AI',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'COIN',
+        symbol: 'SNOW',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 617884, tradingSum: 130207495 },
+        vwapCorrection: { volumeSum: 1395500, tradingSum: 248840579 },
         atr: {
-            average: 13.48,
-            mutiplier: 1,
-            minimumMultipler: 0.7,
+            average: 8.3,
+            mutiplier: 1.2,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 206,
-            momentumStartForShort: 206,
+            momentumStartForLong: 176,
+            momentumStartForShort: 176,
         },
         short: {
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: coingood },
-            levelBreakout: { entryPrice: 215.77, targets: R2Target, planConfigs: coingood },
-            firstNewHighPlan: { targets: R2Target, planConfigs: coin },
-            secondNewHighPlan: { targets: R2Target, planConfigs: coin },
-            falseBreakoutPlan: { price: 209.14, targets: R2Target, planConfigs: coin },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: snow },
+            firstNewHighPlan: { targets: R2Target, planConfigs: snow },
         },
     },
     {
-        symbol: 'MARA',
+        symbol: 'AI',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 4917216, tradingSum: 159970138 },
+        vwapCorrection: { volumeSum: 1323350, tradingSum: 46289705 },
         atr: {
-            average: 2.9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 1.6,
+            mutiplier: 2,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 31.5,
-            momentumStartForShort: 31.5,
+            momentumStartForLong: 34,
+            momentumStartForShort: 36,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: ai },
+            firstNewHighPlan: { targets: R2Target, planConfigs: ai },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: maragood },
-            levelBreakout: { entryPrice: 33.08, targets: R2Target, planConfigs: maragood },
-            firstNewHighPlan: { targets: R2Target, planConfigs: mara },
-            secondNewHighPlan: { targets: R2Target, planConfigs: mara },
-            falseBreakoutPlan: { price: 32.23, targets: R2Target, planConfigs: mara },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: ai },
+            firstNewHighPlan: { targets: R2Target, planConfigs: ai },
         },
     },
     {
