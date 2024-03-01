@@ -86,7 +86,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 1264364, tradingSum: 149625858 },
         atr: {
             average: 3,
-            mutiplier: 2,
+            mutiplier: 1.6,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
