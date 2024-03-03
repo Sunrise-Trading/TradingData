@@ -66,7 +66,7 @@ const R2Target: TradingPlans.ExitTargets = {
 const R1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        rrr: [1, 1, 1, 1, 1, 1, 1, 1.5, 2, 2],
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     minimumTargets: {
@@ -93,10 +93,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 114,
-            momentumStartForShort: 125,
+            momentumStartForShort: 130,
         },
         short: {
             openDrive60Plan: { targets: R1Target, planConfigs: dellShort },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: dellShort },
+            firstNewHighPlan: { targets: R1Target, planConfigs: dellShort },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: dellLong },
@@ -127,53 +129,5 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
-    },
-    {
-        symbol: 'stock3',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
-        },
-        long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock3Configs },
-        },
-    },
-    {
-        symbol: 'stock4',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
-        },
-        long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock4Configs },
-        },
-    },
+    }
 ];
