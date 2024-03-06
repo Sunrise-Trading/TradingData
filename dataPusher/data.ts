@@ -76,7 +76,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'PLTR',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 8481426, tradingSum: 216513599 },
         atr: {
             average: 1.18,
             mutiplier: 1.5,
@@ -93,12 +93,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltr },
             firstNewHighPlan: { targets: R2Target, planConfigs: pltr },
+            secondNewHighPlan: { targets: R2Target, planConfigs: pltr },
         },
     },
     {
         symbol: 'CRWD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 237615, tradingSum: 87079074 },
         atr: {
             average: 13,
             mutiplier: 1.5,
@@ -122,7 +123,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'JD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 3465527, tradingSum: 83079349 },
         atr: {
             average: 0.88,
             mutiplier: 1.8,
