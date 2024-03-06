@@ -5,7 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const tgt: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -14,18 +14,9 @@ const tgt: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const aapl: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const aaplwait: TradingPlans.PlanConfigs = {
-    size: 0.25,
-    deferTradingInSeconds: 240,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -76,56 +67,59 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TGT',
-    'AAPL',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TGT',
+        symbol: 'stock1',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 651957, tradingSum: 106124598 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 3.1,
-            mutiplier: 1.5,
-            minimumMultipler: 0.8,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 160,
-            momentumStartForShort: 167.2,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tgt },
-            firstNewHighPlan: { targets: R2Target, planConfigs: tgt },
-            secondNewHighPlan: { targets: R2Target, planConfigs: tgt },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'AAPL',
+        symbol: 'stock2',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 846347, tradingSum: 145058869 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 3.27,
-            mutiplier: 1,
-            minimumMultipler: 0.9,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 173,
-            momentumStartForShort: 173,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: aaplwait },
-            firstNewHighPlan: { targets: R2Target, planConfigs: aapl },
-            secondNewHighPlan: { targets: R2Target, planConfigs: aapl },
-            falseBreakoutPlan: { price: 172, targets: R2Target, planConfigs: aapl },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
