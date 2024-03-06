@@ -14,14 +14,14 @@ const pltr: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const crwd: TradingPlans.PlanConfigs = {
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 const jd: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -57,7 +57,7 @@ const R2Target: TradingPlans.ExitTargets = {
 const R1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        rrr: [1, 1, 1, 1, 1, 1, 1, 1.5, 2, 2],
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     minimumTargets: {
@@ -68,8 +68,9 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'PLTR',
-    'CRWD',
     'JD',
+    'CRWD',
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -78,9 +79,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 8481426, tradingSum: 216513599 },
         atr: {
-            average: 1.18,
-            mutiplier: 1.5,
-            minimumMultipler: 0.84,
+            average: 0.99,
+            mutiplier: 1.6,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -94,6 +95,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltr },
             firstNewHighPlan: { targets: R2Target, planConfigs: pltr },
             secondNewHighPlan: { targets: R2Target, planConfigs: pltr },
+            falseBreakoutPlan: { price: 25.69, targets: R2Target, planConfigs: pltr }
         },
     },
     {
@@ -112,12 +114,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 373,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: crwd },
+            firstNewHighPlan: { targets: R1Target, planConfigs: crwd },
+            secondNewHighPlan: { targets: R1Target, planConfigs: crwd },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { targets: R2Target, planConfigs: stock2Configs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: crwd },
+            //firstNewHighPlan: { targets: R1Target, planConfigs: crwd },
         },
     },
     {
@@ -129,10 +132,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 1.8,
             minimumMultipler: 1.13,
         },
-        longOnlyIfOpenAbove: 0,
+        longOnlyIfOpenAbove: 24.65,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 25,
+            momentumStartForLong: 24,
             momentumStartForShort: 25,
         },
         short: {
@@ -140,6 +143,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { targets: R2Target, planConfigs: jd },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: jd },
+            firstNewHighPlan: { targets: R2Target, planConfigs: jd },
         },
     },
     {
