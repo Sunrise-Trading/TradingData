@@ -124,7 +124,9 @@ export interface RedToGreenPlan extends BasePlan {
     strictMode: boolean,
     considerCurrentCandleAfterOneMinute: boolean,
 }
-export interface FirstNewHighPlan extends BasePlan { }
+export interface FirstNewHighPlan extends BasePlan {
+    includeSecondNewHigh: boolean,
+}
 export interface SecondNewHighPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,

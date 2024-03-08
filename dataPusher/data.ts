@@ -90,13 +90,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvoShort },
-            firstNewHighPlan: { targets: R2Target, planConfigs: nvoShort },
-            secondNewHighPlan: { targets: R2Target, planConfigs: nvoShort },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: nvoShort },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvoLong },
-            firstNewHighPlan: { targets: R2Target, planConfigs: nvoLong },
-            secondNewHighPlan: { targets: R2Target, planConfigs: nvoLong },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: nvoLong },
         },
     },
     {
@@ -120,8 +118,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: vsco },
-            firstNewHighPlan: { targets: R2Target, planConfigs: vsco },
-            secondNewHighPlan: { targets: R2Target, planConfigs: vsco },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: vsco },
         },
     },
     {
@@ -143,7 +140,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: vsco },
-
             falseBreakoutPlan: { price: 500, targets: R2Target, planConfigs: meta },
         },
     }
