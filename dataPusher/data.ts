@@ -5,14 +5,14 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
-    size: 0.25,
-    deferTradingInSeconds: 0,
+const ba: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 120,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -67,21 +67,18 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'BA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'BA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1325682, tradingSum: 26406089 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 4.72,
+            mutiplier: 1.05,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -90,12 +87,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: ba },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: ba },
+            falseBreakoutPlan: { price: 196, targets: R2Target, planConfigs: ba }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
