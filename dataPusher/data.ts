@@ -74,7 +74,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'BA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1325682, tradingSum: 26406089 },
+        vwapCorrection: { volumeSum: 135682, tradingSum: 26406089 },
         atr: {
             average: 4.72,
             mutiplier: 1.05,
@@ -83,8 +83,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 200,
+            momentumStartForShort: 200,
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: ba },
