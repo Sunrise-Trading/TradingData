@@ -5,9 +5,9 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const ba: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 120,
+const orcl: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -67,31 +67,36 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'BA',
+    'ORCL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'BA',
+        symbol: 'ORCL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 135682, tradingSum: 26406089 },
+        vwapCorrection: { volumeSum: 1143664, tradingSum: 147005611 },
         atr: {
-            average: 4.72,
-            mutiplier: 1.05,
-            minimumMultipler: 0.5,
+            average: 2.3,
+            mutiplier: 1.5,
+            minimumMultipler: 0.8,
         },
-        longOnlyIfOpenAbove: 0,
+        longOnlyIfOpenAbove: 127.54,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 200,
-            momentumStartForShort: 200,
+            momentumStartForLong: 126.71,
+            momentumStartForShort: 130,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: ba },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: ba },
-            falseBreakoutPlan: { price: 196, targets: R2Target, planConfigs: ba }
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
+            secondNewHighPlan: { targets: R2Target, planConfigs: orcl },
+            falseBreakoutPlan: { price: 127.54, targets: R2Target, planConfigs: orcl },
         },
         long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
+            secondNewHighPlan: { targets: R2Target, planConfigs: orcl },
+            falseBreakoutPlan: { price: 127.54, targets: R2Target, planConfigs: orcl },
         },
     },
     {
