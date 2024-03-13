@@ -5,14 +5,23 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const orcl: TradingPlans.PlanConfigs = {
+const dltr: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowFirstFewExitsCount: 2,
+};
+const dltrG2R: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -67,36 +76,32 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ORCL',
+    'DLTR',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
+        symbol: 'DLTR',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1143664, tradingSum: 147005611 },
+        vwapCorrection: { volumeSum: 283582, tradingSum: 39280837 },
         atr: {
-            average: 2.3,
-            mutiplier: 1.5,
+            average: 3,
+            mutiplier: 1.6,
             minimumMultipler: 0.8,
         },
-        longOnlyIfOpenAbove: 127.54,
+        longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 126.71,
-            momentumStartForShort: 130,
+            momentumStartForLong: 126.1,
+            momentumStartForShort: 140,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
-            secondNewHighPlan: { targets: R2Target, planConfigs: orcl },
-            falseBreakoutPlan: { price: 127.54, targets: R2Target, planConfigs: orcl },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: dltrG2R },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: dltr },
+            secondNewHighPlan: { targets: R2Target, planConfigs: dltr },
+            falseBreakoutPlan: { price: 128.77, targets: R2Target, planConfigs: dltr }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
-            secondNewHighPlan: { targets: R2Target, planConfigs: orcl },
-            falseBreakoutPlan: { price: 127.54, targets: R2Target, planConfigs: orcl },
         },
     },
     {
