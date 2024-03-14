@@ -6,22 +6,22 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const hood: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.19,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const soun: TradingPlans.PlanConfigs = {
+    size: 0.19,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -67,6 +67,7 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
+    'SOUN',
     'HOOD',
 ];
 
@@ -74,7 +75,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'HOOD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1141074, tradingSum: 21863748 },
+        vwapCorrection: { volumeSum: 1163798, tradingSum: 22286547 },
         atr: {
             average: 0.73,
             mutiplier: 1.36,
@@ -83,40 +84,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 18.9,
+            momentumStartForShort: 19.48,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: hood },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: hood },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: hood },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: hood },
+            secondNewHighPlan: { targets: R2Target, planConfigs: hood },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'SOUN',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 11750722, tradingSum: 114880834 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 0.85,
+            mutiplier: 1.2,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 9.2,
+            momentumStartForShort: 10,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: soun },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R1Target, planConfigs: soun },
+            secondNewHighPlan: { targets: R1Target, planConfigs: soun },
+            falseBreakoutPlan: { price: 10, targets: R2Target, planConfigs: soun }
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: soun },
         },
     },
     {
