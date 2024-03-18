@@ -14,6 +14,15 @@ const googl: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
+const googlQuick: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 4,
+};
 const tsla: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
@@ -32,7 +41,6 @@ const nvda: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-
 
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -81,8 +89,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 153,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: googl },
+            redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: googlQuick },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: googl },
+            falseBreakoutPlan: { price: 149.44, targets: R2Target, planConfigs: googl }
         },
         long: {
             //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: googl },
