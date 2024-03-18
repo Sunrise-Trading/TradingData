@@ -5,23 +5,14 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const adbe: TradingPlans.PlanConfigs = {
-    size: 0.19,
-    deferTradingInSeconds: 60,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
-};
-const adbeQuick: TradingPlans.PlanConfigs = {
-    size: 0.1,
+const stock1Configs: TradingPlans.PlanConfigs = {
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -76,43 +67,44 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ADBE',
+    'GOOGL',
+    'TSLA',
+    'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ADBE',
+        symbol: 'GOOGL',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 100706, tradingSum: 50916658 },
+        vwapCorrection: { volumeSum: 1358548, tradingSum: 201125248 },
         atr: {
-            average: 15,
-            mutiplier: 1.3,
-            minimumMultipler: 0.65,
+            average: 3.1,
+            mutiplier: 1.6,
+            minimumMultipler: 0.64,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 498,
-            momentumStartForShort: 520,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: adbeQuick },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: adbe },
-            falseBreakoutPlan: { price: 500, targets: R2Target, planConfigs: adbe },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: adbe },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: adbe },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1617830, tradingSum: 274189251 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 8,
+            mutiplier: 0.9,
+            minimumMultipler: 0.45,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -130,13 +122,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'NVDA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 610691, tradingSum: 550587505 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 39,
+            mutiplier: 1,
+            minimumMultipler: 0.4,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -145,36 +137,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
+
         },
-    },
-    {
-        symbol: 'stock4',
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
-        },
-        long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
-        },
-    },
+    }
 ];
