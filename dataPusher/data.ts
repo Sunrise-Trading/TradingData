@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const li: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -15,13 +15,13 @@ const li: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const mu: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 4,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -32,15 +32,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
-    size: 0.25,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
+
 
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -110,12 +102,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 120,
         },
         short: {
+            openScalpPlan: { targets: R2Target, planConfigs: mu },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: mu },
+            falseBreakoutPlan: { price: 113, targets: R2Target, planConfigs: mu }
         },
         long: {
+            openScalpPlan: { targets: R2Target, planConfigs: mu },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: mu },
+            falseBreakoutPlan: { price: 112, targets: R2Target, planConfigs: mu }
         },
     }
 ];
