@@ -32,6 +32,7 @@ export interface SingleDirectionPlans {
     levelBreakout?: LevelBreakoutPlan,
     openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
     openDrive60Plan?: OpenDrive60Plan,
+    openScalpPlan?: OpenScalpPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstNewHighPlan?: FirstNewHighPlan,
     secondNewHighPlan?: SecondNewHighPlan,
@@ -43,6 +44,8 @@ export interface SingleDirectionPlans {
     vwapCrossFailPlan?: VwapCrossFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
 };
+export interface OpenScalpPlan extends BasePlan {
+}
 export interface OpenRangeBreakoutPlan extends BasePlan {
     count: number,
 }
@@ -68,6 +71,7 @@ export enum PlanType {
     SecondNewHigh = 'SecondNewHigh',
     OpenRangeBreakout = 'OpenRangeBreakout',
     OpenDrive60 = 'OpenDrive60',
+    OpenScalp = 'OpenScalp',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
     Range = 'Range',
