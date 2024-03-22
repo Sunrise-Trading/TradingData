@@ -5,25 +5,7 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const li: TradingPlans.PlanConfigs = {
-    size: 0.2,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const mu: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
-};
-const stock3Configs: TradingPlans.PlanConfigs = {
+const lulu: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -32,7 +14,33 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-
+const nke: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const fdx: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const tsla: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
 
 const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -59,59 +67,99 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'LI',
-    'MU',
+    'LULU',
+    'NKE',
+    'FDX',
+    'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'LI',
+        symbol: 'LULU',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1390288, tradingSum: 44087054 },
+        vwapCorrection: { volumeSum: 103310, tradingSum: 43009494 },
         atr: {
-            average: 2,
+            average: 9,
             mutiplier: 1.5,
-            minimumMultipler: 0.5,
+            minimumMultipler: 0.8,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 33,
-            momentumStartForShort: 33,
+            momentumStartForLong: 440,
+            momentumStartForShort: 440,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: li },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: li },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: lulu },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: lulu },
         },
         long: {
         },
     },
     {
-        symbol: 'MU',
+        symbol: 'NKE',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1791690, tradingSum: 202171690 },
+        vwapCorrection: { volumeSum: 393899, tradingSum: 37237736 },
         atr: {
-            average: 3.24,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 1.9,
+            mutiplier: 1.5,
+            minimumMultipler: 0.8,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 111,
-            momentumStartForShort: 120,
+            momentumStartForLong: 97,
+            momentumStartForShort: 97,
         },
         short: {
-            openScalpPlan: { targets: R2Target, planConfigs: mu },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: mu },
-            falseBreakoutPlan: { price: 113, targets: R2Target, planConfigs: mu }
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nke },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: nke },
         },
         long: {
-            openScalpPlan: { targets: R2Target, planConfigs: mu },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: mu },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: mu },
-            falseBreakoutPlan: { price: 112, targets: R2Target, planConfigs: mu }
         },
-    }
+    },
+    {
+        symbol: 'FDX',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 97679, tradingSum: 28836910 },
+        atr: {
+            average: 4,
+            mutiplier: 1.5,
+            minimumMultipler: 0.9,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 300,
+            momentumStartForShort: 300,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: fdx },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: fdx },
+        },
+        long: {
+        },
+    },
+    {
+        symbol: 'TSLA',
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1820921, tradingSum: 305248598 },
+        atr: {
+            average: 7.5,
+            mutiplier: 0.8,
+            minimumMultipler: 4,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 172,
+            momentumStartForShort: 172,
+        },
+        short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+        },
+        long: {
+        },
+    },
 ];
