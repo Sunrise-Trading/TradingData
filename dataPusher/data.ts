@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const lulu: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -15,7 +15,7 @@ const lulu: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const nke: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -24,7 +24,7 @@ const nke: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const fdx: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -32,9 +32,18 @@ const fdx: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const tsla: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const fdxQuick: TradingPlans.PlanConfigs = {
+    size: 0.1,
     deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 4,
+};
+const tsla: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 110,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -90,8 +99,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 440,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: lulu },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: lulu },
+            falseBreakoutPlan: { price: 422, targets: R2Target, planConfigs: lulu },
         },
         long: {
         },
@@ -112,8 +121,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 97,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nke },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: nke },
+            falseBreakoutPlan: { price: 95, targets: R2Target, planConfigs: nke },
         },
         long: {
         },
@@ -134,8 +143,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 300,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: fdx },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: fdxQuick },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: fdx },
+            falseBreakoutPlan: { price: 294, targets: R2Target, planConfigs: fdx }
         },
         long: {
         },
@@ -156,8 +166,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 172,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+            falseBreakoutPlan: { price: 169, targets: R2Target, planConfigs: tsla }
         },
         long: {
         },
