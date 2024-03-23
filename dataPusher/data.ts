@@ -145,9 +145,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: fdxQuick },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: fdx },
-            falseBreakoutPlan: { price: 294, targets: R2Target, planConfigs: fdx }
+            falseBreakoutPlan: { price: 290, targets: R2Target, planConfigs: fdx }
         },
         long: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: fdxQuick },
+
         },
     },
     {
