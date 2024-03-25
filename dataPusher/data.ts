@@ -5,7 +5,25 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const intc: TradingPlans.PlanConfigs = {
+    size: 0.25,
+    deferTradingInSeconds: 60,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const intcQuick: TradingPlans.PlanConfigs = {
+    size: 0.15,
+    deferTradingInSeconds: 60,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 3,
+};
+const amd: TradingPlans.PlanConfigs = {
     size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -14,14 +32,14 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.25,
+const amdQuick: TradingPlans.PlanConfigs = {
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 3,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
@@ -69,14 +87,13 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'INTC',
     'AMD',
-    'LCID',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'INTC',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 1234397, tradingSum: 50705013 },
         atr: {
             average: 1.38,
             mutiplier: 1.5,
@@ -89,8 +106,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 42,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: intcQuick },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: intc },
+            falseBreakoutPlan: { price: 41, targets: R2Target, planConfigs: intc },
         },
         long: {
         },
@@ -98,11 +116,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'AMD',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 908912, tradingSum: 158011975 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 8,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -111,8 +129,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 176,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: amdQuick },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: amd },
+            falseBreakoutPlan: { price: 174, targets: R2Target, planConfigs: amd }
         },
         long: {
         },
@@ -120,7 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'LCID',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 11288596, tradingSum: 36626498 },
         atr: {
             average: 0.2,
             mutiplier: 2,
