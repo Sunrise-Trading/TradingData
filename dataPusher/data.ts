@@ -14,6 +14,15 @@ const amc: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 5,
 };
+const amcScalp: TradingPlans.PlanConfigs = {
+    size: 0.06,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 10,
+};
 const amcFirm: TradingPlans.PlanConfigs = {
     size: 0.15,
     deferTradingInSeconds: 0,
@@ -84,6 +93,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             secondNewHighPlan: { targets: R2Target, planConfigs: amc },
         },
         long: {
+            // openScalpPlan: { targets: R2Target, planConfigs: amcScalp }
         },
     },
     {
