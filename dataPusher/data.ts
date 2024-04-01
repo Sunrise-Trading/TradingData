@@ -4,6 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
+    useSingleOrderForEntry: true,
 }
 const msft: TradingPlans.PlanConfigs = {
     size: 0.2,
@@ -77,7 +78,6 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'MSFT',
-    'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -97,6 +97,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 421,
         },
         short: {
+            falseBreakoutPlan: { price: 422.7, targets: R2Target, planConfigs: msft }
         },
         long: {
             openScalpPlan: { targets: R2Target, planConfigs: msftSmall },
