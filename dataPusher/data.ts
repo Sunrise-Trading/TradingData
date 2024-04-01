@@ -6,7 +6,16 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
 const msft: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.2,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const msftSmall: TradingPlans.PlanConfigs = {
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -15,7 +24,7 @@ const msft: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const tsla: TradingPlans.PlanConfigs = {
-    size: 0.25,
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -90,8 +99,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: msft },
+            openScalpPlan: { targets: R2Target, planConfigs: msftSmall },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: msftSmall },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: msft },
+            falseBreakoutPlan: { price: 422.7, targets: R2Target, planConfigs: msft }
         },
     },
     {
@@ -106,13 +117,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 175.3,
+            momentumStartForShort: 175.3,
         },
         short: {
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: tsla },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
         },
     },
