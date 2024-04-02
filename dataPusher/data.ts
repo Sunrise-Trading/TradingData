@@ -5,26 +5,17 @@ export const activeProfileName: string = "momentumSimple";  // futures, momentum
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
 }
-const msft: TradingPlans.PlanConfigs = {
+const pvh: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 58,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const msftSmall: TradingPlans.PlanConfigs = {
-    size: 0.15,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const tsla: TradingPlans.PlanConfigs = {
-    size: 0.2,
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.25,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -76,57 +67,60 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'MSFT',
     'TSLA',
+    'PVH',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MSFT',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 48609, tradingSum: 20587516 },
+        vwapCorrection: { volumeSum: 731839, tradingSum: 126686364 },
         atr: {
-            average: 5,
+            average: 7.5,
             mutiplier: 1,
             minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 421,
-            momentumStartForShort: 421,
+            momentumStartForLong: 160,
+            momentumStartForShort: 174,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            openScalpPlan: { targets: R2Target, planConfigs: msftSmall },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: msftSmall },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: msft },
-            falseBreakoutPlan: { price: 422.7, targets: R2Target, planConfigs: msft }
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'TSLA',
+        symbol: 'PVH',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 585796, tradingSum: 103516690 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 7.5,
-            mutiplier: 0.8,
-            minimumMultipler: 0.5,
+            average: 3.16,
+            mutiplier: 1.42,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 175.3,
-            momentumStartForShort: 175.3,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pvh },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: pvh },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: tsla },
-            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pvh },
+            firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: pvh },
         },
     },
+
     {
         symbol: 'stock3',
         autoFlip: false,
