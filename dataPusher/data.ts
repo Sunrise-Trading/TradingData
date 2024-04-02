@@ -4,7 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
-    useSingleOrderForEntry: true,
+    useSingleOrderForEntry: false,
 }
 const pvh: TradingPlans.PlanConfigs = {
     size: 0.2,
@@ -100,7 +100,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'PVH',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 118800, tradingSum: 12879911 },
         atr: {
             average: 3.16,
             mutiplier: 1.42,
@@ -109,8 +109,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 100,
+            momentumStartForShort: 115,
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pvh },
