@@ -1,5 +1,6 @@
 export interface TradingSettings {
     equalWeightDivider: number,
+    useSingleOrderForEntry: boolean,
 }
 export interface TradingPlans {
     symbol: string,
