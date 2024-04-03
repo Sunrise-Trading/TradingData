@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 }
 const intc: TradingPlans.PlanConfigs = {
-    size: 0.2,
+    size: 0.15,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -26,7 +26,7 @@ const intcScalp: TradingPlans.PlanConfigs = {
 };
 const spot: TradingPlans.PlanConfigs = {
     size: 0.15,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 60,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -78,6 +78,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'INTC',
+    'TSLA',
     'SPOT'
 ];
 
@@ -100,7 +101,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: intc },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: intc },
-            falseBreakoutPlan: { price: 41.7, targets: R2Target, planConfigs: intcScalp }
+            falseBreakoutPlan: { price: 41.28, targets: R2Target, planConfigs: intcScalp }
         },
         long: {
             falseBreakoutPlan: { price: 41.45, targets: R2Target, planConfigs: intcScalp }
