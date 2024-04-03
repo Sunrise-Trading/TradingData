@@ -4,6 +4,7 @@ import * as Constants from './constants';
 export const activeProfileName: string = "momentumSimple";  // futures, momentumSimple;
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
+    useSingleOrderForEntry: true,
 }
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.25,
