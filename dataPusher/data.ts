@@ -108,7 +108,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 24,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrShort },
+            redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrShort },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: pltrShort },
         },
         long: {
@@ -129,7 +129,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 20.36,
-            momentumStartForShort: 21.35,
+            momentumStartForShort: 22,
         },
         short: {
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: levi },
