@@ -26,7 +26,7 @@ const pltrScalpLong: TradingPlans.PlanConfigs = {
 };
 const pltrShort: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 60,
+    deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -35,7 +35,7 @@ const pltrShort: TradingPlans.PlanConfigs = {
 };
 const levi: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 110,
+    deferTradingInSeconds: 100,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -44,7 +44,7 @@ const levi: TradingPlans.PlanConfigs = {
 };
 const meta: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 100,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -86,8 +86,8 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'PLTR',
     'LEVI',
+    'PLTR',
     'META',
 ];
 
@@ -105,7 +105,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 23,
-            momentumStartForShort: 24,
+            momentumStartForShort: 24.5,
         },
         short: {
             redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrShort },
