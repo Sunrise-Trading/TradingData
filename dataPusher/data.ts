@@ -15,8 +15,8 @@ const pltrLong: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 5,
 };
-const pltrScalpLong: TradingPlans.PlanConfigs = {
-    size: 0.2,
+const pltrScalp: TradingPlans.PlanConfigs = {
+    size: 0.1,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -108,11 +108,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 24.5,
         },
         short: {
-            redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrShort },
+            redtoGreenPlan: { strictMode: false, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrScalp },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: pltrShort },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrScalpLong },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltrScalp },
             firstNewHighPlan: { includeSecondNewHigh: true, targets: R2Target, planConfigs: pltrLong },
         },
     },
