@@ -69,6 +69,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'SPY',
+    'QQQ'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -99,7 +100,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'QQQ',
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
