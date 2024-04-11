@@ -86,7 +86,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 68,
-            momentumStartForShort: 78,
+            momentumStartForShort: 75,
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
