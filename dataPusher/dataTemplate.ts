@@ -58,7 +58,7 @@ const R2Target: TradingPlans.ExitTargets = {
 const R1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+        rrr: [1, 1, 1, 1, 1, 1, 1.5, 1.5, 2, 2],
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     minimumTargets: {
