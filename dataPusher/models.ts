@@ -131,6 +131,7 @@ export interface RedToGreenPlan extends BasePlan {
 }
 export interface FirstNewHighPlan extends BasePlan {
     includeSecondNewHigh: boolean,
+    enableAutoTrigger: boolean,
 }
 export interface SecondNewHighPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
