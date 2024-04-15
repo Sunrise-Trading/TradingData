@@ -112,7 +112,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 284,
+            momentumStartForLong: 283,
             momentumStartForShort: 294,
         },
         short: {
