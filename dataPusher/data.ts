@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const gs: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -50,7 +50,7 @@ const R2Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 10, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.9, 0.95, 1.3, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
+        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1],
     }
@@ -62,93 +62,89 @@ const R1Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.5, 0.5, 0.5, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9],
+        rrr: [0.4, 0.4, 0.5, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.5, 0.55, 0.6, 0.65, 0.7, 0.8, 0.85, 0.9, 1, 1],
     }
 };
 export const stockSelections: string[] = [
-    'GS',
-    'CRM',
-    //'DJT',
+    'TSLA',
+    'UNH',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GS',
+        symbol: 'TSLA',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 86455, tradingSum: 34898584 },
+        vwapCorrection: { volumeSum: 1932867, tradingSum: 305338008 },
         atr: {
-            average: 8,
+            average: 7.7,
             mutiplier: 1,
             minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 400,
-            momentumStartForShort: 420,
+            momentumStartForLong: 162,
+            momentumStartForShort: 162,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: gs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: gs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: gs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: gs },
-            //firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: gs },
-            //firstRetracementPlan: { targets: R2Target, planConfigs: gs },
         },
     },
     {
-        symbol: 'CRM',
+        symbol: 'UNH',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 55366, tradingSum: 15877201 },
+        vwapCorrection: { volumeSum: 225900, tradingSum: 107884854 },
         atr: {
-            average: 6.6,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 9,
+            mutiplier: 1.3,
+            minimumMultipler: 0.51,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 283,
-            momentumStartForShort: 294,
+            momentumStartForLong: 460,
+            momentumStartForShort: 500,
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'DJT',
+        symbol: 'stock3',
         autoFlip: false,
-        vwapCorrection: { volumeSum: 595045, tradingSum: 16548720 },
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 6,
-            mutiplier: 1,
-            minimumMultipler: 0.7,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
-        longOnlyIfOpenAbove: 26,
-        shortOnlyIfOpenBelow: 30,
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock3Configs },
         },
     },
@@ -169,12 +165,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
         long: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
             firstRetracementPlan: { targets: R2Target, planConfigs: stock4Configs },
         },
     },
