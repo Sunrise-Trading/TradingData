@@ -114,12 +114,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            openScalpPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
