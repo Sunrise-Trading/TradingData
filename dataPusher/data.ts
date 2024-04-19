@@ -15,6 +15,15 @@ const nflx: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
+const nflxLong: TradingPlans.PlanConfigs = {
+    size: 0.2,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 60,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
 const tsla: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
@@ -24,7 +33,7 @@ const tsla: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
+const para: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -95,9 +104,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: nflx },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nflx },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nflx },
-            firstRetracementPlan: { targets: R2Target, planConfigs: nflx },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nflxLong },
         },
     },
     {
@@ -142,9 +149,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 12.2,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: para },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: para },
+            firstRetracementPlan: { targets: R2Target, planConfigs: para },
         },
         long: {
         },
