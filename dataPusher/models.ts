@@ -35,6 +35,7 @@ export interface SingleDirectionPlans {
     openDrive60Plan?: OpenDrive60Plan,
     openScalpPlan?: OpenScalpPlan,
     redtoGreenPlan?: RedToGreenPlan,
+    firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
     secondNewHighPlan?: SecondNewHighPlan,
     firstRetracementPlan?: FirstRetracementPlan,
@@ -128,6 +129,9 @@ export interface FirstRetracementPlan extends BasePlan { }
 export interface RedToGreenPlan extends BasePlan {
     strictMode: boolean,
     considerCurrentCandleAfterOneMinute: boolean,
+}
+export interface FirstBreakoutPlan extends BasePlan {
+
 }
 export interface FirstNewHighPlan extends BasePlan {
     includeSecondNewHigh: boolean,
