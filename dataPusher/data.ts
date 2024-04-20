@@ -99,6 +99,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 600,
         },
         short: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: nflx },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nflx },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nflx },
             firstRetracementPlan: { targets: R2Target, planConfigs: nflx },
