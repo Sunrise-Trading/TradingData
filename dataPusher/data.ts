@@ -78,7 +78,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'NFLX',
-    'TSLA',
+    //'TSLA',
     'PARA'
 ];
 
@@ -149,7 +149,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: para },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: para },
-            firstRetracementPlan: { targets: R2Target, planConfigs: para },
         },
         long: {
         },
