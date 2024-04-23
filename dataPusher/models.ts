@@ -2,8 +2,15 @@ export interface TradingSettings {
     equalWeightDivider: number,
     useSingleOrderForEntry: boolean,
 }
+export interface Analysis {
+    newsQualityAndFreshness: number,
+    dailyChartStory: number,
+    relativeVolumeAndCandleSmoothness: number,
+    cleanVwapTrend: number,
+}
 export interface TradingPlans {
     symbol: string,
+    analysis: Analysis,
     autoFlip: boolean,
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,

@@ -77,6 +77,12 @@ export const stockSelections: string[] = [
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
+        analysis: {
+            newsQualityAndFreshness: -1,
+            dailyChartStory: -1,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1,
+        },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
@@ -105,6 +111,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'stock2',
+        analysis: {
+            newsQualityAndFreshness: -1,
+            dailyChartStory: -1,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1,
+        },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
@@ -133,6 +145,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'stock3',
+        analysis: {
+            newsQualityAndFreshness: -1,
+            dailyChartStory: -1,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1,
+        },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
@@ -161,6 +179,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'stock4',
+        analysis: {
+            newsQualityAndFreshness: -1,
+            dailyChartStory: -1,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1,
+        },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
