@@ -69,9 +69,9 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'SPOT',
-    'stock2',
-    'stock3',
-    'stock4',
+    'GM',
+    'JBLU',
+    'GE',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
