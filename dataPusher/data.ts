@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 const tsla: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 55,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -70,6 +70,7 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'TSLA',
     'VRT',
+    'BA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -110,7 +111,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 895136, tradingSum: 82590251 },
