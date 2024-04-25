@@ -38,6 +38,7 @@ export interface SingleDirectionPlans {
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
+    imbalancePlan?: ImbalancePlan,
     openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
     openDrive60Plan?: OpenDrive60Plan,
     openScalpPlan?: OpenScalpPlan,
@@ -54,6 +55,8 @@ export interface SingleDirectionPlans {
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
 };
 export interface OpenScalpPlan extends BasePlan {
+}
+export interface ImbalancePlan extends BasePlan {
 }
 export interface OpenRangeBreakoutPlan extends BasePlan {
     count: number,
@@ -78,6 +81,7 @@ export enum PlanType {
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
     SecondNewHigh = 'SecondNewHigh',
+    Imbalance = 'Imbalance',
     OpenRangeBreakout = 'OpenRangeBreakout',
     OpenDrive60 = 'OpenDrive60',
     OpenScalp = 'OpenScalp',

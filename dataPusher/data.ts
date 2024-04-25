@@ -103,7 +103,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: meta },
         },
         long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: meta },
+            imbalancePlan: { targets: R2Target, planConfigs: meta },
         },
     },
     {
