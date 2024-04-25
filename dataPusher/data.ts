@@ -70,7 +70,8 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'META',
     'IBM',
-    'LUV'
+    'LUV',
+    'AZN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -116,9 +117,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 485314, tradingSum: 13133708 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 0.76,
+            mutiplier: 1.50,
+            minimumMultipler: 0.8,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
