@@ -81,7 +81,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 1323737, tradingSum: 38991618 },
@@ -99,7 +99,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             firstBreakoutPlan: { targets: R2Target, planConfigs: phg },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: phg },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: phg },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: phg },
             firstRetracementPlan: { targets: R2Target, planConfigs: phg },
         },
         long: {
@@ -111,7 +111,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 1,
             dailyChartStory: 1,
             relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 200141, tradingSum: 21259126 },
@@ -127,7 +127,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 107.5,
         },
         short: {
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: bidu },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: bidu },
         },
         long: {
         },
@@ -138,7 +138,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 8901889, tradingSum: 1660525037 },
@@ -190,7 +190,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             firstBreakoutPlan: { targets: R2Target, planConfigs: sofi },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: sofi },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: sofi },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: sofi },
             firstRetracementPlan: { targets: R2Target, planConfigs: sofi },
         },
         long: {
