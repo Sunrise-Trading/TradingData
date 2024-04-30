@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const phg: TradingPlans.PlanConfigs = {
+const pypl: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -15,7 +15,7 @@ const phg: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const bidu: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -24,7 +24,7 @@ const bidu: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const tsla: TradingPlans.PlanConfigs = {
+const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -33,7 +33,7 @@ const tsla: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const sofi: TradingPlans.PlanConfigs = {
+const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -68,45 +68,75 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'PHG',
-    'BIDU',
-    'TSLA',
-    'SOFI',
+    'PYPL',
+    'LLY',
+    'NVO'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PHG',
+        symbol: 'PYPL',
         analysis: {
             newsQualityAndFreshness: 2,
-            dailyChartStory: 2,
+            dailyChartStory: 1,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2,
         },
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1323737, tradingSum: 38991618 },
+        vwapCorrection: { volumeSum: 2523196, tradingSum: 177520395 },
         atr: {
-            average: 0.37,
-            mutiplier: 2,
-            minimumMultipler: 2,
+            average: 1.67,
+            mutiplier: 1.67,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 30,
-            momentumStartForShort: 30,
+            momentumStartForLong: 68,
+            momentumStartForShort: 75,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: phg },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: phg },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: phg },
-            firstRetracementPlan: { targets: R2Target, planConfigs: phg },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: pypl },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pypl },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: pypl },
+            firstRetracementPlan: { targets: R2Target, planConfigs: pypl },
+        },
+        long: {
+            firstBreakoutPlan: { targets: R1Target, planConfigs: pypl },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: pypl },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R1Target, planConfigs: pypl },
+            firstRetracementPlan: { targets: R1Target, planConfigs: pypl },
+        },
+    },
+    {
+        symbol: 'LLY',
+        analysis: {
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 140450, tradingSum: 110086832 },
+        atr: {
+            average: 17,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 750,
+            momentumStartForShort: 800,
+        },
+        short: {
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
         },
     },
     {
-        symbol: 'BIDU',
+        symbol: 'NVO',
         analysis: {
             newsQualityAndFreshness: 1,
             dailyChartStory: 1,
@@ -114,86 +144,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             cleanVwapTrend: 2,
         },
         autoFlip: false,
-        vwapCorrection: { volumeSum: 200141, tradingSum: 21259126 },
+        vwapCorrection: { volumeSum: 319954, tradingSum: 41387206 },
         atr: {
-            average: 2.5,
-            mutiplier: 1.3,
-            minimumMultipler: 1,
+            average: 2.6,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 107.5,
-            momentumStartForShort: 107.5,
+            momentumStartForLong: 130,
+            momentumStartForShort: 130,
         },
         short: {
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: bidu },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
         },
         long: {
         },
-    },
-    {
-        symbol: 'TSLA',
-        analysis: {
-            newsQualityAndFreshness: 2,
-            dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 8901889, tradingSum: 1660525037 },
-        atr: {
-            average: 5,
-            mutiplier: 2,
-            minimumMultipler: 1,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 175,
-            momentumStartForShort: 200,
-        },
-        short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: tsla },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
-            firstRetracementPlan: { targets: R2Target, planConfigs: tsla },
-        },
-        long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: tsla },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
-            firstRetracementPlan: { targets: R2Target, planConfigs: tsla },
-        },
-    },
-    {
-        symbol: 'SOFI',
-        analysis: {
-            newsQualityAndFreshness: 2,
-            dailyChartStory: 1,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 12515461, tradingSum: 97997715 },
-        atr: {
-            average: 0.3,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 8,
-            momentumStartForShort: 8,
-        },
-        short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: sofi },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: sofi },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: sofi },
-            firstRetracementPlan: { targets: R2Target, planConfigs: sofi },
-        },
-        long: {
-        },
-    },
+    }
 ];
