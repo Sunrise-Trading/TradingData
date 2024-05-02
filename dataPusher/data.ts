@@ -69,7 +69,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'CVNA',
-    'stock2',
+    'W',
     'DASH',
     'FSLY',
 ];
@@ -78,10 +78,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'CVNA',
         analysis: {
-            newsQualityAndFreshness: -1,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 370564, tradingSum: 44171749 },
@@ -110,25 +110,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'W',
         analysis: {
-            newsQualityAndFreshness: -1,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { volumeSum: 737052, tradingSum: 42615255 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 3,
+            mutiplier: 1.3,
+            minimumMultipler: 0.8
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 56,
+            momentumStartForShort: 62,
         },
         short: {
             firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
@@ -137,10 +137,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
     },
     {
@@ -165,6 +161,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 125,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: dash },
             firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: dash },
         },
         long: {
