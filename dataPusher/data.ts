@@ -158,6 +158,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 190,
         },
         short: {
+            falseBreakoutPlan: { price: 185, targets: R2Target, planConfigs: aapl },
             firstBreakoutPlan: { targets: R2Target, planConfigs: aapl },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: aapl },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: aapl },
