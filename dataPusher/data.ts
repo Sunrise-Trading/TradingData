@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const pltr: TradingPlans.PlanConfigs = {
+const shop: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -15,7 +15,7 @@ const pltr: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const dis: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -68,69 +68,72 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'PLTR',
-    'DIS'
+    'SHOP',
+    'INTC',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'SHOP',
         analysis: {
             newsQualityAndFreshness: 2,
-            dailyChartStory: 1,
+            dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2,
         },
         autoFlip: false,
-        vwapCorrection: { volumeSum: 5850462, tradingSum: 131153453 },
+        vwapCorrection: { volumeSum: 1, tradingSum: 1 },
+        atr: {
+            average: 2.7,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 60,
+            momentumStartForShort: 70,
+        },
+        short: {
+            falseBreakoutPlan: { price: 65, targets: R2Target, planConfigs: shop },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: shop },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: shop },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: shop },
+            firstRetracementPlan: { targets: R2Target, planConfigs: shop },
+        },
+        long: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: shop },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: shop },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: shop },
+            firstRetracementPlan: { targets: R2Target, planConfigs: shop },
+        },
+    },
+    {
+        symbol: 'INTC',
+        analysis: {
+            newsQualityAndFreshness: 1,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 1095508, tradingSum: 32979798 },
         atr: {
             average: 0.7,
-            mutiplier: 2,
+            mutiplier: 1.3,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 24,
-            momentumStartForShort: 24,
+            momentumStartForLong: 31,
+            momentumStartForShort: 31,
         },
         short: {
-            falseBreakoutPlan: { price: 22.5, targets: R2Target, planConfigs: pltr },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: pltr },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pltr },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: pltr },
-            firstRetracementPlan: { targets: R2Target, planConfigs: pltr },
-        },
-        long: {
-        },
-    },
-    {
-        symbol: 'DIS',
-        analysis: {
-            newsQualityAndFreshness: 2,
-            dailyChartStory: 1,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 1900446, tradingSum: 208823214 },
-        atr: {
-            average: 2.2,
-            mutiplier: 1.5,
-            minimumMultipler: 0.8,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 114,
-            momentumStartForShort: 114,
-        },
-        short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: dis },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: dis },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: dis },
-            firstRetracementPlan: { targets: R2Target, planConfigs: dis },
-            falseBreakoutPlan: { price: 110, targets: R2Target, planConfigs: dis }
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
         },
