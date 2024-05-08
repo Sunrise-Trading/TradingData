@@ -82,7 +82,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             cleanVwapTrend: 2,
         },
         autoFlip: false,
-        vwapCorrection: { volumeSum: 1, tradingSum: 1 },
+        vwapCorrection: { volumeSum: 2353401, tradingSum: 149607917 },
         atr: {
             average: 2.7,
             mutiplier: 1.5,
@@ -102,10 +102,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: shop },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: shop },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: shop },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: shop },
-            firstRetracementPlan: { targets: R2Target, planConfigs: shop },
+            imbalancePlan: { targets: R1Target, planConfigs: shop }
         },
     },
     {
