@@ -1,1 +1,12 @@
+Todo
 1. have a position and stop order, see if i can add another exit order without oversold
+2. test what does it do for Buy Stop Range from HotKeyCommandList page 18
+3. maybe just enter with only one stop order. once filled, cancel it, add range order for exit
+
+Buttons to make, it should only apply to current stock
+0. submit stop order to enter a position, automatic with a stop loss and exit
+1. set stop loss for full position at high/low of the day
+2. take 10% off using market order, also using limit order
+3. set range order
+4. take 50% off using market order, also using limit order
+5. flatten (cancel open orders and close position)
