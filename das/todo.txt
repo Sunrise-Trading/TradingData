@@ -9,12 +9,23 @@ Buttons to make, it should only apply to current stock
 2. take 10% off using market order, also using limit order
 3. set range order
 4. take 50% off using market order, also using limit order
-5. flatten (cancel open orders and close position)
+
 
 
 // red to green, with stop loss, no profit target
 StopPrice=LOW;DefShare=BP*0.97;Price=HI+0.01-LOW;SShare=100/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Price=StopPrice;Route=STOP;StopType=Market;StopPrice=HI+0.01;TIF:DAY;Buy=Send; TriggerOrder=RT:STOP STOPTYPE:MARKET PX:StopPrice-0.3 ACT:SELL STOPPRICE:Price QTY:Pos TIF:DAY; DefShare=20;
 
+// red to green, with stop loss, and 2R target
+StopPrice=LOW;DefShare=BP*0.97;Price=HI+0.01-LOW;SShare=100/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Price=StopPrice;Route=STOP;StopType=Market;StopPrice=HI+0.01;TIF:DAY;Buy=Send; TriggerOrder=RT:STOP STOPTYPE:MARKET PX:StopPrice-0.3 ACT:SELL STOPPRICE:Price QTY:Pos TIF:DAY; DefShare=20;
+
+// first new high, with stop loss, 
+
 // green to red, with stop loss, no profit target
 StopPrice=HI;DefShare=BP*0.97;Price=HI+0.01-LOW;SShare=100/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Price=StopPrice;Route=STOP;StopType=Market;StopPrice=LOW-0.01;TIF:DAY;Sell=Send; TriggerOrder=RT:STOP STOPTYPE:MARKET PX:StopPrice+0.3 ACT:BUY STOPPRICE:Price QTY:Pos TIF:DAY; DefShare=20;
 
+
+// cancel open orders
+CXL ALLSYMB
+
+// flatten (cancel open orders and close position)
+CXL ALLSYMB;Route=Market;Share=POS;SEND=Reverse;
