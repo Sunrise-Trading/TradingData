@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 const nvda: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 110,
+    deferTradingInSeconds: 50,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -83,9 +83,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 257380, tradingSum: 231469758 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 35,
+            mutiplier: 1,
+            minimumMultipler: 0.3,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
