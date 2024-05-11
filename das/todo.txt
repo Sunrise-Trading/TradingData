@@ -16,6 +16,7 @@ StopPrice=LOW;DefShare=BP*0.97;Price=HI+0.01-LOW;SShare=100/Price;Share=DefShare
 
 // market buy
 CXL ALLSYMB;StopPrice=LOW;DefShare=BP*0.97;Price=HI+0.01-LOW;SShare=50/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Price=StopPrice;Route=STOP;StopType=Market;StopPrice=HI+0.01;TIF:DAY;Buy=Send;Price=3*Price+LOW;TriggerOrder=RT:STOP STOPTYPE:RANGE LowPrice:LOW HighPrice:Price ACT:SELL QTY:POS TIF:DAY+;
+ROUTE=SMRTM; Share=+400;Price=Ask+0.01;TIF=DAY+;BUY=Send;
 
 [Tested]
 // red to green, with stop loss
