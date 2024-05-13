@@ -41,7 +41,7 @@ CXL ALLSYMB;StopPrice=LOW;DefShare=BP*0.97;Price=Price-LOW;SShare=50/Price;Share
 CXL ALLSYMB;StopPrice=LOW;DefShare=BP*0.97;Price=Price-LOW;SShare=50/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Route=STOP;StopType=Market;StopPrice=Price+LOW;TIF:DAY;Buy=Send;Price=3*Price+LOW;TriggerOrder=RT:STOP STOPTYPE:RANGE LowPrice:LOW HighPrice:Price ACT:SELL QTY:POS TIF:DAY+;
 
 // price breakdown short, with stop loss, and 2R target
-CXL ALLSYMB;StopPrice=HI;DefShare=BP*0.97;Price=HI-Price;SShare=50/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Route=STOP;StopType=Market;StopPrice=HI-Price;TIF:DAY;Sell=Send;Price=HI-3*Price;TriggerOrder=RT:STOP STOPTYPE:RANGE LowPrice:Price HighPrice:HI ACT:BUY QTY:POS TIF:DAY+;
+CXL ALLSYMB;StopPrice=HI;DefShare=BP*0.97;Price=HI-Price;SShare=50/Price;Share=DefShare-SShare;DefShare=DefShare+SShare;SShare=Share;Sshare=DefShare-SShare;Share=0.5*SShare;TogSShare;Route=STOP;StopType=Market;StopPrice=HI-Price;TIF:DAY;Sell=Send;Price=HI-3*Price;TriggerOrder=RT:STOP STOPTYPE:RANGE LowPrice:HI HighPrice:Price ACT:BUY QTY:POS TIF:DAY+;
 
 [sell to close]
 // 10% 0.75R
