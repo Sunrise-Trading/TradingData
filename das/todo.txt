@@ -55,19 +55,14 @@ Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice
 
 [buy to close]
 // 10% 0.75R
-CXL ALLSYMB;Route=STOP;StopType=Range;HighPrice=HI;LowPrice=HI-AvgCost;LowPrice=HI-LowPrice*1.75;LowPrice=Round2;Share=POS*0.1;BUY;
 CXL ALLSYMB;Route=STOP;StopType=Range;LowPrice=HI;HighPrice=HI-AvgCost;HighPrice=HI-HighPrice*1.75;HighPrice=Round2;Share=POS*0.1;BUY;
 // 10% 1R
-Route=STOP;StopType=Range;HighPrice=HI;LowPrice=HI-AvgCost;LowPrice=HI-LowPrice*2;LowPrice=Round2;Share=POS*0.1;BUY;
+Route=STOP;StopType=Range;LowPrice=HI;HighPrice=HI-AvgCost;HighPrice=HI-HighPrice*2;HighPrice=Round2;Share=POS*0.1;BUY;
 // 20 1.5R
-Route=STOP;StopType=Range;HighPrice=HI;LowPrice=HI-AvgCost;LowPrice=HI-LowPrice*2.5;LowPrice=Round2;Share=POS*0.2;BUY;
+Route=STOP;StopType=Range;LowPrice=HI;HighPrice=HI-AvgCost;HighPrice=HI-HighPrice*2.5;HighPrice=Round2;Share=POS*0.2;BUY;
 // 60% 2R
-Route=STOP;StopType=Range;HighPrice=HI;LowPrice=HI-AvgCost;LowPrice=HI-LowPrice*3;LowPrice=Round2;Share=POS*0.6;BUY;
+Route=STOP;StopType=Range;LowPrice=HI;HighPrice=HI-AvgCost;HighPrice=HI-HighPrice*3;HighPrice=Round2;Share=POS*0.6;BUY;
 
-// split to partial
-CXL ALLSYMB;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost*2-LOW;Share=POS*0.5;SELL;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost*2.5-LOW*1.5;Share=POS*0.5;SELL;
-// split to partial for 1.5R
-Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*2.5+LOW;HighPrice=Round2;Share=POS*0.5;SELL;
 
 // cancel open orders
 CXL ALLSYMB
