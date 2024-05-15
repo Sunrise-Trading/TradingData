@@ -15,9 +15,9 @@ CXL ALLSYMB;StopPrice=HI;DefShare=BP*0.97;Price=HI-Price;SShare=50/Price;Share=D
 // hard stop
 CXL ALLSYMB;ROUTE=STOP;StopType=Market;StopPrice=LOW;Share=POS;Sell=Send;
 // market out 15%, leaving rest at 2R
-CXL ALLSYMB;ROUTE=SMRTM;Share=Pos*0.15;Sell=Send;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*3+LOW;HighPrice=Round2;Share=POS-Share;SELL;
+CXL ALLSYMB;ROUTE=Market;Share=Pos*0.15;Sell=Send;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*3+LOW;HighPrice=Round2;Share=POS-Share;SELL;
 // market out 30%, leaving rest at 2R
-CXL ALLSYMB;ROUTE=SMRTM;Share=Pos*0.3;Sell=Send;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*3+LOW;HighPrice=Round2;Share=POS-Share;SELL;
+CXL ALLSYMB;ROUTE=Market;Share=Pos*0.3;Sell=Send;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*3+LOW;HighPrice=Round2;Share=POS-Share;SELL;
 // limit out 15% at 1.5R, leaving rest at 2R
 CXL ALLSYMB;ROUTE=Limit;Share=Pos*0.15;Price=AvgCost-LOW;Price=2.5*Price+LOW;Price=Round2;Sell=Send;Route=STOP;StopType=Range;LowPrice=LOW;HighPrice=AvgCost-LOW;HighPrice=HighPrice*3+LOW;HighPrice=Round2;Share=POS-Share;SELL;
 
