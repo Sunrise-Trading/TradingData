@@ -6,16 +6,25 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: false,
 }
-const nvda: TradingPlans.PlanConfigs = {
+const nvdaShort: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 50,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 60,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const nvdaLong: TradingPlans.PlanConfigs = {
+    size: 0.2,
+    deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const vfc: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -69,72 +78,73 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'NVDA',
+    'AAPL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'NVDA',
         analysis: {
-            newsQualityAndFreshness: 0,
-            dailyChartStory: 0,
-            relativeVolumeAndCandleSmoothness: 1,
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 3.5,
-            mutiplier: 1,
-            minimumMultipler: 0.3,
+            average: 14,
+            mutiplier: 3,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 892,
-            momentumStartForShort: 892,
+            momentumStartForLong: 998,
+            momentumStartForShort: 1025,
         },
         short: {
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R1Target, planConfigs: nvdaShort },
         },
         long: {
-            falseBreakoutPlan: { price: 897, targets: R2Target, planConfigs: nvda },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: nvda },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nvda },
-            firstRetracementPlan: { targets: R2Target, planConfigs: nvda },
+            levelBreakout: { entryPrice: 1021, targets: R2Target, planConfigs: nvdaLong },
+            falseBreakoutPlan: { price: 1000, targets: R2Target, planConfigs: nvdaLong },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: nvdaLong },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvdaLong },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nvdaLong },
+            firstRetracementPlan: { targets: R2Target, planConfigs: nvdaLong },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'AAPL',
         analysis: {
-            newsQualityAndFreshness: -1,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 0.47,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 12,
+            momentumStartForShort: 12,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 11.9, targets: R2Target, planConfigs: vfc },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: vfc },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: vfc },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: vfc },
+            firstRetracementPlan: { targets: R2Target, planConfigs: vfc },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: vfc },
         },
     },
     {
