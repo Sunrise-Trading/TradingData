@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 const nvdaShort: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 60,
+    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
