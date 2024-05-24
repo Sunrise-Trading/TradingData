@@ -78,7 +78,6 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'NVDA',
-    'AAPL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
