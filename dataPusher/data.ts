@@ -6,7 +6,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: false,
 }
-const insm: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -15,7 +15,7 @@ const insm: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const dkng: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -68,13 +68,13 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'INSM',
-    'DKNG'
+    'CHWY',
+    'AAL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INSM',
+        symbol: 'CHWY',
         analysis: {
             newsQualityAndFreshness: 2,
             dailyChartStory: 2,
@@ -84,56 +84,57 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1.1,
-            mutiplier: 5,
-            minimumMultipler: 3,
+            average: 0.77,
+            mutiplier: 1.3,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 65,
-            momentumStartForShort: 65,
+            momentumStartForLong: 18.37,
+            momentumStartForShort: 19.72,
         },
         short: {
-            levelBreakout: { entryPrice: 49, targets: R2Target, planConfigs: insm },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: insm },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: insm },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: insm },
-            firstRetracementPlan: { targets: R2Target, planConfigs: insm },
+            //firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            //firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            //firstBreakoutPlan: { targets: R2Target, planConfigs: insm },
-            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: insm },
-            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: insm },
-            //firstRetracementPlan: { targets: R2Target, planConfigs: insm },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'DKNG',
+        symbol: 'AAL',
         analysis: {
-            newsQualityAndFreshness: 1,
-            dailyChartStory: 1,
+            newsQualityAndFreshness: 2,
+            dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 1.7,
-            mutiplier: 1.5,
-            minimumMultipler: 0.8,
+            average: 0.43,
+            mutiplier: 1.6,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 40,
-            momentumStartForShort: 40,
+            momentumStartForLong: 13,
+            momentumStartForShort: 13,
         },
         short: {
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: dkng },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-
         },
     },
     {
