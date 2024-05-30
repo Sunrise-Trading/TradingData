@@ -33,6 +33,10 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
+    profitTakingFade60Plan?: ProfitTakingFade60Plan,
+    profitTakingExhuast60Plan?: ProfitTakingExhuast60Plan,
+    openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
+    premarket2ndBreakout60Plan?: Premarket2ndBreakout60Plan,
     momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
@@ -40,7 +44,7 @@ export interface SingleDirectionPlans {
     levelBreakout?: LevelBreakoutPlan,
     imbalancePlan?: ImbalancePlan,
     openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
-    openDrive60Plan?: OpenDrive60Plan,
+
     openScalpPlan?: OpenScalpPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
@@ -72,6 +76,10 @@ export interface keyLevels {
     momentumStartForShort: number,
 };
 export enum PlanType {
+    ProfitTakingFade60 = 'ProfitTakingFade60',
+    ProfitTakingExhuast60 = 'ProfitTakingExhuast60',
+    Premarket2ndBreakout60 = 'Premarket2ndBreakout60',
+    OpenDriveContinuation60 = 'OpenDriveContinuation60',
     Momentum = 'Momentum',
     FirstRetracement = 'FirstRetracement',
     Retracement = 'Retracement',
@@ -83,7 +91,7 @@ export enum PlanType {
     SecondNewHigh = 'SecondNewHigh',
     Imbalance = 'Imbalance',
     OpenRangeBreakout = 'OpenRangeBreakout',
-    OpenDrive60 = 'OpenDrive60',
+
     OpenScalp = 'OpenScalp',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
@@ -108,10 +116,14 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
-export interface OpenDrive60Plan extends BasePlan {
-}
+
 export interface MomentumPlan extends BasePlan {
 };
+export interface ProfitTakingFade60Plan extends BasePlan { }
+export interface ProfitTakingExhuast60Plan extends BasePlan { }
+export interface OpenDriveContinuation60Plan extends BasePlan { }
+export interface Premarket2ndBreakout60Plan extends BasePlan { }
+
 export interface NewsBreakoutPlan extends BasePlan {
 };
 export interface RangePlan extends BasePlan { }
