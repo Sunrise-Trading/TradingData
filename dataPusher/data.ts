@@ -110,7 +110,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             falseBreakoutPlan: { price: 178.15, targets: R2Target, planConfigs: tsla },
             firstBreakoutPlan: { targets: R2Target, planConfigs: tsla },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
             firstRetracementPlan: { targets: R2Target, planConfigs: tsla },
         },
     },
@@ -139,7 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             premarket2ndBreakout60Plan: { targets: R2Target, planConfigs: crmShort },
             firstBreakoutPlan: { targets: R2Target, planConfigs: crmShort },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: crmShort },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: crmShort },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: crmShort },
             firstRetracementPlan: { targets: R2Target, planConfigs: crmShort },
         },
         long: {
@@ -171,7 +171,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             premarket2ndBreakout60Plan: { targets: R2Target, planConfigs: pathShort },
             firstBreakoutPlan: { targets: R2Target, planConfigs: pathShort },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pathShort },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: pathShort },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: pathShort },
             firstRetracementPlan: { targets: R2Target, planConfigs: pathShort },
         },
         long: {
