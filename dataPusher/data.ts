@@ -27,7 +27,7 @@ const crmShort: TradingPlans.PlanConfigs = {
 const crmLong: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
+    stopTradingAfterSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -45,7 +45,7 @@ const pathShort: TradingPlans.PlanConfigs = {
 const pathLong: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
+    stopTradingAfterSeconds: 60,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
@@ -136,6 +136,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 240,
         },
         short: {
+            premarket2ndBreakout60Plan: { targets: R2Target, planConfigs: crmShort },
             firstBreakoutPlan: { targets: R2Target, planConfigs: crmShort },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: crmShort },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: crmShort },
@@ -167,6 +168,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 15,
         },
         short: {
+            premarket2ndBreakout60Plan: { targets: R2Target, planConfigs: pathShort },
             firstBreakoutPlan: { targets: R2Target, planConfigs: pathShort },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: pathShort },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: pathShort },
