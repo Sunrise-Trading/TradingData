@@ -139,6 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
+            falseBreakoutPlan: { price: 27, targets: R2Target, planConfigs: stock2Configs }
         },
     },
     {
