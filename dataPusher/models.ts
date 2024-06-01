@@ -34,7 +34,7 @@ export interface VwapCorrection {
 
 export interface SingleDirectionPlans {
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
-    profitTakingExhuast60Plan?: ProfitTakingExhuast60Plan,
+    profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
     premarket2ndBreakout60Plan?: Premarket2ndBreakout60Plan,
     momentum?: MomentumPlan,
@@ -120,7 +120,7 @@ export interface FalseBreakoutPlan extends BasePlan {
 export interface MomentumPlan extends BasePlan {
 };
 export interface ProfitTakingFade60Plan extends BasePlan { }
-export interface ProfitTakingExhuast60Plan extends BasePlan { }
+export interface ProfitTakingExhaust60Plan extends BasePlan { }
 export interface OpenDriveContinuation60Plan extends BasePlan { }
 export interface Premarket2ndBreakout60Plan extends BasePlan { }
 
