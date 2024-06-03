@@ -69,7 +69,7 @@ const R1Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'GME',
-    'NVDA', 'AMD'
+    'AMD', 'NVDA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -95,6 +95,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 45,
         },
         short: {
+            falseBreakoutPlan: { price: 40, targets: R2Target, planConfigs: gme },
             profitTakingFade60Plan: { targets: R2Target, planConfigs: gme },
             firstBreakoutPlan: { targets: R2Target, planConfigs: gme },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: gme },
@@ -102,6 +103,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: gme },
         },
         long: {
+            falseBreakoutPlan: { price: 38, targets: R2Target, planConfigs: gme },
             firstBreakoutPlan: { targets: R2Target, planConfigs: gme },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: gme },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: gme },
@@ -170,6 +172,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: amd },
         },
         long: {
+            openDriveContinuation60Plan: { targets: R2Target, planConfigs: amd },
             firstBreakoutPlan: { targets: R2Target, planConfigs: amd },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: amd },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: amd },
