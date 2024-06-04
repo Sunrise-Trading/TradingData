@@ -17,7 +17,7 @@ const tsla: TradingPlans.PlanConfigs = {
 };
 const nvda: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 110,
+    deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
@@ -68,8 +68,8 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TSLA',
-    'NVDA',
+
+    'NVDA', 'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -125,12 +125,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 1130,
+            momentumStartForShort: 1130,
         },
         short: {
         },
         long: {
+            openDriveContinuation60Plan: { targets: R2Target, planConfigs: nvda },
             falseBreakoutPlan: { price: 1147, targets: R2Target, planConfigs: nvda },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nvda },
