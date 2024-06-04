@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 const tsla: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 280,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
@@ -70,8 +70,6 @@ const R1Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'TSLA',
     'NVDA',
-    'stock3',
-    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -133,8 +131,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
         },
         long: {
-            falseBreakoutPlan: { price: 1150, targets: R2Target, planConfigs: nvda },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: nvda },
+            falseBreakoutPlan: { price: 1147, targets: R2Target, planConfigs: nvda },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nvda },
             firstRetracementPlan: { targets: R2Target, planConfigs: nvda },
