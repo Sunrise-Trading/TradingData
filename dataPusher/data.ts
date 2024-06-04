@@ -6,23 +6,23 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const tsla: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 5,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const nvda: TradingPlans.PlanConfigs = {
     size: 0.2,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 110,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 5,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
@@ -68,61 +68,61 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
+    'TSLA',
+    'NVDA',
     'stock3',
     'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'TSLA',
         analysis: {
-            newsQualityAndFreshness: -1,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            newsQualityAndFreshness: 1,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 7,
+            mutiplier: 1,
+            minimumMultipler: 0.6,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 173,
+            momentumStartForShort: 180,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+            firstRetracementPlan: { targets: R2Target, planConfigs: tsla },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: tsla },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: tsla },
+            firstRetracementPlan: { targets: R2Target, planConfigs: tsla },
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'NVDA',
         analysis: {
-            newsQualityAndFreshness: -1,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            newsQualityAndFreshness: 1,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 0,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 30,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
@@ -131,16 +131,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 1150, targets: R2Target, planConfigs: nvda },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: nvda },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nvda },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nvda },
+            firstRetracementPlan: { targets: R2Target, planConfigs: nvda },
         },
     },
     {
