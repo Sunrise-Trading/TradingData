@@ -85,6 +85,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
         atr: {
             average: 0,
             mutiplier: 0,
@@ -119,6 +120,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
         atr: {
             average: 0,
             mutiplier: 0,
@@ -153,6 +155,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
         atr: {
             average: 0,
             mutiplier: 0,
@@ -187,6 +190,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
         atr: {
             average: 0,
             mutiplier: 0,
