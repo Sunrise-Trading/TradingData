@@ -15,6 +15,7 @@ export interface TradingPlans {
     isFutures?: boolean,
     vwapCorrection: VwapCorrection,
     atr: AverageTrueRange,
+    marketCapInMillions: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
     longOnlyIfOpenAbove: number,
