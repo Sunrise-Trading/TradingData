@@ -120,7 +120,9 @@ export interface FalseBreakoutPlan extends BasePlan {
 
 export interface MomentumPlan extends BasePlan {
 };
-export interface ProfitTakingFade60Plan extends BasePlan { }
+export interface ProfitTakingFade60Plan extends BasePlan {
+    enableAutoTrigger: boolean,
+}
 export interface ProfitTakingExhaust60Plan extends BasePlan { }
 export interface OpenDriveContinuation60Plan extends BasePlan { }
 export interface Premarket2ndBreakout60Plan extends BasePlan { }
