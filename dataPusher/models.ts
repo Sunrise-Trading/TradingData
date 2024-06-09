@@ -2,9 +2,15 @@ export interface TradingSettings {
     equalWeightDivider: number,
     useSingleOrderForEntry: boolean,
 }
+export enum GapType {
+    Unknown = 'Unknown',
+    Inside = 'Inside',
+    Outside = 'Outside',
+}
 export interface Analysis {
     newsQualityAndFreshness: number,
     dailyChartStory: number,
+    gapType: GapType,
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
 }
