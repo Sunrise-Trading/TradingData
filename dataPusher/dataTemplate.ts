@@ -1,8 +1,8 @@
 import * as TradingPlans from './models';
 import * as Constants from './constants';
 
-// futures, momentumSimple, tradeStationEquity
-export const activeProfileName: string = "momentumSimple";
+// futures, momentumSimple, tradeStationEquity, schwab
+export const activeProfileName: string = "schwab";
 export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
