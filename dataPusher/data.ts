@@ -97,7 +97,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 135.5,
         },
         short: {
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: orcl },
+            //profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: orcl },
             levelBreakout: { entryPrice: 132.76, targets: R2Target, planConfigs: orcl },
             firstBreakoutPlan: { targets: R2Target, planConfigs: orcl },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
@@ -105,6 +105,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: R2Target, planConfigs: orcl },
         },
         long: {
+            openDriveContinuation60Plan: { targets: R2Target, planConfigs: orcl },
             firstBreakoutPlan: { targets: R2Target, planConfigs: orcl },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
