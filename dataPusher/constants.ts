@@ -213,4 +213,9 @@ let futures = [
             }
         },
     }
-]
+];
+
+export const marketCaps = {
+    TSLA: 565000,
+    AVGO: 693000
+}

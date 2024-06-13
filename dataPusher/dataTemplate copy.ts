@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const orcl: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -48,7 +48,7 @@ const R2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 10, 10, 10],
+        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
@@ -60,7 +60,7 @@ const R1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1, 1, 1, 1, 1, 1, 1.5, 1.5, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 10, 10],
+        dailyRanges: [1, 1, 1, 1, 1, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
         rrr: [0.4, 0.4, 0.5, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9],
@@ -69,71 +69,69 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ORCL',
+    'TSLA',
+    'AVGO',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
+        symbol: 'TSLA',
+        analysis: {
+            newsQualityAndFreshness: 1,
+            gapType: TradingPlans.GapType.Outside,
+            dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.TSLA,
+        atr: {
+            average: 7,
+            mutiplier: 1.5,
+            minimumMultipler: 0.5,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 180,
+            momentumStartForShort: 200,
+        },
+        short: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+        },
+        long: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+        },
+    },
+    {
+        symbol: 'AVGO',
         analysis: {
             newsQualityAndFreshness: 2,
             gapType: TradingPlans.GapType.Outside,
             dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 2,
+            relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 340000,
+        marketCapInMillions: Constants.marketCaps.AVGO,
         atr: {
-            average: 2.5,
+            average: 40,
             mutiplier: 1.5,
-            minimumMultipler: 1,
+            minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 132,
-            momentumStartForShort: 135.5,
-        },
-        short: {
-            //profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: orcl },
-            levelBreakout: { entryPrice: 132.76, targets: R2Target, planConfigs: orcl },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: orcl },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
-            firstRetracementPlan: { targets: R2Target, planConfigs: orcl },
-        },
-        long: {
-            openDriveContinuation60Plan: { targets: R2Target, planConfigs: orcl },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: orcl },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: orcl },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: orcl },
-            firstRetracementPlan: { targets: R2Target, planConfigs: orcl },
-        },
-    },
-    {
-        symbol: 'stock2',
-        analysis: {
-            newsQualityAndFreshness: -1,
-            gapType: TradingPlans.GapType.Unknown,
-            dailyChartStory: -1,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 1675,
+            momentumStartForShort: 1724,
         },
         short: {
             firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
