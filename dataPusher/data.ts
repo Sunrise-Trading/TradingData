@@ -93,8 +93,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 500,
+            momentumStartForShort: 600,
         },
         short: {
             profitTakingExhaust60Plan: { targets: R2Target, planConfigs: adbe },
