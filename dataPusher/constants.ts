@@ -217,5 +217,6 @@ let futures = [
 
 export const marketCaps = {
     TSLA: 565000,
-    AVGO: 693000
+    AVGO: 693000,
+    ADBE: 205000
 }
