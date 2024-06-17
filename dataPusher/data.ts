@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const adbe: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -69,14 +69,14 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'ADBE',
+    'TSM',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ADBE',
+        symbol: 'TSM',
         analysis: {
-            newsQualityAndFreshness: 2,
+            newsQualityAndFreshness: 1,
             gapType: TradingPlans.GapType.Outside,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 2,
@@ -84,30 +84,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ADBE,
+        marketCapInMillions: Constants.marketCaps.TSM,
         atr: {
-            average: 10,
-            mutiplier: 1.6,
+            average: 4.9,
+            mutiplier: 1.3,
             minimumMultipler: 0.5,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 500,
-            momentumStartForShort: 600,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
-            profitTakingExhaust60Plan: { targets: R2Target, planConfigs: adbe },
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: adbe },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: adbe },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: adbe },
-            firstRetracementPlan: { targets: R2Target, planConfigs: adbe },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
         long: {
-            openDriveContinuation60Plan: { targets: R2Target, planConfigs: adbe },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: adbe },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: adbe },
-            firstRetracementPlan: { targets: R2Target, planConfigs: adbe },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
         },
     },
     {
