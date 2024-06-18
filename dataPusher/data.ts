@@ -98,10 +98,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 70,
         },
         short: {
+            falseBreakoutPlan: { price: 70, targets: R2Target, planConfigs: nee },
             openDriveContinuation60Plan: { targets: R2Target, planConfigs: nee },
-            firstBreakoutPlan: { targets: R2Target, planConfigs: nee },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nee },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nee },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: nee },
             firstRetracementPlan: { targets: R2Target, planConfigs: nee },
         },
         long: {
@@ -131,16 +131,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 231,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: qcom },
+            profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: qcom },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: qcom },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
             firstRetracementPlan: { targets: R2Target, planConfigs: qcom },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: qcom },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: qcom },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
-            firstRetracementPlan: { targets: R2Target, planConfigs: qcom },
         },
     },
     {
