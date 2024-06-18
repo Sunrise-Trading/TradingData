@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const nee: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,7 +16,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const qcom: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -69,50 +69,15 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'TSM',
-    'AVGO'
+    'NEE',
+    'QCOM',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSM',
+        symbol: 'NEE',
         analysis: {
-            newsQualityAndFreshness: 1,
-            gapType: TradingPlans.GapType.Outside,
-            dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSM,
-        atr: {
-            average: 4.9,
-            mutiplier: 1.3,
-            minimumMultipler: 0.5,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 176,
-            momentumStartForShort: 180,
-        },
-        short: {
-            profitTakingExhaust60Plan: { targets: R2Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
-        },
-        long: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
-        },
-    },
-    {
-        symbol: 'AVGO',
-        analysis: {
-            newsQualityAndFreshness: 1,
+            newsQualityAndFreshness: 2,
             gapType: TradingPlans.GapType.Outside,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 1,
@@ -120,23 +85,62 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AVGO,
+        marketCapInMillions: Constants.marketCaps.NEE,
         atr: {
-            average: 40,
-            mutiplier: 1.2,
-            minimumMultipler: 0.5,
+            average: 1.7,
+            mutiplier: 1.8,
+            minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 1800,
-            momentumStartForShort: 1803,
+            momentumStartForLong: 70,
+            momentumStartForShort: 70,
         },
         short: {
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
+            openDriveContinuation60Plan: { targets: R2Target, planConfigs: nee },
+            firstBreakoutPlan: { targets: R2Target, planConfigs: nee },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nee },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: nee },
+            firstRetracementPlan: { targets: R2Target, planConfigs: nee },
         },
         long: {
+        },
+    },
+    {
+        symbol: 'QCOM',
+        analysis: {
+            newsQualityAndFreshness: 1,
+            gapType: TradingPlans.GapType.Outside,
+            dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 0,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.QCOM,
+        atr: {
+            average: 5.9,
+            mutiplier: 1.2,
+            minimumMultipler: 0.8,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 225,
+            momentumStartForShort: 231,
+        },
+        short: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: qcom },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: qcom },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
+            firstRetracementPlan: { targets: R2Target, planConfigs: qcom },
+        },
+        long: {
+            firstBreakoutPlan: { targets: R2Target, planConfigs: qcom },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: qcom },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
+            firstRetracementPlan: { targets: R2Target, planConfigs: qcom },
         },
     },
     {

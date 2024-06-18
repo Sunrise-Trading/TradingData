@@ -216,9 +216,11 @@ let futures = [
 ];
 
 export const marketCaps = {
-
     AVGO: 693000,
     ADBE: 205000,
+    NEE: 180000,
+    QCOM: 248000,
     TSLA: 565000,
     TSM: 900000,
+
 }
