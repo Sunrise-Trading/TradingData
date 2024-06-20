@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const nee: TradingPlans.PlanConfigs = {
+const dell: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,7 +16,7 @@ const nee: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const qcom: TradingPlans.PlanConfigs = {
+const acn: TradingPlans.PlanConfigs = {
     size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -69,75 +69,81 @@ const R1Target: TradingPlans.ExitTargets = {
     }
 };
 export const stockSelections: string[] = [
-    'NEE',
-    'QCOM',
+    'DELL',
+    'ACN',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NEE',
+        symbol: 'DELL',
+        analysis: {
+            newsQualityAndFreshness: 1,
+            gapType: TradingPlans.GapType.Outside,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.DELL,
+        atr: {
+            average: 8.3,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 153,
+            momentumStartForShort: 160,
+        },
+        short: {
+            //firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
+            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
+            //firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+        },
+        long: {
+            falseBreakoutPlan: { price: 0, targets: R2Target, planConfigs: dell },
+            openDriveContinuation60Plan: { targets: R2Target, planConfigs: dell },
+            premarket2ndBreakout60Plan: { targets: R2Target, planConfigs: dell },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: dell },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: dell },
+            firstRetracementPlan: { targets: R2Target, planConfigs: dell },
+        },
+    },
+    {
+        symbol: 'ACN',
         analysis: {
             newsQualityAndFreshness: 2,
             gapType: TradingPlans.GapType.Outside,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NEE,
+        marketCapInMillions: Constants.marketCaps.ACN,
         atr: {
-            average: 1.7,
-            mutiplier: 1.8,
+            average: 5.8,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 70,
-            momentumStartForShort: 70,
+            momentumStartForLong: 298,
+            momentumStartForShort: 320,
         },
         short: {
-            falseBreakoutPlan: { price: 70, targets: R2Target, planConfigs: nee },
-            openDriveContinuation60Plan: { targets: R2Target, planConfigs: nee },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: nee },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: R2Target, planConfigs: nee },
-            firstRetracementPlan: { targets: R2Target, planConfigs: nee },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: acn },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: acn },
+            firstRetracementPlan: { targets: R2Target, planConfigs: acn },
         },
         long: {
-        },
-    },
-    {
-        symbol: 'QCOM',
-        analysis: {
-            newsQualityAndFreshness: 1,
-            gapType: TradingPlans.GapType.Outside,
-            dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 0,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.QCOM,
-        atr: {
-            average: 5.9,
-            mutiplier: 1.2,
-            minimumMultipler: 0.8,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 225,
-            momentumStartForShort: 231,
-        },
-        short: {
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: R2Target, planConfigs: qcom },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: qcom },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
-            firstRetracementPlan: { targets: R2Target, planConfigs: qcom },
-        },
-        long: {
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: qcom },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: acn },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: acn },
+            firstRetracementPlan: { targets: R2Target, planConfigs: acn },
         },
     },
     {
