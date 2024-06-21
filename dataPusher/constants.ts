@@ -245,6 +245,7 @@ export const marketCaps = {
     DELL: 105000,
     NEE: 180000,
     QCOM: 248000,
+    SRPT: 11000,
     TSLA: 565000,
     TSM: 900000,
 
