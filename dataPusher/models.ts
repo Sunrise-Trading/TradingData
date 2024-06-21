@@ -44,7 +44,6 @@ export interface SingleDirectionPlans {
     profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
     premarket2ndBreakout60Plan?: Premarket2ndBreakout60Plan,
-    momentum?: MomentumPlan,
     retracement?: RetracementPlan,
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
@@ -123,9 +122,6 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
-
-export interface MomentumPlan extends BasePlan {
-};
 export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
 }
@@ -177,6 +173,8 @@ export interface IntraDayBreakoutPlan extends BasePlan {
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
     minimumTargets?: ExitTargetsSet,
+    wave3BatchIndexStart: number,
+    wave5BatchIndexStart: number,
 }
 export interface ExitTargetsSet {
     priceLevels: number[],

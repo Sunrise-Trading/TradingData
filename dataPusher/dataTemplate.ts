@@ -54,7 +54,9 @@ const R2Target: TradingPlans.ExitTargets = {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1],
-    }
+    },
+    wave3BatchIndexStart: 8,
+    wave5BatchIndexStart: 9,
 };
 const R1Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -66,7 +68,9 @@ const R1Target: TradingPlans.ExitTargets = {
         rrr: [0.4, 0.4, 0.5, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         dailyRanges: [0.5, 0.55, 0.6, 0.65, 0.7, 0.8, 0.85, 0.9, 1, 1],
-    }
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
 };
 export const stockSelections: string[] = [
     'stock1',
