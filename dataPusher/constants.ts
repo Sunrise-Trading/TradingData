@@ -240,9 +240,11 @@ let futures = [
 
 export const marketCaps = {
     ACN: 180000,
+    ALNY: 21000,
     AVGO: 693000,
     ADBE: 205000,
     DELL: 105000,
+    DJT: 5000,
     NEE: 180000,
     QCOM: 248000,
     SRPT: 11000,
