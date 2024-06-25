@@ -44,7 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const R2Target: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -53,24 +53,52 @@ const R2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
 };
-const R1Target: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1, 1, 1, 1, 1, 1, 1.5, 1.5, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 10, 10, 10, 10, 10],
+        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
+        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.4, 0.4, 0.5, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9],
+        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.55, 0.6, 0.65, 0.7, 0.8, 0.85, 0.9, 1, 1],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+    wave3BatchIndexStart: 8,
+    wave5BatchIndexStart: 9,
+};
+const stock3Target: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
+        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+    },
+    minimumTargets: {
+        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    wave3BatchIndexStart: 8,
+    wave5BatchIndexStart: 9,
+};
+const stock4Target: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
+        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+    },
+    minimumTargets: {
+        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    wave3BatchIndexStart: 8,
+    wave5BatchIndexStart: 9,
 };
 export const stockSelections: string[] = [
     'stock1',
@@ -104,16 +132,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
     },
     {
@@ -140,16 +168,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
@@ -176,16 +204,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock3Configs },
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock3Configs },
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
     },
     {
@@ -212,16 +240,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         short: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock4Configs },
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
         long: {
-            firstBreakoutPlan: { targets: R2Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: R2Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: R2Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: R2Target, planConfigs: stock4Configs },
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
     },
 ];
