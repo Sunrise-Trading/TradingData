@@ -245,9 +245,11 @@ export const marketCaps = {
     ADBE: 205000,
     DELL: 105000,
     DJT: 5000,
+    ENVX: 2000,
     NEE: 180000,
     QCOM: 248000,
     SRPT: 11000,
+    SEDG: 2000,
     TSLA: 565000,
     TSM: 900000,
 
