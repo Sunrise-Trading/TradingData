@@ -23,7 +23,7 @@ export const baseHitRareStockTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 0,
 };
 
 /**
@@ -49,7 +49,7 @@ export const baseHitFrequentStockTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 1,
 };
 
 export const tslaStockTargets: TradingPlans.ExitTargets = {
@@ -65,7 +65,7 @@ export const tslaStockTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 2,
 };
 
 /**
@@ -87,7 +87,7 @@ export const bigTradeTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 2,
 }
 
 /**
@@ -107,7 +107,7 @@ export const atrTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 2,
 }
 
 /**
@@ -128,6 +128,7 @@ export const beyoundAtrTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
+    dynamicExitCount: 2,
 }
 
 
@@ -144,6 +145,7 @@ const bigTarget: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
+    dynamicExitCount: 2,
 
 };
 const scaledOutAtrTargets: TradingPlans.ExitTargets = {
@@ -159,7 +161,7 @@ const scaledOutAtrTargets: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-
+    dynamicExitCount: 2,
 };
 let futures = [
     {
@@ -246,11 +248,13 @@ export const marketCaps = {
     DELL: 105000,
     DJT: 5000,
     ENVX: 2000,
+    FDX: 63000,
     NEE: 180000,
     QCOM: 248000,
+    RIVN: 12000,
     SRPT: 11000,
     SEDG: 2000,
     TSLA: 565000,
     TSM: 900000,
-
+    WHR: 5000,
 }
