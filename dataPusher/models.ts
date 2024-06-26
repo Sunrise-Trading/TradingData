@@ -175,6 +175,7 @@ export interface ExitTargets {
     minimumTargets?: ExitTargetsSet,
     wave3BatchIndexStart: number,
     wave5BatchIndexStart: number,
+    dynamicExitCount: number,
 }
 export interface ExitTargetsSet {
     priceLevels: number[],

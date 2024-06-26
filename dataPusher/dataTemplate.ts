@@ -57,6 +57,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
+    dynamicExitCount: 2,
 };
 const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -71,6 +72,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
+    dynamicExitCount: 2,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -85,6 +87,7 @@ const stock3Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
+    dynamicExitCount: 2,
 };
 const stock4Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -99,6 +102,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
+    dynamicExitCount: 2,
 };
 export const stockSelections: string[] = [
     'stock1',
