@@ -249,6 +249,7 @@ export const marketCaps = {
     DJT: 5000,
     ENVX: 2000,
     FDX: 63000,
+    MU: 157000,
     NEE: 180000,
     QCOM: 248000,
     RIVN: 12000,
