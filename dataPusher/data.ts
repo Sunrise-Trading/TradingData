@@ -44,7 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const rivnTarget: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -53,13 +53,13 @@ const rivnTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2, 2],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
     dynamicExitCount: 2,
 };
-const fdxtarget: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -68,7 +68,7 @@ const fdxtarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
@@ -105,102 +105,106 @@ const stock4Target: TradingPlans.ExitTargets = {
     dynamicExitCount: 2,
 };
 export const stockSelections: string[] = [
-    'RIVN',
-    'FDX',
-    //'WHR',
+    'WBA',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RIVN',
+        symbol: 'WBA',
         analysis: {
-            newsQualityAndFreshness: 1,
+            newsQualityAndFreshness: 2,
             gapType: TradingPlans.GapType.Outside,
             dailyChartStory: 2,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1,
+            cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.RIVN,
+        marketCapInMillions: Constants.marketCaps.WBA,
         atr: {
-            average: 0.63,
+            average: 0.49,
             mutiplier: 2,
             minimumMultipler: 1,
+            maxRisk: 1,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 15,
-            momentumStartForShort: 18,
+            momentumStartForShort: 15,
         },
         short: {
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: rivnTarget, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: rivnTarget, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: rivnTarget, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: rivnTarget, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: rivnTarget, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'FDX',
+        symbol: 'MU',
         analysis: {
             newsQualityAndFreshness: 2,
             gapType: TradingPlans.GapType.Outside,
-            dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.FDX,
-        atr: {
-            average: 4.79,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 288,
-            momentumStartForShort: 296,
-        },
-        short: {
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: fdxtarget, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: fdxtarget, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: fdxtarget, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: fdxtarget, planConfigs: stock2Configs },
-        },
-        long: {
-            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: fdxtarget, planConfigs: stock2Configs },
-            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: fdxtarget, planConfigs: stock2Configs },
-            //firstRetracementPlan: { targets: fdxtarget, planConfigs: stock2Configs },
-        },
-    },
-    {
-        symbol: 'WHR',
-        analysis: {
-            newsQualityAndFreshness: 1,
-            gapType: TradingPlans.GapType.Outside,
-            dailyChartStory: 2,
-            relativeVolumeAndCandleSmoothness: 1,
+            dailyChartStory: 1,
+            relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WHR,
+        marketCapInMillions: 0,
         atr: {
-            average: 2.71,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 110,
-            momentumStartForShort: 110,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        short: {
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+        },
+        long: {
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+        },
+    },
+    {
+        symbol: 'stock3',
+        analysis: {
+            newsQualityAndFreshness: -1,
+            gapType: TradingPlans.GapType.Unknown,
+            dailyChartStory: -1,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+        },
+        longOnlyIfOpenAbove: 0,
+        shortOnlyIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         short: {
             firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
@@ -209,6 +213,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
     },
     {
@@ -227,6 +235,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             average: 0,
             mutiplier: 0,
             minimumMultipler: 0,
+            maxRisk: 0,
         },
         longOnlyIfOpenAbove: 0,
         shortOnlyIfOpenBelow: 0,
