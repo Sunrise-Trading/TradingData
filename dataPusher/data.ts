@@ -105,9 +105,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 15,
         },
         short: {
+            openDriveContinuation60Plan: { targets: wbaTarget, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: wbaTarget, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wbaTarget, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: wbaTarget, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: wbaTarget, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: wbaTarget, planConfigs: stock1Configs },
         },
         long: {
@@ -138,10 +139,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 138,
         },
         short: {
+            openDriveContinuation60Plan: { targets: muTarget, planConfigs: stock2Configs },
             levelBreakout: { entryPrice: 135.69, targets: muTarget, planConfigs: stock2Configs },
             firstBreakoutPlan: { targets: muTarget, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: muTarget, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: muTarget, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: muTarget, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: muTarget, planConfigs: stock2Configs },
         },
         long: {
