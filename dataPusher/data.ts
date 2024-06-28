@@ -97,7 +97,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 85,
         },
         short: {
-            openDriveContinuation60Plan: { targets: nketarget, planConfigs: quickConfig },
+            //openDriveContinuation60Plan: { targets: nketarget, planConfigs: quickConfig },
             falseBreakoutPlan: { price: 80, targets: nketarget, planConfigs: nkeConfig },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nketarget, planConfigs: nkeConfig },
             firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: nketarget, planConfigs: nkeConfig },
