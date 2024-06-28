@@ -26,6 +26,16 @@ const quickConfig: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.05,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+
 
 const nketarget: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -87,8 +97,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 85,
         },
         short: {
-            openDriveContinuation60Plan: { targets: nketarget, planConfigs: nkeConfig },
-            firstBreakoutPlan: { targets: nketarget, planConfigs: nkeConfig },
+            openDriveContinuation60Plan: { targets: nketarget, planConfigs: quickConfig },
+            falseBreakoutPlan: { price: 80, targets: nketarget, planConfigs: nkeConfig },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nketarget, planConfigs: nkeConfig },
             firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: nketarget, planConfigs: nkeConfig },
             firstRetracementPlan: { targets: nketarget, planConfigs: nkeConfig },
