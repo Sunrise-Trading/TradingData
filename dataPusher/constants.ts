@@ -251,6 +251,7 @@ export const marketCaps = {
     FDX: 63000,
     MU: 157000,
     NEE: 180000,
+    NKE: 142000,
     QCOM: 248000,
     RIVN: 12000,
     SRPT: 11000,
