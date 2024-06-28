@@ -98,8 +98,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 1,
             maxRisk: 0.51,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 15,
             momentumStartForShort: 15,
@@ -132,8 +132,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0.8,
             maxRisk: 3,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 138,
             momentumStartForShort: 138,

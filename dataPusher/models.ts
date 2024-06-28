@@ -24,8 +24,8 @@ export interface TradingPlans {
     marketCapInMillions: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
-    longOnlyIfOpenAbove: number,
-    shortOnlyIfOpenBelow: number,
+    disableShortIfOpenAbove: number,
+    disableLongIfOpenAbove: number,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };

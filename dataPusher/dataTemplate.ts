@@ -130,8 +130,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
@@ -167,8 +167,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
@@ -204,8 +204,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
@@ -241,8 +241,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        longOnlyIfOpenAbove: 0,
-        shortOnlyIfOpenBelow: 0,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenAbove: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
