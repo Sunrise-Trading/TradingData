@@ -25,7 +25,7 @@ export interface TradingPlans {
     fixedQuantity?: number,
     keyLevels: keyLevels,
     disableShortIfOpenAbove: number,
-    disableLongIfOpenAbove: number,
+    disableLongIfOpenBelow: number,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
@@ -176,7 +176,8 @@ export interface ExitTargets {
     minimumTargets?: ExitTargetsSet,
     wave3BatchIndexStart: number,
     wave5BatchIndexStart: number,
-    dynamicExitCount: number,
+    trail5Count: number,
+    trail15Count: number,
 }
 export interface ExitTargetsSet {
     priceLevels: number[],
