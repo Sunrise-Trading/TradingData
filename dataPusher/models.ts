@@ -26,6 +26,7 @@ export interface TradingPlans {
     keyLevels: keyLevels,
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
+    summary: string,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };

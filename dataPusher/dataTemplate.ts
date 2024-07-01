@@ -119,11 +119,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: -1,
-            gapType: TradingPlans.GapType.Unknown,
-            dailyChartStory: -1,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
             relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -140,6 +138,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
+        summary: `
+        
+        `,
         short: {
             reasons: [
                 "",
@@ -164,11 +165,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: -1,
-            gapType: TradingPlans.GapType.Unknown,
-            dailyChartStory: -1,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
             relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -185,6 +184,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
+        summary: `
+        
+        `,
         short: {
             reasons: [
                 "",
@@ -209,11 +211,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock3',
         analysis: {
-            newsQualityAndFreshness: -1,
-            gapType: TradingPlans.GapType.Unknown,
-            dailyChartStory: -1,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
             relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -230,6 +230,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
+        summary: `
+        
+        `,
         short: {
             reasons: [
                 "",
@@ -254,11 +257,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock4',
         analysis: {
-            newsQualityAndFreshness: -1,
-            gapType: TradingPlans.GapType.Unknown,
-            dailyChartStory: -1,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
             relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -275,6 +276,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
+        summary: `
+        
+        `,
         short: {
             reasons: [
                 "",
