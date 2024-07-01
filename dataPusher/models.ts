@@ -41,6 +41,7 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
+    reasons: string[],
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
     profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
