@@ -82,6 +82,7 @@ export const marketCaps = {
     ALNY: 21000,
     AVGO: 693000,
     ADBE: 205000,
+    CHWY: 12000,
     DELL: 105000,
     DJT: 5000,
     ENVX: 2000,
