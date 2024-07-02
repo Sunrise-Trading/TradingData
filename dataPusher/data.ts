@@ -47,13 +47,13 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 5, 5],
+        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
         dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 5, 5],
+        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 8,
     wave5BatchIndexStart: 9,
@@ -109,43 +109,195 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 1,
 };
 export const stockSelections: string[] = [
-    'CHWY',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CHWY',
+        symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: 2,
-            gapType: TradingPlans.GapType.Outside,
-            dailyChartStory: 1,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CHWY,
+        marketCapInMillions: 0,
         atr: {
-            average: 2,
-            mutiplier: 2,
-            minimumMultipler: 1,
-            maxRisk: 2.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 27,
-            momentumStartForShort: 33,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
+        summary: `
+        
+        `,
         short: {
-        },
-        long: {
-            falseBreakoutPlan: { price: 30, targets: stock1Target, planConfigs: stock1Configs },
-            openDriveContinuation60Plan: { targets: stock1Target, planConfigs: stock1Configs },
+            reasons: [
+                "",
+                ""
+            ],
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
-    }
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+        },
+    },
+    {
+        symbol: 'stock2',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+        },
+    },
+    {
+        symbol: 'stock3',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+        },
+    },
+    {
+        symbol: 'stock4',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
+        },
+    },
 ];
