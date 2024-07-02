@@ -111,7 +111,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'NVO',
     'LLY',
-    'TSLA',
+    //'TSLA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -145,13 +145,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         for long, if open with a flush down, near 140 and red to green, ok to go long. first target is 142
         this gap down can trigger trailing stop, especially for LLY
         gap down and already bounced, short only now. now can add gap and go < 60, because it's near vwap
+        above vwap now, cancel first 60 seconds. 
         `,
         short: {
             reasons: [
                 "bearish news, below vwap in premarket",
                 "gap down below recent range"
             ],
-            openDriveContinuation60Plan: { targets: nvoTarget, planConfigs: stock1Configs },
+            // openDriveContinuation60Plan: { targets: nvoTarget, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvoTarget, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: nvoTarget, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: nvoTarget, planConfigs: stock1Configs },
@@ -161,10 +162,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "strong daily chart, first dip can get bought up",
                 "gap down near 140 support"
             ],
-            firstBreakoutPlan: { targets: nvoTarget, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvoTarget, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvoTarget, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: nvoTarget, planConfigs: stock1Configs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvoTarget, planConfigs: stock1Configs },
+            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvoTarget, planConfigs: stock1Configs },
+            //firstRetracementPlan: { targets: nvoTarget, planConfigs: stock1Configs },
         },
     },
     {
@@ -176,7 +176,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.LLY,
         atr: {
             average: 16,
             mutiplier: 1.5,
@@ -186,8 +186,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 910,
+            momentumStartForShort: 910,
         },
         summary: `
         same summary as NVO
@@ -196,10 +196,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "same reason as NVO",
             ],
-            openDriveContinuation60Plan: { targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            //openDriveContinuation60Plan: { targets: stock2Target, planConfigs: stock2Configs },
+            //firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
