@@ -171,21 +171,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.TSLA,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 8,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+            maxRisk: 2,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 230,
+            momentumStartForShort: 240,
         },
         summary: `
         big rally in the last 2 days, expect profit taking today with a gap up.
         only short it when it's a perfect setup, like open close to vwap and makes a green to red < 60
         it's going to be just a scalp so use half size and scalp targets
+        TSLA popped into vwap, now the setup is still open near vwap and short green to red < 60 after a pop into vwap.
         `,
         short: {
             reasons: [
@@ -193,8 +194,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "below vwap in the premarket",
                 "daily chart is still downtrend overall", "sales are still down"
             ],
+            falseBreakoutPlan: { price: 230, targets: tslaTarget, planConfigs: tslaConfigs },
             profitTakingFade60Plan: { enableAutoTrigger: false, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstBreakoutPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
             firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
