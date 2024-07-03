@@ -92,6 +92,7 @@ export const marketCaps = {
     NEE: 180000,
     NKE: 142000,
     NVO: 485000,
+    PARA: 7000,
     QCOM: 248000,
     RIVN: 12000,
     SRPT: 11000,
