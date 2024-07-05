@@ -88,6 +88,7 @@ export const marketCaps = {
     ENVX: 2000,
     FDX: 63000,
     LLY: 869000,
+    M: 5000,
     MU: 157000,
     NEE: 180000,
     NKE: 142000,
