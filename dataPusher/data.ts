@@ -154,7 +154,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsla5Configs },
             firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: stock1Target, planConfigs: tslaConfigs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: tslaConfigs },
-            falseBreakoutPlan: { price: 253.78, targets: stock1Target, planConfigs: tslaConfigs },
+            falseBreakoutPlan: { price: 250, targets: stock1Target, planConfigs: tslaConfigs },
         },
         long: {
             reasons: [
