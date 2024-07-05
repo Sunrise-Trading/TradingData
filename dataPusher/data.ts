@@ -133,8 +133,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 260,
+            momentumStartForShort: 260,
         },
         summary: `
         had 3 day rally as a parabolic run, it's time for profit taking on the friday. so just look for shorts.
