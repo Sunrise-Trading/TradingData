@@ -87,6 +87,7 @@ export const marketCaps = {
     DJT: 5000,
     ENVX: 2000,
     FDX: 63000,
+    INTC: 136000,
     LLY: 869000,
     M: 5000,
     MU: 157000,
