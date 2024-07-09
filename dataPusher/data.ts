@@ -92,7 +92,7 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     trail5Count: 1,
     trail15Count: 1,
 };
-const stock4Target: TradingPlans.ExitTargets = {
+const pltrTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -101,7 +101,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -119,17 +119,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'HELE',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 2.79,
+            mutiplier: 1,
+            minimumMultipler: 2,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -279,15 +279,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "near all time high resistance",
             ],
-            falseBreakoutPlan: { price: 28, targets: stock4Target, planConfigs: pltrConfigs },
+            falseBreakoutPlan: { price: 28, targets: pltrTarget, planConfigs: pltrConfigs },
         },
         long: {
             reasons: [
                 "positive news",
                 "already sold off yesterday but bounced back and near all time high"
             ],
-            levelBreakout: { entryPrice: 28, targets: stock4Target, planConfigs: pltrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: pltrConfigs },
+            levelBreakout: { entryPrice: 28, targets: pltrTarget, planConfigs: pltrConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
         },
     },
 ];
