@@ -12,8 +12,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -128,7 +128,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             average: 4.9,
             mutiplier: 1,
             minimumMultipler: 0.5,
-            maxRisk: 2,
+            maxRisk: 5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -140,6 +140,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         gap up on firm upgrade. but it already traded in hongkong market. so i expect a profit taking at the open.
         if it opens below 190, trade it like TSLA last friday for first breakdown. 
         if it opens above 190, look for a small dip and long the red to green first. ready to stop out to flip short
+        TSM reclaimed 190, although I am short biased, short is not confirmed, if open above 190, it will rally for a few more minutes.
+        need to wait longer for short.
+        if it breaks out premarket high, still a long, but need to scalp because it can reverse any time. so allow early exits.
+        it's breakout out all time high, following the momentun is still long. 
         `,
         short: {
             reasons: [
@@ -155,6 +159,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "strong daily chart and positive news",
             ],
+            levelBreakout: { entryPrice: 191.35, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
@@ -176,16 +181,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 1,
             maxRisk: 0.3,
         },
-        disableShortIfOpenAbove: 0,
+        disableShortIfOpenAbove: 33,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 32.5,
+            momentumStartForShort: 34,
         },
         summary: `
         strong breakout of a very long consolidation period. but gap is too big and needs pullback.
         if open below 33, can have a quick profit taking. but next support is 32.5. then need to look for long. 
         the big picture on the daily chart is long. 
+        if open above 33, disable short. it won't be a good setup.
         `,
         short: {
             reasons: [
