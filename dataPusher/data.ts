@@ -12,8 +12,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -53,7 +53,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +69,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,107 +109,191 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 1,
 };
 export const stockSelections: string[] = [
-    'TSM',
-    'INTC',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSM',
+        symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 2,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSM,
+        marketCapInMillions: 0,
         atr: {
-            average: 4.9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 185,
-            momentumStartForShort: 191.35,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        gap up on firm upgrade. but it already traded in hongkong market. so i expect a profit taking at the open.
-        if it opens below 190, trade it like TSLA last friday for first breakdown. 
-        if it opens above 190, look for a small dip and long the red to green first. ready to stop out to flip short
-        TSM reclaimed 190, although I am short biased, short is not confirmed, if open above 190, it will rally for a few more minutes.
-        need to wait longer for short.
-        if it breaks out premarket high, still a long, but need to scalp because it can reverse any time. so allow early exits.
-        it's breakout out all time high, following the momentun is still long. 
+        
         `,
         short: {
             reasons: [
-                "profit taking",
-                "premarket weak"
+                "",
+                ""
             ],
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
-                "strong daily chart and positive news",
+                "",
+                ""
             ],
-            levelBreakout: { entryPrice: 191.35, targets: stock1Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'INTC',
+        symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 2,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: 0,
         atr: {
-            average: 0.7,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 0.3,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
-        disableShortIfOpenAbove: 33,
+        disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 32.5,
-            momentumStartForShort: 34,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        strong breakout of a very long consolidation period. but gap is too big and needs pullback.
-        if open below 33, can have a quick profit taking. but next support is 32.5. then need to look for long. 
-        the big picture on the daily chart is long. 
-        if open above 33, disable short. it won't be a good setup.
+        
         `,
         short: {
             reasons: [
-                "gap up too much",
+                "",
+                ""
             ],
-            profitTakingFade60Plan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "daily chart breakout",
+                "",
+                ""
             ],
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
-
+    {
+        symbol: 'stock3',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+        },
+    },
+    {
+        symbol: 'stock4',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
+            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
+        },
+    },
 ];
