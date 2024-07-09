@@ -34,7 +34,7 @@ export interface AverageTrueRange {
     average: number,
     mutiplier: number,
     minimumMultipler: number,
-    maxRisk: number
+    maxRisk?: number
 }
 export interface VwapCorrection {
     volumeSum: number,
@@ -127,6 +127,7 @@ export interface FalseBreakoutPlan extends BasePlan {
 }
 export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
+    onlyIfOpenBelow: number,
 }
 export interface ProfitTakingExhaust60Plan extends BasePlan { }
 export interface OpenDriveContinuation60Plan extends BasePlan { }
