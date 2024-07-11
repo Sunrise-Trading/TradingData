@@ -7,9 +7,9 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const dalConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
-    deferTradingInSeconds: 0,
+    deferTradingInSeconds: 119,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
@@ -44,16 +44,16 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const stock1Target: TradingPlans.ExitTargets = {
+const dalTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
+        rrr: [0.9, 0.95, 1, 1, 1, 1.9, 1.95, 1.95, 1.95, 3],
         dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
+        rrr: [0.4, 0.6, 1, 1, 1, 1, 1.5, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +69,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,88 +109,95 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 1,
 };
 export const stockSelections: string[] = [
-    'TSM',
-    'CVNA',
+    'DAL',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSM',
+        symbol: 'DAL',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Inside,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 0,
+            cleanVwapTrend: 1, dailyChartStory: 1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSM,
+        marketCapInMillions: 0,
         atr: {
-            average: 4.9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 187,
-            momentumStartForShort: 187,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        earnings beat, but gap inside, so avoid first 60 second. due to recent selloff, first pop will fade.
-        so let it sell off at the open. then look for vwap reclaim or first new high
+        gap down near 200MA support, cannot short until a major pop. disable trading for the first 2 minutes.
         `,
         short: {
             reasons: [
-                "recent trend is sell",
+                "earnings miss, lower guidance for Q3",
+                "bearish daily chart and during premarket"
             ],
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: dalTarget, planConfigs: dalConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: dalTarget, planConfigs: dalConfigs },
+            firstRetracementPlan: { targets: dalTarget, planConfigs: dalConfigs },
         },
         long: {
             reasons: [
-                "earnings beat, premarket above vwap",
+                "gap down into 200MA support",
             ],
-            falseBreakoutPlan: { price: 188.46, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: true, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'CVNA',
+        symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CVNA,
+        marketCapInMillions: 0,
         atr: {
-            average: 7,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 128,
-            momentumStartForShort: 128,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        firm upgrade, gap above recent range, long only
+        
         `,
-        long: {
+        short: {
             reasons: [
-                "daily chart breakout",
+                "",
+                ""
             ],
-            falseBreakoutPlan: { price: 130, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
-        short: {
+        long: {
             reasons: [
-                "no",
+                "",
+                ""
             ],
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
