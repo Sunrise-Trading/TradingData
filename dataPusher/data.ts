@@ -16,7 +16,7 @@ const dalConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const qsConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -60,7 +60,7 @@ const dalTarget: TradingPlans.ExitTargets = {
     trail5Count: 1,
     trail15Count: 1,
 };
-const stock2Target: TradingPlans.ExitTargets = {
+const qsTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -110,9 +110,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'DAL',
-    'stock2',
-    'stock3',
-    'stock4',
+    'QS',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -125,17 +123,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.DAL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 1.17,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 48,
+            momentumStartForShort: 48,
         },
         summary: `
         gap down near 200MA support, cannot short until a major pop. disable trading for the first 2 minutes.
@@ -156,48 +154,47 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'QS',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.QS,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 0.24,
+            mutiplier: 2,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 8,
+            momentumStartForShort: 8,
         },
         summary: `
-        
+        largest gapper today and very high volume, must trade it today. gapped up too much into resistance, 
+        not good potential for long. shorts are better once lost $7.
+        if hold vwap before open, only short after losing $7.
+        if lost vwap before open, short green to red < 60 or first breakdown.
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "gap up too much into resistance",
+                "sold off from premarket high"
             ],
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 7, targets: qsTarget, planConfigs: qsConfigs },
+            levelBreakout: { entryPrice: 7, targets: qsTarget, planConfigs: qsConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: qsTarget, planConfigs: qsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: qsTarget, planConfigs: qsConfigs },
+            firstRetracementPlan: { targets: qsTarget, planConfigs: qsConfigs },
         },
         long: {
             reasons: [
-                "",
-                ""
+                "positive news",
             ],
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
