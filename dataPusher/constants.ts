@@ -103,6 +103,7 @@ export const marketCaps = {
     QS: 2700,
     RIVN: 12000,
     SRPT: 11000,
+    SOUN: 1670,
     SEDG: 2000,
     TSLA: 565000,
     TSM: 900000,

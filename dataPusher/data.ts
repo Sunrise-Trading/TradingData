@@ -25,7 +25,7 @@ const qsConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
+const sounConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -64,19 +64,19 @@ const qsTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 1,
     trail15Count: 1,
 };
-const stock3Target: TradingPlans.ExitTargets = {
+const sounTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -85,7 +85,7 @@ const stock3Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -111,6 +111,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'DAL',
     'QS',
+    'SOUN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -198,48 +199,50 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'SOUN',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
+            newsQualityAndFreshness: 0, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.SOUN,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 0.29,
+            mutiplier: 1.5,
+            minimumMultipler: 2,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 6,
+            momentumStartForShort: 6,
         },
         summary: `
-        
+        overextended. already big rally from yesterday, this is the profit taking short like early this week. 
+        gap up on no new news, just the same news from yesterday. prepare all shorts
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "overextended already big rally from yesterday, this is the profit taking short like early this week.",
+                "gap up on no new news, just the same news from yesterday.",
+
             ],
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 5.55, targets: sounTarget, planConfigs: sounConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sounTarget, planConfigs: sounConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sounTarget, planConfigs: sounConfigs },
+            firstRetracementPlan: { targets: sounTarget, planConfigs: sounConfigs },
+            levelBreakout: { entryPrice: 5.45, targets: sounTarget, planConfigs: sounConfigs }
         },
         long: {
             reasons: [
-                "",
-                ""
+                "no",
             ],
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            //firstBreakoutPlan: { targets: sounTarget, planConfigs: sounConfigs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sounTarget, planConfigs: sounConfigs },
+            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sounTarget, planConfigs: sounConfigs },
+            //firstRetracementPlan: { targets: sounTarget, planConfigs: sounConfigs },
         },
     },
     {
