@@ -111,6 +111,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'WFC',
     'C',
+    'SNOW'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -162,7 +163,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'C',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Unknown,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 1, dailyChartStory: 2,
         },
@@ -177,8 +178,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 65,
+            momentumStartForShort: 65,
         },
         summary: `
         strong earnings and gap up, but now faded below all time high 67. choose to only go long to align with daily chart. 
@@ -187,7 +188,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             reasons: [
                 "gap and faded below vwap in premarket",
-                ""
             ],
         },
         long: {
@@ -228,7 +228,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             reasons: [
                 "bad news",
-                ""
             ],
             levelBreakout: { entryPrice: 133.17, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
