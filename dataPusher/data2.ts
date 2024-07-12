@@ -7,7 +7,16 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const wfc: TradingPlans.PlanConfigs = {
+const dalConfigs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 119,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const qsConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,16 +25,7 @@ const wfc: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.24,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const stock3Configs: TradingPlans.PlanConfigs = {
+const sounConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -44,39 +44,39 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const wfcTarget: TradingPlans.ExitTargets = {
+const dalTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
+        rrr: [0.9, 0.95, 1, 1, 1, 1.9, 1.95, 1.95, 1.95, 3],
         dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
+        rrr: [0.4, 0.6, 1, 1, 1, 1, 1.5, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.6, 0.7, 0.8, 0.9, 1, 1, 1, 1.2, 1.3],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 1,
     trail15Count: 1,
 };
-const stock2Target: TradingPlans.ExitTargets = {
+const qsTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.6, 0.7, 0.8, 0.9, 1, 1, 1, 1.2, 1.3],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 1,
     trail15Count: 1,
 };
-const stock3Target: TradingPlans.ExitTargets = {
+const sounTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -85,7 +85,7 @@ const stock3Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.6, 0.7, 0.8, 0.9, 1, 1, 1, 1.2, 1.3],
+        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,136 +109,140 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 1,
 };
 export const stockSelections: string[] = [
-    'WFC',
-    'C',
+    'DAL',
+    'QS',
+    'SOUN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'WFC',
+        symbol: 'DAL',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
+            relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 1, dailyChartStory: 1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WFC,
+        marketCapInMillions: Constants.marketCaps.DAL,
         atr: {
-            average: 1.24,
+            average: 1.17,
             mutiplier: 1.5,
-            minimumMultipler: 0.8,
-        },
-        disableShortIfOpenAbove: 56.33,
-        disableLongIfOpenBelow: 56.33,
-        keyLevels: {
-            momentumStartForLong: 55,
-            momentumStartForShort: 60,
-        },
-        summary: `
-        gap down into support on bad news. This might trade like DAL yesterday, there's not much room to go down because 
-        very near support. but for long, first breakout will probably fail. so prepare the longs the worked for DAL yesterday
-        1. first new high on 5 minute chart
-        2. let first breakout to stop out at low of the day, then take the second HOD breakout
-        If open below key level 56.33, prepare first breakdown short
-        volume not super high, disable first 60 seconds
-        `,
-        short: {
-            reasons: [
-                "earnings miss",
-                "below vwap in premarket"
-            ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wfcTarget, planConfigs: wfc },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: wfcTarget, planConfigs: wfc },
-        },
-        long: {
-            reasons: [
-                "gap down into support on daily chart",
-            ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wfcTarget, planConfigs: wfc },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: wfcTarget, planConfigs: wfc },
-        },
-    },
-    {
-        symbol: 'C',
-        analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.C,
-        atr: {
-            average: 1.28,
-            mutiplier: 1.2,
-            minimumMultipler: 0.8,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 48,
+            momentumStartForShort: 48,
         },
         summary: `
-        strong earnings and gap up, but now faded below all time high 67. choose to only go long to align with daily chart. 
-        the gap is not big enough for shorting a profit taking
+        gap down near 200MA support, cannot short until a major pop. disable trading for the first 2 minutes.
         `,
         short: {
             reasons: [
-                "gap and faded below vwap in premarket",
-                ""
+                "earnings miss, lower guidance for Q3",
+                "bearish daily chart and during premarket"
             ],
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: dalTarget, planConfigs: dalConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: dalTarget, planConfigs: dalConfigs },
+            firstRetracementPlan: { targets: dalTarget, planConfigs: dalConfigs },
         },
         long: {
             reasons: [
-                "earnings beat",
-                "strong daily chart"
+                "gap down into 200MA support",
             ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'SNOW',
+        symbol: 'QS',
         analysis: {
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SNOW,
+        marketCapInMillions: Constants.marketCaps.QS,
         atr: {
-            average: 4.6,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 0.24,
+            mutiplier: 2,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 136,
-            momentumStartForShort: 136,
+            momentumStartForLong: 8,
+            momentumStartForShort: 8,
         },
         summary: `
-        bad news, only look for shorts. also recent market trend is profit taking on tech.
-        look for key level to break
+        largest gapper today and very high volume, must trade it today. gapped up too much into resistance, 
+        not good potential for long. shorts are better once lost $7.
+        if hold vwap before open, only short after losing $7.
+        if lost vwap before open, short green to red < 60 or first breakdown.
         `,
         short: {
             reasons: [
-                "bad news",
-                ""
+                "gap up too much into resistance",
+                "sold off from premarket high"
             ],
-            levelBreakout: { entryPrice: 133.17, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 7, targets: qsTarget, planConfigs: qsConfigs },
+            levelBreakout: { entryPrice: 7, targets: qsTarget, planConfigs: qsConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: qsTarget, planConfigs: qsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: qsTarget, planConfigs: qsConfigs },
+            firstRetracementPlan: { targets: qsTarget, planConfigs: qsConfigs },
+        },
+        long: {
+            reasons: [
+                "positive news",
+            ],
+        },
+    },
+    {
+        symbol: 'SOUN',
+        analysis: {
+            newsQualityAndFreshness: 0, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.SOUN,
+        atr: {
+            average: 0.29,
+            mutiplier: 1.5,
+            minimumMultipler: 2,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 6,
+            momentumStartForShort: 6,
+        },
+        summary: `
+        overextended. already big rally from yesterday, this is the profit taking short like early this week. 
+        gap up on no new news, just the same news from yesterday. prepare all shorts
+        `,
+        short: {
+            reasons: [
+                "overextended already big rally from yesterday, this is the profit taking short like early this week.",
+                "gap up on no new news, just the same news from yesterday.",
+
+            ],
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 5.55, targets: sounTarget, planConfigs: sounConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sounTarget, planConfigs: sounConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sounTarget, planConfigs: sounConfigs },
+            firstRetracementPlan: { targets: sounTarget, planConfigs: sounConfigs },
+            levelBreakout: { entryPrice: 5.45, targets: sounTarget, planConfigs: sounConfigs }
         },
         long: {
             reasons: [
                 "no",
             ],
+            //firstBreakoutPlan: { targets: sounTarget, planConfigs: sounConfigs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sounTarget, planConfigs: sounConfigs },
+            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sounTarget, planConfigs: sounConfigs },
+            //firstRetracementPlan: { targets: sounTarget, planConfigs: sounConfigs },
         },
     },
     {

@@ -82,6 +82,7 @@ export const marketCaps = {
     ALNY: 21000,
     AVGO: 693000,
     ADBE: 205000,
+    C: 125000,
     CHWY: 12000,
     CVNA: 14000,
     DAL: 30000,
@@ -105,8 +106,10 @@ export const marketCaps = {
     SRPT: 11000,
     SOUN: 1670,
     SEDG: 2000,
+    SNOW: 46000,
     TSLA: 565000,
     TSM: 900000,
     WBA: 13000,
     WHR: 5000,
+    WFC: 209000,
 }
