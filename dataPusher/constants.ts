@@ -105,6 +105,7 @@ export const marketCaps = {
     RIVN: 12000,
     SRPT: 11000,
     SOUN: 1670,
+    SCHW: 133000,
     SEDG: 2000,
     SNOW: 46000,
     TSLA: 565000,
