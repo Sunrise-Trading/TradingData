@@ -264,8 +264,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 174,
+            momentumStartForShort: 180,
         },
         summary: `
         big gap down when the daily chart is still bullish. already down too much, not interested in shorts.
@@ -275,7 +275,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             reasons: [
                 "bearish news, below vwap",
-                ""
             ],
         },
         long: {
