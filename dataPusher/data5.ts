@@ -53,7 +53,7 @@ const tsmTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +69,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,10 +109,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 1,
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'TSM', 'WBD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -139,7 +136,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         summary: `
         earnigns beat. already made a large selloff yesterday. today gap up with solid good news and AI being hot. long only.
-        first pop still can get faded due to recent down trend. right now it's extended from vwap, let it pullback first. 
+        first pop still can get faded due to recent down trend. right now it's extended from vwap, let it pullback first.
+        if open above Y-high, use red to green < 60 if it dips into Y-high.
+        if open below Y-high, don't chase the first breakout, let it close 1 candle above it. 
+        if keeps going lower, long red to green > 60 or first new high before the Y-high breakout 
         `,
         short: {
             reasons: [
