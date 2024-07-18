@@ -114,6 +114,7 @@ export const marketCaps = {
     TSLA: 565000,
     TSM: 900000,
     WBA: 13000,
+    WBD: 20000,
     WHR: 5000,
     WFC: 209000,
 }
