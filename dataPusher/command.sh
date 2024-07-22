@@ -5,6 +5,6 @@ cd ronglingcode\TradingData\dataPusher
 tsc pusher.ts
 node pusher.js
 tsc pusher.ts & node pusher.js
-
+tsc summarize.ts & node summarize.js
 
 cd ronglingcode\ProxyServer
