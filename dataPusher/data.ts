@@ -53,7 +53,7 @@ const crwdTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +69,7 @@ const msftTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -132,8 +132,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 270,
+            momentumStartForShort: 320,
         },
         summary: `
         can go either up or down. use open price to guide directions.
@@ -179,8 +179,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 425,
+            momentumStartForShort: 440,
         },
         summary: `
         if opens below key level, first pop will be faded. if open above key level, first dip will come back. 
