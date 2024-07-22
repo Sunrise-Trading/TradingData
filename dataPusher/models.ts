@@ -11,6 +11,12 @@ export interface Analysis {
     newsQualityAndFreshness: number,
     dailyChartStory: number,
     gapType: GapType,
+    gapSize: number,
+    weeklychart: string,
+    dailyChart: string,
+    hourlyChart: string,
+    premarketChart: string,
+    keyLevels: number[],
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
 }
