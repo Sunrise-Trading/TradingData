@@ -251,13 +251,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             reasons: [
                 "none",
-                ""
             ],
         },
         long: {
             reasons: [
                 "china ships",
-                ""
             ],
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
         },
