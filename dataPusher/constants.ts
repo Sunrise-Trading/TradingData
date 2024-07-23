@@ -113,10 +113,12 @@ export const marketCaps = {
     SHOP: 82000,
     SEDG: 2000,
     SNOW: 46000,
+    SPOT: 57000,
     TSLA: 565000,
     TSM: 900000,
     WBA: 13000,
     WBD: 20000,
     WHR: 5000,
     WFC: 209000,
+    UPS: 124000,
 }
