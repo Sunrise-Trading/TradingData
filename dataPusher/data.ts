@@ -187,8 +187,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 12,
+            momentumStartForShort: 12.13,
         },
         summary: `
         open below 12, trade with the initial momentum of bearish. but due to already gapped into support, 
