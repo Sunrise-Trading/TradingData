@@ -91,6 +91,7 @@ export const marketCaps = {
     DJT: 5000,
     ENVX: 2000,
     EW: 52000,
+    F: 54000,
     FDX: 63000,
     FIVE: 5000,
     GTLB: 8000,
