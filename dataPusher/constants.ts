@@ -90,6 +90,7 @@ export const marketCaps = {
     DELL: 105000,
     DJT: 5000,
     ENVX: 2000,
+    EW: 52000,
     FDX: 63000,
     FIVE: 5000,
     GTLB: 8000,
