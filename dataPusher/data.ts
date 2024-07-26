@@ -44,7 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const ewTarget: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -53,14 +53,14 @@ const ewTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 10,
     trail15Count: 10,
 };
-const fTarget: TradingPlans.ExitTargets = {
+const nvdaTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
@@ -68,8 +68,8 @@ const fTarget: TradingPlans.ExitTargets = {
     },
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
-        priceLevels: [11.51, 11.51, 11.51, 11.51, 11.51, 11.51, 11.51, 11.51, 11.51, 11.51],
-        dailyRanges: [1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 2, 2, 2],
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,105 +109,120 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'EW',
-    'F',
-    //'VKTX',
+    'DXCM',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'EW',
+        symbol: 'DXCM',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 20,
-            weeklychart: "consolidation in the lower half",
-            dailyChart: "consolidation in the lower half",
-            hourlyChart: "sell off and small bounce",
-            premarketChart: "gap down bounce and fade again",
-            keyLevels: [60.57, 68, 70],
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 40,
+            weeklychart: "in the middle, in top half",
+            dailyChart: "down trend",
+            hourlyChart: "range",
+            premarketChart: "gap down and consolidate",
+            keyLevels: [63.62, 66.89],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.EW,
+        marketCapInMillions: Constants.marketCaps.DXCM,
         atr: {
-            average: 2,
+            average: 3.25,
             mutiplier: 2,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 71,
-            momentumStartForShort: 71,
+            momentumStartForLong: 63,
+            momentumStartForShort: 70,
         },
         summary: `
-        the largest gapper to the down side. for a good short, it needs to pop back.
-        because it already gapped down 10 ATR. give up first 1 minute. let it pop back with 
-        continouse green candles, and then short first new low or green to red
-        for a trend short, it should not pop over 68. above 68, it can continue to 70 then for a range short
+        huge gap down on earnings miss. guidance below estimates and firm down grade.
+        but the stock gapped down more than 10 ATR. And it's near the all time low 66.89.
+        If the stock open above this level, look for long instead. 
+        long setups:
+        1. in the first 60 seconds, open above 66.89, let it dip below or even below premarket low, then go rend to green
+        2. 
         `,
         short: {
             reasons: [
-                "earnings miss and acquisition. lower guidance",
-                "gap down and already made a weak bounce"
+                "huge gap down on earnings miss. guidance below estimates and firm down grade.",
             ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: ewTarget, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: ewTarget, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: ewTarget, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
-                "gap down too much. but already bounced, so give up long",
+                "gap down too much 10 ATR",
+                "near all time low"
             ],
+            profitTakingExhaust60Plan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'F',
+        symbol: 'NVDA',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
+            relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
             gapSize: 2,
-            weeklychart: "bounce in the lower half",
-            dailyChart: "sell off from recent rally",
-            hourlyChart: "down trend",
-            premarketChart: "gap down bounce and fade again",
-            keyLevels: [11.5, 12],
+            weeklychart: "uptrend with pullback",
+            dailyChart: "down trend",
+            hourlyChart: "setting up for head and shoulder",
+            premarketChart: "strong above vwap",
+            keyLevels: [118.42, 116.63],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.F,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 0.35,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 5.9,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 12,
-            momentumStartForShort: 12.13,
+            momentumStartForLong: 113,
+            momentumStartForShort: 113,
         },
         summary: `
-        open below 12, trade with the initial momentum of bearish. but due to already gapped into support, 
-        so need to take profit as it gets to 11.5 and don't be greedy. tighten stop once break below 11.5
-        due to huge gap down almost 8 ATR, don't chase shorts. let it pop to resistance first.
-        so give up first 60 seconds.
+        long only. it's about time for a bounce. short sellers have covered yesterday at the gap fill
+        due to not having high quality news. skip first 60 seconds.
+        because it's above premarket vwap, i expect it to make a quick dip to vwap and then 
+        bounce with a strong uptrend.
+        but don't expect large profit. because there's no high quality news, so just $3-5 range.
+        the good thing is that yesterday ranged $10. so it should be $5 today. 
+        only take the best setup:
+        1. let it dip to vwap, but not losing it or open range low too much, then go red to green.
+        2. a very clean first new high after continuous red bars
+        3. 5 or 15 minute open range breakout
+        4. let first breakout to fail, and then take the 2nd breakout
         `,
         short: {
             reasons: [
-                "earnigns miss, already bounced to 12 and faded",
+                "currently in down trend",
             ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: fTarget, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: fTarget, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: fTarget, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "gap down too much, but already bounced to 12 and faded",
+                "strong bounce from yesterday gap fill price",
+                "above vwap in premarket"
             ],
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvdaTarget, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvdaTarget, planConfigs: stock2Configs },
         },
     },
     {
@@ -245,6 +260,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "",
                 ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
             firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
@@ -255,6 +271,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "",
                 ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
             firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
@@ -296,6 +313,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "",
                 ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
             firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
@@ -306,6 +324,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "",
                 ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
             firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
