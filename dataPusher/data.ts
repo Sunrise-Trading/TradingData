@@ -53,7 +53,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +69,7 @@ const nvdaTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7, 0.8, 0.8],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -110,6 +110,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'DXCM',
+    'NVDA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -146,12 +147,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         If the stock open above this level, look for long instead. 
         long setups:
         1. in the first 60 seconds, open above 66.89, let it dip below or even below premarket low, then go rend to green
-        2. 
+        now bounced above vwap and faded below vwap again, so prepare short setups
+        1. first 60 seconds, if open below 66.89, green to red < 60
+        2. all short setups
         `,
         short: {
             reasons: [
                 "huge gap down on earnings miss. guidance below estimates and firm down grade.",
             ],
+            openDriveContinuation60Plan: { targets: stock1Target, planConfigs: stock1Configs },
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
@@ -221,6 +225,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "strong bounce from yesterday gap fill price",
                 "above vwap in premarket"
             ],
+            falseBreakoutPlan: { price: 0, targets: nvdaTarget, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvdaTarget, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvdaTarget, planConfigs: stock2Configs },
         },
