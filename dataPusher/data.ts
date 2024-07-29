@@ -47,115 +47,110 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
-const nvdaTarget: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7, 0.8, 0.8],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
 const stock4Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1.5, 1.8, 1.85, 1.9, 1.95, 1.95, 1.95, 3],
-        dailyRanges: [1, 1, 10, 10, 10, 10, 10, 10, 10, 10],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
-        rrr: [0.4, 0.6, 1, 1.5, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9],
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        dailyRanges: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'DXCM',
-    'NVDA'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DXCM',
+        symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 40,
-            weeklychart: "in the middle, in top half",
-            dailyChart: "down trend",
-            hourlyChart: "range",
-            premarketChart: "gap down and consolidate",
-            keyLevels: [63.62, 66.89],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DXCM,
+        marketCapInMillions: 0,
         atr: {
-            average: 3.25,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 63,
-            momentumStartForShort: 70,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        huge gap down on earnings miss. guidance below estimates and firm down grade.
-        but the stock gapped down more than 10 ATR. And it's near the all time low 66.89.
-        If the stock open above this level, look for long instead. 
-        long setups:
-        1. in the first 60 seconds, open above 66.89, let it dip below or even below premarket low, then go rend to green
-        now bounced above vwap and faded below vwap again, so prepare short setups
-        1. first 60 seconds, if open below 66.89, green to red < 60
-        2. all short setups
+        
         `,
         short: {
             reasons: [
-                "huge gap down on earnings miss. guidance below estimates and firm down grade.",
+                "",
+                ""
             ],
-            openDriveContinuation60Plan: { targets: stock1Target, planConfigs: stock1Configs },
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
@@ -164,10 +159,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             reasons: [
-                "gap down too much 10 ATR",
-                "near all time low"
+                "",
+                ""
             ],
-            profitTakingExhaust60Plan: { targets: stock1Target, planConfigs: stock1Configs },
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
@@ -176,58 +170,56 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 2,
-            weeklychart: "uptrend with pullback",
-            dailyChart: "down trend",
-            hourlyChart: "setting up for head and shoulder",
-            premarketChart: "strong above vwap",
-            keyLevels: [118.42, 116.63],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NVDA,
+        marketCapInMillions: 0,
         atr: {
-            average: 5.9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 113,
-            momentumStartForShort: 113,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        long only. it's about time for a bounce. short sellers have covered yesterday at the gap fill
-        due to not having high quality news. skip first 60 seconds.
-        because it's above premarket vwap, i expect it to make a quick dip to vwap and then 
-        bounce with a strong uptrend.
-        but don't expect large profit. because there's no high quality news, so just $3-5 range.
-        the good thing is that yesterday ranged $10. so it should be $5 today. 
-        only take the best setup:
-        1. let it dip to vwap, but not losing it or open range low too much, then go red to green.
-        2. a very clean first new high after continuous red bars
-        3. 5 or 15 minute open range breakout
-        4. let first breakout to fail, and then take the 2nd breakout
+        
         `,
         short: {
             reasons: [
-                "currently in down trend",
+                "",
+                ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "strong bounce from yesterday gap fill price",
-                "above vwap in premarket"
+                "",
+                ""
             ],
-            falseBreakoutPlan: { price: 0, targets: nvdaTarget, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvdaTarget, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvdaTarget, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
