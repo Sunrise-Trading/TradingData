@@ -47,12 +47,12 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 13, 3],
+        rrr: [1.5, 1.6, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
         dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
@@ -109,49 +109,55 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'ABT',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'ABT',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 5,
+            weeklychart: "was in the middle of a consolidation",
+            dailyChart: "popped to recent high, then gapped down to recent low",
+            hourlyChart: "slow fade",
+            premarketChart: "gap down and bounce above",
+            keyLevels: [100, 99.71],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.ABT,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 2.12,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
+        disableShortIfOpenAbove: 100,
+        disableLongIfOpenBelow: 99.71,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
         summary: `
-        
+        need to pay more fine than expected. so it's a bad news that can send down the stock more.
+        gap down and bounced, so setting up for a 2nd leg down.
+        for long, need to open above key level 100-99.71. 
+        for short, better to open below 100. 
+        the best setup is open below 99.71 and made a fake pop and then short green to red.
+        volume is very low, so skip first 60 seconds.  short setup has the potential to make a solid 2R
+        for short:
+        1. wait for 1 minute and then short green to red
+        2. after 2 minutes, look for first new low and false breakout of 100-99.71
+        news is bearish, short is a better setup then long.
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "bad news",
+                "gap down and already bounced"
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 99.71, targets: stock1Target, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
@@ -159,10 +165,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             reasons: [
-                "",
-                ""
+                "gap down near support 100",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 100, targets: stock1Target, planConfigs: stock1Configs },
             firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
