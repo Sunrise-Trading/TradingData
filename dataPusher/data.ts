@@ -44,7 +44,23 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const stock1Target: TradingPlans.ExitTargets = {
+const abtLong: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+    },
+    minimumTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1.2, 1.3, 1.4, 1.5],
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
+    trail5Count: 4,
+    trail15Count: 4,
+};
+const abtShort: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -137,8 +153,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 100,
         disableLongIfOpenBelow: 99.71,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 98,
+            momentumStartForShort: 101,
         },
         summary: `
         need to pay more fine than expected. so it's a bad news that can send down the stock more.
@@ -151,27 +167,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         1. wait for 1 minute and then short green to red
         2. after 2 minutes, look for first new low and false breakout of 100-99.71
         news is bearish, short is a better setup then long.
+        above 100 now, also prepare long
+        if open above 100, let it make a red candle and then go red to green
+        then look for first new high
         `,
         short: {
             reasons: [
                 "bad news",
                 "gap down and already bounced"
             ],
-            falseBreakoutPlan: { price: 99.71, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 99.71, targets: abtShort, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: abtShort, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: abtShort, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: abtShort, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
                 "gap down near support 100",
             ],
-            falseBreakoutPlan: { price: 100, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 100, targets: abtLong, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: abtLong, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: abtLong, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: abtLong, planConfigs: stock1Configs },
         },
     },
     {
@@ -198,8 +215,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 98,
+            momentumStartForShort: 101,
         },
         summary: `
         
