@@ -111,6 +111,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'PYPL',
     'SYM',
+    'CRWD'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -120,7 +121,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 0,
+            gapSize: 5,
             weeklychart: "consolidation in lower half range",
             dailyChart: "slightly down trend",
             hourlyChart: "range",
@@ -147,15 +148,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         it's gapped into an resistance area right in the middle.
         for long, look for all red to green patterns.
         disable shorts for the open to avoid fighting against initial momemtum, unless it open below vwap.
+        lost vwap now, add shorts and green to red < 60
         `,
         short: {
             reasons: [
                 "gapped into resistance, long term trend bearish",
             ],
-            //falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            //firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            //firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 63, targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
@@ -218,50 +221,48 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'CRWD',
         analysis: {
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            relativeVolumeAndCandleSmoothness: 0,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 8,
+            weeklychart: "big pullback after a strong up trend",
+            dailyChart: "extreme sellof",
+            hourlyChart: "downtrend",
+            premarketChart: "gap down and bounce",
+            keyLevels: [250],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.CRWD,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 16,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
+        disableShortIfOpenAbove: 250,
+        disableLongIfOpenBelow: 250,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 250,
+            momentumStartForShort: 250,
         },
         summary: `
-        
+        more companies can come out to sue CRWD. so could continue go down. 
+        it could also mean the worst is priced in. not sure which way to go.
+        if open above 250, long only. if open below 250. short only.
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "more companies can come out to sue CRWD",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            falseBreakoutPlan: { price: 250, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
             reasons: [
-                "",
-                ""
+                "worst may be priced in",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            falseBreakoutPlan: { price: 250, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
