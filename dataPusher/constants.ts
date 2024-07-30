@@ -109,6 +109,7 @@ export const marketCaps = {
     NVDA: 3153000,
     PARA: 7000,
     PLTR: 61000,
+    PYPL: 61000,
     QCOM: 248000,
     QS: 2700,
     RIVN: 12000,
