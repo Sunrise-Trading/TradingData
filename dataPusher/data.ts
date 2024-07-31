@@ -12,8 +12,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -51,7 +51,7 @@ const amdShortTarget: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        priceLevels: [146, 146, 146, 146, 146, 146, 146, 146, 146, 146],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
     },
@@ -69,7 +69,7 @@ const amdLongTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -85,7 +85,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -160,6 +160,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         still in a down trend, so first pop can get faded first. but everything about earnings was bullish, so just expect a 
         quick fade. maybe go back to 145 and start bouncing.
         if opens below 150, expect a quick gap up and fade, enable first 60 seconds. 
+        if opens above 150, allow first 60 seconds gap up and go. for the best long setup, let it touch below 150 and then red to green
         `,
         short: {
             reasons: [
@@ -177,6 +178,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "everything about earnings was bullish",
                 ""
             ],
+            openDriveContinuation60Plan: { targets: amdLongTarget, planConfigs: stock1Configs },
             falseBreakoutPlan: { price: 0, targets: amdLongTarget, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amdLongTarget, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amdLongTarget, planConfigs: stock1Configs },
@@ -200,9 +202,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 6,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
