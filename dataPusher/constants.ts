@@ -81,6 +81,7 @@ export const marketCaps = {
     ABT: 182000,
     ACN: 180000,
     ALNY: 21000,
+    AMD: 223000,
     AVGO: 693000,
     ADBE: 205000,
     C: 125000,
