@@ -7,7 +7,16 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const metaConfigs: TradingPlans.PlanConfigs = {
+const intcShortConfigs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const intcLongConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,14 +25,14 @@ const metaConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
-const armConfigs: TradingPlans.PlanConfigs = {
+const amznConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
@@ -44,7 +53,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const stock1Target: TradingPlans.ExitTargets = {
+const intcTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -60,7 +69,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     trail5Count: 4,
     trail15Count: 4,
 };
-const armTarget: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -69,14 +78,14 @@ const armTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [0.5, 0.5, 0.7, 0.8, 0.9, 1, 1, 1, 1, 1],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 4,
     trail15Count: 4,
 };
-const mrnaTarget: TradingPlans.ExitTargets = {
+const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -109,162 +118,166 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'META',
-    'ARM',
-    'MRNA'
+    'INTC',
+    'AAPL',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
+        symbol: 'INTC',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 40,
-            weeklychart: "consolidation",
-            dailyChart: "recent downtrend, gap up above the middle level",
-            hourlyChart: "recent downtrend, gap up and recovered 75%",
-            premarketChart: "strong above vwap",
-            keyLevels: [515],
+            gapSize: 8,
+            weeklychart: "making a 2nd leg after a bear flag",
+            dailyChart: "below all time low",
+            hourlyChart: "extended to the downside",
+            premarketChart: "gap down and extend",
+            keyLevels: [24.59],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.META,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 15,
-            mutiplier: 1.5,
-            minimumMultipler: 0.65,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 500,
-            momentumStartForShort: 500,
-        },
-        summary: `
-        earnings beat, strong premarket, initial momentum is bullish, long only. because there are other weaker stocks to short.
-        due to big gap, let it sell off at the open and then look for breakouts on both 1 minute and 5 minute charts.
-        give up 60 seconds gap and go due to gap too large.
-        key level is 515, watch bottoming signal near that level.
-        set it to scalp due to not having a good story for buying the rumor. and QQQ already rallied strong yesterday.
-        use 1 minte and 5 minute for trailing stops. 
-        expect a 10-15 rally before topping out
-        `,
-        short: {
-            reasons: [
-                "gap up too much"
-            ],
-        },
-        long: {
-            reasons: [
-                "earnings beat, strong premarket, initial momentum is bullish, long only. because there are other weaker stocks to short.",
-                "guidance above estimates and less spending"
-            ],
-            falseBreakoutPlan: { price: 515, targets: stock1Target, planConfigs: metaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: metaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: metaConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: metaConfigs },
-        },
-    },
-    {
-        symbol: 'ARM',
-        analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 16,
-            weeklychart: "pullback beyond the middle of a up trend",
-            dailyChart: "downtrend, small bounce yesterday and makes a new low today below 130",
-            hourlyChart: "downtrend continue",
-            premarketChart: "gap down bounce above vwap and faded below vwap again",
-            keyLevels: [130, 129.1],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ARM,
-        atr: {
-            average: 9.9,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 130,
-            momentumStartForShort: 130,
-        },
-        summary: `
-        weaker than expected guidance. the news is bearish, short only. 
-        due to gap down into support, this down trend trade can be choppy, need patience to buy low and sell high
-        long will be very strugle, so only short. META long is better. and NVDA is better.
-        keep first 60 seconds in case it opens near vwap
-        `,
-        short: {
-            reasons: [
-                "weaker than expected guidance",
-                "downtrend daily chart, open below key levels and makes a new low"
-            ],
-            openDriveContinuation60Plan: { targets: armTarget, planConfigs: armConfigs },
-            falseBreakoutPlan: { price: 129, targets: armTarget, planConfigs: armConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: armTarget, planConfigs: armConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: armTarget, planConfigs: armConfigs },
-            firstRetracementPlan: { targets: armTarget, planConfigs: armConfigs },
-        },
-        long: {
-            reasons: [
-                "gap down into support",
-                "current earnings is still beat"
-            ],
-        },
-    },
-    {
-        symbol: 'MRNA',
-        analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 20,
-            weeklychart: "pop rally and fade",
-            dailyChart: "long flat consolidation and break below now",
-            hourlyChart: "flat",
-            premarketChart: "below vwap all time",
-            keyLevels: [100],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MRNA,
-        atr: {
-            average: 4.9,
-            mutiplier: 1.5,
+            average: 0.9,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 115,
-            momentumStartForShort: 115,
+            momentumStartForLong: 20,
+            momentumStartForShort: 30,
         },
         summary: `
-        lowered guidance.  This drop in guidance was attributed to factors including lower-than-expected sales in Europe and escalating competition in the US.
-        this can be the best trade for today, keep diamond hand and more than 2R move.
-        if open below 100, allow first 60 seconds.
+        earnings miss. firms downgrade. breakdown below all time low support.
+        gapped down 8 ATR is too much. For a good short setup, it needs to bounce at least 0.5 ATR.
+        so a good entry is first new low. because green to red will be 0.5 ATR risk. 
+        if stock makes a small green bar at the open, still ok to short the green to red > 60. but it will be a quick scalp of 2R and move stop to breakeven.
+        it also has potential to squeeze at the open for short covering. a good setup is false breakdown premarket low and to red to green < 60.
+        feels like bad news can't drop the market and it might be a recover day. so add red to green > 60 for INTC.
+        removed red to green > 60, best long is AAPL which reclaimed yesterday low
         `,
         short: {
             reasons: [
-                "lower guidance with persisting reasons",
-                "flat bounce on daily chart and now lost it"
+                "earnings miss. firms downgrade. breakdown below all time low support.",
+                "2nd leg after bear flag on higher timeframe",
+                "suspend dividends",
             ],
-            openDriveContinuation60Plan: { targets: mrnaTarget, planConfigs: stock3Configs },
-            falseBreakoutPlan: { price: 100, targets: mrnaTarget, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: mrnaTarget, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: mrnaTarget, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: mrnaTarget, planConfigs: stock3Configs },
+            falseBreakoutPlan: { price: 23, targets: intcTarget, planConfigs: intcShortConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: intcTarget, planConfigs: intcShortConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: intcTarget, planConfigs: intcShortConfigs },
+            firstRetracementPlan: { targets: intcTarget, planConfigs: intcShortConfigs },
         },
         long: {
             reasons: [
-                "none",
+                "gap down too much, 8 ATR",
             ],
+            profitTakingExhaust60Plan: { targets: intcTarget, planConfigs: intcLongConfigs },
+            //redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: intcTarget, planConfigs: intcLongConfigs },
+
+        },
+    },
+    {
+        symbol: 'AMZN',
+        analysis: {
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 20,
+            weeklychart: "chop",
+            dailyChart: "consolidation",
+            hourlyChart: "range",
+            premarketChart: "gap down and hold below vwap",
+            keyLevels: [],
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        not having a good idea of how AMZN will move at the open. it has bad news and gap down. but gap down near support. it can be a range trading today.
+        maybe no trades and just observe it. a good long setup is open above key level 166.32. then let first breakout to fail and then take the 2nd breakout.
+        initial momentum is still bearish, so long trades will struggle. either take 2nd breakout or range trading to buy the dip.
+        or let it make a false break down.
+        so i will leave it as scalp.
+        `,
+        short: {
+            reasons: [
+                "earnings miss",
+            ],
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: amznConfigs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: amznConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: amznConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: amznConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: amznConfigs },
+        },
+        long: {
+            reasons: [
+                "gap down near support",
+            ],
+            falseBreakoutPlan: { price: 166.32, targets: stock2Target, planConfigs: amznConfigs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: amznConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: amznConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: amznConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: amznConfigs },
+        },
+    },
+    {
+        symbol: 'AAPL',
+        analysis: {
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 3,
+            weeklychart: "pullback after a big uptrend",
+            dailyChart: "selloff",
+            hourlyChart: "selloff and extend",
+            premarketChart: "selloff and recovering",
+            keyLevels: [538.71],
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 10000,
+        atr: {
+            average: 7,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 533,
+            momentumStartForShort: 533,
+        },
+        summary: `
+        if it recovers the selloff from market data, go long
+        `,
+        short: {
+            reasons: [
+                "still down trend",
+            ],
+        },
+        long: {
+            reasons: [
+                "if recover the selloff points, then bad news can't selloff, there's only long",
+            ],
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
+            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
     },
     {
