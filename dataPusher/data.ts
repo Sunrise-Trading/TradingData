@@ -7,13 +7,22 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
+const sbuxQuickShortConfig: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
 const sbuxShortConfig: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const sbuxLongConfig: TradingPlans.PlanConfigs = {
@@ -22,7 +31,7 @@ const sbuxLongConfig: TradingPlans.PlanConfigs = {
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -171,14 +180,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         of the day for profit taking. because the daily chart is still bearish, and it gapped too much suddenly.
         for long trades, need to scalp with raising stops because it can reverse at any time. but as long as it doesn't make new low, it can keep
         pushing up from initial bullish momentum. for short trades, it enter later in the day, then it's a all day sell off.
-        enable first 60 seconds due to high activity.
+        enable first 60 seconds due to high activity. only enable first 60 seconds for long because initial mometum is bullish, 
+        first dip can get bought up.
+        very extended from vwap now, allow first 60 seconds short, but needs to be a scalp as well.
         `,
         short: {
             reasons: [
                 "downtrend on daily chart, gap into bag holders",
                 "gapped up too much"
             ],
-            falseBreakoutPlan: { price: 0, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
+            profitTakingExhaust60Plan: { targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
+            falseBreakoutPlan: { price: 95, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
             firstRetracementPlan: { targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
