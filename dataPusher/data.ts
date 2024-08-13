@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const sbuxShortConfig: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,13 +16,22 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const sbuxLongConfig: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 2,
+};
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -44,7 +53,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const rilyTarget: TradingPlans.ExitTargets = {
+const sbuxShortTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -53,7 +62,23 @@ const rilyTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
+    trail5Count: 4,
+    trail15Count: 4,
+};
+const sbuxLongTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+    },
+    minimumTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,102 +134,117 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'RILY',
-    'HE',
+    'SBUX',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RILY',
+        symbol: 'SBUX',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 7,
-            weeklychart: "pop and fade",
-            dailyChart: "consolidation, setting up for a bear flag",
-            hourlyChart: "consolidation",
-            premarketChart: "below vwap all time",
-            keyLevels: [10, 10.57, 8.6],
+            gapSize: 11,
+            weeklychart: "down trend to double bottom",
+            dailyChart: "bottom consolidation after a down trend and now breakout",
+            hourlyChart: "earnings pop and fade and then range",
+            premarketChart: "huge breakout and then consolidate above vwap, so start with uptrend and now consolidation",
+            keyLevels: [85, 86, 90],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.RILY,
+        marketCapInMillions: Constants.marketCaps.SBUX,
         atr: {
-            average: 1.5,
-            mutiplier: 1.5,
+            average: 2.2,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 12,
-            momentumStartForShort: 12,
+            momentumStartForLong: 80,
+            momentumStartForShort: 100,
         },
         summary: `
-        suspended dividends, so short only. charts are also bearish. expect a good short covering and then short the first breakdown
+        gap up 5 ATR on CEO news. this is good news that can save the company. but it needs confirmation from next earings report.
+        if the initial mometum is still bullish in premarket, it will open with a uptrend to trade, and then switch to selloff for the rest 
+        of the day for profit taking. because the daily chart is still bearish, and it gapped too much suddenly.
+        for long trades, need to scalp with raising stops because it can reverse at any time. but as long as it doesn't make new low, it can keep
+        pushing up from initial bullish momentum. for short trades, it enter later in the day, then it's a all day sell off.
+        enable first 60 seconds due to high activity.
         `,
         short: {
             reasons: [
-                "suspended dividends",
-                "bearish charts"
+                "downtrend on daily chart, gap into bag holders",
+                "gapped up too much"
             ],
-            falseBreakoutPlan: { price: 10, targets: rilyTarget, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: rilyTarget, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: rilyTarget, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: rilyTarget, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
+            firstRetracementPlan: { targets: sbuxShortTarget, planConfigs: sbuxShortConfig },
         },
         long: {
             reasons: [
-                "gap down too much",
+                "bullish news and strong in premarket",
             ],
-
+            openDriveContinuation60Plan: { targets: sbuxLongTarget, planConfigs: sbuxLongConfig },
+            falseBreakoutPlan: { price: 0, targets: sbuxLongTarget, planConfigs: sbuxLongConfig },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sbuxLongTarget, planConfigs: sbuxLongConfig },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sbuxLongTarget, planConfigs: sbuxLongConfig },
+            firstRetracementPlan: { targets: sbuxLongTarget, planConfigs: sbuxLongConfig },
         },
     },
     {
-        symbol: 'HE',
+        symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 3,
-            weeklychart: "full flag",
-            dailyChart: "consolidation",
-            hourlyChart: "round top",
-            premarketChart: "below vwap",
-            keyLevels: [13.35],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.HE,
+        marketCapInMillions: 0,
         atr: {
-            average: 1,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 15,
-            momentumStartForShort: 15,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        earnings miss and ongoing settlement. short only at the open due to bearish initial momentum.
+        
         `,
         short: {
             reasons: [
-                "earnings miss and ongoing settlement",
-                "initial momentum is bearish"
+                "",
+                ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "daily chart in uptrend, making a pullback of 50%",
+                "",
+                ""
             ],
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {

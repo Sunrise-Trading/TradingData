@@ -119,6 +119,7 @@ export const marketCaps = {
     QS: 2700,
     RIVN: 12000,
     RILY: 500,
+    SBUX: 87000,
     SRPT: 11000,
     SOUN: 1670,
     SCHW: 133000,
