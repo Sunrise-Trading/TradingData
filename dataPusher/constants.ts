@@ -112,6 +112,7 @@ export const marketCaps = {
     NKE: 142000,
     NVO: 485000,
     NVDA: 3153000,
+    NU: 60000,
     PARA: 7000,
     PLTR: 61000,
     PYPL: 61000,
