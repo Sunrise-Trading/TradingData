@@ -12,7 +12,7 @@ const wmtConfigs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowStopOutOrFlatten: true,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
@@ -47,7 +47,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 const wmtTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
@@ -109,22 +109,22 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'WMT',
+    'SBUX',
     'SIGA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'WMT',
+        symbol: 'SBUX',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 2,
             gapSize: 6,
             weeklychart: "small pullback after a big uptrend",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
+            dailyChart: "make all time high after a pullback",
+            hourlyChart: "bull flag",
+            premarketChart: "strong hold above vwap and never pullback to vwap, first dip will get bought up",
             keyLevels: [71.33, 74.52],
         },
         autoFlip: false,
@@ -139,7 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 70,
-            momentumStartForShort: 70,
+            momentumStartForShort: 90,
         },
         summary: `
         gap up to make all time high, being the first stock to full recover the recent selloff from the market.
@@ -147,11 +147,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         raise guidance from earnings, long only. and prepare all setups.
         this is a strong hold for a solid 2R+ trade. stock breaking all time high, there's no resistance above after breaking premarket high.
         due to gap up too much and extended from vwap, so don't trade in the first 60 seconds. it needs a bigger profit taking.
+        market gap up too much, everything can sell off first. so allow raising stops for this stock.
         `,
         short: {
             reasons: [
                 "gap up a lot",
             ],
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wmtTarget, planConfigs: wmtConfigs },
+
         },
         long: {
             reasons: [
