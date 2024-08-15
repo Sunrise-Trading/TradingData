@@ -129,11 +129,13 @@ export const marketCaps = {
     SNOW: 46000,
     SPOT: 57000,
     SYM: 18000,
+    SIGA: 854,
     TSLA: 565000,
     TSM: 900000,
     WBA: 13000,
     WBD: 20000,
     WHR: 5000,
     WFC: 209000,
+    WMT: 552000,
     UPS: 124000,
 }
