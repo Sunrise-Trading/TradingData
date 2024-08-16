@@ -7,23 +7,23 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const wmtConfigs: TradingPlans.PlanConfigs = {
-    size: 0.24,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const sigaConfigs: TradingPlans.PlanConfigs = {
+const amatConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
+};
+const stock2Configs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
+    allowFirstFewExitsCount: 5,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
@@ -44,23 +44,23 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const wmtTarget: TradingPlans.ExitTargets = {
+const amatTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 3],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [0.5, 0.6, 0.7, 0.8, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 4,
     trail15Count: 4,
 };
-const sigaTarget: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -109,113 +109,109 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'SBUX',
-    'SIGA',
+    'AMAT',
+    'BABA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SBUX',
+        symbol: 'AMAT',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Inside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 0,
             gapSize: 6,
-            weeklychart: "small pullback after a big uptrend",
-            dailyChart: "make all time high after a pullback",
-            hourlyChart: "bull flag",
-            premarketChart: "strong hold above vwap and never pullback to vwap, first dip will get bought up",
-            keyLevels: [71.33, 74.52],
+            weeklychart: "deep pullback after up trend, bounce to 50%",
+            dailyChart: "bounce into resistance",
+            hourlyChart: "bounce back to resistance",
+            premarketChart: "pop and fade, gap down and bounce",
+            keyLevels: [205, 205.13],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WMT,
+        marketCapInMillions: Constants.marketCaps.AMAT,
         atr: {
-            average: 1,
-            mutiplier: 2,
-            minimumMultipler: 1.5,
+            average: 9.5,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
+        disableShortIfOpenAbove: 205.13,
+        disableLongIfOpenBelow: 205,
         keyLevels: {
-            momentumStartForLong: 70,
-            momentumStartForShort: 90,
+            momentumStartForLong: 204,
+            momentumStartForShort: 208,
         },
         summary: `
-        gap up to make all time high, being the first stock to full recover the recent selloff from the market.
-        it's the stronger of the strongest with market gapping up on better employment data. premarket initial momentum is strong.
-        raise guidance from earnings, long only. and prepare all setups.
-        this is a strong hold for a solid 2R+ trade. stock breaking all time high, there's no resistance above after breaking premarket high.
-        due to gap up too much and extended from vwap, so don't trade in the first 60 seconds. it needs a bigger profit taking.
-        market gap up too much, everything can sell off first. so allow raising stops for this stock.
+        still in an uptrend, so first dip can get bought up. so let it pop first.
+        if open below yesterday low, short the breakdown after the pop.
+        if open above yesterday low, let it make false breakdown and long when it reclaims.
+        candles not smooth, so skip 60 seconds.
+        best setup is false breakout of 205
         `,
         short: {
             reasons: [
-                "gap up a lot",
+                "trailing stop trigger on swing trades",
             ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wmtTarget, planConfigs: wmtConfigs },
-
+            falseBreakoutPlan: { price: 205, targets: amatTarget, planConfigs: amatConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amatTarget, planConfigs: amatConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amatTarget, planConfigs: amatConfigs },
+            firstRetracementPlan: { targets: amatTarget, planConfigs: amatConfigs },
         },
         long: {
             reasons: [
-                "premarket initial momentum is strong.",
-                "market gap up on better jobs data",
-                "daily chart back to be strong",
-                "earnings beat and raise guidance"
+                "still in uptrend, first dip gets bought up",
             ],
-            levelBreakout: { entryPrice: 74.52, targets: wmtTarget, planConfigs: wmtConfigs },
-            falseBreakoutPlan: { price: 0, targets: wmtTarget, planConfigs: wmtConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: wmtTarget, planConfigs: wmtConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: wmtTarget, planConfigs: wmtConfigs },
-            firstRetracementPlan: { targets: wmtTarget, planConfigs: wmtConfigs },
+            falseBreakoutPlan: { price: 205, targets: amatTarget, planConfigs: amatConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amatTarget, planConfigs: amatConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amatTarget, planConfigs: amatConfigs },
+            firstRetracementPlan: { targets: amatTarget, planConfigs: amatConfigs },
         },
     },
     {
-        symbol: 'SIGA',
+        symbol: 'BABA',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 5,
-            weeklychart: "pop and fade in the past",
-            dailyChart: "big rally yesterday and open lower today",
-            hourlyChart: "consolidation and false breakout",
-            premarketChart: "strong below vwap and key support",
-            keyLevels: [8, 7.96],
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 1.5,
+            weeklychart: "forming a bottom",
+            dailyChart: "in the middle of a choppy range",
+            hourlyChart: "consolidation",
+            premarketChart: "strong hold above vwap",
+            keyLevels: [81.88, 82.01],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SIGA,
+        marketCapInMillions: Constants.marketCaps.BABA,
         atr: {
-            average: 0.62,
-            mutiplier: 2,
-            minimumMultipler: 1.5,
+            average: 1.8,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 8,
-            momentumStartForShort: 8,
+            momentumStartForLong: 80,
+            momentumStartForShort: 80,
         },
         summary: `
-        sell off from missing drug endpoint news. give back all the gains from yesterday. solid short because yesterday buyers all in panic sell mode.
-        prepare all short setups. but due to low market cap, skip for 60 seconds.
+        gap up with firms upgrade. stronger than the market so only look for longs. 
+        if breakout premarket high, definitely go long.
         `,
         short: {
             reasons: [
-                "bad drug news",
-                "give back all the gains from yesterday, buyers stops out"
+                "none",
             ],
-            falseBreakoutPlan: { price: 0, targets: sigaTarget, planConfigs: sigaConfigs },
-            firstBreakoutPlan: { targets: sigaTarget, planConfigs: sigaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: sigaTarget, planConfigs: sigaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: sigaTarget, planConfigs: sigaConfigs },
-            firstRetracementPlan: { targets: sigaTarget, planConfigs: sigaConfigs },
         },
         long: {
             reasons: [
-                "none",
+                "firm up grade and stronger than SPY",
             ],
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            levelBreakout: { entryPrice: 82.01, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
