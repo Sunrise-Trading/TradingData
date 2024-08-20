@@ -7,22 +7,22 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const amdConfigs: TradingPlans.PlanConfigs = {
+const tslaConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const panwConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -57,8 +57,8 @@ const stock1Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
 const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -73,8 +73,8 @@ const stock2Target: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 8,
-    trail15Count: 10,
+    trail5Count: 4,
+    trail15Count: 4,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -109,115 +109,105 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'AMD',
-    'LQDA',
+    'TSLA',
+    'PANW',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
+        symbol: 'TSLA',
         analysis: {
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 1,
-            weeklychart: "bounce into resistance of previous down leg",
-            dailyChart: "up trend, but weaker than the market",
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 3,
+            weeklychart: "in the middle of consolidation range",
+            dailyChart: "recover 50% of recent 2 leg selloff",
             hourlyChart: "up trend",
-            premarketChart: "pop and sell off",
-            keyLevels: [153.6, 150],
+            premarketChart: "hold above vwap",
+            keyLevels: [225, 230],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMD,
+        marketCapInMillions: Constants.marketCaps.TSLA,
         atr: {
-            average: 7,
+            average: 11,
             mutiplier: 1,
-            minimumMultipler: 1,
+            minimumMultipler: 0.5,
         },
         disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 150,
+        disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 145,
-            momentumStartForShort: 160,
+            momentumStartForLong: 222,
+            momentumStartForShort: 235,
         },
         summary: `
-        gap up on new acquisition. it's good news but too far from realizing any benefits yet. gap up into resistance 
-        and then drop below vwap. conference is ongoing at 8:30AM, they must have said something that dropped the stock.
-        if opens below 150, short first breakdown.
-        if opens above 150, it will probably range back up first before selloff.
-        due to potential chop, allow move stops.
-        acquisition caused dilution mentioned by the company, that's why it sold off.
-        still in uptrend, so first dip can get bought up. so also wait for 1 minute.
-        also too far away from vwap, need a bounce for at least 1 minute.
+        has good news on cutting tariff. recent trend is bullish. gap up stronger than market.
+        so long only. for shorts, there are better candidates for profit taking.
+        due to already rallied yesterday, need to wait for a good pullback. so disable first 60 seconds.
+        and set targets to scalp
         `,
         short: {
             reasons: [
-                "gap up into resistance and then drop below vwap",
-                "initial momentum is profit taking now",
-                "this can trigger profit taking from recent long swing"
+                "there are better candidates for profit taking",
             ],
-            falseBreakoutPlan: { price: 149.37, targets: stock1Target, planConfigs: amdConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: amdConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: amdConfigs },
         },
         long: {
             reasons: [
-                "in recent up trend",
+                "has good news on cutting tariff. recent trend is bullish. gap up stronger than market.",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: amdConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: amdConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: amdConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tslaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tslaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: tslaConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: tslaConfigs },
         },
     },
     {
-        symbol: 'LQDA',
+        symbol: 'PANW',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 0, dailyChartStory: 2,
-            gapSize: 5,
-            weeklychart: "formed a lower high bounce",
-            dailyChart: "bounce but into resistance",
-            hourlyChart: "previously uptrend",
-            premarketChart: "gap down huge and weak bounce",
-            keyLevels: [10],
+            relativeVolumeAndCandleSmoothness: 0,
+            cleanVwapTrend: 0, dailyChartStory: 1,
+            gapSize: 7,
+            weeklychart: "grind up after a deep pullback",
+            dailyChart: "rally into previous high, now gap up above",
+            hourlyChart: "v shaop recovery",
+            premarketChart: "mixed around vwap",
+            keyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.LQDA,
+        marketCapInMillions: Constants.marketCaps.PANW,
         atr: {
-            average: 0.68,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 10,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 10,
+        disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 10,
-            momentumStartForShort: 10,
+            momentumStartForLong: 345,
+            momentumStartForShort: 355,
         },
         summary: `
-        won't have FDA approval until its exclusivity expires. very bad news. gapped below key level 10. short only. 
-        already made a bear flag type bounce. short the first breakdown after a weak pop.
-        due to low volume, wait for at least 1 minute
+        earnings beat and added some stock buy back.long only to avoid chop.
+        a good long setup is open above 350, false breakdown below 350, not losing premarket low and come back up.
+        due to gapped inside a range, set it to scalp.
         `,
         short: {
             reasons: [
-                "bad news",
-                "below key level"
+                "long only to avoid chop",
             ],
-            falseBreakoutPlan: { price: 10, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "none",
+                "earnings beat and added some stock buy back.",
             ],
+            falseBreakoutPlan: { price: 350, targets: stock2Target, planConfigs: panwConfigs },
+            firstBreakoutPlan: { targets: stock2Target, planConfigs: panwConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: panwConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: panwConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: panwConfigs },
         },
     },
     {
