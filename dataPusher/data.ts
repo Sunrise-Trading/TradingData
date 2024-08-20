@@ -203,7 +203,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "earnings beat and added some stock buy back.",
             ],
-            falseBreakoutPlan: { price: 350, targets: stock2Target, planConfigs: panwConfigs },
+            levelBreakout: { entryPrice: 353, targets: stock2Target, planConfigs: panwConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: panwConfigs },
             firstBreakoutPlan: { targets: stock2Target, planConfigs: panwConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: panwConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: panwConfigs },
