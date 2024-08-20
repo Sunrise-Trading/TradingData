@@ -173,7 +173,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dailyChart: "rally into previous high, now gap up above",
             hourlyChart: "v shaop recovery",
             premarketChart: "mixed around vwap",
-            keyLevels: [],
+            keyLevels: [353.81],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
