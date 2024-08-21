@@ -7,22 +7,22 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const tslaConfigs: TradingPlans.PlanConfigs = {
+const tgtConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const panwConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    alwaysAllowStopOutOrFlatten: false,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -44,7 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const stock1Target: TradingPlans.ExitTargets = {
+const tgtTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -69,12 +69,12 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 4,
-    trail15Count: 4,
+    trail5Count: 8,
+    trail15Count: 10,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -92,127 +92,118 @@ const stock3Target: TradingPlans.ExitTargets = {
     trail5Count: 4,
     trail15Count: 4,
 };
-const stock4Target: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
-    trail5Count: 4,
-    trail15Count: 4,
-};
 export const stockSelections: string[] = [
-    'TSLA',
-    'PANW',
+    'TGT',
+    'JD',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
-        analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 3,
-            weeklychart: "in the middle of consolidation range",
-            dailyChart: "recover 50% of recent 2 leg selloff",
-            hourlyChart: "up trend",
-            premarketChart: "hold above vwap",
-            keyLevels: [225, 230],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
-        atr: {
-            average: 11,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 222,
-            momentumStartForShort: 235,
-        },
-        summary: `
-        has good news on cutting tariff. recent trend is bullish. gap up stronger than market.
-        so long only. for shorts, there are better candidates for profit taking.
-        due to already rallied yesterday, need to wait for a good pullback. so disable first 60 seconds.
-        and set targets to scalp
-        `,
-        short: {
-            reasons: [
-                "there are better candidates for profit taking",
-            ],
-        },
-        long: {
-            reasons: [
-                "has good news on cutting tariff. recent trend is bullish. gap up stronger than market.",
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: tslaConfigs },
-        },
-    },
-    {
-        symbol: 'PANW',
+        symbol: 'TGT',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 0,
-            cleanVwapTrend: 0, dailyChartStory: 1,
-            gapSize: 7,
-            weeklychart: "grind up after a deep pullback",
-            dailyChart: "rally into previous high, now gap up above",
-            hourlyChart: "v shaop recovery",
-            premarketChart: "mixed around vwap",
-            keyLevels: [353.81],
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 22,
+            weeklychart: "big rally and pullback",
+            dailyChart: "sell off and weak bounce",
+            hourlyChart: "second leg up in a rally",
+            premarketChart: "strong above vwap",
+            keyLevels: [170],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.PANW,
+        marketCapInMillions: Constants.marketCaps.TGT,
         atr: {
-            average: 10,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 3.8,
+            mutiplier: 2,
+            minimumMultipler: 1.3,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 345,
-            momentumStartForShort: 355,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        earnings beat and added some stock buy back.long only to avoid chop.
-        a good long setup is open above 350, false breakdown below 350, not losing premarket low and come back up.
-        due to gapped inside a range, set it to scalp.
+        earnings beat, guidance above estimates. gap up above daily ranges. very strong in premarket so far.
+        remind how WMT traded on its earnings. the only short is to open with very big selloff, and then form a lower high.
+        otherwise, look for long first because initial momentum is bullish. try buy false breakdown, but this will be scalp 
+        in case it forms lower high. keep monitoring until open to see whether it will show weakness in the last few minutes.
+        gapped up 7 ATR, which is a lot. for long, expect a good pullback first, and the pullback can be a good short scalp.
         `,
         short: {
             reasons: [
-                "long only to avoid chop",
+                "gap up too much"
             ],
+            falseBreakoutPlan: { price: 0, targets: tgtTarget, planConfigs: tgtConfigs },
+            firstBreakoutPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tgtTarget, planConfigs: tgtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tgtTarget, planConfigs: tgtConfigs },
+            firstRetracementPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
         },
         long: {
             reasons: [
-                "earnings beat and added some stock buy back.",
+                "earnings beat, guidance above estimates",
             ],
-            levelBreakout: { entryPrice: 353, targets: stock2Target, planConfigs: panwConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: panwConfigs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: panwConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: panwConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: panwConfigs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: panwConfigs },
+            falseBreakoutPlan: { price: 0, targets: tgtTarget, planConfigs: tgtConfigs },
+            levelBreakout: { entryPrice: 167.2, targets: tgtTarget, planConfigs: tgtConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tgtTarget, planConfigs: tgtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tgtTarget, planConfigs: tgtConfigs },
+            firstRetracementPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'JD',
+        analysis: {
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 2,
+            weeklychart: "weak bounce and formed lower high",
+            dailyChart: "false breakout of 50 day MA",
+            hourlyChart: "pop from earnings and give back all the gains",
+            premarketChart: "weak below vwap, but above yesterday range after news breakout",
+            keyLevels: [26.31],
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.JD,
+        atr: {
+            average: 0.96,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 27,
+            momentumStartForShort: 27,
+        },
+        summary: `
+        WMT selling major stake. Chart is back to bearish, but sell off into previous earnings pre-breakout range.
+        look for shorts, but let it make a bounce first. initial momentum is too bearish, short first.
+        already below earnings breakout level, so short only. if open below 26, short first 60 seconds. let it pop into 26 and then short 
+        green to red < 60.
+        `,
+        short: {
+            reasons: [
+                "bearish news, bearish charts",
+            ],
+            openDriveContinuation60Plan: { targets: stock2Target, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+        },
+        long: {
+            reasons: [
+                "gap down back to previous support",
+            ],
+        },
+    },
+    {
+        symbol: 'M',
         analysis: {
             newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
             relativeVolumeAndCandleSmoothness: -1,
@@ -239,7 +230,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         summary: `
-        
+        earnings miss, guidance raised but still below estimates. kind of mixed earnings. gap inside a range. so just skip.
         `,
         short: {
             reasons: [
@@ -262,59 +253,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
-        },
-    },
-    {
-        symbol: 'stock4',
-        analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        summary: `
-        
-        `,
-        short: {
-            reasons: [
-                "",
-                ""
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
-        },
-        long: {
-            reasons: [
-                "",
-                ""
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
     },
 ];
