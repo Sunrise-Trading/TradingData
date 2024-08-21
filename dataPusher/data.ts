@@ -16,6 +16,15 @@ const tgtConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
+const tgtShortConfigs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
@@ -122,8 +131,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 160,
+            momentumStartForShort: 170,
         },
         summary: `
         earnings beat, guidance above estimates. gap up above daily ranges. very strong in premarket so far.
@@ -131,23 +140,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         otherwise, look for long first because initial momentum is bullish. try buy false breakdown, but this will be scalp 
         in case it forms lower high. keep monitoring until open to see whether it will show weakness in the last few minutes.
         gapped up 7 ATR, which is a lot. for long, expect a good pullback first, and the pullback can be a good short scalp.
+        if open below 165, allow green to red < 60 for profit taking.
+        very tight under premarket high, setting up for premarket high breakout. if 1 minute closed above premarket high, go long.
         `,
         short: {
             reasons: [
                 "gap up too much"
             ],
-            falseBreakoutPlan: { price: 0, targets: tgtTarget, planConfigs: tgtConfigs },
-            firstBreakoutPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tgtTarget, planConfigs: tgtConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tgtTarget, planConfigs: tgtConfigs },
-            firstRetracementPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
+            profitTakingExhaust60Plan: { targets: tgtTarget, planConfigs: tgtShortConfigs },
+            falseBreakoutPlan: { price: 167, targets: tgtTarget, planConfigs: tgtShortConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tgtTarget, planConfigs: tgtShortConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tgtTarget, planConfigs: tgtShortConfigs },
+            firstRetracementPlan: { targets: tgtTarget, planConfigs: tgtShortConfigs },
         },
         long: {
             reasons: [
                 "earnings beat, guidance above estimates",
             ],
             falseBreakoutPlan: { price: 0, targets: tgtTarget, planConfigs: tgtConfigs },
-            levelBreakout: { entryPrice: 167.2, targets: tgtTarget, planConfigs: tgtConfigs },
+            levelBreakout: { entryPrice: 167.48, targets: tgtTarget, planConfigs: tgtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tgtTarget, planConfigs: tgtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tgtTarget, planConfigs: tgtConfigs },
             firstRetracementPlan: { targets: tgtTarget, planConfigs: tgtConfigs },
