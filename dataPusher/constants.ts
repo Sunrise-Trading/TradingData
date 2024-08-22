@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    AAP: 3000,
     ABT: 182000,
     ACN: 180000,
     ALNY: 21000,
