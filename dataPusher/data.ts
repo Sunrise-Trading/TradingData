@@ -12,12 +12,12 @@ const pddShortConfigs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowStopOutOrFlatten: true,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const pddLongConfigs: TradingPlans.PlanConfigs = {
-    size: 0.24,
+    size: 0.10,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -53,7 +53,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const stock1Target: TradingPlans.ExitTargets = {
+const pddTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -62,7 +62,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [1, 1, 1.1, 1.2, 1.3, 1.5, 1.5, 1.5, 1.5, 1.5],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -155,28 +155,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         due to still inside the big daily consolidation range, it can move either up or down after open. 
         try a  red to green < 60 short covering long as scalp. for short, do take in the first 60 seconds, for a trend short, 
         it needs a bigger pop.
+        due to uncertainty, allow move stop, but not move target.
+        very extended now, allow short covering. if open with a flush down, long the red to green < 60, should
+        go up immediately and move stop to entry quickly. if the breakout has hesitation, try to get out at breakeven.
+        for shorts, need to wait for at least 2 minutes due to extended from vwap. if entry on 1 minute chart, need to move stop.
+        if entry on 5 minute chart, expect big trend throughout the day.
         `,
         short: {
             reasons: [
                 "earnings miss from competition and external factors",
-                "initial momentum bearish from extended from vwap"
+                "initial momentum bearish from extended from vwap",
+                "warned slowing revenue growth"
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: pddShortConfigs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: pddShortConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: pddShortConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: pddShortConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: pddShortConfigs },
+            falseBreakoutPlan: { price: 0, targets: pddTarget, planConfigs: pddShortConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pddTarget, planConfigs: pddShortConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pddTarget, planConfigs: pddShortConfigs },
+            firstRetracementPlan: { targets: pddTarget, planConfigs: pddShortConfigs },
         },
         long: {
             reasons: [
                 "big gap down for short covering",
                 "gap down near daily support"
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: pddLongConfigs },
-            profitTakingExhaust60Plan: { targets: stock1Target, planConfigs: pddLongConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: pddLongConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: pddLongConfigs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: pddLongConfigs },
+            falseBreakoutPlan: { price: 0, targets: pddTarget, planConfigs: pddLongConfigs },
+            profitTakingExhaust60Plan: { targets: pddTarget, planConfigs: pddLongConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pddTarget, planConfigs: pddLongConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pddTarget, planConfigs: pddLongConfigs },
+            firstRetracementPlan: { targets: pddTarget, planConfigs: pddLongConfigs },
         },
     },
     {
@@ -185,7 +190,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 0, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 0,
+            gapSize: 1,
             weeklychart: "bullish",
             dailyChart: "bullish",
             hourlyChart: "consolidation",
