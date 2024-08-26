@@ -121,6 +121,7 @@ export const marketCaps = {
     NU: 60000,
     PARA: 7000,
     PANW: 111000,
+    PDD: 185000,
     PLTR: 61000,
     PYPL: 61000,
     QCOM: 248000,

@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const pddShortConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,13 +16,22 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const pddLongConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
+const nvdaConfigs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -53,7 +62,7 @@ const stock1Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -69,7 +78,7 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -109,116 +118,110 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'CAVA',
-    'WDAY',
+    'PDD',
+    'NVDA',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CAVA',
+        symbol: 'PDD',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 0, dailyChartStory: 2,
-            gapSize: 8,
-            weeklychart: "uptrend, made new high",
-            dailyChart: "uptrend",
-            hourlyChart: "seems the end of a rally, going round top",
-            premarketChart: "pop and fade",
-            keyLevels: [112.25, 110],
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 25,
+            weeklychart: "big range consolidation, still gapped inside this range",
+            dailyChart: "gap down into previous support",
+            hourlyChart: "rally and all gave back",
+            premarketChart: "super bearish, below vwap all time, also extended from vwap for 1 ATR",
+            keyLevels: [108.87, 122],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CAVA,
+        marketCapInMillions: Constants.marketCaps.PDD,
         atr: {
-            average: 4.26,
-            mutiplier: 1.5,
+            average: 5,
+            mutiplier: 2,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 105,
-            momentumStartForShort: 115,
+            momentumStartForLong: 108,
+            momentumStartForShort: 125,
         },
         summary: `
-        gap up on earnings beat and raise guidance. charts are bullish. gap up 2 ATR. if open above 110, solid long.
-        if open below 110, still long. gap up is not huge for shorts. but below vwap so far, so keep watching for shorts.
-        candles not smooth, so skip first 60 seconds.
+        big gap down on earnings miss from competition and external factors. initial momentum bearish from extended from vwap. 
+        due to still inside the big daily consolidation range, it can move either up or down after open. 
+        try a  red to green < 60 short covering long as scalp. for short, do take in the first 60 seconds, for a trend short, 
+        it needs a bigger pop.
         `,
         short: {
             reasons: [
-                "gap up is not that huge. ",
-                ""
+                "earnings miss from competition and external factors",
+                "initial momentum bearish from extended from vwap"
             ],
-            falseBreakoutPlan: { price: 110, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: pddShortConfigs },
+            firstBreakoutPlan: { targets: stock1Target, planConfigs: pddShortConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: pddShortConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: pddShortConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: pddShortConfigs },
         },
         long: {
             reasons: [
-                " gap up on earnings beat and raise guidance. charts are bullish.",
+                "big gap down for short covering",
+                "gap down near daily support"
             ],
-            falseBreakoutPlan: { price: 110, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: pddLongConfigs },
+            profitTakingExhaust60Plan: { targets: stock1Target, planConfigs: pddLongConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: pddLongConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: pddLongConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: pddLongConfigs },
         },
     },
     {
-        symbol: 'WDAY',
+        symbol: 'NVDA',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            newsQualityAndFreshness: 0, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 0, dailyChartStory: 2,
-            gapSize: 30,
-            weeklychart: "recover 50% of the pullback",
-            dailyChart: "consolidate and breakout to the next range",
-            hourlyChart: "consolidate and breakout",
-            premarketChart: "kind of pop and fade",
-            keyLevels: [263.66],
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 0,
+            weeklychart: "bullish",
+            dailyChart: "bullish",
+            hourlyChart: "consolidation",
+            premarketChart: "bearish",
+            keyLevels: [130, 129],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WDAY,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 5.71,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 6,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
-        disableShortIfOpenAbove: 263.66,
-        disableLongIfOpenBelow: 263,
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 250,
-            momentumStartForShort: 280,
+            momentumStartForLong: 130,
+            momentumStartForShort: 130,
         },
         summary: `
-        gap up on earnings beat and raise guidance. daily chart is still kind of bearish. gap up is very big for profit taking.
-        use 263.66 as key level. above it, long, below it, short.
-        trust the open price because it keeps working. if open above 263.66, long only. if open below 263.00, short only
+        only take 131 breakout.
         `,
         short: {
             reasons: [
-                "daily chart is still kind of bearish. gap up is very big for profit taking.",
+                "none",
                 ""
             ],
-            falseBreakoutPlan: { price: 263.66, targets: stock2Target, planConfigs: stock2Configs },
-            levelBreakout: { entryPrice: 263.66, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                " gap up on earnings beat and raise guidance.",
+                "buy the rumor",
                 ""
             ],
-            falseBreakoutPlan: { price: 263.66, targets: stock2Target, planConfigs: stock2Configs },
-            levelBreakout: { entryPrice: 263.66, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            levelBreakout: { entryPrice: 131, targets: stock2Target, planConfigs: nvdaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: nvdaConfigs },
         },
     },
     {
