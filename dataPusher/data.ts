@@ -193,8 +193,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 150,
+            momentumStartForShort: 150,
         },
         summary: `
         huge gap down below key range low. let it pop and then short the first breakdown.
@@ -242,8 +242,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         marketCapInMillions: Constants.marketCaps.SMCI,
         atr: {
             average: 48,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            mutiplier: 1.2,
+            minimumMultipler: 0.8,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -259,6 +259,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "10 K delay confirms yesterday short seller reports",
                 "already bought up the selloff yesterday, no more buying today"
             ],
+            levelBreakout: { entryPrice: 486.39, targets: smciTarget, planConfigs: stock3Configs },
             falseBreakoutPlan: { price: 495, targets: smciTarget, planConfigs: stock3Configs },
             openDriveContinuation60Plan: { targets: smciTarget, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: smciTarget, planConfigs: stock3Configs },
