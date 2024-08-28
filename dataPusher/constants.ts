@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    AMBA: 2000,
     AAP: 3000,
     ABT: 182000,
     ACN: 180000,
@@ -114,6 +115,7 @@ export const marketCaps = {
     MU: 157000,
     MRNA: 45000,
     MSFT: 3272000,
+    NBIX: 15000,
     NEE: 180000,
     NKE: 142000,
     NVO: 485000,
@@ -134,10 +136,12 @@ export const marketCaps = {
     SCHW: 133000,
     SHOP: 82000,
     SEDG: 2000,
+    SMCI: 32000,
     SNOW: 46000,
     SPOT: 57000,
     SYM: 18000,
     SIGA: 854,
+    TCOM: 27000,
     TSLA: 565000,
     TGT: 66000,
     TSM: 900000,
