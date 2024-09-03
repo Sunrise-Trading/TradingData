@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const dgConfigs: TradingPlans.PlanConfigs = {
+const baConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,12 +16,12 @@ const dgConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const pcvxConfig: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowStopOutOrFlatten: true,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
@@ -44,23 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const dgTarget: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2.5, 3, 3, 4, 5],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1, 1.3, 1.8, 1.9, 2, 2.5, 3, 3, 4, 5],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
-    trail5Count: 8,
-    trail15Count: 10,
-};
-const stock2Target: TradingPlans.ExitTargets = {
+const baTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -69,12 +53,28 @@ const stock2Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [0.5, 0.5, 0.6, 0.6, 0.7, 0.7, 0.8, 0.9, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 4,
-    trail15Count: 4,
+    trail5Count: 10,
+    trail15Count: 10,
+};
+const pcvxTarget: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+    },
+    minimumTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
+        dailyRanges: [1, 1.1, 1.2, 1.3, 1.4, 1.9, 1.9, 1.9, 1.9, 2],
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
+    trail5Count: 8,
+    trail15Count: 10,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -109,54 +109,54 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'DG',
+    'BA',
+    'PCVX'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DG',
+        symbol: 'BA',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 30,
-            weeklychart: "downtrend and bear flag bounce and fade",
-            dailyChart: "downtrend",
-            hourlyChart: "consolidation",
-            premarketChart: "very bearish, 1ATR below vwap all time",
-            keyLevels: [100, 95],
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 6,
+            weeklychart: "consolidation",
+            dailyChart: "weak pop consolidation",
+            hourlyChart: "false breakout",
+            premarketChart: "below vwap weak",
+            keyLevels: [170, 163, 160],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DG,
+        marketCapInMillions: Constants.marketCaps.BA,
         atr: {
-            average: 3.27,
-            mutiplier: 2,
-            minimumMultipler: 2,
+            average: 4.85,
+            mutiplier: 1,
+            minimumMultipler: 0.7,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 100,
-            momentumStartForShort: 100,
+            momentumStartForLong: 170,
+            momentumStartForShort: 170,
         },
         summary: `
-        best stock to trade today. everything aligned to short. earnings miss, guidance lower, bearish charts, already breakdown 
-        all time low. not support to the downside. try to use 5 minute chart for trail. use this stock to practice 
-        profit taking only on 5 minute chart.
-        allow move stop, but set very large profit target.
-        enable first 60 seconds due to very good setup. prepare all short setups
+        stock is already weaker than SPY during recent rally. Today news on on strike conern. daily chart breakdown of 
+        recent consolition range to go below 170. going to be range trading between 160-170. 
+        if it opens too close to 163, then don't chase the breadkdown short. need to be above 165 to start a good short position.
+        let it pop into vwap first and then short the first breakdown.
+        due to low volume, skip first 60 seconds.
         `,
         short: {
             reasons: [
-                "everything aligned to short. earnings miss, guidance lower, bearish charts, ",
-                "already breakdown  all time low."
+                "stock is already weaker than SPY during recent rally. Today news on on strike conern. ",
+                "daily chart breakdown of recent consolition range to go below 170"
             ],
-            falseBreakoutPlan: { price: 0, targets: dgTarget, planConfigs: dgConfigs },
-            openDriveContinuation60Plan: { targets: dgTarget, planConfigs: dgConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: dgTarget, planConfigs: dgConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: dgTarget, planConfigs: dgConfigs },
-            firstRetracementPlan: { targets: dgTarget, planConfigs: dgConfigs },
+            falseBreakoutPlan: { price: 168, targets: baTarget, planConfigs: baConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: baTarget, planConfigs: baConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: baTarget, planConfigs: baConfigs },
+            firstRetracementPlan: { targets: baTarget, planConfigs: baConfigs },
         },
         long: {
             reasons: [
@@ -165,56 +165,61 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'PCVX',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 1, dailyChartStory: 2,
+            gapSize: 26,
+            weeklychart: "uptrend",
+            dailyChart: "consolidation",
+            hourlyChart: "consolidation",
+            premarketChart: "started to go below vwap and look like fading",
+            keyLevels: [105, 112.98],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.PCVX,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 2.4,
+            mutiplier: 2,
+            minimumMultipler: 1.5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 120,
+            momentumStartForShort: 120,
         },
         summary: `
-        
+        super extended from previous all time high, this creates a big room to the downside. 
+        if stay below vwap and open below vwap, solid gap up and fade short. 
+        enable all shorts including first 60 seconds. but due to strong daily trend, allow move stops in case it get back above.
+        expect a solid 2 ATR move. don't partial until 1.5 ATR.
+        gap up 10 ATR, not going to consider long any more.
         `,
         short: {
             reasons: [
-                "",
+                "super extended from previous all time high, this creates a big room to the downside.",
                 ""
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            levelBreakout: { entryPrice: 104.5, targets: pcvxTarget, planConfigs: pcvxConfig },
+            falseBreakoutPlan: { price: 109, targets: pcvxTarget, planConfigs: pcvxConfig },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 108, targets: pcvxTarget, planConfigs: pcvxConfig },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pcvxTarget, planConfigs: pcvxConfig },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pcvxTarget, planConfigs: pcvxConfig },
+            firstRetracementPlan: { targets: pcvxTarget, planConfigs: pcvxConfig },
         },
         long: {
             reasons: [
-                "",
-                ""
+                "strong daily chart and positive news",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            /*
+            falseBreakoutPlan: { price: 0, targets: pcvxTarget, planConfigs: pcvxConfig },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pcvxTarget, planConfigs: pcvxConfig },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pcvxTarget, planConfigs: pcvxConfig },
+            firstRetracementPlan: { targets: pcvxTarget, planConfigs: pcvxConfig },
+            */
         },
     },
     {
