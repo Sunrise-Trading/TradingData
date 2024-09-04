@@ -97,6 +97,7 @@ export const marketCaps = {
     CRWD: 83000,
     DAL: 30000,
     DELL: 105000,
+    DLTR: 17000,
     DJT: 5000,
     DXCM: 40000,
     DG: 27000,
@@ -155,4 +156,5 @@ export const marketCaps = {
     WFC: 209000,
     WMT: 552000,
     UPS: 124000,
+    ZS: 29000,
 }

@@ -13,7 +13,7 @@ const amdConfigs: TradingPlans.PlanConfigs = {
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const dltrConfigs: TradingPlans.PlanConfigs = {
@@ -109,8 +109,8 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'AMD', 'ZS',
-    'DLTR'
+    'AMD', 'DLTR',
+    'ZS'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -168,7 +168,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 10,
+            gapSize: 0,
             weeklychart: "down trend",
             dailyChart: "down trend",
             hourlyChart: "down trend",
@@ -217,7 +217,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 40,
+            gapSize: 0,
             weeklychart: "consolidation",
             dailyChart: "big range bound",
             hourlyChart: "uptrend",
@@ -226,11 +226,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ZS,
+        marketCapInMillions: 0,
         atr: {
-            average: 5.9,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
