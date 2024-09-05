@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const amdConfigs: TradingPlans.PlanConfigs = {
+const aiConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,22 +16,22 @@ const amdConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
-const dltrConfigs: TradingPlans.PlanConfigs = {
+const tslaConfigs: TradingPlans.PlanConfigs = {
+    size: 0.24,
+    deferTradingInSeconds: 0,
+    stopTradingAfterSeconds: 0,
+    requireReversal: true,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
+};
+const aznConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
-const zsConfigs: TradingPlans.PlanConfigs = {
-    size: 0.24,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
@@ -44,7 +44,23 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 
-const amdTarget: TradingPlans.ExitTargets = {
+const unlimitTargetForAll: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
+        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    },
+    minimumTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
+        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
+    trail5Count: 10,
+    trail15Count: 10,
+};
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -60,7 +76,7 @@ const amdTarget: TradingPlans.ExitTargets = {
     trail5Count: 4,
     trail15Count: 4,
 };
-const dltrTarget: TradingPlans.ExitTargets = {
+const tslaTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -73,10 +89,10 @@ const dltrTarget: TradingPlans.ExitTargets = {
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 4,
-    trail15Count: 4,
+    trail5Count: 10,
+    trail15Count: 10,
 };
-const stock3Target: TradingPlans.ExitTargets = {
+const aznTargets: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -85,12 +101,12 @@ const stock3Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 4,
-    trail15Count: 4,
+    trail5Count: 10,
+    trail15Count: 10,
 };
 const stock4Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -109,163 +125,158 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 4,
 };
 export const stockSelections: string[] = [
-    'AMD', 'ZS',
-    'DLTR'
+    'AI',
+    'TSLA',
+    'AZN'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
+        symbol: 'AI',
         analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 4,
-            weeklychart: "large down trend",
-            dailyChart: "down trend",
-            hourlyChart: "sell off to support",
-            premarketChart: "strong above premarket and stronger than others",
-            keyLevels: [140, 143.32],
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 1, dailyChartStory: 2,
+            gapSize: 5,
+            weeklychart: "consolidation",
+            dailyChart: "slight down trend",
+            hourlyChart: "slide down",
+            premarketChart: "below vwap with weak pop into vwap",
+            keyLevels: [20, 17],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMD,
+        marketCapInMillions: Constants.marketCaps.AI,
         atr: {
-            average: 6.9,
-            mutiplier: 1,
+            average: 0.96,
+            mutiplier: 2,
+            minimumMultipler: 1,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 21,
+            momentumStartForShort: 21,
+        },
+        summary: `
+        gap down below a very long consolidation area on the weekly chart. it should cause liquidation and sell off all day.
+        this is going to be a big trade. so use the unlimit target and stay in the trade with 5 min trail.
+        short only. although it's mixed earnigns, but even NVDA beat earnigns cannot pop, so any average earnings will just go down.
+        enable first 60 seconds. add premarekt low breakdown
+        `,
+        short: {
+            reasons: [
+                "gap down below a very long consolidation area on the weekly chart.",
+                "mixed earnings"
+            ],
+            levelBreakout: { entryPrice: 18.18, targets: unlimitTargetForAll, planConfigs: aiConfigs },
+            falseBreakoutPlan: { price: 18.5, targets: unlimitTargetForAll, planConfigs: aiConfigs },
+            openDriveContinuation60Plan: { targets: unlimitTargetForAll, planConfigs: aiConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: unlimitTargetForAll, planConfigs: aiConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: unlimitTargetForAll, planConfigs: aiConfigs },
+            firstRetracementPlan: { targets: unlimitTargetForAll, planConfigs: aiConfigs },
+        },
+        long: {
+            reasons: [
+                "mixed earnings",
+            ],
+        },
+    },
+    {
+        symbol: 'TSLA',
+        analysis: {
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 6,
+            weeklychart: "consolidation",
+            dailyChart: "consolidation",
+            hourlyChart: "rallied yesterday",
+            premarketChart: "hold above vwap and stayed tight",
+            keyLevels: [228],
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.TSLA,
+        atr: {
+            average: 10,
+            mutiplier: 0.5,
             minimumMultipler: 0.5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 138,
-            momentumStartForShort: 138,
+            momentumStartForLong: 222,
+            momentumStartForShort: 222,
         },
         summary: `
-        has positive news of hiring NVDA executives. charts premarket is stronger than others. 
-        there are weaker names to short. so only long for AMD. but due to yesterday selloff, 
-        first pop will get faded. so wait for a red candle. due to gapped inside range, 
-        skip first 60 seconds. not the best setup, allow tighten stop.
+        gap up with positive news. although the news is speculation type. but there are better stocks to short. so long only.
+        not the best setup because still in the daily chart range. so just a scalp.
+        allow first 60 seconds if it makes a shallow pullback into 225 and go red to green. because 228 is the resistance,
+        need to take profit and protect position on the run into 228. if break above 228, it can run more to 230.
         `,
         short: {
             reasons: [
-                "there are weaker names to short, skip",
+                "rallied yesterday",
             ],
         },
         long: {
             reasons: [
-                "has positive news of hiring NVDA executives. charts premarket is stronger than others. ",
+                "gap up with positive news.",
+                "stronger than market and stayed above vwap"
             ],
-            falseBreakoutPlan: { price: 0, targets: amdTarget, planConfigs: amdConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amdTarget, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amdTarget, planConfigs: amdConfigs },
-            firstRetracementPlan: { targets: amdTarget, planConfigs: amdConfigs },
+            falseBreakoutPlan: { price: 0, targets: tslaTarget, planConfigs: tslaConfigs },
+            openDriveContinuation60Plan: { targets: tslaTarget, planConfigs: tslaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
+            firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
         },
     },
     {
-        symbol: 'DLTR',
+        symbol: 'AZN',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 10,
-            weeklychart: "down trend",
-            dailyChart: "down trend",
-            hourlyChart: "down trend",
-            premarketChart: "gap down and weak bounce",
-            keyLevels: [74.5, 69.55],
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 0,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 1,
+            weeklychart: "uptrend and start to pullback",
+            dailyChart: "pullback and rest",
+            hourlyChart: "2 legs down",
+            premarketChart: "weak below vwap",
+            keyLevels: [85, 82.11],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DLTR,
+        marketCapInMillions: Constants.marketCaps.AZN,
         atr: {
-            average: 3,
+            average: 1.11,
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 74.5,
-            momentumStartForShort: 74.5,
+            momentumStartForLong: 85,
+            momentumStartForShort: 85,
         },
         summary: `
-        charts and news aligned to downtrend. short only. already made a weak bounce. now below vwap.
-        this can be a big trade, trail 5 minutes as long as possible. don't take too many partials. 
-        short the first pop including first 60 seconds. 
+        very low volume, so skip first 60 seconds.
+        still in an uptrend, first dip can got bought up. wait for pop first.
+        short only because initial momentum is bearish. there are better stocks for long.
         `,
         short: {
             reasons: [
-                "charts and news aligned to downtrend.",
-                "already made a weak bounce. now below vwap."
+                "initial momentum is bearish. there are better stocks for long.",
             ],
-            falseBreakoutPlan: { price: 74.5, targets: dltrTarget, planConfigs: dltrConfigs },
-            openDriveContinuation60Plan: { targets: dltrTarget, planConfigs: dltrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: dltrTarget, planConfigs: dltrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: dltrTarget, planConfigs: dltrConfigs },
-            firstRetracementPlan: { targets: dltrTarget, planConfigs: dltrConfigs },
+            falseBreakoutPlan: { price: 0, targets: aznTargets, planConfigs: aznConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: aznTargets, planConfigs: aznConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: aznTargets, planConfigs: aznConfigs },
+            firstRetracementPlan: { targets: aznTargets, planConfigs: aznConfigs },
         },
         long: {
             reasons: [
-                "gap down too much, already expected bad earnings and sold off last week",
+                "still in an uptrend, first dip can got bought up",
             ],
-        },
-    },
-    {
-        symbol: 'ZS',
-        analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 40,
-            weeklychart: "consolidation",
-            dailyChart: "big range bound",
-            hourlyChart: "uptrend",
-            premarketChart: "gap down with weak bounce and hold below vwap",
-            keyLevels: [155, 160],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ZS,
-        atr: {
-            average: 5.9,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 158,
-            momentumStartForShort: 165,
-        },
-        summary: `
-        mixed earnings, gap down into support. this can be both long or short. 
-        a better short setup is open below 160, try to pop above it and got rejected. 
-        for long need to break above 162. 
-        another short is wait for premarket low to break 158, then it can go down to 155. 
-        if 155 breaks, it goes to 152-150
-        due to mixed analysis, skip first 60 seconds. 
-        `,
-        short: {
-            reasons: [
-                "mixed earnings",
-                "mixed charts",
-            ],
-            falseBreakoutPlan: { price: 160, targets: stock3Target, planConfigs: zsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: zsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: zsConfigs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: zsConfigs },
-        },
-        long: {
-            reasons: [
-                "mixed earnings",
-                "mixed charts",
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: zsConfigs },
-            levelBreakout: { entryPrice: 162, targets: stock3Target, planConfigs: zsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: zsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: zsConfigs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: zsConfigs },
         },
     },
     {

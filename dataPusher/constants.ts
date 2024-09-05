@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    AI: 2900,
     AMBA: 2000,
     AAP: 3000,
     ABT: 182000,
@@ -88,6 +89,7 @@ export const marketCaps = {
     ARM: 151000,
     AVGO: 693000,
     ADBE: 205000,
+    AZN: 265000,
     BA: 107000,
     BABA: 170000,
     C: 125000,
