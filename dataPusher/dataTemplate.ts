@@ -162,6 +162,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
+        contingencyPlan: `
+        
+        `,
         short: {
             reasons: [
                 "",
@@ -215,6 +218,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         summary: `
+        
+        `,
+        contingencyPlan: `
         
         `,
         short: {
@@ -272,6 +278,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
+        contingencyPlan: `
+        
+        `,
         short: {
             reasons: [
                 "",
@@ -326,6 +335,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         summary: `
         
+        `,
+        contingencyPlan: `
+
         `,
         short: {
             reasons: [
