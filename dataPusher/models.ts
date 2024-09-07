@@ -61,6 +61,7 @@ export interface SingleDirectionPlans {
     openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
 
     openScalpPlan?: OpenScalpPlan,
+    deferredBreakoutPlan?: DeferredBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
@@ -110,6 +111,7 @@ export enum PlanType {
     OpenScalp = 'OpenScalp',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
+    DeferredBreakout = 'DeferredBreakout',
     Range = 'Range',
     VwapCrossFail = 'VwapCrossFail',
     VwapCrossSuccess = 'VwapCrossSuccess',
@@ -176,6 +178,7 @@ export interface FirstNewHighPlan extends BasePlan {
     enableAutoTrigger: boolean,
 }
 export interface SecondNewHighPlan extends BasePlan { }
+export interface DeferredBreakoutPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,
     deferInSeconds: number,
