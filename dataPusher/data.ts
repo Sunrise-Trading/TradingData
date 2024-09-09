@@ -164,6 +164,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         this makes me long bias on the stock and there are better choices for short like DELL.
         so far, plan long only as long as it opens above vwap. also prepare all time high breakout
         `,
+        contingencyPlan: `
+        look for long first. if opens below vwap, need to wait for defer entry.
+        `,
         short: {
             reasons: [
                 "gap up too much. gap under all time high",
@@ -174,8 +177,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pltrTarget, planConfigs: pltrConfigs },
             firstRetracementPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
-            deferredBreakoutPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
+            
             */
+            deferredBreakoutPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
         },
         long: {
             reasons: [
@@ -183,6 +187,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "news is for swing long",
                 "SPY had larget selloff last friday but PLTR holds well."
             ],
+            openDriveContinuation60Plan: { targets: pltrTarget, planConfigs: pltrConfigs },
             falseBreakoutPlan: { price: 0, targets: pltrTarget, planConfigs: pltrConfigs },
             levelBreakout: { entryPrice: 33.13, targets: pltrTarget, planConfigs: pltrConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
@@ -197,7 +202,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 0,
+            gapSize: 5,
             weeklychart: "gave back all the rally",
             dailyChart: "downtrend",
             hourlyChart: "down trend after earnings",
@@ -215,17 +220,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 106,
+            momentumStartForShort: 110,
         },
         summary: `
         gapped inside range. so this gap up is very weak and now below vwap so it's setting up for gap up and fade. 
         candles not smooth, so skip first 60 seconds.
         if opens below vwap. 
         `,
+        contingencyPlan: `
+        look for short first. if opens above vwap, wait for defer entry
+
+        `,
         short: {
             reasons: [
-                "",
+                "down trend charts",
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: dellConfigs },
@@ -254,7 +263,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 0,
+            gapSize: 5,
             weeklychart: "downtrend",
             dailyChart: "downtrend",
             hourlyChart: "downtrend",
@@ -272,12 +281,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 162.85,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 162.85,
+            momentumStartForShort: 168.39,
         },
         summary: `
         if open aboves yesterday high, that's a bullish signal but due to downtrend, first pop will get faded. 
         the best setup is open below 162.85 and makes a green to red gap up and fade.
+        `,
+        contingencyPlan: `
         if opens above 162.85, then it's neutral open and need to use deferred entry.
         `,
         short: {
@@ -302,60 +313,5 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstRetracementPlan: { targets: stock3Target, planConfigs: baConfigs },
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: baConfigs },
         },
-    },
-    {
-        symbol: 'stock4',
-        analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        summary: `
-        
-        `,
-        short: {
-            reasons: [
-                "",
-                ""
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-        },
-        long: {
-            reasons: [
-                "",
-                ""
-            ],
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
-        },
-    },
+    }
 ];
