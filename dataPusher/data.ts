@@ -181,6 +181,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         if open below vwap, let it pop to vwap and short green to red > 60.
         above vwap for a while, initial momentum will be bullish. so looks like long only for now.
         for shorts, it needs to make a deep pullback, and then bounce to make a lower high.
+        it's extended from vwap. so add first 60 seconds short. if opens with a temporary green candle, short the 
+        green to red < 60.
         `,
         contingencyPlan: `
         if vwap mixed, skip first 60 seconds for short. always skip 60 seconds for long due to gap up too much.
@@ -189,8 +191,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "gap up too much, 4-5 ATR",
             ],
-            falseBreakoutPlan: { price: 0, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
-            firstBreakoutPlan: { targets: unlimitTargetForHalf, planConfigs: orclConfigs },
+            profitTakingExhaust60Plan: { targets: unlimitTargetForHalf, planConfigs: orclConfigs },
+            falseBreakoutPlan: { price: 153, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             firstRetracementPlan: { targets: unlimitTargetForHalf, planConfigs: orclConfigs },
@@ -202,7 +204,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "bullish daily charts"
             ],
             falseBreakoutPlan: { price: 0, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
-            firstBreakoutPlan: { targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: unlimitTargetForHalf, planConfigs: orclConfigs },
             firstRetracementPlan: { targets: unlimitTargetForHalf, planConfigs: orclConfigs },
