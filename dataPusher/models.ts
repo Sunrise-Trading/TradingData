@@ -139,7 +139,10 @@ export interface ProfitTakingFade60Plan extends BasePlan {
     onlyIfOpenBelow: number,
 }
 export interface ProfitTakingExhaust60Plan extends BasePlan { }
-export interface OpenDriveContinuation60Plan extends BasePlan { }
+export interface OpenDriveContinuation60Plan extends BasePlan {
+    disableIfOpenWorseThanPrice: number,
+    requireOpenBetterThanVwap: boolean,
+}
 export interface Premarket2ndBreakout60Plan extends BasePlan { }
 
 export interface NewsBreakoutPlan extends BasePlan {
