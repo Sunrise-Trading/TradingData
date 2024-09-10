@@ -127,6 +127,7 @@ export const marketCaps = {
     NVO: 485000,
     NVDA: 3153000,
     NU: 60000,
+    ORCL: 385000,
     PARA: 7000,
     PATH: 7000,
     PANW: 111000,
