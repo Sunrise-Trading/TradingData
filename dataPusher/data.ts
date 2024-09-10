@@ -187,7 +187,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "news is for swing long",
                 "SPY had larget selloff last friday but PLTR holds well."
             ],
-            openDriveContinuation60Plan: { targets: pltrTarget, planConfigs: pltrConfigs },
+            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 32.5, targets: pltrTarget, planConfigs: pltrConfigs },
             falseBreakoutPlan: { price: 0, targets: pltrTarget, planConfigs: pltrConfigs },
             levelBreakout: { entryPrice: 33.13, targets: pltrTarget, planConfigs: pltrConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
