@@ -60,6 +60,22 @@ const unlimitTargetForAll: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
+const unlimitTargetForHalf: TradingPlans.ExitTargets = {
+    initialTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
+        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    },
+    minimumTargets: {
+        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
+        dailyRanges: [1, 1, 1, 1, 1, 3, 3, 3, 3, 3],
+    },
+    wave3BatchIndexStart: 10,
+    wave5BatchIndexStart: 10,
+    trail5Count: 10,
+    trail15Count: 10,
+};
 const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
