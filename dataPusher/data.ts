@@ -12,8 +12,8 @@ const djtConfigs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
+    alwaysAllowStopOutOrFlatten: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const djtQuickConfigs: TradingPlans.PlanConfigs = {
@@ -22,7 +22,7 @@ const djtQuickConfigs: TradingPlans.PlanConfigs = {
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: true,
+    allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -72,13 +72,13 @@ const unlimitTargetForAll: TradingPlans.ExitTargets = {
 const djtTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
+        rrr: [1.5, 1.8, 1.9, 2.4, 3, 3, 4, 4, 4, 4],
         dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
-        dailyRanges: [1, 1, 1.5, 1.5, 2, 3, 3, 3, 3, 3],
+        rrr: [1, 1, 1.8, 1.9, 2, 3, 3, 3, 4, 4],
+        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -180,8 +180,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "debat not good"
             ],
             openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 16.23, targets: djtTarget, planConfigs: djtQuickConfigs },
-            falseBreakoutPlan: { price: 0, targets: unlimitTargetForAll, planConfigs: djtConfigs },
-            firstBreakoutPlan: { targets: djtTarget, planConfigs: djtConfigs },
+            falseBreakoutPlan: { price: 16, targets: djtTarget, planConfigs: djtConfigs },
+            levelBreakout: { entryPrice: 15.21, targets: djtTarget, planConfigs: djtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: djtTarget, planConfigs: djtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: djtTarget, planConfigs: djtConfigs },
             firstRetracementPlan: { targets: djtTarget, planConfigs: djtConfigs },
