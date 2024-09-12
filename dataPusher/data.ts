@@ -13,7 +13,7 @@ const mrnaConfigs: TradingPlans.PlanConfigs = {
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowStopOutOrFlatten: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const mrnaQuickConfigs: TradingPlans.PlanConfigs = {
@@ -34,15 +34,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    size: 0.24,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
-    requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 2,
-};
+
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -84,12 +76,12 @@ const mrnaTarget: TradingPlans.ExitTargets = {
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
+        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
-    trail5Count: 10,
+    trail5Count: 9,
     trail15Count: 10,
 };
 const stock2Target: TradingPlans.ExitTargets = {
@@ -145,7 +137,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         already gap under key support, expect a big selloff today. Use 5 minute trailing stop.
         `,
         contingencyPlan: `
-        
+        if open above vwap, still very weak and still short the first breakout, but will skip first 60 seconds.
         `,
         short: {
             reasons: [
