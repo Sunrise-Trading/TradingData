@@ -138,7 +138,9 @@ export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
     onlyIfOpenBelow: number,
 }
-export interface ProfitTakingExhaust60Plan extends BasePlan { }
+export interface ProfitTakingExhaust60Plan extends BasePlan {
+    includeOpenChase: boolean,
+}
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
     requireOpenBetterThanVwap: boolean,

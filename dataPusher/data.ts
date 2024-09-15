@@ -265,7 +265,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "too much profit taking",
             ],
-            profitTakingExhaust60Plan: { targets: orclTarget, planConfigs: orclConfigs },
+            profitTakingExhaust60Plan: { includeOpenChase: true, targets: orclTarget, planConfigs: orclConfigs },
             falseBreakoutPlan: { price: 0, targets: orclTarget, planConfigs: orclConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: orclTarget, planConfigs: orclConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: orclTarget, planConfigs: orclConfigs },
