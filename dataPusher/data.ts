@@ -145,8 +145,8 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
+    'stock1', // tier 1
+    'stock2', // tier 2
     'stock3',
     'stock4',
 ];
