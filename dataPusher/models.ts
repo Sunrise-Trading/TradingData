@@ -127,7 +127,8 @@ export interface PlanConfigs {
     deferTradingInSeconds: number,
     stopTradingAfterSeconds: number,
     requireReversal: boolean,
-    alwaysAllowStopOutOrFlatten: boolean,
+    alwaysAllowFlatten: boolean,
+    alwaysAllowMoveStop: boolean,
     allowEarlyExits: boolean,
     allowFirstFewExitsCount: number,
 }

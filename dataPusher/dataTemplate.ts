@@ -12,7 +12,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
@@ -21,7 +22,8 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
@@ -30,7 +32,8 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
@@ -39,7 +42,8 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowStopOutOrFlatten: false,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
     allowFirstFewExitsCount: 2,
 };
