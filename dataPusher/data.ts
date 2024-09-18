@@ -17,14 +17,14 @@ const pltrConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const googleConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: false,
-    alwaysAllowMoveStop: false,
-    allowEarlyExits: false,
+    alwaysAllowFlatten: true,
+    alwaysAllowMoveStop: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -96,16 +96,16 @@ const pltrTarget: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const stock2Target: TradingPlans.ExitTargets = {
+const googleTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        rrr: [1, 1, 1, 1, 1.5, 1.8, 1.9, 2, 2, 2],
+        dailyRanges: [1],
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        rrr: [1, 1, 1, 1, 1.5, 1.8, 1.9, 2, 2, 2],
+        dailyRanges: [1],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -145,9 +145,8 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'PLTR', // tier 1
-    // tier 2
-
+    'SPY',// tier 2
+    'PLTR', // tier 2
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -176,7 +175,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 35.87,
-            momentumStartForShort: 35.87,
+            momentumStartForShort: 36.5,
         },
         summary: `
         FOMC today and didn't find good larget cap stocks. PLTR was better. Only trade around key level of yesterday low.
@@ -209,61 +208,55 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'SPY',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 1,
+            weeklychart: "deep pullback after rally",
+            dailyChart: "pullback bounce",
+            hourlyChart: "uptrend",
+            premarketChart: "above vwap",
+            keyLevels: [160.88, 160.55],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.GOOGL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 3.8,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
         },
         disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
+        disableLongIfOpenBelow: 160.28,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 160,
+            momentumStartForShort: 161,
         },
         summary: `
-        
+        news relief. gap up above yesterday high. look for a scalp long due to fomc.
+        a brief dip into vwap and long the first breakout. due to low volume, skip first 60 seconds.
+        google is mixed now below vwap. PLTR is more clear for a long. so focus on PLTR first.
         `,
         contingencyPlan: `
-        
+        if open below vwap, it will be too weak to open so skip the stock.
+        if open below yesterday high 160.55, it's short first back to near premarket low
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "none",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: googleTarget, planConfigs: googleConfigs },
+            deferredBreakoutPlan: { targets: googleTarget, planConfigs: googleConfigs },
+
         },
         long: {
             reasons: [
-                "",
-                ""
+                "news relief. gap up above yesterday high",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: googleTarget, planConfigs: googleConfigs },
+            deferredBreakoutPlan: { targets: googleTarget, planConfigs: googleConfigs },
         },
     },
     {
