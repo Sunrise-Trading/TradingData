@@ -7,14 +7,14 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const stock1Configs: TradingPlans.PlanConfigs = {
+const pltrConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: false,
-    alwaysAllowMoveStop: false,
-    allowEarlyExits: false,
+    alwaysAllowFlatten: true,
+    alwaysAllowMoveStop: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
@@ -80,7 +80,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const stock1Target: TradingPlans.ExitTargets = {
+const pltrTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -145,69 +145,67 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'stock1', // tier 1
-    'stock2', // tier 2
-    'stock3',
-    'stock4',
+    'PLTR', // tier 1
+    // tier 2
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'PLTR',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 0.3,
+            weeklychart: "uptrend",
+            dailyChart: "uptrend",
+            hourlyChart: "consolidation",
+            premarketChart: "belowv wap",
+            keyLevels: [35.87],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.PLTR,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 1.4,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 35.87,
+            momentumStartForShort: 35.87,
         },
         summary: `
-        
+        FOMC today and didn't find good larget cap stocks. PLTR was better. Only trade around key level of yesterday low.
+        long: false breakdown into that level and bought back up.
+        short: lost that support. the best way is dip below, bought back up and lost it gain.
         `,
         contingencyPlan: `
-        
+        if open with a flush down, expect a long instead.
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "profit taking trigger on daily chart",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            levelBreakout: { entryPrice: 35.87, targets: pltrTarget, planConfigs: pltrConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pltrTarget, planConfigs: pltrConfigs },
+            firstRetracementPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
+            deferredBreakoutPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
         },
         long: {
             reasons: [
-                "",
-                ""
+                "range trading expected and gap down into support",
+                "still expect SP 500 inclusion next monday"
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 35.87, targets: pltrTarget, planConfigs: pltrConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pltrTarget, planConfigs: pltrConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pltrTarget, planConfigs: pltrConfigs },
+            firstRetracementPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
+            deferredBreakoutPlan: { targets: pltrTarget, planConfigs: pltrConfigs },
         },
     },
     {
