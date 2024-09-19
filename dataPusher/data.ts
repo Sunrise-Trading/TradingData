@@ -234,7 +234,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         for short, if open below vwap, take a quick gap up and fade.
         now doing vwap mixed, it will be diffcult to trade the open. 
         now needs to be long biased, using 569.6 as the support for momentum long. because it already faded in premarket and it's very shallow.
-        
+        take the first breakout after a pullback, and pullback needs to hold 569.6. 
+        still skip 60 seconds due to gap up too big. needs a decent pullback for profit taking.
         `,
         contingencyPlan: `
         if opened above vwap, let the first profit taking occur, if pullback is shallow, long the first breakout.
@@ -255,6 +256,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "gap above yesterday reaction high. daily charts in uptrend",
             ],
+            levelBreakout: { entryPrice: 571.1, targets: spyTarget, planConfigs: spyConfigs },
             falseBreakoutPlan: { price: 0, targets: spyTarget, planConfigs: spyConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: spyTarget, planConfigs: spyConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: spyTarget, planConfigs: spyConfigs },
@@ -302,8 +304,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 15, targets: djtTarget, planConfigs: djtConfigs },
             levelBreakout: { entryPrice: 14.4, targets: djtTarget, planConfigs: djtConfigs },
-            falseBreakoutPlan: { price: 0, targets: djtTarget, planConfigs: djtConfigs },
-            firstBreakoutPlan: { targets: djtTarget, planConfigs: djtConfigs },
+            falseBreakoutPlan: { price: 15, targets: djtTarget, planConfigs: djtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: djtTarget, planConfigs: djtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: djtTarget, planConfigs: djtConfigs },
             firstRetracementPlan: { targets: djtTarget, planConfigs: djtConfigs },
