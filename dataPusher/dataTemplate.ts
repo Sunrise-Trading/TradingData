@@ -191,7 +191,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
@@ -203,7 +202,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            firstBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
             firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
@@ -249,7 +247,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
@@ -261,7 +258,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            firstBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
@@ -307,7 +303,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
@@ -319,7 +314,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            firstBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
             firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
@@ -365,7 +359,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
             firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
@@ -377,7 +370,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 ""
             ],
             falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            firstBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock4Target, planConfigs: stock4Configs },
             firstRetracementPlan: { targets: stock4Target, planConfigs: stock4Configs },
