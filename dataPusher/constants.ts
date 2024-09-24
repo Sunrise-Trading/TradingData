@@ -111,7 +111,7 @@ export const marketCaps = {
     FIVE: 5000,
     GTLB: 8000,
     GOOGL: 2246000,
-    HE: 1700,
+    HE: 1200,
     INTC: 136000,
     JD: 38000,
     LLY: 869000,
