@@ -33,7 +33,8 @@ export interface TradingPlans {
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
     summary: string,
-    contingencyPlan: string,
+    tier1Setups: string,
+    tier2Setups: string,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };

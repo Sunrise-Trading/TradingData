@@ -145,8 +145,8 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'stock1', // tier 1
-    'stock2', // tier 2
+    'stock1',
+    'stock2',
     'stock3',
     'stock4',
 ];
@@ -182,8 +182,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        contingencyPlan: `
+        tier1Setups: `
         
+        `,
+        tier2Setups: `
         `,
         short: {
             reasons: [
@@ -238,8 +240,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        contingencyPlan: `
+        tier1Setups: `
         
+        `,
+        tier2Setups: `
         `,
         short: {
             reasons: [
@@ -294,8 +298,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        contingencyPlan: `
+        tier1Setups: `
         
+        `,
+        tier2Setups: `
         `,
         short: {
             reasons: [
@@ -350,8 +356,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        contingencyPlan: `
-
+        tier1Setups: `
+        
+        `,
+        tier2Setups: `
         `,
         short: {
             reasons: [
