@@ -109,6 +109,7 @@ export const marketCaps = {
     F: 54000,
     FDX: 63000,
     FIVE: 5000,
+    FLUT: 40000,
     GTLB: 8000,
     GOOGL: 2246000,
     HE: 1200,
