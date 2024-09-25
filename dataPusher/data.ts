@@ -84,12 +84,12 @@ const rivinTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2, 2, 2],
     },
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
+        dailyRanges: [1, 1, 1, 1, 1.1, 1.2, 1.5, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -167,9 +167,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.RIVN,
         atr: {
-            average: 0.77,
-            mutiplier: 1.3,
-            minimumMultipler: 1,
+            average: 0.40,
+            mutiplier: 2,
+            minimumMultipler: 1.5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -186,11 +186,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         tier2Setups: `
         if open above 11.41, momentum shorts are not good. wait for shorting the pops like 5 minute first new low.
+        if still short breakdown, it needs to work quickly.
         `,
         short: {
             reasons: [
                 "gap down with negative firms downgrade. long term charts are already bearish.",
             ],
+            levelBreakout: { entryPrice: 11.41, targets: rivinTarget, planConfigs: rivnConfigs },
             openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 11.41, targets: rivinTarget, planConfigs: rivnConfigs },
             falseBreakoutPlan: { price: 0, targets: rivinTarget, planConfigs: rivnConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: rivinTarget, planConfigs: rivnConfigs },
@@ -210,7 +212,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 0,
+            gapSize: 20,
             weeklychart: "uptrend",
             dailyChart: "uptrend",
             hourlyChart: "uptrend",
@@ -233,18 +235,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         summary: `
         gap up on positive news and long term charts are uptrend. but gapped up too much and extended from vvwap for about 1 ATR.
-        due to low volume, short the profit taking will be difficult. skip first 60 seconds
+        due to low volume, short the profit taking will be difficult. skip first 60 seconds.
+        if open above 250, long bias first.
         `,
         tier1Setups: `
         a good long is wait for short patterns to trigger, then go long on the trailing stop.
+        a good short is open with a push to premarket high as a false breakout.
         `,
         tier2Setups: `
+        anything other than the above 2 are worse and needs deferred entry.
         `,
         short: {
             reasons: [
                 "gapped up too much and extended from vvwap for about 1 ATR.",
             ],
-            falseBreakoutPlan: { price: 0, targets: flutTarget, planConfigs: flutConfigs },
+            falseBreakoutPlan: { price: 250, targets: flutTarget, planConfigs: flutConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: flutTarget, planConfigs: flutConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: flutTarget, planConfigs: flutConfigs },
             firstRetracementPlan: { targets: flutTarget, planConfigs: flutConfigs },
