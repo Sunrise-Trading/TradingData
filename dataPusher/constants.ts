@@ -115,6 +115,9 @@ export const marketCaps = {
     HE: 1200,
     INTC: 136000,
     JD: 38000,
+    KMX: 11000,
+    KWEB: 10000,
+
     LLY: 869000,
     LQDA: 1000,
     M: 5000,
