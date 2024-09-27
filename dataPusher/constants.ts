@@ -95,6 +95,7 @@ export const marketCaps = {
     BABA: 170000,
     C: 125000,
     CAVA: 11000,
+    COST: 7000,
     CHWY: 12000,
     CVNA: 14000,
     CRWD: 83000,

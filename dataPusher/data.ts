@@ -7,35 +7,35 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const muConfigs: TradingPlans.PlanConfigs = {
-    size: 0.24,
+const ionqConfigs: TradingPlans.PlanConfigs = {
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const chinaConfigs: TradingPlans.PlanConfigs = {
-    size: 0.18,
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 5,
 };
 
-const kmxConfigs: TradingPlans.PlanConfigs = {
-    size: 0.24,
+const costConfigs: TradingPlans.PlanConfigs = {
+    size: 0.2,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 
@@ -71,7 +71,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const muTarget: TradingPlans.ExitTargets = {
+const ionqTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -104,7 +104,7 @@ const chinaTarget: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 
-const kmxTarget: TradingPlans.ExitTargets = {
+const costTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
@@ -121,84 +121,85 @@ const kmxTarget: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'MU',
-    'BABA',
-    'PDD',
+
+    'COST',
     'KWEB',
+    'IONQ',
+    //'BABA',
+
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MU',
+        symbol: 'IONQ',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 17,
-            weeklychart: "gave back all the uptrend",
-            dailyChart: "downtrend",
-            hourlyChart: "small uptrend",
-            premarketChart: "range above vwap",
-            keyLevels: [111, 106.8],
+            gapSize: 1,
+            weeklychart: "downtrend",
+            dailyChart: "bottom consolidation",
+            hourlyChart: "uptrend",
+            premarketChart: "hold high above vwap",
+            keyLevels: [9.05],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: 1000,
         atr: {
-            average: 3.8,
+            average: 0.47,
             mutiplier: 1.5,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 111,
-            momentumStartForShort: 113.23,
+            momentumStartForLong: 8.5,
+            momentumStartForShort: 10,
         },
         summary: `
-        the most obvious key level on daily chart is 111. Today I will use this level for bias. 
-        If the price is above 111, long only. If lost 111, short only.
-        Open above it will be long first breakout. Open below is will be short the first breakdown.
+        stocks on downtrend. first pop tends to get faded and it's a friday.
+        already made a pullback to vwap. it's like china stocks yesterday. that's going to be choppy open.
+        it will be deferred entry for this stock
+        still keep all shorts if it makes a false breakout.
         `,
         tier1Setups: `
-        open near and above 111 to long the first breakout.
-        open near and below 111 to short the first breakdown.
-        open with a strong push up to breakout premarket high and then became false breakout to short.
-        open with a push and short green to red < 60.
-        allow open chase.
+        gap up and fade: need to open below key level 9.05. then let it pop above 9.05 
+        and then short it becomes false breakout.
+        if open above 9.05, let it make a pullback and long the red to green.
         `,
         tier2Setups: `
-        if open far from 111, it's a tier 2 for range trading.
+        if pullback into vwap before open, it's also setting up for long as a quick scalp.
+        but i won't trade tier 2 setups today.
         `,
         short: {
             reasons: [
-                "gap up too much",
+                "gap up too much, long term charts bearish",
             ],
-            profitTakingExhaust60Plan: { includeOpenChase: true, targets: muTarget, planConfigs: muConfigs },
-            falseBreakoutPlan: { price: 113.23, targets: muTarget, planConfigs: muConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: muTarget, planConfigs: muConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: muTarget, planConfigs: muConfigs },
-            firstRetracementPlan: { targets: muTarget, planConfigs: muConfigs },
-            deferredBreakoutPlan: { targets: muTarget, planConfigs: muConfigs },
+            profitTakingExhaust60Plan: { includeOpenChase: true, targets: ionqTarget, planConfigs: ionqConfigs },
+            falseBreakoutPlan: { price: 9.05, targets: ionqTarget, planConfigs: ionqConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: ionqTarget, planConfigs: ionqConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: ionqTarget, planConfigs: ionqConfigs },
+            firstRetracementPlan: { targets: ionqTarget, planConfigs: ionqConfigs },
+            deferredBreakoutPlan: { targets: ionqTarget, planConfigs: ionqConfigs },
         },
         long: {
             reasons: [
-                "strong earnings and short term trend is up",
+                "initial momentum strong",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 111, targets: muTarget, planConfigs: muConfigs },
-            falseBreakoutPlan: { price: 0, targets: muTarget, planConfigs: muConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: muTarget, planConfigs: muConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: muTarget, planConfigs: muConfigs },
-            firstRetracementPlan: { targets: muTarget, planConfigs: muConfigs },
-            deferredBreakoutPlan: { targets: muTarget, planConfigs: muConfigs },
+            /*
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: ionqTarget, planConfigs: ionqConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: ionqTarget, planConfigs: ionqConfigs },
+            firstRetracementPlan: { targets: ionqTarget, planConfigs: ionqConfigs },*/
+            deferredBreakoutPlan: { targets: ionqTarget, planConfigs: ionqConfigs },
         },
     },
     {
         symbol: 'KWEB',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 1, dailyChartStory: 1,
             gapSize: 10,
             weeklychart: "bottom consolidation",
             dailyChart: "uptrend with extension",
@@ -221,24 +222,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 32.64,
         },
         summary: `
-        gap up extension setup for all china stocks. extended from vwap in premarket and also on daily chart.
-        just need to wait for the trigger on trailing stop.
-        due to strong initial momentum, cannot chase shorts at the open, need some signal.
+        only trade the gap up and fade. has to skip first 60 seconds due to lower volume than yesterday.
         `,
         tier1Setups: `
-        if open with a push to break premarket high, short the false premarket high breakout.
-        if open with a flush down, and the drop is too big, wait for a weak bounce and short the next new low as deferred entry.
-        if open with a push but didn't break premarket high, short the green to red < 60.
+        gap up and fade, has to open below vwap. then short the first new low.
         `,
         tier2Setups: `
-        for long it's going to be dip buy.
+        not going to trade any other setups
         `,
         short: {
             reasons: [
-                "gap up extension",
+                "friday profit taking",
             ],
-            profitTakingExhaust60Plan: { includeOpenChase: true, targets: chinaTarget, planConfigs: chinaConfigs },
-            falseBreakoutPlan: { price: 32.59, targets: chinaTarget, planConfigs: chinaConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: chinaTarget, planConfigs: chinaConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: chinaTarget, planConfigs: chinaConfigs },
             firstRetracementPlan: { targets: chinaTarget, planConfigs: chinaConfigs },
@@ -246,14 +241,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             reasons: [
-                "strong initial momentum",
+                "none",
             ],
         },
     },
     {
         symbol: 'BABA',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 2,
             gapSize: 10,
@@ -363,50 +358,50 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'KMX',
+        symbol: 'COST',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Inside,
             relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 4,
-            weeklychart: "Consolidation",
-            dailyChart: "Consolidation",
-            hourlyChart: "downtrend",
-            premarketChart: "gap down and pop below vwap",
-            keyLevels: [73.28],
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 7,
+            weeklychart: "uptrend",
+            dailyChart: "uptrend",
+            hourlyChart: "consolidation",
+            premarketChart: "gap down and bounce from support",
+            keyLevels: [890.95],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.KMX,
+        marketCapInMillions: Constants.marketCaps.COST,
         atr: {
-            average: 2.27,
-            mutiplier: 1.3,
+            average: 16,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 73,
-            momentumStartForShort: 73.28,
+            momentumStartForLong: 890,
+            momentumStartForShort: 900,
         },
         summary: `
-        gap down selloff setup. 
+        gap down to support and bounce. long term charts are bullish.
         `,
         tier1Setups: `
-        if open below vwap, short the first breakout
+        open with a breakdown pattern, let it trend for small profit for short sellers and then long the first breakout.
         `,
         tier2Setups: `
         if open above vwap, it's range trading, skip.
         `,
-        short: {
-            reasons: [
-                "gap down below daily consolidation range with bad earnings",
-            ],
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: kmxTarget, planConfigs: kmxConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: kmxTarget, planConfigs: kmxConfigs },
-            deferredBreakoutPlan: { targets: kmxTarget, planConfigs: kmxConfigs },
-        },
         long: {
+            reasons: [
+                "gap down to support and bounce. long term charts are bullish.",
+            ],
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: costTarget, planConfigs: costConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: costTarget, planConfigs: costConfigs },
+            deferredBreakoutPlan: { targets: costTarget, planConfigs: costConfigs },
+        },
+        short: {
             reasons: [
                 "none",
             ],
