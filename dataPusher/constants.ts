@@ -118,7 +118,6 @@ export const marketCaps = {
     JD: 38000,
     KMX: 11000,
     KWEB: 10000,
-
     LLY: 869000,
     LQDA: 1000,
     M: 5000,
@@ -131,6 +130,7 @@ export const marketCaps = {
     NEE: 180000,
     NKE: 142000,
     NVO: 485000,
+    NIO: 12000,
     NVDA: 3153000,
     NU: 60000,
     ORCL: 385000,
