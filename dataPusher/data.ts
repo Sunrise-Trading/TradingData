@@ -7,35 +7,35 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const nkeCOnfigs: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: true,
-    alwaysAllowMoveStop: true,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 2,
 };
-const kwebConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: true,
-    alwaysAllowMoveStop: true,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 2,
 };
-const tslaConfigs: TradingPlans.PlanConfigs = {
+const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: true,
-    alwaysAllowMoveStop: true,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
@@ -80,7 +80,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const nkeTarget: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -96,7 +96,7 @@ const nkeTarget: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const kwebTarget: TradingPlans.ExitTargets = {
+const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -112,7 +112,7 @@ const kwebTarget: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const tslaTarget: TradingPlans.ExitTargets = {
+const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -145,194 +145,175 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'NKE',
-    'TSLA',
-    'KWEB'
+    'KWEB',
+    'RIVN',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NKE',
+        symbol: 'KWEB',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 7,
-            weeklychart: "downtrend bounce",
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 2.5,
+            weeklychart: "uptrend",
             dailyChart: "uptrend",
-            hourlyChart: "false breakout and give back all the new CEO rally",
-            premarketChart: "weak below vwap",
-            keyLevels: [83.12],
+            hourlyChart: "uptrend",
+            premarketChart: "below vwap",
+            keyLevels: [38.28, 37.66],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NKE,
+        marketCapInMillions: 1000,
         atr: {
-            average: 1.9,
-            mutiplier: 1.6,
+            average: 1,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 83.12,
-            momentumStartForShort: 83.12,
+            momentumStartForLong: 36,
+            momentumStartForShort: 40,
         },
         summary: `
-        gave back all the rally from recent new CEO. Below 83.12, only look for shorts.
-        It needs to go above 83.12 to have any momentum long.
+        gap up to resistence and fade. 
         `,
         tier1Setups: `
-        if open below 83.12, short the first breakdown.
-        if it comes to 83.12, long the breakout. if comes back in, flip short.
+        if stay and open below vwap, gap up and fade setup. let it make a small pop and short the first breakdown.
+        if opens near vwap, enable first 60 seconds. if open too far from vwap, skip first 60 seconds.
         `,
         tier2Setups: `
-        none.
+        deferred entry
         `,
         short: {
             reasons: [
-                "gave back all gain, no guidance for 2025",
+                "gap up and fade",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 83.12, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            falseBreakoutPlan: { price: 83.12, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            firstRetracementPlan: { targets: nkeTarget, planConfigs: nkeCOnfigs },
-            deferredBreakoutPlan: { targets: nkeTarget, planConfigs: nkeCOnfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
-                "need to reclaim 83.12",
+                "none",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 83.12, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            levelBreakout: { entryPrice: 83.12, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            falseBreakoutPlan: { price: 0, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nkeTarget, planConfigs: nkeCOnfigs },
-            firstRetracementPlan: { targets: nkeTarget, planConfigs: nkeCOnfigs },
-            deferredBreakoutPlan: { targets: nkeTarget, planConfigs: nkeCOnfigs },
         },
     },
     {
-        symbol: 'KWEB',
-        analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 2.5,
-            weeklychart: "consoildaton breakout",
-            dailyChart: "uptrend",
-            hourlyChart: "uptrend",
-            premarketChart: "gap up and fade",
-            keyLevels: [38],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.KWEB,
-        atr: {
-            average: 1,
-            mutiplier: 1.2,
-            minimumMultipler: 0.5,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 38,
-            momentumStartForShort: 39,
-        },
-        summary: `
-        if 38 doesn't break, it will bounce back. if break 38, continue to go down.
-        `,
-        tier1Setups: `
-        if stay below and open below vwap, it's gap up and fade.
-        if come to 38, short the breakdown or long the bounce.
-        `,
-        tier2Setups: `
-        if open above vwap, it will be choppy, only look for deferred entry.
-        `,
-        short: {
-            reasons: [
-                "gap up and fade, just profit taking",
-            ],
-            falseBreakoutPlan: { price: 0, targets: kwebTarget, planConfigs: kwebConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: kwebTarget, planConfigs: kwebConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: kwebTarget, planConfigs: kwebConfigs },
-            firstRetracementPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
-            deferredBreakoutPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
-        },
-        long: {
-            reasons: [
-                "long term logic is bullish, breakout resistance",
-            ],
-            falseBreakoutPlan: { price: 0, targets: kwebTarget, planConfigs: kwebConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: kwebTarget, planConfigs: kwebConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: kwebTarget, planConfigs: kwebConfigs },
-            firstRetracementPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
-            deferredBreakoutPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
-        },
-    },
-    {
-        symbol: 'TSLA',
+        symbol: 'RIVN',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 10,
-            weeklychart: "consolidation",
-            dailyChart: "uptrend",
-            hourlyChart: "consolidation",
-            premarketChart: "below vwap",
-            keyLevels: [250, 248.53],
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: -1, dailyChartStory: 1,
+            gapSize: 0,
+            weeklychart: "downtrend",
+            dailyChart: "downtrend",
+            hourlyChart: "small bounce and 2nd leg down",
+            premarketChart: "mixed around vwap",
+            keyLevels: [10.22, 10, 10.31],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
+        marketCapInMillions: Constants.marketCaps.RIVN,
         atr: {
-            average: 10,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 0.69,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 248.53,
-            momentumStartForShort: 260,
+            momentumStartForLong: 10.5,
+            momentumStartForShort: 10.5,
         },
         summary: `
-        delivery numbers just out. made a nice downtrend move. short sellers already made money on the reaction.
-        need to wait for a good pop to short it. don't chase it.
-         
+        bad delivery numbers and guidance. short only.
+        the trickly thing is premarket vwap mixed, not sure what pattern to use. 
+        try short the first breakdown after a green candle
         `,
         tier1Setups: `
-        if open below yesterday low, it's short the first breakdown.
-        if open below and near vwap, short green to red > 60
+        if open below 10, short first breakdown including 60 seconds.
+        if opens above 10, short the 10 level breakdown. expect first dip into 10 get bought up, and break again.
         `,
         tier2Setups: `
-        if open above yesterday low, it's range open will be choppy.
-        if pop to 260, range short
+        defered entry
         `,
         short: {
             reasons: [
-                "slight miss on the number",
+                "bad delivery numbers and guidance. ",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 248.53, targets: tslaTarget, planConfigs: tslaConfigs },
-            falseBreakoutPlan: { price: 260, targets: tslaTarget, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
-            deferredBreakoutPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "false breakdown",
+                "none",
             ],
-
-            falseBreakoutPlan: { price: 0, targets: tslaTarget, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
-            deferredBreakoutPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
-
+        },
+    },
+    {
+        symbol: 'stock3',
+        analysis: {
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        
+        `,
+        tier1Setups: `
+        
+        `,
+        tier2Setups: `
+        `,
+        short: {
+            reasons: [
+                "",
+                ""
+            ],
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+        },
+        long: {
+            reasons: [
+                "",
+                ""
+            ],
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
     },
     {
