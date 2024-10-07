@@ -17,14 +17,14 @@ const pfeConfigs: TradingPlans.PlanConfigs = {
     allowEarlyExits: false,
     allowFirstFewExitsCount: 4,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const nvdaConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: false,
-    alwaysAllowMoveStop: false,
-    allowEarlyExits: false,
+    alwaysAllowFlatten: true,
+    alwaysAllowMoveStop: true,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -96,7 +96,7 @@ const pfeTarget: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const stock2Target: TradingPlans.ExitTargets = {
+const nvdaTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -146,6 +146,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'PFE',
+    'NVDA'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -180,6 +181,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         gap up but long term chart is bearish. but gap up above 29.23, which is a key support. 
         so between 29.23 and vwap will be a choppy zone. 
         reclaimed vwap now, so it's a gap up and go setup. let it make a profit taking and then go long on the first breakout.
+        made a lower high and dip below vwap again. it's kind of vwap mixed and can be choppy open.
         `,
         tier1Setups: `
         gap up and fade: open below vwap, then green to red to drop below 29.23, can continue to go down more.
@@ -187,6 +189,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         gap up and go: if open below vwap, need to close strong above vwap, and buy the dip of first pullback.
         `,
         tier2Setups: `
+        false breakout of premarket high, then it's range trading.
         `,
         short: {
             reasons: [
@@ -204,7 +207,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 "gap up above resistance",
             ],
             openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 29.4, targets: pfeTarget, planConfigs: pfeConfigs },
-            levelBreakout: { entryPrice: 29.42, targets: pfeTarget, planConfigs: pfeConfigs },
+            levelBreakout: { entryPrice: 29.71, targets: pfeTarget, planConfigs: pfeConfigs },
             falseBreakoutPlan: { price: 0, targets: pfeTarget, planConfigs: pfeConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pfeTarget, planConfigs: pfeConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pfeTarget, planConfigs: pfeConfigs },
@@ -213,61 +216,56 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'NVDA',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 1,
+            weeklychart: "consolidation",
+            dailyChart: "consolidation",
+            hourlyChart: "consolidation",
+            premarketChart: "above vwap",
+            keyLevels: [125.12],
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 5,
+            mutiplier: 1,
+            minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 123,
+            momentumStartForShort: 123,
         },
         summary: `
-        
+        AI summit event today to wednesday. if CEO says anything good, it can rally.
         `,
         tier1Setups: `
-        
+        take the breakout of premarket high 125.12
         `,
         tier2Setups: `
+        a clean red to green breakout
         `,
         short: {
             reasons: [
-                "",
-                ""
+                "none",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             reasons: [
-                "",
-                ""
+                "AI summit event",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            levelBreakout: { entryPrice: 125.12, targets: nvdaTarget, planConfigs: nvdaConfigs },
+            falseBreakoutPlan: { price: 0, targets: nvdaTarget, planConfigs: nvdaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvdaTarget, planConfigs: nvdaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvdaTarget, planConfigs: nvdaConfigs },
+            firstRetracementPlan: { targets: nvdaTarget, planConfigs: nvdaConfigs },
+            deferredBreakoutPlan: { targets: nvdaTarget, planConfigs: nvdaConfigs },
         },
     },
     {
