@@ -19,6 +19,8 @@ export interface Analysis {
     keyLevels: number[],
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
+    choppyOpenRangeHigh: number,
+    choppyOpenRangeLow: number,
 }
 export interface TradingPlans {
     symbol: string,
