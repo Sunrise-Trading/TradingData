@@ -140,6 +140,7 @@ export const marketCaps = {
     PDD: 185000,
     PLTR: 61000,
     PYPL: 61000,
+    PFE: 161000,
     PCVX: 9000,
     QCOM: 248000,
     QS: 2700,
