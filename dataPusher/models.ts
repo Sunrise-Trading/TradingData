@@ -122,6 +122,7 @@ export interface BasePlan {
     targets: ExitTargets,
     planConfigs: PlanConfigs,
     planType?: PlanType,
+    timeframe?: number,
 };
 export interface PlanConfigs {
     size: number,
