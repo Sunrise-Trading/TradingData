@@ -7,17 +7,17 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const pfeConfigs: TradingPlans.PlanConfigs = {
+const kwebConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 6,
 };
-const nvdaConfigs: TradingPlans.PlanConfigs = {
+const smciCongfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -80,7 +80,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const pfeTarget: TradingPlans.ExitTargets = {
+const kwebTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -89,14 +89,14 @@ const pfeTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.5],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
     trail5Count: 10,
     trail15Count: 10,
 };
-const nvdaTarget: TradingPlans.ExitTargets = {
+const smciTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -145,127 +145,143 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'PFE',
-    'NVDA'
+    'KWEB',
+    'SMCI',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PFE',
+        symbol: 'KWEB',
         analysis: {
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 1,
-            weeklychart: "downtrend bounce",
-            dailyChart: "consolidation",
-            hourlyChart: "downtrend",
-            premarketChart: "below vwap so far, but near vwap",
-            keyLevels: [29.23, 30],
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 4,
+            weeklychart: "consolidation breakout",
+            dailyChart: "uptrend",
+            hourlyChart: "range",
+            premarketChart: "gap down and bounce abovw vwap",
+            keyLevels: [36.19],
+            choppyOpenRangeHigh: 34,
+            choppyOpenRangeLow: 33.71,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.PFE,
+        marketCapInMillions: Constants.marketCaps.KWEB,
         atr: {
-            average: 0.52,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 29.2,
-            momentumStartForShort: 31,
-        },
-        summary: `
-        gap up but long term chart is bearish. but gap up above 29.23, which is a key support. 
-        so between 29.23 and vwap will be a choppy zone. 
-        reclaimed vwap now, so it's a gap up and go setup. let it make a profit taking and then go long on the first breakout.
-        made a lower high and dip below vwap again. it's kind of vwap mixed and can be choppy open.
-        `,
-        tier1Setups: `
-        gap up and fade: open below vwap, then green to red to drop below 29.23, can continue to go down more.
-        gap up and fade: if open below 29.23, short the first breakdown
-        gap up and go: if open below vwap, need to close strong above vwap, and buy the dip of first pullback.
-        `,
-        tier2Setups: `
-        false breakout of premarket high, then it's range trading.
-        `,
-        short: {
-            reasons: [
-                "long term charts bearish",
-            ],
-            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 29.23, targets: pfeTarget, planConfigs: pfeConfigs },
-            falseBreakoutPlan: { price: 0, targets: pfeTarget, planConfigs: pfeConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pfeTarget, planConfigs: pfeConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pfeTarget, planConfigs: pfeConfigs },
-            firstRetracementPlan: { targets: pfeTarget, planConfigs: pfeConfigs },
-            deferredBreakoutPlan: { targets: pfeTarget, planConfigs: pfeConfigs },
-        },
-        long: {
-            reasons: [
-                "gap up above resistance",
-            ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 29.4, targets: pfeTarget, planConfigs: pfeConfigs },
-            levelBreakout: { entryPrice: 29.71, targets: pfeTarget, planConfigs: pfeConfigs },
-            falseBreakoutPlan: { price: 0, targets: pfeTarget, planConfigs: pfeConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: pfeTarget, planConfigs: pfeConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: pfeTarget, planConfigs: pfeConfigs },
-            firstRetracementPlan: { targets: pfeTarget, planConfigs: pfeConfigs },
-            deferredBreakoutPlan: { targets: pfeTarget, planConfigs: pfeConfigs },
-        },
-    },
-    {
-        symbol: 'NVDA',
-        analysis: {
-            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Inside,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 1,
-            weeklychart: "consolidation",
-            dailyChart: "consolidation",
-            hourlyChart: "consolidation",
-            premarketChart: "above vwap",
-            keyLevels: [125.12],
-        },
-        autoFlip: false,
-        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NVDA,
-        atr: {
-            average: 5,
+            average: 1.25,
             mutiplier: 1,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 123,
-            momentumStartForShort: 123,
+            momentumStartForLong: 34,
+            momentumStartForShort: 37,
         },
         summary: `
-        AI summit event today to wednesday. if CEO says anything good, it can rally.
+        huge profit taking overnight in hongkong. first dip should get bought up. if open above vwap, look for long first into 36. 
+        then over 36, look for short.
+        in premarket lowest is dip to 34 support and start bouncing. so it should continue this bounce to 36 and flip short.
+        it's a big range trading today.
         `,
         tier1Setups: `
-        take the breakout of premarket high 125.12
+        open above vwap and start with a breakdown pattern. so long when this breakdown shorts stops out
+        hold long to 36, after profit taking, look for shorts if it's making higher low consistantly into 36. 
+        short the first new low on 5 or 15 minute chart.
+        enable first 60 seconds due to super high volume of $250M
         `,
         tier2Setups: `
-        a clean red to green breakout
+        if rips immediately, wait for first pullback to make a new low. and then go long when it break high of day again.
         `,
         short: {
             reasons: [
-                "none",
+                "gap down below previous support",
             ],
+            falseBreakoutPlan: { price: 0, targets: kwebTarget, planConfigs: kwebConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: kwebTarget, planConfigs: kwebConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: kwebTarget, planConfigs: kwebConfigs },
+            firstRetracementPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
+            deferredBreakoutPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
         },
         long: {
             reasons: [
-                "AI summit event",
+                "recent uptrend, first dip should get bought up",
             ],
-            levelBreakout: { entryPrice: 125.12, targets: nvdaTarget, planConfigs: nvdaConfigs },
-            falseBreakoutPlan: { price: 0, targets: nvdaTarget, planConfigs: nvdaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: nvdaTarget, planConfigs: nvdaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: nvdaTarget, planConfigs: nvdaConfigs },
-            firstRetracementPlan: { targets: nvdaTarget, planConfigs: nvdaConfigs },
-            deferredBreakoutPlan: { targets: nvdaTarget, planConfigs: nvdaConfigs },
+            openDriveContinuation60Plan: { disableIfOpenWorseThanPrice: 34.4, requireOpenBetterThanVwap: true, targets: kwebTarget, planConfigs: kwebConfigs },
+            falseBreakoutPlan: { price: 0, targets: kwebTarget, planConfigs: kwebConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: kwebTarget, planConfigs: kwebConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: kwebTarget, planConfigs: kwebConfigs },
+            firstRetracementPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
+            deferredBreakoutPlan: { targets: kwebTarget, planConfigs: kwebConfigs },
+        },
+    },
+    {
+        symbol: 'SMCI',
+        analysis: {
+            newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            gapSize: 3,
+            weeklychart: "downtrend",
+            dailyChart: "downtrend consolidation",
+            hourlyChart: "range breakout",
+            premarketChart: "tight hold above vwap",
+            keyLevels: [50, 50.59],
+            choppyOpenRangeHigh: 49.99,
+            choppyOpenRangeLow: 49.87,
+        },
+        autoFlip: false,
+        vwapCorrection: { volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.SMCI,
+        atr: {
+            average: 3.6,
+            mutiplier: 1,
+            minimumMultipler: 1,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 48,
+            momentumStartForShort: 60,
+        },
+        summary: `
+        be careful that the stock is in downtrend and already made a big rally yesterday.
+        premarket is hold above support of vwap and 50. so look for a quick long. but need to keep stop tight in case of profit taking.
+        if keep ripping in premarket and get extended from vwap, look for a open false breakdown short.
+        it's likely to range between 51 and 48 as a high level consolidation range trading day.
+        due to premarket strengths, only short false breakout.
+        `,
+        tier1Setups: `
+        if open above 50, look for a quick red to green long, include first 60 seconds due to super high volume.
+        if rips directly in the first 60 seconds, short the false breakout in the first 60 seconds.
+        
+        `,
+        tier2Setups: `
+        defered trading
+        `,
+        short: {
+            reasons: [
+                "profit taking",
+            ],
+            falseBreakoutPlan: { price: 50.59, targets: smciTarget, planConfigs: smciCongfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: smciTarget, planConfigs: smciCongfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: smciTarget, planConfigs: smciCongfigs },
+            firstRetracementPlan: { targets: smciTarget, planConfigs: smciCongfigs },
+            deferredBreakoutPlan: { targets: smciTarget, planConfigs: smciCongfigs },
+        },
+        long: {
+            reasons: [
+                "strong in recent trend and premarket",
+            ],
+            openDriveContinuation60Plan: {
+                requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 50, targets: smciTarget, planConfigs: smciCongfigs
+            },
+            falseBreakoutPlan: { price: 0, targets: smciTarget, planConfigs: smciCongfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: smciTarget, planConfigs: smciCongfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: smciTarget, planConfigs: smciCongfigs },
+            firstRetracementPlan: { targets: smciTarget, planConfigs: smciCongfigs },
+            deferredBreakoutPlan: { targets: smciTarget, planConfigs: smciCongfigs },
         },
     },
     {
@@ -280,6 +296,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "",
             premarketChart: "",
             keyLevels: [],
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -338,6 +356,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "",
             premarketChart: "",
             keyLevels: [],
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
