@@ -264,6 +264,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "profit taking",
             ],
+            profitTakingExhaust60Plan: { includeOpenChase: true, targets: smciTarget, planConfigs: smciCongfigs },
             falseBreakoutPlan: { price: 50.59, targets: smciTarget, planConfigs: smciCongfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: smciTarget, planConfigs: smciCongfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: smciTarget, planConfigs: smciCongfigs },
