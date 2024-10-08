@@ -228,8 +228,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "range breakout",
             premarketChart: "tight hold above vwap",
             keyLevels: [50, 50.59],
-            choppyOpenRangeHigh: 49.99,
-            choppyOpenRangeLow: 49.87,
+            choppyOpenRangeHigh: 41,
+            choppyOpenRangeLow: 40,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
@@ -255,6 +255,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         tier1Setups: `
         if open above 50, look for a quick red to green long, include first 60 seconds due to super high volume.
         if rips directly in the first 60 seconds, short the false breakout in the first 60 seconds.
+        solid short the strong gap into resistance. if open with a flush, allow open chase short, using premarket high as the stop 
         
         `,
         tier2Setups: `
@@ -264,8 +265,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "profit taking",
             ],
+            levelBreakout: { entryPrice: 51.59, targets: smciTarget, planConfigs: smciCongfigs },
             profitTakingExhaust60Plan: { includeOpenChase: true, targets: smciTarget, planConfigs: smciCongfigs },
-            falseBreakoutPlan: { price: 50.59, targets: smciTarget, planConfigs: smciCongfigs },
+            falseBreakoutPlan: { price: 51.39, targets: smciTarget, planConfigs: smciCongfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: smciTarget, planConfigs: smciCongfigs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: smciTarget, planConfigs: smciCongfigs },
             firstRetracementPlan: { targets: smciTarget, planConfigs: smciCongfigs },
