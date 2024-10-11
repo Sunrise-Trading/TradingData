@@ -168,5 +168,6 @@ export const marketCaps = {
     WFC: 209000,
     WMT: 552000,
     UPS: 124000,
+    UBER: 163000,
     ZS: 29000,
 }
