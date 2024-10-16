@@ -35,11 +35,16 @@ export interface TradingPlans {
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
     summary: string,
-    tier1Setups: string,
-    tier2Setups: string,
+    setups: Setup[],
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
+export interface Setup {
+    range: string,
+    quality: string,
+    entrySummary: string,
+    exitTargets: string,
+}
 export interface AverageTrueRange {
     average: number,
     mutiplier: number,
@@ -77,6 +82,7 @@ export interface SingleDirectionPlans {
     rangePlan?: RangePlan,
     vwapCrossFailPlan?: VwapCrossFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
+    premarketPlan?: PremarketPlan,
 };
 export interface OpenScalpPlan extends BasePlan {
 }
@@ -139,6 +145,7 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
+export interface PremarketPlan extends BasePlan { }
 export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
     onlyIfOpenBelow: number,

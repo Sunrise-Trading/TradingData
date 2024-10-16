@@ -184,11 +184,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        tier1Setups: `
-        
-        `,
-        tier2Setups: `
-        `,
+        setups: [
+            {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }, {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }
+        ],
         short: {
             reasons: [
                 "",
@@ -244,11 +252,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        tier1Setups: `
-        
-        `,
-        tier2Setups: `
-        `,
+        setups: [
+            {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }, {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }
+        ],
         short: {
             reasons: [
                 "",
@@ -304,11 +320,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        tier1Setups: `
-        
-        `,
-        tier2Setups: `
-        `,
+        setups: [
+            {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }, {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }
+        ],
         short: {
             reasons: [
                 "",
@@ -364,11 +388,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        tier1Setups: `
-        
-        `,
-        tier2Setups: `
-        `,
+        setups: [
+            {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }, {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }
+        ],
         short: {
             reasons: [
                 "",
