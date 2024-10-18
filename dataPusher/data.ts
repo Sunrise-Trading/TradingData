@@ -156,7 +156,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: -2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
             gapSize: 50,
             weeklychart: "uptrend",
             dailyChart: "range",
@@ -197,7 +197,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 1. 736 breakout, let one candle closed above 736, then go long in the next breakout
                 2. 736 false breakout, first minute pop into 736 and short green to red. because open above vwap, so must have a false breakout.
                 `,
-                exitTargets: ``
+                exitTargets: `1 ATR move`
             }, {
                 range: "open above both 736 and vwap", quality: "A+",
                 entrySummary: `
@@ -236,7 +236,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 0,
+            gapSize: 3,
             weeklychart: "range",
             dailyChart: "range",
             hourlyChart: "range",
@@ -299,7 +299,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: -2, dailyChartStory: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
             gapSize: 4,
             weeklychart: "downtrend",
             dailyChart: "uptrend",
@@ -354,8 +354,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             reasons: [
-                "",
-                ""
+                "above vwap",
             ],
             falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: cvsConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: cvsConfigs },
