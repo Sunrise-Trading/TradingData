@@ -228,6 +228,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "gap up above key level and go",
             ],
+            gapTightInsideAndGoPlan: { keyLevel: 7.83, maxDistance: 1, targets: lumnTarget, planConfigs: lumnConfigs },
             openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 7.83, targets: lumnTarget, planConfigs: lumnConfigs },
             levelBreakout: { entryPrice: 8.24, targets: lumnTarget, planConfigs: lumnConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: lumnTarget, planConfigs: lumnConfigs },
