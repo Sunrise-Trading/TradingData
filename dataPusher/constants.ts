@@ -121,6 +121,7 @@ export const marketCaps = {
     KWEB: 10000,
     LLY: 869000,
     LQDA: 1000,
+    LUMN: 6850,
     M: 5000,
     META: 1205000,
     MU: 157000,
