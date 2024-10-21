@@ -58,6 +58,8 @@ export interface VwapCorrection {
 
 export interface SingleDirectionPlans {
     reasons: string[],
+    gapTightOutsideAndGoPlan?: GapTightOutsideAndGoPlan,
+    gapTightInsideAndGoPlan?: GapTightInsideAndGoPlan,
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
     profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
@@ -84,6 +86,14 @@ export interface SingleDirectionPlans {
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
 };
+export interface GapTightOutsideAndGoPlan extends BasePlan {
+    keyLevel: number,
+    maxDistance: number,
+}
+export interface GapTightInsideAndGoPlan extends BasePlan {
+    keyLevel: number,
+    maxDistance: number,
+}
 export interface OpenScalpPlan extends BasePlan {
 }
 export interface ImbalancePlan extends BasePlan {
