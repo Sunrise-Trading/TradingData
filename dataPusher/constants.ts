@@ -107,6 +107,7 @@ export const marketCaps = {
     DXCM: 40000,
     DG: 27000,
     ENVX: 2000,
+    ENPH: 12000,
     EW: 52000,
     F: 54000,
     FDX: 63000,
