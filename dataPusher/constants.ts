@@ -126,6 +126,7 @@ export const marketCaps = {
     LQDA: 1000,
     LUMN: 6850,
     M: 5000,
+    MCD: 255000,
     MMM: 74000,
     META: 1205000,
     MU: 157000,
