@@ -7,35 +7,35 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const tslaConfigs: TradingPlans.PlanConfigs = {
+const sofiConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
 };
-const qsConfigs: TradingPlans.PlanConfigs = {
+const dxcmConfigs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
 };
-const upsConfigs: TradingPlans.PlanConfigs = {
+const stock3Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
-    alwaysAllowFlatten: true,
-    alwaysAllowMoveStop: true,
+    alwaysAllowFlatten: false,
+    alwaysAllowMoveStop: false,
     allowEarlyExits: false,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
@@ -80,7 +80,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const tslaTarget: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -89,7 +89,7 @@ const tslaTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -121,7 +121,7 @@ const stock3Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1.5, 1.5, 1.5, 1.5, 1.9, 2],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -145,220 +145,226 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'TSLA',
-    'QS', 'UPS'
+    'SOFI',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'SOFI',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
+            newsQualityAndFreshness: 0, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 0,
             cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 30,
+            gapSize: 0.4,
             weeklychart: "range",
-            dailyChart: "downtrend",
-            hourlyChart: "range and down",
-            premarketChart: "extended from vwap above, no pullback yet",
-            keyLevels: [240],
-            choppyOpenRangeHigh: 20,
-            choppyOpenRangeLow: 10,
+            dailyChart: "uptrend",
+            hourlyChart: "uptrend",
+            premarketChart: "gap up hold above vwap",
+            keyLevels: [11.3],
+            choppyOpenRangeHigh: 11.29,
+            choppyOpenRangeLow: 11.26,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
+        marketCapInMillions: Constants.marketCaps.SOFI,
         atr: {
-            average: 4.9,
-            mutiplier: 2.5,
+            average: 0.24,
+            mutiplier: 1,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 235,
-            momentumStartForShort: 250,
+            momentumStartForLong: 11.3,
+            momentumStartForShort: 11.27,
         },
         summary: `
-        right now it's setup for gap up into resistance short and gap up extended short. 
-        as long as it doesn't pullback to vwap, it's short at the open
+        must open above 11.3 to trade it.
         `,
         setups: [
             {
-                range: "no pullback to vwap, and $2 more from vwap", quality: "A",
+                range: "open above 11.3", quality: "A",
                 entrySummary: `
-                short at the open. ideally a green to red < 60.
-                if making a lower high in premarket, just short it at the open chase.
+                red to green > 60. skip first 60 seconds due to low volume
                 `,
-                exitTargets: `vwap, then leave some small to go under vwap`
+                exitTargets: `11.7`
             }, {
-                range: "near above vwap", quality: "B",
+                range: "close above premarket high", quality: "B",
                 entrySummary: `
-                a quick red to green < 60
+                11.36 confirmed close. long the next breakout
                 `,
-                exitTargets: `premarket high, then keep moving stops`
+                exitTargets: `11.7 for half, then trail the rest`
+            },
+            {
+                range: "open below 11.3", quality: "B",
+                entrySummary: `
+                short breakdown below vwap
+                `,
+                exitTargets: `11.14`
             }
         ],
         short: {
             reasons: [
-                "profit taking, long tern is down trend",
+                "double top",
             ],
-            profitTakingExhaust60Plan: { includeOpenChase: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            falseBreakoutPlan: { price: 0, targets: tslaTarget, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
-            deferredBreakoutPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: sofiConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: sofiConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: sofiConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: sofiConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: sofiConfigs },
         },
         long: {
             reasons: [
-                "initial momentum is bullish",
+                "gap up above yesterday doji",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 0, targets: tslaTarget, planConfigs: tslaConfigs },
-            falseBreakoutPlan: { price: 0, targets: tslaTarget, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: tslaTarget, planConfigs: tslaConfigs },
-            firstRetracementPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
-            deferredBreakoutPlan: { targets: tslaTarget, planConfigs: tslaConfigs },
+            levelBreakout: { entryPrice: 11.3, targets: stock1Target, planConfigs: sofiConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: sofiConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: sofiConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: sofiConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: sofiConfigs },
         },
     },
     {
-        symbol: 'QS',
+        symbol: 'DXCM',
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 1,
-            weeklychart: "bottom range",
-            dailyChart: "downtrend",
-            hourlyChart: "downtrend",
-            premarketChart: "rally and pullback",
-            keyLevels: [6.24],
+            relativeVolumeAndCandleSmoothness: 1,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 0.8,
+            weeklychart: "range at bottom",
+            dailyChart: "range",
+            hourlyChart: "step up",
+            premarketChart: "extended above vwap",
+            keyLevels: [75.13],
             choppyOpenRangeHigh: 2,
             choppyOpenRangeLow: 1,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.QS,
+        marketCapInMillions: Constants.marketCaps.DXCM,
         atr: {
-            average: 0.22,
-            mutiplier: 2,
+            average: 1.96,
+            mutiplier: 1.5,
             minimumMultipler: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 6.24,
-            momentumStartForShort: 6.24,
+            momentumStartForLong: 72,
+            momentumStartForShort: 75.13,
         },
         summary: `
-        very clear. above 6.24, look for long, below 6.24, look for short
+        gap down and recovered. so initial momentum is bullish.
+        too far from vwap, look for long near vwap. need to open above 73 to long.
+        open inside yesterday candle, don't chase breakout, let it dip first.
+        
         `,
         setups: [
             {
-                range: "open above 6.24", quality: "A",
+                range: "between 73 and 75", quality: "B",
                 entrySummary: `
-                long the first breakout, red to green < 60
+                let it make some short pattern to touch and breakdown 73, then long the reversal
                 `,
-                exitTargets: `1.5 ATR`
+                exitTargets: `75, then more room upside`
             }, {
-                range: "open below 6.24", quality: "A",
+                range: "above 75", quality: "A",
                 entrySummary: `
-                short the first breakdown. green to red < 60
+                long the first brekout
                 `,
-                exitTargets: `6, then 2 ATR`
+                exitTargets: `1 ATR, then 1.5 ATR`
             }
         ],
         short: {
             reasons: [
-                "profit taking, downtrend",
+                "gap under 73",
             ],
-            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 6.24, targets: stock2Target, planConfigs: qsConfigs },
-            levelBreakout: { entryPrice: 6.24, targets: stock2Target, planConfigs: qsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: qsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: qsConfigs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: qsConfigs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: qsConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: dxcmConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dxcmConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: dxcmConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: dxcmConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: dxcmConfigs },
         },
         long: {
             reasons: [
-                "gap above support",
+                "gap down recovery",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 6.24, targets: stock2Target, planConfigs: qsConfigs },
-            levelBreakout: { entryPrice: 6.24, targets: stock2Target, planConfigs: qsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: qsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: qsConfigs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: qsConfigs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: qsConfigs },
+            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 75.13, targets: stock2Target, planConfigs: dxcmConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: dxcmConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dxcmConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: dxcmConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: dxcmConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: dxcmConfigs },
         },
     },
     {
-        symbol: 'UPS',
+        symbol: 'stock3',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 15,
-            weeklychart: "range",
-            dailyChart: "downtrend",
-            hourlyChart: "range",
-            premarketChart: "extended above vwap without pullback",
-            keyLevels: [248.15],
-            choppyOpenRangeHigh: 20,
-            choppyOpenRangeLow: 10,
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.UPS,
+        marketCapInMillions: 0,
         atr: {
-            average: 2.28,
-            mutiplier: 1.8,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 140,
-            momentumStartForShort: 150,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        gap up extended from vwap. if open without vwap pullback, short green to red. 
+        
         `,
         setups: [
             {
-                range: "open without vwap pullback", quality: "A",
+                range: "", quality: "",
                 entrySummary: `
-                green to red < 60
                 `,
-                exitTargets: `vwap`
+                exitTargets: ``
             }, {
-                range: "near above vwap", quality: "B",
+                range: "", quality: "",
                 entrySummary: `
-                red to green > 60
                 `,
-                exitTargets: `1 ATR`
+                exitTargets: ``
             }
         ],
         short: {
             reasons: [
-                "profit taking",
+                "",
+                ""
             ],
-            profitTakingExhaust60Plan: { includeOpenChase: true, targets: stock3Target, planConfigs: upsConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: upsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: upsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: upsConfigs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: upsConfigs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: upsConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
             reasons: [
-                "initial moment is bullish",
+                "",
+                ""
             ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: upsConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: upsConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: upsConfigs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: upsConfigs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: upsConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
+            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
     },
     {
