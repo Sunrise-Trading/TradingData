@@ -156,6 +156,7 @@ export const marketCaps = {
     QS: 2700,
     RIVN: 10000,
     RILY: 500,
+    RBLX: 28000,
     RDDT: 13000,
     SBUX: 87000,
     SNAP: 12000,
