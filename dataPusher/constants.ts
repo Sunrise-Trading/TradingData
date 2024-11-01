@@ -91,6 +91,7 @@ export const marketCaps = {
     AVGO: 693000,
     ADBE: 205000,
     AZN: 265000,
+    AMZN: 1956000,
     BA: 107000,
     BABA: 170000,
     C: 125000,
