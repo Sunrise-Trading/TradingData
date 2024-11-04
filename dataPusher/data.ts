@@ -7,17 +7,17 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
-const amznConfigs: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
-    allowFirstFewExitsCount: 4,
+    allowEarlyExits: true,
+    allowFirstFewExitsCount: 2,
 };
-const aaplConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: 0.24,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -34,7 +34,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
@@ -44,7 +44,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowEarlyExits: false,
+    allowEarlyExits: true,
     allowFirstFewExitsCount: 2,
 };
 
@@ -80,7 +80,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const amznTarget: TradingPlans.ExitTargets = {
+const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -89,7 +89,7 @@ const amznTarget: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5],
+        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
     wave3BatchIndexStart: 10,
     wave5BatchIndexStart: 10,
@@ -145,193 +145,178 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'AMZN',
-    'AAPL'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMZN',
+        symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 2,
-            gapSize: 14,
-            weeklychart: "range",
-            dailyChart: "range",
-            hourlyChart: "range",
-            premarketChart: "above vwap most of time, keep watching",
-            keyLevels: [198.88, 200.2, 201.2],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMZN,
+        marketCapInMillions: 0,
         atr: {
-            average: 4,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-            maxRisk: 1.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 198.88,
-            momentumStartForShort: 202,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        this can potentially be a all time high breakout trade. 
-        keep some shares for a big rally, using 5 minute and 15 minute trailing stop.
         
         `,
         setups: [
             {
-                range: "below 198.88", quality: "A",
+                range: "", quality: "",
                 entrySummary: `
-                short all setups.
                 `,
-                exitTargets: `premarket low`
+                exitTargets: ``
             }, {
-                range: "below vwap, above 198.88", quality: "B",
+                range: "", quality: "",
                 entrySummary: `
-                1. short confirmed breakdown of 198.88
-                2. long confirmed breakout of vwap
                 `,
-                exitTargets: `long to all time high, short to 196-195`
-            }, {
-                range: "above vwap", quality: "A",
-                entrySummary: `
-                gap up and go. include < 60
-                `,
-                exitTargets: `all time high, and trial`
+                exitTargets: ``
             }
         ],
         short: {
             reasons: [
-                "profit taking",
+                "",
             ],
-            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 198.88, targets: amznTarget, planConfigs: amznConfigs },
-            levelBreakout: { entryPrice: 198.88, targets: amznTarget, planConfigs: amznConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amznTarget, planConfigs: amznConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amznTarget, planConfigs: amznConfigs },
-            firstRetracementPlan: { targets: amznTarget, planConfigs: amznConfigs },
-            deferredBreakoutPlan: { targets: amznTarget, planConfigs: amznConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             reasons: [
-                "earnings beat, stay above reaction high",
+                "",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 0, targets: amznTarget, planConfigs: amznConfigs },
-            levelBreakout: { entryPrice: 200, targets: amznTarget, planConfigs: amznConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: amznTarget, planConfigs: amznConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: amznTarget, planConfigs: amznConfigs },
-            firstRetracementPlan: { targets: amznTarget, planConfigs: amznConfigs },
-            deferredBreakoutPlan: { targets: amznTarget, planConfigs: amznConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
     },
     {
-        symbol: 'AAPL',
+        symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 4,
-            weeklychart: "range",
-            dailyChart: "range",
-            hourlyChart: "steps down",
-            premarketChart: "below vwap, try to get above vwap, keep watching",
-            keyLevels: [220, 225],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AAPL,
+        marketCapInMillions: 0,
         atr: {
-            average: 4,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-            maxRisk: 1.3,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 222,
-            momentumStartForShort: 226,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        there are many resistance above vwap from yesterday earnings trading. so long will struggle. prefer short setups.
-        remove long buttons for now.
-        not good setup because it's inside the range from yesterdays earnings trading range, and kind of in the middle.
-        maybe break below 221.33, it can go to 217.5. better open below 221.33 and vwap for momentum short
+        
         `,
         setups: [
             {
-                range: "below 221.33", quality: "A",
+                range: "", quality: "",
                 entrySummary: `
-                gap down selloff
                 `,
-                exitTargets: `
-                216-215`
-            },
+                exitTargets: ``
+            }, {
+                range: "", quality: "",
+                entrySummary: `
+                `,
+                exitTargets: ``
+            }
         ],
         short: {
             reasons: [
-                "growth concern",
+                "",
             ],
-            openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 221.33, targets: stock2Target, planConfigs: aaplConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: aaplConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: aaplConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: aaplConfigs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: aaplConfigs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: aaplConfigs },
-        },
-        long: {
-            reasons: [
-                "to many overhead resistance, skip",
-            ],
-            /*
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
             firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
             deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            */
+        },
+        long: {
+            reasons: [
+                "",
+            ],
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
     },
     {
-        symbol: 'INTC',
+        symbol: 'stock3',
         analysis: {
-            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 1, dailyChartStory: 1,
-            gapSize: 1.5,
-            weeklychart: "bottom of a downtrend",
-            dailyChart: "range",
-            hourlyChart: "range down",
-            premarketChart: "pop and drop, mixed around vwap",
-            keyLevels: [23.37],
+            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            gapSize: 0,
+            weeklychart: "",
+            dailyChart: "",
+            hourlyChart: "",
+            premarketChart: "",
+            keyLevels: [],
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: 0,
         atr: {
-            average: 0.8,
-            mutiplier: 1.8,
-            minimumMultipler: 1,
-            maxRisk: 0.4,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 22.5,
-            momentumStartForShort: 25,
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
         },
         summary: `
-        mixed vwap, can be choppy at open.
         
         `,
         setups: [
