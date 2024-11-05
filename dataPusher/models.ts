@@ -149,7 +149,6 @@ export interface PlanConfigs {
     requireReversal: boolean,
     alwaysAllowFlatten: boolean,
     alwaysAllowMoveStop: boolean,
-    allowEarlyExits: boolean,
     allowFirstFewExitsCount: number,
 }
 export interface FalseBreakoutPlan extends BasePlan {
