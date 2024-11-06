@@ -161,6 +161,7 @@ export interface ProfitTakingFade60Plan extends BasePlan {
 }
 export interface ProfitTakingExhaust60Plan extends BasePlan {
     includeOpenChase: boolean,
+    minDistanceToVwap: number,
 }
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
