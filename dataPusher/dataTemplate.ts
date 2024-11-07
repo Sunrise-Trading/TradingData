@@ -183,11 +183,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         setups: [
             {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -250,11 +252,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         setups: [
             {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -317,11 +321,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         setups: [
             {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -384,11 +390,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         setups: [
             {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
+                high: "", low: "", title: "",
                 range: "", quality: "",
                 entrySummary: `
                 `,

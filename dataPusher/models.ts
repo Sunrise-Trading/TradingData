@@ -40,6 +40,9 @@ export interface TradingPlans {
     short: SingleDirectionPlans,
 };
 export interface Setup {
+    high: string,
+    low: string,
+    title: string,
     range: string,
     quality: string,
     entrySummary: string,
