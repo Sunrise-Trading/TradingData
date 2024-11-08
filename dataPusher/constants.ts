@@ -80,6 +80,7 @@ let futures = [
 export const marketCaps = {
     AAPL: 3358000,
     AI: 2900,
+    ABNB: 95000,
     AMBA: 2000,
     AAP: 3000,
     APP: 56000,
@@ -108,6 +109,8 @@ export const marketCaps = {
     DLTR: 17000,
     DJT: 5000,
     DXCM: 40000,
+    DOCS: 8000,
+    DKNG: 35000,
     DG: 27000,
     ENVX: 2000,
     ENPH: 12000,
@@ -187,6 +190,7 @@ export const marketCaps = {
     WFC: 209000,
     WMT: 552000,
     UPS: 124000,
+    UPST: 5000,
     UBER: 163000,
     ZS: 29000,
 }
