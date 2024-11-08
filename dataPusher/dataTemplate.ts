@@ -7,8 +7,9 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     equalWeightDivider: 4,
     useSingleOrderForEntry: true,
 }
+export const defaultSize = 0.262;
 const stock1Configs: TradingPlans.PlanConfigs = {
-    size: 0.26,
+    size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -17,7 +18,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
-    size: 0.26,
+    size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -26,7 +27,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
-    size: 0.26,
+    size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -35,7 +36,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 2,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
-    size: 0.26,
+    size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
