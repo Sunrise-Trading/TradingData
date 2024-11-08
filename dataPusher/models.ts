@@ -43,6 +43,7 @@ export interface Setup {
     high: string,
     low: string,
     title: string,
+    isChoppy: boolean,
     range: string,
     quality: string,
     entrySummary: string,

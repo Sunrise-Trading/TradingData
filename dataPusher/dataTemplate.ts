@@ -184,12 +184,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [
             {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -253,12 +255,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [
             {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -322,12 +326,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [
             {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
@@ -391,12 +397,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [
             {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
                 exitTargets: ``
             }, {
                 high: "", low: "", title: "",
+                isChoppy: true,
                 range: "", quality: "",
                 entrySummary: `
                 `,
