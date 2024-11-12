@@ -15,7 +15,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -24,7 +24,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -33,7 +33,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -42,7 +42,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 2,
+    allowFirstFewExitsCount: 5,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
