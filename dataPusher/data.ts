@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 }
 export const defaultSize = 0.27;
-const stock1Configs: TradingPlans.PlanConfigs = {
+const smciConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -17,7 +17,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 5,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const djtConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -143,6 +143,8 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'SMCI',
+    'DJT',
+    'WMT'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -151,7 +153,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: -1, dailyChartStory: -1,
+            cleanVwapTrend: 2, dailyChartStory: 1,
             gapSize: 6,
             weeklychart: "down",
             dailyChart: "down",
@@ -185,40 +187,46 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         `,
         setups: [
             {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
+                high: "vwap", low: "", title: "gap up and fade",
+                isChoppy: false,
+                range: "near below vwap", quality: "A",
                 entrySummary: `
+                green to red < 60
                 `,
-                exitTargets: ``
+                exitTargets: `26`
             }, {
-                high: "", low: "", title: "",
+                high: "26.5", low: "26", title: "near support",
                 isChoppy: true,
-                range: "", quality: "",
+                range: "near above 26", quality: "B",
                 entrySummary: `
+                red to green < 60
                 `,
-                exitTargets: ``
+                exitTargets: `
+                28, then 30
+                `
             }
         ],
         short: {
             reasons: [
                 "gap up and fade",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 27.83, targets: stock1Target, planConfigs: smciConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: smciConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smciConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: smciConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: smciConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: smciConfigs },
         },
         long: {
             reasons: [
                 "good news continuation",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstRetracementPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            openDriveContinuation60Plan: { requireOpenBetterThanVwap: false, disableIfOpenWorseThanPrice: 26, targets: stock1Target, planConfigs: smciConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: smciConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smciConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock1Target, planConfigs: smciConfigs },
+            firstRetracementPlan: { targets: stock1Target, planConfigs: smciConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: smciConfigs },
         },
     },
     {
@@ -227,69 +235,66 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 1, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 2,
             cleanVwapTrend: 2, dailyChartStory: 1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            gapSize: 2,
+            weeklychart: "range",
+            dailyChart: "range",
+            hourlyChart: "down",
+            premarketChart: "gap up and fade below vwap",
+            keyLevels: [30, 28],
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.DJT,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 4,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+            maxRisk: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 30,
+            momentumStartForShort: 35,
         },
         summary: `
-        
+        a good green to red < 60 short near below vwap. 
+        if reclaim above vwap, look for long continuation.
         `,
         setups: [
             {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
+                high: "", low: "vwap", title: "gap up and fade",
+                isChoppy: false,
+                range: "near below vwap", quality: "A",
                 entrySummary: `
+                green to red < 60
                 `,
-                exitTargets: ``
-            }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }
+                exitTargets: `give back all the rally yesterday`
+            },
         ],
         short: {
             reasons: [
-                "",
+                "already rallied yesterday",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            profitTakingFade60Plan: { enableAutoTrigger: false, onlyIfOpenBelow: 30.45, targets: stock2Target, planConfigs: djtConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: djtConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: djtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: djtConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: djtConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: djtConfigs },
         },
         long: {
             reasons: [
-                "",
+                "momentum continuation",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstRetracementPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            openDriveContinuation60Plan: { requireOpenBetterThanVwap: true, disableIfOpenWorseThanPrice: 0, targets: stock2Target, planConfigs: djtConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: djtConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: djtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: djtConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: djtConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: djtConfigs },
         },
     },
     {
