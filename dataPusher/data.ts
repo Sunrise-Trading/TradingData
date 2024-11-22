@@ -143,7 +143,8 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'ESTC',
-    'stock2',
+    'GAP',
+    'BKKT'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -174,7 +175,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 120,
+            momentumStartForLong: 115,
             momentumStartForShort: 120,
         },
         summary: `
@@ -259,8 +260,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 25.4,
+            momentumStartForShort: 27.24,
         },
         summary: `
         between 25.6 and vwap is a choppy range. 
@@ -312,74 +313,75 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'BKKT',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 4,
+            weeklychart: "range",
+            dailyChart: "range",
+            hourlyChart: "range",
+            premarketChart: "up and fade below vwap",
+            keyLevels: [25.6, 25.4],
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.GAP,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 0.81,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 0.6,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 25.4,
+            momentumStartForShort: 27.24,
         },
         summary: `
-        
+        between 25.6 and vwap is a choppy range. 
+        for short, if open above 25.6, let it dip and bounce, and then short then next breakout.
+        for long, above 25.4 is still bullish, wait for vwap relaim to gain up momentum
+        for quick short, still can short near below vwap for a quick green to red < 60, scale out 
+        near 25.6, and look for re-entry.
         `,
         setups: [
             {
-                high: "", low: "", title: "",
+                high: "vwap", low: "", title: "gap up and fade",
                 isChoppy: true,
-                range: "", quality: "",
+                range: "near below vwap", quality: "B",
                 entrySummary: `
+                within 40 cents below vwap, short green to red < 60
                 `,
-                exitTargets: ``
+                exitTargets: `25.6, then much lower`
             }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
+                high: "", low: "vwap", title: "gap up and go",
+                isChoppy: false,
+                range: "open above vwap", quality: "A",
                 entrySummary: `
+                let it dip to vwap to hold. and then long the next breakout
                 `,
-                exitTargets: ``
+                exitTargets: `27`
             }
         ],
         short: {
             reasons: [
-                "",
+                "gap up and fade",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
             reasons: [
-                "",
+                "gap up and go",
             ],
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstRetracementPlan: { targets: stock3Target, planConfigs: stock3Configs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: gapConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: gapConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, includeSecondNewHigh: true, targets: stock2Target, planConfigs: gapConfigs },
+            firstRetracementPlan: { targets: stock2Target, planConfigs: gapConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: gapConfigs },
         },
     },
     {
