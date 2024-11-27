@@ -17,6 +17,8 @@ export interface Analysis {
     hourlyChart: string,
     premarketChart: string,
     keyLevels: number[],
+    vwapExtensionDistance: number,
+    singleMomentumKeyLevel: number,
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
