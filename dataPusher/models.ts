@@ -91,6 +91,7 @@ export interface SingleDirectionPlans {
     vwapCrossFailPlan?: VwapCrossFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
+    levelMomentumPlan?: LevelMomentumPlan,
 };
 export interface GapTightOutsideAndGoPlan extends BasePlan {
     keyLevel: number,
@@ -160,6 +161,7 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
+export interface LevelMomentumPlan extends BasePlan { }
 export interface PremarketPlan extends BasePlan { }
 export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
