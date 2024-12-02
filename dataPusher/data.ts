@@ -157,7 +157,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "downtrend",
             dailyChart: "downtrend bounce",
             hourlyChart: "range",
-            premarketChart: "",
+            premarketChart: "gap up and fade",
             keyLevels: [25.57],
             singleMomentumKeyLevel: 25.57,
             vwapExtensionDistance: 0.8,
@@ -176,8 +176,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 25,
+            momentumStartForShort: 25.57,
         },
         summary: `
         if breakout 25.57, can be a great long. otherwise, below this and vwap is short. 
@@ -318,7 +318,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Outside,
             relativeVolumeAndCandleSmoothness: 39.23,
             cleanVwapTrend: 2, dailyChartStory: 2,
-            gapSize: 0,
+            gapSize: 5,
             weeklychart: "down",
             dailyChart: "downtrend bounce",
             hourlyChart: "range",
@@ -341,8 +341,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 35,
+            momentumStartForShort: 40,
         },
         summary: `
         already made a move in premarket and extended from vwap.
