@@ -189,6 +189,7 @@ export const marketCaps = {
     SOFI: 9600,
     SYM: 18000,
     SIGA: 854,
+    T: 168000,
     TCOM: 27000,
     TSLA: 565000,
     TGT: 66000,
