@@ -19,6 +19,7 @@ export interface Analysis {
     keyLevels: number[],
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: number,
+    dualMomentumKeyLevels: number[],
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
