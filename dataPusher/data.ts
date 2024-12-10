@@ -160,7 +160,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "steps up",
             premarketChart: "rally above vwap",
             keyLevels: [183.61, 181.54],
-            singleMomentumKeyLevel: 181.54, // or 183.61 if that's closer
+            singleMomentumKeyLevel: 183.61, // or 183.61 if that's closer
             dualMomentumKeyLevels: [183.61, 181.54],
             vwapExtensionDistance: 2,
             choppyOpenRangeHigh: 0,
@@ -200,12 +200,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 `,
                 exitTargets: `180 to partial half, then 179, 178, gap fill is 176.26`
             }, {
-                high: "", low: "vwap", title: "",
-                isChoppy: true,
-                range: "", quality: "",
+                high: "182.5", low: "vwap", title: "gap and go",
+                isChoppy: false,
+                range: "near above vwap", quality: "B",
                 entrySummary: `
+                let it dip into vwap and red to green
                 `,
-                exitTargets: ``
+                exitTargets: `183`
             }
         ],
         short: {
@@ -318,8 +319,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MDB',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
-            relativeVolumeAndCandleSmoothness: -1,
+            newsQualityAndFreshness: 2, gapType: TradingPlans.GapType.Unknown,
+            relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
             weeklychart: "",
