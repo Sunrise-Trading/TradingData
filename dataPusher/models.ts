@@ -61,6 +61,7 @@ export interface AverageTrueRange {
 export interface VwapCorrection {
     volumeSum: number,
     tradingSum: number,
+    open: number,
 }
 
 export interface SingleDirectionPlans {
