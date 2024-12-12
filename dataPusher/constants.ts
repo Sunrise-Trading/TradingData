@@ -133,6 +133,7 @@ export const marketCaps = {
     GM: 55000,
     HE: 1200,
     HOOD: 35000,
+    HUT: 2500,
     INTC: 136000,
     JD: 38000,
     KMX: 11000,
