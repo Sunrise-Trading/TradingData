@@ -200,6 +200,7 @@ export const marketCaps = {
     SIGA: 854,
     T: 168000,
     TCOM: 27000,
+    TEVA: 18000,
     TSLA: 565000,
     TGT: 66000,
     TSM: 900000,
