@@ -177,6 +177,7 @@ export const marketCaps = {
     PCVX: 9000,
     QCOM: 248000,
     QS: 2700,
+    QUBT: 2000,
     RIVN: 10000,
     RILY: 500,
     RH: 7000,
