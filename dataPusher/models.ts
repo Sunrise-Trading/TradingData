@@ -39,6 +39,8 @@ export interface TradingPlans {
     disableLongIfOpenBelow: number,
     summary: string,
     setups: Setup[],
+    defaultTargets: ExitTargets,
+    defaultConfigs: PlanConfigs,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };

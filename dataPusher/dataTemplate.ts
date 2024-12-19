@@ -202,6 +202,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 exitTargets: ``
             }
         ],
+        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
             reasons: [
                 "",
@@ -278,6 +279,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 exitTargets: ``
             }
         ],
+        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
             reasons: [
                 "",
@@ -354,6 +356,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 exitTargets: ``
             }
         ],
+        defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         short: {
             reasons: [
                 "",
@@ -430,6 +433,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 exitTargets: ``
             }
         ],
+        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         short: {
             reasons: [
                 "",
