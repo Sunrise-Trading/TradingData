@@ -180,6 +180,8 @@ export const marketCaps = {
     QUBT: 2000,
     RIVN: 10000,
     RILY: 500,
+    RGTI: 2850,
+    RUM: 2770,
     RH: 7000,
     RBLX: 28000,
     RDDT: 13000,
