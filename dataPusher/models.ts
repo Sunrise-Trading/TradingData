@@ -86,7 +86,6 @@ export interface SingleDirectionPlans {
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
-    secondNewHighPlan?: SecondNewHighPlan,
     firstRetracementPlan?: FirstRetracementPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
     bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
@@ -214,10 +213,8 @@ export interface FirstBreakoutPlan extends BasePlan {
 
 }
 export interface FirstNewHighPlan extends BasePlan {
-    includeSecondNewHigh: boolean,
     enableAutoTrigger: boolean,
 }
-export interface SecondNewHighPlan extends BasePlan { }
 export interface DeferredBreakoutPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,
