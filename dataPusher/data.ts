@@ -157,7 +157,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "up",
             dailyChart: "down",
             hourlyChart: "down",
-            premarketChart: "",
+            premarketChart: "weak below vwap",
             keyLevels: [402.54],
             singleMomentumKeyLevel: 402.54,
             dualMomentumKeyLevels: [],
