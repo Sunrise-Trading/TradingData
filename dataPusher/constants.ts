@@ -218,5 +218,6 @@ export const marketCaps = {
     UPS: 124000,
     UPST: 5000,
     UBER: 163000,
+    X: 7000,
     ZS: 29000,
 }
