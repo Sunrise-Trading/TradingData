@@ -20,6 +20,8 @@ export interface Analysis {
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: number,
     dualMomentumKeyLevels: number[],
+    profitTargetsForLong: ProfitTargets,
+    profitTargetsForShort: ProfitTargets,
     relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
@@ -219,6 +221,11 @@ export interface DeferredBreakoutPlan extends BasePlan { }
 export interface IntraDayBreakoutPlan extends BasePlan {
     requireReversal: boolean,
     deferInSeconds: number,
+}
+export interface ProfitTargets {
+    target1: number,
+    target2: number,
+    summary: string,
 }
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
