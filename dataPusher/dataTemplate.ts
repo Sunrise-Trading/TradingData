@@ -185,23 +185,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        setups: [
-            {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }
-        ],
+        setups: [],
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
             reasons: [
@@ -260,23 +244,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        setups: [
-            {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }
-        ],
+        setups: [],
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
             reasons: [
@@ -335,23 +303,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        setups: [
-            {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }
-        ],
+        setups: [],
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         short: {
             reasons: [
@@ -410,23 +362,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         summary: `
         
         `,
-        setups: [
-            {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }, {
-                high: "", low: "", title: "",
-                isChoppy: true,
-                range: "", quality: "",
-                entrySummary: `
-                `,
-                exitTargets: ``
-            }
-        ],
+        setups: [],
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         short: {
             reasons: [
