@@ -157,8 +157,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
-            hasSwingPotential: -1,
+            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -169,8 +168,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: -1,
             dualMomentumKeyLevels: [],
-            profitTargetsForLong: { target1: 0, target2: 0, summary: "" },
-            profitTargetsForShort: { target1: 0, target2: 0, summary: "" },
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
@@ -219,8 +222,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
-            hasSwingPotential: -1,
+            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -231,8 +233,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: -1,
             dualMomentumKeyLevels: [],
-            profitTargetsForLong: { target1: 0, target2: 0, summary: "" },
-            profitTargetsForShort: { target1: 0, target2: 0, summary: "" },
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
@@ -281,8 +287,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock3',
         analysis: {
-            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
-            hasSwingPotential: -1,
+            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -293,8 +298,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: -1,
             dualMomentumKeyLevels: [],
-            profitTargetsForLong: { target1: 0, target2: 0, summary: "" },
-            profitTargetsForShort: { target1: 0, target2: 0, summary: "" },
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,
@@ -343,8 +352,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock4',
         analysis: {
-            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
-            hasSwingPotential: -1,
+            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -355,8 +363,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: -1,
             dualMomentumKeyLevels: [],
-            profitTargetsForLong: { target1: 0, target2: 0, summary: "" },
-            profitTargetsForShort: { target1: 0, target2: 0, summary: "" },
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
             choppyOpenRangeLow: 0,

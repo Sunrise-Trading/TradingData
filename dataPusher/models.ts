@@ -2,14 +2,21 @@ export interface TradingSettings {
     equalWeightDivider: number,
     useSingleOrderForEntry: boolean,
 }
-export interface NewsAnalysis {
-    isFreshNews: boolean,
-    impactScore: number,
-    expectBigMove: boolean,
-}
+
 export interface Analysis {
-    news: NewsAnalysis,
-    hasSwingPotential: number,
+    isFreshNews: boolean,
+    /**
+     * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
+     */
+    newsImpactScore: number,
+    /**
+     * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
+     */
+    marketReactionScore: number,
+    /**
+     * A number from 0 to 1 (100%) indicating the portion of the position to hold for swing trade
+     */
+    swingHoldRatio: number,
     dailyChartStory: number,
     gapSize: number,
     weeklychart: string,
@@ -224,8 +231,11 @@ export interface IntraDayBreakoutPlan extends BasePlan {
     deferInSeconds: number,
 }
 export interface ProfitTargets {
-    target1: number,
-    target2: number,
+    targets: number[],
+    /**
+     * Probability from 0 to 1 (100%) of how likely it will blow past those levels
+     */
+    willBlowPastThoseLevels: number,
     summary: string,
 }
 export interface ExitTargets {
@@ -248,9 +258,22 @@ export interface PriceArea {
 }
 
 export enum SetupQuality {
+    /**
+     * Half out at 1R and scale out into 2R
+     */
     Scalp = "Scalp",
+    /**
+     * 2-leg push
+     */
     Move2Move = "Move2Move",
-    DayTrade = "DayTrade",
+
+    /**
+     * Get in on 1-minute chart and get out on 5-minute chart
+     */
+    HigherTimeFrameTrend = "HigherTimeFrameTrend",
     HoldToDayClose = "HoldToDayClose",
-    Swing = "Swing",
+    /**
+     * Hold last few for swing or too extended intraday move
+     */
+    SwingHold = "SwingHold",
 };
