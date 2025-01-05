@@ -4,11 +4,12 @@ export interface TradingSettings {
 }
 export interface NewsAnalysis {
     isFreshNews: boolean,
-    catalystScore: number,
+    impactScore: number,
     expectBigMove: boolean,
 }
 export interface Analysis {
     news: NewsAnalysis,
+    hasSwingPotential: number,
     dailyChartStory: number,
     gapSize: number,
     weeklychart: string,
@@ -161,6 +162,7 @@ export interface PlanConfigs {
     alwaysAllowFlatten: boolean,
     alwaysAllowMoveStop: boolean,
     allowFirstFewExitsCount: number,
+    setupQuality: SetupQuality,
 }
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
@@ -247,6 +249,7 @@ export interface PriceArea {
 
 export enum SetupQuality {
     Scalp = "Scalp",
+    Move2Move = "Move2Move",
     DayTrade = "DayTrade",
     HoldToDayClose = "HoldToDayClose",
     Swing = "Swing",

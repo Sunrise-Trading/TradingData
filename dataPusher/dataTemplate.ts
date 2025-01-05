@@ -15,7 +15,8 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 3,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -24,7 +25,9 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 3,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
+
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -33,7 +36,8 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 3,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -42,7 +46,8 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 5,
+    allowFirstFewExitsCount: 3,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
@@ -152,7 +157,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
+            hasSwingPotential: -1,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -213,7 +219,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
+            hasSwingPotential: -1,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -274,7 +281,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock3',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
+            hasSwingPotential: -1,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
@@ -335,7 +343,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock4',
         analysis: {
-            newsQualityAndFreshness: -1, gapType: TradingPlans.GapType.Unknown,
+            news: { isFreshNews: false, impactScore: -1, expectBigMove: false },
+            hasSwingPotential: -1,
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             gapSize: 0,
