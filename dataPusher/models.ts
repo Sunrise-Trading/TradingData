@@ -258,6 +258,7 @@ export interface PriceArea {
 }
 
 export enum SetupQuality {
+    Unknown = "Unknown",
     /**
      * Half out at 1R and scale out into 2R
      */
