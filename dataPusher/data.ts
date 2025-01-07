@@ -147,7 +147,8 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'NVDA',
+    'NVDA', 'AUR',
+    'FUBO', 'PLTR'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -179,7 +180,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
             average: 3.5,
             mutiplier: 2,
