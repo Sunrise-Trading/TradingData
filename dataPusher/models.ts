@@ -1,6 +1,9 @@
 export interface TradingSettings {
-    equalWeightDivider: number,
     useSingleOrderForEntry: boolean,
+    /**
+     * snap to the high/low of the closed candle for moving stops
+     */
+    snapMode: boolean,
 }
 
 export interface Analysis {
