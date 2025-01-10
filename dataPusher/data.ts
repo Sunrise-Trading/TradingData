@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 }
 export const defaultSize = 0.28;
-const stock1Configs: TradingPlans.PlanConfigs = {
+const wbaConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -16,9 +16,9 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Unknown,
+    setupQuality: TradingPlans.SetupQuality.SwingHold,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const dalConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -26,7 +26,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Unknown,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -147,32 +147,100 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'WBA',
+    'DAL'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'WBA',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-            singleMomentumKeyLevel: -1,
+            isFreshNews: true, newsImpactScore: 6, marketReactionScore: 6, swingHoldRatio: 0.1,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 1, dailyChartStory: 2,
+            gapSize: 1.2,
+            weeklychart: "down",
+            dailyChart: "range",
+            hourlyChart: "range",
+            premarketChart: "above vwap",
+            keyLevels: [10.45, 11.3, 11],
+            singleMomentumKeyLevel: 10.45,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
+                targets: [11, 11.3], willBlowPastThoseLevels: 0.3, summary: `
+                mostly likely to go above 11 to test 11.3
                 ` },
             profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
+                targets: [10.2, 10.1], willBlowPastThoseLevels: 0.05, summary: `
+                gap fill 0.5 ATR, eventually 10.1 or 10
+                ` },
+            vwapExtensionDistance: 0.5,
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.WBA,
+        atr: {
+            average: 0.5,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 0.3,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 10.4,
+            momentumStartForShort: 10.5,
+        },
+        summary: `
+        earnings is good with growth. this can start uptrend, keep 10% for swing potential, or at least 100 shares with PUT to hedge into the close.
+
+        `,
+        setups: [],
+        defaultConfigs: wbaConfigs, defaultTargets: stock1Target,
+        short: {
+            reasons: [
+                "downtrend in long term",
+            ],
+            levelMomentumPlan: { targets: stock1Target, planConfigs: wbaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: wbaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wbaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wbaConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: wbaConfigs },
+        },
+        long: {
+            reasons: [
+                "good earnings, gap right above support, hold vwap",
+            ],
+            levelMomentumPlan: { targets: stock1Target, planConfigs: wbaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: wbaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wbaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wbaConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: wbaConfigs },
+        },
+    },
+    {
+        symbol: 'DAL',
+        analysis: {
+            isFreshNews: true, newsImpactScore: 5, marketReactionScore: 5, swingHoldRatio: 0,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            gapSize: 4,
+            weeklychart: "up",
+            dailyChart: "pullback",
+            hourlyChart: "range",
+            premarketChart: "gap up and fade below vwap now",
+            keyLevels: [67.5, 66.25],
+            singleMomentumKeyLevel: 66.25,
+            dualMomentumKeyLevels: [],
+            profitTargetsForLong: {
+                targets: [67, 67.5], willBlowPastThoseLevels: 0.2, summary: `
+                really need to break all time high to run big, unlikely
+                ` },
+            profitTargetsForShort: {
+                targets: [65, 64], willBlowPastThoseLevels: 0.5, summary: `
+                1 ATR move back down. it's 50% scalp
                 ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
@@ -180,112 +248,47 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.DAL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 1.8,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 0.75,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 66.25,
+            momentumStartForShort: 66.25,
         },
         summary: `
-        
+        setting up for gap up and fade
         `,
         setups: [],
-        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
+        defaultConfigs: dalConfigs, defaultTargets: stock2Target,
         short: {
             reasons: [
-                "",
+                "earnings not good enough, below vwap",
             ],
-            levelMomentumPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            levelMomentumPlan: { targets: stock2Target, planConfigs: dalConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: dalConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dalConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: dalConfigs },
         },
         long: {
             reasons: [
-                "",
+                "good eanings",
             ],
-            levelMomentumPlan: { targets: stock1Target, planConfigs: stock1Configs },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            levelMomentumPlan: { targets: stock2Target, planConfigs: dalConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: dalConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dalConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: dalConfigs },
         },
     },
     {
-        symbol: 'stock2',
-        analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-            singleMomentumKeyLevel: -1,
-            dualMomentumKeyLevels: [],
-            profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        summary: `
-        
-        `,
-        setups: [],
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
-        short: {
-            reasons: [
-                "",
-            ],
-            levelMomentumPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-        },
-        long: {
-            reasons: [
-                "",
-            ],
-            levelMomentumPlan: { targets: stock2Target, planConfigs: stock2Configs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
-        },
-    },
-    {
-        symbol: 'stock3',
+        symbol: 'FUBO',
         analysis: {
             isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
             relativeVolumeAndCandleSmoothness: -1,
