@@ -4,7 +4,7 @@ import * as Constants from './constants';
 // futures, momentumSimple, tradeStationEquity, schwab
 export const activeProfileName: string = "schwab";
 export const tradingSettings: TradingPlans.TradingSettings = {
-    equalWeightDivider: 4,
+    snapMode: false,
     useSingleOrderForEntry: true,
 }
 export const defaultSize = 0.28;
