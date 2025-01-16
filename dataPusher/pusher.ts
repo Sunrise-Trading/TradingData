@@ -59,6 +59,12 @@ for (let i = 0; i < planData.plans.length; i++) {
                 targets: p.defaultTargets,
             }
         }
+        if (p.keyLevels.momentumStartForLong == 0) {
+            p.keyLevels.momentumStartForLong = keyLevel;
+        }
+        if (p.keyLevels.momentumStartForShort == 0) {
+            p.keyLevels.momentumStartForShort = keyLevel;
+        }
     }
 }
 push(planData, `configData/tradingPlan`, expiredAt);
