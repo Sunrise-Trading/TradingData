@@ -39,7 +39,7 @@ const symConfigs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
+const amat: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -47,7 +47,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Unknown,
+    setupQuality: TradingPlans.SetupQuality.SwingHold,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
@@ -150,6 +150,7 @@ export const stockSelections: string[] = [
     'AMD',
     'TSM',
     'SYM',
+    'AMAT'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -232,7 +233,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "range",
             premarketChart: "mixed around vwap",
             keyLevels: [222.2, 210],
-            singleMomentumKeyLevel: 210,
+            singleMomentumKeyLevel: 215,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [222, 225], willBlowPastThoseLevels: 0.3, summary: `
@@ -355,24 +356,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock4',
+        symbol: 'AMAT',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-            singleMomentumKeyLevel: -1,
+            isFreshNews: true, newsImpactScore: 6, marketReactionScore: 6, swingHoldRatio: 0.2,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            gapSize: 7,
+            weeklychart: "down",
+            dailyChart: "down bounce",
+            hourlyChart: "range up",
+            premarketChart: "strong above vwap",
+            keyLevels: [183],
+            singleMomentumKeyLevel: 183,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
+                targets: [188, 190], willBlowPastThoseLevels: 0.4, summary: `
+                swing potential
                 ` },
             profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
+                targets: [183, 182], willBlowPastThoseLevels: 0.2, summary: `
+                gap fill
                 ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
@@ -380,12 +383,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.AMAT,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 5,
+            mutiplier: 1,
+            minimumMultipler: 0.6,
+            maxRisk: 2,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -394,29 +397,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         summary: `
-        
+        potential long, best to open above 185.7
         `,
         setups: [],
-        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
+        defaultConfigs: amat, defaultTargets: stock4Target,
         short: {
             reasons: [
-                "",
+                "gap under resistance",
             ],
-            levelMomentumPlan: { enableAutoTrigger: true, targets: stock4Target, planConfigs: stock4Configs },
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: true, targets: stock4Target, planConfigs: amat },
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: amat },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: amat },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: amat },
+            deferredBreakoutPlan: { targets: stock4Target, planConfigs: amat },
         },
         long: {
             reasons: [
-                "",
+                "TSM cap ex increase",
             ],
-            levelMomentumPlan: { enableAutoTrigger: true, targets: stock4Target, planConfigs: stock4Configs },
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: true, targets: stock4Target, planConfigs: amat },
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: amat },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: amat },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: amat },
+            deferredBreakoutPlan: { targets: stock4Target, planConfigs: amat },
         },
     },
 ];
