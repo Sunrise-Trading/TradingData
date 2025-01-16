@@ -177,7 +177,9 @@ export interface PlanConfigs {
 export interface FalseBreakoutPlan extends BasePlan {
     price: number
 }
-export interface LevelMomentumPlan extends BasePlan { }
+export interface LevelMomentumPlan extends BasePlan {
+    enableAutoTrigger: boolean,
+}
 export interface PremarketPlan extends BasePlan { }
 export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
