@@ -325,18 +325,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.AAL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 0.64,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 0.25,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 18.56,
+            momentumStartForShort: 18.56,
         },
         summary: `
         altough it's 52 week high, but there more resistance close above on the weekly chart. so don't get too excited and avoid < 60 due 
