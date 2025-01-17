@@ -161,7 +161,7 @@ export const marketCaps = {
     NBIX: 15000,
     NEE: 180000,
     NKE: 142000,
-    NVO: 345000,
+    NVO: 227000,
     NFLX: 295000,
     NIO: 12000,
     NVDA: 3153000,
