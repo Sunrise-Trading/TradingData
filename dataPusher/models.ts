@@ -21,6 +21,9 @@ export interface Analysis {
      */
     swingHoldRatio: number,
     dailyChartStory: number,
+    allowFirstMinuteByNewsQuality: boolean,
+    allowFirstMinuteByRelativeVolume: boolean,
+    allowFirstMinutezByKeyLevelsQuality: boolean,
     gapSize: number,
     weeklychart: string,
     dailyChart: string,

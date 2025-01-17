@@ -41,7 +41,9 @@ const planData = {
 }
 for (let i = 0; i < planData.plans.length; i++) {
     let p = planData.plans[i];
-    if (p.analysis.singleMomentumKeyLevel > 0) {
+    let a = p.analysis;
+    if (a.singleMomentumKeyLevel > 0 && a.allowFirstMinuteByNewsQuality &&
+        a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
         let keyLevel = p.analysis.singleMomentumKeyLevel;
         if (!p.long.openDriveContinuation60Plan) {
             p.long.openDriveContinuation60Plan = {
