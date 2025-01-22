@@ -90,6 +90,7 @@ export interface SingleDirectionPlans {
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
     premarket2ndBreakout60Plan?: Premarket2ndBreakout60Plan,
     retracement?: RetracementPlan,
+    reversalPlan?: ReversalPlan,
     newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
@@ -208,6 +209,9 @@ export interface AlgoPlan extends BasePlan {
 export interface BreakoutAlgo extends AlgoPlan {
     entryPrice: number,
     useHighLowOfDay: boolean,
+}
+export interface ReversalPlan extends BasePlan {
+    keyLevel: number,
 }
 export interface RetracementPlan {
     entryAreas: RetracementArea[];
