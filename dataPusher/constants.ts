@@ -118,6 +118,7 @@ export const marketCaps = {
     DKNG: 35000,
     DIS: 186000,
     DG: 27000,
+    EA: 37000,
     ENVX: 2000,
     ENPH: 12000,
     EW: 52000,
