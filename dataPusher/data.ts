@@ -148,7 +148,8 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'EA',
-    'GE'
+    'GE',
+    //'AAL'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -232,7 +233,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinuteByNewsQuality: true,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
-            gapSize: 0,
+            gapSize: 8,
             weeklychart: "range up",
             dailyChart: "up",
             hourlyChart: "up",
@@ -256,10 +257,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.GE,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3.9,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 1.75,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -308,7 +309,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "range",
             premarketChart: "gap down and bounce above vwap",
             keyLevels: [18.37, 17],
-            singleMomentumKeyLevel: 18.37,
+            singleMomentumKeyLevel: -1,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [18, 18.37], willBlowPastThoseLevels: 0.1, summary: `
@@ -334,8 +335,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 17,
+            momentumStartForShort: 18.37,
         },
         summary: `
         range trading. short at rejection of 18.37, long the bounce from 17.
@@ -365,6 +366,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: aalConfigs },
         },
     },
+    /*
     {
         symbol: 'stock4',
         analysis: {
@@ -432,5 +434,5 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
-    },
+    },*/
 ];

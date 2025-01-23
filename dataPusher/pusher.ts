@@ -39,26 +39,29 @@ const planData = {
     tradingSettings: Data.tradingSettings,
     stockSelections: stockSelections,
 }
+
 for (let i = 0; i < planData.plans.length; i++) {
     let p = planData.plans[i];
     let a = p.analysis;
-    if (a.singleMomentumKeyLevel > 0 && a.allowFirstMinuteByNewsQuality &&
-        a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
+    if (a.singleMomentumKeyLevel > 0) {
         let keyLevel = p.analysis.singleMomentumKeyLevel;
-        if (!p.long.openDriveContinuation60Plan) {
-            p.long.openDriveContinuation60Plan = {
-                requireOpenBetterThanVwap: true,
-                disableIfOpenWorseThanPrice: keyLevel,
-                planConfigs: p.defaultConfigs,
-                targets: p.defaultTargets,
+        if (a.allowFirstMinuteByNewsQuality &&
+            a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
+            if (!p.long.openDriveContinuation60Plan) {
+                p.long.openDriveContinuation60Plan = {
+                    requireOpenBetterThanVwap: true,
+                    disableIfOpenWorseThanPrice: keyLevel,
+                    planConfigs: p.defaultConfigs,
+                    targets: p.defaultTargets,
+                }
             }
-        }
-        if (!p.short.openDriveContinuation60Plan) {
-            p.short.openDriveContinuation60Plan = {
-                requireOpenBetterThanVwap: true,
-                disableIfOpenWorseThanPrice: keyLevel,
-                planConfigs: p.defaultConfigs,
-                targets: p.defaultTargets,
+            if (!p.short.openDriveContinuation60Plan) {
+                p.short.openDriveContinuation60Plan = {
+                    requireOpenBetterThanVwap: true,
+                    disableIfOpenWorseThanPrice: keyLevel,
+                    planConfigs: p.defaultConfigs,
+                    targets: p.defaultTargets,
+                }
             }
         }
         if (p.keyLevels.momentumStartForLong == 0) {
