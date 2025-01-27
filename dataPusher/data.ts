@@ -158,9 +158,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'NVDA',
-    'stock2',
-    'stock3',
-    'stock4',
+    'AKRO',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
