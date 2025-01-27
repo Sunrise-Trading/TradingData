@@ -291,6 +291,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             reasons: [
                 "traded too heavy in premarket",
             ],
+            profitTakingExhaust60Plan: { includeOpenChase: false, minDistanceToVwap: 0.1, targets: stock2Target, planConfigs: akroConfigs },
             levelMomentumPlan: { enableAutoTrigger: true, targets: stock2Target, planConfigs: akroConfigs },
             falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: akroConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: akroConfigs },
