@@ -190,6 +190,7 @@ export const marketCaps = {
     RILY: 500,
     RGTI: 2850,
     RUM: 2770,
+    RCL: 63000,
     RH: 7000,
     RBLX: 28000,
     RDDT: 13000,
