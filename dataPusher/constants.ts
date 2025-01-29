@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    ASML: 250000,
     AXP: 229000,
     AKRO: 1830,
     AAL: 12000,
