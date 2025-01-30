@@ -163,7 +163,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinuteByNewsQuality: true,
             allowFirstMinuteByRelativeVolume: true,
             allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 0,
+            gapSize: 10,
             weeklychart: "range",
             dailyChart: "step down",
             hourlyChart: "range",
@@ -246,7 +246,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 no good for long
                 ` },
             profitTargetsForShort: {
-                targets: [113.25, 110], willBlowPastThoseLevels: -1, summary: `
+                targets: [113.25, 110], willBlowPastThoseLevels: 0.31, summary: `
                 premarket low first, then 1 atr. not clear support due to previous range below 120.
                 ` },
             vwapExtensionDistance: 0,
@@ -255,7 +255,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.UPS,
         atr: {
             average: 2.4,
             mutiplier: 2,
