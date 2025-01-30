@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 }
 export const defaultSize = 0.24;
-const asmlConfigs: TradingPlans.PlanConfigs = {
+const avgoConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -18,7 +18,7 @@ const asmlConfigs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
-const sbuxConfigs: TradingPlans.PlanConfigs = {
+const upsConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -26,10 +26,10 @@ const sbuxConfigs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Move2Move,
+    setupQuality: TradingPlans.SetupQuality.SwingHold,
 
 };
-const babaConfigs: TradingPlans.PlanConfigs = {
+const metaConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -39,7 +39,7 @@ const babaConfigs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
+const msftConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -47,7 +47,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Unknown,
+    setupQuality: TradingPlans.SetupQuality.Scalp,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
@@ -147,104 +147,37 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const stockSelections: string[] = [
-    'ASML', 'SBUX', 'BABA',
+    'AVGO',
+    'UPS',
+    'META',
+    'MSFT',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ASML',
+        symbol: 'AVGO',
         analysis: {
-            isFreshNews: true, newsImpactScore: 6, marketReactionScore: 6, swingHoldRatio: 0.1,
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: false,
-            allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 30,
-            weeklychart: "down",
-            dailyChart: "range",
-            hourlyChart: "range breakout by gap",
-            premarketChart: "below vwap",
-            keyLevels: [729.3],
-            singleMomentumKeyLevel: 729.3,
-            dualMomentumKeyLevels: [],
-            profitTargetsForLong: {
-                targets: [740, 750], willBlowPastThoseLevels: 0.1, summary: `
-                scalp long 740, 750
-                ` },
-            profitTargetsForShort: {
-                targets: [715, 700], willBlowPastThoseLevels: 0.3, summary: `
-                possible gap fill
-                ` },
-            vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ASML,
-        atr: {
-            average: 24,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 10,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        summary: `
-        the best setup short the first new low after testing previous gap fill 729.3
-        `,
-        setups: [],
-        defaultConfigs: asmlConfigs, defaultTargets: stock1Target,
-        short: {
-            reasons: [
-                "gap into resistance, guidance weak",
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: asmlConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: asmlConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: asmlConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: asmlConfigs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: asmlConfigs },
-        },
-        long: {
-            reasons: [
-                "reclaim gap fill",
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: asmlConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: asmlConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: asmlConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: asmlConfigs },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: asmlConfigs },
-        },
-    },
-    {
-        symbol: 'SBUX',
-        analysis: {
-            isFreshNews: true, newsImpactScore: 5, marketReactionScore: 5, swingHoldRatio: 0,
+            isFreshNews: true, newsImpactScore: 5, marketReactionScore: 4, swingHoldRatio: 0.2,
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
             allowFirstMinuteByNewsQuality: true,
             allowFirstMinuteByRelativeVolume: true,
             allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 3,
+            gapSize: 0,
             weeklychart: "range",
-            dailyChart: "range",
-            hourlyChart: "up",
-            premarketChart: "hold above support and vwap",
-            keyLevels: [103.32],
-            singleMomentumKeyLevel: 106.44,
+            dailyChart: "step down",
+            hourlyChart: "range",
+            premarketChart: "above vwap, below support near",
+            keyLevels: [218.43],
+            singleMomentumKeyLevel: 218.43,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
-                targets: [104.5, 105, 106], willBlowPastThoseLevels: 0.2, summary: `
-                above 103.32, still more resistance above, keep it scalp
+                targets: [227, 235], willBlowPastThoseLevels: 0.3, summary: `
+                big room to the up side to hit short term moving average first
                 ` },
             profitTargetsForShort: {
-                targets: [100, 98], willBlowPastThoseLevels: 0.4, summary: `
-                gap fill, look for a good $2 move
+                targets: [214, 211], willBlowPastThoseLevels: 0.1, summary: `
+                first premarket low, if break below, then gap fill
                 ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
@@ -252,12 +185,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SBUX,
+        marketCapInMillions: Constants.marketCaps.AVGO,
         atr: {
-            average: 1.87,
+            average: 8.75,
             mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 1,
+            maxRisk: 3.75,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -266,124 +199,55 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         summary: `
-        use the 103.32 as key level, long above, short below. follow first breakout/breakdown based on 
-        open price zone. just focus on execution.
+        either long the confirmed breakout, or short the rejection of the same level.
         `,
         setups: [],
-        defaultConfigs: sbuxConfigs, defaultTargets: stock2Target,
+        defaultConfigs: avgoConfigs, defaultTargets: stock1Target,
         short: {
             reasons: [
-                "gap onto resistance, business still decline",
+                "level rejection",
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: sbuxConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: sbuxConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: sbuxConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: avgoConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: avgoConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: avgoConfigs },
         },
         long: {
             reasons: [
-                "hold above key level",
+                "level breakout",
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: sbuxConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: sbuxConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: sbuxConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: avgoConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: avgoConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: avgoConfigs },
         },
     },
     {
-        symbol: 'BABA',
+        symbol: 'UPS',
         analysis: {
-            isFreshNews: false, newsImpactScore: 5, marketReactionScore: 5, swingHoldRatio: 0,
+            isFreshNews: true, newsImpactScore: 5, marketReactionScore: 8, swingHoldRatio: 0.3,
             relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            allowFirstMinuteByNewsQuality: false,
-            allowFirstMinuteByRelativeVolume: false,
-            allowFirstMinutezByKeyLevelsQuality: false,
-            gapSize: 3,
-            weeklychart: "range bounce",
-            dailyChart: "up",
-            hourlyChart: "up",
-            premarketChart: "above vwap and just lost it",
-            keyLevels: [99.18],
-            singleMomentumKeyLevel: 99.18,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            allowFirstMinuteByNewsQuality: true,
+            allowFirstMinuteByRelativeVolume: true,
+            allowFirstMinutezByKeyLevelsQuality: true,
+            gapSize: 20,
+            weeklychart: "down",
+            dailyChart: "down",
+            hourlyChart: "down",
+            premarketChart: "down below vwap",
+            keyLevels: [121.56],
+            singleMomentumKeyLevel: 121.56,
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
-                targets: [100, 101], willBlowPastThoseLevels: 0.2, summary: `
-                trailing stop, into resistance zone
+                targets: [121, 120], willBlowPastThoseLevels: 0.1, summary: `
+                no good for long
                 ` },
             profitTargetsForShort: {
-                targets: [98, 97], willBlowPastThoseLevels: 0.1, summary: `
-                small pullback due to strong strength
-                ` },
-            vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.BABA,
-        atr: {
-            average: 2.34,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 1,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        summary: `
-        take quick trades at the open. it could be making a quickly rally at the open. overall, it will be range day. 
-        `,
-        setups: [],
-        defaultConfigs: babaConfigs, defaultTargets: stock3Target,
-        short: {
-            reasons: [
-                "already rallied yesterday",
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: babaConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: babaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: babaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: babaConfigs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: babaConfigs },
-        },
-        long: {
-            reasons: [
-                "strength continute",
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: babaConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: babaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: babaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: babaConfigs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: babaConfigs },
-        },
-    },
-    {
-        symbol: 'stock4',
-        analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            allowFirstMinuteByNewsQuality: false,
-            allowFirstMinuteByRelativeVolume: false,
-            allowFirstMinutezByKeyLevelsQuality: false,
-            gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
-            keyLevels: [],
-            singleMomentumKeyLevel: -1,
-            dualMomentumKeyLevels: [],
-            profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
+                targets: [113.25, 110], willBlowPastThoseLevels: -1, summary: `
+                premarket low first, then 1 atr. not clear support due to previous range below 120.
                 ` },
             vwapExtensionDistance: 0,
             choppyOpenRangeHigh: 0,
@@ -393,10 +257,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.4,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 1.3,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -405,29 +269,172 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         summary: `
-        
+        strong down trend, only short. due to large gap down, let it pop at least to near vwap before shorting. 
+        prefer to take the first new low. ok to be above vwap due to open below vwap.
         `,
         setups: [],
-        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
+        defaultConfigs: upsConfigs, defaultTargets: stock2Target,
         short: {
             reasons: [
-                "",
+                "gap down below 52 week low",
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: upsConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: upsConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: upsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: upsConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: upsConfigs },
         },
         long: {
             reasons: [
-                "",
+                "no good",
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: upsConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: upsConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: upsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: upsConfigs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: upsConfigs },
+        },
+    },
+    {
+        symbol: 'META',
+        analysis: {
+            isFreshNews: true, newsImpactScore: 4, marketReactionScore: 4, swingHoldRatio: 0.1,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 2,
+            allowFirstMinuteByNewsQuality: true,
+            allowFirstMinuteByRelativeVolume: true,
+            allowFirstMinutezByKeyLevelsQuality: true,
+            gapSize: 20,
+            weeklychart: "up",
+            dailyChart: "up",
+            hourlyChart: "up",
+            premarketChart: "above vwap, but below reaction high",
+            keyLevels: [716, 682.58],
+            singleMomentumKeyLevel: 682.58,
+            dualMomentumKeyLevels: [],
+            profitTargetsForLong: {
+                targets: [700, 708], willBlowPastThoseLevels: 0.1, summary: `
+                due to below reaction high, need to scalp long. also earnings is mixed
+                ` },
+            profitTargetsForShort: {
+                targets: [664, 665], willBlowPastThoseLevels: 0.1, summary: `
+                not good for short due to up trend
+                ` },
+            vwapExtensionDistance: 0,
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.META,
+        atr: {
+            average: 17.5,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 5,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        gap up all time high, so use that level for direction. but due to below reaction high, need to scalp long.
+        the best setup is a false breakdown to hold above all time high
+        `,
+        setups: [],
+        defaultConfigs: metaConfigs, defaultTargets: stock3Target,
+        short: {
+            reasons: [
+                "below reaction high",
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: metaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: metaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: metaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: metaConfigs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: metaConfigs },
+        },
+        long: {
+            reasons: [
+                "all time high breakout",
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: metaConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: metaConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: metaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: metaConfigs },
+            deferredBreakoutPlan: { targets: stock3Target, planConfigs: metaConfigs },
+        },
+    },
+    {
+        symbol: 'MSFT',
+        analysis: {
+            isFreshNews: true, newsImpactScore: 6, marketReactionScore: 6, swingHoldRatio: 0.2,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 2, dailyChartStory: 1,
+            allowFirstMinuteByNewsQuality: true,
+            allowFirstMinuteByRelativeVolume: true,
+            allowFirstMinutezByKeyLevelsQuality: true,
+            gapSize: 22,
+            weeklychart: "range",
+            dailyChart: "range",
+            hourlyChart: "range",
+            premarketChart: "below vwap",
+            keyLevels: [423.5],
+            singleMomentumKeyLevel: 423.5,
+            dualMomentumKeyLevels: [],
+            profitTargetsForLong: {
+                targets: [427, 428], willBlowPastThoseLevels: 0.1, summary: `
+                heave resistance ahead, so prefer to scalp
+                ` },
+            profitTargetsForShort: {
+                targets: [414, 410], willBlowPastThoseLevels: 0.2, summary: `
+                probably just hit reaction low 414 and reverse
+                ` },
+            vwapExtensionDistance: 0,
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.MSFT,
+        atr: {
+            average: 9.6,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 3,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        summary: `
+        due to still in a daily range, the best setup is a pop back to vwap and key level. and then short the
+         new low as rejection
+        `,
+        setups: [],
+        defaultConfigs: msftConfigs, defaultTargets: stock4Target,
+        short: {
+            reasons: [
+                "earnings miss",
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: msftConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: msftConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: msftConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: msftConfigs },
+            deferredBreakoutPlan: { targets: stock4Target, planConfigs: msftConfigs },
+        },
+        long: {
+            reasons: [
+                "still inside daily range",
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: msftConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock4Target, planConfigs: msftConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: msftConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: msftConfigs },
+            deferredBreakoutPlan: { targets: stock4Target, planConfigs: msftConfigs },
         },
     },
 ];
