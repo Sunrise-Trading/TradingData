@@ -308,7 +308,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "up",
             premarketChart: "above vwap",
             keyLevels: [336],
-            singleMomentumKeyLevel: { high: 315, low: 315 },
+            singleMomentumKeyLevel: { high: 336, low: 336 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [336, 330], willBlowPastThoseLevels: 0.1, summary: `
