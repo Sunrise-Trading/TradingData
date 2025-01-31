@@ -31,7 +31,7 @@ export interface Analysis {
     premarketChart: string,
     keyLevels: number[],
     vwapExtensionDistance: number,
-    singleMomentumKeyLevel: number,
+    singleMomentumKeyLevel: LevelArea,
     dualMomentumKeyLevels: number[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
@@ -267,6 +267,10 @@ export interface PriceArea {
     priceLevel: number,
     upperRoom: number,
     lowerRoom: number,
+}
+export interface LevelArea {
+    high: number,
+    low: number,
 }
 
 export enum SetupQuality {

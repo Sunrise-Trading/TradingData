@@ -43,14 +43,14 @@ const planData = {
 for (let i = 0; i < planData.plans.length; i++) {
     let p = planData.plans[i];
     let a = p.analysis;
-    if (a.singleMomentumKeyLevel > 0) {
+    if (a.singleMomentumKeyLevel.high > 0) {
         let keyLevel = p.analysis.singleMomentumKeyLevel;
         if (a.allowFirstMinuteByNewsQuality &&
             a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
             if (!p.long.openDriveContinuation60Plan) {
                 p.long.openDriveContinuation60Plan = {
                     requireOpenBetterThanVwap: true,
-                    disableIfOpenWorseThanPrice: keyLevel,
+                    disableIfOpenWorseThanPrice: keyLevel.high,
                     planConfigs: p.defaultConfigs,
                     targets: p.defaultTargets,
                 }
@@ -58,17 +58,17 @@ for (let i = 0; i < planData.plans.length; i++) {
             if (!p.short.openDriveContinuation60Plan) {
                 p.short.openDriveContinuation60Plan = {
                     requireOpenBetterThanVwap: true,
-                    disableIfOpenWorseThanPrice: keyLevel,
+                    disableIfOpenWorseThanPrice: keyLevel.low,
                     planConfigs: p.defaultConfigs,
                     targets: p.defaultTargets,
                 }
             }
         }
         if (p.keyLevels.momentumStartForLong == 0) {
-            p.keyLevels.momentumStartForLong = keyLevel;
+            p.keyLevels.momentumStartForLong = keyLevel.high;
         }
         if (p.keyLevels.momentumStartForShort == 0) {
-            p.keyLevels.momentumStartForShort = keyLevel;
+            p.keyLevels.momentumStartForShort = keyLevel.low;
         }
     }
 }
