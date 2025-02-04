@@ -161,6 +161,7 @@ export const marketCaps = {
     MBLY: 10000,
     MRNA: 16000,
     MRVL: 83000,
+    MRK: 12000,
     MSFT: 3272000,
     MS: 181000,
     MSTR: 39000,
