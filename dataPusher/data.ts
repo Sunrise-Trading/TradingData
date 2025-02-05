@@ -148,6 +148,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const stockSelections: string[] = [
     'AMD', 'PDD',
+    'ACB'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
