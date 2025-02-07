@@ -236,7 +236,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             hourlyChart: "range",
             premarketChart: "mixed around vwap",
             keyLevels: [41.24, 39.74],
-            singleMomentumKeyLevel: { high: 0, low: 0 },
+            singleMomentumKeyLevel: { high: 40, low: 40 },
             dualMomentumKeyLevels: [41.24, 39.74],
             profitTargetsForLong: {
                 targets: [41.24, 42], willBlowPastThoseLevels: 0.1, summary: `
@@ -262,8 +262,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 39.74,
+            momentumStartForShort: 41.24,
         },
         summary: `
         not sure, if open below vwap, try green to red < 60
