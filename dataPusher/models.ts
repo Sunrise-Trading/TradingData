@@ -52,7 +52,6 @@ export interface TradingPlans {
     keyLevels: keyLevels,
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
-    summary: string,
     setups: Setup[],
     defaultTargets: ExitTargets,
     defaultConfigs: PlanConfigs,
@@ -82,7 +81,6 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
-    reasons: string[],
     gapTightOutsideAndGoPlan?: GapTightOutsideAndGoPlan,
     gapTightInsideAndGoPlan?: GapTightInsideAndGoPlan,
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
