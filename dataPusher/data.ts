@@ -330,11 +330,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: tslaConfigs },
         },
         long: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: tslaConfigs },
-            falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: tslaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: tslaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: tslaConfigs },
-            deferredBreakoutPlan: { targets: stock3Target, planConfigs: tslaConfigs },
+
         },
     },
     {
