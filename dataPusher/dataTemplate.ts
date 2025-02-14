@@ -157,17 +157,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
+            isFreshNews: false,
+            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
+            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -216,17 +214,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
+            isFreshNews: false,
+            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
+            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -275,17 +271,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock3',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
+            isFreshNews: false,
+            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
+            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -334,17 +328,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock4',
         analysis: {
-            isFreshNews: false, newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,
+            isFreshNews: false,
+            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             relativeVolumeAndCandleSmoothness: -1,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
-            weeklychart: "",
-            dailyChart: "",
-            hourlyChart: "",
-            premarketChart: "",
+            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
