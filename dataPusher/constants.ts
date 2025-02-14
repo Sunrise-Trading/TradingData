@@ -211,7 +211,7 @@ export const marketCaps = {
     SNAP: 12000,
     SMR: 1300,
     SRPT: 11000,
-    SOUN: 1670,
+    SOUN: 4670,
     SCHW: 133000,
     SHOP: 82000,
     SEDG: 2000,
