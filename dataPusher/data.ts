@@ -164,7 +164,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gapSize: 0.6,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [5.52, 5.72],
-            singleMomentumKeyLevel: { high: 5.52, low: 5.2 },
+            singleMomentumKeyLevel: { high: 5.52, low: 5.52 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
