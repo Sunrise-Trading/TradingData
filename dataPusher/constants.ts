@@ -144,6 +144,7 @@ export const marketCaps = {
     GOOGL: 2246000,
     GE: 210000,
     GM: 55000,
+    GRAB: 19000,
     HE: 1200,
     HOOD: 35000,
     HUT: 2500,
