@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     snapMode: false,
     useSingleOrderForEntry: true,
 }
-export const defaultSize = 0.23;
+export const defaultSize = 0.22;
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
