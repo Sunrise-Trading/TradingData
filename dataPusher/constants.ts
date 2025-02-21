@@ -242,6 +242,7 @@ export const marketCaps = {
     UAL: 36000,
     UPS: 124000,
     UPST: 5000,
+    UNH: 450000,
     UBER: 163000,
     VST: 64000,
     X: 7000,
