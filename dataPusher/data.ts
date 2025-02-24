@@ -159,12 +159,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
             allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinuteByRelativeVolume: true,
             allowFirstMinutezByKeyLevelsQuality: true,
             gapSize: 2,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             keyLevels: [78.86],
-            singleMomentumKeyLevel: { high: 78.86, low: 78.86 },
+            singleMomentumKeyLevel: { high: 78, low: 78 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -188,8 +188,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+            momentumStartForLong: 78,
+            momentumStartForShort: 78.86,
         },
         setups: [],
         defaultConfigs: nkeConfigs, defaultTargets: stock1Target,
