@@ -177,7 +177,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 40.24, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.HIMS,
         atr: {
             average: 6,
