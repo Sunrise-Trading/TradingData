@@ -24,6 +24,7 @@ export interface Analysis {
     allowFirstMinuteByNewsQuality: boolean,
     allowFirstMinuteByRelativeVolume: boolean,
     allowFirstMinutezByKeyLevelsQuality: boolean,
+    dailyRangeToBreakout: LevelArea,
     gapSize: number,
     weeklychart: string,
     dailyChart: string,

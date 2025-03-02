@@ -166,6 +166,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -223,6 +224,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -280,6 +282,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
@@ -337,6 +340,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
             singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
