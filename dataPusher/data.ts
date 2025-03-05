@@ -163,7 +163,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: true,
             gapSize: 2,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 0, low: 0 },
+            dailyRangeToBreakout: { high: 50.69, low: 46 },
             keyLevels: [50.69, 50.56],
             singleMomentumKeyLevel: { high: 50.69, low: 50.56 },
             dualMomentumKeyLevels: [],
