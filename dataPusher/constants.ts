@@ -174,6 +174,7 @@ export const marketCaps = {
     MS: 181000,
     MSTR: 39000,
     MARA: 6000,
+    MDB: 19000,
     NBIX: 15000,
     NEE: 180000,
     NKE: 142000,
