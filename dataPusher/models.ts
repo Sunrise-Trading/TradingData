@@ -293,3 +293,13 @@ export enum SetupQuality {
      */
     SwingHold = "SwingHold",
 };
+
+export interface TopLevelPlanItem {
+    openAbove: TopLevelPlanItemCase,
+    openBetween: TopLevelPlanItemCase,
+    openBelow: TopLevelPlanItemCase,
+}
+export interface TopLevelPlanItemCase {
+    longStart: number,
+    shortStart: number,
+}
