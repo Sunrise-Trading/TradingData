@@ -7,6 +7,14 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     snapMode: false,
     useSingleOrderForEntry: true,
 }
+const defaultTopLevelPlanItemCase: TradingPlans.TopLevelPlanItemCase = {
+    longStart: 0, shortStart: 0,
+}
+const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
+    openAbove: defaultTopLevelPlanItemCase,
+    openBetween: defaultTopLevelPlanItemCase,
+    openBelow: defaultTopLevelPlanItemCase,
+}
 export const defaultSize = 0.21;
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -236,6 +244,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem,
     },
     {
         symbol: 'stock2',
@@ -294,6 +303,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
         symbol: 'stock3',
@@ -352,6 +362,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
         symbol: 'stock4',
@@ -410,5 +421,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
 ];

@@ -7,6 +7,14 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     snapMode: false,
     useSingleOrderForEntry: true,
 }
+const defaultTopLevelPlanItemCase: TradingPlans.TopLevelPlanItemCase = {
+    longStart: 0, shortStart: 0,
+}
+const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
+    openAbove: defaultTopLevelPlanItemCase,
+    openBetween: defaultTopLevelPlanItemCase,
+    openBelow: defaultTopLevelPlanItemCase,
+}
 export const defaultSize = 0.21;
 const hpeConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -229,6 +237,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: hpeConfigs },
             deferredBreakoutPlan: { targets: stock1Target, planConfigs: hpeConfigs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
         symbol: 'TSLA',
@@ -287,6 +296,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: tslaConfigs },
             deferredBreakoutPlan: { targets: stock2Target, planConfigs: tslaConfigs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
         symbol: 'GAP',
@@ -345,6 +355,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: gapConfigs },
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: gapConfigs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
         symbol: 'AVGO',
@@ -403,5 +414,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: avgoConfigs },
             deferredBreakoutPlan: { targets: stock4Target, planConfigs: avgoConfigs },
         },
+        topLevelPlanItem: defaultTopLevelPlanItem
     },
 ];

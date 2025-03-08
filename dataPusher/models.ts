@@ -51,6 +51,7 @@ export interface TradingPlans {
     marketCapInMillions: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
+    topLevelPlanItem: TopLevelPlanItem,
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
     setups: Setup[],

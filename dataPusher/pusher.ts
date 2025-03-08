@@ -34,7 +34,6 @@ const push = async (
     });
 };
 const planData = {
-    topLevelPlans: Data.topLevelPlans,
     plans: data,
     activeProfileName: Data.activeProfileName,
     tradingSettings: Data.tradingSettings,
@@ -43,6 +42,11 @@ const planData = {
 
 for (let i = 0; i < planData.plans.length; i++) {
     let p = planData.plans[i];
+    let symbol = planData.plans[i].symbol;
+    let topLevelPlan = Data.topLevelPlans.get(symbol);
+    if (topLevelPlan) {
+        p.topLevelPlanItem = topLevelPlan;
+    }
     let a = p.analysis;
     if (a.singleMomentumKeyLevel.high > 0) {
         let keyLevel = p.analysis.singleMomentumKeyLevel;
