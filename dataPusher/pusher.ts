@@ -34,6 +34,7 @@ const push = async (
     });
 };
 const planData = {
+    topLevelPlans: Data.topLevelPlans,
     plans: data,
     activeProfileName: Data.activeProfileName,
     tradingSettings: Data.tradingSettings,
