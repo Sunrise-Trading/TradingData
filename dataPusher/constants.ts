@@ -161,6 +161,7 @@ export const marketCaps = {
     LYFT: 6000,
     LUMN: 6850,
     LUNR: 1500,
+    LUV: 16000,
     M: 5000,
     MCD: 255000,
     MMM: 74000,
@@ -249,5 +250,6 @@ export const marketCaps = {
     UBER: 163000,
     VST: 64000,
     X: 7000,
+    XPEV: 17000,
     ZS: 29000,
 }
