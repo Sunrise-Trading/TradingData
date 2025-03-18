@@ -304,15 +304,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
-        symbol: 'stock3',
+        symbol: 'SRPT',
         analysis: {
-            isFreshNews: false,
+            isFreshNews: true,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: -1,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            allowFirstMinuteByNewsQuality: false,
-            allowFirstMinuteByRelativeVolume: false,
-            allowFirstMinutezByKeyLevelsQuality: false,
+            relativeVolumeAndCandleSmoothness: 2,
+            cleanVwapTrend: 0, dailyChartStory: 2,
+            allowFirstMinuteByNewsQuality: true,
+            allowFirstMinuteByRelativeVolume: true,
+            allowFirstMinutezByKeyLevelsQuality: true,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
