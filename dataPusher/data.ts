@@ -16,7 +16,7 @@ const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
     openBelow: defaultTopLevelPlanItemCase,
 }
 export const defaultSize = 0.21;
-const intc: TradingPlans.PlanConfigs = {
+const tsla: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -160,10 +160,10 @@ const stock4Target: TradingPlans.ExitTargets = {
 60: enabled after 1st minute
  */
 export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map<string, TradingPlans.TopLevelPlanItem>([
-    ['INTC', {
-        openAbove: { longStart: 0, shortStart: -1 },
-        openBetween: { longStart: 0, shortStart: -1 },
-        openBelow: { longStart: 0, shortStart: -1 }
+    ['TSLA', {
+        openAbove: { longStart: -1, shortStart: 0 },
+        openBetween: { longStart: -1, shortStart: 0 },
+        openBelow: { longStart: -1, shortStart: 0 }
     }], ['QBTS', {
         openAbove: { longStart: 0, shortStart: 0 },
         openBetween: { longStart: 0, shortStart: 0 },
@@ -180,26 +180,26 @@ export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map
 ]);
 
 export const stockSelections: string[] = [
-    'INTC',
-    'QBTS',
+    'TSLA',
+    //'QBTS',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'TSLA',
         analysis: {
             isFreshNews: true,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
             relativeVolumeAndCandleSmoothness: 1,
             cleanVwapTrend: 2, dailyChartStory: 1,
             allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinuteByRelativeVolume: true,
             allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 0.3,
+            gapSize: 9,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 24.53, low: 20 },
-            keyLevels: [24.53],
-            singleMomentumKeyLevel: { high: 24.53, low: 24.53 },
+            dailyRangeToBreakout: { high: 250, low: 232 },
+            keyLevels: [232.6],
+            singleMomentumKeyLevel: { high: 232.6, low: 232.6 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -213,12 +213,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: Constants.marketCaps.TSLA,
         atr: {
-            average: 1.3,
+            average: 9,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 0.4,
+            maxRisk: 5,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -227,20 +227,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         setups: [],
-        defaultConfigs: intc, defaultTargets: stock1Target,
+        defaultConfigs: tsla, defaultTargets: stock1Target,
         short: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intc },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: intc },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: intc },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intc },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: intc },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsla },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: tsla },
         },
         long: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intc },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: intc },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: intc },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intc },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: intc },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tsla },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsla },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: tsla },
         },
         topLevelPlanItem: defaultTopLevelPlanItem,
     },
