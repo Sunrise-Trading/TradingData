@@ -16,7 +16,7 @@ const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
     openBelow: defaultTopLevelPlanItemCase,
 }
 export const defaultSize = 0.21;
-const tsla: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -24,9 +24,9 @@ const tsla: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
-const qbts: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -34,7 +34,7 @@ const qbts: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -45,7 +45,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -55,7 +55,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
@@ -160,11 +160,11 @@ const stock4Target: TradingPlans.ExitTargets = {
 60: enabled after 1st minute
  */
 export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map<string, TradingPlans.TopLevelPlanItem>([
-    ['TSLA', {
-        openAbove: { longStart: -1, shortStart: 0 },
-        openBetween: { longStart: -1, shortStart: 0 },
-        openBelow: { longStart: -1, shortStart: 0 }
-    }], ['QBTS', {
+    ['stock1', {
+        openAbove: { longStart: 0, shortStart: 0 },
+        openBetween: { longStart: 0, shortStart: 0 },
+        openBelow: { longStart: 0, shortStart: 0 }
+    }], ['stock2', {
         openAbove: { longStart: 0, shortStart: 0 },
         openBetween: { longStart: 0, shortStart: 0 },
         openBelow: { longStart: 0, shortStart: 0 }
@@ -180,26 +180,28 @@ export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map
 ]);
 
 export const stockSelections: string[] = [
-    'TSLA',
-    //'QBTS',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSLA',
+        symbol: 'stock1',
         analysis: {
-            isFreshNews: true,
+            isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
-            relativeVolumeAndCandleSmoothness: 1,
-            cleanVwapTrend: 2, dailyChartStory: 1,
-            allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: true,
-            allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 9,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            allowFirstMinuteByNewsQuality: false,
+            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinutezByKeyLevelsQuality: false,
+            gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 250, low: 232 },
-            keyLevels: [232.6],
-            singleMomentumKeyLevel: { high: 232.6, low: 232.6 },
+            dailyRangeToBreakout: { high: 0, low: 0 },
+            keyLevels: [],
+            singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -213,12 +215,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
+        marketCapInMillions: 0,
         atr: {
-            average: 9,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -227,38 +229,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         setups: [],
-        defaultConfigs: tsla, defaultTargets: stock1Target,
+        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tsla },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsla },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: tsla },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
-            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: tsla },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsla },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsla },
-            deferredBreakoutPlan: { targets: stock1Target, planConfigs: tsla },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: stock1Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem,
     },
     {
-        symbol: 'QBTS',
+        symbol: 'stock2',
         analysis: {
-            isFreshNews: true,
+            isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 2, dailyChartStory: 2,
-            allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: true,
-            allowFirstMinutezByKeyLevelsQuality: true,
-            gapSize: 2,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            allowFirstMinuteByNewsQuality: false,
+            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinutezByKeyLevelsQuality: false,
+            gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 11.41, low: 5 },
-            keyLevels: [11.41],
-            singleMomentumKeyLevel: { high: 10.15, low: 11.41 },
+            dailyRangeToBreakout: { high: 0, low: 0 },
+            keyLevels: [],
+            singleMomentumKeyLevel: { high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -272,12 +274,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 2000,
+        marketCapInMillions: 0,
         atr: {
-            average: 1,
-            mutiplier: 2,
-            minimumMultipler: 1,
-            maxRisk: 0.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -286,33 +288,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         setups: [],
-        defaultConfigs: qbts, defaultTargets: stock2Target,
+        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qbts },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: qbts },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: qbts },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qbts },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: qbts },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qbts },
-            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: qbts },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: qbts },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qbts },
-            deferredBreakoutPlan: { targets: stock2Target, planConfigs: qbts },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            falseBreakoutPlan: { price: 0, targets: stock2Target, planConfigs: stock2Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem
     },
     {
-        symbol: 'SRPT',
+        symbol: 'stock3',
         analysis: {
-            isFreshNews: true,
+            isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: 2,
-            cleanVwapTrend: 0, dailyChartStory: 2,
-            allowFirstMinuteByNewsQuality: true,
-            allowFirstMinuteByRelativeVolume: true,
-            allowFirstMinutezByKeyLevelsQuality: true,
+            relativeVolumeAndCandleSmoothness: -1,
+            cleanVwapTrend: -1, dailyChartStory: -1,
+            allowFirstMinuteByNewsQuality: false,
+            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinutezByKeyLevelsQuality: false,
             gapSize: 0,
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },

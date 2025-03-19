@@ -24,7 +24,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -34,7 +34,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
@@ -45,7 +45,7 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -55,7 +55,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
     allowFirstFewExitsCount: 3,
-    setupQuality: TradingPlans.SetupQuality.Scalp,
+    setupQuality: TradingPlans.SetupQuality.Move2Move,
 };
 
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
