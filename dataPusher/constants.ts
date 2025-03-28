@@ -162,6 +162,7 @@ export const marketCaps = {
     LUMN: 6850,
     LUNR: 1500,
     LUV: 16000,
+    LULU: 43000,
     M: 5000,
     MCD: 255000,
     MMM: 74000,
