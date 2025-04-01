@@ -153,6 +153,7 @@ export const marketCaps = {
     INTC: 136000,
     IONQ: 10000,
     JD: 38000,
+    JNJ: 400000,
     KMX: 11000,
     KWEB: 10000,
     KSS: 2000,
