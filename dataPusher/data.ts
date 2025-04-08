@@ -208,7 +208,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 160, low: 150 },
             keyLevels: [162.48],
-            singleMomentumKeyLevel: { high: 162.48, low: 162.48 },
+            singleMomentumKeyLevel: { high: 170, low: 170 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -232,13 +232,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
         keyLevels: {
-            momentumStartForLong: 0,
+            momentumStartForLong: 162,
             momentumStartForShort: 0,
         },
         setups: [],
         defaultConfigs: avgoConfigs, defaultTargets: stock1Target,
         short: {
-
+            openDriveContinuation60Plan: { disableIfOpenWorseThanPrice: 162.48, requireOpenBetterThanVwap: false, targets: stock1Target, planConfigs: halfConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: avgoConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: avgoConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: avgoConfigs },
+            deferredBreakoutPlan: { targets: stock1Target, planConfigs: avgoConfigs },
         },
         long: {
             openDriveContinuation60Plan: { disableIfOpenWorseThanPrice: 162.48, requireOpenBetterThanVwap: false, targets: stock1Target, planConfigs: halfConfigs },
