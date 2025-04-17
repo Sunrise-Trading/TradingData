@@ -15,7 +15,7 @@ const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
     openBetween: defaultTopLevelPlanItemCase,
     openBelow: defaultTopLevelPlanItemCase,
 }
-export const defaultSize = 0.02; // 0.21
+export const defaultSize = 0.21; // 0.21
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
