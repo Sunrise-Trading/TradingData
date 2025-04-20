@@ -201,7 +201,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
-            singleMomentumKeyLevel: { high: 0, low: 0 },
+            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -260,7 +260,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
-            singleMomentumKeyLevel: { high: 0, low: 0 },
+            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -319,7 +319,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
-            singleMomentumKeyLevel: { high: 0, low: 0 },
+            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -378,7 +378,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
-            singleMomentumKeyLevel: { high: 0, low: 0 },
+            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `

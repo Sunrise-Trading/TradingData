@@ -32,7 +32,7 @@ export interface Analysis {
     premarketChart: string,
     keyLevels: number[],
     vwapExtensionDistance: number,
-    singleMomentumKeyLevel: LevelArea,
+    singleMomentumKeyLevel: LevelArea[],
     dualMomentumKeyLevels: number[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
