@@ -48,8 +48,9 @@ for (let i = 0; i < planData.plans.length; i++) {
         p.topLevelPlanItem = topLevelPlan;
     }
     let a = p.analysis;
-    if (a.singleMomentumKeyLevel.high > 0) {
-        let keyLevel = p.analysis.singleMomentumKeyLevel;
+    let keyLevels = p.analysis.singleMomentumKeyLevel;
+    let keyLevel = keyLevels[0];
+    if (keyLevel.high > 0) {
         if (a.allowFirstMinuteByNewsQuality &&
             a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
             if (!p.long.openDriveContinuation60Plan) {
