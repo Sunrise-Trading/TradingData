@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    ABBV: 319000,
     ASML: 250000,
     AXP: 229000,
     AKRO: 1830,
@@ -240,6 +241,7 @@ export const marketCaps = {
     TSLA: 565000,
     TGT: 66000,
     TXN: 138000,
+    TMUS: 298000,
     TSM: 900000,
     TEM: 5000,
     WBA: 7000,
