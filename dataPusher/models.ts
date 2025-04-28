@@ -25,7 +25,7 @@ export interface Analysis {
     allowFirstMinuteByRelativeVolume: boolean,
     allowFirstMinutezByKeyLevelsQuality: boolean,
     dailyRangeToBreakout: LevelArea,
-    gapSize: number,
+    gap: Gap,
     weeklychart: string,
     dailyChart: string,
     hourlyChart: string,
@@ -40,6 +40,9 @@ export interface Analysis {
     cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
     choppyOpenRangeLow: number,
+}
+export interface Gap {
+    pdc: number,
 }
 export interface TradingPlans {
     symbol: string,
