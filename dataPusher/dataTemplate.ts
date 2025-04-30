@@ -192,7 +192,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
-            relativeVolumeAndCandleSmoothness: -1,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Zero_Low_Or_Normal,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
@@ -251,7 +251,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: -1,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Zero_Low_Or_Normal,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
@@ -310,7 +310,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: -1,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Zero_Low_Or_Normal,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
@@ -369,7 +369,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: false,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            relativeVolumeAndCandleSmoothness: -1,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Zero_Low_Or_Normal,
             cleanVwapTrend: -1, dailyChartStory: -1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,

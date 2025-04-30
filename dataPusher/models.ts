@@ -9,13 +9,17 @@ export interface TradingSettings {
 export interface Analysis {
     isFreshNews: boolean,
     /**
-     * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
+     * 0: low or normal news, 1: higher than normal, 2: extremely high news
      */
     newsImpactScore: number,
     /**
      * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
      */
     marketReactionScore: number,
+    /**
+     * 0: low or normal, 1: higher than normal, 2: extremely high
+     */
+    premarketVolumeScore: PremarketVolumeScore,
     /**
      * A number from 0 to 1 (100%) indicating the portion of the position to hold for swing trade
      */
@@ -36,7 +40,6 @@ export interface Analysis {
     dualMomentumKeyLevels: number[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
-    relativeVolumeAndCandleSmoothness: number,
     cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
     choppyOpenRangeLow: number,
@@ -306,4 +309,10 @@ export interface TopLevelPlanItem {
 export interface TopLevelPlanItemCase {
     longStart: number,
     shortStart: number,
+}
+export enum PremarketVolumeScore {
+    Zero_Low_Or_Normal = 0,
+    One_Higher_Than_Normal = 1,
+    Two_Extremely_High = 2,
+    Unknown = -1,
 }
