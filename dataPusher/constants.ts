@@ -259,6 +259,7 @@ export const marketCaps = {
     VST: 64000,
     VZ: 181000,
     X: 7000,
+    XYZ: 36000,
     XPEV: 17000,
     ZS: 29000,
 }

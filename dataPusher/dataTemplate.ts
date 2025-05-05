@@ -236,6 +236,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            vwapBounceFailPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
@@ -243,6 +244,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             deferredBreakoutPlan: { targets: stock1Target, planConfigs: stock1Configs },
+            vwapBounceFailPlan: { targets: stock1Target, planConfigs: stock1Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem,
     },
@@ -295,6 +297,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            vwapBounceFailPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
@@ -302,6 +305,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             deferredBreakoutPlan: { targets: stock2Target, planConfigs: stock2Configs },
+            vwapBounceFailPlan: { targets: stock2Target, planConfigs: stock2Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem
     },
@@ -354,6 +358,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            vwapBounceFailPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
@@ -361,6 +366,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             deferredBreakoutPlan: { targets: stock3Target, planConfigs: stock3Configs },
+            vwapBounceFailPlan: { targets: stock3Target, planConfigs: stock3Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem
     },
@@ -413,6 +419,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            vwapBounceFailPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
         long: {
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
@@ -420,6 +427,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             deferredBreakoutPlan: { targets: stock4Target, planConfigs: stock4Configs },
+            vwapBounceFailPlan: { targets: stock4Target, planConfigs: stock4Configs },
         },
         topLevelPlanItem: defaultTopLevelPlanItem
     },

@@ -113,7 +113,7 @@ export interface SingleDirectionPlans {
     bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
     intraDayBreakout?: IntraDayBreakoutPlan,
     rangePlan?: RangePlan,
-    vwapCrossFailPlan?: VwapCrossFailPlan,
+    vwapBounceFailPlan?: VwapBounceFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
     levelMomentumPlan?: LevelMomentumPlan,
@@ -136,7 +136,7 @@ export interface OpenRangeBreakoutPlan extends BasePlan {
 export interface BothSidesFalseBreakoutPlan extends BasePlan {
 
 }
-export interface VwapCrossFailPlan extends BasePlan { }
+export interface VwapBounceFailPlan extends BasePlan { }
 export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
     otherLevels?: number[];
