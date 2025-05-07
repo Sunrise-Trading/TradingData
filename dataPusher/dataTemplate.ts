@@ -203,6 +203,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
+            tradableAreas: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -264,6 +265,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
+            tradableAreas: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -325,6 +327,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
+            tradableAreas: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -386,6 +389,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             keyLevels: [],
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
+            tradableAreas: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },

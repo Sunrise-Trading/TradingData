@@ -38,6 +38,7 @@ export interface Analysis {
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: LevelArea[],
     dualMomentumKeyLevels: number[],
+    tradableAreas: TradableArea[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
     cleanVwapTrend: number,
@@ -165,7 +166,7 @@ export enum PlanType {
     LevelBreakout = 'LevelBreakout',
     DeferredBreakout = 'DeferredBreakout',
     Range = 'Range',
-    VwapCrossFail = 'VwapCrossFail',
+    VwapBounceFail = 'VwapBounceFail',
     VwapCrossSuccess = 'VwapCrossSuccess',
 };
 export interface BasePlan {
@@ -315,4 +316,10 @@ export enum PremarketVolumeScore {
     One_Higher_Than_Normal = 1,
     Two_Extremely_High = 2,
     Unknown = -1,
+}
+
+export interface TradableArea {
+    start: number,
+    phaseOut: number,
+    end: number,
 }

@@ -180,7 +180,7 @@ export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map
 ]);
 
 export const stockSelections: string[] = [
-    'DIS',
+    'DIS', 'MRVL'
 ];
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -197,8 +197,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 92 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 92.5, low: 80 },
-            keyLevels: [100],
-            singleMomentumKeyLevel: [{ high: 100, low: 100 }],
+            keyLevels: [102.99],
+            singleMomentumKeyLevel: [{ high: 102.99, low: 102.99 }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
