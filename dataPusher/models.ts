@@ -320,6 +320,8 @@ export enum PremarketVolumeScore {
 
 export interface TradableArea {
     start: number,
-    phaseOut: number,
-    end: number,
+    isLong: boolean,
+    phaseOutDistance: number,
+    endDistance: number,
+    vwapDistance: number,
 }
