@@ -37,6 +37,10 @@ export interface Analysis {
     keyLevels: number[],
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: LevelArea[],
+    /**
+     * 1: use premarket high, -1: use premarket low, 0: not use premarket levels
+     */
+    usePremarketKeyLevel: number,
     dualMomentumKeyLevels: number[],
     tradableAreas: TradableArea[],
     profitTargetsForLong: ProfitTargets,

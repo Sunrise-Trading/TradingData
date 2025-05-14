@@ -201,6 +201,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
@@ -266,6 +267,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
@@ -331,6 +333,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
@@ -396,6 +399,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 0, low: 0 },
             keyLevels: [],
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: 0, low: 0 }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
