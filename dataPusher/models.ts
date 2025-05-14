@@ -94,53 +94,29 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
-    gapTightOutsideAndGoPlan?: GapTightOutsideAndGoPlan,
-    gapTightInsideAndGoPlan?: GapTightInsideAndGoPlan,
+    /* used strategies begin */
+    levelMomentumPlan?: LevelMomentumPlan,
+    /* used strategies end */
+
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
     profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
-    premarket2ndBreakout60Plan?: Premarket2ndBreakout60Plan,
     retracement?: RetracementPlan,
     reversalPlan?: ReversalPlan,
-    newsBreakout?: NewsBreakoutPlan,
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
-    imbalancePlan?: ImbalancePlan,
-    openRangeBreakoutPlan?: OpenRangeBreakoutPlan,
 
-    openScalpPlan?: OpenScalpPlan,
     deferredBreakoutPlan?: DeferredBreakoutPlan,
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
-    firstRetracementPlan?: FirstRetracementPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
-    bothSidesFalseBreakoutPlan?: BothSidesFalseBreakoutPlan,
-    intraDayBreakout?: IntraDayBreakoutPlan,
-    rangePlan?: RangePlan,
     vwapBounceFailPlan?: VwapBounceFailPlan,
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
-    levelMomentumPlan?: LevelMomentumPlan,
-};
-export interface GapTightOutsideAndGoPlan extends BasePlan {
-    keyLevel: number,
-    maxDistance: number,
-}
-export interface GapTightInsideAndGoPlan extends BasePlan {
-    keyLevel: number,
-    maxDistance: number,
-}
-export interface OpenScalpPlan extends BasePlan {
-}
-export interface ImbalancePlan extends BasePlan {
-}
-export interface OpenRangeBreakoutPlan extends BasePlan {
-    count: number,
-}
-export interface BothSidesFalseBreakoutPlan extends BasePlan {
 
-}
+};
+
 export interface VwapBounceFailPlan extends BasePlan { }
 export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
@@ -151,25 +127,15 @@ export interface keyLevels {
 export enum PlanType {
     ProfitTakingFade60 = 'ProfitTakingFade60',
     ProfitTakingExhuast60 = 'ProfitTakingExhuast60',
-    Premarket2ndBreakout60 = 'Premarket2ndBreakout60',
     OpenDriveContinuation60 = 'OpenDriveContinuation60',
     Momentum = 'Momentum',
-    FirstRetracement = 'FirstRetracement',
     Retracement = 'Retracement',
-    NewsBreakout = 'NewsBreakout',
-    BothSidesFalseBreakout = 'BothSidesFalseBreakout',
     FalseBreakout = 'FalseBreakout',
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
-    SecondNewHigh = 'SecondNewHigh',
-    Imbalance = 'Imbalance',
-    OpenRangeBreakout = 'OpenRangeBreakout',
-
-    OpenScalp = 'OpenScalp',
     BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
     DeferredBreakout = 'DeferredBreakout',
-    Range = 'Range',
     VwapBounceFail = 'VwapBounceFail',
     VwapCrossSuccess = 'VwapCrossSuccess',
 };
@@ -208,11 +174,7 @@ export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
     requireOpenBetterThanVwap: boolean,
 }
-export interface Premarket2ndBreakout60Plan extends BasePlan { }
 
-export interface NewsBreakoutPlan extends BasePlan {
-};
-export interface RangePlan extends BasePlan { }
 export interface AlgoPlan extends BasePlan {
     expirationInSeconds: number,
     allowPremarket: boolean,
@@ -249,10 +211,6 @@ export interface FirstNewHighPlan extends BasePlan {
     enableAutoTrigger: boolean,
 }
 export interface DeferredBreakoutPlan extends BasePlan { }
-export interface IntraDayBreakoutPlan extends BasePlan {
-    requireReversal: boolean,
-    deferInSeconds: number,
-}
 export interface ProfitTargets {
     targets: number[],
     /**
