@@ -182,7 +182,8 @@ export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map
         openBelow: { longStart: 0, shortStart: 0 }
     }]
 ]);
-
+const smciHigh = 47.13;
+const amdHigh = 121.5;
 export const stockSelections: string[] = [
     'AMD', 'SMCI', 'BABA'
 ];
@@ -201,13 +202,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 39 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 40, low: 30 },
-            keyLevels: [46.4],
+            keyLevels: [smciHigh],
             usePremarketKeyLevel: 1,
-            singleMomentumKeyLevel: [{ high: 46.4, low: 46.4 }],
+            singleMomentumKeyLevel: [{ high: smciHigh, low: smciHigh }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 46.4, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 46.4, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: smciHigh, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: smciHigh, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -334,13 +335,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 112 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 115, low: 110 },
-            keyLevels: [120.69],
+            keyLevels: [amdHigh],
             usePremarketKeyLevel: 1,
-            singleMomentumKeyLevel: [{ high: 120.69, low: 120.69 }],
+            singleMomentumKeyLevel: [{ high: amdHigh, low: amdHigh }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 120.69, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 120.69, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: amdHigh, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: amdHigh, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
