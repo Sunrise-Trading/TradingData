@@ -115,6 +115,7 @@ export const marketCaps = {
     CVNA: 14000,
     CVS: 80000,
     CRWD: 83000,
+    CRWV: 31000,
     CRM: 316000,
     DAL: 30000,
     DELL: 105000,
