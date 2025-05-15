@@ -69,8 +69,7 @@ const unlimitTargetForAll: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -85,8 +84,7 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [1, 1, 1, 1, 1, 3, 3, 3, 3, 3],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -101,8 +99,7 @@ const stock1Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -117,8 +114,7 @@ const stock2Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -133,8 +129,7 @@ const stock3Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -149,8 +144,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
     trail5Count: 10,
     trail15Count: 10,
 };

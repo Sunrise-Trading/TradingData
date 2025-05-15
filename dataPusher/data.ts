@@ -69,8 +69,8 @@ const unlimitTargetForAll: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -85,8 +85,8 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [1, 1, 1, 1, 1, 3, 3, 3, 3, 3],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -101,8 +101,8 @@ const stock1Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -117,8 +117,8 @@ const stock2Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -133,8 +133,8 @@ const stock3Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -149,8 +149,8 @@ const stock4Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    wave3BatchIndexStart: 10,
-    wave5BatchIndexStart: 10,
+
+
     trail5Count: 10,
     trail15Count: 10,
 };
@@ -182,8 +182,8 @@ export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map
         openBelow: { longStart: 0, shortStart: 0 }
     }]
 ]);
-const smciHigh = 47.13;
-const amdHigh = 121.5;
+const smciHigh = 47;
+const amdHigh = 121;
 export const stockSelections: string[] = [
     'AMD', 'SMCI', 'BABA'
 ];
@@ -238,7 +238,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: smciConfigs, defaultTargets: stock1Target,
         short: {
-            profitTakingExhaust60Plan: { includeOpenChase: true, minDistanceToVwap: 0.5, targets: stock1Target, planConfigs: smciConfigs },
+            openChasePlan: { targets: stock1Target, planConfigs: smciConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smciConfigs },
             falseBreakoutPlan: { price: 0, targets: stock1Target, planConfigs: smciConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smciConfigs },
@@ -371,7 +371,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: amdConfigs, defaultTargets: stock3Target,
         short: {
-            profitTakingExhaust60Plan: { includeOpenChase: true, minDistanceToVwap: 0.5, targets: stock3Target, planConfigs: amdConfigs },
+            openChasePlan: { targets: stock3Target, planConfigs: amdConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: amdConfigs },
             falseBreakoutPlan: { price: 0, targets: stock3Target, planConfigs: amdConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: amdConfigs },

@@ -96,10 +96,10 @@ export interface VwapCorrection {
 export interface SingleDirectionPlans {
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
+    openChasePlan?: OpenChasePlan,
     /* used strategies end */
 
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
-    profitTakingExhaust60Plan?: ProfitTakingExhaust60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
     retracement?: RetracementPlan,
     reversalPlan?: ReversalPlan,
@@ -116,7 +116,7 @@ export interface SingleDirectionPlans {
     premarketPlan?: PremarketPlan,
 
 };
-
+export interface OpenChasePlan extends BasePlan { }
 export interface VwapBounceFailPlan extends BasePlan { }
 export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
@@ -125,12 +125,13 @@ export interface keyLevels {
     momentumStartForShort: number,
 };
 export enum PlanType {
+    LevelMomentum = 'LevelMomentum',
     ProfitTakingFade60 = 'ProfitTakingFade60',
-    ProfitTakingExhuast60 = 'ProfitTakingExhuast60',
     OpenDriveContinuation60 = 'OpenDriveContinuation60',
-    Momentum = 'Momentum',
+    OpenChase = 'OpenChase',
     Retracement = 'Retracement',
     FalseBreakout = 'FalseBreakout',
+    NewsBreakout = 'NewsBreakout',
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
     BreakoutAlgo = 'BreakoutAlgo',
@@ -166,10 +167,7 @@ export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
     onlyIfOpenBelow: number,
 }
-export interface ProfitTakingExhaust60Plan extends BasePlan {
-    includeOpenChase: boolean,
-    minDistanceToVwap: number,
-}
+
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
     requireOpenBetterThanVwap: boolean,
@@ -222,8 +220,6 @@ export interface ProfitTargets {
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
     minimumTargets?: ExitTargetsSet,
-    wave3BatchIndexStart: number,
-    wave5BatchIndexStart: number,
     trail5Count: number,
     trail15Count: number,
 }
