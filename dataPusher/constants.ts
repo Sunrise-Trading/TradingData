@@ -191,6 +191,7 @@ export const marketCaps = {
     NFLX: 295000,
     NIO: 12000,
     NVDA: 3153000,
+    NVAX: 1000,
     NU: 60000,
     NBIS: 10000,
     ORCL: 385000,
