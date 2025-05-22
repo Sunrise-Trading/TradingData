@@ -324,9 +324,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 61.70 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 62.5, low: 60 },
-            keyLevels: [63.63],
+            keyLevels: [63],
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 63.63, low: 63.63 }],
+            singleMomentumKeyLevel: [{ high: 63, low: 63 }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
                 { start: 63.63, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
