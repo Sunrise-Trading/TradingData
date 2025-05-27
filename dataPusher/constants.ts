@@ -200,7 +200,7 @@ export const marketCaps = {
     PARA: 7000,
     PATH: 7000,
     PANW: 111000,
-    PDD: 185000,
+    PDD: 166000,
     PLTR: 61000,
     PYPL: 61000,
     PFE: 161000,
