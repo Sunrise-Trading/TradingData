@@ -258,7 +258,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             allowFirstMinutezByKeyLevelsQuality: true,
             gap: { pdc: 356.9 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 0, low: 0 },
+            dailyRangeToBreakout: { high: 365, low: 350 },
             keyLevels: [368.3],
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: 368.3, low: 368.3 }],
@@ -339,7 +339,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.CRM,
         atr: {
             average: 7,
             mutiplier: 1,
