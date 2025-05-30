@@ -119,7 +119,7 @@ export const marketCaps = {
     CRWV: 31000,
     CRM: 316000,
     DAL: 30000,
-    DELL: 105000,
+    DELL: 77000,
     DLTR: 17000,
     DJT: 5000,
     DXCM: 40000,
