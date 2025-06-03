@@ -108,7 +108,7 @@ export const marketCaps = {
     BABA: 170000,
     BP: 84000,
     C: 125000,
-    CEG: 79000,
+    CEG: 108000,
     CAVA: 11000,
     COST: 7000,
     CSCO: 249000,
