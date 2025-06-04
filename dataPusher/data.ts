@@ -198,8 +198,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             singleMomentumKeyLevel: [{ high: cegLevel, low: cegLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: cegLevel, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: cegLevel, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: cegLevel, isLong: true, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1 },
+                { start: cegLevel, isLong: false, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -332,7 +332,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             choppyOpenRangeLow: 0,
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 106.3, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.DG,
         atr: {
             average: 2.64,
