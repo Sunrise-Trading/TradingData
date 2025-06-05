@@ -43,10 +43,7 @@ const planData = {
 for (let i = 0; i < planData.plans.length; i++) {
     let p = planData.plans[i];
     let symbol = planData.plans[i].symbol;
-    let topLevelPlan = Data.topLevelPlans.get(symbol);
-    if (topLevelPlan) {
-        p.topLevelPlanItem = topLevelPlan;
-    }
+
     let a = p.analysis;
     let keyLevels = p.analysis.singleMomentumKeyLevel;
     let keyLevel = keyLevels[0];

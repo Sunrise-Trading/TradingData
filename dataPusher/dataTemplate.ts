@@ -7,14 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     snapMode: false,
     useSingleOrderForEntry: true,
 }
-const defaultTopLevelPlanItemCase: TradingPlans.TopLevelPlanItemCase = {
-    longStart: 0, shortStart: 0,
-}
-const defaultTopLevelPlanItem: TradingPlans.TopLevelPlanItem = {
-    openAbove: defaultTopLevelPlanItemCase,
-    openBetween: defaultTopLevelPlanItemCase,
-    openBelow: defaultTopLevelPlanItemCase,
-}
+
 export const defaultSize = 0.21; // 0.21
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
@@ -148,30 +141,6 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-/*
--1: disabled
-0: enabled from open
-60: enabled after 1st minute
- */
-export const topLevelPlans: Map<string, TradingPlans.TopLevelPlanItem> = new Map<string, TradingPlans.TopLevelPlanItem>([
-    ['stock1', {
-        openAbove: { longStart: 0, shortStart: 0 },
-        openBetween: { longStart: 0, shortStart: 0 },
-        openBelow: { longStart: 0, shortStart: 0 }
-    }], ['stock2', {
-        openAbove: { longStart: 0, shortStart: 0 },
-        openBetween: { longStart: 0, shortStart: 0 },
-        openBelow: { longStart: 0, shortStart: 0 }
-    }], ['stock3', {
-        openAbove: { longStart: 0, shortStart: 0 },
-        openBetween: { longStart: 0, shortStart: 0 },
-        openBelow: { longStart: 0, shortStart: 0 }
-    }], ['stock4', {
-        openAbove: { longStart: 0, shortStart: 0 },
-        openBetween: { longStart: 0, shortStart: 0 },
-        openBelow: { longStart: 0, shortStart: 0 }
-    }]
-]);
 
 export const stockSelections: string[] = [
     'stock1',
@@ -230,16 +199,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-        },
-        topLevelPlanItem: defaultTopLevelPlanItem,
+        }
     },
     {
         symbol: 'stock2',
@@ -290,16 +260,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-        },
-        topLevelPlanItem: defaultTopLevelPlanItem
+        }
     },
     {
         symbol: 'stock3',
@@ -350,16 +321,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         short: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-        },
-        topLevelPlanItem: defaultTopLevelPlanItem
+        }
     },
     {
         symbol: 'stock4',
@@ -410,15 +382,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         short: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
         },
         long: {
+            enabled: true,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-        },
-        topLevelPlanItem: defaultTopLevelPlanItem
+        }
     },
 ];

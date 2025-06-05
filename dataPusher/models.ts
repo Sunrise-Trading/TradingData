@@ -62,7 +62,6 @@ export interface TradingPlans {
     marketCapInMillions: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
-    topLevelPlanItem: TopLevelPlanItem,
     disableShortIfOpenAbove: number,
     disableLongIfOpenBelow: number,
     setups: Setup[],
@@ -94,9 +93,10 @@ export interface VwapCorrection {
 }
 
 export interface SingleDirectionPlans {
+    enabled: boolean,
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
-    openChasePlan?: OpenChasePlan,
+    vwapBounceFailPlan?: VwapBounceFailPlan,
     /* used strategies end */
 
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
@@ -111,12 +111,12 @@ export interface SingleDirectionPlans {
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
     falseBreakoutPlan?: FalseBreakoutPlan,
-    vwapBounceFailPlan?: VwapBounceFailPlan,
+
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
 
 };
-export interface OpenChasePlan extends BasePlan { }
+
 export interface VwapBounceFailPlan extends BasePlan { }
 export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
@@ -260,15 +260,6 @@ export enum SetupQuality {
     SwingHold = "SwingHold",
 };
 
-export interface TopLevelPlanItem {
-    openAbove: TopLevelPlanItemCase,
-    openBetween: TopLevelPlanItemCase,
-    openBelow: TopLevelPlanItemCase,
-}
-export interface TopLevelPlanItemCase {
-    longStart: number,
-    shortStart: number,
-}
 export enum PremarketVolumeScore {
     Zero_Low_Or_Normal = 0,
     One_Higher_Than_Normal = 1,
