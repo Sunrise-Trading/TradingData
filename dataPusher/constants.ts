@@ -128,6 +128,7 @@ export const marketCaps = {
     DOCS: 8000,
     DKNG: 35000,
     DIS: 186000,
+    DOCU: 18000,
     DDOG: 50000,
     DG: 27000,
     EA: 37000,
