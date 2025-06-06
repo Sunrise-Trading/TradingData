@@ -94,6 +94,7 @@ export interface VwapCorrection {
 
 export interface SingleDirectionPlans {
     enabled: boolean,
+    firstTargetToAdd: number,
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
     vwapBounceFailPlan?: VwapBounceFailPlan,
