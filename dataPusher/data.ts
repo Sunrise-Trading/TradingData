@@ -145,7 +145,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const stockSelections: string[] = [
     'IONQ', 'ACHR'
 ];
-const ionqLevel = 42.39;
+const ionqLevel = 43.9;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'IONQ',
