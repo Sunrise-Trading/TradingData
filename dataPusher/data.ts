@@ -143,33 +143,30 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'IONQ',
 ];
-
+const ionqLevel = 42.39;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'IONQ',
         analysis: {
-            isFreshNews: false,
+            isFreshNews: true,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            cleanVwapTrend: -1, dailyChartStory: -1,
-            allowFirstMinuteByNewsQuality: false,
-            allowFirstMinuteByRelativeVolume: false,
-            allowFirstMinutezByKeyLevelsQuality: false,
-            gap: { pdc: 0 },
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            cleanVwapTrend: 2, dailyChartStory: -2,
+            allowFirstMinuteByNewsQuality: true,
+            allowFirstMinuteByRelativeVolume: true,
+            allowFirstMinutezByKeyLevelsQuality: true,
+            gap: { pdc: 39.02 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 0, low: 0 },
-            keyLevels: [],
+            dailyRangeToBreakout: { high: 42.39, low: 39 },
+            keyLevels: [ionqLevel],
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            singleMomentumKeyLevel: [{ high: ionqLevel, low: ionqLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: ionqLevel, isLong: true, phaseOutDistance: 2.5, endDistance: 3.6, vwapDistance: 1 },
+                { start: ionqLevel, isLong: false, phaseOutDistance: 2.5, endDistance: 3.6, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -183,12 +180,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.IONQ,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3.6,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 2,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
