@@ -40,7 +40,7 @@ const tslaConfigs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
 };
-const stock4Configs: TradingPlans.PlanConfigs = {
+const uberConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -50,7 +50,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
 };
-
+const uberLevel = 88.36;
 const unlimitTargetForAll: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -143,7 +143,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 
 export const stockSelections: string[] = [
-    'TSLA'
+    'TSLA', 'UBER', 'AAPL'
 ];
 const ionqLevel = 43.9;
 const tslaLevel = 318.55; // 308.55
@@ -384,42 +384,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         setups: [],
-        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
+        defaultConfigs: uberConfigs, defaultTargets: stock4Target,
         short: {
             enabled: true,
             firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
         },
         long: {
             enabled: true,
             firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
         }
     },
     {
-        symbol: 'stock4',
+        symbol: 'UBER',
         analysis: {
-            isFreshNews: false,
+            isFreshNews: true,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            cleanVwapTrend: -1, dailyChartStory: -1,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            cleanVwapTrend: 1, dailyChartStory: 1,
             allowFirstMinuteByNewsQuality: false,
             allowFirstMinuteByRelativeVolume: false,
             allowFirstMinutezByKeyLevelsQuality: false,
-            gap: { pdc: 0 }, // optional, pdv is previous day close
+            gap: { pdc: 87.12 }, // optional, pdv is previous day close
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-            dailyRangeToBreakout: { high: 0, low: 0 },
-            keyLevels: [],
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            dailyRangeToBreakout: { high: 88, low: 85 },
+            keyLevels: [uberLevel],
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: uberLevel, low: uberLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: uberLevel, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: uberLevel, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -433,12 +433,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.UBER,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.7,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 1,
         },
         disableShortIfOpenAbove: 0,
         disableLongIfOpenBelow: 0,
@@ -447,20 +447,83 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         setups: [],
-        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
+        defaultConfigs: uberConfigs, defaultTargets: stock4Target,
         short: {
-            enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
+            enabled: false,
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
+            firstTargetToAdd: 90,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+        }
+    },
+    {
+        symbol: 'AAPL',
+        analysis: {
+            isFreshNews: true,
+            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            cleanVwapTrend: 1, dailyChartStory: 1,
+            allowFirstMinuteByNewsQuality: false,
+            allowFirstMinuteByRelativeVolume: false,
+            allowFirstMinutezByKeyLevelsQuality: false,
+            gap: { pdc: 201.45 }, // optional, pdv is previous day close
+            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            dailyRangeToBreakout: { high: 205, low: 200 },
+            keyLevels: [200],
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: 200, low: 200 }],
+            dualMomentumKeyLevels: [],
+            tradableAreas: [
+                { start: 200, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: 200, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+            ],
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            vwapExtensionDistance: 0,
+            choppyOpenRangeHigh: 0,
+            choppyOpenRangeLow: 0,
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.AAPL,
+        atr: {
+            average: 5.3,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 2,
+        },
+        disableShortIfOpenAbove: 0,
+        disableLongIfOpenBelow: 0,
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        setups: [],
+        defaultConfigs: uberConfigs, defaultTargets: stock4Target,
+        short: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: uberConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: uberConfigs },
         }
     },
 ];
