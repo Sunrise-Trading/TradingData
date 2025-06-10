@@ -143,7 +143,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 
 export const stockSelections: string[] = [
-    'TSLA', 'UBER', 'AAPL'
+    'TSLA', //'UBER', 'AAPL'
 ];
 const ionqLevel = 43.9;
 const tslaLevel = 318.55; // 308.55
