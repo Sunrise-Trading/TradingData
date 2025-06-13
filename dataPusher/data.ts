@@ -197,7 +197,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         setups: [],
         defaultConfigs: aaplConfigs, defaultTargets: stock1Target,
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: aaplConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: aaplConfigs },
