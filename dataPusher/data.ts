@@ -147,7 +147,7 @@ export const stockSelections: string[] = [
     'META', 'TSLA',
     'ROKU',
 ];
-
+const tslaLevel = 325;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'TSLA',
@@ -162,13 +162,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 325 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 333, low: 325 },
-            keyLevels: [333],
+            keyLevels: [tslaLevel],
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 333, low: 333 }],
+            singleMomentumKeyLevel: [{ high: tslaLevel, low: tslaLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 333, isLong: true, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1.5 },
-                { start: 333, isLong: false, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1.5 },
+                { start: tslaLevel, isLong: true, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1.5 },
+                { start: tslaLevel, isLong: false, phaseOutDistance: 3, endDistance: 5, vwapDistance: 1.5 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
