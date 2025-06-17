@@ -143,9 +143,9 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 
 export const stockSelections: string[] = [
-    'FSLR', 'ENPH', 'ROKU'
+    'FSLR', 'ENPH', 'AMD'
 ];
-
+const rokuLevel = 129.8;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'FSLR',
@@ -274,7 +274,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'ROKU',
+        symbol: 'AMD',
         analysis: {
             isFreshNews: true,
             newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
@@ -286,9 +286,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 82.17 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             dailyRangeToBreakout: { high: 82.5, low: 80 },
-            keyLevels: [84.41],
-            usePremarketKeyLevel: 1,
-            singleMomentumKeyLevel: [{ high: 84.41, low: 84.41 }],
+            keyLevels: [rokuLevel],
+            usePremarketKeyLevel: 0,
+            singleMomentumKeyLevel: [{ high: rokuLevel, low: rokuLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
                 { start: 84.41, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
