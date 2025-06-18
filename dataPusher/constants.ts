@@ -115,6 +115,7 @@ export const marketCaps = {
     COIN: 82000,
     CHWY: 12000,
     CVNA: 14000,
+    CRCL: 33000,
     CVS: 80000,
     CLF: 2880,
     CRWD: 83000,
