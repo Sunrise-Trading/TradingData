@@ -25,16 +25,12 @@ export interface Analysis {
      */
     swingHoldRatio: number,
     dailyChartStory: number,
-    allowFirstMinuteByNewsQuality: boolean,
-    allowFirstMinuteByRelativeVolume: boolean,
-    allowFirstMinutezByKeyLevelsQuality: boolean,
-    dailyRangeToBreakout: LevelArea,
     gap: Gap,
     weeklychart: string,
     dailyChart: string,
     hourlyChart: string,
     premarketChart: string,
-    keyLevels: number[],
+    keyLevels?: number[],
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: LevelArea[],
     /**
@@ -45,7 +41,6 @@ export interface Analysis {
     tradableAreas: TradableArea[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
-    cleanVwapTrend: number,
     choppyOpenRangeHigh: number,
     choppyOpenRangeLow: number,
 }
