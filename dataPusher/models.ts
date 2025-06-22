@@ -11,11 +11,11 @@ export interface Analysis {
     /**
      * 0: low or normal news, 1: higher than normal, 2: extremely high news
      */
-    newsImpactScore: number,
+    newsImpactScore?: number,
     /**
      * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
      */
-    marketReactionScore: number,
+    marketReactionScore?: number,
     /**
      * 0: low or normal, 1: higher than normal, 2: extremely high
      */
@@ -23,7 +23,7 @@ export interface Analysis {
     /**
      * A number from 0 to 1 (100%) indicating the portion of the position to hold for swing trade
      */
-    swingHoldRatio: number,
+    swingHoldRatio?: number,
     dailyChartStory: number,
     gap: Gap,
     weeklychart: string,
@@ -41,8 +41,6 @@ export interface Analysis {
     tradableAreas: TradableArea[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
-    choppyOpenRangeHigh: number,
-    choppyOpenRangeLow: number,
 }
 export interface Gap {
     pdc: number,
@@ -57,24 +55,11 @@ export interface TradingPlans {
     marketCapInMillions: number,
     fixedQuantity?: number,
     keyLevels: keyLevels,
-    disableShortIfOpenAbove: number,
-    disableLongIfOpenBelow: number,
-    setups: Setup[],
     defaultTargets: ExitTargets,
     defaultConfigs: PlanConfigs,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
-export interface Setup {
-    high: string,
-    low: string,
-    title: string,
-    isChoppy: boolean,
-    range: string,
-    quality: string,
-    entrySummary: string,
-    exitTargets: string,
-}
 export interface AverageTrueRange {
     average: number,
     mutiplier: number,

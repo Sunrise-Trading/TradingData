@@ -148,6 +148,10 @@ export const stockSelections: string[] = [
     'stock3',
     'stock4',
 ];
+const stock1Level = 1;
+const stock2Level = 1;
+const stock3Level = 1;
+const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -159,13 +163,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dailyChartStory: -1,
             gap: { pdc: 0 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock1Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock1Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -174,8 +177,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -186,13 +187,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        setups: [],
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
             enabled: true,
@@ -213,17 +211,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock2',
         analysis: {
             isFreshNews: false,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock2Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock2Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -232,8 +228,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -244,13 +238,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        setups: [],
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
             enabled: true,
@@ -271,17 +262,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock3',
         analysis: {
             isFreshNews: false,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock3Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock3Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -290,8 +279,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -302,13 +289,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        setups: [],
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         short: {
             enabled: true,
@@ -326,78 +310,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'AIRO',
-        analysis: {
-            isFreshNews: false,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: -1, gap: { pdc: 0 }, // optional, pdv is previous day close
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
-            dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
-            profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
-        },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        setups: [],
-        defaultConfigs: stock4Configs, defaultTargets: stock4Target,
-        short: {
-            enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-        }
-    },
-    {
         symbol: 'stock4',
         analysis: {
             isFreshNews: false,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0, // optional
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 }, // optional, pdv is previous day close
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
-
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: 0, low: 0 }],
+            singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: 123, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: 123, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock4Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: stock4Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -406,8 +330,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             vwapExtensionDistance: 0,
-            choppyOpenRangeHigh: 0,
-            choppyOpenRangeLow: 0,
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -418,13 +340,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             minimumMultipler: 0,
             maxRisk: 0,
         },
-        disableShortIfOpenAbove: 0,
-        disableLongIfOpenBelow: 0,
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        setups: [],
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         short: {
             enabled: true,
