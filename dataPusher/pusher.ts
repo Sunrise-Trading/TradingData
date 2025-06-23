@@ -48,25 +48,23 @@ for (let i = 0; i < planData.plans.length; i++) {
     let keyLevels = p.analysis.singleMomentumKeyLevel;
     let keyLevel = keyLevels[0];
     if (keyLevel.high > 0) {
-        if (a.allowFirstMinuteByNewsQuality &&
-            a.allowFirstMinuteByRelativeVolume && a.allowFirstMinutezByKeyLevelsQuality) {
-            if (!p.long.openDriveContinuation60Plan) {
-                p.long.openDriveContinuation60Plan = {
-                    requireOpenBetterThanVwap: true,
-                    disableIfOpenWorseThanPrice: keyLevel.high,
-                    planConfigs: p.defaultConfigs,
-                    targets: p.defaultTargets,
-                }
-            }
-            if (!p.short.openDriveContinuation60Plan) {
-                p.short.openDriveContinuation60Plan = {
-                    requireOpenBetterThanVwap: true,
-                    disableIfOpenWorseThanPrice: keyLevel.low,
-                    planConfigs: p.defaultConfigs,
-                    targets: p.defaultTargets,
-                }
+        if (!p.long.openDriveContinuation60Plan) {
+            p.long.openDriveContinuation60Plan = {
+                requireOpenBetterThanVwap: true,
+                disableIfOpenWorseThanPrice: keyLevel.high,
+                planConfigs: p.defaultConfigs,
+                targets: p.defaultTargets,
             }
         }
+        if (!p.short.openDriveContinuation60Plan) {
+            p.short.openDriveContinuation60Plan = {
+                requireOpenBetterThanVwap: true,
+                disableIfOpenWorseThanPrice: keyLevel.low,
+                planConfigs: p.defaultConfigs,
+                targets: p.defaultTargets,
+            }
+        }
+
         if (p.keyLevels.momentumStartForLong == 0) {
             p.keyLevels.momentumStartForLong = keyLevel.high;
         }
