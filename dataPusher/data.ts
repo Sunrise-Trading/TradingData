@@ -111,7 +111,7 @@ const tslaTarget: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-const stock3Target: TradingPlans.ExitTargets = {
+const spyTarget: TradingPlans.ExitTargets = {
     initialTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
@@ -120,7 +120,7 @@ const stock3Target: TradingPlans.ExitTargets = {
     minimumTargets: {
         priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rrr: [0.9, 0.95, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2],
-        dailyRanges: [0.75, 0.75, 0.75, 0.8, 0.9, 1, 1, 1, 1, 1],
+        dailyRanges: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
     },
 
     trail5Count: 10,
@@ -143,12 +143,12 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 
 export const stockSelections: string[] = [
-    'UBER',
+    'UBER', 'SPY',
     'TSLA',
 ];
 const uberLevel = 88.5;
 const tslaLevel = 359.03;
-const stock3Level = 1;
+const spyLevel = 604.14;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -209,7 +209,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'TSLA',
         analysis: {
             isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
             dailyChartStory: 1, gap: { pdc: 348.68 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             usePremarketKeyLevel: 0,
@@ -257,18 +257,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'stock3',
+        symbol: 'SPY',
         analysis: {
-            isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: -1, gap: { pdc: 0 },
+            isFreshNews: true,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 1, gap: { pdc: 600 },
             weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            singleMomentumKeyLevel: [{ high: spyLevel, low: spyLevel }],
             dualMomentumKeyLevels: [],
             tradableAreas: [
-                { start: stock3Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock3Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: spyLevel, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
+                { start: spyLevel, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
             ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -280,31 +280,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: 10000,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 7,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 1.5,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: stock3Configs, defaultTargets: stock3Target,
+        defaultConfigs: stock3Configs, defaultTargets: spyTarget,
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: spyTarget, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: spyTarget, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: spyTarget, planConfigs: stock3Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: spyTarget, planConfigs: stock3Configs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: spyTarget, planConfigs: stock3Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: spyTarget, planConfigs: stock3Configs },
         }
     },
     {
