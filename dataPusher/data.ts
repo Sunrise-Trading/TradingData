@@ -141,10 +141,9 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-
+export const googleDocId = "1046h43EvdGGr10HmFN5qaYNASeC3R_uPNZ1MWdTR-wQ"; // Example Google Doc ID
 export const stockSelections: string[] = [
-    'NKE', 'CRWV',
-    'NVDA'
+    'NKE',
 ];
 const nkeLevel = 69.63;
 const crwvLevel = 161.79;
