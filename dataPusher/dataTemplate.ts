@@ -158,11 +158,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'stock1',
         analysis: {
             isFreshNews: false,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1,
             gap: { pdc: 0 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             dualMomentumKeyLevels: [],
@@ -213,7 +213,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: false,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             dualMomentumKeyLevels: [],
@@ -264,7 +265,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: false,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
             dualMomentumKeyLevels: [],
@@ -315,7 +317,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: false,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 }, // optional, pdv is previous day close
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
             dualMomentumKeyLevels: [],

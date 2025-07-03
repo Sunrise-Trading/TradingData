@@ -9,28 +9,20 @@ export interface TradingSettings {
 export interface Analysis {
     isFreshNews: boolean,
     /**
-     * 0: low or normal news, 1: higher than normal, 2: extremely high news
-     */
-    newsImpactScore?: number,
-    /**
-     * from -10 to 10. Within -6 and 6 is small trend trade. default to 0.
-     */
-    marketReactionScore?: number,
-    /**
      * 0: low or normal, 1: higher than normal, 2: extremely high
      */
     premarketVolumeScore: PremarketVolumeScore,
-    /**
-     * A number from 0 to 1 (100%) indicating the portion of the position to hold for swing trade
-     */
-    swingHoldRatio?: number,
     dailyChartStory: number,
     gap: Gap,
-    weeklychart: string,
-    dailyChart: string,
-    hourlyChart: string,
-    premarketChart: string,
-    keyLevels?: number[],
+    /**
+     * 0: no defer, 1: defer 1 second after open, -1: invalid value.
+     */
+    deferTradingInSeconds: number,
+    /**
+     * 0: no stop, 1: stop 1 second after open, -1: invalid value.
+     */
+    stopTradingAfterSeconds: number,
+
     vwapExtensionDistance: number,
     singleMomentumKeyLevel: LevelArea[],
     /**
@@ -129,7 +121,13 @@ export interface BasePlan {
 };
 export interface PlanConfigs {
     size: number,
+    /**
+     * 0: no defer, 1: defer 1 second after open, -1: invalid value.
+     */
     deferTradingInSeconds: number,
+    /**
+     * 0: no stop, 1: stop 1 second after open, -1: invalid value.
+     */
     stopTradingAfterSeconds: number,
     requireReversal: boolean,
     alwaysAllowFlatten: boolean,
