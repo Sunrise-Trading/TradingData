@@ -166,10 +166,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock1Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock1Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -218,10 +214,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock2Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock2Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -270,10 +262,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock3Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock3Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
@@ -322,10 +310,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock4Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock4Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },

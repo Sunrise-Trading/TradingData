@@ -30,7 +30,6 @@ export interface Analysis {
      */
     usePremarketKeyLevel: number,
     dualMomentumKeyLevels: number[],
-    tradableAreas: TradableArea[],
     profitTargetsForLong: ProfitTargets,
     profitTargetsForShort: ProfitTargets,
 }
@@ -244,12 +243,4 @@ export enum PremarketVolumeScore {
     One_Higher_Than_Normal = 1,
     Two_Extremely_High = 2,
     Unknown = -1,
-}
-
-export interface TradableArea {
-    start: number,
-    isLong: boolean,
-    phaseOutDistance: number,
-    endDistance: number,
-    vwapDistance: number,
 }
