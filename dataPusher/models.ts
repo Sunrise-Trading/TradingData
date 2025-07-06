@@ -23,7 +23,6 @@ export interface Analysis {
      */
     stopTradingAfterSeconds: number,
 
-    vwapExtensionDistance: number,
     singleMomentumKeyLevel: LevelArea[],
     /**
      * 1: use premarket high, -1: use premarket low, 0: not use premarket levels
@@ -82,7 +81,6 @@ export interface SingleDirectionPlans {
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
-    falseBreakoutPlan?: FalseBreakoutPlan,
 
     vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
@@ -102,7 +100,6 @@ export enum PlanType {
     OpenDriveContinuation60 = 'OpenDriveContinuation60',
     OpenChase = 'OpenChase',
     Retracement = 'Retracement',
-    FalseBreakout = 'FalseBreakout',
     NewsBreakout = 'NewsBreakout',
     RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
@@ -133,9 +130,6 @@ export interface PlanConfigs {
     alwaysAllowMoveStop: boolean,
     allowFirstFewExitsCount: number,
     setupQuality: SetupQuality,
-}
-export interface FalseBreakoutPlan extends BasePlan {
-    price: number
 }
 export interface LevelMomentumPlan extends BasePlan {
     enableAutoTrigger: boolean,

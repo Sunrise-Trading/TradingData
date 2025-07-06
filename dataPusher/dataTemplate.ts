@@ -172,7 +172,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -220,7 +220,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -268,7 +268,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -316,7 +316,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },

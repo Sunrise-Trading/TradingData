@@ -141,48 +141,47 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "1wsBW3hA1qQZnvFudlvMJEOl3dJR_jq0nLRouBEHhO-c";
+export const googleDocId = "1046h43EvdGGr10HmFN5qaYNASeC3R_uPNZ1MWdTR-wQ";
 export const stockSelections: string[] = [
-    'DDOG', 'NVDA'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const ddogLevel = 150;
-const nvdaLevel = 157.6;
+const stock1Level = 1;
+const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DDOG',
+        symbol: 'stock1',
         analysis: {
-            isFreshNews: true,
-            newsImpactScore: 0, marketReactionScore: 0, swingHoldRatio: 0,// optional
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Two_Extremely_High,
-            dailyChartStory: 1,
-            gap: { pdc: 135 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            isFreshNews: false,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            dailyChartStory: -1,
+            gap: { pdc: 0 },
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: ddogLevel, low: ddogLevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: ddogLevel, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: ddogLevel, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DDOG,
+        marketCapInMillions: 0,
         atr: {
-            average: 4.5,
-            mutiplier: 2,
-            minimumMultipler: 1,
-            maxRisk: 1.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -191,49 +190,46 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         short: {
             enabled: true,
-            firstTargetToAdd: 146.5,
+            firstTargetToAdd: 0,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 152.5,
+            firstTargetToAdd: 0,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
     },
     {
-        symbol: 'NVDA',
+        symbol: 'stock2',
         analysis: {
-            isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
-            dailyChartStory: 1, gap: { pdc: 157.25 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            isFreshNews: false,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            dailyChartStory: -1, gap: { pdc: 0 },
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: nvdaLevel, low: nvdaLevel }],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: nvdaLevel, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: nvdaLevel, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NVDA,
+        marketCapInMillions: 0,
         atr: {
-            average: 4,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 1.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -241,15 +237,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         short: {
-            enabled: false,
-            firstTargetToAdd: -1,
+            enabled: true,
+            firstTargetToAdd: 0,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 158.71,
+            firstTargetToAdd: 0,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
@@ -261,21 +257,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: false,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 },
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock3Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock3Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
@@ -312,21 +305,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: false,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
             dailyChartStory: -1, gap: { pdc: 0 }, // optional, pdv is previous day close
-            weeklychart: "", dailyChart: "", hourlyChart: "", premarketChart: "",// optional
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
             dualMomentumKeyLevels: [],
-            tradableAreas: [
-                { start: stock4Level, isLong: true, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-                { start: stock4Level, isLong: false, phaseOutDistance: 1, endDistance: 2, vwapDistance: 1 },
-            ],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
             profitTargetsForShort: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
                 ` },
-            vwapExtensionDistance: 0,
+
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
