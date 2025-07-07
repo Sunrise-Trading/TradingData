@@ -164,8 +164,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "1cL3wYjpyZe92QGSLBETJtN6GgHdNuoxr4Zty1LVKTRM";
 export const stockSelections: string[] = [
-    'TSLA',
-    'IONQ', 'CRWV'
+    'TSLA'
 ];
 const tslaLevel = 290;
 const ionqLevel = 48.16;
