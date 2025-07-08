@@ -146,7 +146,7 @@ export const stockSelections: string[] = [
     'DDOG',
     'META',
 ];
-const ddogLevel = 146.69;
+const ddogLevel = 146.53;
 const metaLevel = 723.8;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -161,7 +161,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 152.41 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: -1,
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: ddogLevel, low: ddogLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -205,8 +205,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'META',
         analysis: {
             isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: 1, gap: { pdc: 0 },
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 1, gap: { pdc: 718 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 1,
