@@ -141,11 +141,11 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "";
+export const googleDocId = "1iznBnkGzPZ1aMyTwQxqsLeY5ic9K0NoUQ1sxkebKvj0";
 export const stockSelections: string[] = [
     'MP', 'DAL'
 ];
-const mpLevel = 46.6;
+const mpLevel = 46;
 const dalLevel = 57.9;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -175,7 +175,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.MP,
         atr: {
-            average: 2.2,
+            average: 3,
             mutiplier: 1,
             minimumMultipler: 1,
             maxRisk: 1.25,
