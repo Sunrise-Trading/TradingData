@@ -187,6 +187,7 @@ export const marketCaps = {
     MS: 181000,
     MSTR: 39000,
     MARA: 6000,
+    MP: 5000,
     MDB: 19000,
     NBIX: 15000,
     NOW: 168000,
