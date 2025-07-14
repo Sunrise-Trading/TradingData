@@ -117,6 +117,7 @@ export interface BasePlan {
 };
 export interface PlanConfigs {
     size: number,
+    sizingCount?: number,
     /**
      * 0: no defer, 1: defer 1 second after open, -1: invalid value.
      */
