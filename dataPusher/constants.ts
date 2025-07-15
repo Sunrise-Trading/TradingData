@@ -244,6 +244,7 @@ export const marketCaps = {
     SYM: 18000,
     SIGA: 854,
     T: 168000,
+    TTD: 37000,
     TEAM: 70000,
     TWLO: 17000,
     TCOM: 27000,
