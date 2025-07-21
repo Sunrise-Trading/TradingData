@@ -81,14 +81,11 @@ export interface SingleDirectionPlans {
     redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
-
-    vwapCrossSuccessPlan?: VwapCrossSuccessPlan,
     premarketPlan?: PremarketPlan,
 
 };
 
 export interface VwapBounceFailPlan extends BasePlan { }
-export interface VwapCrossSuccessPlan extends BasePlan { }
 export interface keyLevels {
     otherLevels?: number[];
     momentumStartForLong: number,
