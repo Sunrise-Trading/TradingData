@@ -144,11 +144,11 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "";
+export const googleDocId = "1xNFz5TFnoeVQmUaLzXLHfrOU-9LFht8Z37rVFyPuWpM";
 export const stockSelections: string[] = [
-    'GOOGL',
+    'GOOGL', 'BE'
 ];
-const googlLevel = 183;
+const googlLevel = 198;
 const beLevel = 31.47;
 const stock3Level = 1;
 const stock4Level = 1;
