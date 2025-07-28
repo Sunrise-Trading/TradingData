@@ -209,7 +209,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
-            dailyChartStory: 1, gap: { pdc: 76.27 },
+            dailyChartStory: 0, gap: { pdc: 76.27 },
             deferTradingInSeconds: 60,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 1,
