@@ -146,7 +146,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "1uySERdQNuRzZKZA7H3e3-PiTA9hfaw42k3cRRwdASac";
 export const stockSelections: string[] = [
-    'SOFI', 'NVO'
+    'SOFI',
 ];
 const sofiLevel = 22.74;
 const nvoLevel = 49;
