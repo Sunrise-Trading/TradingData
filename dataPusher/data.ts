@@ -180,7 +180,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.MSFT,
         atr: {
-            average: 6.45,
+            average: 10,
             mutiplier: 2,
             minimumMultipler: 1,
             maxRisk: 3,
@@ -228,10 +228,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.META,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 30,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 7,
         },
         keyLevels: {
             momentumStartForLong: 0,
