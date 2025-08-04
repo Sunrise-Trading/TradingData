@@ -166,6 +166,7 @@ export const marketCaps = {
     JD: 38000,
     JPM: 635000,
     JNJ: 400000,
+    JOBY: 13000,
     KMX: 11000,
     KWEB: 10000,
     KSS: 2000,
