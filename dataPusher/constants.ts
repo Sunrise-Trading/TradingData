@@ -79,8 +79,10 @@ let futures = [
 
 export const marketCaps = {
     ABBV: 319000,
+    ALAB: 22000,
     ANF: 3000,
     ASML: 250000,
+    ANET: 148000,
     AXP: 229000,
     AKRO: 1830,
     AAL: 12000,
