@@ -158,7 +158,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'SHOP',
         analysis: {
             isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
             dailyChartStory: 2,
             gap: { pdc: 127 },
             deferTradingInSeconds: 0,
@@ -255,7 +255,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'ANET',
         analysis: {
             isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
             dailyChartStory: 2, gap: { pdc: 118 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
