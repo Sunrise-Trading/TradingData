@@ -115,6 +115,7 @@ export const marketCaps = {
     CAVA: 11000,
     COST: 7000,
     CSCO: 249000,
+    CGC: 250,
     COIN: 82000,
     CHWY: 12000,
     CVNA: 14000,
