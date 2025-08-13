@@ -107,6 +107,7 @@ export const marketCaps = {
     AMZN: 1956000,
     BA: 107000,
     BILL: 9000,
+    BMNR: 7000,
     BABA: 170000,
     BP: 84000,
     C: 125000,
