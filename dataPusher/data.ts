@@ -245,7 +245,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 70,
+            firstTargetToAdd: 67.59,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: bmnrConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
