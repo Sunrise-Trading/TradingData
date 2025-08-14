@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const cavaConfigs: TradingPlans.PlanConfigs = {
+const wulfConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -20,7 +20,7 @@ const cavaConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const bmnrConfigs: TradingPlans.PlanConfigs = {
+const dloConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -144,27 +144,27 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "1ornIIL0bfRj50yw9cVotSpT3n3TK0jk7Um8AU2xD0o4";
+export const googleDocId = "1vU2moCahdKhj9SkfV5x8JrFlTxDYFZT-TzJGMB96GhY";
 export const stockSelections: string[] = [
-    'BMNR', 'CAVA',
+    'WULF', 'DLO'
 ];
-const cavaLevel = 64.64;
-const bmnrLevel = 63.5;
+const wulfLevel = 7.65;
+const dloLevel = 14.95;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CAVA',
+        symbol: 'WULF',
         analysis: {
-            isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            isFreshNews: false,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Two_Extremely_High,
             dailyChartStory: 2,
-            gap: { pdc: 84.5 },
+            gap: { pdc: 5.46 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: cavaLevel, low: cavaLevel }],
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: wulfLevel, low: wulfLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -176,43 +176,43 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CAVA,
+        marketCapInMillions: 2500,
         atr: {
-            average: 3.56,
+            average: 0.41,
             mutiplier: 1,
-            minimumMultipler: 2,
-            maxRisk: 2,
+            minimumMultipler: 3,
+            maxRisk: 1,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: cavaConfigs, defaultTargets: stock1Target,
+        defaultConfigs: wulfConfigs, defaultTargets: stock1Target,
         short: {
             enabled: true,
-            firstTargetToAdd: 63.45,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: cavaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: cavaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: cavaConfigs },
+            firstTargetToAdd: 7,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wulfConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
         },
         long: {
-            enabled: true,
-            firstTargetToAdd: 66.1,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: cavaConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: cavaConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: cavaConfigs },
+            enabled: false,
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wulfConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
         }
     },
     {
-        symbol: 'BMNR',
+        symbol: 'DLO',
         analysis: {
             isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
-            dailyChartStory: 2, gap: { pdc: 62.44 },
+            dailyChartStory: 2, gap: { pdc: 11.69 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: bmnrLevel, low: bmnrLevel }],
+            singleMomentumKeyLevel: [{ high: dloLevel, low: dloLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -224,31 +224,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.BMNR,
+        marketCapInMillions: 4000,
         atr: {
-            average: 10.2,
+            average: 0.45,
             mutiplier: 1,
             minimumMultipler: 2,
-            maxRisk: 5,
+            maxRisk: 0.5,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: bmnrConfigs, defaultTargets: stock2Target,
+        defaultConfigs: dloConfigs, defaultTargets: stock2Target,
         short: {
-            enabled: false,
-            firstTargetToAdd: -1,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: bmnrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
+            enabled: true,
+            firstTargetToAdd: 13.2,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dloConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
         },
         long: {
-            enabled: true,
-            firstTargetToAdd: 67.59,
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: bmnrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: bmnrConfigs },
+            enabled: false,
+            firstTargetToAdd: -1,
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dloConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
         }
     },
     {
