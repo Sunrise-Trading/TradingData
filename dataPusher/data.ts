@@ -157,7 +157,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'WULF',
         analysis: {
-            isFreshNews: false,
+            isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Two_Extremely_High,
             dailyChartStory: 2,
             gap: { pdc: 5.46 },
@@ -196,7 +196,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wulfConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wulfConfigs },
@@ -244,7 +244,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dloConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: dloConfigs },
