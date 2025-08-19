@@ -275,6 +275,7 @@ export const marketCaps = {
     WFC: 209000,
     WMT: 552000,
     WRD: 1760,
+    WULF: 3500,
     U: 9000,
     UAL: 36000,
     UPS: 124000,
