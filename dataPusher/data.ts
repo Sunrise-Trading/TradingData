@@ -146,7 +146,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "1RlW6HYDwe5TC6DMdsaHltR79MVpQ_5NCC91uYcilqbU";
 export const stockSelections: string[] = [
-    'SOFI', 'OPEN', 'INTC',
+    'OPEN', 'INTC',
 ];
 const intcLevel = 25.12;
 const sofiLevel = 24.98;
