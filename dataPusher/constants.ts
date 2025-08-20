@@ -264,6 +264,7 @@ export const marketCaps = {
     TEVA: 18000,
     TSLA: 565000,
     TGT: 66000,
+    TJX: 150000,
     TXN: 138000,
     TMUS: 298000,
     TSM: 900000,
