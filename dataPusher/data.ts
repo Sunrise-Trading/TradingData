@@ -146,10 +146,10 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "11IZMg28xv-YzVJWxSHhffsbFZMTTH3jVEaeD9Y0C06w";
 export const stockSelections: string[] = [
-    'TJX',
+    'TJX', 'PLTR'
 ];
 const TJXLevel = 141.71;
-const pltrLevel = 152.23;
+const pltrLevel = 150.75;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -211,7 +211,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dailyChartStory: 1, gap: { pdc: 157.75 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: -1,
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: pltrLevel, low: pltrLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -238,7 +238,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: pltrConfigs, defaultTargets: stock2Target,
         short: {
             enabled: false,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pltrConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: pltrConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pltrConfigs },
