@@ -144,7 +144,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "1nb1tNxAcGzg6uIt0OiEUbSfWIBlDaqUX4gzSHSozDGQ";
+export const googleDocId = "";
 export const stockSelections: string[] = [
     'stock1',
     'stock2',
@@ -194,6 +194,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
@@ -201,6 +202,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
@@ -242,6 +244,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
@@ -249,6 +252,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
@@ -290,6 +294,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
@@ -297,6 +302,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
@@ -338,6 +344,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         short: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
@@ -345,6 +352,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         long: {
             enabled: true,
             firstTargetToAdd: 0,
+            finalTarget: "1 ATR: 50%",
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
