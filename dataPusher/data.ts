@@ -144,7 +144,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "";
+export const googleDocId = "1_5sNiF7bTnXHuaFX7GTm-gYLHsPrIDG6dmqGa8sLPLI";
 export const stockSelections: string[] = [
     'SNOW',
     //    'NVDA',
