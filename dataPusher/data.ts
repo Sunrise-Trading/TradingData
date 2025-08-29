@@ -146,7 +146,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "1QpoE0jaI4KRxPpPe5KYpb4qCqZpp-mMZ6-9WefThMXA";
 export const stockSelections: string[] = [
-    'AFRM', 'BABA', 'MRVL'
+    'AFRM', //'BABA', 'MRVL'
 ];
 const afrmLevel = 94.5;
 const babaLevel = 127.95;
