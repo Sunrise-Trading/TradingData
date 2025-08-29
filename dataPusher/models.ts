@@ -68,13 +68,15 @@ export interface SingleDirectionPlans {
     finalTarget: string,
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
+    reversalPlan?: ReversalPlan,
     vwapBounceFailPlan?: VwapBounceFailPlan,
+    vwapScalpPlan?: VwapScalpPlan,
     /* used strategies end */
 
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
     openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
     retracement?: RetracementPlan,
-    reversalPlan?: ReversalPlan,
+
     breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
 
@@ -87,6 +89,9 @@ export interface SingleDirectionPlans {
 };
 
 export interface VwapBounceFailPlan extends BasePlan { }
+export interface VwapScalpPlan extends BasePlan {
+    threshold: number,
+}
 export interface keyLevels {
     otherLevels?: number[];
     momentumStartForLong: number,
