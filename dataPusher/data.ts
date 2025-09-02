@@ -163,7 +163,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 148.65 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 1,
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: pepLevel, low: pepLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
