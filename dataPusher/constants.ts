@@ -225,6 +225,7 @@ export const marketCaps = {
     PFE: 161000,
     PONY: 2600,
     PCVX: 9000,
+    PEP: 203000,
     PINS: 22000,
     PTON: 3000,
     QCOM: 248000,
