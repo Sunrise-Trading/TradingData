@@ -146,9 +146,9 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocId = "1RwEg3oO0FPwrDiwM83a2Ly2zCp7tS5k2ropXjxWisk0";
 export const stockSelections: string[] = [
-    'GOOGL',
-    'AAPL',
-    'OPEN', 'SMR'
+    'OPEN',
+    'SMR',
+    'AAPL', 'GOOGL'
 ];
 const googleLevel = 229.75;
 const aaplLevel = 239.5;
@@ -177,7 +177,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 2030273, tradingSum: 455887183 },
         marketCapInMillions: Constants.marketCaps.GOOGL,
         atr: {
             average: 4.56,
@@ -304,6 +304,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: 5.45,
             finalTarget: "5.87: 50%",
+            vwapScalpPlan: { threshold: 5.13, targets: stock3Target, planConfigs: openCOnfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: openCOnfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: openCOnfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: openCOnfigs },
