@@ -78,6 +78,7 @@ let futures = [
 ];
 
 export const marketCaps = {
+    AEO: 2000,
     ABBV: 319000,
     ALAB: 22000,
     ANF: 3000,
@@ -122,6 +123,7 @@ export const marketCaps = {
     CVNA: 14000,
     CRCL: 33000,
     CVS: 80000,
+    CRDO: 21000,
     CVX: 256000,
     CNC: 13000,
     CLF: 2880,
@@ -152,6 +154,7 @@ export const marketCaps = {
     FIVE: 5000,
     FL: 2000,
     FLUT: 40000,
+    FIG: 33000,
     FTAI: 11000,
     GAP: 8000,
     GEV: 115000,
