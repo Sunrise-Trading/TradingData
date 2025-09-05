@@ -21,7 +21,7 @@ const avgoConfigs: TradingPlans.PlanConfigs = {
     sizingCount: 10,
 };
 const luluConfigs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.11,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -151,7 +151,7 @@ export const stockSelections: string[] = [
 ];
 const avgoLevel = 326;
 const luluLevel = 171;
-const avgopremarketHigh = 352.55;
+const avgopremarketHigh = 400; // 352.99
 const lulupremarketLow = 164.05;
 const stock3Level = 1;
 const stock4Level = 1;
