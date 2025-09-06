@@ -65,7 +65,7 @@ export interface VwapCorrection {
 export interface SingleDirectionPlans {
     enabled: boolean,
     firstTargetToAdd: number,
-    finalTarget: string,
+    finalTargets: SingleExitTarget[],
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
     reversalPlan?: ReversalPlan,
@@ -198,6 +198,13 @@ export interface ExitTargets {
     minimumTargets?: ExitTargetsSet,
     trail5Count: number,
     trail15Count: number,
+}
+export interface SingleExitTarget {
+    partialCount: number,
+    rrr: number,
+    atr: number,
+    level: number,
+    text: string,
 }
 export interface ExitTargetsSet {
     priceLevels: number[],
