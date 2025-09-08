@@ -147,7 +147,6 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const googleDocId = "1p_7opxDDWeKDEJC-p1YuXNRQhfQyagVuOUcISaO0xGA";
 export const stockSelections: string[] = [
     'AVGO',
-    'LULU',
 ];
 const avgoLevel = 326;
 const luluLevel = 171;
