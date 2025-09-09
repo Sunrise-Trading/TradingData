@@ -144,7 +144,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "";
+export const googleDocId = "1O0kEi5xVYzEyb-SjuBKneM2yzdJxdpf_zTLWGeGYe4M";
 export const stockSelections: string[] = [
     'stock1',
     'stock2',
