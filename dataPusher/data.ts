@@ -10,7 +10,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 
 export const defaultSize = 0.21; // 0.21
 const nbisConfigs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.01,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -148,7 +148,7 @@ export const googleDocId = "1O0kEi5xVYzEyb-SjuBKneM2yzdJxdpf_zTLWGeGYe4M";
 export const stockSelections: string[] = [
     'NBIS',
 ];
-const nbisLevel = 99.8;
+const nbisLevel = 100.75;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -160,7 +160,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Two_Extremely_High,
             dailyChartStory: 2,
-            gap: { pdc: 0 },
+            gap: { pdc: 64 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 1,
