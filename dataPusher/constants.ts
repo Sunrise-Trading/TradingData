@@ -213,7 +213,7 @@ export const marketCaps = {
     NVDA: 3153000,
     NVAX: 1000,
     NU: 60000,
-    NBIS: 10000,
+    NBIS: 15000,
     ORCL: 385000,
     OKTA: 13000,
     ON: 21000,
