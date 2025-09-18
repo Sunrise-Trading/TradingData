@@ -147,7 +147,8 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const googleDocId = "1ICCXFKSkl9E3-24DKTzxpdANo9LCPVoLA6uUfrjGH50";
 export const stockSelections: string[] = [
     'INTC',
-    'OPEN'
+    'AMD',
+    //    'OPEN'
 ];
 const intcLevel = 33.42;
 const openLevel = 10.87;
@@ -176,7 +177,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 50967973, tradingSum: 1609046799 },
         marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
             average: 0.87,
