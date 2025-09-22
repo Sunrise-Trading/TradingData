@@ -204,6 +204,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             finalTargets: [
                 { text: "21 for 30%", partialCount: 3, atr: 0, rrr: 0, level: 21 },
             ],
+            reversalPlan: { keyLevel: 20, targets: stock1Target, planConfigs: qubtConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: qubtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: qubtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: qubtConfigs },
@@ -213,7 +214,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'TSLA',
         analysis: {
             isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
             dailyChartStory: 1, gap: { pdc: 426 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
