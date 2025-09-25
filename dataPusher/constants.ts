@@ -215,6 +215,7 @@ export const marketCaps = {
     NU: 60000,
     NBIS: 15000,
     ORCL: 385000,
+    OKLO: 190000,
     OKTA: 13000,
     ON: 21000,
     ONON: 14000,
