@@ -144,7 +144,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "1sl8dBefnrA8vic6n9E8azbL7QBSqZxHtu9Dw-WbsibM";
+export const googleDocId = "1YbRJ0AoM9sPGnlDwk08svIZcSPTqGn-zCeluUlS2BVk";
 export const stockSelections: string[] = [
     'OKLO', 'BABA'
 ];
@@ -163,7 +163,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 131 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: -1,
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: okloLevel, low: okloLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
