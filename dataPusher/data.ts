@@ -147,7 +147,7 @@ const stock4Target: TradingPlans.ExitTargets = {
 export const googleDocId = "1Cbrkyzk28JlKM53rkXLUyZDohSTuswcZ2KU86ykZp70";
 export const stockSelections: string[] = [
     'INTC',
-    'LI', 'XPEV'
+    //'LI', 'XPEV'
 ];
 const intcLevel = 38;
 const liLevel = 27.5;
@@ -201,11 +201,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "36", partialCount: 5, atr: 0, rrr: 0, level: 36 },
+
             ],
+            vwapScalpPlan: { threshold: 34.5, strongReasonToUseThisLevel: "M15", targets: stock1Target, planConfigs: intcConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: intcConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
