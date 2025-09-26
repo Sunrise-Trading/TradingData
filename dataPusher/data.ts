@@ -261,6 +261,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             finalTargets: [
                 { text: "1 ATR for 50%", partialCount: 5, atr: 1, rrr: 0, level: 0 },
             ],
+            vwapScalpPlan: { threshold: 26.94, strongReasonToUseThisLevel: "daily chart", targets: stock2Target, planConfigs: liConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: liConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: liConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: liConfigs },
@@ -271,7 +272,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
             isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
-            dailyChartStory: 1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 22.25 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
