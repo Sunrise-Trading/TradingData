@@ -181,6 +181,7 @@ export const marketCaps = {
     LLY: 869000,
     LQDA: 1000,
     LYFT: 6000,
+    LI: 21000,
     LUMN: 6850,
     LUNR: 1500,
     LUV: 16000,
