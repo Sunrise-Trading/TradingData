@@ -181,7 +181,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             average: 0.54,
             mutiplier: 2,
             minimumMultipler: 1,
-            maxRisk: 0.5,
+            maxRisk: 1,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -192,7 +192,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: 7.4,
             finalTargets: [
-                { text: "7 for 50%", partialCount: 5, atr: 0, rrr: 0, level: 7 },
+                { text: "7.25 for 50%", partialCount: 5, atr: 0, rrr: 0, level: 7.25 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: lacConfis },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: lacConfis },
