@@ -178,6 +178,7 @@ export const marketCaps = {
     KMX: 11000,
     KWEB: 10000,
     KSS: 2000,
+    LAC: 1280,
     LLY: 869000,
     LQDA: 1000,
     LYFT: 6000,
