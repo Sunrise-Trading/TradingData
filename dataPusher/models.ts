@@ -91,6 +91,7 @@ export interface SingleDirectionPlans {
 export interface VwapBounceFailPlan extends BasePlan { }
 export interface VwapScalpPlan extends BasePlan {
     threshold: number,
+    originalKeyLevel: number,
     strongReasonToUseThisLevel: string,
 }
 export interface keyLevels {
