@@ -278,6 +278,7 @@ export const marketCaps = {
     TMUS: 298000,
     TSM: 900000,
     TEM: 5000,
+    TLRY: 2000,
     WBA: 7000,
     WDAY: 61000,
     WBD: 20000,
