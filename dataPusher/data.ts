@@ -176,7 +176,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 4445155, tradingSum: 165326108 },
         marketCapInMillions: Constants.marketCaps.APLD,
         atr: {
             average: 2,
