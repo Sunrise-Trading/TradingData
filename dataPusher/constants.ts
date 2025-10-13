@@ -110,6 +110,7 @@ export const marketCaps = {
     BA: 107000,
     BILL: 9000,
     BMNR: 7000,
+    BE: 20000,
     BABA: 170000,
     BP: 84000,
     C: 125000,
