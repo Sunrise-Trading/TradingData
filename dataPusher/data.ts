@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const dnutConfigs: TradingPlans.PlanConfigs = {
+const vtyxConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -20,7 +20,7 @@ const dnutConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const byndConfigs: TradingPlans.PlanConfigs = {
+const ibmConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -144,82 +144,28 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocId = "1tHHV6naf9r94C7K56toOhDZQdlTNK_NtPv7WikUfM6s";
+export const googleDocId = "16lW06Y6YxmL57z5jSloU_x_9bY97yYUd_ewJoFRefRs";
 export const stockSelections: string[] = [
-    'DNUT',
-    'BYND',
+    'VTYX',
+    'IBM',
 ];
-const dnutLevel = 5.54;
-const byndLevel = 8.86;
+const VTYXLevel = 8.22;
+const ibmLevel = 268;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DNUT',
-        analysis: {
-            isFreshNews: true,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
-            dailyChartStory: 1,
-            gap: { pdc: 3.71 },
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: dnutLevel, low: dnutLevel }],
-            dualMomentumKeyLevels: [],
-            profitTargetsForLong: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-            profitTargetsForShort: {
-                targets: [], willBlowPastThoseLevels: -1, summary: `
-                ` },
-
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 1100,
-        atr: {
-            average: 0.24,
-            mutiplier: 3,
-            minimumMultipler: 2,
-            maxRisk: 2,
-        },
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        defaultConfigs: dnutConfigs, defaultTargets: stock1Target,
-        short: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "4.64 for 50%", partialCount: 5, atr: 0, rrr: 0, level: 4.64 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: dnutConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: dnutConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: dnutConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "5.75 for 30%", partialCount: 3, atr: 0, rrr: 0, level: 5.75 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: dnutConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: dnutConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: dnutConfigs },
-        }
-    },
-    {
-        symbol: 'BYND',
+        symbol: 'VTYX',
         analysis: {
             isFreshNews: true,
             premarketVolumeScore: TradingPlans.PremarketVolumeScore.Two_Extremely_High,
-            dailyChartStory: 1, gap: { pdc: 3.62 },
+            dailyChartStory: 2,
+            gap: { pdc: 3.9 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: byndLevel, low: byndLevel }],
+            singleMomentumKeyLevel: [{ high: VTYXLevel, low: VTYXLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -233,36 +179,97 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 1100,
         atr: {
-            average: 0.5,
+            average: 0.32,
             mutiplier: 3,
             minimumMultipler: 3,
-            maxRisk: 2,
+            maxRisk: 1,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: byndConfigs, defaultTargets: stock2Target,
+        defaultConfigs: vtyxConfigs, defaultTargets: stock1Target,
         short: {
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "4.5 for 50%", partialCount: 5, atr: 0, rrr: 0, level: 4.5 },
+                { text: "3atr for 50%", partialCount: 5, atr: 3, rrr: 0, level: 0 },
             ],
-            reversalPlan: { keyLevel: byndLevel, targets: stock2Target, planConfigs: byndConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: byndConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: byndConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: byndConfigs },
+            reversalPlan: { keyLevel: 8.22, targets: stock1Target, planConfigs: vtyxConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vtyxConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: vtyxConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vtyxConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "1atr for 20%", partialCount: 1, atr: 1, rrr: 0, level: 0 },
+                { text: "2atr for 40%", partialCount: 1, atr: 2, rrr: 0, level: 0 },
+                { text: "3atr for 30%", partialCount: 1, atr: 3, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: byndConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: byndConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: byndConfigs },
+            vwapScalpPlan: {
+                threshold: 4, strongReasonToUseThisLevel: "scalp small cap",
+                originalKeyLevel: 8.22, targets: stock1Target, planConfigs: vtyxConfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vtyxConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: vtyxConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vtyxConfigs },
+        }
+    },
+    {
+        symbol: 'IBM',
+        analysis: {
+            isFreshNews: true,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 1, gap: { pdc: 287 },
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
+            usePremarketKeyLevel: 0,
+            singleMomentumKeyLevel: [{ high: ibmLevel, low: ibmLevel }],
+            dualMomentumKeyLevels: [],
+            profitTargetsForLong: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+            profitTargetsForShort: {
+                targets: [], willBlowPastThoseLevels: -1, summary: `
+                ` },
+
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.IBM,
+        atr: {
+            average: 6.8,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 3.5,
+        },
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        defaultConfigs: ibmConfigs, defaultTargets: stock2Target,
+        short: {
+            enabled: true,
+            firstTargetToAdd: 263.5,
+            finalTargets: [
+                { text: "1atr for 50%", partialCount: 5, atr: 1, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ibmConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: ibmConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ibmConfigs },
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: 270,
+            finalTargets: [
+                { text: "270 for 30%", partialCount: 3, atr: 0, rrr: 0, level: 270 },
+                { text: "1atr for 50%", partialCount: 5, atr: 1, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ibmConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: ibmConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ibmConfigs },
         }
     },
     {
