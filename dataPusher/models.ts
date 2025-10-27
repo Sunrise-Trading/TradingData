@@ -1,3 +1,7 @@
+export const tradebookShortNames: string[] = [
+    'awb', // above water breakout 
+    'bwb', // below water breakdown
+];
 export interface TradingSettings {
     useSingleOrderForEntry: boolean,
     /**
@@ -47,6 +51,7 @@ export interface TradingPlans {
     keyLevels: keyLevels,
     defaultTargets: ExitTargets,
     defaultConfigs: PlanConfigs,
+    useAllDefaultTradebooks: string[],
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };

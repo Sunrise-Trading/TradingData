@@ -191,6 +191,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
+        useAllDefaultTradebooks: [],
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -245,6 +246,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        useAllDefaultTradebooks: [],
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -299,6 +301,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
+        useAllDefaultTradebooks: [],
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -353,6 +356,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
+        useAllDefaultTradebooks: [],
         short: {
             enabled: true,
             firstTargetToAdd: 0,
