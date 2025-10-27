@@ -248,9 +248,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: amdConfigs, defaultTargets: stock2Target,
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "257.25 for 20%", partialCount: 2, atr: 0, rrr: 0, level: 257.25 },
+                { text: "254 for 40%", partialCount: 2, atr: 0, rrr: 0, level: 254 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: amdConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: amdConfigs },
