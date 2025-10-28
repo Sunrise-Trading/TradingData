@@ -1,6 +1,11 @@
 export const tradebookShortNames: string[] = [
     'awb', // above water breakout 
     'bwb', // below water breakdown
+    'of', // short open flush
+    'esb', // emerging strength breakout
+    'ewb', // emerging weakness breakdown
+    'vbf', // vwap bounce fail
+    'vpf', // vwap pushdown fail
 ];
 export interface TradingSettings {
     useSingleOrderForEntry: boolean,
