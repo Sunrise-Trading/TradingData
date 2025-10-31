@@ -81,6 +81,7 @@ export interface SingleDirectionPlans {
     reversalPlan?: ReversalPlan,
     vwapBounceFailPlan?: VwapBounceFailPlan,
     vwapScalpPlan?: VwapScalpPlan,
+    openProfitTakingPlan?: OpenProfitTakingPlan,
     /* used strategies end */
 
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
@@ -155,7 +156,9 @@ export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
     onlyIfOpenBelow: number,
 }
-
+export interface OpenProfitTakingPlan extends BasePlan {
+    defaultRiskLevel: number,
+}
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
     requireOpenBetterThanVwap: boolean,
