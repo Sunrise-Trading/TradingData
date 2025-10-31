@@ -196,6 +196,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "pm low for 50%", partialCount: 5, atr: 0, rrr: 0, level: 248 },
             ],
             reversalPlan: { keyLevel: amznLevel, targets: stock1Target, planConfigs: amznConfigs },
+            openProfitTakingPlan: { defaultRiskLevel: 255.55, targets: stock1Target, planConfigs: amznConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amznConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: amznConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amznConfigs },
