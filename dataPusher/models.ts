@@ -57,9 +57,45 @@ export interface TradingPlans {
     defaultTargets: ExitTargets,
     defaultConfigs: PlanConfigs,
     useAllDefaultTradebooks: string[],
+    tradebooksConfig: TradebooksConfig,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
+export interface TradebookCommonConfig {
+    enabled: number,
+}
+export interface LevelVwapOpenConfig {
+    shortVwapContinuation: TradebookCommonConfig,
+    longEmergingStrengthBreakout: TradebookCommonConfig,
+}
+export interface TradebooksConfig {
+    level_vwap_open: LevelVwapOpenConfig,
+    level_open_vwap: LevelOpenVwapConfig,
+    open_level_vwap: OpenLevelVwapConfig,
+    vwap_level_open: VwapLevelOpenConfig,
+    vwap_open_level: VwapOpenLevelConfig,
+    open_vwap_level: OpenVwapLevelConfig,
+}
+export interface VwapLevelOpenConfig {
+    shortOpenDrive: TradebookCommonConfig,
+    longVwapPushdownFail: TradebookCommonConfig,
+}
+export interface VwapOpenLevelConfig {
+    shortBelowWaterBreakout: TradebookCommonConfig,
+    longVwapPushdownFail: TradebookCommonConfig,
+}
+export interface OpenVwapLevelConfig {
+    longVwapContinuation: TradebookCommonConfig,
+    shortEmergingWeaknessDown: TradebookCommonConfig,
+}
+export interface LevelOpenVwapConfig {
+    shortVwapBounceFail: TradebookCommonConfig,
+    longAboveWaterBreakout: TradebookCommonConfig,
+}
+export interface OpenLevelVwapConfig {
+    shortVwapBounceFail: TradebookCommonConfig,
+    longOpenDrive: TradebookCommonConfig,
+}
 export interface AverageTrueRange {
     average: number,
     mutiplier: number,
