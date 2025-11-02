@@ -191,7 +191,34 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
-        useAllDefaultTradebooks: [],
+        tradebooksConfig: {
+            level_vwap_open: {
+                shortVwapContinuation: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0 },
+            },
+            level_open_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0 },
+                shortOpenFlush: { enabled: 0 },
+                longVwapScalp: { enabled: 0 },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longOpenDrive: { enabled: 0 },
+            },
+            vwap_level_open: {
+                shortOpenDrive: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            vwap_open_level: {
+                shortBelowWaterBreakout: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            open_vwap_level: {
+                longVwapContinuation: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0 },
+            },
+        },
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -246,7 +273,34 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
-        useAllDefaultTradebooks: [],
+        tradebooksConfig: {
+            level_vwap_open: {
+                shortVwapContinuation: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0 },
+            },
+            level_open_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0 },
+                shortOpenFlush: { enabled: 0 },
+                longVwapScalp: { enabled: 0 },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longOpenDrive: { enabled: 0 },
+            },
+            vwap_level_open: {
+                shortOpenDrive: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            vwap_open_level: {
+                shortBelowWaterBreakout: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            open_vwap_level: {
+                longVwapContinuation: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0 },
+            },
+        },
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -301,7 +355,34 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
-        useAllDefaultTradebooks: [],
+        tradebooksConfig: {
+            level_vwap_open: {
+                shortVwapContinuation: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0 },
+            },
+            level_open_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0 },
+                shortOpenFlush: { enabled: 0 },
+                longVwapScalp: { enabled: 0 },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longOpenDrive: { enabled: 0 },
+            },
+            vwap_level_open: {
+                shortOpenDrive: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            vwap_open_level: {
+                shortBelowWaterBreakout: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            open_vwap_level: {
+                longVwapContinuation: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0 },
+            },
+        },
         short: {
             enabled: true,
             firstTargetToAdd: 0,
@@ -356,7 +437,34 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             momentumStartForShort: 0,
         },
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
-        useAllDefaultTradebooks: [],
+        tradebooksConfig: {
+            level_vwap_open: {
+                shortVwapContinuation: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0 },
+            },
+            level_open_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0 },
+                shortOpenFlush: { enabled: 0 },
+                longVwapScalp: { enabled: 0 },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { enabled: 0 },
+                longOpenDrive: { enabled: 0 },
+            },
+            vwap_level_open: {
+                shortOpenDrive: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            vwap_open_level: {
+                shortBelowWaterBreakout: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 0 },
+            },
+            open_vwap_level: {
+                longVwapContinuation: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0 },
+            },
+        },
         short: {
             enabled: true,
             firstTargetToAdd: 0,

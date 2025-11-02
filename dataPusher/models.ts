@@ -1,12 +1,4 @@
-export const tradebookShortNames: string[] = [
-    'awb', // above water breakout 
-    'bwb', // below water breakdown
-    'of', // short open flush
-    'esb', // emerging strength breakout
-    'ewb', // emerging weakness breakdown
-    'vbf', // vwap bounce fail
-    'vpf', // vwap pushdown fail
-];
+
 export interface TradingSettings {
     useSingleOrderForEntry: boolean,
     /**
@@ -56,7 +48,6 @@ export interface TradingPlans {
     keyLevels: keyLevels,
     defaultTargets: ExitTargets,
     defaultConfigs: PlanConfigs,
-    useAllDefaultTradebooks: string[],
     tradebooksConfig: TradebooksConfig,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
@@ -86,11 +77,13 @@ export interface VwapOpenLevelConfig {
 }
 export interface OpenVwapLevelConfig {
     longVwapContinuation: TradebookCommonConfig,
-    shortEmergingWeaknessDown: TradebookCommonConfig,
+    shortEmergingWeaknessBreakdown: TradebookCommonConfig,
 }
 export interface LevelOpenVwapConfig {
     shortVwapBounceFail: TradebookCommonConfig,
     longAboveWaterBreakout: TradebookCommonConfig,
+    shortOpenFlush: TradebookCommonConfig,
+    longVwapScalp: TradebookCommonConfig,
 }
 export interface OpenLevelVwapConfig {
     shortVwapBounceFail: TradebookCommonConfig,
