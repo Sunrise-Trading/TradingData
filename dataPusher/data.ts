@@ -175,7 +175,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 1191069, tradingSum: 216791173 },
         marketCapInMillions: Constants.marketCaps.DDOG,
         atr: {
             average: 5.35,
@@ -400,7 +400,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: snapConfigs },
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
