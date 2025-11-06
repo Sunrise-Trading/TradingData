@@ -134,6 +134,7 @@ export const marketCaps = {
     CRM: 316000,
     DAL: 30000,
     DELL: 77000,
+    DUOL: 11000,
     DLTR: 17000,
     DJT: 5000,
     DECK: 15000,
