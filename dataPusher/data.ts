@@ -205,14 +205,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: { enabled: 1 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { enabled: 1 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
+                longVwapContinuation: { enabled: 1 },
                 shortEmergingWeaknessBreakdown: { enabled: 1 },
             },
         },
@@ -228,10 +228,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbaiConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: 7.15,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm 30%", partialCount: 3, atr: 0, rrr: 0, level: 7.15 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbaiConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: bbaiConfigs },
@@ -273,17 +273,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: crwvConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
+                shortVwapContinuation: { enabled: 1 },
                 longEmergingStrengthBreakout: { enabled: 1 },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
                 longAboveWaterBreakout: { enabled: 1 },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
                 longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
@@ -300,8 +300,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
