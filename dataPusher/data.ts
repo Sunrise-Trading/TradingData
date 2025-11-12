@@ -20,7 +20,7 @@ const ononCOnfigs: TradingPlans.PlanConfigs = {
     sizingCount: 10,
 };
 const amdConfigs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.02,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -314,10 +314,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm high: 30%", partialCount: 3, atr: 0, rrr: 0, level: 254 },
-                { text: "255: 20%", partialCount: 2, atr: 0, rrr: 0, level: 255 },
-                { text: "258: 20%", partialCount: 2, atr: 0, rrr: 0, level: 258 },
-                { text: "259: 20%", partialCount: 2, atr: 0, rrr: 0, level: 259 },
+                { text: "pm high", partialCount: 3, atr: 0, rrr: 0, level: 254 },
+                { text: "255", partialCount: 2, atr: 0, rrr: 0, level: 255 },
+                { text: "258", partialCount: 2, atr: 0, rrr: 0, level: 258 },
+                { text: "259", partialCount: 2, atr: 0, rrr: 0, level: 259 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: amdConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: amdConfigs },
