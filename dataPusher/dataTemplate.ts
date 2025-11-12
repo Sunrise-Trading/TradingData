@@ -16,7 +16,6 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
@@ -27,7 +26,6 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
@@ -38,7 +36,6 @@ const stock3Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
@@ -49,7 +46,6 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
-    allowFirstFewExitsCount: 3,
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
