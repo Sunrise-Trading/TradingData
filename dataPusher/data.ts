@@ -145,7 +145,7 @@ export const stockSelections: string[] = [
     'DIS',
     'CSCO',
 ];
-const disLevel = 109.19;
+const disLevel = 108.5;
 const cscoLevel = 80.31;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -173,12 +173,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.DIS,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.09,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 3,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -202,11 +202,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: { enabled: 1 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { enabled: 1 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
                 longVwapContinuation: { enabled: 0 },
@@ -259,7 +259,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 888471, tradingSum: 69232776 },
         marketCapInMillions: Constants.marketCaps.CSCO,
         atr: {
             average: 1.48,
@@ -274,14 +274,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: cscoConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
+                shortVwapContinuation: { enabled: 1 },
                 longEmergingStrengthBreakout: { enabled: 0 },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
                 longAboveWaterBreakout: { enabled: 0 },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
                 shortVwapBounceFail: { enabled: 0 },
@@ -308,6 +308,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "S5", partialCount: 2, atr: 0, rrr: 0, level: 76.01 },
                 { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 74.84 },
             ],
+            openProfitTakingPlan: { defaultRiskLevel: 79.6, targets: stock2Target, planConfigs: cscoConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: cscoConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: cscoConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: cscoConfigs },
@@ -318,6 +319,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             finalTargets: [
                 { text: "pm high", partialCount: 5, atr: 0, rrr: 0, level: 79.58 },
             ],
+            vwapScalpPlan: { strongReasonToUseThisLevel: "ath", originalKeyLevel: 80, threshold: 74, targets: stock2Target, planConfigs: cscoConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: cscoConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: cscoConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: cscoConfigs },
