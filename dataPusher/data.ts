@@ -187,18 +187,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: googleConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1 },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1 },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
                 shortOpenDrive: { enabled: 1 },
@@ -301,10 +301,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "r4", partialCount: 2, atr: 0, rrr: 0, level: 11.5 },
-                { text: "y-high", partialCount: 5, atr: 0, rrr: 0, level: 11.18 },
-                { text: "pdc", partialCount: 2, atr: 0, rrr: 0, level: 10.6 },
+                { text: "r4", partialCount: 1, atr: 0, rrr: 0, level: 11.5 },
+                { text: "y-high", partialCount: 3, atr: 0, rrr: 0, level: 11.18 },
+                { text: "r3", partialCount: 1, atr: 0, rrr: 0, level: 10.9 },
+                { text: "r2", partialCount: 1, atr: 0, rrr: 0, level: 10.75 },
+                { text: "pdc", partialCount: 1, atr: 0, rrr: 0, level: 10.6 },
             ],
+            openProfitTakingPlan: { defaultRiskLevel: 12.54, targets: stock2Target, planConfigs: qubtConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qubtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: qubtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: qubtConfigs },
