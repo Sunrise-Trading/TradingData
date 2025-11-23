@@ -186,6 +186,7 @@ export interface ProfitTakingFade60Plan extends BasePlan {
 }
 export interface OpenProfitTakingPlan extends BasePlan {
     defaultRiskLevel: number,
+    mustOpenWithin: number,
 }
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
@@ -248,6 +249,7 @@ export interface SingleExitTarget {
     atr: number,
     level: number,
     text: string,
+    label?: string,
 }
 export interface ExitTargetsSet {
     priceLevels: number[],
