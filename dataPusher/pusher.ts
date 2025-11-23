@@ -38,7 +38,7 @@ const planData = {
     activeProfileName: Data.activeProfileName,
     tradingSettings: Data.tradingSettings,
     stockSelections: stockSelections,
-    googleDocId: Data.googleDocId,
+    googleDocId: Data.getGoogleDocId(),
 }
 
 for (let i = 0; i < planData.plans.length; i++) {
