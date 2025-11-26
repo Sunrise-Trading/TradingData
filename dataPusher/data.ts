@@ -140,10 +140,10 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1wnRW1e7oBo5fHcsrMu8ElWocf_of2qqXnpUSoSgXEm4/edit?tab=t.0#heading=h.3ta3qw9hoewr";
-     
+export const googleDocLink = "https://docs.google.com/document/d/17z1x6tHsuwG2Qzqmws0-jRaar6wBUU__gz7L_eMCtMQ/edit?tab=t.0#heading=h.3ta3qw9hoewr";
+
 export const getGoogleDocId = () => {
-    let  docPrefix = "https://docs.google.com/document/d/";
+    let docPrefix = "https://docs.google.com/document/d/";
     const docIdWithRest = googleDocLink.substring(googleDocLink.indexOf(docPrefix) + docPrefix.length);
     const docId = docIdWithRest.split('/')[0];
     return docId;
