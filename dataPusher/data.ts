@@ -10,7 +10,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 
 export const defaultSize = 0.21; // 0.21
 const nvdaConfigs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.04,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
