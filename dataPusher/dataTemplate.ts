@@ -171,6 +171,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -253,6 +254,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -335,6 +337,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
@@ -417,6 +420,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
                 targets: [], willBlowPastThoseLevels: -1, summary: `
