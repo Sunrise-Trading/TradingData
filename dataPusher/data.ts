@@ -151,7 +151,7 @@ export const getGoogleDocId = () => {
 export const stockSelections: string[] = [
     'SMX',
 ];
-const smxLevel = 40.68;
+const smxLevel = 30;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -166,7 +166,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gap: { pdc: 17 },
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 1,
+            usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: smxLevel, low: smxLevel }],
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -178,7 +178,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 2113604, tradingSum: 70290267 },
         marketCapInMillions: 1000,
         atr: {
             average: 7,
@@ -208,26 +208,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
+                longVwapContinuation: { enabled: 1 },
                 shortEmergingWeaknessBreakdown: { enabled: 0 },
             },
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "ah", partialCount: 2, atr: 0, rrr: 0, level: 35.68 },
-                { text: "vwap", partialCount: 2, atr: 0, rrr: 0, level: 34 },
-                { text: "r6", partialCount: 2, atr: 0, rrr: 0, level: 30.04 },
-                { text: "r5", partialCount: 2, atr: 0, rrr: 0, level: 26.88 },
-                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 26 },
+                { text: "ah", partialCount: 1, atr: 0, rrr: 0, level: 35.68 },
+                { text: "vwap", partialCount: 1, atr: 0, rrr: 0, level: 34 },
+                { text: "r6", partialCount: 1, atr: 0, rrr: 0, level: 30.04 },
+                { text: "r5", partialCount: 1, atr: 0, rrr: 0, level: 26.88 },
+                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: 26 },
             ],
             reversalPlan: { keyLevel: smxLevel, targets: stock1Target, planConfigs: smxConfigs },
             openProfitTakingPlan: { defaultRiskLevel: smxLevel, targets: stock1Target, planConfigs: smxConfigs, mustOpenWithin: 100 },
@@ -236,10 +236,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smxConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "ah", partialCount: 1, atr: 0, rrr: 0, level: 35.68 },
+                { text: "vwap", partialCount: 1, atr: 0, rrr: 0, level: 34 },
+                { text: "r6", partialCount: 1, atr: 0, rrr: 0, level: 30.04 },
+                { text: "r5", partialCount: 1, atr: 0, rrr: 0, level: 26.88 },
+                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: 26 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smxConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smxConfigs },
