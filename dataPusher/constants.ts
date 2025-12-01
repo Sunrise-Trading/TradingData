@@ -265,6 +265,7 @@ export const marketCaps = {
     SHOP: 82000,
     SEDG: 2000,
     SMCI: 32000,
+    SNPS: 77000,
     SNOW: 46000,
     SPOT: 57000,
     SOFI: 9600,
