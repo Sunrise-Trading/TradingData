@@ -19,7 +19,7 @@ const mdbConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const crdoConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -149,10 +149,10 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'MDB',
+    'MDB', 'CRDO'
 ];
 const MDBlevel = 405;
-const stock2Level = 1;
+const crdoLevel = 202.05;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -228,16 +228,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 400 },
                 { text: "387", partialCount: 4, atr: 0, rrr: 0, level: 387 },
             ],
-            openProfitTakingPlan: { defaultRiskLevel: 409, targets: stock1Target, planConfigs: mdbConfigs, mustOpenWithin: 411 },
+            openProfitTakingPlan: { defaultRiskLevel: 411, targets: stock1Target, planConfigs: mdbConfigs, mustOpenWithin: 411 },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mdbConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: mdbConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mdbConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "400", partialCount: 5, atr: 0, rrr: 0, level: 400 },
+                { text: "409", partialCount: 2, atr: 0, rrr: 0, level: 409 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mdbConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: mdbConfigs },
@@ -245,15 +246,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'CRDO',
         analysis: {
-            isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: -1, gap: { pdc: 0 },
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            isFreshNews: true,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 2, gap: { pdc: 171 },
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: crdoLevel, low: crdoLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -266,65 +267,69 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: 29000,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 14,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 10,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: crdoConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1 },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1 },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1 },
             },
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "196", partialCount: 2, atr: 0, rrr: 0, level: 196 },
+                { text: "193.5", partialCount: 2, atr: 0, rrr: 0, level: 193.5 },
+                { text: "185", partialCount: 3, atr: 0, rrr: 0, level: 185 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            openProfitTakingPlan: { defaultRiskLevel: 205, targets: stock2Target, planConfigs: crdoConfigs, mustOpenWithin: 205 },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: crdoConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: crdoConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: crdoConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "204", partialCount: 2, atr: 0, rrr: 0, level: 204 },
+                { text: "210", partialCount: 2, atr: 0, rrr: 0, level: 205 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: crdoConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: crdoConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: crdoConfigs },
         }
     },
     {
