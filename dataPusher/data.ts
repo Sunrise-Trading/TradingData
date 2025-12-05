@@ -7,7 +7,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     snapMode: false,
     useSingleOrderForEntry: true,
 }
-
+const uhigh = 578;
 export const defaultSize = 0.1; // 0.21
 const nflxConfigs: TradingPlans.PlanConfigs = {
     size: 0.05,
@@ -294,16 +294,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1 },
             },
         },
         short: {
@@ -321,7 +321,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: 574.46,
             finalTargets: [
-                { text: "pm high 573.93", partialCount: 4, atr: 0, rrr: 0, level: 573.93 },
+                { text: "pm high 578", partialCount: 4, atr: 0, rrr: 0, level: uhigh },
                 { text: "ath 574.76", partialCount: 1, atr: 0, rrr: 0, level: 574.76 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ultaConfigs },
