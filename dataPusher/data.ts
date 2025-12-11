@@ -227,7 +227,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "191.39", partialCount: 2, atr: 0, rrr: 0, level: 191.39 },
                 { text: "188.88", partialCount: 2, atr: 0, rrr: 0, level: 188.88 }
             ],
-            openProfitTakingPlan: { defaultRiskLevel: 199, targets: stock1Target, planConfigs: orclCOnfigs, mustOpenWithin: 192.71 },
+            openProfitTakingPlan: { defaultRiskLevel: 196, targets: stock1Target, planConfigs: orclCOnfigs, mustOpenWithin: 200 },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: orclCOnfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: orclCOnfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: orclCOnfigs },
