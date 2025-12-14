@@ -198,11 +198,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
             },
             level_open_vwap: {
                 shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
@@ -215,12 +215,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { enabled: 0 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
                 longVwapPushdownFail: { enabled: 0 },
             },
             open_vwap_level: {
                 longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
             },
         },
         short: {
@@ -281,11 +281,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
             },
             level_open_vwap: {
                 shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
@@ -298,12 +298,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { enabled: 0 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
                 longVwapPushdownFail: { enabled: 0 },
             },
             open_vwap_level: {
                 longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
             },
         },
         short: {
@@ -364,11 +364,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
             },
             level_open_vwap: {
                 shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
@@ -381,12 +381,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { enabled: 0 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
                 longVwapPushdownFail: { enabled: 0 },
             },
             open_vwap_level: {
                 longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
             },
         },
         short: {
@@ -447,11 +447,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0 },
+                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
             },
             level_open_vwap: {
                 shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0 },
+                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
                 shortOpenFlush: { enabled: 0 },
                 longVwapScalp: { enabled: 0 },
             },
@@ -464,12 +464,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { enabled: 0 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
                 longVwapPushdownFail: { enabled: 0 },
             },
             open_vwap_level: {
                 longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0 },
+                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
             },
         },
         short: {
