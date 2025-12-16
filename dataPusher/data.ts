@@ -10,7 +10,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 
 export const defaultSize = 0.21; // 0.21
 const pfeConfigs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.05,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -222,11 +222,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "26.4", partialCount: 2, atr: 0, rrr: 0, level: 26.4 },
+                { text: "26.2", partialCount: 2, atr: 0, rrr: 0, level: 26.2 },
             ],
+            reversalPlan: { keyLevel: 26.71, targets: stock1Target, planConfigs: pfeConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pfeConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: pfeConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pfeConfigs },
