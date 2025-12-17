@@ -237,7 +237,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "46.67", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "46.67", partialCount: 5, atr: 0, rrr: 0, level: 46.67 },
                 { text: "50", partialCount: 2, atr: 0, rrr: 0, level: 50 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: hutConfigs },
