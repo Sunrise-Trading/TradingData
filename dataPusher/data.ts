@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const stock1Configs: TradingPlans.PlanConfigs = {
+const nkeCongfis: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const pddConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -149,28 +149,26 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'NKE', 'PDD'
 ];
-const stock1Level = 1;
-const stock2Level = 1;
+const NKElevel = 58.42;
+const pmlow = 57.77;
+const pddLevel = 115.1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'NKE',
         analysis: {
-            isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            isFreshNews: true,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 1,
+            gap: { pdc: 65 },
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: NKElevel, low: NKElevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -183,77 +181,81 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.NKE,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 1.7,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 2,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
+        defaultConfigs: nkeCongfis, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1, waitForClose: true },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1, waitForClose: true },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1, waitForClose: true },
             },
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `pm low ${pmlow}`, partialCount: 3, atr: 0, rrr: 0, level: pmlow },
+                { text: `57.3`, partialCount: 3, atr: 0, rrr: 0, level: 57.3 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nkeCongfis },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: nkeCongfis },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nkeCongfis },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: 59.38,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "58.4", partialCount: 2, atr: 0, rrr: 0, level: 58.4 },
+                { text: "59", partialCount: 2, atr: 0, rrr: 0, level: 59 },
+                { text: "59.4", partialCount: 2, atr: 0, rrr: 0, level: 59.4 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            reversalPlan: { keyLevel: pmlow, targets: stock1Target, planConfigs: nkeCongfis },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nkeCongfis },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: nkeCongfis },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nkeCongfis },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'PDD',
         analysis: {
-            isFreshNews: false,
-            premarketVolumeScore: TradingPlans.PremarketVolumeScore.Unknown,
-            dailyChartStory: -1, gap: { pdc: 0 },
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            isFreshNews: true,
+            premarketVolumeScore: TradingPlans.PremarketVolumeScore.One_Higher_Than_Normal,
+            dailyChartStory: 1, gap: { pdc: 105 },
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: pddLevel, low: pddLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             profitTargetsForLong: {
@@ -266,65 +268,68 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.PDD,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 1.5,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: pddConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1, waitForClose: true },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1, waitForClose: true },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1, waitForClose: true },
             },
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "111", partialCount: 2, atr: 0, rrr: 0, level: 111 },
+                { text: "110", partialCount: 3, atr: 0, rrr: 0, level: 110 },
+                { text: "109.5", partialCount: 2, atr: 0, rrr: 0, level: 109.5 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            openProfitTakingPlan: { defaultRiskLevel: 115.1, mustOpenWithin: 118, targets: stock2Target, planConfigs: pddConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pddConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: pddConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pddConfigs },
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pddConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: pddConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: pddConfigs },
         }
     },
     {
@@ -363,30 +368,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1, waitForClose: true },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1, waitForClose: true },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1, waitForClose: true },
             },
         },
         short: {
@@ -446,30 +451,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 0 },
-                longEmergingStrengthBreakout: { enabled: 0, waitForClose: true },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1, waitForClose: true },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longAboveWaterBreakout: { enabled: 0, waitForClose: true },
-                shortOpenFlush: { enabled: 0 },
-                longVwapScalp: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true },
+                shortOpenFlush: { enabled: 1 },
+                longVwapScalp: { enabled: 1 },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 0 },
-                longOpenDrive: { enabled: 0 },
+                shortVwapBounceFail: { enabled: 1 },
+                longOpenDrive: { enabled: 1 },
             },
             vwap_level_open: {
-                shortOpenDrive: { enabled: 0 },
-                longVwapPushdownFail: { enabled: 0 },
+                shortOpenDrive: { enabled: 1 },
+                longVwapPushdownFail: { enabled: 1 },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { enabled: 0, waitForClose: true },
-                longVwapPushdownFail: { enabled: 0 },
+                shortBelowWaterBreakout: { enabled: 1, waitForClose: true },
+                longVwapPushdownFail: { enabled: 1 },
             },
             open_vwap_level: {
-                longVwapContinuation: { enabled: 0 },
-                shortEmergingWeaknessBreakdown: { enabled: 0, waitForClose: true },
+                longVwapContinuation: { enabled: 1 },
+                shortEmergingWeaknessBreakdown: { enabled: 1, waitForClose: true },
             },
         },
         short: {
