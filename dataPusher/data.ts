@@ -150,7 +150,7 @@ export const getGoogleDocId = () => {
 }
 export const stockSelections: string[] = [
     'NVDA',
-    'TSLA',
+    //    'TSLA',
 ];
 const NVDAlevel = 190.65;
 const tslaLeve = 490.9;
@@ -228,6 +228,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "R4 189.89", partialCount: 2, atr: 0, rrr: 0, level: 189.89 },
                 { text: "R3 189.25", partialCount: 2, atr: 0, rrr: 0, level: 189.25 },
             ],
+            reversalPlan: { keyLevel: NVDAlevel, targets: stock1Target, planConfigs: nvdaConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: nvdaConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
