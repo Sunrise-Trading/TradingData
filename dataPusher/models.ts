@@ -1,4 +1,10 @@
 
+export enum DailySetup {
+    'Unknown',
+    'TwoWayOpen',
+    'LevelNearAboveRange',
+    'LevelNearBelowRange',
+}
 export interface TradingSettings {
     useSingleOrderForEntry: boolean,
     /**
@@ -8,13 +14,9 @@ export interface TradingSettings {
 }
 
 export interface Analysis {
-    isFreshNews: boolean,
-    /**
-     * 0: low or normal, 1: higher than normal, 2: extremely high
-     */
-    premarketVolumeScore: PremarketVolumeScore,
     dailyChartStory: number,
     gap: Gap,
+    dailySetup: DailySetup,
     /**
      * 0: no defer, 1: defer 1 second after open, -1: invalid value.
      */
