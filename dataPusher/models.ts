@@ -61,7 +61,7 @@ export interface TradingPlans {
     short: SingleDirectionPlans,
 };
 export interface TradebookCommonConfig {
-    enabled: number,
+    enabled?: number,
 }
 export interface BreakoutTradebookConfig extends TradebookCommonConfig {
     waitForClose: boolean,
