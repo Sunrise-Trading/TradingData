@@ -63,6 +63,7 @@ export interface TradebookCommonConfig {
 }
 export interface BreakoutTradebookConfig extends TradebookCommonConfig {
     waitForClose: boolean,
+    allowCloseWithin: boolean,
 }
 export interface LevelVwapOpenConfig {
     shortVwapContinuation: TradebookCommonConfig,

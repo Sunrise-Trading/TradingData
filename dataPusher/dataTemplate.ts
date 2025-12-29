@@ -189,30 +189,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { },
-                longEmergingStrengthBreakout: {  waitForClose: true },
+                shortVwapContinuation: {},
+                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { },
-                longAboveWaterBreakout: {  waitForClose: true },
-                shortOpenFlush: { },
-                longVwapScalp: { },
+                shortVwapBounceFail: {},
+                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
+                shortOpenFlush: {},
+                longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: { },
-                longOpenDrive: { },
+                shortVwapBounceFail: {},
+                longOpenDrive: {},
             },
             vwap_level_open: {
-                shortOpenDrive: { },
-                longVwapPushdownFail: { },
+                shortOpenDrive: {},
+                longVwapPushdownFail: {},
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: {  waitForClose: true },
-                longVwapPushdownFail: { },
+                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                longVwapPushdownFail: {},
             },
             open_vwap_level: {
-                longVwapContinuation: { },
-                shortEmergingWeaknessBreakdown: {  waitForClose: true },
+                longVwapContinuation: {},
+                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
             },
         },
         short: {
@@ -266,30 +266,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { },
-                longEmergingStrengthBreakout: {  waitForClose: true },
+                shortVwapContinuation: {},
+                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { },
-                longAboveWaterBreakout: {  waitForClose: true },
-                shortOpenFlush: { },
-                longVwapScalp: { },
+                shortVwapBounceFail: {},
+                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                shortOpenFlush: {},
+                longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: { },
-                longOpenDrive: { },
+                shortVwapBounceFail: {},
+                longOpenDrive: {},
             },
             vwap_level_open: {
-                shortOpenDrive: { },
-                longVwapPushdownFail: { },
+                shortOpenDrive: {},
+                longVwapPushdownFail: {},
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: {  waitForClose: true },
-                longVwapPushdownFail: { },
+                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                longVwapPushdownFail: {},
             },
             open_vwap_level: {
-                longVwapContinuation: { },
-                shortEmergingWeaknessBreakdown: {  waitForClose: true },
+                longVwapContinuation: {},
+                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
             },
         },
         short: {
@@ -343,30 +343,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { },
-                longEmergingStrengthBreakout: {  waitForClose: true },
+                shortVwapContinuation: {},
+                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { },
-                longAboveWaterBreakout: {  waitForClose: true },
-                shortOpenFlush: { },
-                longVwapScalp: { },
+                shortVwapBounceFail: {},
+                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
+                shortOpenFlush: {},
+                longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: { },
-                longOpenDrive: { },
+                shortVwapBounceFail: {},
+                longOpenDrive: {},
             },
             vwap_level_open: {
-                shortOpenDrive: { },
-                longVwapPushdownFail: { },
+                shortOpenDrive: {},
+                longVwapPushdownFail: {},
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: {  waitForClose: true },
-                longVwapPushdownFail: { },
+                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                longVwapPushdownFail: {},
             },
             open_vwap_level: {
-                longVwapContinuation: { },
-                shortEmergingWeaknessBreakdown: {  waitForClose: true },
+                longVwapContinuation: {},
+                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
             },
         },
         short: {
@@ -420,30 +420,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { },
-                longEmergingStrengthBreakout: {  waitForClose: true },
+                shortVwapContinuation: {},
+                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { },
-                longAboveWaterBreakout: {  waitForClose: true },
-                shortOpenFlush: { },
-                longVwapScalp: { },
+                shortVwapBounceFail: {},
+                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                shortOpenFlush: {},
+                longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: { },
-                longOpenDrive: { },
+                shortVwapBounceFail: {},
+                longOpenDrive: {},
             },
             vwap_level_open: {
-                shortOpenDrive: { },
-                longVwapPushdownFail: { },
+                shortOpenDrive: {},
+                longVwapPushdownFail: {},
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: {  waitForClose: true },
-                longVwapPushdownFail: { },
+                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
+                longVwapPushdownFail: {},
             },
             open_vwap_level: {
-                longVwapContinuation: { },
-                shortEmergingWeaknessBreakdown: {  waitForClose: true },
+                longVwapContinuation: {},
+                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
             },
         },
         short: {
