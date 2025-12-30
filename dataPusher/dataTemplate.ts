@@ -193,13 +193,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
                 shortOpenFlush: {},
                 longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longOpenDrive: {},
             },
             vwap_level_open: {
@@ -270,13 +270,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
             },
             level_open_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
                 shortOpenFlush: {},
                 longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longOpenDrive: {},
             },
             vwap_level_open: {
@@ -347,13 +347,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
                 shortOpenFlush: {},
                 longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longOpenDrive: {},
             },
             vwap_level_open: {
@@ -424,13 +424,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
             },
             level_open_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
                 shortOpenFlush: {},
                 longVwapScalp: {},
             },
             open_level_vwap: {
-                shortVwapBounceFail: {},
+                shortVwapBounceFail: { waitForClose: true, },
                 longOpenDrive: {},
             },
             vwap_level_open: {
