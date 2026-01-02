@@ -113,6 +113,7 @@ export const marketCaps = {
     BE: 20000,
     BBAI: 2500,
     BABA: 170000,
+    BIDU: 36000,
     BP: 84000,
     C: 125000,
     CEG: 108000,
