@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const smrConfigs: TradingPlans.PlanConfigs = {
+const glueConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const smrConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const tsmConfigs: TradingPlans.PlanConfigs = {
+const mblyConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1wIMMA3rwmHIEysN5sOu4Dp2ZD8uXewL9qaN1necpfDI/edit?tab=t.0#heading=h.3ta3qw9hoewr";
+export const googleDocLink = "https://docs.google.com/document/d/1Y8WstV7byNioIvQGMyaLdjAD7MKXyK3l8Y0uu3SSXN8/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,134 +149,133 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'SMR', 'TSM'
+    'GLUE', 'MBLY'
 ];
-const SMRlevel = 19.55;
-const tsmLevel = 331.25;
+const GLUElevel = 25.27;
+const MBLYlevel = 14.19;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SMR',
+        symbol: 'GLUE',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 18.78 },
+            dailyChartStory: 2,
+            gap: { pdc: 16 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: SMRlevel, low: SMRlevel }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-        },
-        autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 2984218, tradingSum: 59085626 },
-        marketCapInMillions: Constants.marketCaps.SMR,
-        atr: {
-            average: 1.75,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-            maxRisk: 1.5,
-        },
-        keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
-        },
-        defaultConfigs: smrConfigs, defaultTargets: stock1Target,
-        tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
-            },
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: false, },
-                shortOpenFlush: {},
-                longVwapScalp: { enabled: 1, },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true, },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { enabled: 1, },
-            },
-            vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                longVwapPushdownFail: { enabled: 1, },
-            },
-            open_vwap_level: {
-                longVwapContinuation: { enabled: 1, },
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
-            },
-        },
-        short: {
-            enabled: false,
-            firstTargetToAdd: 0,
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smrConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: SMRlevel,
-            finalTargets: [
-                { text: "R5 20.6", partialCount: 2, atr: 0, rrr: 0, level: 20.6 },
-                { text: "R6 21.21", partialCount: 2, atr: 0, rrr: 0, level: 21.21 },
-                { text: "final 23", partialCount: 2, atr: 0, rrr: 0, level: 23 },
-            ],
-            vwapScalpPlan: { threshold: 19.55, originalKeyLevel: SMRlevel, targets: stock1Target, planConfigs: smrConfigs, strongReasonToUseThisLevel: "continuation play" },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smrConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: smrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: smrConfigs },
-        }
-    },
-    {
-        symbol: 'TSM',
-        analysis: {
-            dailyChartStory: 2, gap: { pdc: 322.25 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: tsmLevel, low: tsmLevel }],
+            singleMomentumKeyLevel: [{ high: GLUElevel, low: GLUElevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSM,
+        marketCapInMillions: 1000,
         atr: {
-            average: 8.5,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 1.25,
+            mutiplier: 3,
+            minimumMultipler: 2,
             maxRisk: 5,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: tsmConfigs, defaultTargets: stock2Target,
+        defaultConfigs: glueConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { enabled: 1, waitForClose: false, allowCloseWithin: true },
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { enabled: 1, waitForClose: false, allowCloseWithin: true },
+                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: false, },
+                shortOpenFlush: {},
+                longVwapScalp: {},
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: {},
+            },
+            vwap_open_level: {
+                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+                longVwapPushdownFail: {},
+            },
+            open_vwap_level: {
+                longVwapContinuation: {},
+                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "20", partialCount: 3, atr: 0, rrr: 0, level: 29 },
+                { text: "19.17", partialCount: 2, atr: 0, rrr: 0, level: 19.17 },
+            ],
+            openProfitTakingPlan: { defaultRiskLevel: GLUElevel, mustOpenWithin: GLUElevel, targets: stock1Target, planConfigs: glueConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: glueConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "26", partialCount: 2, atr: 0, rrr: 0, level: 26 },
+                { text: "27", partialCount: 2, atr: 0, rrr: 0, level: 27 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: glueConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+        }
+    },
+    {
+        symbol: 'MBLY',
+        analysis: {
+            dailyChartStory: -1, gap: { pdc: 0 },
+            dailySetup: TradingPlans.DailySetup.Unknown,
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
+            usePremarketKeyLevel: 0,
+            singleMomentumKeyLevel: [{ high: MBLYlevel, low: MBLYlevel }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+        },
+        autoFlip: false,
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.MBLY,
+        atr: {
+            average: 0.47,
+            mutiplier: 2,
+            minimumMultipler: 2,
+            maxRisk: 1,
+        },
+        keyLevels: {
+            momentumStartForLong: 0,
+            momentumStartForShort: 0,
+        },
+        defaultConfigs: mblyConfigs, defaultTargets: stock2Target,
+        tradebooksConfig: {
+            level_vwap_open: {
+                shortVwapContinuation: { enabled: 1 },
+                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
+            },
+            level_open_vwap: {
+                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
                 shortOpenFlush: {},
                 longVwapScalp: {},
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longOpenDrive: { enabled: 1, },
+                longOpenDrive: {},
             },
             vwap_level_open: {
                 shortOpenDrive: {},
@@ -292,26 +291,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            enabled: true,
+            firstTargetToAdd: 13.07,
+            finalTargets: [
+                { text: "vwap 13.7", partialCount: 3, atr: 0, rrr: 0, level: 13.7 },
+                { text: "pm low 13.07", partialCount: 3, atr: 0, rrr: 0, level: 13.07 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: mblyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: tsmConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: tsmConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: tsmConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: 333.34,
-            finalTargets: [
-                { text: "R6 332.98", partialCount: 3, atr: 0, rrr: 0, level: 332.98 },
-                { text: "340", partialCount: 2, atr: 0, rrr: 0, level: 340 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: tsmConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: tsmConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: tsmConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: mblyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
         }
     },
     {
