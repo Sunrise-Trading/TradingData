@@ -153,6 +153,7 @@ export const stockSelections: string[] = [
 ];
 const GLUElevel = 25.27;
 const MBLYlevel = 14.19;
+const mblyRiskLevel = 14.5;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -220,6 +221,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "19.17", partialCount: 2, atr: 0, rrr: 0, level: 19.17 },
             ],
             openProfitTakingPlan: { defaultRiskLevel: GLUElevel, mustOpenWithin: GLUElevel, targets: stock1Target, planConfigs: glueConfigs },
+            reversalPlan: { keyLevel: GLUElevel, targets: stock1Target, planConfigs: glueConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: glueConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
@@ -239,10 +241,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MBLY',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
-            dailySetup: TradingPlans.DailySetup.Unknown,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            dailyChartStory: 1, gap: { pdc: 12.18 },
+            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             singleMomentumKeyLevel: [{ high: MBLYlevel, low: MBLYlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
@@ -297,6 +299,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "vwap 13.7", partialCount: 3, atr: 0, rrr: 0, level: 13.7 },
                 { text: "pm low 13.07", partialCount: 3, atr: 0, rrr: 0, level: 13.07 },
             ],
+            openProfitTakingPlan: { defaultRiskLevel: mblyRiskLevel, mustOpenWithin: mblyRiskLevel, targets: stock2Target, planConfigs: mblyConfigs },
+            reversalPlan: { keyLevel: MBLYlevel, targets: stock2Target, planConfigs: mblyConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: mblyConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
