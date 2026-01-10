@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const glueConfigs: TradingPlans.PlanConfigs = {
+const vstConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const glueConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const mblyConfigs: TradingPlans.PlanConfigs = {
+const okloConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1Y8WstV7byNioIvQGMyaLdjAD7MKXyK3l8Y0uu3SSXN8/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/12ScxDWcdb8n5moDXv3PNIscXkTetU9VQ-BQLrZzIq8E/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,55 +149,56 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'GLUE', 'MBLY'
+    'VST', 'OKLO'
 ];
-const GLUElevel = 25.27;
-const MBLYlevel = 14.19;
-const mblyRiskLevel = 14.5;
+const vstlevel = 178.45;
+const vstpivothigh = 173.74;
+const okloLevel = 121.08;
+const okloaddlevel = 114.29;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GLUE',
+        symbol: 'VST',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 16 },
+            dailyChartStory: 1,
+            gap: { pdc: 150 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: GLUElevel, low: GLUElevel }],
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: vstlevel, low: vstlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 1000,
+        marketCapInMillions: Constants.marketCaps.VST,
         atr: {
-            average: 1.25,
-            mutiplier: 3,
-            minimumMultipler: 2,
-            maxRisk: 5,
+            average: 7.8,
+            mutiplier: 1.5,
+            minimumMultipler: 1.5,
+            maxRisk: 7,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: glueConfigs, defaultTargets: stock1Target,
+        defaultConfigs: vstConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 1 },
+                shortVwapContinuation: { enabled: 1, },
                 longEmergingStrengthBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
                 shortVwapBounceFail: { enabled: 1, waitForClose: true, },
-                longAboveWaterBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: false, },
+                longAboveWaterBreakout: { enabled: 1, waitForClose: true, allowCloseWithin: true, },
                 shortOpenFlush: {},
-                longVwapScalp: {},
+                longVwapScalp: { enabled: 1, },
             },
             open_level_vwap: {
-                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                shortVwapBounceFail: { waitForClose: true, },
                 longOpenDrive: {},
             },
             vwap_level_open: {
@@ -217,60 +218,59 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "20", partialCount: 3, atr: 0, rrr: 0, level: 29 },
-                { text: "19.17", partialCount: 2, atr: 0, rrr: 0, level: 19.17 },
+                { text: "170", partialCount: 2, atr: 0, rrr: 0, level: 170 },
+                { text: "169", partialCount: 2, atr: 0, rrr: 0, level: 169 },
             ],
-            openProfitTakingPlan: { defaultRiskLevel: GLUElevel, mustOpenWithin: GLUElevel, targets: stock1Target, planConfigs: glueConfigs },
-            reversalPlan: { keyLevel: GLUElevel, targets: stock1Target, planConfigs: glueConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: glueConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vstConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: vstConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vstConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: vstlevel,
             finalTargets: [
-                { text: "26", partialCount: 2, atr: 0, rrr: 0, level: 26 },
-                { text: "27", partialCount: 2, atr: 0, rrr: 0, level: 27 },
+                { text: `pm high ${vstlevel}`, partialCount: 2, atr: 0, rrr: 0, level: vstlevel },
+                { text: "180", partialCount: 2, atr: 0, rrr: 0, level: 180 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: glueConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: glueConfigs },
+            vwapScalpPlan: { threshold: vstpivothigh, strongReasonToUseThisLevel: "daily", originalKeyLevel: vstlevel, targets: stock1Target, planConfigs: vstConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vstConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: vstConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: vstConfigs },
         }
     },
     {
-        symbol: 'MBLY',
+        symbol: 'OKLO',
         analysis: {
-            dailyChartStory: 1, gap: { pdc: 12.18 },
+            dailyChartStory: 1, gap: { pdc: 97.6 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            singleMomentumKeyLevel: [{ high: MBLYlevel, low: MBLYlevel }],
+            usePremarketKeyLevel: 1,
+            singleMomentumKeyLevel: [{ high: okloLevel, low: okloLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MBLY,
+        marketCapInMillions: Constants.marketCaps.OKLO,
         atr: {
-            average: 0.47,
-            mutiplier: 2,
-            minimumMultipler: 2,
-            maxRisk: 1,
+            average: 7.5,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 10,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: mblyConfigs, defaultTargets: stock2Target,
+        defaultConfigs: okloConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 1 },
+                shortVwapContinuation: {},
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
                 shortOpenFlush: {},
                 longVwapScalp: {},
@@ -294,27 +294,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 13.07,
+            firstTargetToAdd: 114.29,
             finalTargets: [
-                { text: "vwap 13.7", partialCount: 3, atr: 0, rrr: 0, level: 13.7 },
-                { text: "pm low 13.07", partialCount: 3, atr: 0, rrr: 0, level: 13.07 },
+                { text: "112", partialCount: 2, atr: 0, rrr: 0, level: 112 },
+                { text: "105", partialCount: 3, atr: 0, rrr: 0, level: 105 },
             ],
-            openProfitTakingPlan: { defaultRiskLevel: mblyRiskLevel, mustOpenWithin: mblyRiskLevel, targets: stock2Target, planConfigs: mblyConfigs },
-            reversalPlan: { keyLevel: MBLYlevel, targets: stock2Target, planConfigs: mblyConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: mblyConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
+            reversalPlan: { keyLevel: okloLevel, targets: stock2Target, planConfigs: okloConfigs },
+            openProfitTakingPlan: { defaultRiskLevel: okloLevel, mustOpenWithin: okloLevel, targets: stock2Target, planConfigs: okloConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: okloConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: okloConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: okloConfigs },
         },
         long: {
             enabled: false,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: mblyConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mblyConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: okloConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: okloConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: okloConfigs },
         }
     },
     {
