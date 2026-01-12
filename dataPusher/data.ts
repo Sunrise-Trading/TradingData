@@ -186,6 +186,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
+            otherLevels: [118.2, 117.75]
         },
         defaultConfigs: wmtConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -224,6 +225,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "R4 116.29", partialCount: 3, atr: 0, rrr: 0, level: 116.29 },
                 { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 116 },
             ],
+            openProfitTakingPlan: { defaultRiskLevel: 118.5, mustOpenWithin: 119.5, targets: stock1Target, planConfigs: wmtConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: wmtConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
@@ -306,6 +308,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "gap fill 70.5", partialCount: 2, atr: 0, rrr: 0, level: 70.5 },
 
             ],
+            reversalPlan: { targets: stock2Target, planConfigs: temConfigs, keyLevel: temLevel },
             openProfitTakingPlan: { defaultRiskLevel: temLevel, mustOpenWithin: 80, targets: stock2Target, planConfigs: temConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: temConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: temConfigs },
