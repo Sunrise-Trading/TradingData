@@ -33,6 +33,7 @@ export interface Analysis {
     usePremarketKeyLevel: number,
     zoneNearEdge: ZoneNearEdge,
     dualMomentumKeyLevels: number[],
+    watchAreas: number[],
 }
 export interface ZoneNearEdge {
     zoneIsFar: boolean,
@@ -172,6 +173,7 @@ export interface BasePlan {
     planConfigs: PlanConfigs,
     planType?: PlanType,
     timeframe?: number,
+    entryMethod?: string,
 };
 export interface PlanConfigs {
     size: number,
