@@ -179,7 +179,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 2357171, tradingSum: 809985184 },
         marketCapInMillions: Constants.marketCaps.TSM,
         atr: {
             average: 8.5,
@@ -227,6 +227,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "340", partialCount: 2, atr: 0, rrr: 0, level: 340 },
                 { text: "R6 335", partialCount: 2, atr: 0, rrr: 0, level: 335 },
             ],
+            openProfitTakingPlan: { defaultRiskLevel: 350, mustOpenWithin: 350, targets: stock1Target, planConfigs: tsmConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsmConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: tsmConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: tsmConfigs },
@@ -416,7 +417,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 218938, tradingSum: 70779469 },
         marketCapInMillions: Constants.marketCaps.AMAT,
         atr: {
             average: 9.6,
