@@ -206,11 +206,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: {},
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             open_vwap_level: {
                 longVwapContinuation: {},
@@ -285,11 +285,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: {},
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             open_vwap_level: {
                 longVwapContinuation: {},
@@ -364,11 +364,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: {},
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             open_vwap_level: {
                 longVwapContinuation: {},
@@ -443,11 +443,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
             vwap_level_open: {
                 shortOpenDrive: {},
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
                 shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
-                longVwapPushdownFail: {},
+                longVwapPushdownFail: { waitForClose: true },
             },
             open_vwap_level: {
                 longVwapContinuation: {},
