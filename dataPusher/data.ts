@@ -174,7 +174,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 1072001, tradingSum: 378587056 },
         marketCapInMillions: Constants.marketCaps.MU,
         atr: {
             average: 15,
@@ -235,6 +235,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: `pm high ${mupmhigh}`, partialCount: 3, atr: 0, rrr: 0, level: mupmhigh },
                 { text: "1 ATR", partialCount: 3, atr: 1, rrr: 0, level: 0 },
             ],
+            reversalPlan: { keyLevel: MUlevel, targets: stock1Target, planConfigs: muConfigs, defaultRiskLevel: 347.77, requireLevelTouch: true },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: muConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: muConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: muConfigs },
