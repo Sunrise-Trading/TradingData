@@ -125,7 +125,6 @@ export interface SingleDirectionPlans {
     reversalPlan?: ReversalPlan,
     vwapBounceFailPlan?: VwapBounceFailPlan,
     vwapScalpPlan?: VwapScalpPlan,
-    openProfitTakingPlan?: OpenProfitTakingPlan,
     allTimeHighVwapContinuationPlan?: AllTimeHighVwapContinuationPlan,
     gapAndCrapAccelerationPlan?: GapAndCrapAccelerationPlan,
     gapAndCrapPlan?: GapAndCrapPlan,
@@ -185,6 +184,7 @@ export interface BasePlan {
     planType?: PlanType,
     timeframe?: number,
     entryMethod?: string,
+    defaultRiskLevel?: number,
 };
 export interface PlanConfigs {
     size: number,
@@ -210,12 +210,7 @@ export interface ProfitTakingFade60Plan extends BasePlan {
     enableAutoTrigger: boolean,
     onlyIfOpenBelow: number,
 }
-export interface OpenProfitTakingPlan extends BasePlan {
-    defaultRiskLevel: number,
-    mustOpenWithin: number,
-}
 export interface GapAndCrapPlan extends BasePlan {
-    defaultRiskLevel: number,
 }
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
