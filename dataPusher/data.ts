@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const unhConfigs: TradingPlans.PlanConfigs = {
+const aiConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const unhConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const netConfigs: TradingPlans.PlanConfigs = {
+const sbuxConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1E58vWtPbSaBjq959yUdk3ndhVC6lGE8NvozhNqBVGB0/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1NgKu-ukeetn1liiZ4O18UoykdL82A6Jn781HkDBwVKs/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,51 +149,50 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'UNH', 'NET'
+    'SBUX', 'AI'
 ];
-const UNHlevel = 315;
-const unhPmlow = 292.2;
-const netLevel = 219.41;
+const aiLevel = 14.95;
+const sbuxLevel = 105.72;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'UNH',
+        symbol: 'AI',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 351 },
+            dailyChartStory: 1,
+            gap: { pdc: 12.6 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: UNHlevel, low: UNHlevel }],
+            singleMomentumKeyLevel: [{ high: aiLevel, low: aiLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.UNH,
+        marketCapInMillions: Constants.marketCaps.AI,
         atr: {
-            average: 8.6,
+            average: 0.57,
             mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 10,
+            maxRisk: 1,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: unhConfigs, defaultTargets: stock1Target,
+        defaultConfigs: aiConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
-                shortVwapContinuation: { enabled: 1, },
+                shortVwapContinuation: {},
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 1, waitForClose: false, },
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
                 shortOpenFlush: {},
                 longVwapScalp: {},
@@ -217,56 +216,56 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 294.2,
-            finalTargets: [
-                { text: `pm low ${unhPmlow}`, partialCount: 2, atr: 0, rrr: 0, level: unhPmlow },
-                { text: "294.2", partialCount: 2, atr: 0, rrr: 0, level: 294.2 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: unhConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: unhConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: unhConfigs },
-        },
-        long: {
-            enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "300", partialCount: 2, atr: 0, rrr: 0, level: 300 },
-                { text: "305", partialCount: 2, atr: 0, rrr: 0, level: 305 },
+                { text: "14.7", partialCount: 1, atr: 0, rrr: 0, level: 14.7 },
+                { text: "14.5", partialCount: 2, atr: 0, rrr: 0, level: 14.5 },
             ],
-            reversalPlan: { keyLevel: 294.2, requireLevelTouch: true, defaultRiskLevel: 290, targets: stock1Target, planConfigs: unhConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: unhConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: unhConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: unhConfigs },
+            reversalPlan: { keyLevel: aiLevel, requireLevelTouch: false, defaultRiskLevel: 16, targets: stock1Target, planConfigs: aiConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: aiConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: aiConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: aiConfigs },
+        },
+        long: {
+            enabled: false,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: aiConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: aiConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: aiConfigs },
         }
     },
     {
-        symbol: 'NET',
+        symbol: 'SBUX',
         analysis: {
-            dailyChartStory: 0, gap: { pdc: 189 },
+            dailyChartStory: 1, gap: { pdc: 95.72 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 1,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: netLevel, low: netLevel }],
+            singleMomentumKeyLevel: [{ high: sbuxLevel, low: sbuxLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NET,
+        marketCapInMillions: Constants.marketCaps.SBUX,
         atr: {
-            average: 8.32,
-            mutiplier: 1,
+            average: 2.3,
+            mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 5,
+            maxRisk: 2.5,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: netConfigs, defaultTargets: stock2Target,
+        defaultConfigs: sbuxConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 1, },
@@ -299,25 +298,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "215.3", partialCount: 2, atr: 0, rrr: 0, level: 215.30 },
-                { text: "210", partialCount: 2, atr: 0, rrr: 0, level: 210 },
-                { text: "R6 202", partialCount: 2, atr: 0, rrr: 0, level: 202 },
+                { text: "100", partialCount: 3, atr: 0, rrr: 0, level: 100 },
+                { text: "99", partialCount: 2, atr: 0, rrr: 0, level: 99 },
             ],
-            reversalPlan: { keyLevel: netLevel, requireLevelTouch: false, defaultRiskLevel: 225, targets: stock2Target, planConfigs: netConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: netConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: netConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: netConfigs },
+            reversalPlan: { keyLevel: sbuxLevel, requireLevelTouch: false, defaultRiskLevel: sbuxLevel, targets: stock2Target, planConfigs: sbuxConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: sbuxConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "103", partialCount: 3, atr: 0, rrr: 0, level: 103 },
+                { text: "102", partialCount: 2, atr: 0, rrr: 0, level: 102 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: netConfigs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: netConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: netConfigs },
+            reversalPlan: { keyLevel: 100, requireLevelTouch: false, targets: stock2Target, planConfigs: sbuxConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: sbuxConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: sbuxConfigs },
         }
     },
     {
