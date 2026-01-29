@@ -224,6 +224,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: `pm low ${metapmlow}`, partialCount: 2, atr: 0, rrr: 0, level: metapmlow },
                 { text: "725", partialCount: 2, atr: 0, rrr: 0, level: 725 },
             ],
+            reversalPlan: { keyLevel: metalevel, requireLevelTouch: false, targets: stock1Target, planConfigs: metaConfigs, defaultRiskLevel: metalevel },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: metaConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: metaConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: metaConfigs },
