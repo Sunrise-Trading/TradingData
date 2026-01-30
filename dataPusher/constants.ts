@@ -259,6 +259,7 @@ export const marketCaps = {
     RKLB: 7000,
     ROKU: 11000,
     SBUX: 87000,
+    SNDK: 80000,
     SE: 52000,
     SNAP: 12000,
     SMR: 1300,
