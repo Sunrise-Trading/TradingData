@@ -183,6 +183,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 0,
             minimumMultipler: 0,
             maxRisk: 0,
+            maxQuantity: -1,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -262,6 +263,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 0,
             minimumMultipler: 0,
             maxRisk: 0,
+            maxQuantity: -1,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -341,6 +343,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 0,
             minimumMultipler: 0,
             maxRisk: 0,
+            maxQuantity: -1,
         },
         keyLevels: {
             momentumStartForLong: 0,
@@ -420,6 +423,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             mutiplier: 0,
             minimumMultipler: 0,
             maxRisk: 0,
+            maxQuantity: -1,
         },
         keyLevels: {
             momentumStartForLong: 0,
