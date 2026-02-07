@@ -174,7 +174,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 2050041, tradingSum: 100644152 },
         marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
             average: 3.2,
@@ -186,6 +186,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
+            otherLevels: [50.86, 51.71, 53],
         },
         defaultConfigs: intcConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -255,7 +256,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        vwapCorrection: { open: 0, volumeSum: 4074195, tradingSum: 834334945 },
         marketCapInMillions: Constants.marketCaps.AMZN,
         atr: {
             average: 6.5,
@@ -267,6 +268,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
+            otherLevels: [210, 197.85, 196.62, 194.69]
         },
         defaultConfigs: amznConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
