@@ -228,6 +228,7 @@ export const marketCaps = {
     ORCL: 385000,
     OKLO: 190000,
     OKTA: 13000,
+    OSCR: 3350,
     ON: 21000,
     ONON: 14000,
     OPEN: 2000,
