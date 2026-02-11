@@ -130,6 +130,8 @@ export interface SingleDirectionPlans {
     gapAndCrapAccelerationPlan?: GapAndCrapAccelerationPlan,
     gapAndCrapPlan?: GapAndCrapPlan,
     gapAndGoPlan?: GapAndGoPlan,
+    gapDownAndGoDownPlan?: GapDownAndGoDownPlan,
+    gapDownAndGoUpPlan?: GapDownAndGoUpPlan,
     /* used strategies end */
 
     profitTakingFade60Plan?: ProfitTakingFade60Plan,
@@ -214,7 +216,7 @@ export interface ProfitTakingFade60Plan extends BasePlan {
 }
 export interface GapAndGoPlan extends BasePlan {
     /** the min support on daily chart, below it, we cannot long */
-    minDailySupport: number,
+    support: LevelArea,
     /** the high from recent pullback */
     recentPullback?: number,
     /** number of days of the condition and its edge price */
@@ -242,6 +244,20 @@ export interface GapAndCrapPlan extends BasePlan {
     topEdgeOfCurrentRange?: number,
     /** description of the previous event */
     nearBelowPreviousEventKeyLevel?: string
+}
+export interface GapDownAndGoDownPlan extends BasePlan {
+    nearBelowConsolidationRange?: LevelArea,
+    nearBelowConsolidationRangeTop?: number,
+    buyersTrappedBelowThisLevel?: number,
+    /** the low of last 2 days */
+    previousInsideDay?: number,
+
+}
+export interface GapDownAndGoUpPlan extends BasePlan {
+    support: LevelArea[],
+    nearAboveSupport?: LevelArea,
+    nearAboveKeyEventLevel?: number,
+
 }
 export interface OpenDriveContinuation60Plan extends BasePlan {
     disableIfOpenWorseThanPrice: number,
