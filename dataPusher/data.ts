@@ -149,9 +149,10 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'OSCR',
+
     'DDOG',
     'EVMN',
+    'OSCR',
 ];
 const OSCRlevel = 14.17;
 const DDOGlevel = 137;
