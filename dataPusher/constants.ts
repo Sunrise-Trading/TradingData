@@ -308,6 +308,7 @@ export const marketCaps = {
     UBER: 163000,
     VST: 64000,
     VZ: 181000,
+    VRT: 76000,
     X: 7000,
     XYZ: 36000,
     XPEV: 17000,
