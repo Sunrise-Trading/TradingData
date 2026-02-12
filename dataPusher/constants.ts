@@ -161,6 +161,7 @@ export const marketCaps = {
     FLUT: 40000,
     FIG: 33000,
     FTAI: 11000,
+    FSLY: 1390,
     GAP: 8000,
     GEV: 115000,
     GTLB: 8000,
