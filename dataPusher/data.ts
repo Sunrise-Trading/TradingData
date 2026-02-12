@@ -19,8 +19,8 @@ const fslyConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+const oscrConfigs: TradingPlans.PlanConfigs = {
+    size: 0.08,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
     requireReversal: true,
@@ -149,10 +149,10 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'FSLY',
+    'FSLY', 'OSCR'
 ];
 const FSLYlevel = 12.59;
-const stock2Level = 1;
+const oscrlevel = 14.37;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -222,7 +222,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "12.1", partialCount: 3, atr: 0, rrr: 0, level: 12.1 },
                 { text: "12", partialCount: 1, atr: 0, rrr: 0, level: 12 },
             ],
-            gapAndCrapPlan: { resistance: [{ high: FSLYlevel, low: FSLYlevel }], defaultRiskLevel: 13.3, targets: stock1Target, planConfigs: fslyConfigs },
+            reversalPlan: { keyLevel: 14, defaultRiskLevel: 15, requireLevelTouch: false, targets: stock1Target, planConfigs: fslyConfigs },
+            gapAndCrapPlan: { earnings: "today", extendedGapUpInAtr: 8, resistance: [{ high: FSLYlevel, low: FSLYlevel }], defaultRiskLevel: 13.3, targets: stock1Target, planConfigs: fslyConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: fslyConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: fslyConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: fslyConfigs },
@@ -234,41 +235,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "14", partialCount: 2, atr: 0, rrr: 0, level: 14 },
                 { text: "13.5", partialCount: 2, atr: 0, rrr: 0, level: 13.5 },
             ],
-            gapAndGoPlan: { support: { high: FSLYlevel, low: FSLYlevel }, defaultRiskLevel: 12.5, targets: stock1Target, planConfigs: fslyConfigs },
+            gapAndGoPlan: { nearAboveConsolidationRange: "12.59", support: { high: FSLYlevel, low: FSLYlevel }, defaultRiskLevel: 12.5, targets: stock1Target, planConfigs: fslyConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: fslyConfigs },
             redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: fslyConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: fslyConfigs },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'OSCR',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 13.6 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: oscrlevel, low: oscrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.OSCR,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 0.9,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             momentumStartForLong: 0,
             momentumStartForShort: 0,
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: oscrConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -298,26 +299,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: oscrConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: oscrConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: oscrConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "14.5", partialCount: 1, atr: 0, rrr: 0, level: 14.5 },
+                { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            gapAndGoPlan: { nearAboveConsolidationRange: "14.37", support: { high: oscrlevel, low: oscrlevel }, defaultRiskLevel: 14, targets: stock2Target, planConfigs: oscrConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: oscrConfigs },
+            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: oscrConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: oscrConfigs },
         }
     },
     {
