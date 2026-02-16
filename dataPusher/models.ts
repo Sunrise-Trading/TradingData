@@ -134,15 +134,8 @@ export interface SingleDirectionPlans {
     gapDownAndGoUpPlan?: GapDownAndGoUpPlan,
     /* used strategies end */
 
-    profitTakingFade60Plan?: ProfitTakingFade60Plan,
-    openDriveContinuation60Plan?: OpenDriveContinuation60Plan,
-    retracement?: RetracementPlan,
-
-    breakoutAlgo?: BreakoutAlgo,
     levelBreakout?: LevelBreakoutPlan,
 
-    deferredBreakoutPlan?: DeferredBreakoutPlan,
-    redtoGreenPlan?: RedToGreenPlan,
     firstBreakoutPlan?: FirstBreakoutPlan,
     firstNewHighPlan?: FirstNewHighPlan,
     premarketPlan?: PremarketPlan,
@@ -164,21 +157,14 @@ export interface GapAndCrapAccelerationPlan extends BasePlan {
 }
 export interface keyLevels {
     otherLevels?: number[];
-    momentumStartForLong: number,
-    momentumStartForShort: number,
 };
 export enum PlanType {
     LevelMomentum = 'LevelMomentum',
-    ProfitTakingFade60 = 'ProfitTakingFade60',
-    OpenDriveContinuation60 = 'OpenDriveContinuation60',
     OpenChase = 'OpenChase',
     Retracement = 'Retracement',
     NewsBreakout = 'NewsBreakout',
-    RedToGreen = 'RedToGreen',
     FirstNewHigh = 'FirstNewHigh',
-    BreakoutAlgo = 'BreakoutAlgo',
     LevelBreakout = 'LevelBreakout',
-    DeferredBreakout = 'DeferredBreakout',
     VwapBounceFail = 'VwapBounceFail',
     VwapCrossSuccess = 'VwapCrossSuccess',
 };
@@ -210,10 +196,6 @@ export interface LevelMomentumPlan extends BasePlan {
     enableAutoTrigger: boolean,
 }
 export interface PremarketPlan extends BasePlan { }
-export interface ProfitTakingFade60Plan extends BasePlan {
-    enableAutoTrigger: boolean,
-    onlyIfOpenBelow: number,
-}
 export interface GapAndGoPlan extends BasePlan {
     /** the min support on daily chart, below it, we cannot long */
     support: LevelArea,
@@ -265,48 +247,24 @@ export interface GapDownAndGoUpPlan extends BasePlan {
     defaultRiskLevels: string[],
 
 }
-export interface OpenDriveContinuation60Plan extends BasePlan {
-    disableIfOpenWorseThanPrice: number,
-    requireOpenBetterThanVwap: boolean,
-}
-
 export interface AlgoPlan extends BasePlan {
     expirationInSeconds: number,
     allowPremarket: boolean,
-}
-export interface BreakoutAlgo extends AlgoPlan {
-    entryPrice: number,
-    useHighLowOfDay: boolean,
 }
 export interface ReversalPlan extends BasePlan {
     keyLevel: number,
     requireLevelTouch: boolean,
 }
-export interface RetracementPlan {
-    entryAreas: RetracementArea[];
-    lastDefense: number,
-    vwapArea?: RetracementArea,
-    openPriceArea?: RetracementArea,
-};
-export interface RetracementArea extends BasePlan {
-    priceArea: PriceArea,
-    stopPrice: number,
-}
 export interface LevelBreakoutPlan extends BasePlan {
     entryPrice: number,
 }
 export interface FirstRetracementPlan extends BasePlan { }
-export interface RedToGreenPlan extends BasePlan {
-    strictMode: boolean,
-    considerCurrentCandleAfterOneMinute: boolean,
-}
 export interface FirstBreakoutPlan extends BasePlan {
 
 }
 export interface FirstNewHighPlan extends BasePlan {
     enableAutoTrigger: boolean,
 }
-export interface DeferredBreakoutPlan extends BasePlan { }
 export interface ProfitTargets {
     targets: number[],
     /**

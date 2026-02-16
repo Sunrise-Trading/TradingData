@@ -186,8 +186,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -226,7 +225,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
@@ -237,7 +235,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
     },
@@ -266,8 +263,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -306,7 +302,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
@@ -317,7 +313,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock2Target, planConfigs: stock2Configs },
+
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         }
     },
@@ -346,8 +342,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+
         },
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -386,7 +381,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
         },
         long: {
@@ -397,7 +391,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock3Target, planConfigs: stock3Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
         }
     },
@@ -426,8 +419,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: {
-            momentumStartForLong: 0,
-            momentumStartForShort: 0,
+
         },
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         tradebooksConfig: {
@@ -466,7 +458,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
         },
         long: {
@@ -477,7 +468,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
-            redtoGreenPlan: { strictMode: true, considerCurrentCandleAfterOneMinute: true, targets: stock4Target, planConfigs: stock4Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock4Target, planConfigs: stock4Configs },
         }
     },
