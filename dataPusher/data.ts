@@ -232,7 +232,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: `pm high ${pltrpmhigh}`, partialCount: 1, atr: 0, rrr: 0, level: pltrpmhigh },
                 { text: "140", partialCount: 3, atr: 0, rrr: 0, level: 140 },
             ],
-            gapAndGoPlan: { support: { high: pltrlevel, low: pltrlevel }, defaultRiskLevels: ["pm high", "135.89", "135", "134.32"], targets: stock1Target, planConfigs: pltrConfigs },
+            gapAndGoPlan: { nearAboveConsolidationRange: "3 day range 135.89", support: { high: pltrlevel, low: pltrlevel }, defaultRiskLevels: ["pm high", "135.89", "135", "134.32"], targets: stock1Target, planConfigs: pltrConfigs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
         }
