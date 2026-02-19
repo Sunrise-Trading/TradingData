@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const pltrConfigs: TradingPlans.PlanConfigs = {
+const wmtConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1y_o2R6ICCipgh27ylDymYVu4utMXg_9xucB2ASbyKnY/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1ztcRXjyAI_2Hds48DqxQkTiTr70LCuMzfSADK79R9O8/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,44 +149,43 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'PLTR',
+    'WMT',
 ];
-const pltrlevel = 134.32;
-const pltrpmhigh = 137.42;
+const WMTlevel = 128.87;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'WMT',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 133 },
+            gap: { pdc: 126.62 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: pltrlevel, low: pltrlevel }],
+            singleMomentumKeyLevel: [{ high: WMTlevel, low: WMTlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.PLTR,
+        marketCapInMillions: Constants.marketCaps.WMT,
         atr: {
-            average: 8,
-            mutiplier: 1,
+            average: 3.29,
+            mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 5,
+            maxRisk: 4,
             maxQuantity: -1,
         },
         keyLevels: {
 
         },
-        defaultConfigs: pltrConfigs, defaultTargets: stock1Target,
+        defaultConfigs: wmtConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -216,25 +215,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "S4 125", partialCount: 2, atr: 0, rrr: 0, level: 125 },
+                { text: "S5 124", partialCount: 2, atr: 0, rrr: 0, level: 124 },
+            ],
+            reversalPlan: { defaultRiskLevels: ["130", "pm high"], keyLevel: WMTlevel, requireLevelTouch: false, targets: stock1Target, planConfigs: wmtConfigs },
+            levelMomentumPlan: { defaultRiskLevels: ["130", "pm high"], enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: pltrpmhigh,
-            finalTargets: [
-                { text: `pm high ${pltrpmhigh}`, partialCount: 1, atr: 0, rrr: 0, level: pltrpmhigh },
-                { text: "140", partialCount: 3, atr: 0, rrr: 0, level: 140 },
-            ],
-            gapAndGoPlan: { nearAboveConsolidationRange: "3 day range 135.89", support: { high: pltrlevel, low: pltrlevel }, defaultRiskLevels: ["pm high", "135.89", "135", "134.32"], targets: stock1Target, planConfigs: pltrConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: pltrConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: wmtConfigs },
         }
     },
     {
