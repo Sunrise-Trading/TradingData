@@ -167,6 +167,7 @@ export const marketCaps = {
     GTLB: 8000,
     GME: 11000,
     GOOGL: 2246000,
+    GRAL: 3000,
     GE: 210000,
     GM: 55000,
     GRAB: 19000,
