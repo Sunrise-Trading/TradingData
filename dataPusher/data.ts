@@ -266,7 +266,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [duolLevel]
         },
         defaultConfigs: duolConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -301,13 +301,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "85.15", partialCount: 2, atr: 0, rrr: 0, level: 0 },
-                { text: "80", partialCount: 2, atr: 0, rrr: 0, level: 0 },
+                { text: "85.15", partialCount: 2, atr: 0, rrr: 0, level: 85.15 },
+                { text: "80", partialCount: 2, atr: 0, rrr: 0, level: 80 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
             gapDownAndGoDownPlan: {
-                defaultRiskLevels: ["88.56", "93"],
-                targets: stock2Target, planConfigs: duolConfigs
+                defaultRiskLevels: ["88.56", "90", "93"],
+                targets: stock2Target, planConfigs: duolConfigs, buyersTrappedBelowThisLevel: 104,
             },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
         },
