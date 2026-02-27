@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const amdConfigs: TradingPlans.PlanConfigs = {
+const nvdaConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const amdConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const ionqConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1OfXTxgeVNJ0zgQ1N3azF3A6Uo_An_CxDdLBeBVS9tnU/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1IyxT14d-UROD4SBy5P7k7dNjt4VltBjl_THMsg4nP0k/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,52 +149,53 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'AMD',
+    'NVDA',
+    'IONQ'
 ];
-const AMDlevel = 227;
-const amdpmhigh = 227;
-const stock2Level = 1;
+const NVDAlevel = 196;
+const ionqLevel = 37.26;
+const ionqpmhigh = 39.66;
+const ionqrisks: string[] = ["37.93", "36.88", `${ionqLevel}`, `${ionqpmhigh}`];
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
+        symbol: 'NVDA',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 196 },
+            gap: { pdc: 195.56 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: AMDlevel, low: AMDlevel }],
+            singleMomentumKeyLevel: [{ high: NVDAlevel, low: NVDAlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMD,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 11,
+            average: 5.8,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 10,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [220.78, 219.65],
-
+            otherLevels: [NVDAlevel]
         },
-        defaultConfigs: amdConfigs, defaultTargets: stock1Target,
+        defaultConfigs: nvdaConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: { enabled: 1, },
                 longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
             },
             level_open_vwap: {
-                shortVwapBounceFail: { enabled: 1, waitForClose: true, },
+                shortVwapBounceFail: { waitForClose: true, },
                 longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
                 shortOpenFlush: {},
                 longVwapScalp: {},
@@ -220,59 +221,54 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "210", partialCount: 2, atr: 0, rrr: 0, level: 210 },
-                { text: "205", partialCount: 2, atr: 0, rrr: 0, level: 205 },
+                { text: "194", partialCount: 2, atr: 0, rrr: 0, level: 194 },
+                { text: "193", partialCount: 1, atr: 0, rrr: 0, level: 193 },
             ],
-            gapAndCrapPlan: {
-                targets: stock1Target, planConfigs: amdConfigs,
-                defaultRiskLevels: ["pm high", "220"], extendedGapUpInAtr: 1.9, topEdgeOfCurrentRange: 220, aboveThisLevelNoMoreShort: 227, belowThisLevelOnlyVwapContinuation: 210,
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
+            gapAndCrapPlan: { nearBelowPreviousEventKeyLevel: "196", defaultRiskLevels: ["203", "200"], targets: stock1Target, planConfigs: nvdaConfigs, aboveThisLevelNoMoreShort: 198, belowThisLevelOnlyVwapContinuation: 198 },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: amdpmhigh,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: `pm high ${amdpmhigh}`, partialCount: 2, atr: 0, rrr: 0, level: amdpmhigh },
-                { text: "230", partialCount: 2, atr: 0, rrr: 0, level: 230 },
+                { text: "199", partialCount: 2, atr: 0, rrr: 0, level: 199 },
+                { text: "200", partialCount: 2, atr: 0, rrr: 0, level: 200 },
             ],
-            gapAndGoPlan: {
-                targets: stock1Target, planConfigs: amdConfigs,
-                nearBelowConsolidationRangeTop: "220", defaultRiskLevels: ["213.5"], support: { high: 219.65, low: 219.65 },
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
+            reversalPlan: { defaultRiskLevels: ["190"], keyLevel: NVDAlevel, requireLevelTouch: false, targets: stock1Target, planConfigs: nvdaConfigs },
+            gapAndGoPlan: { nearAboveConsolidationRange: "196", defaultRiskLevels: ["190"], support: { high: 196, low: 196, }, targets: stock1Target, planConfigs: nvdaConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nvdaConfigs },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'IONQ',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 33.59 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: ionqLevel, low: ionqLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        vwapCorrection: { open: 0, volumeSum: 2678555, tradingSum: 102499211 },
+        marketCapInMillions: Constants.marketCaps.IONQ,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 3,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [38]
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: ionqConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -303,25 +299,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "37.26", partialCount: 1, atr: 0, rrr: 0, level: 37.26 },
+                { text: "37", partialCount: 2, atr: 0, rrr: 0, level: 37 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ionqConfigs },
+            gapAndCrapPlan: { earnings: "ah", extendedGapUpInAtr: 2.5, aboveThisLevelNoMoreShort: ionqpmhigh, belowThisLevelOnlyVwapContinuation: 38, defaultRiskLevels: ionqrisks, targets: stock2Target, planConfigs: ionqConfigs, },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ionqConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: ionqpmhigh,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `pm high ${ionqpmhigh}`, partialCount: 2, atr: 0, rrr: 0, level: ionqpmhigh },
+                { text: "42", partialCount: 1, atr: 0, rrr: 0, level: 42 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ionqConfigs },
+            gapAndGoPlan: { support: { high: ionqLevel, low: ionqLevel }, nearAboveConsolidationRange: "37.5", defaultRiskLevels: ionqrisks, targets: stock2Target, planConfigs: ionqConfigs, },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: ionqConfigs },
         }
     },
     {
