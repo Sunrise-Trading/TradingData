@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const stock1Configs: TradingPlans.PlanConfigs = {
+const oxyConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const xomconfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -149,46 +149,47 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'OXY', 'XOM'
 ];
-const stock1Level = 1;
-const stock2Level = 1;
+const OXYlevel = 58.46;
+const oxypmhigh = 57.41;
+const oxypmlow = 55.68;
+const xomlevel = 169.88;
+const xompmhigh = 165.51;
+const xompmlow = 157.57;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'OXY',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 1,
+            gap: { pdc: 53.08 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: OXYlevel, low: OXYlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.OXY,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 1.68,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 2,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [OXYlevel, oxypmhigh],
         },
-        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
+        defaultConfigs: oxyConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -219,53 +220,62 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: oxypmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `pm low ${oxypmlow}`, partialCount: 2, atr: 0, rrr: 0, level: oxypmlow },
+                { text: "R6 54.58", partialCount: 2, atr: 0, rrr: 0, level: 54.58 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            gapAndCrapPlan: {
+                aboveThisLevelNoMoreShort: oxypmhigh, belowThisLevelOnlyVwapContinuation: 53,
+                extendedGapUpInAtr: 2, defaultRiskLevels: [`${OXYlevel}`, `${oxypmhigh}`, `${oxypmlow}`, "54.58"], targets: stock1Target, planConfigs: oxyConfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "56", partialCount: 1, atr: 0, rrr: 0, level: 56 },
+                { text: "57", partialCount: 1, atr: 0, rrr: 0, level: 57 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            gapAndGoPlan: {
+                nearAboveConsolidationRange: "53.5", support: { high: 53.5, low: 53.5 },
+                defaultRiskLevels: ["53.5"], targets: stock1Target, planConfigs: oxyConfigs
+            },
+            reversalPlan: { keyLevel: oxypmlow, requireLevelTouch: false, targets: stock1Target, planConfigs: oxyConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'XOM',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 2, gap: { pdc: 152.5 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: xomlevel, low: xomlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.XOM,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3.66,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [xomlevel, xompmhigh],
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: xomconfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -296,25 +306,34 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: xompmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `pm low ${xompmlow}`, partialCount: 2, atr: 0, rrr: 0, level: xompmlow },
+                { text: "155", partialCount: 2, atr: 0, rrr: 0, level: 155 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
+            gapAndCrapPlan: {
+                aboveThisLevelNoMoreShort: xompmhigh, belowThisLevelOnlyVwapContinuation: 157,
+                extendedGapUpInAtr: 2.5, defaultRiskLevels: [`${xomlevel}`, `${xompmhigh}`, `${xompmlow}`],
+                targets: stock2Target, planConfigs: xomconfigs
+            },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "160", partialCount: 2, atr: 0, rrr: 0, level: 160 },
+                { text: "165", partialCount: 2, atr: 0, rrr: 0, level: 165 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            gapAndGoPlan: {
+                nearAboveConsolidationRange: "157", support: { high: 153, low: 153 },
+                defaultRiskLevels: ["157"],
+                targets: stock2Target, planConfigs: xomconfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
+            reversalPlan: { keyLevel: xompmlow, requireLevelTouch: false, targets: stock2Target, planConfigs: xomconfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
         }
     },
     {
