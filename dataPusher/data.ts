@@ -19,7 +19,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const duolConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1TBR-SqB33iqx5Ztw2DfHDkyC8KSGPP_EnNjLFw7YNzA/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1NqCQmgh7WcT24kv3VRrhiMUxDNruvlZ7f04DabPEaDg/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,42 +149,44 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'XYZ', 'DUOL'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const XYZlevel = 69.52;
-const xyzpmhigh = 68;
-const duolLevel = 88.56;
+const stock1Level = 1;
+const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'XYZ',
+        symbol: 'stock1',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 54 },
+            dailyChartStory: -1,
+            gap: { pdc: 0 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: XYZlevel, low: XYZlevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.XYZ,
+        marketCapInMillions: 0,
         atr: {
-            average: 2.58,
-            mutiplier: 2,
-            minimumMultipler: 1,
-            maxRisk: 4,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [61.5]
+
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -217,21 +219,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "63", partialCount: 2, atr: 0, rrr: 0, level: 63 },
-                { text: "60", partialCount: 2, atr: 0, rrr: 0, level: 60 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                defaultRiskLevels: [`${XYZlevel}`, "pm high", "66.22"],
-                aboveThisLevelNoMoreShort: XYZlevel, belowThisLevelOnlyVwapContinuation: 62,
-                earnings: "ah", extendedGapUpInAtr: 5, heavySupplyZoneDays: 15, targets: stock1Target, planConfigs: stock1Configs
-            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -242,33 +239,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'DUOL',
+        symbol: 'stock2',
         analysis: {
-            dailyChartStory: 1, gap: { pdc: 117 },
+            dailyChartStory: -1, gap: { pdc: 0 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: duolLevel, low: duolLevel }],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DUOL,
+        marketCapInMillions: 0,
         atr: {
-            average: 7.23,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [duolLevel]
+
         },
-        defaultConfigs: duolConfigs, defaultTargets: stock2Target,
+        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -299,28 +296,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "85.15", partialCount: 2, atr: 0, rrr: 0, level: 85.15 },
-                { text: "80", partialCount: 2, atr: 0, rrr: 0, level: 80 },
-            ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
-            gapDownAndGoDownPlan: {
-                defaultRiskLevels: ["88.56", "90", "93"],
-                targets: stock2Target, planConfigs: duolConfigs, buyersTrappedBelowThisLevel: 104,
-            },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
-        },
-        long: {
-            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
 
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: duolConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         }
     },
     {
