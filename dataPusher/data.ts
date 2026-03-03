@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const oxyConfigs: TradingPlans.PlanConfigs = {
+const bbyConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const oxyConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const xomconfigs: TradingPlans.PlanConfigs = {
+const batlConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1NqCQmgh7WcT24kv3VRrhiMUxDNruvlZ7f04DabPEaDg/edit?tab=t.0#heading=h.3ta3qw9hoewr";
+export const googleDocLink = "https://docs.google.com/document/d/171P8s-5falVqEpWIr36y3l64_s5dIIQIiSFoZf588Og/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,47 +149,48 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'OXY', 'XOM'
+    'BATL',
+    // 'BBY',
 ];
-const OXYlevel = 58.46;
-const oxypmhigh = 57.41;
-const oxypmlow = 55.68;
-const xomlevel = 169.88;
-const xompmhigh = 165.51;
-const xompmlow = 157.57;
+const BBYlevel = 71.02;
+const batlath = 23.33;
+const batlpmhigh = 35;
+const batlyhigh = 13.61;
+const batlpmlow = 17;
+const BATLlevel = batlath;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'OXY',
+        symbol: 'BBY',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 53.08 },
+            gap: { pdc: 61.59 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: OXYlevel, low: OXYlevel }],
+            singleMomentumKeyLevel: [{ high: BBYlevel, low: BBYlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.OXY,
+        marketCapInMillions: Constants.marketCaps.BBY,
         atr: {
-            average: 1.68,
+            average: 2.31,
             mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 2,
+            maxRisk: 3,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [OXYlevel, oxypmhigh],
+            otherLevels: [64.23],
         },
-        defaultConfigs: oxyConfigs, defaultTargets: stock1Target,
+        defaultConfigs: bbyConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -220,62 +221,57 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: oxypmlow,
-            finalTargets: [
-                { text: `pm low ${oxypmlow}`, partialCount: 2, atr: 0, rrr: 0, level: oxypmlow },
-                { text: "R6 54.58", partialCount: 2, atr: 0, rrr: 0, level: 54.58 },
-            ],
-            gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: oxypmhigh, belowThisLevelOnlyVwapContinuation: 53,
-                extendedGapUpInAtr: 2, defaultRiskLevels: [`${OXYlevel}`, `${oxypmhigh}`, `${oxypmlow}`, "54.58"], targets: stock1Target, planConfigs: oxyConfigs
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
-        },
-        long: {
-            enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "56", partialCount: 1, atr: 0, rrr: 0, level: 56 },
-                { text: "57", partialCount: 1, atr: 0, rrr: 0, level: 57 },
+                { text: "64.5", partialCount: 2, atr: 0, rrr: 0, level: 64.5 },
+                { text: "R6 63.57", partialCount: 2, atr: 0, rrr: 0, level: 63.57 },
             ],
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "53.5", support: { high: 53.5, low: 53.5 },
-                defaultRiskLevels: ["53.5"], targets: stock1Target, planConfigs: oxyConfigs
+            gapAndCrapPlan: {
+                defaultRiskLevels: [`${BBYlevel}`], belowThisLevelOnlyVwapContinuation: 60,
+                extendedGapUpInAtr: 2, aboveThisLevelNoMoreShort: BBYlevel, targets: stock1Target, planConfigs: bbyConfigs
             },
-            reversalPlan: { keyLevel: oxypmlow, requireLevelTouch: false, targets: stock1Target, planConfigs: oxyConfigs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: oxyConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbyConfigs },
+        },
+        long: {
+            enabled: false,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: bbyConfigs },
         }
     },
     {
-        symbol: 'XOM',
+        symbol: 'BATL',
         analysis: {
-            dailyChartStory: 2, gap: { pdc: 152.5 },
+            dailyChartStory: 2, gap: { pdc: batlyhigh },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: xomlevel, low: xomlevel }],
+            singleMomentumKeyLevel: [{ high: BATLlevel, low: BATLlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.XOM,
+        marketCapInMillions: 2000,
         atr: {
-            average: 3.66,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
-            maxRisk: 5,
+            average: 3,
+            mutiplier: 3,
+            minimumMultipler: 3,
+            maxRisk: 10,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [xomlevel, xompmhigh],
+            otherLevels: [batlath, batlyhigh],
         },
-        defaultConfigs: xomconfigs, defaultTargets: stock2Target,
+        defaultConfigs: batlConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -306,34 +302,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: xompmlow,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: `pm low ${xompmlow}`, partialCount: 2, atr: 0, rrr: 0, level: xompmlow },
-                { text: "155", partialCount: 2, atr: 0, rrr: 0, level: 155 },
+                { text: `${batlath}`, partialCount: 2, atr: 0, rrr: 0, level: batlath },
+                { text: "vwap 30", partialCount: 2, atr: 0, rrr: 0, level: 30 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: batlConfigs },
             gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: xompmhigh, belowThisLevelOnlyVwapContinuation: 157,
-                extendedGapUpInAtr: 2.5, defaultRiskLevels: [`${xomlevel}`, `${xompmhigh}`, `${xompmlow}`],
-                targets: stock2Target, planConfigs: xomconfigs
+                defaultRiskLevels: [`${batlpmhigh}`, "30", `${batlyhigh}`, `${batlath}`, `${batlpmlow}`], belowThisLevelOnlyVwapContinuation: 20,
+                extendedGapUpInAtr: 3, aboveThisLevelNoMoreShort: batlpmhigh, targets: stock2Target, planConfigs: batlConfigs
             },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: batlConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: batlpmhigh,
             finalTargets: [
-                { text: "160", partialCount: 2, atr: 0, rrr: 0, level: 160 },
-                { text: "165", partialCount: 2, atr: 0, rrr: 0, level: 165 },
+                { text: `${batlpmhigh}`, partialCount: 3, atr: 0, rrr: 0, level: batlpmhigh },
+                { text: "29.8", partialCount: 3, atr: 0, rrr: 0, level: 29.8 },
             ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: batlConfigs },
             gapAndGoPlan: {
-                nearAboveConsolidationRange: "157", support: { high: 153, low: 153 },
-                defaultRiskLevels: ["157"],
-                targets: stock2Target, planConfigs: xomconfigs
+                support: { high: batlath, low: batlath },
+                defaultRiskLevels: [`${batlpmhigh}`, `${batlyhigh}`, `${batlath}`, `${batlpmlow}`], allTimeHigh: batlath, targets: stock2Target, planConfigs: batlConfigs
             },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
-            reversalPlan: { keyLevel: xompmlow, requireLevelTouch: false, targets: stock2Target, planConfigs: xomconfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: xomconfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: batlConfigs },
         }
     },
     {
