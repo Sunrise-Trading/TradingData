@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const mrvlConfigs: TradingPlans.PlanConfigs = {
+const himsConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1h1zMURqV4DXLIniRBB07Y5lE9EFSHI8BG-fFRjOza2Y/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/13ZS493Eo9exkqpNmSdzfpXbj4qYnSsQgwTiMfskuA_U/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,43 +149,44 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'MRVL',
+    'HIMS',
 ];
-const MRVLlevel = 87.71;
+const himspmhigh = 24.63;
+const HIMSlevel = 22.4;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MRVL',
+        symbol: 'HIMS',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 75.68 },
+            dailyChartStory: 2,
+            gap: { pdc: 15.74 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: MRVLlevel, low: MRVLlevel }],
+            singleMomentumKeyLevel: [{ high: HIMSlevel, low: HIMSlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MRVL,
+        marketCapInMillions: Constants.marketCaps.HIMS,
         atr: {
-            average: 3.5,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 4,
+            average: 1.6,
+            mutiplier: 2,
+            minimumMultipler: 2,
+            maxRisk: 0,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [MRVLlevel]
+            otherLevels: [HIMSlevel]
         },
-        defaultConfigs: mrvlConfigs, defaultTargets: stock1Target,
+        defaultConfigs: himsConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -218,27 +219,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "R6", partialCount: 3, atr: 0, rrr: 0, level: 81.2 },
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 80.26 },
+                { text: "20", partialCount: 2, atr: 0, rrr: 0, level: 20 },
+                { text: "19", partialCount: 2, atr: 0, rrr: 0, level: 19 },
             ],
             gapAndCrapPlan: {
-                earnings: "ah", heavySupplyZoneDays: 30,
-                defaultRiskLevels: [`${MRVLlevel}`, "pm high", "85.43"],
-                aboveThisLevelNoMoreShort: 90, belowThisLevelOnlyVwapContinuation: 70,
-                targets: stock1Target, planConfigs: mrvlConfigs
+                aboveThisLevelNoMoreShort: 24.63, belowThisLevelOnlyVwapContinuation: 20.8,
+                defaultRiskLevels: ["pm high", `${HIMSlevel}`],
+                extendedGapUpInAtr: 5, targets: stock1Target, planConfigs: himsConfigs
             },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mrvlConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mrvlConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: himspmhigh,
             finalTargets: [
-                { text: "R6", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "R5", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `pm high ${himspmhigh}`, partialCount: 3, atr: 0, rrr: 0, level: himspmhigh },
+                { text: "25", partialCount: 1, atr: 0, rrr: 0, level: 25 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mrvlConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: mrvlConfigs },
+            gapAndGoPlan: {
+                nearAboveConsolidationRange: "20-13",
+                defaultRiskLevels: ["pm high", `${HIMSlevel}`],
+                support: { high: HIMSlevel, low: HIMSlevel },
+                targets: stock1Target, planConfigs: himsConfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
         }
     },
     {
