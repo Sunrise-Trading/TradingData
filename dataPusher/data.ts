@@ -19,7 +19,7 @@ const himsConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const nioConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/13ZS493Eo9exkqpNmSdzfpXbj4qYnSsQgwTiMfskuA_U/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1Q7kRoyL7dGckduz8hsLUPd8704vxnAJ7eX7Gvg8bNhQ/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -150,10 +150,14 @@ export const getGoogleDocId = () => {
 }
 export const stockSelections: string[] = [
     'HIMS',
+    'NIO'
 ];
-const himspmhigh = 24.63;
+
+const himsyhigh = 23.51;
 const HIMSlevel = 22.4;
-const stock2Level = 1;
+const nioR6 = 5.2;
+const niopmhigh = 5.34;
+const nioLevel = nioR6;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -162,7 +166,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'HIMS',
         analysis: {
             dailyChartStory: 2,
-            gap: { pdc: 15.74 },
+            gap: { pdc: 22.6 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
@@ -177,9 +181,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.HIMS,
         atr: {
-            average: 1.6,
-            mutiplier: 2,
-            minimumMultipler: 2,
+            average: 2,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
             maxRisk: 0,
             maxQuantity: -1,
         },
@@ -211,36 +215,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             open_vwap_level: {
-                longVwapContinuation: {},
+                longVwapContinuation: { enabled: 1, },
                 shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "20", partialCount: 2, atr: 0, rrr: 0, level: 20 },
                 { text: "19", partialCount: 2, atr: 0, rrr: 0, level: 19 },
             ],
-            gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: 24.63, belowThisLevelOnlyVwapContinuation: 20.8,
-                defaultRiskLevels: ["pm high", `${HIMSlevel}`],
-                extendedGapUpInAtr: 5, targets: stock1Target, planConfigs: himsConfigs
-            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: himspmhigh,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: `pm high ${himspmhigh}`, partialCount: 3, atr: 0, rrr: 0, level: himspmhigh },
-                { text: "25", partialCount: 1, atr: 0, rrr: 0, level: 25 },
+                { text: `24.5`, partialCount: 3, atr: 0, rrr: 0, level: 24.5 },
+                { text: "25", partialCount: 3, atr: 0, rrr: 0, level: 25 },
             ],
             gapAndGoPlan: {
-                nearAboveConsolidationRange: "20-13",
-                defaultRiskLevels: ["pm high", `${HIMSlevel}`],
-                support: { high: HIMSlevel, low: HIMSlevel },
+                nearAboveConsolidationRange: "21-23.51",
+                defaultRiskLevels: ["pm high", `${himsyhigh}`, `${HIMSlevel}`],
+                support: { high: himsyhigh, low: himsyhigh },
                 targets: stock1Target, planConfigs: himsConfigs
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: himsConfigs },
@@ -248,33 +247,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'NIO',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 4.94 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
-            usePremarketKeyLevel: 0,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
+            usePremarketKeyLevel: 1,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: nioLevel, low: nioLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.NIO,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 0.23,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 0.5,
             maxQuantity: -1,
         },
         keyLevels: {
 
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: nioConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -304,26 +303,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: nioConfigs },
 
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: nioConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: niopmhigh,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: `NIO PM High: ${niopmhigh}`, partialCount: 3, atr: 0, rrr: 0, level: niopmhigh },
+                { text: "5.5", partialCount: 1, atr: 0, rrr: 0, level: 5.5 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: nioConfigs },
+            gapAndGoPlan: {
+                support: { high: nioR6, low: nioR6 },
+                defaultRiskLevels: ["pm high", `${nioR6}`],
+                nearAboveConsolidationRange: "4.9-5.2", targets: stock2Target, planConfigs: nioConfigs
+            },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: nioConfigs },
         }
     },
     {
