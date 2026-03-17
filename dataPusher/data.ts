@@ -29,7 +29,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
+const muConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1Y1DKU5nbEX-UMcjD_N5o8OZaWrtVdw7LOHXujnvPEMk/edit?tab=t.0#heading=h.3ta3qw9hoewr";
+export const googleDocLink = "https://docs.google.com/document/d/1ZEPce2307vJqpBHOPIlpvMmLJ2VNm2KYS7j_lYw4UyY/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,16 +149,18 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
+    "MU",
     'NBIS',
     //  'CRWV',
 ];
-const nbisath = 141.1;
-const nbisR6 = 120.02;
-const nbispmhigh = 133;
-const NBISlevel = nbispmhigh;
-const nbisrisk: string[] = [`${nbisath}`, `${nbispmhigh}`, `${nbisR6}`];
+const nbisgapfill = 116.56;
+const nbispmlow = 119.6;
+const NBISlevel = nbispmlow;
+const nbisrisk: string[] = [`${nbisgapfill}`, `pm low`];
 const stock2Level = 1;
-const stock3Level = 1;
+const muath = 455.5;
+const muathall = 457.46;
+const mulevel = muath;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -166,7 +168,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'NBIS',
         analysis: {
             dailyChartStory: 2,
-            gap: { pdc: 112.95 },
+            gap: { pdc: 129.85 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
@@ -181,14 +183,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.NBIS,
         atr: {
-            average: 8.34,
+            average: 9,
             mutiplier: 1,
             minimumMultipler: 1,
             maxRisk: 8,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [nbisath, nbispmhigh, nbisR6]
+            otherLevels: [nbisgapfill]
         },
         defaultConfigs: nbisConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -220,18 +222,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "122", partialCount: 1, atr: 0, rrr: 0, level: 122 },
-                { text: "R6", partialCount: 3, atr: 0, rrr: 0, level: nbisR6 },
+                { text: "R6", partialCount: 3, atr: 0, rrr: 0, level: 111 },
             ],
-            gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: nbispmhigh,
-                defaultRiskLevels: nbisrisk,
-                extendedGapUpInAtr: 1.5,
-                belowThisLevelOnlyVwapContinuation: 120, targets: stock1Target, planConfigs: nbisConfigs
-            },
+
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nbisConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nbisConfigs },
         },
@@ -243,9 +240,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "138", partialCount: 2, atr: 0, rrr: 0, level: 138 },
                 { text: "140", partialCount: 2, atr: 0, rrr: 0, level: 140 },
             ],
-            gapAndGoPlan: {
-                defaultRiskLevels: nbisrisk, nearAboveConsolidationRange: "80-130",
-                support: { high: nbispmhigh, low: nbispmhigh }, targets: stock1Target, planConfigs: nbisConfigs
+            gapDownAndGoUpPlan: {
+                defaultRiskLevels: nbisrisk, targets: stock1Target, planConfigs: nbisConfigs,
+                nearAboveSupport: { high: nbisgapfill, low: nbisgapfill },
+                support: [{ high: nbisgapfill, low: nbisgapfill }],
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nbisConfigs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: nbisConfigs },
@@ -331,33 +329,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         }
     },
     {
-        symbol: 'stock3',
+        symbol: 'MU',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 2, gap: { pdc: 442 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 25,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 20,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [muath, muathall]
         },
-        defaultConfigs: stock3Configs, defaultTargets: stock3Target,
+        defaultConfigs: muConfigs, defaultTargets: stock3Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -387,24 +385,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: muConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: muConfigs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "R6", partialCount: 1, atr: 0, rrr: 0, level: 460 },
+                { text: "swing potential", partialCount: 3, atr: 0, rrr: 0, level: 500 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: stock3Configs },
+            gapAndGoPlan: {
+                support: { high: muath, low: muath },
+                defaultRiskLevels: ["454.86", "446.46"],
+                allTimeHigh: muath,
+                nearAboveConsolidationRange: "350-450", targets: stock3Target, planConfigs: muConfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: muConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock3Target, planConfigs: muConfigs },
         }
     },
     {
