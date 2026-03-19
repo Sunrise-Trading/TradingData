@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const stock1Configs: TradingPlans.PlanConfigs = {
+const rivinConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const stock1Configs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const muConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1SBFSykapAtYkKWFFCGtR3le3zdHNVQQR6BB7NBA3oRs/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1G1dYPfPbH2gdJs5hMq_qg4wlQwkNdCpXTUtI-gWb7E4/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,46 +149,46 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'M',
+    'RIVN', "MU",
 ];
-const mpmhigh = 18.56;
-const mR6 = 17.79;
-const mR5 = 17.59;
-const mlevel = mpmhigh;
-const stock2Level = 1;
+const rivnDaily = 17.56;
+const rivinR6 = 16.12;
+const rivnlevel = 17.56;
+const munewsLevel = 434.18;
+const mulevel = munewsLevel;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'M',
+        symbol: 'RIVN',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 16.92 },
+            gap: { pdc: 15.53 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 1,
+            usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mlevel, low: mlevel }],
+            singleMomentumKeyLevel: [{ high: rivnlevel, low: rivnlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.M,
+        marketCapInMillions: Constants.marketCaps.RIVN,
         atr: {
-            average: 0.8,
+            average: 0.89,
             mutiplier: 1,
             minimumMultipler: 1,
             maxRisk: 1,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [mR6]
+            otherLevels: [rivnDaily, rivinR6]
         },
-        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
+        defaultConfigs: rivinConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -221,17 +221,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: `${mR6}`, partialCount: 2, atr: 0, rrr: 0, level: mR6 },
-                { text: `${mR5}`, partialCount: 2, atr: 0, rrr: 0, level: mR5 },
+                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: rivinR6 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 16.04 },
             ],
             gapAndCrapPlan: {
-                defaultRiskLevels: ["19", "pm high", `${mR6}`],
-                belowThisLevelOnlyVwapContinuation: 17,
-                earnings: "pm", extendedGapUpInAtr: 1.2,
-                aboveThisLevelNoMoreShort: mpmhigh, targets: stock1Target, planConfigs: stock1Configs
+                extendedGapUpInAtr: 1.75,
+                defaultRiskLevels: [`${rivnDaily}`, "pm high"],
+                aboveThisLevelNoMoreShort: 17.4, belowThisLevelOnlyVwapContinuation: 16.78,
+                targets: stock1Target, planConfigs: rivinConfigs
             },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: rivinConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: rivinConfigs },
         },
         long: {
             enabled: false,
@@ -240,38 +240,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: rivinConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: rivinConfigs },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'MU',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 461 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 25,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 20,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [munewsLevel]
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: muConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -302,25 +302,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "430", partialCount: 1, atr: 0, rrr: 0, level: 430 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 427.50 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: muConfigs },
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: 437.75,
+                targets: stock2Target, planConfigs: muConfigs,
+                defaultRiskLevels: ["450", `442`],
+            },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: muConfigs },
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: muConfigs },
 
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: muConfigs },
         }
     },
     {
