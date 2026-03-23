@@ -35,6 +35,8 @@ export interface Analysis {
     dualMomentumKeyLevels: number[],
     watchAreas: number[],
     noTradeZones: LevelArea[],
+    /** Default risk level labels for chooseRiskLevel (moved from BasePlan). */
+    defaultRiskLevels: string[],
 }
 export interface ZoneNearEdge {
     zoneIsFar: boolean,
@@ -133,7 +135,6 @@ export interface SingleDirectionPlans {
     gapGiveAndGoPlan?: GapGiveAndGoPlan,
     gapDownAndGoDownPlan?: GapDownAndGoDownPlan,
     gapDownAndGoUpPlan?: GapDownAndGoUpPlan,
-    bookmapBigWallBreakoutPlan?: BookmapBigWallBreakoutPlan,
     bookmapBigWallBreakdownFailLongPlan?: BookmapBigWallBreakdownFailLongPlan,
     camExtremeMomentumPlan?: CamExtremeMomentumPlan,
     /* used strategies end */
@@ -157,7 +158,6 @@ export interface AllTimeHighVwapContinuationPlan extends BasePlan {
 }
 export interface GapAndCrapAccelerationPlan extends BasePlan {
     accelerationLevel: number,
-    defaultRiskLevels: string[],
 }
 export interface keyLevels {
     otherLevels?: number[];
@@ -178,7 +178,6 @@ export interface BasePlan {
     planType?: PlanType,
     timeframe?: number,
     entryMethod?: string,
-    defaultRiskLevels?: string[],
 };
 export interface PlanConfigs {
     size: number,
@@ -212,7 +211,6 @@ export interface GapGiveAndGoPlan extends BasePlan {
     previousInsideDay?: number,
     /** price of all time high */
     allTimeHigh?: number,
-    defaultRiskLevels: string[],
 }
 export interface GapAndGoPlan extends BasePlan {
     /** the min support on daily chart, below it, we cannot long */
@@ -229,7 +227,6 @@ export interface GapAndGoPlan extends BasePlan {
     previousInsideDay?: number,
     /** price of all time high */
     allTimeHigh?: number,
-    defaultRiskLevels: string[],
 }
 export interface GapAndCrapPlan extends BasePlan {
     /** the max resistance on daily chart, above it, we cannot short. -1: no limit when it's not based on resistance, but more due to extended rally */
@@ -247,7 +244,6 @@ export interface GapAndCrapPlan extends BasePlan {
     topEdgeOfCurrentRange?: number,
     /** description of the previous event */
     nearBelowPreviousEventKeyLevel?: string
-    defaultRiskLevels: string[],
 }
 export interface GapDownAndGoDownPlan extends BasePlan {
     nearBelowConsolidationRange?: LevelArea,
@@ -255,26 +251,18 @@ export interface GapDownAndGoDownPlan extends BasePlan {
     buyersTrappedBelowThisLevel?: number,
     /** the low of last 2 days */
     previousInsideDay?: number,
-    defaultRiskLevels: string[],
 
 }
 export interface GapDownAndGoUpPlan extends BasePlan {
     support: LevelArea[],
     nearAboveSupport?: LevelArea,
     nearAboveKeyEventLevel?: number,
-    defaultRiskLevels: string[],
 
-}
-export interface BookmapBigWallBreakoutPlan extends BasePlan {
-    bigWallLevel: number,
-    defaultRiskLevels: string[],
 }
 export interface BookmapBigWallBreakdownFailLongPlan extends BasePlan {
     bigWallLevel: number,
-    defaultRiskLevels: string[],
 }
 export interface CamExtremeMomentumPlan extends BasePlan {
-    defaultRiskLevels: string[],
 }
 export interface AlgoPlan extends BasePlan {
     expirationInSeconds: number,
