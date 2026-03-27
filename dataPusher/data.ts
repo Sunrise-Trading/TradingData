@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const amdConfigs: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1AYoy3anOEZh9eNEn89Vua67ocpDKs10oayINK4iXilQ/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1nkWN_clmvN91hEQ6Ibt1MUQhIRPSby52RsgDgqCPJkc/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,45 +149,47 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'AMD',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const amdpmhigh = 211.5;
-const AMDlevel = 209.11;
+const stock1Level = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
+        symbol: 'stock1',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 205 },
+            dailyChartStory: -1,
+            gap: { pdc: 0 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: AMDlevel, low: AMDlevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["pm high", `${AMDlevel}`, `206.55`],
+            defaultRiskLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMD,
+        marketCapInMillions: 0,
         atr: {
-            average: 8.9,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [AMDlevel]
+
         },
-        defaultConfigs: amdConfigs, defaultTargets: stock1Target,
+        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -217,29 +219,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: amdpmhigh,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: amdpmhigh },
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: 212.3 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "209.11",
-                support: { high: AMDlevel, low: AMDlevel },
-                targets: stock1Target, planConfigs: amdConfigs,
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: amdConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
     },
     {
