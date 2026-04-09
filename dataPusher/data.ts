@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const intcConfigs: TradingPlans.PlanConfigs = {
+const spyConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const intcConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const stock2Configs: TradingPlans.PlanConfigs = {
+const dalConfigs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1FKqlIrdrVidMRUV8TGiVulQ161uXOFoI5wScwt2oh8E/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1IHboS1OA0SUNnR8wZM_nCoYqiGrlwiXuMo5eJ7gq4hw/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,46 +149,46 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'INTC',
+    'SPY', 'DAL'
 ];
-const intchourly = 51.9;
-const intcdaily = 51.49;
-const INTClevel = intcdaily;
-const stock2Level = 1;
+const spyahhigh = 675.15;
+const spypmhigh = 678.15;
+const spylevel = spypmhigh;
+const DALlevel = 74.82;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'SPY',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 50.39 },
+            dailyChartStory: 2,
+            gap: { pdc: 659 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
+            usePremarketKeyLevel: 1,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: INTClevel, low: INTClevel }],
+            singleMomentumKeyLevel: [{ high: spylevel, low: spylevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [`${intchourly}`, "pm high", "50.81", "50.49"],
+            defaultRiskLevels: ["pm high", "680", "684"],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: 10000,
         atr: {
-            average: 2.87,
+            average: 10,
             mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 2,
+            minimumMultipler: 0.5,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [INTClevel]
+            otherLevels: [spyahhigh]
         },
-        defaultConfigs: intcConfigs, defaultTargets: stock1Target,
+        defaultConfigs: spyConfigs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -218,59 +218,60 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            enabled: true,
+            firstTargetToAdd: 674.68,
+            finalTargets: [
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 674.68 },
+                { text: "ah high", partialCount: 2, atr: 0, rrr: 0, level: spyahhigh },
+            ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 1.5, aboveThisLevelNoMoreShort: spypmhigh,
+                heavySupplyZoneDays: 100, belowThisLevelOnlyVwapContinuation: 675,
+                targets: stock1Target, planConfigs: spyConfigs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: spyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: spyConfigs },
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: intchourly,
-            finalTargets: [
-                { text: `hourly (${intchourly})`, partialCount: 3, atr: 0, rrr: 0, level: intchourly },
-                { text: "gap fill 53.08", partialCount: 3, atr: 0, rrr: 0, level: 53.08 },
-            ],
-            gapAndGoPlan: {
-                support: { high: intcdaily, low: intcdaily }, targets: stock1Target, planConfigs: intcConfigs,
-                nearAboveConsolidationRange: "51.49",
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: intcConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: spyConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: spyConfigs },
         }
     },
     {
-        symbol: 'stock2',
+        symbol: 'DAL',
         analysis: {
-            dailyChartStory: -1, gap: { pdc: 0 },
+            dailyChartStory: 1, gap: { pdc: 65.62 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
-            usePremarketKeyLevel: 0,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
+            usePremarketKeyLevel: 1,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: DALlevel, low: DALlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
+            defaultRiskLevels: ["pm high", "76.39"],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.DAL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.65,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 2,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [72.4]
         },
-        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
+        defaultConfigs: dalConfigs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -301,25 +302,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "73", partialCount: 2, atr: 0, rrr: 0, level: 73 },
+                { text: "72", partialCount: 2, atr: 0, rrr: 0, level: 72 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 3, aboveThisLevelNoMoreShort: DALlevel,
+                belowThisLevelOnlyVwapContinuation: 72,
+                targets: stock2Target, planConfigs: dalConfigs
+            },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
 
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: dalConfigs },
         }
     },
     {
