@@ -9,7 +9,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 }
 
 export const defaultSize = 0.21; // 0.21
-const sndkConfigs: TradingPlans.PlanConfigs = {
+const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -19,7 +19,7 @@ const sndkConfigs: TradingPlans.PlanConfigs = {
     setupQuality: TradingPlans.SetupQuality.Scalp,
     sizingCount: 10,
 };
-const mrvlConfigs: TradingPlans.PlanConfigs = {
+const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     deferTradingInSeconds: 0,
     stopTradingAfterSeconds: 0,
@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1GVuVswT6zWSlIC84y4AdvcLq-RroeJ1UBH-sIalHTeE/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1T0tyeKc_yMH9pwMf1rAuO6Jj6FaiQ5kEFlHQbsjYxS4/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,46 +149,49 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'SNDK',
-    //'MRVL',
+    'OGN',
+    'TSM',
 ];
-const SNDKlevel = 807.99;
-const mrvlR6 = 120.18
-const MRVLlevel = mrvlR6;
+const tsmdaily = 374.3;
+const tsmr6 = 373.63;
+const tsmr5 = 371.64;
+const tsmlevel = tsmdaily;
+const ogndaily = 8.24;
+const OGNlevel = ogndaily;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SNDK',
+        symbol: 'TSM',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 780 },
+            dailyChartStory: 1,
+            gap: { pdc: 365 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: SNDKlevel, low: SNDKlevel }],
+            singleMomentumKeyLevel: [{ high: tsmlevel, low: tsmlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["807.99", "794.59", "790.03"],
+            defaultRiskLevels: [`${tsmdaily}`, `${tsmr5}`, "pm high"],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SNDK,
+        marketCapInMillions: Constants.marketCaps.TSM,
         atr: {
-            average: 59,
+            average: 13.24,
             mutiplier: 1,
             minimumMultipler: 0.5,
-            maxRisk: 40,
+            maxRisk: 10,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [SNDKlevel],
+            otherLevels: [tsmdaily]
         },
-        defaultConfigs: sndkConfigs, defaultTargets: stock1Target,
+        defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -224,53 +227,54 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: sndkConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: sndkConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 1,
             finalTargets: [
-                { text: "R5", partialCount: 2, atr: 0, rrr: 0, level: 821.98 },
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: 835.68 },
+                { text: "380", partialCount: 2, atr: 0, rrr: 0, level: 380 },
+                { text: "378", partialCount: 2, atr: 0, rrr: 0, level: 378 },
             ],
             gapAndGoPlan: {
-                allTimeHigh: 807.99, support: { high: 807.99, low: 807.99 },
-                targets: stock1Target, planConfigs: sndkConfigs
+                support: { high: tsmdaily, low: tsmdaily },
+                targets: stock1Target, planConfigs: stock1Configs,
+                nearBelowConsolidationRangeTop: "daily high",
             },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: sndkConfigs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: sndkConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
     },
     {
-        symbol: 'MRVL',
+        symbol: 'OGN',
         analysis: {
-            dailyChartStory: 1, gap: { pdc: 114.45 },
+            dailyChartStory: 1, gap: { pdc: 6.91 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: MRVLlevel, low: MRVLlevel }],
+            singleMomentumKeyLevel: [{ high: OGNlevel, low: OGNlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["pm high", "118.78", "117.32"],
+            defaultRiskLevels: [],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MRVL,
+        marketCapInMillions: 1800,
         atr: {
-            average: 5.66,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
-            maxRisk: 4,
+            average: 0.36,
+            mutiplier: 2,
+            minimumMultipler: 2,
+            maxRisk: 1,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [mrvlR6],
+            otherLevels: [ogndaily]
         },
-        defaultConfigs: mrvlConfigs, defaultTargets: stock2Target,
+        defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
             level_vwap_open: {
                 shortVwapContinuation: {},
@@ -300,30 +304,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "7.22", partialCount: 2, atr: 0, rrr: 0, level: 7.22 },
+                { text: "7.54", partialCount: 2, atr: 0, rrr: 0, level: 7.54 },
+            ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+            gapAndCrapPlan: {
+                aboveThisLevelNoMoreShort: ogndaily,
+                targets: stock2Target, planConfigs: stock2Configs,
+                extendedGapUpInAtr: 3,
+                belowThisLevelOnlyVwapContinuation: 7,
+            },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mrvlConfigs },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
 
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mrvlConfigs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "121", partialCount: 2, atr: 0, rrr: 0, level: 121 },
-                { text: "123", partialCount: 2, atr: 0, rrr: 0, level: 123 },
-            ],
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: `${MRVLlevel}`, support: { high: MRVLlevel, low: MRVLlevel },
-                targets: stock2Target, planConfigs: mrvlConfigs
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mrvlConfigs },
-
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: mrvlConfigs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         }
     },
     {
