@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1T0tyeKc_yMH9pwMf1rAuO6Jj6FaiQ5kEFlHQbsjYxS4/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1nqP-lVaL54b5JOzHBSGq6bvRN8UvQB-_3dmkxRvXWyw/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,47 +149,45 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'OGN',
-    'TSM',
+    'SNAP', 'HOOD'
 ];
-const tsmdaily = 374.3;
-const tsmr6 = 373.63;
-const tsmr5 = 371.64;
-const tsmlevel = tsmdaily;
-const ogndaily = 8.24;
-const OGNlevel = ogndaily;
+const snappmhigh = 6.27;
+const snapr6 = 6.06;
+const snapr5 = 5.95;
+const SNAPlevel = snappmhigh;
+const hoodlevel = 84.91;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'TSM',
+        symbol: 'SNAP',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 365 },
+            gap: { pdc: 5.6 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: tsmlevel, low: tsmlevel }],
+            singleMomentumKeyLevel: [{ high: SNAPlevel, low: SNAPlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [`${tsmdaily}`, `${tsmr5}`, "pm high"],
+            defaultRiskLevels: ["pm high", `${snapr5}`],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSM,
+        marketCapInMillions: Constants.marketCaps.SNAP,
         atr: {
-            average: 13.24,
+            average: 0.31,
             mutiplier: 1,
-            minimumMultipler: 0.5,
-            maxRisk: 10,
+            minimumMultipler: 1,
+            maxRisk: 0.3,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [tsmdaily]
+            otherLevels: [],
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -221,6 +219,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "5.9", partialCount: 2, atr: 0, rrr: 0, level: 5.9 },
+                { text: "5.8", partialCount: 2, atr: 0, rrr: 0, level: 5.8 },
+            ],
+            gapAndCrapPlan: {
+                aboveThisLevelNoMoreShort: snappmhigh, belowThisLevelOnlyVwapContinuation: snapr6,
+                extendedGapUpInAtr: 1.3, targets: stock1Target, planConfigs: stock1Configs
+            },
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
@@ -229,50 +241,35 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: 1,
-            finalTargets: [
-                { text: "380", partialCount: 2, atr: 0, rrr: 0, level: 380 },
-                { text: "378", partialCount: 2, atr: 0, rrr: 0, level: 378 },
-            ],
-            gapAndGoPlan: {
-                support: { high: tsmdaily, low: tsmdaily },
-                targets: stock1Target, planConfigs: stock1Configs,
-                nearBelowConsolidationRangeTop: "daily high",
-            },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
     },
     {
-        symbol: 'OGN',
+        symbol: 'HOOD',
         analysis: {
-            dailyChartStory: 1, gap: { pdc: 6.91 },
+            dailyChartStory: 1, gap: { pdc: 79 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: OGNlevel, low: OGNlevel }],
+            singleMomentumKeyLevel: [{ high: hoodlevel, low: hoodlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
+            defaultRiskLevels: ["pm high", "83.74"],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 1800,
+        marketCapInMillions: Constants.marketCaps.HOOD,
         atr: {
-            average: 0.36,
-            mutiplier: 2,
-            minimumMultipler: 2,
-            maxRisk: 1,
+            average: 4.3,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 4,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [ogndaily]
+            otherLevels: [hoodlevel]
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -307,27 +304,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "7.22", partialCount: 2, atr: 0, rrr: 0, level: 7.22 },
-                { text: "7.54", partialCount: 2, atr: 0, rrr: 0, level: 7.54 },
+                { text: "83.74", partialCount: 2, atr: 0, rrr: 0, level: 83.74 },
+                { text: "82.58", partialCount: 2, atr: 0, rrr: 0, level: 82.58 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
             gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: ogndaily,
-                targets: stock2Target, planConfigs: stock2Configs,
-                extendedGapUpInAtr: 3,
-                belowThisLevelOnlyVwapContinuation: 7,
+                aboveThisLevelNoMoreShort: 86.08, belowThisLevelOnlyVwapContinuation: 80,
+                heavySupplyZoneDays: 85, targets: stock2Target, planConfigs: stock2Configs
             },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "86", partialCount: 2, atr: 0, rrr: 0, level: 86 },
+                { text: "87", partialCount: 2, atr: 0, rrr: 0, level: 87 },
             ],
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
-
+            gapAndGoPlan: {
+                support: { high: hoodlevel, low: hoodlevel },
+                nearAboveConsolidationRange: `${hoodlevel}`, targets: stock2Target, planConfigs: stock2Configs
+            },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock2Target, planConfigs: stock2Configs },
         }
     },
