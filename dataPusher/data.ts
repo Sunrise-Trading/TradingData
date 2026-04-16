@@ -181,9 +181,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         marketCapInMillions: 2800,
         atr: {
             average: 5.95,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
