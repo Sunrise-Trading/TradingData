@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1iOxxuM_8NwYjS3zGL4S01OgmQo3ZGBevgiTsWep8rqw/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1OJIfMqAHEkHvfz8E_0VF2PXOwktdxCsyxhuOGw38RWU/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,45 +149,42 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'AEHR',
+    'NFLX',
 ];
-const aehrath = 75.88;
-const aehrpmhigh = 89.15;
-const aehrr6 = 80.15;
-const AEHRlevel = aehrpmhigh;
+const NFLXlevel = 97.05;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AEHR',
+        symbol: 'NFLX',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 73.55 },
+            dailyChartStory: 1,
+            gap: { pdc: 107 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: AEHRlevel, low: AEHRlevel }],
+            singleMomentumKeyLevel: [{ high: NFLXlevel, low: NFLXlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["pm high", `${aehrr6}`],
+            defaultRiskLevels: ["pm low",],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 2800,
+        marketCapInMillions: Constants.marketCaps.NFLX,
         atr: {
-            average: 5.95,
+            average: 2.76,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 5,
+            maxRisk: 3,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [aehrath]
+
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -219,18 +216,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: aehrr6 },
-                { text: "R5", partialCount: 2, atr: 0, rrr: 0, level: 78.42 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.7,
-                targets: stock1Target, planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: aehrpmhigh,
-                belowThisLevelOnlyVwapContinuation: 82,
-            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
@@ -238,13 +229,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: aehrpmhigh },
-                { text: "88", partialCount: 2, atr: 0, rrr: 0, level: 88 },
+                { text: "99", partialCount: 2, atr: 0, rrr: 0, level: 99 },
+                { text: "100", partialCount: 2, atr: 0, rrr: 0, level: 100 },
             ],
-            gapAndGoPlan: {
-                targets: stock1Target, planConfigs: stock1Configs,
-                support: { high: aehrath, low: aehrath },
-                allTimeHigh: aehrath,
+            gapDownAndGoUpPlan: {
+                targets: stock1Target,
+                planConfigs: stock1Configs,
+                support: [{ high: NFLXlevel, low: NFLXlevel }],
+                nearAboveKeyEventLevel: NFLXlevel,
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
