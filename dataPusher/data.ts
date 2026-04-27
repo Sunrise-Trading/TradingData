@@ -141,6 +141,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail15Count: 10,
 };
 export const googleDocLink = "https://docs.google.com/document/d/1UcxFxARIE3yZEbum8yCOYL6X0esdhSdEwd09eY13aRQ/edit?tab=t.0#heading=h.3ta3qw9hoewr";
+export const googleDocLink = "https://docs.google.com/document/d/1o1d1zgf6YaoJfUT1ny5tI0PylQbeC1mdzp24aDPMLMM/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,45 +150,45 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'INTC',
 ];
-const stock1Level = 1;
+const alltimehigh = 70.33;
+const ahhigh = 83.6;
+const pmhigh = 87.23;
+const intclevel = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'INTC',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 2,
+            gap: { pdc: 66 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
+            defaultRiskLevels: ["pm high", `${ahhigh}`],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 3.2,
+            mutiplier: 3,
+            minimumMultipler: 2,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [ahhigh, alltimehigh]
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -220,21 +221,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "first pop", partialCount: 1, atr: 0, rrr: 0, level: 79 },
+                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: 73 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 5, aboveThisLevelNoMoreShort: pmhigh, belowThisLevelOnlyVwapContinuation: 80, targets: stock1Target, planConfigs: stock1Configs
+            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 87.23 },
+                { text: "85", partialCount: 2, atr: 0, rrr: 0, level: 85 },
             ],
+            gapAndGoPlan: {
+                allTimeHigh: 70,
+                support: { high: 70, low: 70 },
+                targets: stock1Target, planConfigs: stock1Configs
+            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
