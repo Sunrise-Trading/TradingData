@@ -151,9 +151,11 @@ export const getGoogleDocId = () => {
 export const stockSelections: string[] = [
     'ORCL',
 ];
-const ylow = 1;
-const pmlow = 1;
-const orcllevel = 1;
+const ylow = 167.9;
+const pmlow = 158.98;
+const gapstart = 161.56;
+const pmhigh = 164.8;
+const orcllevel = pmhigh;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -163,7 +165,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'ORCL',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 0 },
+            gap: { pdc: 172 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
@@ -173,20 +175,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             singleMomentumKeyLevel: [{ high: orcllevel, low: orcllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
+            defaultRiskLevels: [`${ylow}`, `${pmhigh}`, `${pmlow}`],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.ORCL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 8.5,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [pmhigh, gapstart]
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -221,22 +223,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 159 },
+                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: 156 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: 123, targets: stock1Target, planConfigs: stock1Configs
+                buyersTrappedBelowThisLevel: ylow, targets: stock1Target, planConfigs: stock1Configs
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 164.8 },
+                { text: "164", partialCount: 2, atr: 0, rrr: 0, level: 164 },
             ],
+            gapDownAndGoUpPlan: {
+                support: [{ high: gapstart, low: gapstart }], targets: stock1Target, planConfigs: stock1Configs,
+                nearAboveSupport: { high: gapstart, low: gapstart },
+            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
