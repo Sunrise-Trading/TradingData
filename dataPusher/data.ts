@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "";
+export const googleDocLink = "https://docs.google.com/document/d/1W_fSl1oL37ZXzrVBBK8_sL_mg_TWsCdrC23NGBB8fFM/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
