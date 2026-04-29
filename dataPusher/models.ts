@@ -129,7 +129,6 @@ export interface SingleDirectionPlans {
     vwapBounceFailPlan?: VwapBounceFailPlan,
     vwapScalpPlan?: VwapScalpPlan,
     allTimeHighVwapContinuationPlan?: AllTimeHighVwapContinuationPlan,
-    gapAndCrapAccelerationPlan?: GapAndCrapAccelerationPlan,
     gapAndCrapPlan?: GapAndCrapPlan,
     gapAndGoPlan?: GapAndGoPlan,
     gapGiveAndGoPlan?: GapGiveAndGoPlan,
@@ -155,9 +154,6 @@ export interface VwapScalpPlan extends BasePlan {
 }
 export interface AllTimeHighVwapContinuationPlan extends BasePlan {
     allTimeHigh: number,
-}
-export interface GapAndCrapAccelerationPlan extends BasePlan {
-    accelerationLevel: number,
 }
 export interface keyLevels {
     otherLevels?: number[];
@@ -213,6 +209,8 @@ export interface GapGiveAndGoPlan extends BasePlan {
     allTimeHigh?: number,
 }
 export interface GapAndGoPlan extends BasePlan {
+    /** Required: if true, no entry when session open is below VWAP at the open. */
+    mustOpenAboveVwap: boolean,
     /** the min support on daily chart, below it, we cannot long */
     support: LevelArea,
     /** the high from recent pullback */
