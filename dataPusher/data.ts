@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1W_fSl1oL37ZXzrVBBK8_sL_mg_TWsCdrC23NGBB8fFM/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1An-U1jL5VioPTq5Zf5hz2wdpVVtNFteNTi7TONy804k/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,46 +149,44 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'ORCL',
+    'BE',
 ];
-const ylow = 167.9;
-const pmlow = 158.98;
-const gapstart = 161.56;
-const pmhigh = 164.8;
-const orcllevel = pmhigh;
+const beahhigh = 264;
+const bepmhigh = 285;
+const belevel = beahhigh;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
+        symbol: 'BE',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 172 },
+            dailyChartStory: 2,
+            gap: { pdc: 226.37 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: orcllevel, low: orcllevel }],
+            singleMomentumKeyLevel: [{ high: belevel, low: belevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [`${ylow}`, `${pmhigh}`, `${pmlow}`],
+            defaultRiskLevels: ["300", "pm high", `${beahhigh}`],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ORCL,
+        marketCapInMillions: Constants.marketCaps.BE,
         atr: {
-            average: 8.5,
+            average: 16,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 5,
+            maxRisk: 15,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [pmhigh, gapstart]
+            otherLevels: [beahhigh]
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -223,11 +221,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: 159 },
-                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: 156 },
+                { text: "264", partialCount: 2, atr: 0, rrr: 0, level: 264 },
+                { text: "255", partialCount: 2, atr: 0, rrr: 0, level: 255 },
             ],
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: ylow, targets: stock1Target, planConfigs: stock1Configs
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 3, targets: stock1Target, planConfigs: stock1Configs,
+                aboveThisLevelNoMoreShort: bepmhigh,
+                belowThisLevelOnlyVwapContinuation: 242,
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
@@ -236,12 +236,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 164.8 },
-                { text: "164", partialCount: 2, atr: 0, rrr: 0, level: 164 },
+                { text: "295", partialCount: 2, atr: 0, rrr: 0, level: 295 },
+                { text: "300", partialCount: 1, atr: 0, rrr: 0, level: 300 },
             ],
-            gapDownAndGoUpPlan: {
-                support: [{ high: gapstart, low: gapstart }], targets: stock1Target, planConfigs: stock1Configs,
-                nearAboveSupport: { high: gapstart, low: gapstart },
+            gapAndGoPlan: {
+                allTimeHigh: 243, nearAboveConsolidationRange: "243-200", targets: stock1Target, planConfigs: stock1Configs,
+                support: { high: beahhigh, low: beahhigh },
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
