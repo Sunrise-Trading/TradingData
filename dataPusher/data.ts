@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1RCyNE8MDkr_TQi2naiLUCNg__6QuYdznU98OReHeD9M/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/12Ri0DzdVHEF9s6lUOMXkvvHSgCNoRjoNSqh3Ln50FMY/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,44 +149,45 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'GOOGL',
+    'AAPL',
 ];
-const googleahhigh = 376.6;
-const googlepmhigh = 378.79;
-const googlelevel = 376.6;
+const aaplR6 = 280;
+const aaplR5 = 277.83;
+const aaplahhigh = 284.89;
+const AAPLlevel = aaplR6;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GOOGL',
+        symbol: 'AAPL',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 350 },
+            dailyChartStory: 1,
+            gap: { pdc: 271.35 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: googlelevel, low: googlelevel }],
+            singleMomentumKeyLevel: [{ high: AAPLlevel, low: AAPLlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["pm high", "pm low"],
+            defaultRiskLevels: [`${aaplR5}`],
         },
         autoFlip: false,
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.GOOGL,
+        marketCapInMillions: Constants.marketCaps.AAPL,
         atr: {
-            average: 8.2,
+            average: 5.88,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 8,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [googleahhigh]
+            otherLevels: [aaplR5, aaplR6]
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -218,31 +219,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: 370,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "370", partialCount: 2, atr: 0, rrr: 0, level: 370 },
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: 363 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                aboveThisLevelNoMoreShort: googleahhigh, belowThisLevelOnlyVwapContinuation: 370,
-                extendedGapUpInAtr: 3, targets: stock1Target, planConfigs: stock1Configs
-            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
             enabled: true,
-            firstTargetToAdd: googlepmhigh,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm high", partialCount: 3, atr: 0, rrr: 0, level: googlepmhigh },
-                { text: "385", partialCount: 2, atr: 0, rrr: 0, level: 385 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 282.42 },
+                { text: "ah high", partialCount: 2, atr: 0, rrr: 0, level: aaplahhigh },
             ],
             gapAndGoPlan: {
-                allTimeHigh: 355,
-                mustOpenAboveVwap: true,
+                support: { high: aaplR6, low: aaplR6 },
+                nearAboveConsolidationRange: "R6",
                 targets: stock1Target, planConfigs: stock1Configs,
-                support: { high: googleahhigh, low: googleahhigh }
+                mustOpenAboveVwap: false,
             },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
