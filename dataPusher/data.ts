@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "";
+export const googleDocLink = "https://docs.google.com/document/d/1jJyd_b8pmLLTSW3GHuLZCTQg_9siyh5XwfBGXl2U66k/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,45 +149,42 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'GME',
 ];
-const stock1Level = 1;
+const gmelevel = 30;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'GME',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 1,
+            gap: { pdc: 26.53 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: gmelevel, low: gmelevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
+            defaultRiskLevels: ["30", "26.88"],
         },
 
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.GME,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 0.92,
+            mutiplier: 2,
+            minimumMultipler: 2,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-
+            otherLevels: [gmelevel,]
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -212,16 +209,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "S6", partialCount: 2, atr: 0, rrr: 0, level: 24.3 },
+                { text: "24", partialCount: 5, atr: 0, rrr: 0, level: 24 },
             ],
+            gapDownAndGoDownPlan: { buyersTrappedBelowThisLevel: gmelevel, targets: stock1Target, planConfigs: stock1Configs },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
