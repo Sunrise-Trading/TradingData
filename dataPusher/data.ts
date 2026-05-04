@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/12Ri0DzdVHEF9s6lUOMXkvvHSgCNoRjoNSqh3Ln50FMY/edit?tab=t.0";
+export const googleDocLink = "";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,57 +149,53 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'AAPL',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const aaplR6 = 280;
-const aaplR5 = 277.83;
-const aaplahhigh = 284.89;
-const AAPLlevel = aaplR6;
+const stock1Level = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AAPL',
+        symbol: 'stock1',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 271.35 },
+            dailyChartStory: -1,
+            gap: { pdc: 0 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
+            deferTradingInSeconds: -1,
+            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: AAPLlevel, low: AAPLlevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: [`${aaplR5}`],
+            defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AAPL,
+        marketCapInMillions: 0,
         atr: {
-            average: 5.88,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [aaplR5, aaplR6]
+
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
-            },
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -210,16 +206,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
-            },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
             },
         },
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -230,17 +222,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 282.42 },
-                { text: "ah high", partialCount: 2, atr: 0, rrr: 0, level: aaplahhigh },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                support: { high: aaplR6, low: aaplR6 },
-                nearAboveConsolidationRange: "R6",
-                targets: stock1Target, planConfigs: stock1Configs,
-                mustOpenAboveVwap: false,
-            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
@@ -260,7 +246,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -275,15 +261,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -294,13 +277,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
-            },
+
         },
         short: {
             enabled: true,
@@ -340,7 +320,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -355,15 +335,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -374,13 +351,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
-            },
+
         },
         short: {
             enabled: true,
@@ -418,7 +392,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -433,15 +407,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -452,13 +423,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
-            },
+
         },
         short: {
             enabled: true,

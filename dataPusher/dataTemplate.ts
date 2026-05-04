@@ -176,7 +176,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -191,15 +191,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
-            },
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -210,12 +206,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
-            },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
             },
         },
         short: {
@@ -254,7 +246,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -269,15 +261,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock2Configs, defaultTargets: stock2Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -288,13 +277,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
-            },
+
         },
         short: {
             enabled: true,
@@ -334,7 +320,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -349,15 +335,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock3Configs, defaultTargets: stock3Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false, },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -368,13 +351,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false, },
-            },
+
         },
         short: {
             enabled: true,
@@ -412,7 +392,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
-        autoFlip: false,
+
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
@@ -427,15 +407,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         defaultConfigs: stock4Configs, defaultTargets: stock4Target,
         tradebooksConfig: {
-            level_vwap_open: {
-                shortVwapContinuation: {},
-                longEmergingStrengthBreakout: { waitForClose: true, allowCloseWithin: false },
-            },
+
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
-                longAboveWaterBreakout: { waitForClose: true, allowCloseWithin: false },
-                shortOpenFlush: {},
-                longVwapScalp: {},
+
+
+
             },
             open_level_vwap: {
                 shortVwapBounceFail: { waitForClose: true, },
@@ -446,13 +423,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
             vwap_open_level: {
-                shortBelowWaterBreakout: { waitForClose: true, allowCloseWithin: false, },
+
                 longVwapPushdownFail: { waitForClose: true },
             },
-            open_vwap_level: {
-                longVwapContinuation: {},
-                shortEmergingWeaknessBreakdown: { waitForClose: true, allowCloseWithin: false },
-            },
+
         },
         short: {
             enabled: true,
