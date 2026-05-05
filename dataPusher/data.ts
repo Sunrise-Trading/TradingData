@@ -140,7 +140,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1jJyd_b8pmLLTSW3GHuLZCTQg_9siyh5XwfBGXl2U66k/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1utt8mDLx7KJRmoeJ9TSZMjkDGW1wG7RdcqcYhAcbyTQ/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -149,42 +149,45 @@ export const getGoogleDocId = () => {
     return docId;
 }
 export const stockSelections: string[] = [
-    'GME',
+    'INTC',
 ];
-const gmelevel = 30;
+const intcahhigh = 99.58;
+const intcath = 100.45;
+const intcaath = 103;
+const intclevel = intcahhigh;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GME',
+        symbol: 'INTC',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 26.53 },
+            dailyChartStory: 2,
+            gap: { pdc: 95.78 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: gmelevel, low: gmelevel }],
+            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["30", "26.88"],
+            defaultRiskLevels: [],
         },
 
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.GME,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 0.92,
-            mutiplier: 2,
-            minimumMultipler: 2,
+            average: 4.8,
+            mutiplier: 1,
+            minimumMultipler: 1,
             maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [gmelevel,]
+            otherLevels: [intcahhigh, intcaath, intcath],
         },
         defaultConfigs: stock1Configs, defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -208,23 +211,28 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "S6", partialCount: 2, atr: 0, rrr: 0, level: 24.3 },
-                { text: "24", partialCount: 5, atr: 0, rrr: 0, level: 24 },
-            ],
-            gapDownAndGoDownPlan: { buyersTrappedBelowThisLevel: gmelevel, targets: stock1Target, planConfigs: stock1Configs },
-            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
-        },
-        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
+            levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+            firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: intcath,
+            finalTargets: [
+                { text: "all time high", partialCount: 2, atr: 0, rrr: 0, level: intcath },
+                { text: "all time high 2", partialCount: 3, atr: 0, rrr: 0, level: intcaath },
+            ],
+            gapAndGoPlan: {
+                nearBelowConsolidationRangeTop: "all time high",
+                support: { high: intcahhigh, low: intcahhigh },
+                targets: stock1Target, planConfigs: stock1Configs,
+                mustOpenAboveVwap: false,
+            },
             levelMomentumPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
             firstNewHighPlan: { enableAutoTrigger: false, targets: stock1Target, planConfigs: stock1Configs },
         }
