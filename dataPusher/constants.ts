@@ -156,6 +156,7 @@ export const marketCaps = {
     ESTC: 9000,
     F: 54000,
     FSLR: 13000,
+    FLNC: 2500,
     FDX: 63000,
     FIVE: 5000,
     FL: 2000,

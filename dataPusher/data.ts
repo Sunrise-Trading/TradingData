@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1pVLoheCMIaomjNCqOHaTBzySinUsxf4GzdsQuwLOmBI/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1O6pgGegnpGqNx4UBONOP4jJxDh7RzOGCLBDurUbTpLU/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -166,43 +166,43 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'AMD',
+    'DDOG', 'FLNC'
 ];
-const amdahhigh = 420.58;
-const amdpmhigh = 432;
-const amdlevel = amdahhigh;
-const stock2Level = 1;
+const ddoggap = 177.57;
+
+const DDOGlevel = 200;
+const flncLevel = 20;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMD',
+        symbol: 'DDOG',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 360 },
+            dailyChartStory: 1,
+            gap: { pdc: 143 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: amdlevel, low: amdlevel }],
+            singleMomentumKeyLevel: [{ high: DDOGlevel, low: DDOGlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
-            defaultRiskLevels: ["pm high", `${amdahhigh}`],
+            defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMD,
+        marketCapInMillions: Constants.marketCaps.DDOG,
         atr: {
-            average: 16,
-            mutiplier: 1.5,
+            average: 6.8,
+            mutiplier: 2,
             minimumMultipler: 1,
-            maxRisk: 15,
+            maxRisk: 10,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [amdahhigh]
+            otherLevels: [ddoggap],
         },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
@@ -224,61 +224,73 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: ddoggap,
             finalTargets: [
-                { text: "385", partialCount: 2, atr: 0, rrr: 0, level: 385 },
-                { text: "380", partialCount: 2, atr: 0, rrr: 0, level: 380 },
+                { text: "185", partialCount: 2, atr: 0, rrr: 0, level: 185 },
+                { text: "180", partialCount: 2, atr: 0, rrr: 0, level: 180 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 2.75,
-                aboveThisLevelNoMoreShort: amdpmhigh,
-                belowThisLevelOnlyVwapContinuation: 380,
+                extendedGapUpInAtr: 6,
+                aboveThisLevelNoMoreShort: 210,
+                belowThisLevelOnlyVwapContinuation: ddoggap,
                 targets: stock1Target,
                 planConfigs: stock1Configs,
-                runnerCount: 4,
-                coreCount: 1,
-                coreTarget: 400,
+                runnerCount: 2,
+                coreCount: 4,
+                coreTarget: 180,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "190", partialCount: 2, atr: 0, rrr: 0, level: 190 },
+                { text: "185", partialCount: 2, atr: 0, rrr: 0, level: 185 },
             ],
+            gapAndGoPlan: {
+                mustOpenAboveVwap: false,
+                support: { high: ddoggap, low: ddoggap },
+                nearPreviousKeyEventLevel: "previous earnings gap up",
+                targets: stock1Target,
+                planConfigs: stock1Configs,
+                runnerCount: 0,
+                coreCount: 0,
+                coreTarget: 190,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'FLNC',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 1,
+            gap: { pdc: 13.56 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: flncLevel, low: flncLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.FLNC,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 1,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 2,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [flncLevel],
+        },
         defaultConfigs: stock2Configs,
         defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -299,16 +311,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "18.21", partialCount: 2, atr: 0, rrr: 0, level: 18.21 },
+                { text: "pm low", partialCount: 4, atr: 0, rrr: 0, level: 17 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 5,
+                aboveThisLevelNoMoreShort: flncLevel,
+                belowThisLevelOnlyVwapContinuation: 17,
+                targets: stock2Target,
+                planConfigs: stock2Configs,
+                runnerCount: 4,
+                coreCount: 3, coreTarget: 18.21,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
