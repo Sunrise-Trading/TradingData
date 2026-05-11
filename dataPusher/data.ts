@@ -166,13 +166,14 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'MU',
+    'MU', 'INTC'
 ];
 const muath = 747.21;
 const muahhigh = 813;
 const mupmhigh = 794;
 const mulevel = muath;
-const intclevel = 1;
+const intcpmhigh = 135;
+const intclevel = intcpmhigh;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -258,7 +259,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'INTC',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 0 },
+            gap: { pdc: 124.92 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
@@ -271,12 +272,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 6.7,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {},
@@ -300,16 +301,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 5, atr: 0, rrr: 0, level: 126 },
+                { text: "130", partialCount: 1, atr: 0, rrr: 0, level: 130 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 1,
+                targets: stock2Target,
+                planConfigs: stock2Configs,
+                aboveThisLevelNoMoreShort: 135,
+                belowThisLevelOnlyVwapContinuation: 128,
+                runnerCount: 3,
+                coreCount: 5,
+                coreTarget: 126,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
