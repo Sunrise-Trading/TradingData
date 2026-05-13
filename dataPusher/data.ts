@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "";
+export const googleDocLink = "https://docs.google.com/document/d/11s3whweXidemx79AE6_gd488qEj6hhsoxIGB6D2tYVk/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -248,7 +248,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstTargetToAdd: nbispmhigh,
             finalTargets: [
                 { text: "pm high", partialCount: 5, atr: 0, rrr: 0, level: nbispmhigh },
-                { text: "220", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "220", partialCount: 5, atr: 0, rrr: 0, level: 220 },
             ],
             gapAndGoPlan: {
                 support: { high: nbisath, low: nbisath },
