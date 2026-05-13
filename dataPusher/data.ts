@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1S1gPMksCSKx3EzlheNQSZl18cfq0HlrLojDxQi_DJKA/edit?tab=t.0";
+export const googleDocLink = "";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -166,44 +166,44 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'QUBT',
+    'NBIS',
 ];
-const qubtpmlow = 11.48;
-const qubtpmhigh = 13.35;
-const qubtahhigh = 12.55;
-const QUBTlevel = qubtahhigh;
+const nbisath = 198;
+const nbisr6 = 194;
+const nbispmhigh = 214.44;
+const nbislevel = nbisath;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'QUBT',
+        symbol: 'NBIS',
         analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 10.18 },
+            dailyChartStory: 2,
+            gap: { pdc: 179 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: QUBTlevel, low: QUBTlevel }],
+            singleMomentumKeyLevel: [{ high: nbislevel, low: nbislevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.QUBT,
+        marketCapInMillions: Constants.marketCaps.NBIS,
         atr: {
-            average: 0.71,
-            mutiplier: 2,
+            average: 13,
+            mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 2,
+            maxRisk: 20,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [qubtahhigh]
+            otherLevels: [nbisath]
         },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
@@ -225,36 +225,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: qubtpmlow,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: qubtpmlow },
-                { text: "12.28", partialCount: 3, atr: 0, rrr: 0, level: 12.28 },
+                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: nbisr6 },
+                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: nbisath },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 3, targets: stock1Target, planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: 15, belowThisLevelOnlyVwapContinuation: 10,
-                coreCount: 3,
-                runnerCount: 3,
-                coreTarget: 12.28,
+                extendedGapUpInAtr: 2,
+                runnerCount: 0,
+                coreCount: 0,
+                coreTarget: nbisath,
+                aboveThisLevelNoMoreShort: nbispmhigh,
+                belowThisLevelOnlyVwapContinuation: 100,
+                targets: stock1Target,
+                planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: qubtpmhigh,
+            firstTargetToAdd: nbispmhigh,
             finalTargets: [
-                { text: "14", partialCount: 3, atr: 0, rrr: 0, level: 14 },
-                { text: "pm high", partialCount: 3, atr: 0, rrr: 0, level: qubtpmhigh },
+                { text: "pm high", partialCount: 5, atr: 0, rrr: 0, level: nbispmhigh },
+                { text: "220", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             gapAndGoPlan: {
-                support: { high: qubtahhigh, low: qubtahhigh },
-                nearAboveConsolidationRange: "10.58, actually too far",
-                runnerCount: 0,
-                coreCount: 0,
-                coreTarget: qubtpmhigh,
-                mustOpenAboveVwap: true,
-                targets: stock1Target, planConfigs: stock1Configs,
+                support: { high: nbisath, low: nbisath },
+                allTimeHigh: nbisath,
+                targets: stock1Target,
+                planConfigs: stock1Configs,
+                runnerCount: 3,
+                coreCount: 3,
+                coreTarget: nbispmhigh,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
