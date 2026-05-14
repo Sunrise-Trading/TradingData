@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/11s3whweXidemx79AE6_gd488qEj6hhsoxIGB6D2tYVk/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1eWuJWSmlxB2X70gL7tkBLY_w7ByT5095X1Nh7VI66Rc/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -166,44 +166,45 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'NBIS',
+    'NVDA', 'CSCO'
 ];
-const nbisath = 198;
-const nbisr6 = 194;
-const nbispmhigh = 214.44;
-const nbislevel = nbisath;
-const stock2Level = 1;
+const nvdar6 = 232.73;
+const nvdaath = 227.84;
+const NVDAlevel = 227.84;
+const cscoath = 102;
+const cscopmlow = 116.25;
+const cscoLevel = 124.3;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NBIS',
+        symbol: 'NVDA',
         analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 179 },
+            dailyChartStory: 1,
+            gap: { pdc: 225 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nbislevel, low: nbislevel }],
+            singleMomentumKeyLevel: [{ high: NVDAlevel, low: NVDAlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NBIS,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 13,
+            average: 6.9,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 20,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [nbisath]
+            otherLevels: [nvdaath]
         },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
@@ -227,68 +228,66 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: nbisr6 },
-                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: nbisath },
+                { text: "229", partialCount: 1, atr: 0, rrr: 0, level: 229 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 228 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
+                extendedGapUpInAtr: 1, targets: stock1Target, planConfigs: stock1Configs,
+                aboveThisLevelNoMoreShort: 233, belowThisLevelOnlyVwapContinuation: 100,
                 runnerCount: 0,
-                coreCount: 0,
-                coreTarget: nbisath,
-                aboveThisLevelNoMoreShort: nbispmhigh,
-                belowThisLevelOnlyVwapContinuation: 100,
-                targets: stock1Target,
-                planConfigs: stock1Configs,
+                coreCount: 5,
+                coreTarget: 228,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: nbispmhigh,
+            firstTargetToAdd: nvdar6,
             finalTargets: [
-                { text: "pm high", partialCount: 5, atr: 0, rrr: 0, level: nbispmhigh },
-                { text: "220", partialCount: 5, atr: 0, rrr: 0, level: 220 },
+                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: nvdar6 },
+                { text: "235", partialCount: 5, atr: 0, rrr: 0, level: 235 },
             ],
             gapAndGoPlan: {
-                support: { high: nbisath, low: nbisath },
-                allTimeHigh: nbisath,
-                targets: stock1Target,
-                planConfigs: stock1Configs,
+                targets: stock1Target, planConfigs: stock1Configs,
+                allTimeHigh: nvdaath,
+                support: { high: nvdaath, low: nvdaath },
                 runnerCount: 3,
                 coreCount: 3,
-                coreTarget: nbispmhigh,
+                coreTarget: nvdar6,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'CSCO',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 2,
+            gap: { pdc: 102 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: cscoLevel, low: cscoLevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.CSCO,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.4,
+            mutiplier: 3,
+            minimumMultipler: 1.5,
+            maxRisk: 5,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [cscoath]
+        },
         defaultConfigs: stock2Configs,
         defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -309,16 +308,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: cscopmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low ", partialCount: 2, atr: 0, rrr: 0, level: cscopmlow },
+                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: cscoath },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 6,
+                targets: stock2Target, planConfigs: stock2Configs,
+                aboveThisLevelNoMoreShort: cscoLevel,
+                runnerCount: 3,
+                coreCount: 1,
+                coreTarget: 117,
+                belowThisLevelOnlyVwapContinuation: 100,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
