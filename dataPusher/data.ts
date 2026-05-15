@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.11; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -166,11 +166,12 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'NVDA', 'CSCO'
+    'NVDA',
 ];
 const nvdar6 = 232.73;
 const nvdaath = 227.84;
-const NVDAlevel = 227.84;
+const nvdaylow = 229.3;
+const NVDAlevel = nvdaylow;
 const cscoath = 102;
 const cscopmlow = 116.25;
 const cscoLevel = 124.3;
@@ -182,7 +183,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'NVDA',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 225 },
+            gap: { pdc: 236 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
@@ -228,14 +229,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "229", partialCount: 1, atr: 0, rrr: 0, level: 229 },
+                { text: "225", partialCount: 1, atr: 0, rrr: 0, level: 225 },
                 { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 228 },
             ],
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: nvdaylow, targets: stock1Target, planConfigs: stock1Configs,
+                runnerCount: 0,
+                coreCount: 1,
+                coreTarget: 225,
+            },
+
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1, targets: stock1Target, planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: 233, belowThisLevelOnlyVwapContinuation: 100,
+                aboveThisLevelNoMoreShort: nvdaylow, belowThisLevelOnlyVwapContinuation: 100,
                 runnerCount: 0,
-                coreCount: 5,
+                coreCount: 1,
                 coreTarget: 228,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
@@ -243,99 +251,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: nvdar6,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "R6", partialCount: 2, atr: 0, rrr: 0, level: nvdar6 },
+                { text: "230", partialCount: 2, atr: 0, rrr: 0, level: nvdar6 },
                 { text: "235", partialCount: 5, atr: 0, rrr: 0, level: 235 },
             ],
+
             gapAndGoPlan: {
                 targets: stock1Target, planConfigs: stock1Configs,
                 allTimeHigh: nvdaath,
-                support: { high: nvdaath, low: nvdaath },
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: nvdar6,
+                support: { high: nvdaylow, low: nvdaylow },
+                runnerCount: 0,
+                coreCount: 1,
+                coreTarget: 230,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
     },
-    {
-        symbol: 'CSCO',
-        analysis: {
-            dailyChartStory: 2,
-            gap: { pdc: 102 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: cscoLevel, low: cscoLevel }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CSCO,
-        atr: {
-            average: 2.4,
-            mutiplier: 3,
-            minimumMultipler: 1.5,
-            maxRisk: 5,
-            maxQuantity: -1,
-        },
-        keyLevels: {
-            otherLevels: [cscoath]
-        },
-        defaultConfigs: stock2Configs,
-        defaultTargets: stock2Target,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        short: {
-            enabled: true,
-            firstTargetToAdd: cscopmlow,
-            finalTargets: [
-                { text: "pm low ", partialCount: 2, atr: 0, rrr: 0, level: cscopmlow },
-                { text: "gap fill", partialCount: 3, atr: 0, rrr: 0, level: cscoath },
-            ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 6,
-                targets: stock2Target, planConfigs: stock2Configs,
-                aboveThisLevelNoMoreShort: cscoLevel,
-                runnerCount: 3,
-                coreCount: 1,
-                coreTarget: 117,
-                belowThisLevelOnlyVwapContinuation: 100,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
-        },
-        long: {
-            enabled: false,
-            firstTargetToAdd: 0,
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
-        },
-    },
+
     {
         symbol: 'stock3',
         analysis: {
