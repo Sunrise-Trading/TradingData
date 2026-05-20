@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.11; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -229,7 +229,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1.24,
-                aboveThisLevelNoMoreShort: 119, belowThisLevelOnlyVwapContinuation: 100,
+                aboveThisLevelNoMoreShort: 130, belowThisLevelOnlyVwapContinuation: 100,
                 runnerCount: 3,
                 coreCount: 3,
                 coreTarget: intcdaily,
