@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.11; // 0.21
+export const defaultSize = 0.21; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1Iuid1VuePpSrjW1CywkYnzbCPF0LmyBmgXuv_Z7T39o/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1ZUViw6J7Gm09n8wXm8eGmiGCJr_Y5-3IBkiFWa_lctc/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -166,42 +166,43 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'INTC',
+    'QBTS', 'INFQ'
 ];
-const intcyhigh = 113.07;
-const intcdaily = 115.54;
-const intclevel = intcyhigh;
-const stock2Level = 1;
+const qbtsdaily = 24.78;
+const qbtslevel = qbtsdaily;
+const infqlevel = 14.3;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'QBTS',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 110.8 },
+            gap: { pdc: 19.3 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
+            singleMomentumKeyLevel: [{ high: qbtslevel, low: qbtslevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NOW,
+        marketCapInMillions: Constants.marketCaps.QBTS,
         atr: {
-            average: 8.2,
+            average: 1.75,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 5,
+            maxRisk: 2,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [] },
+        keyLevels: {
+            otherLevels: [qbtsdaily]
+        },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -224,62 +225,55 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "daily", partialCount: 2, atr: 0, rrr: 0, level: intcdaily },
-                { text: "y-high", partialCount: 3, atr: 0, rrr: 0, level: intcyhigh },
+                { text: "R6", partialCount: 3, atr: 0, rrr: 0, level: 20.54 },
+                { text: "21", partialCount: 3, atr: 0, rrr: 0, level: 21 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.24,
-                aboveThisLevelNoMoreShort: 130, belowThisLevelOnlyVwapContinuation: 100,
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: intcdaily,
+                extendedGapUpInAtr: 1.34,
+                aboveThisLevelNoMoreShort: qbtsdaily,
                 targets: stock1Target, planConfigs: stock1Configs,
+                belowThisLevelOnlyVwapContinuation: 1,
+                runnerCount: 3,
+                coreCount: 4,
+                coreTarget: 21,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: true,
-            firstTargetToAdd: -1,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "daily ma", partialCount: 3, atr: 0, rrr: 0, level: 117.37 },
-                { text: "daily ", partialCount: 2, atr: 0, rrr: 0, level: intcdaily },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "y-high",
-                support: { high: intcyhigh, low: intcyhigh },
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: intcdaily,
-                targets: stock1Target, planConfigs: stock1Configs,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'INFQ',
         analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
+            dailyChartStory: 1,
+            gap: { pdc: 11.8 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
+            deferTradingInSeconds: 0,
+            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: infqlevel, low: infqlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: 20000,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 1.34,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 2,
             maxQuantity: -1,
         },
         keyLevels: {},
@@ -303,21 +297,37 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "13", partialCount: 2, atr: 0, rrr: 0, level: 13 },
+                { text: "12", partialCount: 2, atr: 0, rrr: 0, level: 12 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
+                aboveThisLevelNoMoreShort: infqlevel,
+                targets: stock1Target, planConfigs: stock1Configs,
+                belowThisLevelOnlyVwapContinuation: 1,
+                runnerCount: 3,
+                coreCount: 4,
+                coreTarget: 13,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "15", partialCount: 2, atr: 0, rrr: 0, level: 15 },
+                { text: "14.5", partialCount: 2, atr: 0, rrr: 0, level: 14.50 },
             ],
+            gapAndGoPlan: {
+                support: { high: 14.3, low: 14.3, }, targets: stock2Target, planConfigs: stock2Configs,
+                nearBelowConsolidationRangeTop: "14.3 earnings",
+                runnerCount: 3,
+                coreCount: 3,
+                coreTarget: 15,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
