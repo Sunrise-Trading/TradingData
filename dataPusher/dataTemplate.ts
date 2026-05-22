@@ -13,6 +13,7 @@ const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
     runnerCount: 5,
+    runnerTriggerCondition: "",
 };
 const createDefaultLevelMomentumPlan = (
     targets: TradingPlans.ExitTargets,
@@ -180,9 +181,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-            dailyChartStory: -1,
+
             gap: { pdc: 0 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
+
             deferTradingInSeconds: -1,
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
@@ -245,9 +246,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-            dailyChartStory: -1,
+
             gap: { pdc: 0 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
+
             deferTradingInSeconds: -1,
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
@@ -310,9 +311,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock3',
         analysis: {
-            dailyChartStory: -1,
+
             gap: { pdc: 0 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
+
             deferTradingInSeconds: -1,
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
@@ -375,9 +376,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock4',
         analysis: {
-            dailyChartStory: -1,
+
             gap: { pdc: 0 }, // optional, pdv is previous day close
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
+
             deferTradingInSeconds: -1,
             stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
