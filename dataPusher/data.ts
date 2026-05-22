@@ -157,7 +157,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1ZUViw6J7Gm09n8wXm8eGmiGCJr_Y5-3IBkiFWa_lctc/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1rxpMu4R4-I0CnP6A9305yFG-HGAEDc4tcAAzLcOCP4A/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -166,198 +166,46 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'QBTS', 'INFQ'
+    'AMD'
 ];
-const qbtsdaily = 24.78;
-const qbtslevel = qbtsdaily;
-const infqlevel = 14.3;
-const stock3Level = 1;
+
+const amdath = 469.22;
+const amdsessionhigh = 472;
+const strongdaily = 460;
+const leastdaily = 450;
+const amdlevel = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
+
     {
-        symbol: 'QBTS',
+        symbol: 'AMD',
         analysis: {
             dailyChartStory: 1,
-            gap: { pdc: 19.3 },
+            gap: { pdc: 450 },
             dailySetup: TradingPlans.DailySetup.TwoWayOpen,
             deferTradingInSeconds: 0,
             stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: qbtslevel, low: qbtslevel }],
+            singleMomentumKeyLevel: [{ high: amdlevel, low: amdlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.QBTS,
+        marketCapInMillions: Constants.marketCaps.AMD,
         atr: {
-            average: 1.75,
+            average: 25,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 2,
+            maxRisk: 20,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [qbtsdaily]
+            otherLevels: [amdath, amdsessionhigh, strongdaily, leastdaily]
         },
-        defaultConfigs: stock1Configs,
-        defaultTargets: stock1Target,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        short: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "R6", partialCount: 3, atr: 0, rrr: 0, level: 20.54 },
-                { text: "21", partialCount: 3, atr: 0, rrr: 0, level: 21 },
-            ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.34,
-                aboveThisLevelNoMoreShort: qbtsdaily,
-                targets: stock1Target, planConfigs: stock1Configs,
-                belowThisLevelOnlyVwapContinuation: 1,
-                runnerCount: 3,
-                coreCount: 4,
-                coreTarget: 21,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
-        },
-        long: {
-            enabled: false,
-            firstTargetToAdd: 0,
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
-        },
-    },
-    {
-        symbol: 'INFQ',
-        analysis: {
-            dailyChartStory: 1,
-            gap: { pdc: 11.8 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: infqlevel, low: infqlevel }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 20000,
-        atr: {
-            average: 1.34,
-            mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 2,
-            maxQuantity: -1,
-        },
-        keyLevels: {},
-        defaultConfigs: stock2Configs,
-        defaultTargets: stock2Target,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        short: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "13", partialCount: 2, atr: 0, rrr: 0, level: 13 },
-                { text: "12", partialCount: 2, atr: 0, rrr: 0, level: 12 },
-            ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
-                aboveThisLevelNoMoreShort: infqlevel,
-                targets: stock1Target, planConfigs: stock1Configs,
-                belowThisLevelOnlyVwapContinuation: 1,
-                runnerCount: 3,
-                coreCount: 4,
-                coreTarget: 13,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "15", partialCount: 2, atr: 0, rrr: 0, level: 15 },
-                { text: "14.5", partialCount: 2, atr: 0, rrr: 0, level: 14.50 },
-            ],
-            gapAndGoPlan: {
-                support: { high: 14.3, low: 14.3, }, targets: stock2Target, planConfigs: stock2Configs,
-                nearBelowConsolidationRangeTop: "14.3 earnings",
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: 15,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
-        },
-    },
-    {
-        symbol: 'stock3',
-        analysis: {
-            dailyChartStory: -1,
-            gap: { pdc: 0 },
-            dailySetup: TradingPlans.DailySetup.TwoWayOpen,
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
-            maxQuantity: -1,
-        },
-        keyLevels: {},
         defaultConfigs: stock3Configs,
         defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -377,7 +225,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -388,11 +236,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: amdath,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "ath", partialCount: 3, atr: 0, rrr: 0, level: 469.22 },
+                { text: "472", partialCount: 1, atr: 0, rrr: 0, level: 472 },
             ],
+            gapAndGoPlan: {
+                support: { low: leastdaily, high: leastdaily },
+                targets: stock3Target, planConfigs: stock3Configs,
+                nearAboveConsolidationRange: "450-460",
+                runnerCount: 3,
+                coreCount: 3,
+                coreTarget: amdath,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
