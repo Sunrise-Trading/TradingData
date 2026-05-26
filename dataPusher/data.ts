@@ -35,8 +35,6 @@ const createDefaultFirstNewHighPlan = (
 });
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
@@ -45,8 +43,6 @@ const stock1Configs: TradingPlans.PlanConfigs = {
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
@@ -55,8 +51,6 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 const stock3Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
@@ -65,8 +59,6 @@ const stock3Configs: TradingPlans.PlanConfigs = {
 };
 const stock4Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
-    deferTradingInSeconds: 0,
-    stopTradingAfterSeconds: 0,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
@@ -180,8 +172,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         symbol: 'MU',
         analysis: {
             gap: { pdc: 751 },
-            deferTradingInSeconds: 0,
-            stopTradingAfterSeconds: 0,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -265,9 +255,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
 
             gap: { pdc: 0 },
-
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -330,9 +317,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
 
             gap: { pdc: 0 },
-
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -395,9 +379,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         analysis: {
 
             gap: { pdc: 0 }, // optional, pdv is previous day close
-
-            deferTradingInSeconds: -1,
-            stopTradingAfterSeconds: -1,
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],

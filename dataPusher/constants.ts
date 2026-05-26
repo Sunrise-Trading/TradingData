@@ -6,7 +6,6 @@ let futures = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        deferTradingInSeconds: 0,
         fixQuantity: 6,
         alwaysUseFixQuantity: true,
         keyLevels: {
@@ -32,7 +31,6 @@ let futures = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 40,
-        deferTradingInSeconds: 0,
         fixQuantity: 4,
         alwaysUseFixQuantity: true,
         keyLevels: {
@@ -58,7 +56,6 @@ let futures = [
         isFutures: true,
         vwapCorrection: { volumeSum: 0, tradingSum: 0 },
         dailyRange: 2,
-        deferTradingInSeconds: 0,
         fixQuantity: 2,
         alwaysUseFixQuantity: true,
         keyLevels: {
