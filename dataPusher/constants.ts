@@ -259,6 +259,7 @@ export const marketCaps = {
     RH: 7000,
     RBLX: 28000,
     RDDT: 13000,
+    RDW: 4500,
     RKLB: 7000,
     ROKU: 11000,
     SBUX: 87000,
