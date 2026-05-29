@@ -150,7 +150,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1Lk2d2WbzBQ33yr-IruyivMef1EMMDe6E5uuo3usWL9k/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1whLrM3dP8UnWrzWfStKJPpt3nklek4ab3FTAWbXFEys/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -159,23 +159,23 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'SNOW'
+    'DELL',
 ];
 
-const snowlevel = 1;
+const delllevel = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
     {
-        symbol: 'SNOW',
+        symbol: 'DELL',
         analysis: {
 
-            gap: { pdc: 175 },
+            gap: { pdc: 317 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: snowlevel, low: snowlevel }],
+            singleMomentumKeyLevel: [{ high: delllevel, low: delllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
