@@ -161,8 +161,9 @@ export const getGoogleDocId = () => {
 export const stockSelections: string[] = [
     'DELL',
 ];
-
-const delllevel = 1;
+const dellath = 330;
+const dellpmlow = 429;
+const delllevel = 451.5;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -181,15 +182,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SNOW,
+        marketCapInMillions: Constants.marketCaps.DELL,
         atr: {
-            average: 8.24,
+            average: 15,
             mutiplier: 2,
             minimumMultipler: 1,
-            maxRisk: 10,
+            maxRisk: 30,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [dellath, delllevel],
+        },
         defaultConfigs: stock3Configs,
         defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -210,20 +213,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 235,
+            firstTargetToAdd: dellpmlow,
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 235 },
-                { text: "210", partialCount: 1, atr: 0, rrr: 0, level: 210 },
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: dellpmlow },
+                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: dellath },
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 7,
                 targets: stock1Target,
                 planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: 281,
-                belowThisLevelOnlyVwapContinuation: 235,
+                aboveThisLevelNoMoreShort: delllevel,
+                belowThisLevelOnlyVwapContinuation: 300,
                 coreCount: 1,
-                coreTarget: 235,
-                runnerCount: 1,
+                coreTarget: dellpmlow,
+                runnerCount: 4,
                 runnerTriggerCondition: "breakdown pm low",
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
