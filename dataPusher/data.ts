@@ -150,7 +150,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1whLrM3dP8UnWrzWfStKJPpt3nklek4ab3FTAWbXFEys/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1oy2TZq49tSGVkcqtv0druMxpIZGsoaOW3m-0htJ-cVY/edit?tab=t.0#heading=h.3ta3qw9hoewr";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -159,40 +159,164 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'DELL',
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const dellath = 330;
-const dellpmlow = 429;
-const delllevel = 451.5;
+const stock1Level = 1;
+const stock2Level = 1;
+const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
-
     {
-        symbol: 'DELL',
+        symbol: 'stock1',
         analysis: {
 
-            gap: { pdc: 317 },
+            gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: delllevel, low: delllevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DELL,
+        marketCapInMillions: 0,
         atr: {
-            average: 15,
-            mutiplier: 2,
-            minimumMultipler: 1,
-            maxRisk: 30,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: {
-            otherLevels: [dellath, delllevel],
+        keyLevels: {},
+        defaultConfigs: stock1Configs,
+        defaultTargets: stock1Target,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
         },
+        short: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
+        },
+    },
+    {
+        symbol: 'stock2',
+        analysis: {
+
+            gap: { pdc: 0 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: {},
+        defaultConfigs: stock2Configs,
+        defaultTargets: stock2Target,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
+        },
+    },
+    {
+        symbol: 'stock3',
+        analysis: {
+
+            gap: { pdc: 0 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: {},
         defaultConfigs: stock3Configs,
         defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -213,27 +337,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: dellpmlow,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: dellpmlow },
-                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: dellath },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 7,
-                targets: stock1Target,
-                planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: delllevel,
-                belowThisLevelOnlyVwapContinuation: 300,
-                coreCount: 1,
-                coreTarget: dellpmlow,
-                runnerCount: 4,
-                runnerTriggerCondition: "breakdown pm low",
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
