@@ -159,40 +159,43 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'MSFT', //'NOW',
 ];
-const stock1Level = 1;
-const stock2Level = 1;
+const nowsunhigh = 138.48;
+const nowpmlow = 131.56;
+const nowlevel = 139.06;
+const msftlevel = 490;
+const msftsunhigh = 468;
+const msftpmlow = 455;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'NOW',
         analysis: {
 
-            gap: { pdc: 0 },
+            gap: { pdc: 124 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: nowlevel, low: nowlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.NOW,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 6.5,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 10,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [nowsunhigh]
+        },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -213,16 +216,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: nowpmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: nowpmlow },
+                { text: "gap fill", partialCount: 5, atr: 0, rrr: 0, level: 126 },
             ],
+            gapAndCrapPlan: {
+                targets: stock1Target,
+                planConfigs: stock1Configs,
+                extendedGapUpInAtr: 2,
+                aboveThisLevelNoMoreShort: nowlevel,
+                belowThisLevelOnlyVwapContinuation: nowpmlow,
+                coreCount: 2,
+                coreTarget: nowpmlow,
+                runnerCount: 2,
+                runnerTriggerCondition: `pm low breakdown`,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -233,28 +247,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'MSFT',
         analysis: {
 
-            gap: { pdc: 0 },
+            gap: { pdc: 450 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: msftlevel, low: msftlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MSFT,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 11.7,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 11,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [msftsunhigh]
+        },
         defaultConfigs: stock2Configs,
         defaultTargets: stock2Target,
         tradebooksConfig: {
@@ -275,16 +291,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: msftpmlow },
+                { text: "gap fill", partialCount: 2, atr: 0, rrr: 0, level: 450 },
             ],
+            gapAndCrapPlan: {
+                targets: stock2Target,
+                planConfigs: stock2Configs,
+                extendedGapUpInAtr: 2,
+                aboveThisLevelNoMoreShort: msftlevel,
+                belowThisLevelOnlyVwapContinuation: msftpmlow,
+                coreCount: 2,
+                coreTarget: msftpmlow,
+                runnerCount: 2,
+                runnerTriggerCondition: `pm low breakdown`,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
