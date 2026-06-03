@@ -72,13 +72,6 @@ const unlimitTargetForAll: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
-        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 const unlimitTargetForHalf: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -86,13 +79,6 @@ const unlimitTargetForHalf: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
         dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
-        dailyRanges: [1, 1, 1, 1, 1, 3, 3, 3, 3, 3],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 const stock1Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -100,13 +86,6 @@ const stock1Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2],
-        dailyRanges: [0.75, 0.75, 0.75, 0.8, 0.9, 1, 1, 1, 1, 1],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 const stock2Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -114,13 +93,6 @@ const stock2Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2],
-        dailyRanges: [0.75, 0.75, 0.75, 0.8, 0.9, 1, 1, 1, 1, 1],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 const stock3Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -128,13 +100,6 @@ const stock3Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2],
-        dailyRanges: [0.75, 0.75, 0.75, 0.8, 0.9, 1, 1, 1, 1, 1],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 const stock4Target: TradingPlans.ExitTargets = {
     initialTargets: {
@@ -142,13 +107,6 @@ const stock4Target: TradingPlans.ExitTargets = {
         rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
-    minimumTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [0.9, 0.95, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2],
-        dailyRanges: [0.75, 0.75, 0.75, 0.8, 0.9, 1, 1, 1, 1, 1],
-    },
-    trail5Count: 10,
-    trail15Count: 10,
 };
 export const googleDocLink = "";
 
