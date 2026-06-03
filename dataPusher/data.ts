@@ -150,7 +150,7 @@ const stock4Target: TradingPlans.ExitTargets = {
     trail5Count: 10,
     trail15Count: 10,
 };
-export const googleDocLink = "https://docs.google.com/document/d/1ed-hDsGChQlSPXpSrNg8Z2_4t_lsCEsjjUbWPpVBUX4/edit?tab=t.0";
+export const googleDocLink = "";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -159,22 +159,19 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    "MRVL",// "HPE"
+    'MRVL',
 ];
-const mrvlpmhigh = 283.14;
-const mrvlr6 = 252.45;
-const mrvlahhigh = 263;
-const mrvllevel = mrvlahhigh;
-const mrvlath = 225;
-const hpeahhigh = 65.49;
-const hpelevel = hpeahhigh;
-const hpepmlow = 57.19;
+const mrvlmaxShort = 1000;
+const mrvllevel = mrvlmaxShort;
+const stock2Level = 1;
+const stock3Level = 1;
+const stock4Level = 1;
+
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MRVL',
         analysis: {
-
-            gap: { pdc: 219 },
+            gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -186,13 +183,148 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.MRVL,
         atr: {
-            average: 13,
+            average: 12,
             mutiplier: 2,
-            minimumMultipler: 1,
+            minimumMultipler: 2,
             maxRisk: 20,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [mrvlahhigh] },
+        keyLevels: {},
+        defaultConfigs: stock1Configs,
+        defaultTargets: stock1Target,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            gapAndCrapPlan: {
+                targets: stock1Target,
+                planConfigs: stock1Configs,
+                extendedGapUpInAtr: 2,
+                aboveThisLevelNoMoreShort: mrvlmaxShort,
+                belowThisLevelOnlyVwapContinuation: 100,
+                runnerCount: 1,
+                runnerTriggerCondition: "",
+                coreCount: 1,
+                coreTarget: 1,
+            },
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
+        },
+        long: {
+            enabled: false,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
+        },
+    },
+    {
+        symbol: 'stock2',
+        analysis: {
+
+            gap: { pdc: 0 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: {},
+        defaultConfigs: stock2Configs,
+        defaultTargets: stock2Target,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: 0,
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
+        },
+    },
+    {
+        symbol: 'stock3',
+        analysis: {
+
+            gap: { pdc: 0 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: {},
         defaultConfigs: stock3Configs,
         defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -213,69 +345,48 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "r6", partialCount: 1, atr: 0, rrr: 0, level: mrvlr6 },
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 230 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                targets: stock3Target,
-                planConfigs: stock3Configs,
-                extendedGapUpInAtr: 2,
-                aboveThisLevelNoMoreShort: mrvlpmhigh,
-                belowThisLevelOnlyVwapContinuation: mrvlr6,
-                coreCount: 1,
-                coreTarget: mrvlr6,
-                runnerCount: 1,
-                runnerTriggerCondition: `vwap rejection`,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: mrvlpmhigh },
-                { text: "ah high", partialCount: 1, atr: 0, rrr: 0, level: mrvlahhigh },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                support: { high: mrvlath, low: mrvlath },
-                nearAboveConsolidationRange: "200-225",
-                targets: stock3Target,
-                planConfigs: stock3Configs,
-                runnerCount: 0,
-                runnerTriggerCondition: "none, just scalp",
-                coreCount: 0,
-                coreTarget: 0,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
     },
     {
-        symbol: 'HPE',
+        symbol: 'stock4',
         analysis: {
 
-            gap: { pdc: 48 }, // optional, pdv is previous day close
+            gap: { pdc: 0 }, // optional, pdv is previous day close
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: hpelevel, low: hpelevel }],
+            singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.HPE,
+        marketCapInMillions: 0,
         atr: {
-            average: 2,
-            mutiplier: 3,
-            minimumMultipler: 2,
-            maxRisk: 5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [hpeahhigh] },
+        keyLevels: {},
         defaultConfigs: stock4Configs,
         defaultTargets: stock4Target,
         tradebooksConfig: {
@@ -296,27 +407,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: hpepmlow,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: hpepmlow },
-                { text: "53", partialCount: 3, atr: 0, rrr: 0, level: 53 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                targets: stock4Target,
-                planConfigs: stock4Configs,
-                extendedGapUpInAtr: 2,
-                aboveThisLevelNoMoreShort: hpeahhigh,
-                belowThisLevelOnlyVwapContinuation: hpepmlow,
-                coreCount: 3,
-                coreTarget: hpepmlow,
-                runnerCount: 3,
-                runnerTriggerCondition: `pm low breakdown`,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Target, stock4Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock4Target, stock4Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },

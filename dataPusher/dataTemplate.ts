@@ -173,7 +173,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
         analysis: {
-
             gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
@@ -235,7 +234,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock2',
         analysis: {
-
             gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
