@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.05; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -117,7 +117,7 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'LULU', 'STI'
+    'LULU',// 'STI'
 ];
 const lululastsupport = 110;
 const lulutrappedBelow = 116.63;
