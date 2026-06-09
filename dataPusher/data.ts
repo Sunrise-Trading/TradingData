@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.05; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -121,7 +121,8 @@ export const stockSelections: string[] = [
 ];
 
 const intcdailyresistance = 118;
-const intcnewshigh = 114;
+const intcnewshigh = 113.67;
+const intcpmhigh = 113.84;
 const intcpmlow = 111.75;
 const intclevel = intcpmlow;
 const stock4Level = 1;
@@ -149,7 +150,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 8,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { otherLevels: [intcnewshigh] },
         defaultConfigs: stock3Configs,
         defaultTargets: stock3Target,
         tradebooksConfig: {
@@ -191,7 +192,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: intcnewshigh,
+            firstTargetToAdd: 114,
             finalTargets: [
                 { text: "news high", partialCount: 1, atr: 0, rrr: 0, level: intcnewshigh },
                 { text: "daily", partialCount: 3, atr: 0, rrr: 0, level: intcdailyresistance },
