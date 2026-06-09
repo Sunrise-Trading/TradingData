@@ -170,7 +170,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "yhigh", partialCount: 1, atr: 0, rrr: 0, level: intcpmlow },
