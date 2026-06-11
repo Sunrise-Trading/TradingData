@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.05; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/1iEqFgdrbfYK15GN1gqG7OOWmgkeZHR0PspXiFp09150/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/19OeEnWH00M86a4IWfDJXojX-zGpNlfc_FIdpmFP_M7w/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -117,23 +117,25 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'SMCI',
+    'ORCL',
 ];
 const smciahlow = 35.45;
-const smcilevel = smciahlow;
+const orclstrappedbelow = 198;
+const orclsupport = 178.8;
+const orcllevel = smciahlow;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SMCI',
+        symbol: 'ORCL',
         analysis: {
-            gap: { pdc: 40 },
+            gap: { pdc: 201 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: smcilevel, low: smcilevel }],
+            singleMomentumKeyLevel: [{ high: orcllevel, low: orcllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -141,13 +143,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.SMCI,
         atr: {
-            average: 3.44,
+            average: 13,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 4,
+            maxRisk: 14,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [smciahlow] },
+        keyLevels: { otherLevels: [orclsupport] },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -167,12 +169,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "180", partialCount: 1, atr: 0, rrr: 0, level: 180 },
+                { text: "daily support", partialCount: 1, atr: 0, rrr: 0, level: orclsupport },
             ],
+            gapDownAndGoDownPlan: {
+                targets: stock1Target, planConfigs: stock1Configs,
+                buyersTrappedBelowThisLevel: orclstrappedbelow,
+                runnerCount: 0,
+                runnerTriggerCondition: "breakdown daily support",
+                coreCount: 0,
+                coreTarget: 180,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
@@ -180,17 +190,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "38", partialCount: 1, atr: 0, rrr: 0, level: 38 },
-                { text: "39", partialCount: 1, atr: 0, rrr: 0, level: 39 },
+                { text: "190", partialCount: 1, atr: 0, rrr: 0, level: 190 },
+                { text: "193", partialCount: 1, atr: 0, rrr: 0, level: 193 },
             ],
             gapDownAndGoUpPlan: {
-                nearAboveSupport: { high: 34, low: 34 },
-                support: [{ high: 34, low: 34 }],
+                nearAboveSupport: { high: orclsupport, low: orclsupport },
+                support: [{ high: orclsupport, low: orclsupport }],
                 targets: stock1Target, planConfigs: stock1Configs,
                 runnerCount: 0,
                 runnerTriggerCondition: "reclaim vwap",
                 coreCount: 0,
-                coreTarget: 38,
+                coreTarget: 190,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
