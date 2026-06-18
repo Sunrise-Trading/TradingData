@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/1ujwdtpFSCzyiMV0PsbeDl-fSF5gI-m3BPj_AXJVFDFc/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1DQKKlqMhZ8s2MB7HtwR1XXhkse4cvA-3319svF_HgAw/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -117,39 +117,38 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'RXT',
+    'INTC',
 ];
-const rxtpmhigh = 7.88;
-const rxtath = 7.65;
-const rxtdailysupport = 6.32;
-const RXTlevel = 1;
+const intcath = 132.75;
+const intcyhigh = 125.2;
+const intclevel = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RXT',
+        symbol: 'INTC',
         analysis: {
-            gap: { pdc: 5.91 },
+            gap: { pdc: 121 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: RXTlevel, low: RXTlevel }],
+            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 1100,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 0.8,
+            average: 9.5,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 1,
+            maxRisk: 10,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [rxtath, rxtdailysupport] },
+        keyLevels: { otherLevels: [intcath] },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -169,39 +168,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "daily support", partialCount: 2, atr: 0, rrr: 0, level: rxtdailysupport },
-                { text: "gap fill", partialCount: 2, atr: 0, rrr: 0, level: 6 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.5,
-                aboveThisLevelNoMoreShort: rxtath, belowThisLevelOnlyVwapContinuation: 7,
-                targets: stock1Target, planConfigs: stock1Configs,
-                runnerCount: 1,
-                coreCount: 1,
-                coreTarget: rxtdailysupport,
-                runnerTriggerCondition: "lost daily support"
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: intcath,
             finalTargets: [
-                { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
-                { text: "7.6", partialCount: 1, atr: 0, rrr: 0, level: 7.6 },
+                { text: "all time high", partialCount: 1, atr: 0, rrr: 0, level: intcath },
+                { text: "140", partialCount: 3, atr: 0, rrr: 0, level: 140 },
             ],
             gapAndGoPlan: {
-                support: { high: rxtdailysupport, low: rxtdailysupport },
+                nearBelowConsolidationRangeTop: "all time high, light zone after y-high",
+                runnerCount: 3,
+                runnerTriggerCondition: "survive a pullback above ath/pm high",
+                coreCount: 3,
+                coreTarget: 135,
+                support: { high: intcyhigh, low: intcyhigh },
+                enableBidReversal: true,
+                enableOfferBreakout: true,
+                waitForPullback: false,
                 targets: stock1Target, planConfigs: stock1Configs,
-                runnerCount: 1,
-                coreCount: 1,
-                nearAboveConsolidationRange: "4-6.33",
-                runnerTriggerCondition: "reclaim vwap",
-                coreTarget: 7.5
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
