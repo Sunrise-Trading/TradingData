@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.05; // 0.21
+export const defaultSize = 0.21; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/1DQKKlqMhZ8s2MB7HtwR1XXhkse4cvA-3319svF_HgAw/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/18dnakOBOWL5VCGOepN6Nu4Wzg3K1CMBw8Ta49iDyMKc/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -117,38 +117,37 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'INTC',
+    'DFTX',
 ];
-const intcath = 132.75;
-const intcyhigh = 125.2;
-const intclevel = 1;
+const dftxgapfill = 30;
+const DFTXlevel = 100;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'DFTX',
         analysis: {
-            gap: { pdc: 121 },
+            gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
+            singleMomentumKeyLevel: [{ high: DFTXlevel, low: DFTXlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: 0,
         atr: {
-            average: 9.5,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 1.38,
+            mutiplier: 3,
+            minimumMultipler: 2,
             maxRisk: 10,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [intcath] },
+        keyLevels: {},
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -171,42 +170,30 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "128", partialCount: 1, atr: 0, rrr: 0, level: 128 },
-                { text: "126", partialCount: 1, atr: 0, rrr: 0, level: 126 },
+                { text: "26", partialCount: 1, atr: 0, rrr: 0, level: 26 },
+                { text: "30", partialCount: 1, atr: 0, rrr: 0, level: 30 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 1,
-                coreCount: 0,
-                coreTarget: 130,
-                runnerCount: 0,
-                runnerTriggerCondition: "vwap bounce fail",
+                extendedGapUpInAtr: 8,
                 targets: stock1Target, planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: 135,
-                belowThisLevelOnlyVwapContinuation: 128,
-                waitForPullback: true,
+                runnerCount: 2,
+                runnerTriggerCondition: "vwap bounce fail",
+                coreCount: 4,
+                coreTarget: 38,
+                aboveThisLevelNoMoreShort: 100,
+                belowThisLevelOnlyVwapContinuation: 20,
+                waitForPullback: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: true,
-            firstTargetToAdd: intcath,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "all time high", partialCount: 1, atr: 0, rrr: 0, level: intcath },
-                { text: "140", partialCount: 3, atr: 0, rrr: 0, level: 140 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                nearBelowConsolidationRangeTop: "all time high, light zone after y-high",
-                runnerCount: 3,
-                runnerTriggerCondition: "survive a pullback above ath/pm high",
-                coreCount: 3,
-                coreTarget: 135,
-                support: { high: intcyhigh, low: intcyhigh },
-                enableBidReversal: true,
-                enableOfferBreakout: true,
-                waitForPullback: false,
-                targets: stock1Target, planConfigs: stock1Configs,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
