@@ -117,11 +117,11 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'DFTX',
+    'MU',//  'DFTX',
 ];
 const dftxgapfill = 30;
 const DFTXlevel = 100;
-const stock2Level = 1;
+const mulevel = 2000;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -129,7 +129,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'DFTX',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 25 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -139,7 +139,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: 2000,
         atr: {
             average: 1.38,
             mutiplier: 3,
@@ -199,24 +199,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 1134 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 80,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 40,
             maxQuantity: -1,
         },
         keyLevels: {},
@@ -240,16 +240,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "1150", partialCount: 2, atr: 0, rrr: 0, level: 1150 },
+                { text: "1180", partialCount: 1, atr: 0, rrr: 0, level: 1180 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 1,
+                targets: stock2Target, planConfigs: stock2Configs,
+                runnerCount: 2,
+                runnerTriggerCondition: "vwap bounce fail",
+                coreCount: 4,
+                coreTarget: 1190,
+                aboveThisLevelNoMoreShort: 2000,
+                belowThisLevelOnlyVwapContinuation: 20,
+                waitForPullback: false,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
