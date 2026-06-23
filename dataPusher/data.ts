@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/18dnakOBOWL5VCGOepN6Nu4Wzg3K1CMBw8Ta49iDyMKc/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1eZIGtO4NKr0XyARnEf8U9GEb8XrsSy5k-lJkEUAlvIM/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -117,37 +117,43 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'MU',//  'DFTX',
+    //'MU' 
+    'SPCX',
 ];
-const dftxgapfill = 30;
-const DFTXlevel = 100;
-const mulevel = 2000;
+const spcxylow = 154;
+const spcxpmlow = 146.88;
+const ipolow = 149.34;
+const spcxlevel = spcxpmlow;
+const muma9 = 1045;
+const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DFTX',
+        symbol: 'SPCX',
         analysis: {
-            gap: { pdc: 25 },
+            gap: { pdc: 154.6 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: DFTXlevel, low: DFTXlevel }],
+            singleMomentumKeyLevel: [{ high: spcxlevel, low: spcxlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 2000,
+        marketCapInMillions: 100000,
         atr: {
-            average: 1.38,
-            mutiplier: 3,
-            minimumMultipler: 2,
+            average: 20,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
             maxRisk: 10,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [ipolow]
+        },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -168,32 +174,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: spcxpmlow,
             finalTargets: [
-                { text: "26", partialCount: 1, atr: 0, rrr: 0, level: 26 },
-                { text: "30", partialCount: 1, atr: 0, rrr: 0, level: 30 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: spcxpmlow },
+                { text: "100", partialCount: 1, atr: 0, rrr: 0, level: 100 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 8,
-                targets: stock1Target, planConfigs: stock1Configs,
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: ipolow,
                 runnerCount: 2,
-                runnerTriggerCondition: "vwap bounce fail",
-                coreCount: 4,
-                coreTarget: 38,
-                aboveThisLevelNoMoreShort: 100,
-                belowThisLevelOnlyVwapContinuation: 20,
+                runnerTriggerCondition: "pm low breakdown",
+                coreCount: 2,
+                coreTarget: spcxpmlow,
+                targets: stock1Target, planConfigs: stock1Configs,
                 waitForPullback: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "ylow", partialCount: 2, atr: 0, rrr: 0, level: spcxylow },
+                { text: "164", partialCount: 2, atr: 0, rrr: 0, level: 164 },
             ],
+            gapDownAndGoUpPlan: {
+                nearAboveKeyEventLevel: ipolow,
+                targets: stock1Target, planConfigs: stock1Configs,
+                waitForPullback: false,
+                runnerCount: 2,
+                runnerTriggerCondition: "ylow breakout",
+                coreTarget: spcxylow,
+                coreCount: 2,
+                support: [{ high: ipolow, low: ipolow }]
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
@@ -201,11 +215,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MU',
         analysis: {
-            gap: { pdc: 1134 },
+            gap: { pdc: 1211 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -215,8 +229,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         atr: {
             average: 80,
             mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 40,
+            minimumMultipler: 0.5,
+            maxRisk: 50,
             maxQuantity: -1,
         },
         keyLevels: {},
@@ -239,33 +253,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
-            finalTargets: [
-                { text: "1150", partialCount: 2, atr: 0, rrr: 0, level: 1150 },
-                { text: "1180", partialCount: 1, atr: 0, rrr: 0, level: 1180 },
-            ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1,
-                targets: stock2Target, planConfigs: stock2Configs,
-                runnerCount: 2,
-                runnerTriggerCondition: "vwap bounce fail",
-                coreCount: 4,
-                coreTarget: 1190,
-                aboveThisLevelNoMoreShort: 2000,
-                belowThisLevelOnlyVwapContinuation: 20,
-                waitForPullback: false,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
-        },
-        long: {
             enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: -1,
+            finalTargets: [
+                { text: "gap fill", partialCount: 2, atr: 0, rrr: 0, level: 1160 },
+                { text: "1140", partialCount: 2, atr: 0, rrr: 0, level: 1140 },
+            ],
+            gapDownAndGoUpPlan: {
+                nearAboveSupport: { high: muma9, low: muma9 },
+                runnerCount: 1,
+                runnerTriggerCondition: "reclaim y low",
+                coreCount: 1,
+                coreTarget: 1160,
+                targets: stock2Target, planConfigs: stock2Configs,
+                support: [{ high: muma9, low: muma9 }],
+                waitForPullback: false,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
