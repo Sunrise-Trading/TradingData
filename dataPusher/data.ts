@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/1FJ2D_Xxe-sApTcVyfjt0mMiHSsvK71P-CC0k3OkT3zk/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1F25wQC4BlQeL6cLMggXNLwihKg-Q3EXkthZModWPbyg/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -117,37 +117,40 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'WEN',
+    'MU',
 ];
-const wendailyhigh = 8.44;
-const wenlevel = wendailyhigh;
+const muath = 1213.56;
+const musessionhigh = 1250;
+const mudailysupport = 1100;
+const mupmlow = 1213;
+const MUlevel = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'WEN',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 6.2 },
+            gap: { pdc: 1048 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: wenlevel, low: wenlevel }],
+            singleMomentumKeyLevel: [{ high: MUlevel, low: MUlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 2000,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 0.34,
-            mutiplier: 3,
-            minimumMultipler: 2,
-            maxRisk: 1,
+            average: 86,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
+            maxRisk: 100,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [wendailyhigh] },
+        keyLevels: { otherLevels: [musessionhigh, muath, mudailysupport] },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -168,32 +171,44 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: muath,
             finalTargets: [
-                { text: "7", partialCount: 3, atr: 0, rrr: 0, level: 7 },
-                { text: "8", partialCount: 2, atr: 0, rrr: 0, level: 8 },
+                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: muath },
+                { text: "1130", partialCount: 2, atr: 0, rrr: 0, level: 1130 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 6,
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: 3,
-                runnerTriggerCondition: "vwap bounce fail",
+                runnerCount: 2,
+                runnerTriggerCondition: "breakdown pm low",
+                coreCount: 2,
+                coreTarget: muath,
                 targets: stock1Target, planConfigs: stock1Configs,
-                aboveThisLevelNoMoreShort: 10,
-                belowThisLevelOnlyVwapContinuation: 7,
+                extendedGapUpInAtr: 1.6,
                 waitForPullback: false,
+                aboveThisLevelNoMoreShort: 2000,
+                belowThisLevelOnlyVwapContinuation: mupmlow,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "1300", partialCount: 2, atr: 0, rrr: 0, level: 1300 },
+                { text: "1280", partialCount: 2, atr: 0, rrr: 0, level: 1280 },
             ],
+            gapAndGoPlan: {
+                runnerCount: 2,
+                runnerTriggerCondition: "breakdown pm low",
+                coreCount: 2,
+                coreTarget: muath,
+                targets: stock1Target, planConfigs: stock1Configs,
+                waitForPullback: true,
+                support: { high: mudailysupport, low: mudailysupport },
+                enableBidReversal: true,
+                enableOfferBreakout: true,
+                allTimeHigh: muath,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
