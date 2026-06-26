@@ -8,7 +8,7 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
+export const defaultSize = 0.1; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -108,7 +108,7 @@ const stock4Target: TradingPlans.ExitTargets = {
         dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
     },
 };
-export const googleDocLink = "https://docs.google.com/document/d/1F25wQC4BlQeL6cLMggXNLwihKg-Q3EXkthZModWPbyg/edit?tab=t.0";
+export const googleDocLink = "https://docs.google.com/document/d/1pZv8OHxvqKYlmZRV9UrsPU2KlNaMVv5keemMrC8B-Z8/edit?tab=t.0";
 
 export const getGoogleDocId = () => {
     let docPrefix = "https://docs.google.com/document/d/";
@@ -119,10 +119,10 @@ export const getGoogleDocId = () => {
 export const stockSelections: string[] = [
     'MU',
 ];
-const muath = 1213.56;
-const musessionhigh = 1250;
-const mudailysupport = 1100;
-const mupmlow = 1213;
+const muath = 1255;
+const mudailysupport = 1000;
+const mupmlow = 1126;
+const mugapfill = 1085;
 const MUlevel = 1;
 const stock2Level = 1;
 const stock3Level = 1;
@@ -150,7 +150,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 100,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [musessionhigh, muath, mudailysupport] },
+        keyLevels: { otherLevels: [mugapfill] },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -171,21 +171,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: muath,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "ath", partialCount: 2, atr: 0, rrr: 0, level: muath },
-                { text: "1130", partialCount: 2, atr: 0, rrr: 0, level: 1130 },
+                { text: "1000", partialCount: 1, atr: 0, rrr: 0, level: 1000 },
+                { text: "1100", partialCount: 1, atr: 0, rrr: 0, level: 1100 },
             ],
             gapAndCrapPlan: {
-                runnerCount: 2,
+                runnerCount: 0,
                 runnerTriggerCondition: "breakdown pm low",
-                coreCount: 2,
+                coreCount: 0,
                 coreTarget: muath,
                 targets: stock1Target, planConfigs: stock1Configs,
                 extendedGapUpInAtr: 1.6,
                 waitForPullback: false,
-                aboveThisLevelNoMoreShort: 2000,
-                belowThisLevelOnlyVwapContinuation: mupmlow,
+                aboveThisLevelNoMoreShort: 1255,
+                belowThisLevelOnlyVwapContinuation: 1100,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
@@ -198,16 +198,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "1280", partialCount: 2, atr: 0, rrr: 0, level: 1280 },
             ],
             gapAndGoPlan: {
-                runnerCount: 2,
+                runnerCount: 0,
                 runnerTriggerCondition: "breakdown pm low",
-                coreCount: 2,
+                coreCount: 0,
                 coreTarget: muath,
                 targets: stock1Target, planConfigs: stock1Configs,
                 waitForPullback: true,
                 support: { high: mudailysupport, low: mudailysupport },
                 enableBidReversal: true,
-                enableOfferBreakout: true,
-                allTimeHigh: muath,
+                enableOfferBreakout: false,
+                nearAboveConsolidationRange: "1000"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
