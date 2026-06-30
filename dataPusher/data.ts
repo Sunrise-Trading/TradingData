@@ -34,7 +34,7 @@ const createDefaultFirstNewHighPlan = (
     ...defaultCorePlan,
 });
 const stock1Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
+    size: 0.1,
     requireReversal: true,
     alwaysAllowFlatten: true,
     alwaysAllowMoveStop: true,
@@ -117,40 +117,39 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'CMCSA',
+    'AVAV',
 ];
-const cmcsadailyhigh = 31;
-const cmcsapmswinglow = 27.53;
-const ma200 = 27.69;
-const ma50 = 25.42;
-const CMCSAlevel = 31;
+const avavdailyhigh = 220;
+const avavpmlow = 166;
+const avavlevel = avavdailyhigh;
+const avav50ma = 177;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CMCSA',
+        symbol: 'AVAV',
         analysis: {
-            gap: { pdc: 23 },
+            gap: { pdc: 139 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: CMCSAlevel, low: CMCSAlevel }],
+            singleMomentumKeyLevel: [{ high: avavlevel, low: avavlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 87000,
+        marketCapInMillions: 6000,
         atr: {
-            average: 0.65,
-            mutiplier: 3,
-            minimumMultipler: 2,
-            maxRisk: 3,
+            average: 10,
+            mutiplier: 2,
+            minimumMultipler: 1,
+            maxRisk: 20,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { otherLevels: [avav50ma] },
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -171,21 +170,20 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: cmcsapmswinglow,
+            firstTargetToAdd: avavpmlow,
             finalTargets: [
-                { text: "200ma", partialCount: 2, atr: 0, rrr: 0, level: ma200 },
-                { text: "50ma", partialCount: 2, atr: 0, rrr: 0, level: ma50 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: avavpmlow },
+                { text: "gap fill", partialCount: 5, atr: 0, rrr: 0, level: 150 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 8,
+                extendedGapUpInAtr: 4,
+                runnerCount: 0, coreCount: 0,
+                runnerTriggerCondition: "premarket low breakdown",
+                coreTarget: avavpmlow,
+                aboveThisLevelNoMoreShort: avavdailyhigh,
+                belowThisLevelOnlyVwapContinuation: avavpmlow,
                 targets: stock1Target, planConfigs: stock1Configs,
-                runnerCount: 3,
-                coreCount: 3,
-                coreTarget: ma200,
-                runnerTriggerCondition: "breakdown pm swing low",
-                belowThisLevelOnlyVwapContinuation: 25,
-                aboveThisLevelNoMoreShort: cmcsadailyhigh,
-                waitForPullback: false,
+                waitForPullback: true,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
