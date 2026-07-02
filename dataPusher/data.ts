@@ -117,39 +117,37 @@ export const getGoogleDocId = () => {
     return docId;
 };
 export const stockSelections: string[] = [
-    'META',
+    'MU',
 ];
-const metadailyhigh = 640;
-const metalevel = metadailyhigh;
-const metaacceleration = 592;
-const metalongstart = 592;
+const mupmlow = 987;
+const mulevel = mupmlow;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 563 },
+            gap: { pdc: 1032 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: metalevel, low: metalevel }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.META,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 18,
+            average: 95,
             mutiplier: 1,
-            minimumMultipler: 1,
-            maxRisk: 20,
+            minimumMultipler: 0.5,
+            maxRisk: 50,
             maxQuantity: -1,
         },
-        keyLevels: { otherLevels: [metaacceleration] },
+        keyLevels: {},
         defaultConfigs: stock1Configs,
         defaultTargets: stock1Target,
         tradebooksConfig: {
@@ -169,42 +167,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
+            enabled: false,
+            firstTargetToAdd: 0,
             finalTargets: [
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 575 },
-                { text: "daily support", partialCount: 2, atr: 0, rrr: 0, level: 595 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.6,
-                runnerCount: 1, coreCount: 1,
-                runnerTriggerCondition: "premarket low breakdown",
-                coreTarget: 595,
-                aboveThisLevelNoMoreShort: metadailyhigh,
-                belowThisLevelOnlyVwapContinuation: metaacceleration,
-                targets: stock1Target, planConfigs: stock1Configs,
-                waitForPullback: false,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 1073,
             finalTargets: [
-                { text: "pm high", partialCount: 5, atr: 0, rrr: 0, level: 612 },
-                { text: "daily high", partialCount: 5, atr: 0, rrr: 0, level: 620 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: 1073 },
+                { text: "ma daily", partialCount: 2, atr: 0, rrr: 0, level: 1120 },
             ],
             gapAndGoPlan: {
-                nearAboveConsolidationRange: "606",
+                recentPullback: 1000,
                 runnerCount: 1, coreCount: 1,
-                runnerTriggerCondition: "premarket low breakdown",
-                coreTarget: 612,
-                support: { high: metalongstart, low: metalongstart },
+                runnerTriggerCondition: "premarket high breakout",
+                coreTarget: 1067,
+                support: { high: mupmlow, low: mupmlow },
                 targets: stock1Target, planConfigs: stock1Configs,
-                waitForPullback: true,
+                waitForPullback: false,
+                enableOfferBreakout: false,
                 enableBidReversal: true,
-                enableOfferBreakout: true,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
             firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
