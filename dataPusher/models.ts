@@ -110,8 +110,12 @@ export interface VwapBounceFailPlan extends BasePlan { }
 export interface AllTimeHighVwapContinuationPlan extends BasePlan {
     allTimeHigh: number,
 }
+export interface KeyLevel {
+    price: number,
+    label: string,
+}
 export interface keyLevels {
-    otherLevels?: number[];
+    otherLevels?: KeyLevel[];
 };
 export enum PlanType {
     LevelMomentum = 'LevelMomentum',
@@ -124,7 +128,6 @@ export enum PlanType {
     VwapCrossSuccess = 'VwapCrossSuccess',
 };
 export interface BasePlan {
-    targets: ExitTargets,
     planConfigs: PlanConfigs,
     planType?: PlanType,
     timeframe?: number,
@@ -138,12 +141,8 @@ export interface PlanConfigs {
     size: number,
     sizingCount?: number,
     requireReversal: boolean,
-    alwaysAllowFlatten: boolean,
-    alwaysAllowMoveStop: boolean,
-    setupQuality: SetupQuality,
 }
 export interface LevelMomentumPlan extends BasePlan {
-    enableAutoTrigger: boolean,
 }
 export interface PremarketPlan extends BasePlan { }
 export interface GapGiveAndGoPlan extends BasePlan {
@@ -260,28 +259,6 @@ export interface LevelArea {
     high: number,
     low: number,
 }
-
-export enum SetupQuality {
-    Unknown = "Unknown",
-    /**
-     * Half out at 1R and scale out into 2R
-     */
-    Scalp = "Scalp",
-    /**
-     * 2-leg push
-     */
-    Move2Move = "Move2Move",
-
-    /**
-     * Get in on 1-minute chart and get out on 5-minute chart
-     */
-    HigherTimeFrameTrend = "HigherTimeFrameTrend",
-    HoldToDayClose = "HoldToDayClose",
-    /**
-     * Hold last few for swing or too extended intraday move
-     */
-    SwingHold = "SwingHold",
-};
 
 export enum PremarketVolumeScore {
     Zero_Low_Or_Normal = 0,
