@@ -19,20 +19,10 @@ const createDefaultLevelMomentumPlan = (
     targets: TradingPlans.ExitTargets,
     planConfigs: TradingPlans.PlanConfigs,
 ): TradingPlans.LevelMomentumPlan => ({
-    enableAutoTrigger: false,
-    targets,
     planConfigs,
     ...defaultCorePlan,
 });
-const createDefaultFirstNewHighPlan = (
-    targets: TradingPlans.ExitTargets,
-    planConfigs: TradingPlans.PlanConfigs,
-): TradingPlans.FirstNewHighPlan => ({
-    enableAutoTrigger: false,
-    targets,
-    planConfigs,
-    ...defaultCorePlan,
-});
+
 const stock1Configs: TradingPlans.PlanConfigs = {
     size: defaultSize,
     requireReversal: true,
@@ -164,7 +154,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
         long: {
             enabled: true,
@@ -174,7 +163,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock1Target, stock1Configs),
         },
     },
     {
@@ -225,7 +213,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
         long: {
             enabled: true,
@@ -235,7 +222,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock2Target, stock2Configs),
         },
     },
     {
@@ -287,7 +273,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
         long: {
             enabled: true,
@@ -297,7 +282,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock3Target, stock3Configs),
         },
     },
     {
@@ -349,7 +333,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Target, stock4Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock4Target, stock4Configs),
         },
         long: {
             enabled: true,
@@ -359,7 +342,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Target, stock4Configs),
-            firstNewHighPlan: createDefaultFirstNewHighPlan(stock4Target, stock4Configs),
         },
     },
 ];
