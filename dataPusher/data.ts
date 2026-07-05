@@ -72,12 +72,6 @@ const stock4Target: TradingPlans.ExitTargets = {
 };
 export const googleDocLink = "";
 
-export const getGoogleDocId = () => {
-    let docPrefix = "https://docs.google.com/document/d/";
-    const docIdWithRest = googleDocLink.substring(googleDocLink.indexOf(docPrefix) + docPrefix.length);
-    const docId = docIdWithRest.split('/')[0];
-    return docId;
-};
 export const stockSelections: string[] = [
     'MU',
 ];
@@ -115,7 +109,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ]
         },
         defaultConfigs: stock1Configs,
-        defaultTargets: stock1Target,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },

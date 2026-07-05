@@ -16,7 +16,6 @@ const defaultCorePlan = {
     runnerTriggerCondition: "",
 };
 const createDefaultLevelMomentumPlan = (
-    targets: TradingPlans.ExitTargets,
     planConfigs: TradingPlans.PlanConfigs,
 ): TradingPlans.LevelMomentumPlan => ({
     planConfigs,
@@ -44,56 +43,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
     sizingCount: 10,
 };
 
-const unlimitTargetForAll: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
-        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-    },
-};
-const unlimitTargetForHalf: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.8, 1.9, 2.4, 3, 4, 4, 4, 4, 4],
-        dailyRanges: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-    },
-};
-const stock1Target: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-};
-const stock2Target: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-};
-const stock3Target: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 3, 3, 3, 3],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-};
-const stock4Target: TradingPlans.ExitTargets = {
-    initialTargets: {
-        priceLevels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        rrr: [1.5, 1.6, 1.8, 1.9, 2, 2, 2, 2, 2, 2],
-        dailyRanges: [1, 1, 1.5, 1.5, 1.9, 1.9, 1.9, 1.9, 1.9, 2],
-    },
-};
-export const googleDocLink = "";
 
-export const getGoogleDocId = () => {
-    let docPrefix = "https://docs.google.com/document/d/";
-    const docIdWithRest = googleDocLink.substring(googleDocLink.indexOf(docPrefix) + docPrefix.length);
-    const docId = docIdWithRest.split('/')[0];
-    return docId;
-};
 export const stockSelections: string[] = [
     'stock1',
     'stock2',
@@ -129,7 +79,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {},
         defaultConfigs: stock1Configs,
-        defaultTargets: stock1Target,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -153,7 +102,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
@@ -162,7 +111,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Target, stock1Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
@@ -188,7 +137,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {},
         defaultConfigs: stock2Configs,
-        defaultTargets: stock2Target,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -212,7 +160,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
@@ -221,7 +169,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Target, stock2Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
     {
@@ -248,7 +196,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {},
         defaultConfigs: stock3Configs,
-        defaultTargets: stock3Target,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -272,7 +219,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
         },
         long: {
             enabled: true,
@@ -281,7 +228,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Target, stock3Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
         },
     },
     {
@@ -308,7 +255,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {},
         defaultConfigs: stock4Configs,
-        defaultTargets: stock4Target,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -332,7 +278,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Target, stock4Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
         },
         long: {
             enabled: true,
@@ -341,7 +287,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Target, stock4Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
         },
     },
 ];
