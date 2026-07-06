@@ -127,7 +127,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "scalp, no runner",
                 coreCount: 0,
                 coreTarget: 26,
-                support: { high: wulfr6, low: wulfr6 },
+                support: { high: wulfylow, low: wulfylow },
                 nearAboveConsolidationRange: "R6",
                 waitForPullback: true,
                 planConfigs: stock1Configs,
