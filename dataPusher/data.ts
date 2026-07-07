@@ -45,39 +45,44 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'WULF',
+    'RIVN',
 ];
-const wulfath = 30;
-const wulfr6 = 24.4;
-const wulfylow = 23.53;
-const wulflevel = wulfath;
+const rivnylow = 18.39;
+const rivnpmlow = 17.75;
+const rivn2daylow = 17.81;
+const rivnlevel = rivn2daylow;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'WULF',
+        symbol: 'RIVN',
         analysis: {
-            gap: { pdc: 21.18 },
+            gap: { pdc: 20.14 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: wulflevel, low: wulflevel }],
+            singleMomentumKeyLevel: [{ high: rivnlevel, low: rivnlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WULF,
+        marketCapInMillions: Constants.marketCaps.RIVN,
         atr: {
-            average: 2.2,
+            average: 1.13,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 4,
+            maxRisk: 2,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [
+                { label: "2-day low", price: rivn2daylow },
+                { label: "y-low", price: rivnylow },
+            ]
+        },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -97,19 +102,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: wulfylow,
+            firstTargetToAdd: rivnpmlow,
             finalTargets: [
-                { text: "ylow", partialCount: 1, atr: 0, rrr: 0, level: wulfylow },
-                { text: "R6", partialCount: 1, atr: 0, rrr: 0, level: wulfr6 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: rivnpmlow },
+                { text: "17", partialCount: 1, atr: 0, rrr: 0, level: 17 },
             ],
-            gapAndCrapPlan: {
+            gapDownAndGoDownPlan: {
                 runnerCount: 0,
                 runnerTriggerCondition: "breakdown y-low",
                 coreCount: 0,
-                coreTarget: wulfylow,
-                aboveThisLevelNoMoreShort: wulfath,
-                belowThisLevelOnlyVwapContinuation: wulfr6,
-                extendedGapUpInAtr: 1.6,
+                coreTarget: rivnpmlow,
+                buyersTrappedBelowThisLevel: 18.39,
                 waitForPullback: true,
                 planConfigs: stock1Configs,
             },
@@ -119,20 +122,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "25", partialCount: 1, atr: 0, rrr: 0, level: 25 },
-                { text: "26", partialCount: 1, atr: 0, rrr: 0, level: 26 },
+                { text: "18", partialCount: 1, atr: 0, rrr: 0, level: 18 },
+                { text: "18.05", partialCount: 1, atr: 0, rrr: 0, level: 18.05 },
             ],
-            gapAndGoPlan: {
+            gapDownAndGoUpPlan: {
                 runnerCount: 0,
                 runnerTriggerCondition: "scalp, no runner",
                 coreCount: 0,
-                coreTarget: 26,
-                support: { high: wulfylow, low: wulfylow },
-                nearAboveConsolidationRange: "R6",
+                coreTarget: 18.39,
+                support: [{ high: rivn2daylow, low: rivn2daylow }],
+                nearAboveSupport: { high: rivn2daylow, low: rivn2daylow },
                 waitForPullback: true,
                 planConfigs: stock1Configs,
-                enableBidReversal: true,
-                enableOfferBreakout: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
