@@ -45,7 +45,7 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'RIVN',
+    'BABA',
 ];
 const rivnylow = 18.39;
 const rivnpmlow = 17.75;
@@ -57,9 +57,9 @@ const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'RIVN',
+        symbol: 'BABA',
         analysis: {
-            gap: { pdc: 20.14 },
+            gap: { pdc: 98.14 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -71,16 +71,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.RIVN,
         atr: {
-            average: 1.13,
+            average: 3.34,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 2,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
             otherLevels: [
-                { label: "2-day low", price: rivn2daylow },
-                { label: "y-low", price: rivnylow },
+
             ]
         },
         defaultConfigs: stock1Configs,
@@ -107,13 +106,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: rivnpmlow },
                 { text: "17", partialCount: 1, atr: 0, rrr: 0, level: 17 },
             ],
-            gapDownAndGoDownPlan: {
+            gapAndCrapPlan: {
                 runnerCount: 0,
                 runnerTriggerCondition: "breakdown y-low",
                 coreCount: 0,
                 coreTarget: rivnpmlow,
-                buyersTrappedBelowThisLevel: 18.39,
+                extendedGapUpInAtr: 3,
                 waitForPullback: true,
+                aboveThisLevelNoMoreShort: 112.5,
+                belowThisLevelOnlyVwapContinuation: 105,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
@@ -125,15 +126,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "18", partialCount: 1, atr: 0, rrr: 0, level: 18 },
                 { text: "18.05", partialCount: 1, atr: 0, rrr: 0, level: 18.05 },
             ],
-            gapDownAndGoUpPlan: {
+            gapAndGoPlan: {
                 runnerCount: 0,
                 runnerTriggerCondition: "scalp, no runner",
                 coreCount: 0,
                 coreTarget: 18.39,
-                support: [{ high: rivn2daylow, low: rivn2daylow }],
-                nearAboveSupport: { high: rivn2daylow, low: rivn2daylow },
                 waitForPullback: true,
                 planConfigs: stock1Configs,
+                nearAboveConsolidationRange: "90-100",
+                enableOfferBreakout: false,
+                enableBidReversal: true,
+                support: { high: 100, low: 100, },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
