@@ -92,6 +92,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 label: "1 ATR",
                 high: 1050,
                 low: 1038,
+                color: "red",
             }]
         },
         defaultConfigs: stock1Configs,
