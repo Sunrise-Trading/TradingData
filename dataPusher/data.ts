@@ -45,34 +45,35 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'MU',
+    'CRCL',
 ];
 const rivnylow = 18.39;
 const rivnpmlow = 17.75;
 const rivn2daylow = 17.81;
-const mugapfillhigh = 1019;
-const mugapfilllow = 980.85;
-const muahhigh = 980;
-const mulevel = mugapfillhigh;
+const crclselloffhigh = 73.2;
+const crclmomentumsupport = 70;
+const crcllastsupport = 67.5;
+const crclfinaltarget = 76.54;
+const crcllevel = crcllastsupport;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MU',
+        symbol: 'CRCL',
         analysis: {
-            gap: { pdc: 948 },
+            gap: { pdc: 63 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
+            singleMomentumKeyLevel: [{ high: crcllevel, low: crcllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: Constants.marketCaps.CRCL,
         atr: {
             average: 90,
             mutiplier: 1,
@@ -82,18 +83,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             otherLevels: [{
-                label: "gap fill high",
-                price: mugapfillhigh
+                label: "selloff high",
+                price: crclselloffhigh
             }, {
-                label: "gap fill low",
-                price: mugapfilllow
-            }, { label: "ah high", price: muahhigh }],
-            zones: [{
-                label: "1 ATR",
-                high: 1050,
-                low: 1038,
-                color: "red",
-            }]
+                label: "momentum support",
+                price: crclmomentumsupport
+            }, { label: "last support", price: crcllastsupport }],
         },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
@@ -113,11 +108,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
-            firstTargetToAdd: -1,
+            enabled: false,
+            firstTargetToAdd: crclselloffhigh,
             finalTargets: [
-                { text: "ah high", partialCount: 1, atr: 0, rrr: 0, level: muahhigh },
-                { text: "pm high/R6", partialCount: 1, atr: 0, rrr: 0, level: 1013 },
+                { text: "selloff high", partialCount: 1, atr: 0, rrr: 0, level: crclselloffhigh },
+                { text: "final target", partialCount: 1, atr: 0, rrr: 0, level: crclfinaltarget },
             ],
             gapAndCrapPlan: {
                 runnerCount: 0,
@@ -127,29 +122,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 extendedGapUpInAtr: 0.6,
                 waitForPullback: true,
                 aboveThisLevelNoMoreShort: 2000,
-                belowThisLevelOnlyVwapContinuation: 1000,
+                belowThisLevelOnlyVwapContinuation: 70,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: crclselloffhigh,
             finalTargets: [
-                { text: "1 atr", partialCount: 1, atr: 1, rrr: 0, level: 0 },
-                { text: "ma 21", partialCount: 1, atr: 0, rrr: 0, level: 1046 },
+                { text: "selloff high", partialCount: 1, atr: 0, rrr: 0, level: crclselloffhigh },
+                { text: "final target", partialCount: 1, atr: 0, rrr: 0, level: crclfinaltarget },
             ],
             gapAndGoPlan: {
                 runnerCount: 0,
-                runnerTriggerCondition: "survive first pullback above pm high",
+                runnerTriggerCondition: "breakout selloff high",
                 coreCount: 0,
-                coreTarget: 1045,
+                coreTarget: crclselloffhigh,
                 waitForPullback: false,
                 planConfigs: stock1Configs,
-                nearAboveConsolidationRange: "last 2 days",
+                nearAboveConsolidationRange: "61-70",
                 enableOfferBreakout: true,
                 enableBidReversal: true,
-                support: { high: 950, low: 950 },
+                support: { high: crcllastsupport, low: crcllastsupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
