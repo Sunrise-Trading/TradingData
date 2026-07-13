@@ -45,17 +45,17 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'CRCL',
+    'MU',
 ];
-const rivnylow = 18.39;
-const rivnpmlow = 17.75;
-const rivn2daylow = 17.81;
+
 const crclselloffhigh = 73.2;
 const crclmomentumsupport = 70;
 const crcllastsupport = 67.5;
 const crclfinaltarget = 76.54;
 const crcllevel = crcllastsupport;
-const stock2Level = 1;
+const mutrappedlevel = 960;
+const mupmlow = 913;
+const mulevel = mutrappedlevel;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -150,27 +150,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 979 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 87,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 50,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: {
+            otherLevels: [{
+                label: "trapped high",
+                price: mutrappedlevel
+            }]
+        },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -190,20 +195,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: mupmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: mupmlow },
+                { text: "ma50", partialCount: 2, atr: 0, rrr: 0, level: 900 },
             ],
+            gapDownAndGoDownPlan: {
+                runnerCount: 1,
+                coreCount: 1,
+                coreTarget: mupmlow,
+                runnerTriggerCondition: "lose pm low",
+                planConfigs: stock2Configs,
+                buyersTrappedBelowThisLevel: mutrappedlevel,
+                waitForPullback: true,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "scalp", partialCount: 1, atr: 0, rrr: 0, level: 930 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 950 },
             ],
+            gapDownAndGoUpPlan: {
+                runnerCount: 1,
+                coreCount: 1,
+                coreTarget: 950,
+                runnerTriggerCondition: "reclaim vwap",
+                planConfigs: stock2Configs,
+                support: [{ high: mupmlow, low: mupmlow }],
+                nearAboveSupport: { high: mupmlow, low: mupmlow },
+                waitForPullback: true,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
