@@ -77,7 +77,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { zones: [] },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -135,7 +135,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { zones: [] },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -194,7 +194,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { zones: [] },
         defaultConfigs: stock3Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -253,7 +253,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 0,
             maxQuantity: -1,
         },
-        keyLevels: {},
+        keyLevels: { zones: [] },
         defaultConfigs: stock4Configs,
         tradebooksConfig: {
             level_open_vwap: {
