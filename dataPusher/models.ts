@@ -39,6 +39,7 @@ export interface TradingPlans {
     keyLevels: keyLevels,
     defaultConfigs: PlanConfigs,
     tradebooksConfig: TradebooksConfig,
+    rangeBoundReversalPlan?: RangeBoundReversalPlan,
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
 };
@@ -110,26 +111,16 @@ export interface KeyLevel {
 export interface KeyZone {
     high: number,
     low: number,
-    label?: string,
-    color?: string,
+    label: string,
+    color: string,
 }
 export interface keyLevels {
     otherLevels?: KeyLevel[];
     zones: KeyZone[];
 };
-export enum PlanType {
-    LevelMomentum = 'LevelMomentum',
-    OpenChase = 'OpenChase',
-    Retracement = 'Retracement',
-    NewsBreakout = 'NewsBreakout',
-    FirstNewHigh = 'FirstNewHigh',
-    LevelBreakout = 'LevelBreakout',
-    VwapBounceFail = 'VwapBounceFail',
-    VwapCrossSuccess = 'VwapCrossSuccess',
-};
+
 export interface BasePlan {
     planConfigs: PlanConfigs,
-    planType?: PlanType,
     timeframe?: number,
     entryMethod?: string,
     coreTarget: number,
@@ -137,6 +128,12 @@ export interface BasePlan {
     runnerCount: number,
     runnerTriggerCondition: string,
 };
+export interface RangeBoundReversalPlan extends BasePlan {
+    /** Support zone for long Bookmap bid reversals. */
+    support: LevelArea,
+    /** Resistance zone for short Bookmap offer rejections. */
+    resistance: LevelArea,
+}
 export interface PlanConfigs {
     size: number,
     sizingCount?: number,
