@@ -111,6 +111,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        rangeBoundReversalPlan: {
+            runnerCount: 1,
+            coreCount: 1,
+            coreTarget: mupmlow,
+            runnerTriggerCondition: "lose pm low",
+            planConfigs: stock2Configs,
+            support: { high: 900, low: 888 },
+            resistance: { high: 954, low: 950 },
+        },
         short: {
             enabled: true,
             firstTargetToAdd: mupmlow,
@@ -118,15 +127,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "pm low", partialCount: 2, atr: 0, rrr: 0, level: mupmlow },
                 { text: "ma50", partialCount: 2, atr: 0, rrr: 0, level: 900 },
             ],
-            gapDownAndGoDownPlan: {
-                runnerCount: 1,
-                coreCount: 1,
-                coreTarget: mupmlow,
-                runnerTriggerCondition: "lose pm low",
-                planConfigs: stock2Configs,
-                buyersTrappedBelowThisLevel: mutrappedlevel,
-                waitForPullback: true,
-            },
+
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
@@ -136,16 +137,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "scalp", partialCount: 1, atr: 0, rrr: 0, level: 930 },
                 { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 950 },
             ],
-            gapDownAndGoUpPlan: {
-                runnerCount: 1,
-                coreCount: 1,
-                coreTarget: 950,
-                runnerTriggerCondition: "reclaim vwap",
-                planConfigs: stock2Configs,
-                support: [{ high: mupmlow, low: mupmlow }],
-                nearAboveSupport: { high: mupmlow, low: mupmlow },
-                waitForPullback: true,
-            },
+
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
