@@ -54,6 +54,7 @@ const ibmrangehigh = 225;
 const ibmlevel = ibmgapend;
 const aehrpmlow = 92.59;
 const aehrdailyrangehigh = 100.7;
+const aehrinflection = 100;
 const aehrlevel = 1;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -164,7 +165,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxRisk: 10,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [
+                { high: 85, low: 84, color: "green", label: "cover 1", },
+                { high: 95, low: 94, color: "green", label: "50 MA", }
+            ]
+        },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -197,17 +203,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 1,
                 runnerTriggerCondition: "lost pm low",
                 waitForPullback: false,
-                resistance: { high: aehrdailyrangehigh, low: 100 },
+                resistance: { high: 100, low: 99 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: 0,
+            enabled: true,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
+                { text: "107", partialCount: 1, atr: 0, rrr: 0, level: 107 },
             ],
+            gapAndGoPlan: {
+                planConfigs: stock2Configs,
+                support: { high: 101, low: aehrdailyrangehigh },
+                nearBelowConsolidationRangeTop: "100-100.7",
+                coreTarget: aehrdailyrangehigh,
+                coreCount: 0,
+                runnerCount: 0,
+                runnerTriggerCondition: "survive pullback above pm low",
+                waitForPullback: false,
+                enableOfferBreakout: true,
+                enableBidReversal: false,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
