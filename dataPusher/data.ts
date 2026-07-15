@@ -45,14 +45,16 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'IBM',
+    'AEHR',
 ];
 const ibmgapstart = 230.94;
 const ibmatl = 212.34;
 const ibmgapend = 243.68;
 const ibmrangehigh = 225;
 const ibmlevel = ibmgapend;
-const stock2Level = 1;
+const aehrpmlow = 92.59;
+const aehrdailyrangehigh = 100.7;
+const aehrlevel = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -142,24 +144,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'AEHR',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 72 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: aehrlevel, low: aehrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.AEHR,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 10,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 10,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -182,15 +184,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: aehrpmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: aehrpmlow },
+                { text: "86", partialCount: 1, atr: 0, rrr: 0, level: 86 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
+                planConfigs: stock2Configs,
+                coreTarget: aehrpmlow,
+                coreCount: 3,
+                runnerCount: 1,
+                runnerTriggerCondition: "lost pm low",
+                waitForPullback: false,
+                resistance: { high: aehrdailyrangehigh, low: 100 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: 0,
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
