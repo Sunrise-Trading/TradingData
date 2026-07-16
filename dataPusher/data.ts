@@ -45,13 +45,10 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'AEHR',
+    'MU',
 ];
-const ibmgapstart = 230.94;
-const ibmatl = 212.34;
-const ibmgapend = 243.68;
-const ibmrangehigh = 225;
-const ibmlevel = ibmgapend;
+const muylow = 873.63;
+const mulevel = muylow;
 const aehrpmlow = 92.59;
 const aehrdailyrangehigh = 100.7;
 const aehrinflection = 100;
@@ -61,32 +58,35 @@ const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'IBM',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 290 },
+            gap: { pdc: 904 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: ibmlevel, low: ibmlevel }],
+            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.IBM,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 12,
-            mutiplier: 2,
+            average: 86,
+            mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 20,
+            maxRisk: 50,
             maxQuantity: -1,
         },
         keyLevels: {
-            zones: [],
             otherLevels: [
-                { price: ibmgapstart, label: "momentum long" },
-                { price: ibmatl, label: "all time low" },
+
             ],
+            zones: [
+                { high: 820, low: 800, color: "green", label: "core target" },
+                { high: 780, low: 770, color: "green", label: "final target" },
+                { high: 850, low: 840, color: "red", label: "breakdown short" },
+            ]
         },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
@@ -107,38 +107,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 850,
             finalTargets: [
-                { text: "236", partialCount: 2, atr: 0, rrr: 0, level: 236 },
-                { text: "230", partialCount: 2, atr: 0, rrr: 0, level: 230 },
+                { text: "820", partialCount: 2, atr: 0, rrr: 0, level: 820 },
+                { text: "800", partialCount: 2, atr: 0, rrr: 0, level: 800 },
             ],
             gapDownAndGoDownPlan: {
                 planConfigs: stock1Configs,
-                resistance: { high: 250, low: ibmgapend },
-                buyersTrappedBelowThisLevel: ibmgapend,
-                coreTarget: 236,
+                resistance: { high: muylow, low: 865 },
+                buyersTrappedBelowThisLevel: muylow,
+                coreTarget: 820,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "lost vwap",
+                runnerTriggerCondition: "lost 850",
                 waitForPullback: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: ibmgapstart,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "230", partialCount: 2, atr: 0, rrr: 0, level: 230 },
-                { text: "240", partialCount: 2, atr: 0, rrr: 0, level: 240 },
+                { text: "y low", partialCount: 2, atr: 0, rrr: 0, level: muylow },
+                { text: "vwap", partialCount: 2, atr: 0, rrr: 0, level: 870 },
             ],
             gapDownAndGoUpPlan: {
                 planConfigs: stock1Configs,
-                support: { high: ibmrangehigh, low: ibmatl },
-                nearAboveSupport: { high: ibmrangehigh, low: ibmatl },
-                coreTarget: ibmgapstart,
+                support: { high: 860, low: 850 },
+                nearAboveSupport: { high: 860, low: 850 },
+                coreTarget: muylow,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "survive pullback above 230",
+                runnerTriggerCondition: "reclaim y-low",
                 waitForPullback: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
