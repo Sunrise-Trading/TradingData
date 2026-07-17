@@ -45,10 +45,10 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'MU',
+    'NFLX',
 ];
-const muylow = 873.63;
-const mulevel = muylow;
+const nflxconsolidationlow = 70.8;
+const nflxlevel = nflxconsolidationlow;
 const aehrpmlow = 92.59;
 const aehrdailyrangehigh = 100.7;
 const aehrinflection = 100;
@@ -58,24 +58,24 @@ const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MU',
+        symbol: 'NFLX',
         analysis: {
-            gap: { pdc: 904 },
+            gap: { pdc: 74 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
+            singleMomentumKeyLevel: [{ high: nflxlevel, low: nflxlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: Constants.marketCaps.NFLX,
         atr: {
-            average: 86,
-            mutiplier: 1,
+            average: 2.3,
+            mutiplier: 1.5,
             minimumMultipler: 1,
-            maxRisk: 50,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
@@ -83,9 +83,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
             ],
             zones: [
-                { high: 820, low: 800, color: "green", label: "core target" },
-                { high: 780, low: 770, color: "green", label: "final target" },
-                { high: 850, low: 840, color: "red", label: "breakdown short" },
+                { high: 64, low: 63, color: "green", label: "final target" },
+                { high: nflxconsolidationlow, low: 70, color: "red", label: "final resistance" },
             ]
         },
         defaultConfigs: stock1Configs,
@@ -107,35 +106,35 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 850,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "820", partialCount: 2, atr: 0, rrr: 0, level: 820 },
-                { text: "800", partialCount: 2, atr: 0, rrr: 0, level: 800 },
+                { text: "64", partialCount: 1, atr: 0, rrr: 0, level: 64 },
+                { text: "63", partialCount: 1, atr: 0, rrr: 0, level: 63 },
             ],
             gapDownAndGoDownPlan: {
                 planConfigs: stock1Configs,
-                resistance: { high: muylow, low: 865 },
-                buyersTrappedBelowThisLevel: muylow,
-                coreTarget: 820,
+                resistance: { high: nflxconsolidationlow, low: 70 },
+                buyersTrappedBelowThisLevel: nflxconsolidationlow,
+                coreTarget: 64,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "lost 850",
+                runnerTriggerCondition: "lost pm low",
                 waitForPullback: false,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "y low", partialCount: 2, atr: 0, rrr: 0, level: muylow },
+                { text: "y low", partialCount: 2, atr: 0, rrr: 0, level: nflxconsolidationlow },
                 { text: "vwap", partialCount: 2, atr: 0, rrr: 0, level: 870 },
             ],
             gapDownAndGoUpPlan: {
                 planConfigs: stock1Configs,
                 support: { high: 860, low: 850 },
                 nearAboveSupport: { high: 860, low: 850 },
-                coreTarget: muylow,
+                coreTarget: nflxconsolidationlow,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "reclaim y-low",
