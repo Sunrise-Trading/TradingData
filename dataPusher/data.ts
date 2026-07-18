@@ -121,7 +121,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "lost pm low",
                 waitForPullback: false,
                 enableBidBreakdown: true,
-                enableOfferReversal: false,
+                enableOfferReversal: true,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
