@@ -105,6 +105,7 @@ export const marketCaps = {
     HIMS: 11000,
     INTC: 136000,
     IBM: 267000,
+    IREN: 12000,
     IONQ: 10000,
     JD: 38000,
     JPM: 635000,

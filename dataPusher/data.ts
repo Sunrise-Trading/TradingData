@@ -45,14 +45,16 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'NFLX',
+    'IREN',
 ];
 const nflxconsolidationlow = 70.8;
 const nflxlevel = nflxconsolidationlow;
 const aehrpmlow = 92.59;
 const aehrdailyrangehigh = 100.7;
 const aehrinflection = 100;
-const aehrlevel = 1;
+const irenresistancelow = 37.68;
+const irenresistancehigh = 42.44;
+const irenlevel = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -148,30 +150,29 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AEHR',
+        symbol: 'IREN',
         analysis: {
-            gap: { pdc: 72 },
+            gap: { pdc: 33.62 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: aehrlevel, low: aehrlevel }],
+            singleMomentumKeyLevel: [{ high: irenlevel, low: irenlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AEHR,
+        marketCapInMillions: Constants.marketCaps.IREN,
         atr: {
-            average: 10,
+            average: 4.2,
             mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 10,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [
-                { high: 85, low: 84, color: "green", label: "cover 1", },
-                { high: 95, low: 94, color: "green", label: "50 MA", }
+                { high: 35, low: 34.92, color: "green", label: "cover", }
             ]
         },
         defaultConfigs: stock2Configs,
@@ -193,27 +194,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: aehrpmlow,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm low", partialCount: 3, atr: 0, rrr: 0, level: aehrpmlow },
-                { text: "86", partialCount: 1, atr: 0, rrr: 0, level: 86 },
+                { text: "y-low", partialCount: 3, atr: 0, rrr: 0, level: 35 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 34 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
+                extendedGapUpInAtr: 0.69,
                 planConfigs: stock2Configs,
-                coreTarget: aehrpmlow,
+                coreTarget: 35,
                 coreCount: 3,
                 runnerCount: 1,
-                runnerTriggerCondition: "lost pm low",
+                runnerTriggerCondition: "breakdown y-low",
                 waitForPullback: false,
-                resistance: { high: 100, low: 99 },
-                enableBidBreakdown: true,
+                resistance: { high: irenresistancehigh, low: irenresistancelow, requireEntryWithinRange: false },
+                enableBidBreakdown: false,
                 enableOfferReversal: true,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
