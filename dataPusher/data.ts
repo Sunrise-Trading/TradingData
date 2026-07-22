@@ -45,39 +45,40 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'SMCI',
 ];
-const stock1Level = 1;
+const smcipmhigh = 30.4;
+const smcilevel = 1;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'SMCI',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 25.5 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: smcilevel, low: smcilevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.SMCI,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 2.12,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
+            maxRisk: 3,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [],
+            otherLevels: [{ label: 'momentum long', price: 28.5 }]
+        },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -97,20 +98,44 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "25.5", partialCount: 3, atr: 0, rrr: 0, level: 25.5 },
+                { text: "26.9", partialCount: 2, atr: 0, rrr: 0, level: 26.9 },
             ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
+                runnerCount: 0,
+                runnerTriggerCondition: "vwap rejection/lost, pm low breakdown",
+                coreCount: 5,
+                coreTarget: 25.5,
+                planConfigs: stock1Configs,
+                resistance: { high: 31, low: 30, },
+                enableBidBreakdown: false,
+                enableOfferReversal: true,
+                waitForPullback: true,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: smcipmhigh,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: smcipmhigh },
+                { text: "30", partialCount: 2, atr: 0, rrr: 0, level: 30 },
             ],
+            gapAndGoPlan: {
+                runnerTriggerCondition: "pm high breakout",
+                runnerCount: 2,
+                coreCount: 4,
+                coreTarget: 30,
+                enableBidReversal: true,
+                enableOfferBreakout: true,
+                higherTimeframeSupportReversal: "23-29",
+                waitForPullback: true,
+                support: { high: 25.54, low: 23 },
+                planConfigs: stock1Configs,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
