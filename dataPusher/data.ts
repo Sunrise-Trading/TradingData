@@ -77,7 +77,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             zones: [],
-            otherLevels: [{ label: 'momentum long', price: 28.5 }]
+            // otherLevels: [{ label: 'momentum long', price: 28.5 }]
         },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
