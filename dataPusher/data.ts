@@ -45,41 +45,42 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'SMCI',
+    'GOOGL',
 ];
-const smcipmhigh = 30.4;
-const smcilevel = 1;
-const stock2Level = 1;
+const googlesupportlow = 310;
+const googlesupporthigh = 323.75;
+const googledip = 330.2;
+const googlelevel = googlesupporthigh;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SMCI',
+        symbol: 'GOOGL',
         analysis: {
-            gap: { pdc: 25.5 },
+            gap: { pdc: 342 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: smcilevel, low: smcilevel }],
+            singleMomentumKeyLevel: [{ high: googlelevel, low: googlelevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SMCI,
+        marketCapInMillions: Constants.marketCaps.GOOGL,
         atr: {
-            average: 2.12,
-            mutiplier: 1.5,
+            average: 11,
+            mutiplier: 1,
             minimumMultipler: 1,
-            maxRisk: 3,
+            maxRisk: 10,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [],
-            // otherLevels: [{ label: 'momentum long', price: 28.5 }]
+            otherLevels: [{ label: "200MA", price: 324 }]
         },
-        defaultConfigs: stock1Configs,
+        defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -100,100 +101,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "25.5", partialCount: 3, atr: 0, rrr: 0, level: 25.5 },
-                { text: "26.9", partialCount: 2, atr: 0, rrr: 0, level: 26.9 },
+                { text: "325", partialCount: 1, atr: 0, rrr: 0, level: 325 },
+                { text: "320", partialCount: 1, atr: 0, rrr: 0, level: 320 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
-                runnerCount: 0,
-                runnerTriggerCondition: "vwap rejection/lost, pm low breakdown",
-                coreCount: 5,
-                coreTarget: 25.5,
-                planConfigs: stock1Configs,
-                resistance: { high: 31, low: 30, },
+            gapDownAndGoDownPlan: {
+                planConfigs: stock2Configs,
+                resistance: { high: googledip, low: 330 },
+                buyersTrappedBelowThisLevel: googledip,
+                runnerCount: 3,
+                runnerTriggerCondition: "vwap bounce fail",
+                coreCount: 3,
+                coreTarget: 325,
                 enableBidBreakdown: false,
                 enableOfferReversal: true,
                 waitForPullback: true,
             },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: smcipmhigh,
-            finalTargets: [
-                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: smcipmhigh },
-                { text: "30", partialCount: 2, atr: 0, rrr: 0, level: 30 },
-            ],
-            gapAndGoPlan: {
-                runnerTriggerCondition: "pm high breakout",
-                runnerCount: 2,
-                coreCount: 4,
-                coreTarget: 30,
-                enableBidReversal: true,
-                enableOfferBreakout: true,
-                higherTimeframeSupportReversal: "23-29",
-                waitForPullback: true,
-                support: { high: 25.54, low: 23 },
-                planConfigs: stock1Configs,
-            },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
-        },
-    },
-    {
-        symbol: 'stock2',
-        analysis: {
-            gap: { pdc: 0 },
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
-            maxQuantity: -1,
-        },
-        keyLevels: { zones: [] },
-        defaultConfigs: stock2Configs,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        short: {
-            enabled: true,
-            firstTargetToAdd: 0,
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: googledip,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "dip buy", partialCount: 3, atr: 0, rrr: 0, level: googledip },
+                { text: "340", partialCount: 2, atr: 0, rrr: 0, level: 340 },
             ],
+            gapDownAndGoUpPlan: {
+                support: { high: googlesupporthigh, low: googlesupportlow },
+                nearAboveSupport: { high: googlesupporthigh, low: googlesupportlow },
+                runnerCount: 2,
+                runnerTriggerCondition: "reclaim 330, survive pullback to vwap",
+                coreCount: 3,
+                coreTarget: 330,
+                enableBidReversal: true,
+                enableOfferBreakout: false,
+                waitForPullback: true,
+                planConfigs: stock2Configs,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
