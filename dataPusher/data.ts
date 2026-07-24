@@ -45,13 +45,13 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'GOOGL',
+    'INTC'
 ];
 const googlesupportlow = 310;
 const googlesupporthigh = 323.75;
 const googledip = 330.2;
 const googlelevel = googlesupporthigh;
-const stock3Level = 1;
+const intclevel = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -141,25 +141,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock3',
+        symbol: 'INTC',
         analysis: {
 
-            gap: { pdc: 0 },
+            gap: { pdc: 100.23 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 8,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 5,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -180,21 +180,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+
+        rangeBoundReversalPlan: {
+            support: { high: 100, low: 99 },
+            resistance: { high: 113, low: 107 },
+            planConfigs: stock3Configs,
+            coreCount: 0,
+            coreTarget: 0,
+            runnerCount: 0,
+            runnerTriggerCondition: "expand from premarket high/low",
+        },
         short: {
-            enabled: true,
-            firstTargetToAdd: 0,
+            enabled: false,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "102", partialCount: 1, atr: 0, rrr: 0, level: 102 },
+                { text: "101", partialCount: 1, atr: 0, rrr: 0, level: 101 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
         },
         long: {
-            enabled: true,
-            firstTargetToAdd: 0,
+            enabled: false,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
+                { text: "107", partialCount: 1, atr: 0, rrr: 0, level: 107 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
         },
