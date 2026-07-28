@@ -45,13 +45,16 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'QBTS',
+    'GLW',
 ];
 const qbts2atr = 19.21;
 const qbtsmomentumlong = 18;
 const qbtspmhigh = 18.35;
 const qbtslevel = qbtsmomentumlong;
-const stock2Level = 1;
+const glwtrappedhigh = 133;
+const glwtrappedlow = 123;
+const glwlevel = glwtrappedhigh;
+const glwpmlow = 116.66;
 const stock3Level = 1;
 const stock4Level = 1;
 
@@ -138,27 +141,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'GLW',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 143 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: glwlevel, low: glwlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: 100000,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxRisk: 0,
+            average: 14,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxRisk: 20,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [{
+                high: 120, low: 119, label: "early support", color: "green"
+            }]
+        },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -178,20 +185,44 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: glwpmlow,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "116", partialCount: 1, atr: 0, rrr: 0, level: 116 },
+                { text: "113", partialCount: 1, atr: 0, rrr: 0, level: 113 },
             ],
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: glwtrappedhigh,
+                resistance: { high: glwtrappedhigh, low: glwtrappedlow },
+                waitForPullback: true,
+                enableBidBreakdown: false,
+                enableOfferReversal: true,
+                runnerTriggerCondition: "breakdown pm low/vwap",
+                runnerCount: 1,
+                coreCount: 1,
+                coreTarget: glwpmlow,
+                planConfigs: stock2Configs,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: 0,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "125", partialCount: 1, atr: 0, rrr: 0, level: 125 },
+                { text: "130", partialCount: 1, atr: 0, rrr: 0, level: 130 },
             ],
+            gapDownAndGoUpPlan: {
+                planConfigs: stock2Configs,
+                waitForPullback: true,
+                enableBidReversal: true,
+                enableOfferBreakout: false,
+                runnerCount: 1,
+                coreCount: 1,
+                support: { high: 112, low: 100 },
+                nearAboveSupport: { high: 112, low: 100 },
+                runnerTriggerCondition: "breakout 125",
+                coreTarget: 125,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
