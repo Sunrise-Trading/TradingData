@@ -45,13 +45,11 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'MSFT',
+    'AMZN',
 ];
-const qbts2atr = 19.21;
-const msftinflection = 430;
-const qbtspmhigh = 18.35;
-const msftpmlow = 417;
-const msftlevel = msftinflection;
+const amznpmhigh = 266.69;
+const amznpmlow = 258.75;
+const amznlevel = amznpmhigh;
 const sofipreerlow = 15.5;
 const glwtrappedlow = 123;
 const sofilevel = sofipreerlow;
@@ -61,26 +59,30 @@ const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MSFT',
+        symbol: 'AMZN',
         analysis: {
-            gap: { pdc: 390 },
+            gap: { pdc: 235 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: msftlevel, low: msftlevel }],
+            singleMomentumKeyLevel: [{ high: amznlevel, low: amznlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MSFT,
+        marketCapInMillions: Constants.marketCaps.AMZN,
         atr: {
-            average: 11.8,
-            mutiplier: 1.55,
+            average: 7.34,
+            mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [
+                { high: 261, low: 260.8, color: "red", label: "momo" }
+            ]
+        },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -100,43 +102,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: msftpmlow,
+            firstTargetToAdd: amznpmlow,
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: msftpmlow },
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 410 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: amznpmlow },
+                { text: "consolidation", partialCount: 1, atr: 0, rrr: 0, level: 255 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 3,
-                resistance: { high: msftinflection, low: 427 },
+                extendedGapUpInAtr: 3.5,
+                resistance: { high: 270, low: amznpmhigh },
                 runnerCount: 1,
                 coreCount: 1,
                 runnerTriggerCondition: "lost pm low",
-                coreTarget: msftpmlow,
+                coreTarget: amznpmlow,
                 enableOfferReversal: true,
-                enableBidBreakdown: false,
+                enableBidBreakdown: true,
                 waitForPullback: true,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "438", partialCount: 1, atr: 0, rrr: 0, level: 438 },
                 { text: "1 atr", partialCount: 1, atr: 1, rrr: 0, level: 440 },
             ],
-            gapAndGoPlan: {
-                nearBelowConsolidationRangeTop: "430-403",
-                support: { low: msftinflection, high: 433 },
-                waitForPullback: true,
-                planConfigs: stock1Configs,
-                enableBidReversal: true, enableOfferBreakout: false,
-                runnerCount: 0,
-                coreCount: 0,
-                runnerTriggerCondition: "momentum scalp",
-                coreTarget: 438
-            },
+
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
