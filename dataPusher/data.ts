@@ -45,14 +45,14 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'AMZN',
+    'GME',
 ];
 const amznpmhigh = 266.69;
 const amznpmlow = 258.75;
 const amznlevel = amznpmhigh;
-const sofipreerlow = 15.5;
+const gmetrappedlevel = 20.89;
 const glwtrappedlow = 123;
-const sofilevel = sofipreerlow;
+const gmelevel = gmetrappedlevel;
 const glwpmlow = 116.66;
 const stock3Level = 1;
 const stock4Level = 1;
@@ -133,27 +133,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'SOFI',
+        symbol: 'GME',
         analysis: {
-            gap: { pdc: 16.74 },
+            gap: { pdc: 21.72 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: sofilevel, low: sofilevel }],
+            singleMomentumKeyLevel: [{ high: gmelevel, low: gmelevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SOFI,
+        marketCapInMillions: Constants.marketCaps.GME,
         atr: {
-            average: 0.84,
+            average: 0.49,
             mutiplier: 1.5,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [{ label: "inflection", price: 15.5 }],
+            otherLevels: [{ label: "trapped below", price: gmetrappedlevel }],
             zones: []
         },
         defaultConfigs: stock2Configs,
@@ -177,19 +177,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "14", partialCount: 1, atr: 0, rrr: 0, level: 14 },
-                { text: "14.5", partialCount: 1, atr: 0, rrr: 0, level: 14.5 },
+                { text: "20", partialCount: 1, atr: 0, rrr: 0, level: 20 },
+                { text: "19", partialCount: 1, atr: 0, rrr: 0, level: 19 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: sofipreerlow,
-                resistance: { high: sofipreerlow, low: 15 },
+                buyersTrappedBelowThisLevel: gmetrappedlevel,
+                resistance: { high: gmetrappedlevel, low: 20.62 },
                 waitForPullback: true,
                 enableBidBreakdown: true,
                 enableOfferReversal: true,
-                runnerTriggerCondition: "sclap, keep stop tight",
+                runnerTriggerCondition: "lost vwap",
                 runnerCount: 1,
                 coreCount: 1,
-                coreTarget: 14,
+                coreTarget: 20,
                 planConfigs: stock2Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
@@ -198,8 +198,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "16", partialCount: 1, atr: 0, rrr: 0, level: 16 },
-                { text: "16.2", partialCount: 1, atr: 0, rrr: 0, level: 16.2 },
+                { text: "20.5", partialCount: 1, atr: 0, rrr: 0, level: 20.5 },
+                { text: "20.8", partialCount: 1, atr: 0, rrr: 0, level: 20.8 },
             ],
             gapDownAndGoUpPlan: {
                 planConfigs: stock2Configs,
@@ -208,10 +208,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 enableOfferBreakout: false,
                 runnerCount: 1,
                 coreCount: 1,
-                support: { high: 15.75, low: sofipreerlow },
-                nearAboveSupport: { high: 15.75, low: sofipreerlow },
+                support: { high: 20, low: 19.93 },
+                nearAboveSupport: { high: 20, low: 19.93 },
                 runnerTriggerCondition: "breakout vwap",
-                coreTarget: 16,
+                coreTarget: 20.5,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
