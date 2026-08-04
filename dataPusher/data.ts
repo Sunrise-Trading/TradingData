@@ -45,11 +45,12 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'GME',
+    'PLTR',
 ];
-const amznpmhigh = 266.69;
+const pltrpreergap = 143;
 const amznpmlow = 258.75;
-const amznlevel = amznpmhigh;
+const pltrpreerhigh = 145;
+const pltrlevel = pltrpreergap;
 const gmetrappedlevel = 20.89;
 const glwtrappedlow = 123;
 const gmelevel = gmetrappedlevel;
@@ -59,28 +60,28 @@ const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMZN',
+        symbol: 'PLTR',
         analysis: {
-            gap: { pdc: 235 },
+            gap: { pdc: 125.65 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: amznlevel, low: amznlevel }],
+            singleMomentumKeyLevel: [{ high: pltrlevel, low: pltrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AMZN,
+        marketCapInMillions: Constants.marketCaps.PLTR,
         atr: {
-            average: 7.34,
+            average: 6.32,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [
-                { high: 261, low: 260.8, color: "red", label: "momo" }
+                { high: pltrpreerhigh, low: pltrpreergap, color: "green", label: "momo" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -102,18 +103,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: amznpmlow,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: amznpmlow },
-                { text: "consolidation", partialCount: 1, atr: 0, rrr: 0, level: 255 },
+                { text: "140", partialCount: 1, atr: 0, rrr: 0, level: 140 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 135 },
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 3.5,
-                resistance: { high: 270, low: amznpmhigh },
+                resistance: { high: pltrpreergap, low: 142 },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "lost pm low",
-                coreTarget: amznpmlow,
+                runnerTriggerCondition: "scalp",
+                coreTarget: 140,
                 enableOfferReversal: true,
                 enableBidBreakdown: true,
                 waitForPullback: true,
@@ -122,13 +123,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "438", partialCount: 1, atr: 0, rrr: 0, level: 438 },
-                { text: "1 atr", partialCount: 1, atr: 1, rrr: 0, level: 440 },
+                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
+                { text: "152", partialCount: 1, atr: 1, rrr: 0, level: 152 },
             ],
-
+            gapAndGoPlan: {
+                support: { high: 139, low: 135 },
+                enableOfferBreakout: true,
+                enableBidReversal: true,
+                waitForPullback: true,
+                runnerCount: 1,
+                coreCount: 1,
+                runnerTriggerCondition: "breakout pm high",
+                nearPreviousKeyEventLevel: "143 pre er gap",
+                coreTarget: 150,
+                planConfigs: stock1Configs,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
