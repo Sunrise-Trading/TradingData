@@ -48,15 +48,10 @@ export const stockSelections: string[] = [
     'PLTR',
 ];
 const pltrpreergap = 143;
-const amznpmlow = 258.75;
 const pltrpreerhigh = 145;
 const pltrlevel = pltrpreergap;
 const gmetrappedlevel = 20.89;
-const glwtrappedlow = 123;
 const gmelevel = gmetrappedlevel;
-const glwpmlow = 116.66;
-const stock3Level = 1;
-const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
