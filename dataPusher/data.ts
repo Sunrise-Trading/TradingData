@@ -45,29 +45,29 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'PLTR',
+    'SHOP',
 ];
-const pltrpreergap = 143;
-const pltrpreerhigh = 145;
-const pltrlevel = pltrpreergap;
+const shopgap = 151.72;
+const shoppreerhigh = 139.1;
+const shoplevel = shopgap;
 const gmetrappedlevel = 20.89;
 const gmelevel = gmetrappedlevel;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'PLTR',
+        symbol: 'SHOP',
         analysis: {
-            gap: { pdc: 125.65 },
+            gap: { pdc: 123 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: pltrlevel, low: pltrlevel }],
+            singleMomentumKeyLevel: [{ high: shoplevel, low: shoplevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.PLTR,
+        marketCapInMillions: Constants.marketCaps.SHOP,
         atr: {
             average: 6.32,
             mutiplier: 1,
@@ -76,7 +76,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             zones: [
-                { high: pltrpreerhigh, low: pltrpreergap, color: "green", label: "momo" }
+                { high: 153, low: shopgap, color: "green", label: "momo" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -98,17 +98,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: shoppreerhigh,
             finalTargets: [
-                { text: "140", partialCount: 1, atr: 0, rrr: 0, level: 140 },
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 135 },
+                { text: "144", partialCount: 1, atr: 0, rrr: 0, level: 144 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 140 },
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 3.5,
-                resistance: { high: pltrpreergap, low: 142 },
+                resistance: { high: shopgap, low: 150 },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "scalp",
+                runnerTriggerCondition: "breakdown 139.1",
                 coreTarget: 140,
                 enableOfferReversal: true,
                 enableBidBreakdown: true,
@@ -121,11 +121,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
-                { text: "152", partialCount: 1, atr: 1, rrr: 0, level: 152 },
+                { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
+                { text: "160", partialCount: 1, atr: 1, rrr: 0, level: 160 },
             ],
             gapAndGoPlan: {
-                support: { high: 139, low: 135 },
+                support: { high: 140, low: shoppreerhigh },
                 enableOfferBreakout: true,
                 enableBidReversal: true,
                 waitForPullback: true,
