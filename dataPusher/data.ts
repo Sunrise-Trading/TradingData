@@ -51,7 +51,7 @@ const shopgap = 151.72;
 const shoppreerhigh = 139.1;
 const sounlevel = 8;
 const gmetrappedlevel = 20.89;
-const gmelevel = gmetrappedlevel;
+const spcxlevel = 120;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -76,7 +76,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             zones: [
-                { high: 9.11, low: 8.92, color: "red", label: "gap down" }
+                //{ high: 9.11, low: 8.92, color: "red", label: "gap down" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -100,30 +100,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: 7.8,
             finalTargets: [
-                { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
-                { text: "7.3", partialCount: 1, atr: 0, rrr: 0, level: 7.3 },
+                { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
+                { text: "104", partialCount: 1, atr: 0, rrr: 0, level: 104 },
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 4.7,
-                resistance: { high: 8, low: 7.93 },
+                resistance: { high: 150, low: 120 },
                 runnerCount: 1,
                 coreCount: 1,
                 runnerTriggerCondition: "breakdown pm low",
-                coreTarget: 7.8,
+                coreTarget: 104,
                 enableOfferReversal: true,
-                enableBidBreakdown: false,
+                enableBidBreakdown: true,
                 waitForPullback: false,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "8.65", partialCount: 1, atr: 0, rrr: 0, level: 8.65 },
                 { text: "8.74", partialCount: 1, atr: 1, rrr: 0, level: 8.74 },
             ],
+            /*
             gapAndGoPlan: {
                 support: { high: 8.1, low: 8 },
                 enableOfferBreakout: true,
@@ -135,18 +136,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 nearPreviousKeyEventLevel: "above current consolidation and next consolidation bottom",
                 coreTarget: 8.66,
                 planConfigs: stock1Configs,
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'GME',
+        symbol: 'SPCX',
         analysis: {
-            gap: { pdc: 21.72 },
+            gap: { pdc: 120 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: gmelevel, low: gmelevel }],
+            singleMomentumKeyLevel: [{ high: spcxlevel, low: spcxlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
