@@ -45,38 +45,38 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'SHOP',
+    'SOUN',
 ];
 const shopgap = 151.72;
 const shoppreerhigh = 139.1;
-const shoplevel = shopgap;
+const sounlevel = 8;
 const gmetrappedlevel = 20.89;
 const gmelevel = gmetrappedlevel;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SHOP',
+        symbol: 'SOUN',
         analysis: {
-            gap: { pdc: 123 },
+            gap: { pdc: 6.43 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: shoplevel, low: shoplevel }],
+            singleMomentumKeyLevel: [{ high: sounlevel, low: sounlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SHOP,
+        marketCapInMillions: Constants.marketCaps.SOUN,
         atr: {
-            average: 6.32,
-            mutiplier: 1,
+            average: 0.4,
+            mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [
-                { high: 153, low: shopgap, color: "green", label: "momo" }
+                { high: 9.11, low: 8.92, color: "red", label: "gap down" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -98,21 +98,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: shoppreerhigh,
+            firstTargetToAdd: 7.8,
             finalTargets: [
-                { text: "144", partialCount: 1, atr: 0, rrr: 0, level: 144 },
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 140 },
+                { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
+                { text: "7.3", partialCount: 1, atr: 0, rrr: 0, level: 7.3 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 3.5,
-                resistance: { high: shopgap, low: 150 },
+                extendedGapUpInAtr: 4.7,
+                resistance: { high: 8, low: 7.93 },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "breakdown 139.1",
-                coreTarget: 140,
+                runnerTriggerCondition: "breakdown pm low",
+                coreTarget: 7.8,
                 enableOfferReversal: true,
-                enableBidBreakdown: true,
-                waitForPullback: true,
+                enableBidBreakdown: false,
+                waitForPullback: false,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
@@ -121,19 +121,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
-                { text: "160", partialCount: 1, atr: 1, rrr: 0, level: 160 },
+                { text: "8.65", partialCount: 1, atr: 0, rrr: 0, level: 8.65 },
+                { text: "8.74", partialCount: 1, atr: 1, rrr: 0, level: 8.74 },
             ],
             gapAndGoPlan: {
-                support: { high: 140, low: shoppreerhigh },
+                support: { high: 8.1, low: 8 },
                 enableOfferBreakout: true,
                 enableBidReversal: true,
                 waitForPullback: true,
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "breakout pm high",
-                nearPreviousKeyEventLevel: "143 pre er gap",
-                coreTarget: 150,
+                runnerTriggerCondition: "stay above vwap",
+                nearPreviousKeyEventLevel: "above current consolidation and next consolidation bottom",
+                coreTarget: 8.66,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
