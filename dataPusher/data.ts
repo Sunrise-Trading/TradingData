@@ -45,31 +45,31 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'SOUN',
+    'DOCS',
 ];
-const shopgap = 151.72;
-const shoppreerhigh = 139.1;
-const sounlevel = 8;
+const docspmlow = 34.11;
+const docsgap = 32.66;
+const docslevel = 68;
 const gmetrappedlevel = 20.89;
 const spcxlevel = 120;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SOUN',
+        symbol: 'DOCS',
         analysis: {
-            gap: { pdc: 6.43 },
+            gap: { pdc: 20.66 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: sounlevel, low: sounlevel }],
+            singleMomentumKeyLevel: [{ high: docslevel, low: docslevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SOUN,
+        marketCapInMillions: 6000,
         atr: {
-            average: 0.4,
+            average: 1,
             mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -98,18 +98,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 7.8,
+            firstTargetToAdd: docsgap,
             finalTargets: [
-                { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
-                { text: "104", partialCount: 1, atr: 0, rrr: 0, level: 104 },
+                { text: "gap low", partialCount: 1, atr: 0, rrr: 0, level: docsgap },
+                { text: "35", partialCount: 1, atr: 0, rrr: 0, level: 35 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 4.7,
-                resistance: { high: 150, low: 120 },
+                extendedGapUpInAtr: 16,
+                resistance: { high: docslevel, low: 40 },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "breakdown pm low",
-                coreTarget: 104,
+                runnerTriggerCondition: "breakdown gap low",
+                coreTarget: docsgap,
                 enableOfferReversal: true,
                 enableBidBreakdown: true,
                 waitForPullback: false,
