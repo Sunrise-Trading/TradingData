@@ -45,23 +45,23 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'DOCS',
+    'ACHR',
 ];
-const docspmlow = 34.11;
 const docsgap = 32.66;
-const docslevel = 68;
+const achrpreerhigh = 6.75;
+const achrlevel = achrpreerhigh;
 const gmetrappedlevel = 20.89;
 const spcxlevel = 120;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'DOCS',
+        symbol: 'ACHR',
         analysis: {
-            gap: { pdc: 20.66 },
+            gap: { pdc: 5.59 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: docslevel, low: docslevel }],
+            singleMomentumKeyLevel: [{ high: achrlevel, low: achrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -69,7 +69,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 6000,
         atr: {
-            average: 1,
+            average: 0.34,
             mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -98,18 +98,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: docsgap,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "gap low", partialCount: 1, atr: 0, rrr: 0, level: docsgap },
-                { text: "35", partialCount: 1, atr: 0, rrr: 0, level: 35 },
+                { text: "6", partialCount: 1, atr: 0, rrr: 0, level: 6 },
+                { text: "5.9", partialCount: 1, atr: 0, rrr: 0, level: 5.9 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 16,
-                resistance: { high: docslevel, low: 40 },
+                extendedGapUpInAtr: 2.8,
+                resistance: { high: achrlevel, low: 6.5 },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "breakdown gap low",
-                coreTarget: docsgap,
+                runnerTriggerCondition: "rejected at vwap",
+                coreTarget: 6,
                 enableOfferReversal: true,
                 enableBidBreakdown: true,
                 waitForPullback: false,
@@ -121,22 +121,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "8.65", partialCount: 1, atr: 0, rrr: 0, level: 8.65 },
-                { text: "8.74", partialCount: 1, atr: 1, rrr: 0, level: 8.74 },
+                { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
+                { text: "8", partialCount: 1, atr: 1, rrr: 0, level: 8 },
             ],
-            /*
             gapAndGoPlan: {
-                support: { high: 8.1, low: 8 },
+                support: { high: 7, low: achrlevel },
                 enableOfferBreakout: true,
                 enableBidReversal: true,
                 waitForPullback: true,
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "stay above vwap",
-                nearPreviousKeyEventLevel: "above current consolidation and next consolidation bottom",
-                coreTarget: 8.66,
+                runnerTriggerCondition: "hold above pm high",
+                nearPreviousKeyEventLevel: "previous earnings high at 6.75",
+                coreTarget: 7.5,
                 planConfigs: stock1Configs,
-            },*/
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
