@@ -118,7 +118,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
