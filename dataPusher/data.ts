@@ -45,32 +45,34 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'ACHR',
+    'IREN',
 ];
-const docsgap = 32.66;
-const achrpreerhigh = 6.75;
-const achrlevel = achrpreerhigh;
-const gmetrappedlevel = 20.89;
-const spcxlevel = 120;
+
+const irenyhigh = 44.67;
+const irenpmhigh = 46.79;
+const IRENlevel = irenyhigh;
+const onontrappedlevel = 34.67;
+const ononpreerlow = 31.62;
+const ononlevel = ononpreerlow;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ACHR',
+        symbol: 'IREN',
         analysis: {
-            gap: { pdc: 5.59 },
+            gap: { pdc: 193 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: achrlevel, low: achrlevel }],
+            singleMomentumKeyLevel: [{ high: IRENlevel, low: IRENlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 6000,
+        marketCapInMillions: Constants.marketCaps.IREN,
         atr: {
-            average: 0.34,
-            mutiplier: 2,
+            average: 4,
+            mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
@@ -97,56 +99,56 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: -1,
             finalTargets: [
                 { text: "6", partialCount: 1, atr: 0, rrr: 0, level: 6 },
                 { text: "5.9", partialCount: 1, atr: 0, rrr: 0, level: 5.9 },
-            ],
+            ],/*
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 2.8,
-                resistance: { high: achrlevel, low: 6.5 },
+                resistance: { high: riotlevel, low: 6.5 },
                 runnerCount: 1,
                 coreCount: 1,
                 runnerTriggerCondition: "rejected at vwap",
                 coreTarget: 6,
                 enableOfferReversal: true,
-                enableBidBreakdown: true,
+                enableBidBreakdown: false,
                 waitForPullback: false,
                 planConfigs: stock1Configs,
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: irenpmhigh,
             finalTargets: [
-                { text: "7.5", partialCount: 1, atr: 0, rrr: 0, level: 7.5 },
-                { text: "8", partialCount: 1, atr: 1, rrr: 0, level: 8 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: irenpmhigh },
+                { text: "50", partialCount: 1, atr: 1, rrr: 0, level: 50 },
             ],
             gapAndGoPlan: {
-                support: { high: 7, low: achrlevel },
+                support: { high: 45.4, low: irenyhigh },
                 enableOfferBreakout: true,
                 enableBidReversal: true,
-                waitForPullback: true,
+                waitForPullback: false,
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "hold above pm high",
-                nearPreviousKeyEventLevel: "previous earnings high at 6.75",
-                coreTarget: 7.5,
+                runnerTriggerCondition: "survive pullback above pm high",
+                nearPreviousKeyEventLevel: "previous news pop high at 23.84",
+                coreTarget: 50,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'SPCX',
+        symbol: 'ONON',
         analysis: {
-            gap: { pdc: 120 },
+            gap: { pdc: 38.78 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: spcxlevel, low: spcxlevel }],
+            singleMomentumKeyLevel: [{ high: ononlevel, low: ononlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -154,14 +156,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.GME,
         atr: {
-            average: 0.49,
+            average: 1.39,
             mutiplier: 1.5,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
-            otherLevels: [{ label: "trapped below", price: gmetrappedlevel }],
-            zones: []
+            otherLevels: [],
+            zones: [{ high: ononpreerlow, low: 31, color: "red", label: "short momo" }]
         },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
@@ -184,19 +186,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "20", partialCount: 1, atr: 0, rrr: 0, level: 20 },
-                { text: "19", partialCount: 1, atr: 0, rrr: 0, level: 19 },
+                { text: "30", partialCount: 1, atr: 0, rrr: 0, level: 30 },
+                { text: "29", partialCount: 1, atr: 0, rrr: 0, level: 29 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: gmetrappedlevel,
-                resistance: { high: gmetrappedlevel, low: 20.62 },
+                buyersTrappedBelowThisLevel: onontrappedlevel,
+                resistance: { high: onontrappedlevel, low: 34 },
                 waitForPullback: true,
-                enableBidBreakdown: true,
+                enableBidBreakdown: false,
                 enableOfferReversal: true,
-                runnerTriggerCondition: "lost vwap",
+                runnerTriggerCondition: "confirm below pm low",
                 runnerCount: 1,
                 coreCount: 1,
-                coreTarget: 20,
+                coreTarget: 30,
                 planConfigs: stock2Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
@@ -205,8 +207,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "20.5", partialCount: 1, atr: 0, rrr: 0, level: 20.5 },
-                { text: "20.8", partialCount: 1, atr: 0, rrr: 0, level: 20.8 },
+                { text: "33.5", partialCount: 1, atr: 0, rrr: 0, level: 33.5 },
+                { text: "34", partialCount: 1, atr: 0, rrr: 0, level: 34 },
             ],
             gapDownAndGoUpPlan: {
                 planConfigs: stock2Configs,
@@ -215,10 +217,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 enableOfferBreakout: false,
                 runnerCount: 1,
                 coreCount: 1,
-                support: { high: 20, low: 19.93 },
-                nearAboveSupport: { high: 20, low: 19.93 },
-                runnerTriggerCondition: "breakout vwap",
-                coreTarget: 20.5,
+                support: { high: 32, low: ononpreerlow },
+                nearAboveSupport: { high: 32, low: ononpreerlow },
+                runnerTriggerCondition: "reclaim vwap",
+                coreTarget: 33.5,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
