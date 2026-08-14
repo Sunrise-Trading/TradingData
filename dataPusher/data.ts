@@ -100,7 +100,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: 15,
             finalTargets: [
                 { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
