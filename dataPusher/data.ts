@@ -45,40 +45,41 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'IREN',
+    'NU',
 ];
 
-const irenyhigh = 44.67;
+const nupreergap = 15.94;
+const moreberish = 15.81;
 const irenpmhigh = 46.79;
-const IRENlevel = irenyhigh;
+const nulevel = nupreergap;
 const onontrappedlevel = 34.67;
 const ononpreerlow = 31.62;
 const ononlevel = ononpreerlow;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'IREN',
+        symbol: 'NU',
         analysis: {
-            gap: { pdc: 193 },
+            gap: { pdc: 13.93 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: IRENlevel, low: IRENlevel }],
+            singleMomentumKeyLevel: [{ high: nulevel, low: nulevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.IREN,
+        marketCapInMillions: Constants.marketCaps.NU,
         atr: {
-            average: 4,
-            mutiplier: 1,
+            average: 0.47,
+            mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [
-                //{ high: 9.11, low: 8.92, color: "red", label: "gap down" }
+                { high: 16.85, low: 16.5, color: "red", label: "main profit target" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -100,42 +101,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: false,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: 15,
             finalTargets: [
-                { text: "6", partialCount: 1, atr: 0, rrr: 0, level: 6 },
-                { text: "5.9", partialCount: 1, atr: 0, rrr: 0, level: 5.9 },
-            ],/*
+                { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
+                { text: "15.4", partialCount: 1, atr: 0, rrr: 0, level: 15.4 },
+            ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 2.8,
-                resistance: { high: riotlevel, low: 6.5 },
+                extendedGapUpInAtr: 4,
+                resistance: { high: nupreergap, low: moreberish },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "rejected at vwap",
-                coreTarget: 6,
+                runnerTriggerCondition: "lost premarket low",
+                coreTarget: 15,
                 enableOfferReversal: true,
                 enableBidBreakdown: false,
                 waitForPullback: false,
                 planConfigs: stock1Configs,
-            },*/
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: irenpmhigh,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: irenpmhigh },
-                { text: "50", partialCount: 1, atr: 1, rrr: 0, level: 50 },
+                { text: "16.5", partialCount: 1, atr: 0, rrr: 0, level: 16.5 },
+                { text: "16.8", partialCount: 1, atr: 1, rrr: 0, level: 16.8 },
             ],
             gapAndGoPlan: {
-                support: { high: 45.4, low: irenyhigh },
-                enableOfferBreakout: true,
+                support: { high: 16, low: nupreergap },
+                enableOfferBreakout: false,
                 enableBidReversal: true,
-                waitForPullback: false,
+                waitForPullback: true,
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "survive pullback above pm high",
-                nearPreviousKeyEventLevel: "previous news pop high at 23.84",
-                coreTarget: 50,
+                runnerTriggerCondition: "survive pullback above pm high, but mainly a scalp",
+                nearPreviousKeyEventLevel: "previous news gap down at 15.94",
+                coreTarget: 16.50,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
