@@ -45,9 +45,12 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'MU',
+    'MRNA',
 ];
-
+const mrnagapdownlow = 118.1;
+const mrnagapdownhigh = 122.45;
+const mrnalevel = mrnagapdownhigh;
+const mrnahighopen = 123.57;
 const lastsupport = 930;
 const moreberish = 15.81;
 const mulevel = lastsupport;
@@ -56,23 +59,23 @@ const mupmhigh = 995;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AMU',
+        symbol: 'MRNA',
         analysis: {
-            gap: { pdc: 1011 },
+            gap: { pdc: 63 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mulevel, low: mulevel }],
+            singleMomentumKeyLevel: [{ high: mrnalevel, low: mrnalevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: Constants.marketCaps.MRNA,
         atr: {
-            average: 70,
-            mutiplier: 1,
-            minimumMultipler: 0.5,
+            average: 3.64,
+            mutiplier: 3,
+            minimumMultipler: 1.5,
             maxQuantity: -1,
         },
         keyLevels: {
@@ -99,18 +102,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: 15,
+            firstTargetToAdd: -1,
             finalTargets: [
-                { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
-                { text: "15.4", partialCount: 1, atr: 0, rrr: 0, level: 15.4 },
+                { text: "103", partialCount: 1, atr: 0, rrr: 0, level: 103 },
+                { text: "114", partialCount: 1, atr: 0, rrr: 0, level: 114 },
             ],
             gapAndCrapPlan: {
-                extendedGapUpInAtr: 4,
-                resistance: { high: lastsupport, low: moreberish },
+                extendedGapUpInAtr: 15,
+                resistance: { high: 134, low: mrnagapdownlow },
                 runnerCount: 1,
                 coreCount: 1,
-                runnerTriggerCondition: "lost premarket low",
-                coreTarget: 15,
+                runnerTriggerCondition: "lost vwap",
+                coreTarget: 103,
                 enableOfferReversal: true,
                 enableBidBreakdown: false,
                 waitForPullback: false,
@@ -122,11 +125,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: -1,
             finalTargets: [
-                { text: "16.5", partialCount: 1, atr: 0, rrr: 0, level: 16.5 },
-                { text: "16.8", partialCount: 1, atr: 1, rrr: 0, level: 16.8 },
+                { text: "125", partialCount: 1, atr: 0, rrr: 0, level: 125 },
+                { text: "130", partialCount: 1, atr: 1, rrr: 0, level: 130 },
             ],
             gapAndGoPlan: {
-                support: { high: 16, low: lastsupport },
+                support: { high: 125, low: mrnahighopen },
                 enableOfferBreakout: false,
                 enableBidReversal: true,
                 waitForPullback: true,
@@ -134,7 +137,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 coreCount: 1,
                 runnerTriggerCondition: "survive pullback above pm high, but mainly a scalp",
                 nearPreviousKeyEventLevel: "previous news gap down at 15.94",
-                coreTarget: 16.50,
+                coreTarget: 130,
                 planConfigs: stock1Configs,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
