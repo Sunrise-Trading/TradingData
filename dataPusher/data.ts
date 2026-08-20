@@ -45,38 +45,38 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'WMT', 'MRNA'
+    'stock1',
+    'stock2',
+    'stock3',
+    'stock4',
 ];
-const mrnalevel = 163.47;
-const wmtlevel = 106.79;
-const wmtpmlow = 105.67;
+const stock1Level = 1;
+const stock2Level = 1;
+const stock3Level = 1;
+const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MRNA',
+        symbol: 'stock1',
         analysis: {
-            gap: { pdc: 63 },
+            gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mrnalevel, low: mrnalevel }],
+            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MRNA,
+        marketCapInMillions: 0,
         atr: {
-            average: 3.64,
-            mutiplier: 3,
-            minimumMultipler: 1.5,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
             maxQuantity: -1,
         },
-        keyLevels: {
-            zones: [
-                //{ high: 16.85, low: 16.5, color: "red", label: "main profit target" }
-            ]
-        },
+        keyLevels: { zones: [] },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -96,73 +96,44 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: "0",
             finalTargets: [
-                { text: "136", partialCount: 1, atr: 0, rrr: 0, level: 136 },
-                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 15,
-                resistance: { high: mrnalevel, low: 160 },
-                runnerCount: 1,
-                coreCount: 1,
-                runnerTriggerCondition: "lost vwap",
-                coreTarget: 150,
-                enableOfferReversal: true,
-                enableBidBreakdown: false,
-                waitForPullback: false,
-                planConfigs: stock1Configs,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: "0",
             finalTargets: [
-                { text: "174", partialCount: 1, atr: 0, rrr: 0, level: 174 },
-                { text: "194", partialCount: 1, atr: 1, rrr: 0, level: 194 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapAndGoPlan: {
-                support: { high: 150, low: 147.8 },
-                enableOfferBreakout: false,
-                enableBidReversal: true,
-                waitForPullback: true,
-                runnerCount: 1,
-                coreCount: 1,
-                runnerTriggerCondition: "survive pullback above pm high, but mainly a scalp",
-                nearPreviousKeyEventLevel: "previous news gap down at 15.94",
-                coreTarget: 174,
-                planConfigs: stock1Configs,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'WMT',
+        symbol: 'stock2',
         analysis: {
-            gap: { pdc: 114 },
+            gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: wmtlevel, low: wmtlevel }],
+            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.WMT,
+        marketCapInMillions: 0,
         atr: {
-            average: 2.4,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
             maxQuantity: -1,
         },
-        keyLevels: {
-            otherLevels: [],
-            zones: [
-                //{ high: mupmlow + 5, low: mupmlow, color: "green", label: "pm low" }
-            ]
-        },
+        keyLevels: { zones: [] },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -182,46 +153,137 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         short: {
             enabled: true,
-            firstTargetToAdd: wmtpmlow,
+            firstTargetToAdd: "0",
             finalTargets: [
-                { text: "104", partialCount: 1, atr: 0, rrr: 0, level: 104 },
-                { text: "103", partialCount: 1, atr: 0, rrr: 0, level: 103 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: wmtlevel,
-                resistance: { high: wmtlevel, low: wmtpmlow },
-                waitForPullback: false,
-                enableBidBreakdown: false,
-                enableOfferReversal: true,
-                runnerTriggerCondition: "confirm below pm low",
-                runnerCount: 1,
-                coreCount: 1,
-                coreTarget: 104,
-                planConfigs: stock2Configs,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: -1,
+            firstTargetToAdd: "0",
             finalTargets: [
-                { text: "108", partialCount: 1, atr: 0, rrr: 0, level: 108 },
-                { text: "109", partialCount: 1, atr: 0, rrr: 0, level: 109 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
-            gapDownAndGoUpPlan: {
-                planConfigs: stock2Configs,
-                waitForPullback: true,
-                enableBidReversal: true,
-                enableOfferBreakout: false,
-                runnerCount: 1,
-                coreCount: 1,
-                support: { high: 107, low: wmtlevel },
-                nearAboveSupport: { high: 107, low: wmtlevel },
-                runnerTriggerCondition: "reclaim vwap",
-                coreTarget: 108,
-            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
+    {
+        symbol: 'stock3',
+        analysis: {
 
+            gap: { pdc: 0 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: { zones: [] },
+        defaultConfigs: stock3Configs,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: "0",
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: "0",
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
+        },
+    },
+    {
+        symbol: 'stock4',
+        analysis: {
+
+            gap: { pdc: 0 }, // optional, pdv is previous day close
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: 0,
+        atr: {
+            average: 0,
+            mutiplier: 0,
+            minimumMultipler: 0,
+            maxQuantity: -1,
+        },
+        keyLevels: { zones: [] },
+        defaultConfigs: stock4Configs,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        short: {
+            enabled: true,
+            firstTargetToAdd: "0",
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
+        },
+        long: {
+            enabled: true,
+            firstTargetToAdd: "0",
+            finalTargets: [
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+            ],
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
+        },
+    },
 ];

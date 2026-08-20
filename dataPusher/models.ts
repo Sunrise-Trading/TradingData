@@ -81,9 +81,17 @@ export interface VwapCorrection {
     open: number,
 }
 
+export enum PriceIndicator {
+    PremarketHigh = 'premarketHigh',
+    PremarketLow = 'premarketLow',
+    Vwap = 'vwap',
+}
+
+export type PriceReference = `${number}` | PriceIndicator;
+
 export interface SingleDirectionPlans {
     enabled: boolean,
-    firstTargetToAdd: number,
+    firstTargetToAdd: PriceReference,
     finalTargets: SingleExitTarget[],
     /* used strategies begin */
     levelMomentumPlan?: LevelMomentumPlan,
@@ -278,11 +286,4 @@ export interface SupportResistanceArea extends LevelArea {
      * This flag affects entry validation only; it does not change how the zone is painted.
      */
     requireEntryWithinRange?: boolean,
-}
-
-export enum PremarketVolumeScore {
-    Zero_Low_Or_Normal = 0,
-    One_Higher_Than_Normal = 1,
-    Two_Extremely_High = 2,
-    Unknown = -1,
 }
