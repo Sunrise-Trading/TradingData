@@ -45,25 +45,24 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'MSTR',
 ];
-const stock1Level = 1;
+const mstrpmlow = 117.72;
+const mstrlevel = mstrpmlow;
+const mstrpmhigh = 127.59;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'MSTR',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 112 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: mstrlevel, low: mstrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -71,9 +70,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: 0,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 6.56,
+            mutiplier: 1,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -95,7 +94,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "0",
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -105,11 +104,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm high", partialCount: 2, atr: 0, rrr: 0, level: mstrpmhigh },
+                { text: "124", partialCount: 2, atr: 0, rrr: 0, level: 124 },
             ],
+            gapAndGoPlan: {
+                planConfigs: stock1Configs,
+                coreTarget: mstrpmhigh,
+                coreCount: 1,
+                runnerCount: 3,
+                runnerTriggerCondition: "survive pullback above premarket high",
+                nearAboveConsolidationRange: "90-107",
+                support: { high: 120, low: mstrpmlow, },
+                enableOfferBreakout: false,
+                enableBidReversal: true,
+                waitForPullback: true,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
