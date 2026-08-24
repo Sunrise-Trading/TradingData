@@ -94,6 +94,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        corePlan: "",
         short: {
             enabled: true,
             firstTargetToAdd: "0",
@@ -151,6 +152,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        corePlan: "",
         short: {
             enabled: true,
             firstTargetToAdd: "0",
@@ -209,6 +211,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        corePlan: "",
         short: {
             enabled: true,
             firstTargetToAdd: "0",
@@ -267,6 +270,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        corePlan: "",
         short: {
             enabled: true,
             firstTargetToAdd: "0",
