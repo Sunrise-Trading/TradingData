@@ -45,35 +45,34 @@ const stock4Configs: TradingPlans.PlanConfigs = {
 
 
 export const stockSelections: string[] = [
-    'stock1',
-    'stock2',
-    'stock3',
-    'stock4',
+    'MSTR',
 ];
-const stock1Level = 1;
+const mstryhigh = 121.91;
+const mstrahhigh = 127.59;
+const mstrlevel = mstryhigh;
 const stock2Level = 1;
 const stock3Level = 1;
 const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'stock1',
+        symbol: 'MSTR',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 119.25 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock1Level, low: stock1Level }],
+            singleMomentumKeyLevel: [{ high: mstrlevel, low: mstrlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.MSTR,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 6.77,
+            mutiplier: 1,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -94,10 +93,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "",
+        corePlan: "wait for a pullback and long above y-high. main target at 127, if hold above, keep 20% for swing",
         short: {
-            enabled: true,
-            firstTargetToAdd: "0",
+            enabled: false,
+            firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
@@ -106,11 +105,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "ah high", partialCount: 3, atr: 0, rrr: 0, level: mstrahhigh },
+                { text: "136", partialCount: 2, atr: 0, rrr: 0, level: 136 },
             ],
+            gapAndGoPlan: {
+                planConfigs: stock1Configs,
+                coreTarget: mstrahhigh,
+                coreCount: 5,
+                runnerCount: 1,
+                runnerTriggerCondition: `pullback hold above ${mstrahhigh}`,
+                support: { high: 123, low: mstryhigh },
+                recentPullback: mstryhigh,
+                nearAboveConsolidationRange: "continuation from recent consolidation breakout",
+                enableOfferBreakout: false,
+                enableBidReversal: true,
+                waitForPullback: true,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
