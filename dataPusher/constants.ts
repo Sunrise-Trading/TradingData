@@ -73,6 +73,7 @@ export const marketCaps = {
     DOCU: 18000,
     DDOG: 50000,
     DG: 27000,
+    DKS: 12000,
     EA: 37000,
     ENVX: 2000,
     ENPH: 12000,
