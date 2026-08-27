@@ -32,28 +32,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
     requireReversal: true,
     sizingCount: 10,
 };
-const stock3Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
-    requireReversal: true,
-    sizingCount: 10,
-};
-const stock4Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
-    requireReversal: true,
-    sizingCount: 10,
-};
-
 
 export const stockSelections: string[] = [
     'stock1',
     'stock2',
-    'stock3',
-    'stock4',
 ];
 const stock1Level = 1;
 const stock2Level = 1;
-const stock3Level = 1;
-const stock4Level = 1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -170,124 +155,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
             ],
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
-        },
-    },
-    {
-        symbol: 'stock3',
-        analysis: {
-
-            gap: { pdc: 0 },
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock3Level, low: stock3Level }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxQuantity: -1,
-        },
-        keyLevels: { zones: [] },
-        defaultConfigs: stock3Configs,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        corePlan: "",
-        short: {
-            enabled: true,
-            firstTargetToAdd: "0",
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: "0",
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock3Configs),
-        },
-    },
-    {
-        symbol: 'stock4',
-        analysis: {
-
-            gap: { pdc: 0 }, // optional, pdv is previous day close
-            usePremarketKeyLevel: 0,
-            watchAreas: [],
-            noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock4Level, low: stock4Level }],
-            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
-            dualMomentumKeyLevels: [],
-            defaultRiskLevels: [],
-        },
-        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
-        atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
-            maxQuantity: -1,
-        },
-        keyLevels: { zones: [] },
-        defaultConfigs: stock4Configs,
-        tradebooksConfig: {
-            level_open_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-            },
-            open_level_vwap: {
-                shortVwapBounceFail: { waitForClose: true },
-                longOpenDrive: {},
-            },
-            vwap_level_open: {
-                shortOpenDrive: {},
-                longVwapPushdownFail: { waitForClose: true },
-            },
-            vwap_open_level: {
-                longVwapPushdownFail: { waitForClose: true },
-            },
-        },
-        corePlan: "",
-        short: {
-            enabled: true,
-            firstTargetToAdd: "0",
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: "0",
-            finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-            ],
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock4Configs),
         },
     },
 ];
