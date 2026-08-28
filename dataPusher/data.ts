@@ -34,10 +34,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'CRM',
+    'PYPL',
 ];
 const crmgaplevel = 227.67;
-const stock2Level = 1;
+const pypllevel = 53.44;
+const pyplmoreshort = 52.3;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -119,23 +120,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'PYPL',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 61 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: pypllevel, low: pypllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.PYPL,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 1.43,
+            mutiplier: 2,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -156,23 +157,43 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "",
+        corePlan: "Short below 53.44* Main target: 52.3* Runner condition: below 52.3* Extended target: 50-48",
         short: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: "52.3",
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "52.3", partialCount: 1, atr: 0, rrr: 0, level: pyplmoreshort },
+                { text: "50", partialCount: 1, atr: 0, rrr: 0, level: 50 },
             ],
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: pypllevel,
+                planConfigs: stock2Configs,
+                coreCount: 1,
+                coreTarget: pyplmoreshort,
+                runnerCount: 1,
+                runnerTriggerCondition: "below 52.3",
+                waitForPullback: false,
+                resistance: { high: pypllevel, low: pyplmoreshort },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: "54",
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 54 },
+                { text: "55", partialCount: 1, atr: 0, rrr: 0, level: 55 },
             ],
+            gapDownAndGoUpPlan: {
+                support: { high: 54, low: pypllevel },
+                planConfigs: stock2Configs,
+                coreCount: 0,
+                coreTarget: 55,
+                runnerCount: 0,
+                runnerTriggerCondition: "above premarket high",
+                waitForPullback: false,
+                nearAboveKeyEventLevel: pypllevel,
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
