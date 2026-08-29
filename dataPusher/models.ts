@@ -173,7 +173,6 @@ export interface GapAndGoPlan extends LongMomentumPlan {
     previousInsideDay?: number,
     /** price of all time high */
     allTimeHigh?: number,
-    waitForPullback: boolean,
 }
 export interface GapAndCrapPlan extends ShortMomentumPlan {
     /** the max resistance on daily chart, above it, we cannot short. -1: no limit when it's not based on resistance, but more due to extended rally */
@@ -189,7 +188,6 @@ export interface GapAndCrapPlan extends ShortMomentumPlan {
     topEdgeOfCurrentRange?: number,
     /** description of the previous event */
     nearBelowPreviousEventKeyLevel?: string,
-    waitForPullback: boolean,
 }
 export interface GapDownAndGoDownPlan extends ShortMomentumPlan {
     nearBelowConsolidationRange?: LevelArea,
@@ -203,36 +201,11 @@ export interface GapDownAndGoDownPlan extends ShortMomentumPlan {
     higherTimeframeResistanceReversal?: string,
     /** the low of last 2 days */
     previousInsideDay?: number,
-    waitForPullback: boolean,
 }
 export interface GapDownAndGoUpPlan extends LongMomentumPlan {
     support: SupportResistanceArea,
     nearAboveSupport?: LevelArea,
     nearAboveKeyEventLevel?: number,
-    waitForPullback: boolean,
-}
-export interface BookmapBigWallBreakdownFailLongPlan extends BasePlan {
-    bigWallLevel: number,
-}
-export interface AlgoPlan extends BasePlan {
-    expirationInSeconds: number,
-    allowPremarket: boolean,
-}
-export interface LevelBreakoutPlan extends BasePlan {
-    entryPrice: number,
-}
-export interface FirstRetracementPlan extends BasePlan { }
-export interface FirstBreakoutPlan extends BasePlan {
-
-}
-
-export interface ProfitTargets {
-    targets: number[],
-    /**
-     * Probability from 0 to 1 (100%) of how likely it will blow past those levels
-     */
-    willBlowPastThoseLevels: number,
-    summary: string,
 }
 export interface ExitTargets {
     initialTargets: ExitTargetsSet,
