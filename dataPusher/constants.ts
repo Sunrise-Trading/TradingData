@@ -166,6 +166,7 @@ export const marketCaps = {
     OPEN: 2000,
     PARA: 7000,
     PATH: 7000,
+    PCG: 28000,
     PANW: 111000,
     PDD: 166000,
     PLTR: 61000,
