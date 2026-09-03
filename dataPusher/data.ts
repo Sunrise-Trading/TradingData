@@ -34,28 +34,29 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'GTLB', 'DELL'
+    'AVGO',
+    //'SNOW'
 ];
-const gtlblevel = 53.55;
-const delllevel = 470;
+const snowlevel = 392;
+const avgolevel = 360;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GTLB',
+        symbol: 'SNOW',
         analysis: {
-            gap: { pdc: 45 },
+            gap: { pdc: 305 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: gtlblevel, low: gtlblevel }],
+            singleMomentumKeyLevel: [{ high: snowlevel, low: snowlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.GTLB,
+        marketCapInMillions: Constants.marketCaps.SNOW,
         atr: {
-            average: 2,
+            average: 13,
             mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -78,62 +79,63 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long above 53.55, wait for a pullback and then long bookmap patterns",
+        corePlan: "below 378, short aggressive. above 378, wait for pop failed to reclaim 378 or keep stop tight",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "50", partialCount: 1, atr: 0, rrr: 0, level: 50 },
-                { text: "51", partialCount: 1, atr: 0, rrr: 0, level: 51 },
+                { text: "350", partialCount: 1, atr: 0, rrr: 0, level: 350 },
+                { text: "365", partialCount: 1, atr: 0, rrr: 0, level: 365 },
             ],
             gapAndCrapPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 60,
+                coreTarget: 365,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "premarket high hold",
+                runnerTriggerCondition: "stay below 365",
                 extendedGapUpInAtr: 5,
-                resistance: { high: gtlblevel, low: 53 },
+                resistance: { high: snowlevel, low: 390 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "60", partialCount: 1, atr: 0, rrr: 0, level: 60 },
                 { text: "62", partialCount: 1, atr: 0, rrr: 0, level: 62 },
             ],
+            /*
             gapAndGoPlan: {
                 planConfigs: stock1Configs,
                 coreTarget: 60,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "premarket high hold",
-                support: { high: 55, low: gtlblevel },
+                support: { high: 55, low: snowlevel },
                 nearPreviousKeyEventLevel: "earnings rally start 53.55"
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'DELL',
+        symbol: 'AVGO',
         analysis: {
-            gap: { pdc: 425 },
+            gap: { pdc: 367 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: delllevel, low: delllevel }],
+            singleMomentumKeyLevel: [{ high: avgolevel, low: avgolevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DELL,
+        marketCapInMillions: Constants.marketCaps.AVGO,
         atr: {
-            average: 28,
-            mutiplier: 1.5,
-            minimumMultipler: 1,
+            average: 12,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -154,24 +156,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long above 470, no need to wait for pullback. long bookmap patterns",
+        corePlan: "wait for test of both offer and bid, then short below 360",
         short: {
+            enabled: true,
+            firstTargetToAdd: "-1",
+            finalTargets: [
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 352 },
+                { text: "ah low", partialCount: 1, atr: 0, rrr: 0, level: 342 },
+            ],
+            gapDownAndGoDownPlan: {
+                planConfigs: stock2Configs,
+                coreTarget: 352,
+                coreCount: 1,
+                runnerCount: 1,
+                runnerTriggerCondition: "stay below pm low",
+                resistance: { high: 360, low: 358 },
+                buyersTrappedBelowThisLevel: 360,
+            },
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
+        },
+        long: {
             enabled: false,
             firstTargetToAdd: "477",
             finalTargets: [
                 { text: "477", partialCount: 1, atr: 0, rrr: 0, level: 477 },
                 { text: "500", partialCount: 1, atr: 0, rrr: 0, level: 500 },
             ],
-
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
-        },
-        long: {
-            enabled: true,
-            firstTargetToAdd: "477",
-            finalTargets: [
-                { text: "477", partialCount: 1, atr: 0, rrr: 0, level: 477 },
-                { text: "500", partialCount: 1, atr: 0, rrr: 0, level: 500 },
-            ],
+            /*
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreTarget: 500,
@@ -180,7 +191,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 1,
                 runnerTriggerCondition: "hold above 477",
                 nearAboveConsolidationRange: "470-425"
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
