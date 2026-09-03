@@ -34,8 +34,8 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'AVGO',
-    //'SNOW'
+    //'AVGO',
+    'SNOW'
 ];
 const snowlevel = 392;
 const avgolevel = 360;
@@ -99,22 +99,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "60", partialCount: 1, atr: 0, rrr: 0, level: 60 },
-                { text: "62", partialCount: 1, atr: 0, rrr: 0, level: 62 },
+                { text: "380", partialCount: 1, atr: 0, rrr: 0, level: 380 },
+                { text: "390", partialCount: 1, atr: 0, rrr: 0, level: 390 },
             ],
-            /*
             gapAndGoPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 60,
+                coreTarget: 380,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "premarket high hold",
-                support: { high: 55, low: snowlevel },
-                nearPreviousKeyEventLevel: "earnings rally start 53.55"
-            },*/
+                support: { high: 389, low: 378 },
+                nearPreviousKeyEventLevel: "consolidation range to 378"
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
