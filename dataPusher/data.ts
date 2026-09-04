@@ -34,29 +34,31 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    //'AVGO',
-    'SNOW'
+    // 'LULU'
+    'NVDA'
 ];
-const snowlevel = 392;
-const avgolevel = 360;
+const lululevel = 104.44;
+const nvdalevel = 230.47;
+const nvdaath = 236.54;
+const nvdapmhigh = 232.48;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SNOW',
+        symbol: 'LULU',
         analysis: {
-            gap: { pdc: 305 },
+            gap: { pdc: 121 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: snowlevel, low: snowlevel }],
+            singleMomentumKeyLevel: [{ high: lululevel, low: lululevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SNOW,
+        marketCapInMillions: Constants.marketCaps.LULU,
         atr: {
-            average: 13,
+            average: 4.5,
             mutiplier: 2,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -79,27 +81,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "below 378, short aggressive. above 378, wait for pop failed to reclaim 378 or keep stop tight",
+        corePlan: "short below 104, due to large gap down, need to wait for a pop before or after",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "350", partialCount: 1, atr: 0, rrr: 0, level: 350 },
-                { text: "365", partialCount: 1, atr: 0, rrr: 0, level: 365 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 96.26 },
+                { text: "95", partialCount: 1, atr: 0, rrr: 0, level: 95 },
             ],
-            gapAndCrapPlan: {
+            gapDownAndGoDownPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 365,
+                coreTarget: 96.26,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "stay below 365",
-                extendedGapUpInAtr: 5,
-                resistance: { high: snowlevel, low: 390 },
+                runnerTriggerCondition: "stay below pm low",
+                buyersTrappedBelowThisLevel: lululevel,
+                resistance: { high: lululevel, low: 100 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "380", partialCount: 1, atr: 0, rrr: 0, level: 380 },
@@ -118,21 +120,21 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AVGO',
+        symbol: 'NVDA',
         analysis: {
-            gap: { pdc: 367 },
+            gap: { pdc: 228 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: avgolevel, low: avgolevel }],
+            singleMomentumKeyLevel: [{ high: nvdalevel, low: nvdalevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AVGO,
+        marketCapInMillions: Constants.marketCaps.NVAX,
         atr: {
-            average: 12,
+            average: 7.46,
             mutiplier: 1,
             minimumMultipler: 0.5,
             maxQuantity: -1,
@@ -155,14 +157,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "wait for test of both offer and bid, then short below 360",
+        corePlan: "small gap up, already pull back in premarket, no need to wait for pullback, long first breakout",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 352 },
                 { text: "ah low", partialCount: 1, atr: 0, rrr: 0, level: 342 },
             ],
+            /*
             gapDownAndGoDownPlan: {
                 planConfigs: stock2Configs,
                 coreTarget: 352,
@@ -171,26 +174,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "stay below pm low",
                 resistance: { high: 360, low: 358 },
                 buyersTrappedBelowThisLevel: 360,
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: "477",
+            enabled: true,
+            firstTargetToAdd: "232.48",
             finalTargets: [
-                { text: "477", partialCount: 1, atr: 0, rrr: 0, level: 477 },
-                { text: "500", partialCount: 1, atr: 0, rrr: 0, level: 500 },
+                { text: "pm", partialCount: 1, atr: 0, rrr: 0, level: nvdapmhigh },
+                { text: "ath", partialCount: 1, atr: 0, rrr: 0, level: nvdaath },
             ],
-            /*
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
-                coreTarget: 500,
+                coreTarget: nvdaath,
                 coreCount: 1,
-                support: { high: 475, low: 470 },
+                support: { high: 231, low: nvdalevel },
                 runnerCount: 1,
-                runnerTriggerCondition: "hold above 477",
-                nearAboveConsolidationRange: "470-425"
-            },*/
+                runnerTriggerCondition: "hold above pm high",
+                nearAboveConsolidationRange: "232-230"
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
