@@ -34,36 +34,40 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    // 'LULU'
-    'NVDA'
+    'ORCL'
 ];
-const lululevel = 104.44;
+const orcllevel = 160;
 const nvdalevel = 230.47;
 const nvdaath = 236.54;
 const nvdapmhigh = 232.48;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'LULU',
+        symbol: 'ORCL',
         analysis: {
-            gap: { pdc: 121 },
+            gap: { pdc: 158 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: lululevel, low: lululevel }],
+            singleMomentumKeyLevel: [{ high: orcllevel, low: orcllevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.LULU,
+        marketCapInMillions: Constants.marketCaps.ORCL,
         atr: {
-            average: 4.5,
-            mutiplier: 2,
-            minimumMultipler: 1,
+            average: 6.7,
+            mutiplier: 1,
+            minimumMultipler: 0.5,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [], otherLevels: [
+                { price: 168.78, label: "ma200" },
+                { price: 175, label: "final T" }
+            ]
+        },
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -83,38 +87,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         corePlan: "short below 104, due to large gap down, need to wait for a pop before or after",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 96.26 },
                 { text: "95", partialCount: 1, atr: 0, rrr: 0, level: 95 },
             ],
+            /*
             gapDownAndGoDownPlan: {
                 planConfigs: stock1Configs,
                 coreTarget: 96.26,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "stay below pm low",
-                buyersTrappedBelowThisLevel: lululevel,
-                resistance: { high: lululevel, low: 100 },
-            },
+                buyersTrappedBelowThisLevel: orcllevel,
+                resistance: { high: orcllevel, low: 100 },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: "-1",
+            enabled: true,
+            firstTargetToAdd: "168.78",
             finalTargets: [
-                { text: "380", partialCount: 1, atr: 0, rrr: 0, level: 380 },
-                { text: "390", partialCount: 1, atr: 0, rrr: 0, level: 390 },
+                { text: "168.78", partialCount: 1, atr: 0, rrr: 0, level: 168.78 },
+                { text: "175", partialCount: 1, atr: 0, rrr: 0, level: 175 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 380,
+                coreTarget: 168.78,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "premarket high hold",
-                support: { high: 389, low: 378 },
-                nearPreviousKeyEventLevel: "consolidation range to 378"
+                support: { high: 162, low: orcllevel },
+                nearPreviousKeyEventLevel: "consolidation range 160-140"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
