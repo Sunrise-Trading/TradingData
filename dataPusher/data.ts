@@ -34,38 +34,38 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'ORCL'
+    'META'
 ];
-const orcllevel = 160;
+const metalevel = 625;
 const nvdalevel = 230.47;
 const nvdaath = 236.54;
 const nvdapmhigh = 232.48;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ORCL',
+        symbol: 'META',
         analysis: {
-            gap: { pdc: 158 },
+            gap: { pdc: 613 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: orcllevel, low: orcllevel }],
+            singleMomentumKeyLevel: [{ high: metalevel, low: metalevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ORCL,
+        marketCapInMillions: Constants.marketCaps.META,
         atr: {
-            average: 6.7,
+            average: 19,
             mutiplier: 1,
-            minimumMultipler: 0.5,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [], otherLevels: [
-                { price: 168.78, label: "ma200" },
-                { price: 175, label: "final T" }
+                // { price: 168.78, label: "ma200" },
+                // { price: 175, label: "final T" }
             ]
         },
         defaultConfigs: stock1Configs,
@@ -85,41 +85,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "short below 104, due to large gap down, need to wait for a pop before or after",
+        corePlan: "wait for test for both bid and offer, then long above 625, short below 663, use 643 as pivot",
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 96.26 },
-                { text: "95", partialCount: 1, atr: 0, rrr: 0, level: 95 },
+                { text: "633", partialCount: 1, atr: 0, rrr: 0, level: 633 },
+                { text: "625", partialCount: 1, atr: 0, rrr: 0, level: 625 },
             ],
-            /*
-            gapDownAndGoDownPlan: {
+            gapAndCrapPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 96.26,
+                coreTarget: 633,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "stay below pm low",
-                buyersTrappedBelowThisLevel: orcllevel,
-                resistance: { high: orcllevel, low: 100 },
-            },*/
+                runnerTriggerCondition: "lost vwap",
+                extendedGapUpInAtr: 1.6,
+                resistance: { high: 663, low: 660 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "168.78",
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "168.78", partialCount: 1, atr: 0, rrr: 0, level: 168.78 },
-                { text: "175", partialCount: 1, atr: 0, rrr: 0, level: 175 },
+                { text: "655", partialCount: 1, atr: 0, rrr: 0, level: 655 },
+                { text: "660", partialCount: 1, atr: 0, rrr: 0, level: 660 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 168.78,
+                coreTarget: 660,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "premarket high hold",
-                support: { high: 162, low: orcllevel },
-                nearPreviousKeyEventLevel: "consolidation range 160-140"
+                support: { high: 625, low: 620 },
+                nearPreviousKeyEventLevel: "consolidation range 625-600"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
