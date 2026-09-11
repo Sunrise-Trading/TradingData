@@ -34,12 +34,14 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'META'
+    'INTC'
 ];
 const metalevel = 625;
-const nvdalevel = 230.47;
+const intclevel = 101.74;
 const nvdaath = 236.54;
 const nvdapmhigh = 232.48;
+const intcyhigh = 103.23;
+const intcrecenthigh = 106.69;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -124,13 +126,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'INTC',
         analysis: {
-            gap: { pdc: 228 },
+            gap: { pdc: 100 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nvdalevel, low: nvdalevel }],
+            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -138,7 +140,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.NVAX,
         atr: {
-            average: 7.46,
+            average: 5.48,
             mutiplier: 1,
             minimumMultipler: 0.5,
             maxQuantity: -1,
@@ -183,19 +185,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "232.48",
+            firstTargetToAdd: `${intcyhigh}`,
             finalTargets: [
-                { text: "pm", partialCount: 1, atr: 0, rrr: 0, level: nvdapmhigh },
-                { text: "ath", partialCount: 1, atr: 0, rrr: 0, level: nvdaath },
+                { text: "y-high", partialCount: 1, atr: 0, rrr: 0, level: intcyhigh },
+                { text: "main", partialCount: 1, atr: 0, rrr: 0, level: intcrecenthigh },
             ],
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
-                coreTarget: nvdaath,
+                coreTarget: intcrecenthigh,
                 coreCount: 1,
-                support: { high: 231, low: nvdalevel },
+                support: { high: intcyhigh, low: intclevel },
                 runnerCount: 1,
-                runnerTriggerCondition: "hold above pm high",
-                nearAboveConsolidationRange: "232-230"
+                runnerTriggerCondition: "hold above y high",
+                nearAboveConsolidationRange: "earnings level 101.74"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
