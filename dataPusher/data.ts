@@ -34,11 +34,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NBIS'
+    'META'
 ];
 const nbisergap = 216;
 const crwdmoreaggressive = 218.31;
-const crwdlevel = 215;
+const metalevel = 683;
 const nvdaath = 236.54;
 const nvdapmhigh = 232.48;
 const intcyhigh = 103.23;
@@ -129,23 +129,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'CRWD',
+        symbol: 'META',
         analysis: {
-            gap: { pdc: 206 },
+            gap: { pdc: 682 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: crwdlevel, low: crwdlevel }],
+            singleMomentumKeyLevel: [{ high: metalevel, low: metalevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "warning",
-            waitForOfferRetest: "warning",
+            waitForBidRetest: "no",
+            waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.CRWD,
         atr: {
-            average: 11,
+            average: 20,
             mutiplier: 1,
             minimumMultipler: 0.5,
             maxQuantity: -1,
@@ -190,19 +190,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `-1`,
+            firstTargetToAdd: `694.31`,
             finalTargets: [
-                { text: "228", partialCount: 1, atr: 0, rrr: 0, level: 228 },
-                { text: "all time high", partialCount: 1, atr: 0, rrr: 0, level: 233 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 694.31 },
+                { text: "700", partialCount: 1, atr: 0, rrr: 0, level: 700 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
-                coreTarget: 228,
+                coreTarget: 700,
                 coreCount: 1,
-                support: { high: crwdmoreaggressive, low: crwdlevel },
+                support: { high: 685, low: metalevel },
                 runnerCount: 1,
-                runnerTriggerCondition: "hold above y high",
-                nearAboveConsolidationRange: "earnings level 205-218"
+                runnerTriggerCondition: "hold above pm high",
+                nearAboveConsolidationRange: "earnings level 685-683"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
