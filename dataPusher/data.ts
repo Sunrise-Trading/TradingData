@@ -34,9 +34,9 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'INTC'
+    'NBIS'
 ];
-const intclevel = 101.74;
+const nbisergap = 216;
 const crwdmoreaggressive = 218.31;
 const crwdlevel = 215;
 const nvdaath = 236.54;
@@ -46,13 +46,13 @@ const intcrecenthigh = 106.69;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'INTC',
+        symbol: 'NBIS',
         analysis: {
-            gap: { pdc: 97 },
+            gap: { pdc: 209 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: intclevel, low: intclevel }],
+            singleMomentumKeyLevel: [{ high: nbisergap, low: nbisergap }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -60,16 +60,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.INTC,
+        marketCapInMillions: Constants.marketCaps.NBIS,
         atr: {
-            average: 5.5,
+            average: 17,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [], otherLevels: [
-                { price: 101.74, label: "er high" },
+                { price: 244, label: "1st target" },
                 // { price: 175, label: "final T" }
             ]
         },
@@ -95,18 +95,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "99", partialCount: 1, atr: 0, rrr: 0, level: 99 },
-                { text: "98", partialCount: 1, atr: 0, rrr: 0, level: 98 },
+                { text: "220", partialCount: 1, atr: 0, rrr: 0, level: 220 },
+                { text: "216", partialCount: 1, atr: 0, rrr: 0, level: 216 },
             ],
             gapAndCrapPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 99,
+                coreTarget: 220,
                 coreCount: 1,
                 runnerCount: 1,
                 runnerTriggerCondition: "scalp",
                 extendedGapUpInAtr: 1.6,
-                topEdgeOfCurrentRange: 107,
-                resistance: { high: 107, low: 106 },
+                resistance: { high: 280, low: 270 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -114,17 +113,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "105", partialCount: 1, atr: 0, rrr: 0, level: 105 },
-                { text: "107", partialCount: 1, atr: 0, rrr: 0, level: 107 },
+                { text: "244", partialCount: 1, atr: 0, rrr: 0, level: 244 },
+                { text: "250", partialCount: 1, atr: 0, rrr: 0, level: 250 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock1Configs,
-                coreTarget: 107,
+                coreTarget: 244,
                 coreCount: 1,
                 runnerCount: 1,
-                runnerTriggerCondition: "scalp",
-                support: { high: 91, low: 90 },
-                nearPreviousKeyEventLevel: "consolidation range inside current range"
+                runnerTriggerCondition: "bid step up on premarket high",
+                support: { high: 220, low: 216 },
+                nearPreviousKeyEventLevel: "previous earnings gap 216"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
