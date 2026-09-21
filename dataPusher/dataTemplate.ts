@@ -8,7 +8,6 @@ export const tradingSettings: TradingPlans.TradingSettings = {
     useSingleOrderForEntry: true,
 };
 
-export const defaultSize = 0.21; // 0.21
 const defaultCorePlan = {
     coreTarget: 0,
     coreCount: 5,
@@ -23,12 +22,10 @@ const createDefaultLevelMomentumPlan = (
 });
 
 const stock1Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
     requireReversal: true,
     sizingCount: 10,
 };
 const stock2Configs: TradingPlans.PlanConfigs = {
-    size: defaultSize,
     requireReversal: true,
     sizingCount: 10,
 };
