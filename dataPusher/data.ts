@@ -31,11 +31,12 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'MSTR',
+    'ONON',
 ];
 const mstrsupport = 156;
 const mstrresistance = 175;
-const stock2Level = 1;
+const ononlevel = 30.11;
+const ononnexter = 31.62;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -129,25 +130,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'stock2',
+        symbol: 'ONON',
         analysis: {
-            gap: { pdc: 0 },
+            gap: { pdc: 27.30 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: stock2Level, low: stock2Level }],
+            singleMomentumKeyLevel: [{ high: ononlevel, low: ononlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
             waitForBidRetest: "warning",
-            waitForOfferRetest: "warning",
+            waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 0,
+        marketCapInMillions: Constants.marketCaps.ONON,
         atr: {
-            average: 0,
-            mutiplier: 0,
-            minimumMultipler: 0,
+            average: 1,
+            mutiplier: 1.5,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -168,23 +169,43 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "",
+        corePlan: "near its previous earnings level 30.11. Long above 30.11, short below 30.11. Due to being in a downtrend, long must wait for pullback.",
         short: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "28.5", partialCount: 1, atr: 0, rrr: 0, level: 28.5 },
+                { text: "29", partialCount: 1, atr: 0, rrr: 0, level: 29 },
             ],
+            gapAndCrapPlan: {
+                planConfigs: stock2Configs,
+                coreCount: 0,
+                coreTarget: 29,
+                runnerCount: 0,
+                runnerTriggerCondition: "stay below vwap",
+                extendedGapUpInAtr: 5,
+                resistance: { high: ononlevel, low: 30 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: "0",
+            firstTargetToAdd: `${ononnexter}`,
             finalTargets: [
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
-                { text: "", partialCount: 5, atr: 0, rrr: 0, level: 0 },
+                { text: "next er", partialCount: 1, atr: 0, rrr: 0, level: ononnexter },
+                { text: "31", partialCount: 1, atr: 0, rrr: 0, level: 31 },
             ],
+            gapAndGoPlan: {
+                planConfigs: stock2Configs,
+                coreCount: 0,
+                coreTarget: ononnexter,
+                runnerCount: 0,
+                runnerTriggerCondition: "hold above premarket high",
+                support: {
+                    low: ononlevel, high: 30.5,
+                },
+                nearPreviousKeyEventLevel: "er level 30.11"
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
