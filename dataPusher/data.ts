@@ -78,6 +78,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        rangeBoundReversalPlan: {
+            support: { high: mstrsupport, low: 155 },
+            coreCount: 1,
+            coreTarget: 160,
+            runnerCount: 1,
+            runnerTriggerCondition: "lost vwap",
+            planConfigs: stock1Configs,
+            resistance: { high: 180, low: mstrresistance },
+        },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
             enabled: true,
@@ -86,6 +95,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "160", partialCount: 1, atr: 0, rrr: 0, level: 160 },
                 { text: "158", partialCount: 1, atr: 0, rrr: 0, level: 158 },
             ],
+            /*
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1.6,
                 coreCount: 1,
@@ -94,7 +104,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "lost vwap",
                 planConfigs: stock1Configs,
                 resistance: { high: 180, low: mstrresistance },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
@@ -104,6 +114,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "175", partialCount: 1, atr: 0, rrr: 0, level: 175 },
                 { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
             ],
+            /*
             gapAndGoPlan: {
                 nearAboveConsolidationRange: "120-146",
                 coreCount: 1,
@@ -112,7 +123,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "lost vwap",
                 planConfigs: stock1Configs,
                 support: { high: mstrsupport, low: 155 },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
