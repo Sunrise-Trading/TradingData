@@ -86,6 +86,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             runnerTriggerCondition: "lost vwap",
             planConfigs: stock1Configs,
             resistance: { high: 180, low: mstrresistance },
+            previousConsolidationArea: { high: 145, low: 120 },
         },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
