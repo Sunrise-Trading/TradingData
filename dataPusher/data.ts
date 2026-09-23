@@ -31,12 +31,12 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'ONON',
+    'IONQ',
 ];
 const mstrsupport = 156;
 const mstrresistance = 175;
-const ononlevel = 30.11;
-const ononnexter = 31.62;
+const ionqinflection = 44.43;
+const ionqpmhigh = 47.1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -130,13 +130,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'ONON',
+        symbol: 'IONQ',
         analysis: {
             gap: { pdc: 27.30 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: ononlevel, low: ononlevel }],
+            singleMomentumKeyLevel: [{ high: ionqinflection, low: ionqinflection }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -144,10 +144,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ONON,
+        marketCapInMillions: Constants.marketCaps.IONQ,
         atr: {
-            average: 1,
-            mutiplier: 1.5,
+            average: 2.5,
+            mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
@@ -174,37 +174,37 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "28.5", partialCount: 1, atr: 0, rrr: 0, level: 28.5 },
-                { text: "29", partialCount: 1, atr: 0, rrr: 0, level: 29 },
+                { text: "42.4", partialCount: 1, atr: 0, rrr: 0, level: 42.4 },
+                { text: "43", partialCount: 1, atr: 0, rrr: 0, level: 43 },
             ],
             gapAndCrapPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 29,
+                coreTarget: 42.4,
                 runnerCount: 0,
                 runnerTriggerCondition: "stay below vwap",
-                extendedGapUpInAtr: 5,
-                resistance: { high: ononlevel, low: 30 },
+                extendedGapUpInAtr: 2,
+                resistance: { high: ionqinflection, low: 44 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `${ononnexter}`,
+            firstTargetToAdd: `${ionqpmhigh}`,
             finalTargets: [
-                { text: "next er", partialCount: 1, atr: 0, rrr: 0, level: ononnexter },
-                { text: "31", partialCount: 1, atr: 0, rrr: 0, level: 31 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: ionqpmhigh },
+                { text: "48", partialCount: 1, atr: 0, rrr: 0, level: 48 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: ononnexter,
+                coreTarget: ionqpmhigh,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 support: {
-                    low: ononlevel, high: 30.5,
+                    low: ionqinflection, high: 45,
                 },
-                nearPreviousKeyEventLevel: "er level 30.11"
+                nearPreviousKeyEventLevel: "above 44.43"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
