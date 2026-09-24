@@ -31,32 +31,32 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'IONQ',
+    'VKTX',
 ];
-const mstrsupport = 156;
+const vktxkeylevel = 36.34;
 const mstrresistance = 175;
 const ionqinflection = 44.43;
 const ionqpmhigh = 47.1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MSTR',
+        symbol: 'VKTX',
         analysis: {
-            gap: { pdc: 154 },
+            gap: { pdc: 41 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mstrsupport, low: mstrsupport }],
+            singleMomentumKeyLevel: [{ high: vktxkeylevel, low: vktxkeylevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "warning",
-            waitForOfferRetest: "warning",
+            waitForBidRetest: "no",
+            waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MSTR,
+        marketCapInMillions: 4000,
         atr: {
-            average: 9,
+            average: 2.4,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -79,53 +79,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        rangeBoundReversalPlan: {
-            support: { high: mstrsupport, low: 155 },
-            coreCount: 1,
-            coreTarget: 160,
-            runnerCount: 1,
-            runnerTriggerCondition: "lost vwap",
-            planConfigs: stock1Configs,
-            resistance: { high: 180, low: mstrresistance },
-            previousConsolidationArea: { high: 145, low: 120 },
-        },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "160", partialCount: 1, atr: 0, rrr: 0, level: 160 },
-                { text: "158", partialCount: 1, atr: 0, rrr: 0, level: 158 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 35.8 },
+                { text: "35", partialCount: 1, atr: 0, rrr: 0, level: 35 },
             ],
-            /*
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.6,
-                coreCount: 1,
-                coreTarget: 160,
-                runnerCount: 1,
-                runnerTriggerCondition: "lost vwap",
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: vktxkeylevel,
+                coreCount: 0,
+                coreTarget: 35,
+                runnerCount: 0,
+                runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: 180, low: mstrresistance },
-            },*/
+                resistance: { high: vktxkeylevel, low: 36 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "175", partialCount: 1, atr: 0, rrr: 0, level: 175 },
-                { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 38.5 },
+                { text: "37.5", partialCount: 1, atr: 0, rrr: 0, level: 37.5 },
             ],
-            /*
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "120-146",
-                coreCount: 1,
-                coreTarget: 160,
-                runnerCount: 1,
+            gapDownAndGoUpPlan: {
+                nearAboveKeyEventLevel: vktxkeylevel,
+                coreCount: 0,
+                coreTarget: 37.5,
+                runnerCount: 0,
                 runnerTriggerCondition: "lost vwap",
                 planConfigs: stock1Configs,
-                support: { high: mstrsupport, low: 155 },
-            },*/
+                support: { high: 36.5, low: vktxkeylevel },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
