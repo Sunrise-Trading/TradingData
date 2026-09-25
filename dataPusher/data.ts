@@ -31,22 +31,22 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'VKTX',
+    'NKE',
 ];
-const vktxkeylevel = 36.34;
+const nkesupport = 35.35;
 const mstrresistance = 175;
 const ionqinflection = 44.43;
 const ionqpmhigh = 47.1;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'VKTX',
+        symbol: 'NKE',
         analysis: {
-            gap: { pdc: 41 },
+            gap: { pdc: 36 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: vktxkeylevel, low: vktxkeylevel }],
+            singleMomentumKeyLevel: [{ high: nkesupport, low: nkesupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -84,36 +84,37 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 35.8 },
-                { text: "35", partialCount: 1, atr: 0, rrr: 0, level: 35 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 35.14 },
+                { text: "34", partialCount: 1, atr: 0, rrr: 0, level: 34 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: vktxkeylevel,
+                buyersTrappedBelowThisLevel: nkesupport,
                 coreCount: 0,
-                coreTarget: 35,
+                coreTarget: 34,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: vktxkeylevel, low: 36 },
+                resistance: { high: nkesupport, low: 35.31 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
                 { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 38.5 },
                 { text: "37.5", partialCount: 1, atr: 0, rrr: 0, level: 37.5 },
             ],
+            /*
             gapDownAndGoUpPlan: {
-                nearAboveKeyEventLevel: vktxkeylevel,
+                nearAboveKeyEventLevel: nkesupport,
                 coreCount: 0,
                 coreTarget: 37.5,
                 runnerCount: 0,
                 runnerTriggerCondition: "lost vwap",
                 planConfigs: stock1Configs,
-                support: { high: 36.5, low: vktxkeylevel },
-            },
+                support: { high: 36.5, low: nkesupport },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
