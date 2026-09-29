@@ -31,13 +31,12 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA',
+    'SMMT',
 ];
 const nkesupport = 35.35;
-const mstrresistance = 175;
-const nvdaer = 230.47;
-const nvdayhigh = 227;
-const ionqpmhigh = 47.1;
+const smmtlongstart = 18.42;
+const smmtlongend = 18.83
+
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -120,13 +119,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'SMMT',
         analysis: {
-            gap: { pdc: 225 },
+            gap: { pdc: 15.48 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nvdaer, low: nvdaer }],
+            singleMomentumKeyLevel: [{ high: smmtlongstart, low: smmtlongstart }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -134,11 +133,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NVDA,
+        marketCapInMillions: 15000,
         atr: {
-            average: 5.8,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 1,
+            mutiplier: 2,
+            minimumMultipler: 1.5,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -164,37 +163,37 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "227", partialCount: 1, atr: 0, rrr: 0, level: 227 },
-                { text: "225", partialCount: 1, atr: 0, rrr: 0, level: 225 },
+                { text: "17.5", partialCount: 1, atr: 0, rrr: 0, level: 17.5 },
+                { text: "17", partialCount: 1, atr: 0, rrr: 0, level: 17 },
             ],
             gapAndCrapPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 227,
+                coreTarget: 17.5,
                 runnerCount: 0,
                 runnerTriggerCondition: "stay below vwap",
-                nearBelowPreviousEventKeyLevel: `${nvdaer}`,
-                resistance: { high: nvdaer, low: 230 },
+                extendedGapUpInAtr: 3.5,
+                resistance: { high: smmtlongstart, low: 18 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `${nvdaer}`,
+            firstTargetToAdd: `${smmtlongstart}`,
             finalTargets: [
-                { text: "233.7", partialCount: 1, atr: 0, rrr: 0, level: 233.7 },
-                { text: "234.7", partialCount: 1, atr: 0, rrr: 0, level: 234.7 },
+                { text: "20", partialCount: 1, atr: 0, rrr: 0, level: 20 },
+                { text: "20.5", partialCount: 1, atr: 0, rrr: 0, level: 20.5 },
             ],
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: ionqpmhigh,
+                coreTarget: 20.5,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 support: {
-                    low: 227, high: nvdaer,
+                    low: smmtlongstart, high: smmtlongend,
                 },
-                nearPreviousKeyEventLevel: "above 44.43"
+                nearAboveConsolidationRange: "15-18.42"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
