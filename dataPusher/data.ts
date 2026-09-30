@@ -31,32 +31,32 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'SMMT',
+    'MRNA',
 ];
-const nkesupport = 35.35;
+const mrnalevel = 177.5;
 const smmtlongstart = 18.42;
 const smmtlongend = 18.83
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'NKE',
+        symbol: 'MRNA',
         analysis: {
-            gap: { pdc: 36 },
+            gap: { pdc: 203 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nkesupport, low: nkesupport }],
+            singleMomentumKeyLevel: [{ high: mrnalevel, low: mrnalevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "no",
-            waitForOfferRetest: "no",
+            waitForBidRetest: "warning",
+            waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 4000,
+        marketCapInMillions: Constants.marketCaps.MRNA,
         atr: {
-            average: 2.4,
+            average: 13,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -79,31 +79,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
+        rangeBoundReversalPlan: {
+            support: { high: 110, low: 100 },
+            resistance: { high: 208, low: 205 },
+            planConfigs: stock1Configs,
+            coreCount: 0,
+            coreTarget: 177,
+            runnerTriggerCondition: "below pm low",
+            runnerCount: 0,
+            previousConsolidationArea: { high: 208, low: 130 },
+        },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 35.14 },
-                { text: "34", partialCount: 1, atr: 0, rrr: 0, level: 34 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 185 },
+                { text: "176", partialCount: 1, atr: 0, rrr: 0, level: 176 },
             ],
+            /*
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: nkesupport,
+                buyersTrappedBelowThisLevel: mrnalevel,
                 coreCount: 0,
                 coreTarget: 34,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nkesupport, low: 35.31 },
-            },
+                resistance: { high: mrnalevel, low: 35.31 },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: false,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 38.5 },
-                { text: "37.5", partialCount: 1, atr: 0, rrr: 0, level: 37.5 },
+                { text: "200", partialCount: 1, atr: 0, rrr: 0, level: 200 },
+                { text: "205", partialCount: 1, atr: 0, rrr: 0, level: 205 },
             ],
             /*
             gapDownAndGoUpPlan: {
