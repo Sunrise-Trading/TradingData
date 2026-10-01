@@ -31,22 +31,23 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'MRNA',
+    'ACN',
 ];
-const mrnalevel = 177.5;
+const acnsupport = 200;
+const acnresistance = 230;
 const smmtlongstart = 18.42;
 const smmtlongend = 18.83
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MRNA',
+        symbol: 'ACN',
         analysis: {
-            gap: { pdc: 203 },
+            gap: { pdc: 183 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mrnalevel, low: mrnalevel }],
+            singleMomentumKeyLevel: [{ high: acnsupport, low: acnsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -54,10 +55,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MRNA,
+        marketCapInMillions: Constants.marketCaps.ACN,
         atr: {
-            average: 13,
-            mutiplier: 1,
+            average: 7,
+            mutiplier: 1.5,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
@@ -80,22 +81,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         rangeBoundReversalPlan: {
-            support: { high: 110, low: 100 },
-            resistance: { high: 208, low: 205 },
+            support: { high: 207, low: acnsupport },
+            resistance: { high: acnresistance, low: 220 },
             planConfigs: stock1Configs,
             coreCount: 0,
-            coreTarget: 177,
+            coreTarget: 200,
             runnerTriggerCondition: "below pm low",
             runnerCount: 0,
-            previousConsolidationArea: { high: 208, low: 130 },
+            previousConsolidationArea: { high: 200, low: 170 },
         },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 185 },
-                { text: "176", partialCount: 1, atr: 0, rrr: 0, level: 176 },
+                { text: "200", partialCount: 1, atr: 0, rrr: 0, level: 200 },
+                { text: "198", partialCount: 1, atr: 0, rrr: 0, level: 198 },
             ],
             /*
             gapDownAndGoDownPlan: {
@@ -113,8 +114,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: false,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "200", partialCount: 1, atr: 0, rrr: 0, level: 200 },
-                { text: "205", partialCount: 1, atr: 0, rrr: 0, level: 205 },
+                { text: "220", partialCount: 1, atr: 0, rrr: 0, level: 220 },
+                { text: "230", partialCount: 1, atr: 0, rrr: 0, level: 230 },
             ],
             /*
             gapDownAndGoUpPlan: {
