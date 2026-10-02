@@ -31,12 +31,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'ACN',
+    'NVDA',
 ];
 const acnsupport = 200;
 const acnresistance = 230;
-const smmtlongstart = 18.42;
+const nvdalongstart = 233.21;
 const smmtlongend = 18.83
+const nvdaath = 236.54;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -131,13 +132,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'SMMT',
+        symbol: 'NVDA',
         analysis: {
             gap: { pdc: 15.48 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: smmtlongstart, low: smmtlongstart }],
+            singleMomentumKeyLevel: [{ high: nvdalongstart, low: nvdalongstart }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -145,11 +146,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 15000,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 1,
-            mutiplier: 2,
-            minimumMultipler: 1.5,
+            average: 5.8,
+            mutiplier: 1,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -172,12 +173,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         corePlan: "near its previous earnings level 30.11. Long above 30.11, short below 30.11. Due to being in a downtrend, long must wait for pullback.",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "17.5", partialCount: 1, atr: 0, rrr: 0, level: 17.5 },
                 { text: "17", partialCount: 1, atr: 0, rrr: 0, level: 17 },
             ],
+            /*
             gapAndCrapPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
@@ -185,27 +187,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "stay below vwap",
                 extendedGapUpInAtr: 3.5,
-                resistance: { high: smmtlongstart, low: 18 },
-            },
+                resistance: { high: nvdalongstart, low: 18 },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `${smmtlongstart}`,
+            firstTargetToAdd: `${nvdaath}`,
             finalTargets: [
-                { text: "20", partialCount: 1, atr: 0, rrr: 0, level: 20 },
-                { text: "20.5", partialCount: 1, atr: 0, rrr: 0, level: 20.5 },
+                { text: "240", partialCount: 1, atr: 0, rrr: 0, level: 240 },
+                { text: "ath", partialCount: 1, atr: 1, rrr: 0, level: nvdaath },
             ],
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 20.5,
+                coreTarget: 240,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above premarket high",
+                runnerTriggerCondition: "hold above all time high",
                 support: {
-                    low: smmtlongstart, high: smmtlongend,
+                    low: nvdalongstart, high: 234.76,
                 },
-                nearAboveConsolidationRange: "15-18.42"
+                nearAboveConsolidationRange: "this week range"
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
