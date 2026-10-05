@@ -31,11 +31,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA',
+    'PCVX',
 ];
 const acnsupport = 200;
 const acnresistance = 230;
-const nvdalongstart = 233.21;
+const pcvxresistance = 93;
 const smmtlongend = 18.83
 const nvdaath = 236.54;
 
@@ -132,25 +132,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'NVDA',
+        symbol: 'PCVX',
         analysis: {
-            gap: { pdc: 15.48 },
+            gap: { pdc: 56.48 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nvdalongstart, low: nvdalongstart }],
+            singleMomentumKeyLevel: [{ high: pcvxresistance, low: pcvxresistance }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "warning",
+            waitForBidRetest: "no",
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NVDA,
+        marketCapInMillions: 13000,
         atr: {
-            average: 5.8,
-            mutiplier: 1,
-            minimumMultipler: 1,
+            average: 2.15,
+            mutiplier: 3,
+            minimumMultipler: 2,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
@@ -173,31 +173,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         corePlan: "near its previous earnings level 30.11. Long above 30.11, short below 30.11. Due to being in a downtrend, long must wait for pullback.",
         short: {
-            enabled: false,
-            firstTargetToAdd: "-1",
+            enabled: true,
+            firstTargetToAdd: "68",
             finalTargets: [
-                { text: "17.5", partialCount: 1, atr: 0, rrr: 0, level: 17.5 },
-                { text: "17", partialCount: 1, atr: 0, rrr: 0, level: 17 },
+                { text: "83", partialCount: 1, atr: 0, rrr: 0, level: 83 },
+                { text: "76", partialCount: 1, atr: 0, rrr: 0, level: 76 },
             ],
-            /*
+
             gapAndCrapPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 17.5,
+                coreTarget: 76,
                 runnerCount: 0,
                 runnerTriggerCondition: "stay below vwap",
-                extendedGapUpInAtr: 3.5,
-                resistance: { high: nvdalongstart, low: 18 },
-            },*/
+                extendedGapUpInAtr: 15,
+                resistance: { high: 107, low: 93 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: `${nvdaath}`,
             finalTargets: [
                 { text: "240", partialCount: 1, atr: 0, rrr: 0, level: 240 },
                 { text: "ath", partialCount: 1, atr: 1, rrr: 0, level: nvdaath },
             ],
+            /*
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
@@ -205,10 +206,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above all time high",
                 support: {
-                    low: nvdalongstart, high: 234.76,
+                    low: pcvxresistance, high: 234.76,
                 },
                 nearAboveConsolidationRange: "this week range"
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
