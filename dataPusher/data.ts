@@ -31,9 +31,9 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'PCVX',
+    'AMD',
 ];
-const acnsupport = 200;
+const amdath = 645.46;
 const acnresistance = 230;
 const pcvxresistance = 93;
 const smmtlongend = 18.83
@@ -42,13 +42,13 @@ const nvdaath = 236.54;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'ACN',
+        symbol: 'AMD2',
         analysis: {
-            gap: { pdc: 183 },
+            gap: { pdc: 631 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: acnsupport, low: acnsupport }],
+            singleMomentumKeyLevel: [{ high: amdath, low: amdath }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -56,10 +56,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ACN,
+        marketCapInMillions: Constants.marketCaps.AMD,
         atr: {
-            average: 7,
-            mutiplier: 1.5,
+            average: 23.47,
+            mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
@@ -82,14 +82,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             },
         },
         rangeBoundReversalPlan: {
-            support: { high: 207, low: acnsupport },
-            resistance: { high: acnresistance, low: 220 },
+            support: { high: 635, low: 633.5 },
+            resistance: { high: 700, low: 680 },
             planConfigs: stock1Configs,
             coreCount: 0,
-            coreTarget: 200,
-            runnerTriggerCondition: "below pm low",
+            coreTarget: 650,
+            runnerTriggerCondition: "hold above pm high",
             runnerCount: 0,
-            previousConsolidationArea: { high: 200, low: 170 },
+            previousConsolidationArea: { high: 631, low: 621 },
         },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
@@ -132,7 +132,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'PCVX',
+        symbol: 'AMD',
         analysis: {
             gap: { pdc: 56.48 },
             usePremarketKeyLevel: 0,
@@ -187,18 +187,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "stay below vwap",
                 extendedGapUpInAtr: 15,
-                resistance: { high: 107, low: 93 },
+                resistance: { high: 700, low: 693 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: `${nvdaath}`,
             finalTargets: [
-                { text: "240", partialCount: 1, atr: 0, rrr: 0, level: 240 },
+                { text: "650", partialCount: 1, atr: 0, rrr: 0, level: 240 },
                 { text: "ath", partialCount: 1, atr: 1, rrr: 0, level: nvdaath },
             ],
-            /*
             gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
@@ -206,10 +205,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above all time high",
                 support: {
-                    low: pcvxresistance, high: 234.76,
+                    low: 633.5, high: 635,
                 },
                 nearAboveConsolidationRange: "this week range"
-            },*/
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
     },
