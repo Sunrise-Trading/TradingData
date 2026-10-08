@@ -31,11 +31,12 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'AMD',
+    'MU',
 ];
 const amdath = 645.46;
 const acnresistance = 230;
-const pcvxresistance = 93;
+const muahlow = 1040;
+const mudlow = 1023;
 const smmtlongend = 18.83
 const nvdaath = 236.54;
 
@@ -132,28 +133,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'AMD',
+        symbol: 'MU',
         analysis: {
-            gap: { pdc: 56.48 },
+            gap: { pdc: 1045 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: pcvxresistance, low: pcvxresistance }],
+            singleMomentumKeyLevel: [{ high: muahlow, low: muahlow }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "no",
-            waitForOfferRetest: "no",
+            waitForBidRetest: "warning",
+            waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 13000,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 2.15,
-            mutiplier: 3,
-            minimumMultipler: 2,
+            average: 43,
+            mutiplier: 1,
+            minimumMultipler: 1,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
+        keyLevels: {
+            zones: [], otherLevels: [
+                { price: 1023, label: "er low" }
+            ]
+        },
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -174,40 +179,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         corePlan: "near its previous earnings level 30.11. Long above 30.11, short below 30.11. Due to being in a downtrend, long must wait for pullback.",
         short: {
             enabled: true,
-            firstTargetToAdd: "68",
+            firstTargetToAdd: "1012",
             finalTargets: [
-                { text: "83", partialCount: 1, atr: 0, rrr: 0, level: 83 },
-                { text: "76", partialCount: 1, atr: 0, rrr: 0, level: 76 },
+                { text: "980", partialCount: 1, atr: 0, rrr: 0, level: 980 },
+                { text: "970", partialCount: 1, atr: 0, rrr: 0, level: 970 },
             ],
-
-            gapAndCrapPlan: {
+            gapDownAndGoDownPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 76,
+                coreTarget: 970,
                 runnerCount: 0,
-                runnerTriggerCondition: "stay below vwap",
-                extendedGapUpInAtr: 15,
-                resistance: { high: 700, low: 693 },
+                runnerTriggerCondition: "stay below premarket low",
+                buyersTrappedBelowThisLevel: muahlow,
+                resistance: { high: muahlow, low: 1030 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `${nvdaath}`,
+            firstTargetToAdd: `-1`,
             finalTargets: [
-                { text: "650", partialCount: 1, atr: 0, rrr: 0, level: 240 },
-                { text: "ath", partialCount: 1, atr: 1, rrr: 0, level: nvdaath },
+                { text: "1040", partialCount: 1, atr: 0, rrr: 0, level: 1040 },
+                { text: "1030", partialCount: 1, atr: 1, rrr: 0, level: 1030 },
             ],
-            gapAndGoPlan: {
+            gapDownAndGoUpPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 240,
+                coreTarget: muahlow,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above all time high",
+                runnerTriggerCondition: "hold above vwap",
                 support: {
-                    low: 633.5, high: 635,
+                    low: mudlow, high: 1030,
                 },
-                nearAboveConsolidationRange: "this week range"
+                nearAboveSupport: {
+                    low: mudlow, high: 1030,
+                },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
