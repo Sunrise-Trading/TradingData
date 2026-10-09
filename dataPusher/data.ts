@@ -31,15 +31,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'MU',
+    'PLTR',
 ];
 const amdath = 645.46;
 const acnresistance = 230;
-const muahlow = 1040;
-const mudlow = 1023;
-const smmtlongend = 18.83
-const nvdaath = 236.54;
-
+const pltrsupport = 194.78;
+const pltrgap = 201.82;
+const pltrath = 207.52;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -133,13 +131,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'MU',
+        symbol: 'PLTR',
         analysis: {
             gap: { pdc: 1045 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: muahlow, low: muahlow }],
+            singleMomentumKeyLevel: [{ high: pltrsupport, low: pltrsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -147,7 +145,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: Constants.marketCaps.PLTR,
         atr: {
             average: 43,
             mutiplier: 1,
@@ -156,7 +154,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         keyLevels: {
             zones: [], otherLevels: [
-                { price: 1023, label: "er low" }
+                { price: pltrgap, label: "gap fill" }
             ]
         },
         defaultConfigs: stock2Configs,
@@ -179,41 +177,39 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         corePlan: "near its previous earnings level 30.11. Long above 30.11, short below 30.11. Due to being in a downtrend, long must wait for pullback.",
         short: {
             enabled: true,
-            firstTargetToAdd: "1012",
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "980", partialCount: 1, atr: 0, rrr: 0, level: 980 },
-                { text: "970", partialCount: 1, atr: 0, rrr: 0, level: 970 },
+                { text: "195", partialCount: 1, atr: 0, rrr: 0, level: 195 },
+                { text: "194.75", partialCount: 1, atr: 0, rrr: 0, level: pltrsupport },
             ],
             gapDownAndGoDownPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 970,
+                coreTarget: pltrsupport,
                 runnerCount: 0,
-                runnerTriggerCondition: "stay below premarket low",
-                buyersTrappedBelowThisLevel: muahlow,
-                resistance: { high: muahlow, low: 1030 },
+                runnerTriggerCondition: "stay below vwap",
+                buyersTrappedBelowThisLevel: pltrath,
+                resistance: { high: pltrath, low: pltrgap },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: `-1`,
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
             finalTargets: [
-                { text: "1040", partialCount: 1, atr: 0, rrr: 0, level: 1040 },
-                { text: "1030", partialCount: 1, atr: 1, rrr: 0, level: 1030 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: pltrgap },
+                { text: "ath", partialCount: 1, atr: 1, rrr: 0, level: pltrath },
             ],
-            gapDownAndGoUpPlan: {
+            gapAndGoPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: muahlow,
+                coreTarget: pltrgap,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above vwap",
+                runnerTriggerCondition: "hold above premarket high",
                 support: {
-                    low: mudlow, high: 1030,
+                    low: pltrsupport, high: 195,
                 },
-                nearAboveSupport: {
-                    low: mudlow, high: 1030,
-                },
+                nearAboveConsolidationRange: "184-195",
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
