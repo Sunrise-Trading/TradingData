@@ -81,16 +81,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        rangeBoundReversalPlan: {
-            support: { low: 36, high: 36.3 },
-            resistance: { high: 38.5, low: 38 },
-            planConfigs: stock1Configs,
-            coreCount: 0,
-            coreTarget: 38,
-            runnerCount: 0,
-            runnerTriggerCondition: "reclaim vwap",
-            previousConsolidationArea: { high: 36, low: 35 },
-        },
         corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
         short: {
             enabled: true,
@@ -99,7 +89,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "36.26", partialCount: 1, atr: 0, rrr: 0, level: 36.26 },
                 { text: "36", partialCount: 1, atr: 0, rrr: 0, level: 36 },
             ],
-            /*
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1,
                 coreCount: 0,
@@ -108,11 +97,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
                 resistance: { high: 200, low: 190 },
-            },*/
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
                 { text: "38", partialCount: 1, atr: 0, rrr: 0, level: 38 },
