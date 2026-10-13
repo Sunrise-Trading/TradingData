@@ -40,6 +40,7 @@ const stock2Level = 1;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'stock1',
+        bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 0 },
             usePremarketKeyLevel: 0,
@@ -100,6 +101,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'stock2',
+        bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 0 },
             usePremarketKeyLevel: 0,

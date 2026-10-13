@@ -43,6 +43,7 @@ const pltrath = 207.52;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'IREN',
+        bookmapPatternsToMonitor: ['falseBreakout'],
         analysis: {
             gap: { pdc: 35 },
             usePremarketKeyLevel: 0,
@@ -122,6 +123,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'TSLA',
+        bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 375 },
             usePremarketKeyLevel: 0,
