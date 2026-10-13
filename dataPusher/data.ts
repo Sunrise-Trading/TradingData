@@ -42,7 +42,7 @@ const pltrath = 207.52;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'MU',
-        bookmapPatternsToMonitor: ['falseBreakdown'],
+        bookmapPatternsToMonitor: ['reclaim2ndBid'],
         analysis: {
             gap: { pdc: 989 },
             usePremarketKeyLevel: 0,
