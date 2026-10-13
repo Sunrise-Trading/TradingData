@@ -55,6 +55,7 @@ export interface TradingPlans {
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
     corePlan: string,
+    fixedShares: number[],
 };
 export interface TradebookCommonConfig {
     enabled?: number,

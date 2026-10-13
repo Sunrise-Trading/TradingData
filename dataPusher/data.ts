@@ -64,6 +64,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
+        fixedShares: [50, 100],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -148,6 +149,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { price: tslahigh, label: "range high" }
             ]
         },
+        fixedShares: [50, 100],
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
