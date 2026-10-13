@@ -31,10 +31,9 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'IREN',
-    // 'TSLA',
+    'MU',
 ];
-const irenergaphigh = 38.5;
+const mulastsupport = 888;
 const acnresistance = 230;
 const tslasupport = 376;
 const tslahigh = 386.83;
@@ -42,25 +41,25 @@ const pltrath = 207.52;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'IREN',
-        bookmapPatternsToMonitor: ['falseBreakout'],
+        symbol: 'MU',
+        bookmapPatternsToMonitor: ['falseBreakdown'],
         analysis: {
-            gap: { pdc: 35 },
+            gap: { pdc: 989 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: irenergaphigh, low: irenergaphigh }],
+            singleMomentumKeyLevel: [{ high: mulastsupport, low: mulastsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
             waitForBidRetest: "warning",
-            waitForOfferRetest: "warning",
+            waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: 1000000,
+        marketCapInMillions: Constants.marketCaps.MU,
         atr: {
-            average: 2.6,
-            mutiplier: 1,
+            average: 46,
+            mutiplier: 0.5,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
@@ -82,14 +81,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "gap and middle. wait for 2 large orders to fill for both bid and offer. And then trade the either direction.",
+        corePlan: "wait for it to break down some bids and long when it reclaim the bids and price moving up",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "36.26", partialCount: 1, atr: 0, rrr: 0, level: 36.26 },
                 { text: "36", partialCount: 1, atr: 0, rrr: 0, level: 36 },
             ],
+            /*
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1,
                 coreCount: 0,
@@ -98,26 +98,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
                 resistance: { high: 200, low: 190 },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "38", partialCount: 1, atr: 0, rrr: 0, level: 38 },
-                { text: "38.5", partialCount: 1, atr: 0, rrr: 0, level: 38.5 },
+                { text: "953", partialCount: 1, atr: 0, rrr: 0, level: 953 },
+                { text: "970", partialCount: 1, atr: 0, rrr: 0, level: 970 },
             ],
-            /*
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "160-165",
+            gapDownAndGoUpPlan: {
+                nearAboveSupport: { high: 900, low: mulastsupport },
                 coreCount: 0,
                 coreTarget: 170,
                 runnerCount: 0,
-                runnerTriggerCondition: "lost vwap",
+                runnerTriggerCondition: "reclaim vwap",
                 planConfigs: stock1Configs,
-                support: { high: 166, low: irenergaphigh },
-            },*/
+                support: { high: 900, low: mulastsupport },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
