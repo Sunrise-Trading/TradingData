@@ -55,6 +55,7 @@ export interface TradingPlans {
     long: SingleDirectionPlans,
     short: SingleDirectionPlans,
     corePlan: string,
+    /** An empty list hides fixed-share entry buttons. */
     fixedShares: number[],
 };
 export interface TradebookCommonConfig {
