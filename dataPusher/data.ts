@@ -31,40 +31,40 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'MU',
+    'CRWV',
 ];
-const mulastsupport = 888;
-const acnresistance = 230;
+const crwvsupport = 69.89;
+const crwvylow = 76.11;
 const tslasupport = 376;
 const tslahigh = 386.83;
 const pltrath = 207.52;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'MU',
+        symbol: 'CRWV',
         bookmapPatternsToMonitor: ['reclaim2ndBid'],
         analysis: {
-            gap: { pdc: 989 },
+            gap: { pdc: 77 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: mulastsupport, low: mulastsupport }],
+            singleMomentumKeyLevel: [{ high: crwvsupport, low: crwvsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
             waitForBidRetest: "warning",
-            waitForOfferRetest: "no",
+            waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.MU,
+        marketCapInMillions: Constants.marketCaps.CRWV,
         atr: {
-            average: 46,
+            average: 4.8,
             mutiplier: 0.5,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [50, 100],
+        fixedShares: [500, 1000],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -82,41 +82,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "wait for it to break down some bids and long when it reclaim the bids and price moving up",
+        corePlan: "long: reclaim 2nd bid, short: bid step up failed to hold, offer rejection green to red. do not chase bid breakdown at the open due to extended down and not a fresh breakdown range",
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "36.26", partialCount: 1, atr: 0, rrr: 0, level: 36.26 },
-                { text: "36", partialCount: 1, atr: 0, rrr: 0, level: 36 },
+                { text: "support", partialCount: 1, atr: 0, rrr: 0, level: crwvsupport },
+                { text: "67.55", partialCount: 1, atr: 0, rrr: 0, level: 67.55 },
             ],
-            /*
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1,
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: crwvylow,
                 coreCount: 0,
-                coreTarget: 34,
+                coreTarget: crwvsupport,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: 200, low: 190 },
-            },*/
+                resistance: { high: crwvylow, low: 76 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "953", partialCount: 1, atr: 0, rrr: 0, level: 953 },
-                { text: "970", partialCount: 1, atr: 0, rrr: 0, level: 970 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: crwvylow },
+                { text: "75", partialCount: 1, atr: 0, rrr: 0, level: 75 },
             ],
             gapDownAndGoUpPlan: {
-                nearAboveSupport: { high: 900, low: mulastsupport },
+                nearAboveSupport: { high: 70, low: crwvsupport },
                 coreCount: 0,
-                coreTarget: 170,
+                coreTarget: crwvylow,
                 runnerCount: 0,
                 runnerTriggerCondition: "reclaim vwap",
                 planConfigs: stock1Configs,
-                support: { high: 900, low: mulastsupport },
+                support: { high: 70, low: crwvsupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
