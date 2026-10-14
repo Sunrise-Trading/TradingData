@@ -42,7 +42,7 @@ const pltrath = 207.52;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'CRWV',
-        bookmapPatternsToMonitor: ['reclaim2ndBid'],
+        bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 77 },
             usePremarketKeyLevel: 0,
