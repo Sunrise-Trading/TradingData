@@ -31,40 +31,40 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'CRWV',
+    'RKLB',
 ];
-const crwvsupport = 69.89;
-const crwvylow = 76.11;
+const rklbylow = 59;
+const rklbpmlow = 52;
 const tslasupport = 376;
 const tslahigh = 386.83;
-const pltrath = 207.52;
+
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CRWV',
-        bookmapPatternsToMonitor: [],
+        symbol: 'RKLB',
+        bookmapPatternsToMonitor: ['falseBreakout'],
         analysis: {
-            gap: { pdc: 77 },
+            gap: { pdc: 59 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: crwvsupport, low: crwvsupport }],
+            singleMomentumKeyLevel: [{ high: rklbylow, low: rklbylow }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "warning",
+            waitForBidRetest: "no",
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CRWV,
+        marketCapInMillions: Constants.marketCaps.RKLB,
         atr: {
-            average: 4.8,
-            mutiplier: 0.5,
+            average: 3.9,
+            mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [500, 1000],
+        fixedShares: [500, 800],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -82,41 +82,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long: reclaim 2nd bid, short: bid step up failed to hold, offer rejection green to red. do not chase bid breakdown at the open due to extended down and not a fresh breakdown range",
+        corePlan: "short: wait for a pop for offer pattern, then short bid breakdown. wait for a 5K order signal first",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "support", partialCount: 1, atr: 0, rrr: 0, level: crwvsupport },
-                { text: "67.55", partialCount: 1, atr: 0, rrr: 0, level: 67.55 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: rklbpmlow },
+                { text: "47", partialCount: 1, atr: 0, rrr: 0, level: 47 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: crwvylow,
+                buyersTrappedBelowThisLevel: rklbylow,
                 coreCount: 0,
-                coreTarget: crwvsupport,
+                coreTarget: rklbpmlow,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: crwvylow, low: 76 },
+                resistance: { high: rklbylow, low: 56 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1", // premarket high
             finalTargets: [
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: crwvylow },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 77 },
                 { text: "75", partialCount: 1, atr: 0, rrr: 0, level: 75 },
             ],
+            /*
             gapDownAndGoUpPlan: {
-                nearAboveSupport: { high: 70, low: crwvsupport },
+                nearAboveSupport: { high: 70, low: rklbylow },
                 coreCount: 0,
                 coreTarget: crwvylow,
                 runnerCount: 0,
                 runnerTriggerCondition: "reclaim vwap",
                 planConfigs: stock1Configs,
-                support: { high: 70, low: crwvsupport },
-            },
+                support: { high: 70, low: rklbylow },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
