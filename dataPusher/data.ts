@@ -43,7 +43,7 @@ const tslahigh = 386.83;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'CLF',
-        bookmapPatternsToMonitor: [],
+        bookmapPatternsToMonitor: ['bidBreakdown'],
         analysis: {
             gap: { pdc: 12.12 },
             usePremarketKeyLevel: 0,
