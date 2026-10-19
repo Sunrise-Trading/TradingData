@@ -31,10 +31,10 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'TSLA',
-    //'AAPL'
+    'CLF'
 ];
-const aaplsupport = 347;
+const clfsupport = 13;
+const clfresistance = 14.23;
 const rklbpmlow = 52;
 const tslasupply = 386;
 const tslahigh = 386.83;
@@ -42,30 +42,30 @@ const tslahigh = 386.83;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'AAPL',
+        symbol: 'CLF',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 342 },
+            gap: { pdc: 12.12 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: aaplsupport, low: aaplsupport }],
+            singleMomentumKeyLevel: [{ high: clfsupport, low: clfsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "no",
-            waitForOfferRetest: "no",
+            waitForBidRetest: "warning",
+            waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.AAPL,
+        marketCapInMillions: Constants.marketCaps.CLF,
         atr: {
-            average: 6.6,
+            average: 0.66,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [200, 400],
+        fixedShares: [800, 1500],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -85,38 +85,38 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         corePlan: "long when bid holds. either test a large bid or clear a large offer and then bids step up to hold",
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: rklbpmlow },
-                { text: "47", partialCount: 1, atr: 0, rrr: 0, level: 47 },
-            ],/*
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: aaplsupport,
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 13 },
+                { text: "13.36", partialCount: 1, atr: 0, rrr: 0, level: 13.36 },
+            ],
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
                 coreCount: 0,
-                coreTarget: rklbpmlow,
+                coreTarget: clfsupport,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: aaplsupport, low: 56 },
-            },*/
+                resistance: { high: 15, low: clfresistance },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
             finalTargets: [
-                { text: "350", partialCount: 1, atr: 0, rrr: 0, level: 350 },
-                { text: "355", partialCount: 1, atr: 0, rrr: 0, level: 355 },
+                { text: "14.23", partialCount: 1, atr: 0, rrr: 0, level: 14.23 },
+                { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
             ],
             gapAndGoPlan: {
-                nearAboveConsolidationRange: "342-347",
+                nearAboveConsolidationRange: "11-13",
                 coreCount: 0,
-                coreTarget: 355,
+                coreTarget: 14.23,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 planConfigs: stock1Configs,
-                support: { high: 348, low: aaplsupport },
+                support: { high: 13.25, low: clfsupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
