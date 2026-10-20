@@ -31,25 +31,26 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'CLF'
+    'CRWV'
 ];
-const clfsupport = 13;
+const crwvlastshort = 60;
+const crwvreclaim = 59.25;
 const clfresistance = 14.23;
-const rklbpmlow = 52;
+const crwvpmlow = 57.77;
 const tslasupply = 386;
 const tslahigh = 386.83;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CLF',
+        symbol: 'CRWV',
         bookmapPatternsToMonitor: ['bidBreakdown'],
         analysis: {
-            gap: { pdc: 12.12 },
+            gap: { pdc: 61.12 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: clfsupport, low: clfsupport }],
+            singleMomentumKeyLevel: [{ high: crwvlastshort, low: crwvlastshort }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -57,15 +58,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CLF,
+        marketCapInMillions: Constants.marketCaps.CRWV,
         atr: {
-            average: 0.66,
+            average: 6,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [800, 1500],
+        fixedShares: [200, 400],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -83,40 +84,40 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long when bid holds. either test a large bid or clear a large offer and then bids step up to hold",
+        corePlan: "long above 59.25, short below 60. Only short bid breakdown and long bid breakdown hold",
         short: {
             enabled: true,
-            firstTargetToAdd: "-1",
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 13 },
-                { text: "13.36", partialCount: 1, atr: 0, rrr: 0, level: 13.36 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: crwvpmlow },
+                { text: "55", partialCount: 1, atr: 0, rrr: 0, level: 55 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: crwvlastshort,
                 coreCount: 0,
-                coreTarget: clfsupport,
+                coreTarget: 55,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: 15, low: clfresistance },
+                resistance: { high: crwvlastshort, low: 59.9 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
-            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "14.23", partialCount: 1, atr: 0, rrr: 0, level: 14.23 },
-                { text: "15", partialCount: 1, atr: 0, rrr: 0, level: 15 },
+                { text: "63", partialCount: 1, atr: 0, rrr: 0, level: 63 },
+                { text: "65", partialCount: 1, atr: 0, rrr: 0, level: 65 },
             ],
-            gapAndGoPlan: {
-                nearAboveConsolidationRange: "11-13",
+            gapDownAndGoUpPlan: {
+                nearAboveSupport: { high: 59.5, low: crwvreclaim },
                 coreCount: 0,
-                coreTarget: 14.23,
+                coreTarget: 65,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 planConfigs: stock1Configs,
-                support: { high: 13.25, low: clfsupport },
+                support: { high: 59.5, low: crwvreclaim },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
