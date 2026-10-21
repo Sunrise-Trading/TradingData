@@ -196,6 +196,7 @@ export const marketCaps = {
     SBUX: 87000,
     SNDK: 80000,
     SE: 52000,
+    SPCX: 2000000,
     SNAP: 12000,
     SMR: 1300,
     SRPT: 11000,

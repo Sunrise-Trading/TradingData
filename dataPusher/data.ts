@@ -31,26 +31,25 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'CRWV'
+    'SPCX'
 ];
-const crwvlastshort = 60;
+const spcxsupply = 168;
 const crwvreclaim = 59.25;
-const clfresistance = 14.23;
-const crwvpmlow = 57.77;
+const spcxpmlow = 157.77;
 const tslasupply = 386;
 const tslahigh = 386.83;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'CRWV',
-        bookmapPatternsToMonitor: ['bidBreakdown'],
+        symbol: 'SPCX',
+        bookmapPatternsToMonitor: ['falseBreakout'],
         analysis: {
-            gap: { pdc: 61.12 },
+            gap: { pdc: 148 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: crwvlastshort, low: crwvlastshort }],
+            singleMomentumKeyLevel: [{ high: spcxsupply, low: spcxsupply }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -58,9 +57,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CRWV,
+        marketCapInMillions: Constants.marketCaps.SPCX,
         atr: {
-            average: 6,
+            average: 6.85,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -84,32 +83,33 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long above 59.25, short below 60. Only short bid breakdown and long bid breakdown hold",
+        corePlan: "inside range gap, expect a pop and fade. short bid breakdown after clearing some offers",
         short: {
             enabled: true,
-            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: crwvpmlow },
-                { text: "55", partialCount: 1, atr: 0, rrr: 0, level: 55 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: spcxpmlow },
+                { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
             ],
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: crwvlastshort,
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 1.6,
                 coreCount: 0,
-                coreTarget: 55,
+                coreTarget: 157,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: crwvlastshort, low: 59.9 },
+                resistance: { high: spcxsupply, low: 160 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "63", partialCount: 1, atr: 0, rrr: 0, level: 63 },
                 { text: "65", partialCount: 1, atr: 0, rrr: 0, level: 65 },
             ],
+            /*
             gapDownAndGoUpPlan: {
                 nearAboveSupport: { high: 59.5, low: crwvreclaim },
                 coreCount: 0,
@@ -118,7 +118,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "hold above premarket high",
                 planConfigs: stock1Configs,
                 support: { high: 59.5, low: crwvreclaim },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
