@@ -33,8 +33,8 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 export const stockSelections: string[] = [
     'META'
 ];
-const metalastsupport = 650;
-const metamomentum = 660;
+const metalastsupport = 600;
+const metamomentum = 610;
 const crwvreclaim = 59.25;
 const spcxpmlow = 157.77;
 const tslasupply = 386;
