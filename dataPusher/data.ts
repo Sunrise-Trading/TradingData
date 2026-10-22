@@ -44,7 +44,7 @@ const tslahigh = 386.83;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'META',
-        bookmapPatternsToMonitor: ['reclaim2ndBid'],
+        bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 148 },
             usePremarketKeyLevel: 0,
@@ -84,22 +84,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "long bids hold. below 681, long reclaim 2 bids, bid retest holds. above 681, long price lift up on bids step up",
+        corePlan: "long bids hold. below 681, long reclaim 2 bids, bid retest holds. above 681, long price lift up on bids step up. for short, wait for a pop",
         short: {
             enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: spcxpmlow },
-                { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
-            ],/*
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 1.6,
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 673 },
+                { text: "660", partialCount: 1, atr: 0, rrr: 0, level: 660 },
+            ],
+            /*
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: 720f,
                 coreCount: 0,
-                coreTarget: 157,
+                coreTarget: 660,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: metalastsupport, low: 160 },
+                resistance: { high: 740, low: 720 },
             },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
