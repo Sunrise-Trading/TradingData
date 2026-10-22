@@ -33,8 +33,8 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 export const stockSelections: string[] = [
     'META'
 ];
-const metalastsupport = 660;
-const metamomentum = 681.05;
+const metalastsupport = 650;
+const metamomentum = 660;
 const crwvreclaim = 59.25;
 const spcxpmlow = 157.77;
 const tslasupply = 386;
@@ -44,7 +44,7 @@ const tslahigh = 386.83;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'META',
-        bookmapPatternsToMonitor: [],
+        bookmapPatternsToMonitor: ['reclaim2ndBid'],
         analysis: {
             gap: { pdc: 148 },
             usePremarketKeyLevel: 0,
@@ -66,7 +66,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [100, 180],
+        fixedShares: [50, 100],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
