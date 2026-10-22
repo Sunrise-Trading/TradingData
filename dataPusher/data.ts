@@ -31,9 +31,10 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'SPCX'
+    'META'
 ];
-const spcxsupply = 168;
+const metalastsupport = 660;
+const metamomentum = 681.05;
 const crwvreclaim = 59.25;
 const spcxpmlow = 157.77;
 const tslasupply = 386;
@@ -42,14 +43,14 @@ const tslahigh = 386.83;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'SPCX',
-        bookmapPatternsToMonitor: ['falseBreakout'],
+        symbol: 'META',
+        bookmapPatternsToMonitor: ['reclaim2ndBid'],
         analysis: {
             gap: { pdc: 148 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: spcxsupply, low: spcxsupply }],
+            singleMomentumKeyLevel: [{ high: metalastsupport, low: metalastsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -57,15 +58,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SPCX,
+        marketCapInMillions: Constants.marketCaps.META,
         atr: {
-            average: 6.85,
+            average: 25,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [200, 400],
+        fixedShares: [100, 180],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -83,14 +84,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "inside range gap, expect a pop and fade. short bid breakdown after clearing some offers",
+        corePlan: "long bids hold. below 681, long reclaim 2 bids, bid retest holds. above 681, long price lift up on bids step up",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: spcxpmlow },
                 { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
-            ],
+            ],/*
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 1.6,
                 coreCount: 0,
@@ -98,27 +99,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: spcxsupply, low: 160 },
-            },
+                resistance: { high: metalastsupport, low: 160 },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "63", partialCount: 1, atr: 0, rrr: 0, level: 63 },
-                { text: "65", partialCount: 1, atr: 0, rrr: 0, level: 65 },
+                { text: "689", partialCount: 1, atr: 0, rrr: 0, level: 689 },
+                { text: "695", partialCount: 1, atr: 0, rrr: 0, level: 695 },
             ],
-            /*
+
             gapDownAndGoUpPlan: {
-                nearAboveSupport: { high: 59.5, low: crwvreclaim },
+                nearAboveSupport: { high: metamomentum, low: metalastsupport },
                 coreCount: 0,
-                coreTarget: 65,
+                coreTarget: 689,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above premarket high",
+                runnerTriggerCondition: "hold above vwap",
                 planConfigs: stock1Configs,
-                support: { high: 59.5, low: crwvreclaim },
-            },*/
+                support: { high: metamomentum, low: metalastsupport },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
