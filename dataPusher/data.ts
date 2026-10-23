@@ -31,14 +31,12 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'META'
+    'T'
 ];
 const metalastsupport = 600;
 const metamomentum = 610;
-const crwvreclaim = 59.25;
-const spcxpmlow = 157.77;
-const tslasupply = 386;
-const tslahigh = 386.83;
+
+const ter = 21.79;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -125,14 +123,14 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'TSLA',
+        symbol: 'T',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 362 },
+            gap: { pdc: 22.74 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: tslasupply, low: tslasupply }],
+            singleMomentumKeyLevel: [{ high: ter, low: ter }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -140,19 +138,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
+        marketCapInMillions: Constants.marketCaps.T,
         atr: {
-            average: 11,
+            average: 0.71,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: {
             zones: [], otherLevels: [
-                { price: tslahigh, label: "range high" }
+                //{ price: tslahigh, label: "range high" }
             ]
         },
-        fixedShares: [75, 125, 200],
+        fixedShares: [400, 800],
         defaultConfigs: stock2Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -170,22 +168,22 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "wait for a 10K order signal first. then short bid breakdown directly and keep stop tight of mini bounce high. If breakout offers, watch offer sell signal and short small bids breakdown",
+        corePlan: "trapped earnings buyers, short bid breakdown. if reclaim er low, wait for a pullback and then long on bid holds",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: 365 },
-                { text: "360", partialCount: 1, atr: 0, rrr: 0, level: 360 },
+                { text: "21", partialCount: 1, atr: 0, rrr: 0, level: 21 },
+                { text: "21.22", partialCount: 1, atr: 0, rrr: 0, level: 21.22 },
             ],
-            gapAndCrapPlan: {
+            gapDownAndGoDownPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: 365,
+                coreTarget: 21.22,
                 runnerCount: 0,
-                runnerTriggerCondition: "stay below vwap",
-                extendedGapUpInAtr: 1.2,
-                resistance: { high: tslasupply, low: 382 },
+                runnerTriggerCondition: "stay below pm low",
+                buyersTrappedBelowThisLevel: ter,
+                resistance: { high: ter, low: 21.7 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
@@ -193,19 +191,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
             finalTargets: [
-                { text: "390", partialCount: 1, atr: 0, rrr: 0, level: 390 },
-                { text: "400", partialCount: 1, atr: 1, rrr: 0, level: 400 },
+                { text: "22.35", partialCount: 1, atr: 0, rrr: 0, level: 22.35 },
+                { text: "22.5", partialCount: 1, atr: 1, rrr: 0, level: 22.5 },
             ],
-            gapAndGoPlan: {
+            gapDownAndGoUpPlan: {
                 planConfigs: stock2Configs,
                 coreCount: 0,
-                coreTarget: tslahigh,
+                coreTarget: 22.35,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 support: {
-                    low: 364, high: 365,
+                    low: ter, high: 22,
                 },
-                nearAboveConsolidationRange: "340-375",
+                nearAboveKeyEventLevel: ter,
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
         },
