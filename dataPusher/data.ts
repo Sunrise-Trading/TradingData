@@ -31,13 +31,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'CRWV',
+    'SOFI',
     'META'
 ];
-const metalastsupport = 633.27;
+const metalastsupport = 625;
 const metamomentum = 610;
 
-const crwvresistance = 54;
+const sofier = 15.77;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -85,12 +85,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
         corePlan: "below 633, earnings dip buyers are trapped. short bid breakdown. After it hit gap fill 625, watch long",
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 610 },
                 { text: "625", partialCount: 1, atr: 0, rrr: 0, level: 625 },
             ],
+            /*
             gapDownAndGoDownPlan: {
                 buyersTrappedBelowThisLevel: 633,
                 coreCount: 0,
@@ -99,7 +100,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
                 resistance: { high: 633, low: 630 },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
@@ -122,35 +123,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'CRWV',
+        symbol: 'SOFI',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 54.24 },
+            gap: { pdc: 14.46 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: crwvresistance, low: crwvresistance }],
+            singleMomentumKeyLevel: [{ high: sofier, low: sofier }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
-            waitForBidRetest: "no",
+            waitForBidRetest: "warning",
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CRWV,
+        marketCapInMillions: Constants.marketCaps.SOFI,
         atr: {
-            average: 6,
+            average: 0.61,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
-        keyLevels: {
-            zones: [], otherLevels: [
-                //{ price: tslahigh, label: "range high" }
-            ]
-        },
-        fixedShares: [400, 600],
-        defaultConfigs: stock2Configs,
+        keyLevels: { zones: [] },
+        fixedShares: [1000, 2000],
+        defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
                 shortVwapBounceFail: { waitForClose: true },
@@ -167,45 +164,42 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "continue selloff if we lose 54, the temp pause from last week",
+        corePlan: "use 15.77 as key level. long above, short below. wait bids behavior",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "50", partialCount: 1, atr: 0, rrr: 0, level: 50 },
-                { text: "49", partialCount: 1, atr: 0, rrr: 0, level: 49 },
+                { text: "15.3", partialCount: 1, atr: 0, rrr: 0, level: 15.3 },
+                { text: "14.9", partialCount: 1, atr: 0, rrr: 0, level: 14.9 },
             ],
-            gapDownAndGoDownPlan: {
-                planConfigs: stock2Configs,
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
                 coreCount: 0,
-                coreTarget: 50,
+                coreTarget: 15.3,
                 runnerCount: 0,
-                runnerTriggerCondition: "stay below pm low",
-                buyersTrappedBelowThisLevel: crwvresistance,
-                resistance: { high: crwvresistance, low: 53 },
+                runnerTriggerCondition: "below vwap",
+                planConfigs: stock1Configs,
+                resistance: { high: sofier, low: 15.5 },
             },
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
-            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketHigh,
+            enabled: true,
+            firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "22.35", partialCount: 1, atr: 0, rrr: 0, level: 22.35 },
-                { text: "22.5", partialCount: 1, atr: 1, rrr: 0, level: 22.5 },
+                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 16.41 },
+                { text: "ma50", partialCount: 1, atr: 0, rrr: 0, level: 16.66 },
             ],
-            /*
-            gapDownAndGoUpPlan: {
-                planConfigs: stock2Configs,
+            gapAndGoPlan: {
+                nearPreviousKeyEventLevel: "previous er",
                 coreCount: 0,
-                coreTarget: 22.35,
+                coreTarget: 17,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above premarket high",
-                support: {
-                    low: crwvresistance, high: 22,
-                },
-                nearAboveKeyEventLevel: crwvresistance,
-            },*/
-            levelMomentumPlan: createDefaultLevelMomentumPlan(stock2Configs),
+                runnerTriggerCondition: "hold above pm high",
+                planConfigs: stock1Configs,
+                support: { high: 16, low: sofier },
+            },
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
 ];
