@@ -208,6 +208,7 @@ export const marketCaps = {
     SNPS: 77000,
     SNOW: 46000,
     SPOT: 57000,
+    SKHY: 1130000,
     SOFI: 9600,
     SYM: 18000,
     SIGA: 854,

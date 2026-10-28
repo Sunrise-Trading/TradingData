@@ -31,25 +31,26 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'SOFI',
-    'META'
+    'VRT',
+    'SKHY'
 ];
-const metalastsupport = 625;
+const vrtsupplyhigh = 255;
+const vrtsupplylow = 240;
 const metamomentum = 610;
 
-const sofier = 15.77;
+const skhygaptop = 161.3;
 
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'META',
+        symbol: 'VRT',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 642 },
+            gap: { pdc: 208 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: metalastsupport, low: metalastsupport }],
+            singleMomentumKeyLevel: [{ high: vrtsupplyhigh, low: vrtsupplyhigh }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -57,15 +58,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.META,
+        marketCapInMillions: Constants.marketCaps.VRT,
         atr: {
-            average: 25,
+            average: 11,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [50, 100],
+        fixedShares: [50, 100, 150],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -83,24 +84,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "below 633, earnings dip buyers are trapped. short bid breakdown. After it hit gap fill 625, watch long",
+        corePlan: "short only gap and crap. big gap up, short first bid breakdown",
         short: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 610 },
-                { text: "625", partialCount: 1, atr: 0, rrr: 0, level: 625 },
+                { text: "228", partialCount: 1, atr: 0, rrr: 0, level: 228 },
+                { text: "220", partialCount: 1, atr: 0, rrr: 0, level: 220 },
             ],
-            /*
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: 633,
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 2,
                 coreCount: 0,
-                coreTarget: 610,
+                coreTarget: 228,
                 runnerCount: 0,
-                runnerTriggerCondition: "below pm low",
+                runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: 633, low: 630 },
-            },*/
+                resistance: { high: vrtsupplyhigh, low: vrtsupplylow },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
@@ -110,27 +110,27 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "660", partialCount: 1, atr: 0, rrr: 0, level: 660 },
                 { text: "638", partialCount: 1, atr: 0, rrr: 0, level: 638 },
             ],
-            gapDownAndGoUpPlan: {
-                nearAboveSupport: { high: 626, low: 624.8 },
+            gapAndGoPlan: {
+                nearAboveConsolidationRange: "gap fill",
                 coreCount: 0,
                 coreTarget: 689,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above vwap",
                 planConfigs: stock1Configs,
-                support: { high: 626, low: 624.8 },
+                support: { high: 158, low: skhygaptop },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'SOFI',
+        symbol: 'SKHY',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 14.46 },
+            gap: { pdc: 146 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: sofier, low: sofier }],
+            singleMomentumKeyLevel: [{ high: skhygaptop, low: skhygaptop }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -138,15 +138,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "warning",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.SOFI,
+        marketCapInMillions: Constants.marketCaps.SKHY,
         atr: {
-            average: 0.61,
+            average: 8,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [1000, 2000],
+        fixedShares: [100, 200, 300],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -164,13 +164,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "use 15.77 as key level. long above, short below. wait bids behavior",
+        corePlan: "gap and crap until 157.5, small size until below pm low to go heavy",
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "15.3", partialCount: 1, atr: 0, rrr: 0, level: 15.3 },
-                { text: "14.9", partialCount: 1, atr: 0, rrr: 0, level: 14.9 },
+                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
+                { text: "148", partialCount: 1, atr: 0, rrr: 0, level: 148 },
             ],
             gapAndCrapPlan: {
                 extendedGapUpInAtr: 2,
@@ -179,17 +179,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: sofier, low: 15.5 },
+                resistance: { high: skhygaptop, low: 154.6 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 16.41 },
                 { text: "ma50", partialCount: 1, atr: 0, rrr: 0, level: 16.66 },
             ],
+            /*
             gapAndGoPlan: {
                 nearPreviousKeyEventLevel: "previous er",
                 coreCount: 0,
@@ -197,8 +198,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 16, low: sofier },
-            },
+                support: { high: 16, low: skhygaptop },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
