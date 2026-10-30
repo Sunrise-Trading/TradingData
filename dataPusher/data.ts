@@ -31,24 +31,23 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'GOOGL',
-    'MSFT'
+    'INTC'
 ];
-const googleerlow = 287.33;
+const intcgap = 70.33;
 
 const nclhtop = 18.31;
 const msftmomo = 543.82;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'GOOGL',
+        symbol: 'INTC',
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 324 },
+            gap: { pdc: 92 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: googleerlow, low: googleerlow }],
+            singleMomentumKeyLevel: [{ high: intcgap, low: intcgap }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -56,15 +55,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.GOOGL,
+        marketCapInMillions: Constants.marketCaps.INTC,
         atr: {
-            average: 8,
+            average: 5.28,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [100, 200, 300],
+        fixedShares: [200, 400, 600, 1000],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -82,26 +81,24 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `below 314 is buyers trapped, but we are at the target. so must wait for a big pop to short continuation. or we lost er low and short momentum. 
-        above er low: short after offer breakout. 
-        below er low: short bid breakout directly
-        long is above previous war bounce level, also the er low. long wait for bids to hold above that.
-        do not long offer breakout, wait for bids to hold. if bid break, flip short`,
+        corePlan: `use 70.33 gap level as key level decision. 
+        below 70.33, short bids breakout. wait for pops, keep stop tight. can be a massive short to 55. 
+        above 70.33 long bids hold. if taking offer breakout, be careful`,
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "278", partialCount: 1, atr: 0, rrr: 0, level: 278 },
-                { text: "280", partialCount: 1, atr: 0, rrr: 0, level: 280 },
+                { text: "55", partialCount: 1, atr: 0, rrr: 0, level: 55 },
+                { text: "65", partialCount: 1, atr: 0, rrr: 0, level: 65 },
             ],
             gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: 315,
+                buyersTrappedBelowThisLevel: 80,
                 coreCount: 0,
                 coreTarget: 278,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: googleerlow, low: 300 },
+                resistance: { high: intcgap, low: 70 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -109,17 +106,17 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "296", partialCount: 1, atr: 0, rrr: 0, level: 296 },
-                { text: "300", partialCount: 1, atr: 0, rrr: 0, level: 300 },
+                { text: "79", partialCount: 1, atr: 0, rrr: 0, level: 79 },
+                { text: "75", partialCount: 1, atr: 0, rrr: 0, level: 75 },
             ],
             gapDownAndGoUpPlan: {
-                nearAboveKeyEventLevel: googleerlow,
+                nearAboveKeyEventLevel: intcgap,
                 coreCount: 0,
-                coreTarget: 300,
+                coreTarget: 79,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above vwap",
                 planConfigs: stock1Configs,
-                support: { high: 290, low: googleerlow },
+                support: { high: 71, low: intcgap },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
