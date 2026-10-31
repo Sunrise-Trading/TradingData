@@ -57,6 +57,7 @@ export interface TradingPlans {
     corePlan: string,
     /** An empty list hides fixed-share entry buttons. */
     fixedShares: number[],
+    strongHold: boolean,
 };
 export interface TradebookCommonConfig {
     enabled?: number,

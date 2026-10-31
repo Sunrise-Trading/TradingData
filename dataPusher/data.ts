@@ -41,6 +41,7 @@ const msftmomo = 543.82;
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
         symbol: 'INTC',
+        strongHold: true,
         bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 92 },
@@ -123,6 +124,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'MSFT',
+        strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 531 },
@@ -205,6 +207,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     },
     {
         symbol: 'NCLH',
+        strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
             gap: { pdc: 16 },
