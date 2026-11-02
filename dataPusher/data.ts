@@ -31,11 +31,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'INTC'
+    'ORCL'
 ];
 const intcgap = 70.33;
 
-const nclhtop = 18.31;
+const orcltrap = 128.38;
 const msftmomo = 543.82;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -206,15 +206,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
 
     },
     {
-        symbol: 'NCLH',
+        symbol: 'ORCL',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 16 },
+            gap: { pdc: 130 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nclhtop, low: nclhtop }],
+            singleMomentumKeyLevel: [{ high: orcltrap, low: orcltrap }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -222,15 +222,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.NCLH,
+        marketCapInMillions: Constants.marketCaps.ORCL,
         atr: {
-            average: 0.63,
+            average: 7.6,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [2000, 3000, 4000],
+        fixedShares: [100, 200, 300, 400],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -248,42 +248,41 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: "gap and crap until 157.5, small size until below pm low to go heavy",
+        corePlan: "below 128.38, short bid breakdown. above 128.38, long after seeing bids formed strong and hold the price to stay above it. it's a bit bearish, long needs more time to develop",
         short: {
             enabled: true,
-            firstTargetToAdd: "-1",
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
-                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
-                { text: "148", partialCount: 1, atr: 0, rrr: 0, level: 148 },
+                { text: "123", partialCount: 1, atr: 0, rrr: 0, level: 123 },
+                { text: "115", partialCount: 1, atr: 0, rrr: 0, level: 115 },
             ],
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 2,
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: orcltrap,
                 coreCount: 0,
-                coreTarget: 15.3,
+                coreTarget: 123,
                 runnerCount: 0,
-                runnerTriggerCondition: "below vwap",
+                runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nclhtop, low: 154.6 },
+                resistance: { high: orcltrap, low: 128 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "pm high", partialCount: 1, atr: 0, rrr: 0, level: 16.41 },
-                { text: "ma50", partialCount: 1, atr: 0, rrr: 0, level: 16.66 },
+                { text: "130", partialCount: 1, atr: 0, rrr: 0, level: 130 },
+                { text: "133", partialCount: 1, atr: 0, rrr: 0, level: 133 },
             ],
-            /*
-            gapAndGoPlan: {
-                nearPreviousKeyEventLevel: "previous er",
+            gapDownAndGoUpPlan: {
+                nearAboveKeyEventLevel: orcltrap,
                 coreCount: 0,
-                coreTarget: 17,
+                coreTarget: 133,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above pm high",
+                runnerTriggerCondition: "pullback to vwap and hold",
                 planConfigs: stock1Configs,
-                support: { high: 16, low: skhygaptop },
-            },*/
+                support: { high: 129, low: orcltrap },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
 
