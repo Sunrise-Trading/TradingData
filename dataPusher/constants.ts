@@ -189,6 +189,7 @@ export const marketCaps = {
     RUM: 2770,
     RCL: 63000,
     RH: 7000,
+    RUN: 2780,
     RBLX: 28000,
     RDDT: 13000,
     RDW: 4500,
