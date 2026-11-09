@@ -31,17 +31,18 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'IREN', 'ABNB',
+    'NVDA', 'AMD',
     'DKNG'
 ];
-const irenkeylevel = 20.98;
+const nvdatrapped = 181.46;
+const nvdadipbuy = 164.27;
 
 const dkngtrappedlevel = 18.35;
-const abnbath = 193.45;
+const amdath = 193.45;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
-        symbol: 'IREN',
+        symbol: 'NVDA',
         strongHold: true,
         bookmapPatternsToMonitor: [],
         analysis: {
@@ -49,7 +50,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: irenkeylevel, low: irenkeylevel }],
+            singleMomentumKeyLevel: [{ high: nvdatrapped, low: nvdatrapped }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -57,7 +58,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.IREN,
+        marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
             average: 2.8,
             mutiplier: 1,
@@ -94,13 +95,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "19", partialCount: 1, atr: 0, rrr: 0, level: 19 },
             ],
             gapAndCrapPlan: {
-                nearBelowPreviousEventKeyLevel: "irenkeylevel",
+                nearBelowPreviousEventKeyLevel: "nvdakeylevel",
                 coreTarget: 20,
                 coreCount: 0,
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: irenkeylevel, low: 20 },
+                resistance: { high: nvdatrapped, low: 20 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -118,13 +119,13 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 21.64, low: irenkeylevel },
+                support: { high: 21.64, low: nvdatrapped },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'ABNB',
+        symbol: 'AMD',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
@@ -132,7 +133,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: abnbath, low: abnbath }],
+            singleMomentumKeyLevel: [{ high: amdath, low: amdath }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -140,7 +141,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.ABNB,
+        marketCapInMillions: Constants.marketCaps.AMD,
         atr: {
             average: 5.6,
             mutiplier: 1,
@@ -182,7 +183,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: abnbath, low: 188 },
+                resistance: { high: amdath, low: 188 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -200,7 +201,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 195.9, low: abnbath },
+                support: { high: 195.9, low: amdath },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
