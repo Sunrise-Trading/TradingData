@@ -34,12 +34,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA', 'AMD',
+    'NVDA',
+    'TTD'
 ];
 const nvdatrapped = 181.46;
-const nvdadipbuy = 164.27;
+const nvdadipbuy = 170;
 
-const dkngtrappedlevel = 18.35;
+const ttdtrapped = 13.75;
 const amderlow = 475;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
@@ -86,10 +87,12 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `short until dip buy near 165
-        the gap down is large. so if short at the open without a pop, use very small size.
-        after a pop, short bid breakdown.
-        near 165, look for 2 bids claim or bid step up retest hold to long the reversal`,
+        corePlan: `175 is yesterday's buyers first defense. short the breakdown of 175
+        170 is buyers last defense. also short 170 breakdown.
+        in between be careful, avoid shorting near above 170
+        short only, already made gap fill yesterday. should continue downtrend
+        short the pop above 175, under 181, but need to be small size and observe 175 support hold or not.
+        below 175 is buyers trapped. above 175 can be choppy.`,
         short: {
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
@@ -100,24 +103,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             gapDownAndGoDownPlan: {
                 triggerLevel: nvdatrapped,
                 mainTargetZone: { high: 170, low: 165 },
-                midpointCheck: (nvdatrapped + 170) / 2,
+                midpointCheck: 172.5,
                 buyersTrappedBelowThisLevel: nvdatrapped,
                 coreTarget: 160,
                 coreCount: 0,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nvdatrapped, low: 179 },
+                resistance: { high: nvdatrapped, low: 180 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
                 { text: "172", partialCount: 1, atr: 0, rrr: 0, level: 172 },
             ],
+            /*
             gapDownAndGoUpPlan: {
                 triggerLevel: nvdadipbuy,
                 mainTargetZone: { high: 170, low: 170 },
@@ -129,7 +133,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
                 support: { high: 165, low: nvdadipbuy },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
@@ -222,15 +226,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         },
     },
     {
-        symbol: 'DKNG',
+        symbol: 'TTD',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 23 },
+            gap: { pdc: 15 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: dkngtrappedlevel, low: dkngtrappedlevel }],
+            singleMomentumKeyLevel: [{ high: ttdtrapped, low: ttdtrapped }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -238,9 +242,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DKNG,
+        marketCapInMillions: Constants.marketCaps.TTD,
         atr: {
-            average: 1,
+            average: 0.72,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -264,7 +268,8 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `buyers trapped below 18.35, gap down too push, wait for a pop and short bid breakdown`,
+        corePlan: `buyers trapped below 13.75, short bid breakdown below it. it's near, so no need to wait
+        target is 13-13.10`,
         short: {
             enabled: true,
             firstTargetToAdd: "-1",
@@ -273,16 +278,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "16.5", partialCount: 1, atr: 0, rrr: 0, level: 16.5 },
             ],
             gapDownAndGoDownPlan: {
-                triggerLevel: dkngtrappedlevel,
-                mainTargetZone: { high: 17, low: 17 },
-                midpointCheck: (dkngtrappedlevel + 17) / 2,
-                buyersTrappedBelowThisLevel: dkngtrappedlevel,
+                triggerLevel: ttdtrapped,
+                mainTargetZone: { high: ttdtrapped, low: 13.5 },
+                midpointCheck: 13.25,
+                buyersTrappedBelowThisLevel: ttdtrapped,
                 coreCount: 0,
-                coreTarget: 17,
+                coreTarget: 13.00,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: dkngtrappedlevel, low: 18 },
+                resistance: { high: ttdtrapped, low: 13.5 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
