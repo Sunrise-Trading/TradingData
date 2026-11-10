@@ -9,6 +9,9 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 };
 
 const defaultCorePlan = {
+    triggerLevel: 0,
+    mainTargetZone: { high: 0, low: 0 },
+    midpointCheck: 0,
     coreTarget: 0,
     coreCount: 5,
     runnerCount: 5,
@@ -95,6 +98,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "165", partialCount: 1, atr: 0, rrr: 0, level: 165 },
             ],
             gapDownAndGoDownPlan: {
+                triggerLevel: nvdatrapped,
+                mainTargetZone: { high: 170, low: 165 },
+                midpointCheck: (nvdatrapped + 170) / 2,
                 buyersTrappedBelowThisLevel: nvdatrapped,
                 coreTarget: 160,
                 coreCount: 0,
@@ -113,6 +119,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "172", partialCount: 1, atr: 0, rrr: 0, level: 172 },
             ],
             gapDownAndGoUpPlan: {
+                triggerLevel: nvdadipbuy,
+                mainTargetZone: { high: 170, low: 170 },
+                midpointCheck: (nvdadipbuy + 170) / 2,
                 nearAboveKeyEventLevel: nvdadipbuy,
                 coreCount: 0,
                 coreTarget: 170,
@@ -198,6 +207,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "515", partialCount: 1, atr: 0, rrr: 0, level: 515 },
             ],
             gapAndGoPlan: {
+                triggerLevel: amderlow,
+                mainTargetZone: { high: 500, low: 500 },
+                midpointCheck: (amderlow + 500) / 2,
                 nearAboveConsolidationRange: "ath",
                 coreCount: 0,
                 coreTarget: 500,
@@ -261,6 +273,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "16.5", partialCount: 1, atr: 0, rrr: 0, level: 16.5 },
             ],
             gapDownAndGoDownPlan: {
+                triggerLevel: dkngtrappedlevel,
+                mainTargetZone: { high: 17, low: 17 },
+                midpointCheck: (dkngtrappedlevel + 17) / 2,
                 buyersTrappedBelowThisLevel: dkngtrappedlevel,
                 coreCount: 0,
                 coreTarget: 17,
