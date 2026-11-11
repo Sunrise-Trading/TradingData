@@ -10,7 +10,6 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 
 const defaultCorePlan = {
     triggerLevel: 0,
-    mainTargetZone: { high: 0, low: 0 },
     midpointCheck: 0,
     coreTarget: 0,
     coreCount: 5,
@@ -34,14 +33,15 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA',
+    'AMD',
     'TTD'
 ];
 const nvdatrapped = 181.46;
 const nvdadipbuy = 170;
 
 const ttdtrapped = 13.75;
-const amderlow = 475;
+const amderhigh = 530;
+const amdgapfill = 560;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -102,7 +102,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             gapDownAndGoDownPlan: {
                 triggerLevel: nvdatrapped,
-                mainTargetZone: { high: 170, low: 165 },
                 midpointCheck: 172.5,
                 buyersTrappedBelowThisLevel: nvdatrapped,
                 coreTarget: 160,
@@ -124,7 +123,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             /*
             gapDownAndGoUpPlan: {
                 triggerLevel: nvdadipbuy,
-                mainTargetZone: { high: 170, low: 170 },
                 midpointCheck: (nvdadipbuy + 170) / 2,
                 nearAboveKeyEventLevel: nvdadipbuy,
                 coreCount: 0,
@@ -142,11 +140,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 449.04 },
+            gap: { pdc: 515 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: amderlow, low: amderlow }],
+            singleMomentumKeyLevel: [{ high: amderhigh, low: amderhigh }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -156,7 +154,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.AMD,
         atr: {
-            average: 36.61,
+            average: 39,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -180,10 +178,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `long only because stronger than NVDA.
-        wait for reclaim earnings level 475, go long either 
-        1. retest to some bids hold
-        2. some bids lift the price`,
+        corePlan: `gap up 1 ATR already, so do not chase breakout, we are already near target. `,
         short: {
             enabled: false,
             firstTargetToAdd: "-1",
@@ -207,20 +202,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "500", partialCount: 1, atr: 0, rrr: 0, level: 500 },
-                { text: "515", partialCount: 1, atr: 0, rrr: 0, level: 515 },
+                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: amdgapfill },
+                { text: "570", partialCount: 1, atr: 0, rrr: 0, level: 570 },
             ],
             gapAndGoPlan: {
-                triggerLevel: amderlow,
-                mainTargetZone: { high: 500, low: 500 },
-                midpointCheck: (amderlow + 500) / 2,
-                nearAboveConsolidationRange: "ath",
+                triggerLevel: amderhigh,
+                midpointCheck: 545,
+                nearAboveConsolidationRange: "earnings high",
                 coreCount: 0,
                 coreTarget: 500,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 476, low: amderlow },
+                support: { high: 476, low: amderhigh },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -279,7 +273,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             gapDownAndGoDownPlan: {
                 triggerLevel: ttdtrapped,
-                mainTargetZone: { high: ttdtrapped, low: 13.5 },
                 midpointCheck: 13.25,
                 buyersTrappedBelowThisLevel: ttdtrapped,
                 coreCount: 0,

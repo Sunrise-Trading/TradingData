@@ -23,11 +23,12 @@ npm install
 
 ## Daily setup levels
 
-Fill `triggerLevel`, `mainTargetZone: { high, low }`, and `midpointCheck`
-directly in each setup. Midpoint = (trigger + nearest target edge) / 2;
-use zone high for shorts and zone low for longs. **Below the midpoint is too
+Fill `triggerLevel` and `midpointCheck` directly in each setup. Set the midpoint
+halfway between the trigger and the nearest edge of the planned target area.
+Use its high for shorts and its low for longs. **Below the midpoint is too
 late for the opening short; above it is too late for the opening long.**
-For NVDA's configured 181.46 trigger and 170–165 zone, the midpoint is 175.73.
+For example, a short setup with a 181.46 trigger and a 170–165 target area has a
+midpoint of 175.73.
 Zero values are unfilled placeholders. These are planning reminders;
 bot enforcement is not wired up yet.
 
