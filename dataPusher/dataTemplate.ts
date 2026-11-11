@@ -9,7 +9,6 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 };
 
 const defaultCorePlan = {
-    triggerLevel: 0,
     midpointCheck: 0,
     coreTarget: 0,
     coreCount: 5,

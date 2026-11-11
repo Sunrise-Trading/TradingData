@@ -23,8 +23,8 @@ npm install
 
 ## Daily setup levels
 
-Fill `triggerLevel` and `midpointCheck` directly in each setup. Set the midpoint
-halfway between the trigger and the nearest edge of the planned target area.
+Fill `midpointCheck` directly in each setup. Set it halfway between the setup's
+trigger price and the nearest edge of the planned target area.
 Use its high for shorts and its low for longs. **Below the midpoint is too
 late for the opening short; above it is too late for the opening long.**
 For example, a short setup with a 181.46 trigger and a 170–165 target area has a

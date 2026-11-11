@@ -9,7 +9,6 @@ export const tradingSettings: TradingPlans.TradingSettings = {
 };
 
 const defaultCorePlan = {
-    triggerLevel: 0,
     midpointCheck: 0,
     coreTarget: 0,
     coreCount: 5,
@@ -101,7 +100,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "165", partialCount: 1, atr: 0, rrr: 0, level: 165 },
             ],
             gapDownAndGoDownPlan: {
-                triggerLevel: nvdatrapped,
                 midpointCheck: 172.5,
                 buyersTrappedBelowThisLevel: nvdatrapped,
                 coreTarget: 160,
@@ -122,7 +120,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             ],
             /*
             gapDownAndGoUpPlan: {
-                triggerLevel: nvdadipbuy,
                 midpointCheck: (nvdadipbuy + 170) / 2,
                 nearAboveKeyEventLevel: nvdadipbuy,
                 coreCount: 0,
@@ -206,7 +203,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "570", partialCount: 1, atr: 0, rrr: 0, level: 570 },
             ],
             gapAndGoPlan: {
-                triggerLevel: amderhigh,
                 midpointCheck: 545,
                 nearAboveConsolidationRange: "earnings high",
                 coreCount: 0,
@@ -272,7 +268,6 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 { text: "16.5", partialCount: 1, atr: 0, rrr: 0, level: 16.5 },
             ],
             gapDownAndGoDownPlan: {
-                triggerLevel: ttdtrapped,
                 midpointCheck: 13.25,
                 buyersTrappedBelowThisLevel: ttdtrapped,
                 coreCount: 0,
