@@ -37,6 +37,7 @@ export const stockSelections: string[] = [
 const nvdatrapped = 164.27;
 const nvdasessionlow = 156.2;
 const nvdamidpoint = 153.88;
+const nvdasupport = 100;
 
 const crwvmomentum = 56.9;
 const crwvgapfill = 60;
@@ -88,7 +89,10 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `short only due to lost key support 164.`,
+        corePlan: `already made huge move down. now it's long only.
+        reclaim 2 bids
+        bid steup up and lift price.
+        bid step up and retest and hold.`,
         short: {
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
@@ -109,23 +113,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: false,
+            enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
-                { text: "172", partialCount: 1, atr: 0, rrr: 0, level: 172 },
+                { text: "200", partialCount: 1, atr: 0, rrr: 0, level: 200 },
+                { text: "160", partialCount: 1, atr: 0, rrr: 0, level: 160 },
             ],
-            /*
+
             gapDownAndGoUpPlan: {
-                midpointCheck: (nvdadipbuy + 170) / 2,
-                nearAboveKeyEventLevel: nvdadipbuy,
+                midpointCheck: nvdamidpoint,
+                nearAboveKeyEventLevel: nvdasupport,
                 coreCount: 0,
                 coreTarget: 170,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 165, low: nvdadipbuy },
-            },*/
+                support: { high: nvdamidpoint, low: nvdasupport },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
