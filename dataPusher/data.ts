@@ -32,11 +32,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'AMD',
-    'CRWV'
+    'NVDA'
 ];
-const nvdatrapped = 181.46;
-const nvdadipbuy = 170;
+const nvdatrapped = 164.27;
+const nvdasessionlow = 156.2;
+const nvdamidpoint = 153.88;
 
 const crwvmomentum = 56.9;
 const crwvgapfill = 60;
@@ -50,7 +50,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         strongHold: true,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 186.64 },
+            gap: { pdc: 173 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -64,7 +64,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.NVDA,
         atr: {
-            average: 7.77,
+            average: 8.7,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -88,28 +88,23 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `175 is yesterday's buyers first defense. short the breakdown of 175
-        170 is buyers last defense. also short 170 breakdown.
-        in between be careful, avoid shorting near above 170
-        short only, already made gap fill yesterday. should continue downtrend
-        short the pop above 175, under 181, but need to be small size and observe 175 support hold or not.
-        below 175 is buyers trapped. above 175 can be choppy.`,
+        corePlan: `short only due to lost key support 164.`,
         short: {
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
-                { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
-                { text: "165", partialCount: 1, atr: 0, rrr: 0, level: 165 },
+                { text: "session low", partialCount: 1, atr: 0, rrr: 0, level: nvdasessionlow },
+                { text: "mid point", partialCount: 1, atr: 0, rrr: 0, level: nvdamidpoint },
             ],
             gapDownAndGoDownPlan: {
-                midpointCheck: 172.5,
+                midpointCheck: nvdamidpoint,
                 buyersTrappedBelowThisLevel: nvdatrapped,
-                coreTarget: 160,
+                coreTarget: nvdasessionlow,
                 coreCount: 0,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nvdatrapped, low: 180 },
+                resistance: { high: nvdatrapped, low: nvdamidpoint },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
