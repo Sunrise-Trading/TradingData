@@ -32,18 +32,18 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA'
+    'TSLA', 'AMD'
 ];
 const nvdatrapped = 164.27;
 const nvdasessionlow = 156.2;
 const nvdamidpoint = 153.88;
 const nvdasupport = 100;
 
-const crwvmomentum = 56.9;
+const tslayhigh = 401.22;
 const crwvgapfill = 60;
 const crwvsupport = 53;
-const amderhigh = 530;
-const amdgapfill = 560;
+const amdswingsupport = 555;
+const amdyhigh = 594;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -138,11 +138,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 515 },
+            gap: { pdc: 585 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: amderhigh, low: amderhigh }],
+            singleMomentumKeyLevel: [{ high: amdswingsupport, low: amdswingsupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -176,7 +176,9 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `gap up 1 ATR already, so do not chase breakout, we are already near target. `,
+        corePlan: `swing long continuation. so strictly wait for a pullback to lose some levels, and bounce and then bids step up
+        if bid lift price, small size
+        if bid retest hold, medium size `,
         short: {
             enabled: false,
             firstTargetToAdd: "-1",
@@ -200,32 +202,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "gap fill", partialCount: 1, atr: 0, rrr: 0, level: amdgapfill },
-                { text: "570", partialCount: 1, atr: 0, rrr: 0, level: 570 },
+                { text: "yesterday high", partialCount: 1, atr: 0, rrr: 0, level: amdyhigh },
+                { text: "600", partialCount: 1, atr: 0, rrr: 0, level: 600 },
             ],
-            gapAndGoPlan: {
-                midpointCheck: 545,
-                nearAboveConsolidationRange: "earnings high",
+            gapDownAndGoUpPlan: {
+                midpointCheck: 585,
+                nearAboveSupport: { high: 566, low: amdswingsupport },
                 coreCount: 0,
-                coreTarget: amdgapfill,
+                coreTarget: amdyhigh,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 539, low: amderhigh },
+                support: { high: 566, low: amdswingsupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'CRWV',
+        symbol: 'TSLA',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 15 },
+            gap: { pdc: 397 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: crwvmomentum, low: crwvmomentum }],
+            singleMomentumKeyLevel: [{ high: tslayhigh, low: tslayhigh }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -233,15 +235,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.CRWV,
+        marketCapInMillions: Constants.marketCaps.TSLA,
         atr: {
-            average: 5.6,
+            average: 16.5,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [100, 200, 400, 600],
+        fixedShares: [50, 100, 150, 200, 300],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -259,17 +261,16 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `long breakout above 56.9, but small size due to extended
-        near below 56.9 short gap and crap, also small size.
-        if false breakout 56.9 and fall below, short bigger size.
-        if dip to 53-53.5, look for reversal long`,
+        corePlan: `long only above y-high. due to gap up, wait for a pullback and see bids holding.
+        target is 414.`,
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "support", partialCount: 1, atr: 0, rrr: 0, level: crwvsupport },
                 { text: "53.5", partialCount: 1, atr: 0, rrr: 0, level: 53.5 },
             ],
+            /*
             gapAndCrapPlan: {
                 midpointCheck: 55,
                 extendedGapUpInAtr: 1.3,
@@ -278,26 +279,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: crwvmomentum, low: 55 },
-            },
+                resistance: { high: tslayhigh, low: 55 },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "60", partialCount: 1, atr: 0, rrr: 0, level: 60 },
-                { text: "56.9", partialCount: 1, atr: 0, rrr: 0, level: 56.9 },
+                { text: "414", partialCount: 1, atr: 0, rrr: 0, level: 414 },
+                { text: "430", partialCount: 1, atr: 0, rrr: 0, level: 430 },
             ],
             gapAndGoPlan: {
-                midpointCheck: 55,
-                nearAboveConsolidationRange: "46.9",
+                midpointCheck: 407.61,
+                nearAboveConsolidationRange: "yesterday news high",
                 coreCount: 0,
-                coreTarget: 60,
+                coreTarget: 414,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above premarket high",
                 planConfigs: stock1Configs,
-                support: { high: 55, low: crwvsupport },
+                support: { high: 407.61, low: tslayhigh },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
