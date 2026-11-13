@@ -243,7 +243,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [50, 100, 150, 200, 300],
+        fixedShares: [10, 25, 50, 100, 150, 200],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
