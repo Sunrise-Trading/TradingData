@@ -32,11 +32,11 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'TSLA', 'AMD'
+    'NVDA'
 ];
-const nvdatrapped = 164.27;
+const nvdainflection = 156.2;
 const nvdasessionlow = 156.2;
-const nvdamidpoint = 153.88;
+const nvdakeysupport = 150;
 const nvdasupport = 100;
 
 const tslayhigh = 401.22;
@@ -55,7 +55,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nvdatrapped, low: nvdatrapped }],
+            singleMomentumKeyLevel: [{ high: nvdainflection, low: nvdainflection }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -71,7 +71,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             maxQuantity: -1,
         },
         keyLevels: { zones: [] },
-        fixedShares: [100, 200, 400, 800, 1600],
+        fixedShares: [100, 200, 300, 400],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -89,26 +89,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `already made huge move down. now it's long only.
-        reclaim 2 bids
-        bid steup up and lift price.
-        bid step up and retest and hold.`,
+        corePlan: `quickly bought up from 150 to 160, key session low 156.2 as key level. long above and short below.
+        we are still in the bigger range of 150-170. so expect initial price discovery.
+        best setup is after it hit large offer and large bid. due to bearish, best to hit bids`,
         short: {
             enabled: true,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
-                { text: "session low", partialCount: 1, atr: 0, rrr: 0, level: nvdasessionlow },
-                { text: "mid point", partialCount: 1, atr: 0, rrr: 0, level: nvdamidpoint },
+                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
+                { text: "149", partialCount: 1, atr: 0, rrr: 0, level: 149 },
             ],
             gapDownAndGoDownPlan: {
-                midpointCheck: nvdamidpoint,
-                buyersTrappedBelowThisLevel: nvdatrapped,
-                coreTarget: nvdasessionlow,
+                midpointCheck: 153,
+                buyersTrappedBelowThisLevel: nvdainflection,
+                coreTarget: nvdakeysupport,
                 coreCount: 0,
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nvdatrapped, low: nvdamidpoint },
+                resistance: { high: nvdainflection, low: 153 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -116,19 +115,19 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "200", partialCount: 1, atr: 0, rrr: 0, level: 200 },
+                { text: "170", partialCount: 1, atr: 0, rrr: 0, level: 170 },
                 { text: "160", partialCount: 1, atr: 0, rrr: 0, level: 160 },
             ],
 
             gapDownAndGoUpPlan: {
-                midpointCheck: nvdamidpoint,
-                nearAboveKeyEventLevel: nvdasupport,
+                midpointCheck: 160,
+                nearAboveKeyEventLevel: nvdainflection,
                 coreCount: 0,
                 coreTarget: 170,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: nvdamidpoint, low: nvdasupport },
+                support: { high: 160, low: nvdainflection },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
