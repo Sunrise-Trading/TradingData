@@ -34,7 +34,7 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 export const stockSelections: string[] = [
     'NVDA'
 ];
-const nvdainflection = 156.2;
+const nvdainflection = 150;
 const nvdasessionlow = 156.2;
 const nvdakeysupport = 150;
 const nvdasupport = 100;
@@ -107,7 +107,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
-                resistance: { high: nvdainflection, low: 153 },
+                resistance: { high: nvdainflection, low: 149 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -127,7 +127,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 160, low: nvdainflection },
+                support: { high: 155, low: nvdainflection },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
