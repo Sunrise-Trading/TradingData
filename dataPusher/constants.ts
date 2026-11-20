@@ -2,6 +2,7 @@ import * as TradingPlans from './models';
 
 
 export const marketCaps = {
+    ANT: 1200000,
     AEHR: 3000,
     ASTS: 27000,
     AEO: 2000,

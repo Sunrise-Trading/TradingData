@@ -32,18 +32,18 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'NVDA'
+    'AMD', 'ANT', 'AMZN'
 ];
 const nvdainflection = 150;
-const nvdasessionlow = 156.2;
 const nvdakeysupport = 150;
-const nvdasupport = 100;
 
-const tslayhigh = 401.22;
-const crwvgapfill = 60;
-const crwvsupport = 53;
-const amdswingsupport = 555;
+const antlevel = 83;
+const amdswingsupport = 468.21;
 const amdyhigh = 594;
+const amd200ma = 430;
+const amdfinaltarget = 400;
+const amdpmlow = 451;
+const amznshort = 300;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -151,7 +151,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
         marketCapInMillions: Constants.marketCaps.AMD,
         atr: {
-            average: 39,
+            average: 43,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
@@ -175,26 +175,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `swing long continuation. so strictly wait for a pullback to lose some levels, and bounce and then bids step up
-        if bid lift price, small size
-        if bid retest hold, medium size `,
+        corePlan: `468 is the level AMD gap up on NVDA CEO news. now we lost it. 
+        buyers will be trapped. short bids breakdown as long as AMD is below 468.
+        if AMD reclaim 468, go long when bids below to form. flip short if those bids lose `,
         short: {
-            enabled: false,
-            firstTargetToAdd: "-1",
+            enabled: true,
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
-                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 188 },
-                { text: "180", partialCount: 1, atr: 0, rrr: 0, level: 180 },
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: amdpmlow },
+                { text: "final", partialCount: 1, atr: 0, rrr: 0, level: amdfinaltarget },
             ],
-            /*
-            gapAndCrapPlan: {
-                extendedGapUpInAtr: 3.6,
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: amdswingsupport,
+                midpointCheck: 430,
                 coreCount: 0,
                 coreTarget: 188,
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: amderlow, low: 188 },
-            },*/
+                resistance: { high: amdswingsupport, low: 456.2 },
+            },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
@@ -202,31 +202,31 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "yesterday high", partialCount: 1, atr: 0, rrr: 0, level: amdyhigh },
-                { text: "600", partialCount: 1, atr: 0, rrr: 0, level: 600 },
+                { text: "500", partialCount: 1, atr: 0, rrr: 0, level: 500 },
             ],
             gapDownAndGoUpPlan: {
                 midpointCheck: 585,
-                nearAboveSupport: { high: 566, low: amdswingsupport },
+                nearAboveSupport: { high: 470, low: amdswingsupport },
                 coreCount: 0,
                 coreTarget: amdyhigh,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 566, low: amdswingsupport },
+                support: { high: 470, low: amdswingsupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
     },
     {
-        symbol: 'TSLA',
+        symbol: 'ANT',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 397 },
+            gap: { pdc: 92 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: tslayhigh, low: tslayhigh }],
+            singleMomentumKeyLevel: [{ high: antlevel, low: antlevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -234,15 +234,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.TSLA,
+        marketCapInMillions: Constants.marketCaps.ANT,
         atr: {
-            average: 16.5,
+            average: 25,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
-        keyLevels: { zones: [] },
-        fixedShares: [10, 25, 50, 100, 150, 200],
+        keyLevels: { zones: [], otherLevels: [] },
+        fixedShares: [100, 200, 300, 400],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -260,25 +260,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `long only above y-high. due to gap up, wait for a pullback and see bids holding.
-        target is 414.`,
+        corePlan: `wait for the dip to 83 ipo level and buy the dip with small risk
+        add if bid step up and hold`,
         short: {
             enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "support", partialCount: 1, atr: 0, rrr: 0, level: crwvsupport },
-                { text: "53.5", partialCount: 1, atr: 0, rrr: 0, level: 53.5 },
+                { text: "360", partialCount: 1, atr: 0, rrr: 0, level: 360 },
+                { text: "350", partialCount: 1, atr: 0, rrr: 0, level: 350 },
             ],
             /*
             gapAndCrapPlan: {
-                midpointCheck: 55,
-                extendedGapUpInAtr: 1.3,
+                midpointCheck: 370,
+                extendedGapUpInAtr: 1.5,
                 coreCount: 0,
-                coreTarget: 53,
+                coreTarget: 350,
                 runnerCount: 0,
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: tslayhigh, low: 55 },
+                resistance: { high: 400, low: 390 },
             },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -286,21 +286,107 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "414", partialCount: 1, atr: 0, rrr: 0, level: 414 },
-                { text: "430", partialCount: 1, atr: 0, rrr: 0, level: 430 },
+                { text: "90", partialCount: 1, atr: 0, rrr: 0, level: 90 },
+                { text: "85", partialCount: 1, atr: 0, rrr: 0, level: 85 },
             ],
-            gapAndGoPlan: {
-                midpointCheck: 407.61,
-                nearAboveConsolidationRange: "yesterday news high",
+            gapDownAndGoUpPlan: {
+                midpointCheck: 87.5,
+                nearAboveKeyEventLevel: antlevel,
                 coreCount: 0,
-                coreTarget: 414,
+                coreTarget: 88,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above premarket high",
+                runnerTriggerCondition: "scalp only",
                 planConfigs: stock1Configs,
-                support: { high: 407.61, low: tslayhigh },
+                support: { high: 85, low: antlevel },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
 
+    },
+    {
+        symbol: 'AMZN',
+        strongHold: false,
+        bookmapPatternsToMonitor: [],
+        analysis: {
+            gap: { pdc: 585 },
+            usePremarketKeyLevel: 0,
+            watchAreas: [],
+            noTradeZones: [],
+            singleMomentumKeyLevel: [{ high: amznshort, low: amznshort }],
+            zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
+            dualMomentumKeyLevels: [],
+            defaultRiskLevels: [],
+            waitForBidRetest: "no",
+            waitForOfferRetest: "no",
+        },
+        vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
+        marketCapInMillions: Constants.marketCaps.AMZN,
+        atr: {
+            average: 9,
+            mutiplier: 1,
+            minimumMultipler: 1,
+            maxQuantity: -1,
+        },
+        keyLevels: { zones: [], otherLevels: [] },
+        fixedShares: [100, 200, 300, 400],
+        defaultConfigs: stock1Configs,
+        tradebooksConfig: {
+            level_open_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+            },
+            open_level_vwap: {
+                shortVwapBounceFail: { waitForClose: true },
+                longOpenDrive: {},
+            },
+            vwap_level_open: {
+                shortOpenDrive: {},
+                longVwapPushdownFail: { waitForClose: true },
+            },
+            vwap_open_level: {
+                longVwapPushdownFail: { waitForClose: true },
+            },
+        },
+        corePlan: `short amzn when ANT lose the 83 bid. 
+        ideally some bids breakdown. if not, use a previous broken bid.
+        target back to earnings , but maybe 200 ma 245 first `,
+        short: {
+            enabled: true,
+            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
+            finalTargets: [
+                { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 250 },
+                { text: "200 ma", partialCount: 1, atr: 0, rrr: 0, level: 245 },
+            ],
+            gapDownAndGoDownPlan: {
+                buyersTrappedBelowThisLevel: amznshort,
+                midpointCheck: 245,
+                coreCount: 0,
+                coreTarget: 245,
+                runnerCount: 0,
+                runnerTriggerCondition: "below vwap",
+                planConfigs: stock1Configs,
+                resistance: { high: amznshort, low: 250 },
+            },
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
+        },
+        long: {
+            enabled: false,
+            firstTargetToAdd: "-1",
+            finalTargets: [
+                { text: "yesterday high", partialCount: 1, atr: 0, rrr: 0, level: amdyhigh },
+                { text: "600", partialCount: 1, atr: 0, rrr: 0, level: 600 },
+            ],
+            /*
+            gapDownAndGoUpPlan: {
+                midpointCheck: 585,
+                nearAboveSupport: { high: 566, low: amdswingsupport },
+                coreCount: 0,
+                coreTarget: amdyhigh,
+                runnerCount: 0,
+                runnerTriggerCondition: "hold above pm high",
+                planConfigs: stock1Configs,
+                support: { high: 566, low: amdswingsupport },
+            }*/
+            levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
+        },
     },
 ];
