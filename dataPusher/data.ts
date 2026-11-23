@@ -32,13 +32,13 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'AMD', 'ANT', 'AMZN'
+    'NVDA', 'AMD'
 ];
-const nvdainflection = 150;
+const nvdainflection = 125;
 const nvdakeysupport = 150;
 
 const antlevel = 83;
-const amdswingsupport = 468.21;
+const amdswingsupport = 475;
 const amdyhigh = 594;
 const amd200ma = 430;
 const amdfinaltarget = 400;
@@ -93,7 +93,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         we are still in the bigger range of 150-170. so expect initial price discovery.
         best setup is after it hit large offer and large bid. due to bearish, best to hit bids`,
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
                 { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
@@ -198,7 +198,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "yesterday high", partialCount: 1, atr: 0, rrr: 0, level: amdyhigh },
