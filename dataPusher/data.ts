@@ -32,9 +32,9 @@ const stock2Configs: TradingPlans.PlanConfigs = {
 };
 
 export const stockSelections: string[] = [
-    'DELL', 'NVDA'
+    'ANT', 'NVDA', 'XP'
 ];
-const nvdainflection = 125;
+
 const nvdakeysupport = 150;
 
 const antlevel = 83;
@@ -44,7 +44,7 @@ const amd200ma = 430;
 const amdfinaltarget = 400;
 const amdpmlow = 451;
 const amznshort = 300;
-const delllevel = 274.35;
+const xplevel = 16.64;
 
 export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
     {
@@ -52,11 +52,11 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         strongHold: true,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 173 },
+            gap: { pdc: 149.3 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: nvdainflection, low: nvdainflection }],
+            singleMomentumKeyLevel: [{ high: nvdakeysupport, low: nvdakeysupport }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -90,17 +90,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `below 150, short bias.
-        1. rally back to 150, cannot go to more than 151, short bid breakdown near below 150
-        2. rally back to vwap, cannot go to 150, short bid breakdown near below vwap
-        Above 143.73, long reversal. bid retest hold or bid lift price`,
+        corePlan: `buy the dip to 150.
+        1. clear 150 bids and reclaim
+        2. 150 bids lift the price
+        3. 2 bids reclaim above 150`,
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
             finalTargets: [
                 { text: "143.73", partialCount: 1, atr: 0, rrr: 0, level: 143.73 },
                 { text: "130", partialCount: 1, atr: 0, rrr: 0, level: 130 },
             ],
+            /*
             gapDownAndGoDownPlan: {
                 midpointCheck: 146.86,
                 buyersTrappedBelowThisLevel: 150,
@@ -110,25 +111,25 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "below pm low",
                 planConfigs: stock1Configs,
                 resistance: { high: 150, low: 146.86 },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "150", partialCount: 1, atr: 0, rrr: 0, level: 150 },
-                { text: "145", partialCount: 1, atr: 0, rrr: 0, level: 145 },
+                { text: "160", partialCount: 1, atr: 0, rrr: 0, level: 160 },
+                { text: "155", partialCount: 1, atr: 0, rrr: 0, level: 155 },
             ],
-            gapDownAndGoUpPlan: {
-                midpointCheck: 146.86,
-                nearAboveKeyEventLevel: 143.73,
+            gapAndGoPlan: {
+                midpointCheck: 152,
+                nearPreviousKeyEventLevel: "150",
                 coreCount: 0,
-                coreTarget: 150,
+                coreTarget: 160,
                 runnerCount: 0,
-                runnerTriggerCondition: "hold above vwap",
+                runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 145, low: 143.73 },
+                support: { high: 152, low: nvdakeysupport },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -223,7 +224,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 87 },
+            gap: { pdc: 82.7 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
@@ -261,15 +262,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `wait for the dip to 83 ipo level and buy the dip with small risk
-        add if bid step up and hold. short if 83 bid loss`,
+        corePlan: `buy the dip to 83.
+        1. 83 bid hold retest
+        2. reclaim 2 bids above 83
+        3. 83 bid lift the price`,
         short: {
-            enabled: true,
+            enabled: false,
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "pm low", partialCount: 1, atr: 0, rrr: 0, level: 81.5 },
                 { text: "75", partialCount: 1, atr: 0, rrr: 0, level: 75 },
             ],
+            /*
             gapDownAndGoDownPlan: {
                 nearBelowConsolidationRange: { high: antlevel, low: 80 },
                 midpointCheck: 80,
@@ -279,7 +283,7 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
                 resistance: { high: antlevel, low: 80 },
-            },
+            },*/
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
         long: {
@@ -287,32 +291,32 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             firstTargetToAdd: "-1",
             finalTargets: [
                 { text: "90", partialCount: 1, atr: 0, rrr: 0, level: 90 },
-                { text: "85", partialCount: 1, atr: 0, rrr: 0, level: 85 },
+                { text: "86", partialCount: 1, atr: 0, rrr: 0, level: 86 },
             ],
-            gapDownAndGoUpPlan: {
-                midpointCheck: 87.5,
-                nearAboveKeyEventLevel: antlevel,
+            gapAndGoPlan: {
+                midpointCheck: 84.5,
+                nearPreviousKeyEventLevel: "ipo 83",
                 coreCount: 0,
-                coreTarget: 88,
+                coreTarget: 86,
                 runnerCount: 0,
-                runnerTriggerCondition: "scalp only",
+                runnerTriggerCondition: "hold 83",
                 planConfigs: stock1Configs,
-                support: { high: 85, low: antlevel },
+                support: { high: 84.5, low: antlevel },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
 
     },
     {
-        symbol: 'DELL',
+        symbol: 'XP',
         strongHold: false,
         bookmapPatternsToMonitor: [],
         analysis: {
-            gap: { pdc: 295 },
+            gap: { pdc: 14.39 },
             usePremarketKeyLevel: 0,
             watchAreas: [],
             noTradeZones: [],
-            singleMomentumKeyLevel: [{ high: delllevel, low: delllevel }],
+            singleMomentumKeyLevel: [{ high: xplevel, low: xplevel }],
             zoneNearEdge: { zoneIsFar: true, high: 0, low: 0 },
             dualMomentumKeyLevels: [],
             defaultRiskLevels: [],
@@ -320,15 +324,15 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             waitForOfferRetest: "no",
         },
         vwapCorrection: { open: 0, volumeSum: 0, tradingSum: 0 },
-        marketCapInMillions: Constants.marketCaps.DELL,
+        marketCapInMillions: 10000,
         atr: {
-            average: 38,
+            average: 1.11,
             mutiplier: 1,
             minimumMultipler: 1,
             maxQuantity: -1,
         },
         keyLevels: { zones: [], otherLevels: [] },
-        fixedShares: [25, 50, 100, 150],
+        fixedShares: [500, 1000, 1500, 2000, 3000, 4000],
         defaultConfigs: stock1Configs,
         tradebooksConfig: {
             level_open_vwap: {
@@ -346,25 +350,26 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
                 longVwapPushdownFail: { waitForClose: true },
             },
         },
-        corePlan: `use 274 as key level. 
-        short a bid breakdown below 274.
-        long if a bid near 274 hold: retest and hold, lift the price. ideally a bid below 274`,
+        corePlan: `use gap level 16.64 as key level. 
+        short a bid breakdown below 16.64.
+        long if a bid near 16.64 hold: retest and hold, lift the price. ideally a bid below 16.64
+        large gap up, wait for a pullback first`,
         short: {
             enabled: true,
-            firstTargetToAdd: TradingPlans.PriceIndicator.PremarketLow,
+            firstTargetToAdd: TradingPlans.PriceIndicator.Vwap,
             finalTargets: [
-                { text: "250", partialCount: 1, atr: 0, rrr: 0, level: 250 },
-                { text: "265", partialCount: 1, atr: 0, rrr: 0, level: 265 },
+                { text: "16", partialCount: 1, atr: 0, rrr: 0, level: 16 },
+                { text: "15.8", partialCount: 1, atr: 0, rrr: 0, level: 15.8 },
             ],
-            gapDownAndGoDownPlan: {
-                buyersTrappedBelowThisLevel: delllevel,
-                midpointCheck: 270,
+            gapAndCrapPlan: {
+                extendedGapUpInAtr: 3,
+                midpointCheck: 15.5,
                 coreCount: 0,
-                coreTarget: 253,
+                coreTarget: 15.7,
                 runnerCount: 0,
-                runnerTriggerCondition: "below pm low",
+                runnerTriggerCondition: "below vwap",
                 planConfigs: stock1Configs,
-                resistance: { high: delllevel, low: 265 },
+                resistance: { high: xplevel, low: 16 },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
@@ -372,18 +377,18 @@ export const stocksTradingPlans: TradingPlans.TradingPlans[] = [
             enabled: true,
             firstTargetToAdd: "-1",
             finalTargets: [
-                { text: "295", partialCount: 1, atr: 0, rrr: 0, level: 295 },
-                { text: "281", partialCount: 1, atr: 0, rrr: 0, level: 281 },
+                { text: "18", partialCount: 1, atr: 0, rrr: 0, level: 18 },
+                { text: "18.78", partialCount: 1, atr: 0, rrr: 0, level: 18.78 },
             ],
-            gapDownAndGoUpPlan: {
-                midpointCheck: 281,
-                nearAboveSupport: { high: 280, low: delllevel },
+            gapAndGoPlan: {
+                midpointCheck: 18,
+                nearAboveConsolidationRange: "gap level",
                 coreCount: 0,
-                coreTarget: 295,
+                coreTarget: 18,
                 runnerCount: 0,
                 runnerTriggerCondition: "hold above pm high",
                 planConfigs: stock1Configs,
-                support: { high: 280, low: delllevel },
+                support: { high: 17, low: xplevel },
             },
             levelMomentumPlan: createDefaultLevelMomentumPlan(stock1Configs),
         },
